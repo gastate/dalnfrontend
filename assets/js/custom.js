@@ -1,22 +1,22 @@
 // JavaScript Document
 
 jQuery(document).ready(function($) {
-	
+
         // Topbar open / close & hover
-		
+
         $('.top-strip,.top-bar').addClass('top-hide');
-		
+
 		$('a.op-cl.aopen').hover(function(e) {
 		 $('.top-hide').animate({opacity: 1});
         },
          function() {
         $('.top-hide').animate({opacity: 0.6});
 		return false;
-       });	
-	   
+       });
+
 	   $('a.op-cl').click(function (e) {
 	   if($('.top-strip,.top-bar').is('.top-hide')){
-				
+
 				$('a.op-cl').removeClass("aopen").addClass("aclose");
 				$('.top-strip,.top-bar').removeClass('top-hide').addClass('top-show');
 				$('.top_inner').slideToggle('1000','linear', function(){
@@ -29,11 +29,11 @@ jQuery(document).ready(function($) {
 				$('.top_inner').slideToggle('1000','linear');
 				$('a.op-cl').removeClass("aclose").addClass("aopen");
 				$('.top-strip,.top-bar').removeClass('top-show').addClass('top-hide');
-			} 
+			}
 	   });
-			
+
        // Filter SHow/Hide
-	  
+
        $('ul.filter-data li').find('a').hide();
        $('ul.filter-data li').find('a.selected').show();
 
@@ -46,9 +46,9 @@ jQuery(document).ready(function($) {
 				}).on('mouseleave', function() {
 				$(this).find('li a').not('.selected').stop(true, true).filterhide(500);
 			});
-			
-     // Hover item block			
-			
+
+     // Hover item block
+
 	$('.item-block-isotope').hover(function(e) {
         $(this).find('.hover-desc').animate(
 		{ bottom: '0px',opacity: 0.9},
@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
 		duration: 1000}
 	    );
 		$(this).find('.symbol,.name,.info').animate(
-		{ 
+		{
 		opacity: 1
 		});
     },
@@ -67,9 +67,9 @@ jQuery(document).ready(function($) {
 		duration: 1000}
 	    );
 	 return false;
-    });	
-		
-	
+    });
+
+
 	// Slider plugin
 
     $(".rslides1").responsiveSlides({
@@ -81,7 +81,7 @@ jQuery(document).ready(function($) {
 		timeout: 5000,
         //maxwidth: 540
     });
-	
+
 	$(".rslides3").responsiveSlides({
         //auto: false,
         nav: true,
@@ -91,7 +91,7 @@ jQuery(document).ready(function($) {
 		timeout: 7000,
         //maxwidth: 540
 		before: function () {
-			
+
 		$(".rslides3").parent().find('.caption').animate({ bottom: '-550px',opacity: 1},
 											  {easing: 'easeOutExpo',
 											  duration: 1500}
@@ -100,14 +100,14 @@ jQuery(document).ready(function($) {
 											  {easing: 'easeOutExpo',
 											  duration: 1500}
 											  );
-		
-		
+
+
         },
         after: function () {
-         
+
         }
     });
-	
+
 	$(".rslides2").responsiveSlides({
         //auto: false,
         nav: true,
@@ -117,7 +117,7 @@ jQuery(document).ready(function($) {
 		timeout: 7000,
         //maxwidth: 540
 		before: function () {
-			
+
 		$(".rslides2").parents("#slider-color").removeClass();
 	    $(".rslides2").parents("#slider-color").addClass( $('.rslides2 li.rslides1_on').attr("id") );
 		$(".rslides2").parent().find('.caption').animate({ bottom: '-550px',opacity: 1},
@@ -128,17 +128,17 @@ jQuery(document).ready(function($) {
 											  {easing: 'easeOutExpo',
 											  duration: 1500}
 											  );
-		
-		
+
+
         },
         after: function () {
-         
+
         }
     });
-	
-	
+
+
 	// Carousel plugin
-	
+
 	$('.testimonialswrap').carousel({
 				slider: '#testimonials',
 				slide: '.testimonials-slide',
@@ -193,10 +193,10 @@ jQuery(document).ready(function($) {
 
     },
     1000);
-	
-	
+
+
 	//Google map setting
-	
+
 	    var $map = $('#google_map,#google_map2');
 		if( $map.length ) {
 
@@ -238,13 +238,15 @@ jQuery(document).ready(function($) {
         return false;
     });
 
-    //Carousel images
+    // Carousel images
 
     $('#Carousel1,#Carousel').carousel({
         interval: 2500
     });
 
-    //Media element player
+    // Media element player
+    // TODO: Add Sprout video API and change jquery to fit the needs.
+	// TODO: Add SoundCloud API and change jquery to fit the needs.
 
     $('audio,video').mediaelementplayer({
         audioWidth: '100%',
@@ -252,7 +254,7 @@ jQuery(document).ready(function($) {
         videoWidth: '100%',
         videoHeight: '100%'
     });
-	
+
 	$('#video-port').mediaelementplayer({
         audioWidth: '100%',
         audioHeight: '30px',
@@ -320,7 +322,7 @@ jQuery(document).ready(function($) {
     });
 
     //Tweets setting
-	
+
 
     function urlToLink(text) {
         var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
@@ -360,8 +362,8 @@ jQuery(document).ready(function($) {
     },
     1000);
 
-    // Search effect 
-	
+    // Search effect
+
     $('.navbar-search').hover(function() {
         $('.search-query').stop().animate({
             width: '150px'
@@ -403,7 +405,7 @@ jQuery(document).ready(function($) {
             padding: '0'
         }).blur().val(value);
     });
-	
+
 	//Toggle
 
     $(".toggle-box").hide();
@@ -416,19 +418,19 @@ jQuery(document).ready(function($) {
     $(".open-block").click(function() {
         $(this).next(".toggle-box").slideToggle();
     });
-	
+
     //Accordion
 
     $('.accordion-box').hide();
     $('.open-block-acc').click(function() {
-        $(".open-block-acc").removeClass("active"); 
+        $(".open-block-acc").removeClass("active");
 		$('.accordion-box').slideUp('normal');
         if ($(this).next().is(':hidden') == true) {
             $(this).next().slideDown('normal');
             $(this).addClass("active");
         }
     });
-	
+
 	//Message box
 
     $('.message-box').find('.closemsg').click(function() {
@@ -533,9 +535,9 @@ $(window).load(function(){
 
 	var $idajax = $('.portfolio-ajax > .item-block-ajax');
 	index = $idajax.length - 2;
-     
+
 	start();
-	
+
 	function nextproject(){
 		$(".rslides_ajax").removeClass('rslides active-slider');
 		lastIndex = index;
@@ -560,7 +562,7 @@ $(window).load(function(){
 		lastIndex = index;
 		if(--index < 0) index = ($idajax.length - 1);
 		$idajax.find('.img-ajax').fadeTo("slow",0.5);
-		$idajax.eq(index).addClass('active').find('.img-ajax').fadeTo("slow",1); 
+		$idajax.eq(index).addClass('active').find('.img-ajax').fadeTo("slow",1);
 		$idajax.eq(lastIndex).removeClass('active');
 		$('.loader').fadeIn();
        	$('#loaditem-ajax').css('visibility', 'hidden');
@@ -569,23 +571,23 @@ $(window).load(function(){
 		$('#loaditem-ajax').find(".rslides_ajax").addClass('rslides active-slider');
 		$(".active-slider").responsiveSlides({auto:true, nav: true,pause: true,pager: false,speed: 2500,timeout: 5000});
 		$('#portfolioitem-ajax').slideUp(1000, function(){$('#loaditem-ajax').css('visibility', 'visible')}).delay(800).slideDown(1000, function(){$('.loader').fadeOut()});
-		$("a[rel^='prettyPhoto']").prettyPhoto();	
+		$("a[rel^='prettyPhoto']").prettyPhoto();
 		return false;
 	}
 
 	function li_click(){
-	
+
 		if ($(this).hasClass('active')){
 
 		} else {
-		
+
      		$('html,body').animate({scrollTop: $("#pagehead").parent().offset().top}, 1000);
-			$(".rslides_ajax").removeClass('rslides active-slider');    		
+			$(".rslides_ajax").removeClass('rslides active-slider');
 			lastIndex = index;
 			index = $(this).index();
 			$idajax.find('.img-ajax').fadeTo("slow",0.5);
 			$(this).addClass('active').find('.img-ajax').fadeTo("slow",1);
-			$idajax.eq(lastIndex).removeClass('active');		
+			$idajax.eq(lastIndex).removeClass('active');
 			$('.loader').fadeIn();
 			$('.control-menu').fadeIn();
        		$('#loaditem-ajax').css('visibility', 'hidden');
@@ -596,9 +598,9 @@ $(window).load(function(){
 			$('#portfolioitem-ajax').slideUp(1000, function(){$('#loaditem-ajax').css('visibility', 'visible')}).slideDown(1000, function(){$('.loader').fadeOut()});
 			$("a[rel^='prettyPhoto']").prettyPhoto();
 		}
-       return false;   
+       return false;
 	}
-	
+
 	function closeproject(){
 		$(".rslides_ajax").removeClass('rslides active-slider');
 		$('.control-menu').fadeOut();
@@ -607,25 +609,25 @@ $(window).load(function(){
 		$idajax.removeClass('active').find('.img-ajax').fadeTo("slow",1);
 		return false;
 	}
-	
+
 	function start(){
 		$('#item-next').click(nextproject);
 		$('#item-prev').click(prevproject);
 		$('#item-close').click(closeproject);
-		$idajax.click(li_click);			       
+		$idajax.click(li_click);
 	}
-	
+
 	})();
-	
+
 });
 
 
-$(function(){ 
-    
+$(function(){
+
     var $container = $('#container');
-	
+
 	$container.show().isotope('reLayout');
-	
+
 	function centerPortoImg(){
 		$('.item-block-isotope').each(function(){
 			var $this = $(this);
@@ -645,7 +647,7 @@ $(function(){
 	$(window).load(function(){
 		centerPortoImg();
 	});
-	
+
 	$('#change-small').find('a').click(function(){
 	  if($(this).hasClass('change-select')){ return false; }
 		$('#change-small').find('a').removeClass('change-select');
@@ -658,7 +660,7 @@ $(function(){
           centerPortoImg();
         return false;
       });
-	
+
 
       $container.find('.item-block-isotope').each(function(){
         var $this = $(this),
@@ -682,15 +684,15 @@ $(function(){
           $this.find('img').addClass('height3');
         }
       });
-	  
+
 	  $container.isotope({
       itemSelector : '.item-block-isotope',
       masonry : {
        columnWidth : 4
       }
     });
-	
-	
+
+
 	var $optionSets = $('#filters .filter-data'),
           $optionLinks = $optionSets.find('a');
 
@@ -703,7 +705,7 @@ $(function(){
         var $optionSet = $this.parents('.filter-data');
         $optionSet.find('.selected').removeClass('selected');
         $this.addClass('selected');
-  
+
         // make option object dynamically, i.e. { filter: '.my-filter-class' }
         var options = {},
             key = $optionSet.attr('data-option-key'),
@@ -718,9 +720,9 @@ $(function(){
           // otherwise, apply new options
           $container.isotope( options );
         }
-        
+
         return false;
       });
-	 
-	
-});	
+
+
+});
