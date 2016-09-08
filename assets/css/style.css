@@ -666,7 +666,16 @@ section h2 {
 }
 #pagehead h1 small {
     font-weight: 400;
+    font-size: 18px;
     text-transform: lowercase;
+    line-height: 35px;
+}
+
+/* span covers the name of the DALN author or authors */
+#pagehead h1 span {
+    font-weight: 400;
+    text-transform: none;
+    font-size: 18px;
     line-height: 35px;
 }
 .service-home {
