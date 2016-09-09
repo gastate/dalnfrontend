@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>justi - Responsive Business &amp; Portfolio Template</title>
+<title>List Results</title>
 <!-- Mobile Specific Metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -39,6 +39,8 @@
 <body>
 <!-- Head
 ================================================== -->
+<!--Hidden unless client wants it -->
+<!--
 <div class="top-strip"></div>
 <div class="top-bar">
 
@@ -47,22 +49,21 @@
 <div class="container-fluid" style="padding:0;">
 <div class="row-fluid">
 
- <!-- google map widget begin here -->
-      <div id="google_map_home"></div>
+
 
 </div>
 </div>
 
   <div class="container" id="top">
-  
-    
+
+
     <div class="row">
-      <div class="span6"> <!-- text widget begin here -->
+      <div class="span6">
         <h3>Lorem ipsum dolor sit amet,</h3> <p>consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
       </div>
-      <div class="span6"> 
+      <div class="span6">
       <h3>Lorem ipsum dolor sit amet,</h3> <p>consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-      <!-- social begin here -->
+
         <ul class="socicon right">
           <li> <a href="#" class="share-icon"> </a> </li>
           <li> <a href="#" class="google"> </a> </li>
@@ -75,23 +76,25 @@
         </ul>
       </div>
     </div>
-    
+
   </div>
-  
+
  </div>
- 
+
    <div class="container">
   <div class="row" style="position:relative;"><a href="#" class="op-cl aopen"></a>
   </div>
- </div> 
- 
+ </div>
+
 </div>
+
+-->
 <!-- Logo / Menu
 ================================================== -->
 <header class="header">
   <div class="container">
     <div class="row">
-      <div class="span4"> <a href="index.html" class="logo"> <img src="assets/img/logo.png" alt=""> </a> </div>
+      <div class="span4"> <a href="index.html" class="logo"> <img src="assets/img/header.jpg" alt=""> </a> </div>
       <div class="span8">
        <nav>
                 <ul class="right">
@@ -182,10 +185,10 @@
 <!-- Portfolio filter
 ================================================== -->
 <section>
-  
+
 <!-- Portfolio item
 ================================================== -->
- 
+
 <ul class="thumbnails portfolio" id="containment-portfolio">
     <li class="span6 item-block web all">
      <a href="assets/img/bootstrap-mdo-sfmoma-01.jpg" class="zoom" rel="prettyPhoto" title="Image Title"></a>
@@ -201,8 +204,8 @@
     <li class="span6 item-block video all">
      <iframe src="http://player.vimeo.com/video/28220269?title=0&amp;byline=0&amp;portrait=0" width="570" height="170" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
       <div class="desc">
-      <a href="portfolio-single-3.html">Vimeo Video </a>
-       <p> <em>Portfolio Item Vimeo</em> </p>
+      <a href="portfolio-single-3.html">Reading through Video Games </a>
+       <p> <em>Description</em> </p>
       </div>
     </li>
    <li class="span6 item-block web all">
@@ -245,7 +248,7 @@
        <p> <em>Portfolio Item Local Video</em> </p>
       </div>
     </li>
-    
+
   </ul>
 </section>
   <div class="divider"></div>
@@ -257,7 +260,7 @@
       <footer>
       <div class="container">
       <div class="row">
-      
+
       <div class="span4">
       <h3>About</h3>
       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
@@ -296,11 +299,11 @@
                             <a href="#" class="vimeo">
                             </a>
                         </li>
-                       
+
                     </ul>
-                    
+
       </div>
-      
+
       <!-- tweets begin here -->
       <div class="span4">
       <h3>Latest Tweets</h3>
@@ -312,15 +315,15 @@
                         </ul>
                     </div>
       </div>
-      
+
       <div class="span4">
       <!-- flickr begin here -->
       <h3>From Flickr</h3>
-      
-      <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;source=user&amp;user=52617155@N08&amp;layout=x&amp;display=random&amp;size=s"></script> 
+
+      <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;source=user&amp;user=52617155@N08&amp;layout=x&amp;display=random&amp;size=s"></script>
 
       </div>
-      
+
       <div class="span12 copy">
        &copy; 2012 NLINE. All Rights Reserved.
       </div>
@@ -351,31 +354,39 @@
     <script type="text/javascript">
     $(document).ready(function() {
     $().UItoTop({ easingType: 'easeOutQuart' });
-	
+
 	// Isotope
-	  
+
 	  var $container = $('#containment-portfolio');
 	  $container.imagesLoaded( function(){
 		$container.isotope({
 			itemSelector : '.item-block'
-		});	
+		});
 	});
-      
+
 	  // onclick reinitialise the isotope script
 	$('#filters a').click(function(){
-		
+
 		$('#filters a').removeClass('selected');
 		$(this).addClass('selected');
-		
+
 		var selector = $(this).attr('data-option-value');
 		$container.isotope({ filter: selector });
-		
+
 		return(false);
 	});
-	
+
+
+
+
+
+
     });
     </script>
-    
+
+
+
+
 
 
   </body>
