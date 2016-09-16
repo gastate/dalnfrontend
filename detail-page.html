@@ -263,23 +263,27 @@
                       </ul>
 
 
-
-
-        <!-- <div class="span8">
-            <iframe src="https://player.vimeo.com/video/28220269?title=0&amp;byline=0&amp;portrait=0" width="770" height="433" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-        </div> -->
-
-    <!-- SoundCloud -->
         <div class="span8">
-            <iframe id="sc-widget" width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/15072191/a2acfb35-35c9-4780-a19a"></iframe>
+
+            <!-- SoundCloud -->
+            <iframe id="sc-widget" width="100%" height="166" scrolling="no"  src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/1539950/favorites"></iframe>
+
+
+        </div>
+
+        <div class="span8" style="margin-top:20px;">
+            <!-- Sprout Video -->
+
+                <iframe class='sproutvideo-player' type='text/html' src='http://videos.sproutvideo.com/embed/489bd0bc1c19e5c1c0/73e914bfc0b44c51' width='768' height='432' frameborder='0'> </iframe>
         </div>
 
 
 
 
 
-    </div>
 
+
+    </div>
 
 
 </div>
@@ -374,29 +378,7 @@
     });
     </script>
 
-    <script type="text/javascript">
-    (function(){
-    var widgetIframe = document.getElementById('sc-widget'),
-        widget       = SC.Widget(widgetIframe);
 
-    widget.bind(SC.Widget.Events.READY, function() {
-      widget.bind(SC.Widget.Events.PLAY, function() {
-        // get information about currently playing sound
-        widget.getCurrentSound(function(currentSound) {
-          console.log('sound ' + currentSound.get('') + 'began to play');
-        });
-      });
-      // get current level of volume
-      widget.getVolume(function(volume) {
-        console.log('current volume value is ' + volume);
-      });
-      // set new volume level
-      widget.setVolume(50);
-      // get the value of the current position
-    });
-
-  }());
-</script>
 
 
 
