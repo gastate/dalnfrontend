@@ -72,7 +72,7 @@
         <a href="potential-list-view.html">Results</a> /
       </li>
       <li>
-          <a href="#">Reading Through Video Games</a>
+          <a href="#" id="post-breadcrumb-title"></a>
       </li>
 
     </ul>
@@ -81,7 +81,7 @@
 
 <header id="pagehead">
 
-    <h1>Reading through Video Games<small>&nbsp; &frasl; &nbsp;&nbsp;a Digital Literacy Narrative by </small><span>Noah Betzen</span>
+    <h1 id="h1"><small>&nbsp; &frasl; &nbsp;&nbsp;a Digital Literacy Narrative by </small><span id="title-author"></span>
 
 
         <!-- social begin here -->
@@ -139,14 +139,14 @@
             <ul class="nav nav-list">
                 <li>
                     <h3>Title</h3>
-                    <p>Reading Through Video Games</p>
+                    <p id="title"></p>
                 <li>
                     <h3>Date Submitted</h3>
-                    <p>2012-10-20</p>
+                    <p id="date-submit"></p>
                 </li>
                 <li>
                     <h3>Author</h3>
-                    <p>Betzen, Noah</p>
+                    <p id="author"></p>
                 </li>
 
             </ul>
@@ -161,7 +161,6 @@
                 <li>
                     <h3>Tags/Subjects</h3>
                     <span class="label label-info">Reading</span>
-                    <span class="label label-success">Video Games</span>
                 </li>
 
             </ul>
@@ -171,7 +170,7 @@
             <ul class="nav nav-list">
                 <li>
                     <h3>Description</h3>
-                    <p>Some description pulled either from the document or provided.</p>
+                    <p id="description"></p>
                 </li>
             </ul>
 
@@ -218,7 +217,11 @@
 
                 <!-- Adding just an s after http serves content over https for AWS.
                 Tested only in v1 of Sprout API, subject to change. -->
-                    <iframe class='sproutvideo-player' type='text/html' src='https://videos.sproutvideo.com/embed/489bd0bc1c19e5c1c0/73e914bfc0b44c51' width='768' height='432'> </iframe>
+                    <!-- <iframe class='sproutvideo-player' type='text/html' src='https://videos.sproutvideo.com/embed/489bd0bc1c19e5c1c0/73e914bfc0b44c51' width='768' height='432'> </iframe> -->
+                <div id="video">
+                    
+                </div>
+
             </div>
 
 
@@ -253,25 +256,6 @@
       </div>
 
 
-      <!-- tweets begin here -->
-      <div class="span4">
-      <h3>Latest Tweets</h3>
-       <div class="tweets">
-                        <p>
-                            Loading Tweets...
-                        </p>
-                        <ul id="tweet-list">
-                        </ul>
-                    </div>
-      </div>
-
-      <div class="span4">
-      <!-- flickr begin here -->
-      <h3>From Flickr</h3>
-
-      <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;source=user&amp;user=52617155@N08&amp;layout=x&amp;display=random&amp;size=s"></script>
-
-      </div>
 
 
 
