@@ -1,4 +1,5 @@
 // JavaScript Document
+// Custom Jquery functions start at line 
 
 jQuery(document).ready(function($) {
 
