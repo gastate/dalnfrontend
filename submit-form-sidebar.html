@@ -52,7 +52,7 @@
                         </ul>
                 </nav>
               </div>
-            </div>
+          -  </div>
           </div>
         </header>
 
@@ -91,14 +91,13 @@
 
                 <div class="span7">
                     <!--Body content-->
-                    
-
-                    <ul class="pager">
-                      <li class="next">
-                        <a href="submit-form-one.html">Next &rarr;</a>
-                      </li>
-                    </ul>
-
+                    <!-- This is where the form is held. -->
+                    <form id="submitForm" action="env.json" method="post">
+                      Email: <input type="email" name="user-email" placeholder="A valid email address." />
+                      Username: <input type="text" name="username" placeholder="A username for your account."/>
+                      Password: <input type="password" name="password" placeholder="A strong password."/>
+                      <input type="submit" value="Submit" />
+                    </form>
 
                 </div>
 
@@ -165,6 +164,12 @@
             <script src="assets/js/jquery.ui.totop.js" type="text/javascript"></script>
             <script src="assets/js/jquery.isotope.min.js" type="text/javascript"></script>
             <script src="assets/js/custom.js"></script>
+
+
+            <!-- Custom Jquery here -->
+            <script src="assets/js/daln-custom.js"></script>
+
+
 
 
 

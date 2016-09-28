@@ -2,26 +2,24 @@
 
 jQuery(document).ready(function($) {
 
-
+    // All Pages
     $().UItoTop({ easingType: 'easeOutQuart'});
 
-    //Added collapse function
+
+    // Detail Page
+
+    // Added collapse function for dropdown
     $(".collapse").collapse();
 
 
-    // Testing JSON call - REMOVE ONCE IN DEPLOYMENT
-
-    // $.getJSON('data.json', function (data) {
-    //     console.log(data);
-    //
-    //     var items = data.items.map(function (item) {
-    //         return item.key + ': ' + item.value;
-    //     });
-    // });
-
-
-
+    // Dynamic entry for post data.
     $.getJSON('data-detail.json', function (objData) {
+
+      //  Preconditions:
+      //   Assumes that api will only give one post = one JSON object.
+
+      // Postconditions:
+      //  Will add all relevant JSON information about the post.
 
         console.log(objData);
 
@@ -44,18 +42,17 @@ jQuery(document).ready(function($) {
         $('#description').append("&nbsp;" + description);
         console.log(description);
 
+        // Need to write an if loop for video-audio-docs.
         var assetVid = objData[0].assetList[0].AssetLocation;
         // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
         $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
 
-
         console.log(assetVid);
+    });
 
-
-
-
-
-
+    // Submit Form
+    $('#submitForm').ajaxForm(function () {
+      alert("Hello");
     });
 
 });
