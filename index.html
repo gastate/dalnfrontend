@@ -431,24 +431,28 @@
 
 
               // get all the titles and descriptions of the posts.
-              for(var i=0; i <= size; i++) {
+              for(var i=0; i <= 29; i++) {
 
                   var listtitle = data[i].title;
                   var listdesc = data[i].description;
 
                   if( typeof(listtitle) != 'undefined' || typeof(listdesc) != 'undefined') {
-                  console.log(listtitle + " | " + listdesc);
+                //   console.log(listtitle + " | " + listdesc);
                   items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
               } else if (typeof(listtitle) == 'undefined') {
-                  console.log("No title | " + listdesc);
+                //   console.log("No title | " + listdesc);
                 items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'> No Title </a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
             } else {
-                    console.log(listtitle + "| No description.");
+                    // console.log(listtitle + "| No description.");
                     items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em> No description </em> </p> </div> </li>" );
                 }
-                console.log(items);
+                // console.log(items);
 
               }
+
+            for(var j=0; j <= items.length; j++) {
+                $(".thumbnails").append(items[j]);
+            }
 
 		});
 
