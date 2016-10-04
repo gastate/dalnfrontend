@@ -50,9 +50,5 @@ jQuery(document).ready(function($) {
         console.log(assetVid);
     });
 
-    // Submit Form
-    $('#submitForm').ajaxForm(function () {
-      alert("Hello");
-    });
 
 });
