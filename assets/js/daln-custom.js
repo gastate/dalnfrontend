@@ -1,11 +1,12 @@
+jQuery.support.cors = true;
 
-
+var GLOBAL_API_POSTS;
+var GLOBAL_API_POST;
 
 
 jQuery(document).ready(function($) {
 
-    var GLOBAL_API_POSTS;
-    var GLOBAL_API_POST;
+
 
     // All Pages
     $().UItoTop({ easingType: 'easeOutQuart'});
@@ -22,9 +23,10 @@ jQuery(document).ready(function($) {
             GLOBAL_API_POSTS = data[0].api_posts;
             GLOBAL_API_POST = data[0].api_post;
 
+
             console.log("Configuration variables set!");
             console.log(GLOBAL_API_POSTS);
-            // console.log(GLOBAL_API_POSTS + " " + typeof GLOBAL_API_POSTS); // For finding the type the var is, should expect String.
+            console.log(GLOBAL_API_POSTS + " " + typeof GLOBAL_API_POSTS); // For finding the type the var is, should expect String.
             console.log(GLOBAL_API_POST);
             // console.log(GLOBAL_API_POST + " " + typeof GLOBAL_API_POST); // For finding the type the var is, should expect String.
 
@@ -38,15 +40,15 @@ jQuery(document).ready(function($) {
      *  - AJAX call to get data and populate on page. *
      **************************************************/
 
-
     $.ajax({
-        url: GLOBAL_API_POSTS,
+
+        url: "http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/json/posts/all",
         data: { format: "json"},
         error: function () {
             console.log("Failed to retrieve JSON.");
         },
         success: function(data) {
-            //   console.log(data); // List the data
+              console.log(data); // List the data
             var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
             var items = [];
 
