@@ -2,7 +2,8 @@
     {
 
       "api_url": "daln.gsu.edu",
-      "api_posts": "api/v1/posts"
+      "api_posts": "data.json",
+      "api_post": "data-detail.json"
 
 
     }
