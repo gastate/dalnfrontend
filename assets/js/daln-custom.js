@@ -1,6 +1,6 @@
 jQuery.support.cors = true;
 
-// TODO:
+// TODO: Write pre and post conditions as well as invariants.
 
 /**
  * Global variables that come from dev_config.json to be used in the application.
@@ -40,13 +40,23 @@ jQuery(document).ready(function($) {
     }
 
     /**
-     * assignConfig() sets the global variables by getting the name-value pairs in the JSON.
+     * assignConfig() sets the global variables by getting the name-value pairs in the JSON. It is the "decoupled" function, meaning that it could've been used in getConfig() above, but we want to have the actual handling of the data separate from retriving the data, so we "decouple" it.
      * @param  {Object} data [JSON Object data given by getConfig().]
      * @return {Object} var  [Technically, the global variables are objects so this will return a Deferred Object, however we can use it as Strings.]
      */
     function assignConfig(data) {
+
+        /*******************************************************************************
+         * TODO:                                                                       *
+         *  - API_POST needs to be query executed                                      *
+         *  - Need to check for valid JSON somewhere. either another function or here. *
+         *                                                                             *
+         *******************************************************************************/
+        GLOBAL_API_URL = data[0].api_url;
         GLOBAL_API_POSTS = data[0].api_posts;
-        GLOBAL_API_POST = data[0].api_post; // Need to get query-based
+        GLOBAL_API_POST = data[0].api_post;
+        GLOBAL_API_CREATE_POST = data[0].api_create_post;
+        GLOBAL_UPLOAD_MEDIA = data[0].api_upload_media;
     }
 
     var config = getConfig().done(assignConfig); // This is a callback to the getConfig() function. Once getConfig() completes, assignConfig() will run. After this, var config will be able to use for multiple callbacks, other functions, events, or errors that we want to do.
