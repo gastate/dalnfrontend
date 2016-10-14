@@ -98,16 +98,17 @@ jQuery(document).ready(function($) {
             console.log("Failed to retrieve JSON.");
         },
         success: function(data) {
-              console.log(data); // List the data
+            console.log(data); // List the data
             var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
             var items = [];
 
-
+            console.log(size); // total posts in the database.
               // get all the titles and descriptions of the posts.
-              for(var i=0; i <= 29; i++) {
+              for(var i=0; i <= size - 1; i++) {
 
                   var listtitle = data[i].title;
                   var listdesc = data[i].description;
+                  var listId = data[i].postId;
 
                   if( typeof(listtitle) != 'undefined' || typeof(listdesc) != 'undefined') {
                 //   console.log(listtitle + " | " + listdesc);
@@ -144,45 +145,45 @@ jQuery(document).ready(function($) {
 
     // Dynamic entry for post data.
 
-    // TODO: Decouple
-    $.ajax({
-        url: GLOBAL_API_POST,
-        data: { format: "json"},
-        error: function () {
-            console.log("Failed to retrieve post.");
-        },
-        success: function(data) {
-        console.log(data);
-
-        var author = data[0].contributorAuthor;
-        $('#author').append("<p>" + author + "</p>"); // fix so its not small or nested
-        $('#title-author').append("&nbsp;" + author);
-        console.log(author);
-
-        var title = data[0].title;
-        $('#title').append("<p>" + title + "</p>"); // fix so its not small or nested
-        $('#post-breadcrumb-title').append("<p>" + title + "</p>");
-        $('#h1').prepend("&nbsp;" + title );
-        console.log(title);
-
-        var dateCreated = data[0].dateCreated;
-        $('#date-submit').append("<p>" + dateCreated + "</p>"); // fix so its not small or nested
-        console.log(dateCreated);
-
-        var description = data[0].description;
-        $('#description').append("&nbsp;" + description);
-        console.log(description);
-
-        // Need to write an if loop for video-audio-docs.
-        var assetVid = data[0].assetList[0].AssetLocation;
-        // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
-        $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
-
-        console.log(assetVid);
-    },
-        type: "GET"
-
-    });
+    // TODO: Decouple & GET with parameter
+    // $.ajax({
+    //     url: GLOBAL_API_POST,
+    //     data: { format: "json"},
+    //     error: function () {
+    //         console.log("Failed to retrieve post.");
+    //     },
+    //     success: function(data) {
+    //     console.log(data);
+    //
+    //     var author = data[0].contributorAuthor;
+    //     $('#author').append("<p>" + author + "</p>"); // fix so its not small or nested
+    //     $('#title-author').append("&nbsp;" + author);
+    //     console.log(author);
+    //
+    //     var title = data[0].title;
+    //     $('#title').append("<p>" + title + "</p>"); // fix so its not small or nested
+    //     $('#post-breadcrumb-title').append("<p>" + title + "</p>");
+    //     $('#h1').prepend("&nbsp;" + title );
+    //     console.log(title);
+    //
+    //     var dateCreated = data[0].dateCreated;
+    //     $('#date-submit').append("<p>" + dateCreated + "</p>"); // fix so its not small or nested
+    //     console.log(dateCreated);
+    //
+    //     var description = data[0].description;
+    //     $('#description').append("&nbsp;" + description);
+    //     console.log(description);
+    //
+    //     // Need to write an if loop for video-audio-docs.
+    //     var assetVid = data[0].assetList[0].AssetLocation;
+    //     // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
+    //     $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
+    //
+    //     console.log(assetVid);
+    // },
+    //     type: "GET"
+    //
+    // });
 
 });
 
