@@ -59,19 +59,19 @@ jQuery(document).ready(function($) {
         GLOBAL_UPLOAD_MEDIA = data[0].api_upload_media;
     }
 
-    var config = getConfig().done(assignConfig); // This is a callback to the getConfig() function. Once getConfig() completes, assignConfig() will run. After this, var config will be able to use for multiple callbacks, other functions, events, or errors that we want to do.
+    var configConfirm = getConfig().done(assignConfig); // This is a callback to the getConfig() function. Once getConfig() completes, assignConfig() will run. After this, var config will be able to use for multiple callbacks, other functions, events, or errors that we want to do.
 
     // TODO: CLient-side error message.
 
     // Here we just log that the config succeeds and the variables are what we want them to be.
-    config.done(function configSuccess(){
+    configConfirm.done(function configSuccess(){
         console.log("Configuration variables set!");
         console.log("All posts endpoint: " + GLOBAL_API_POSTS + "\nType: " + typeof GLOBAL_API_POSTS);
         console.log("Single post endpoint: " + GLOBAL_API_POST + "\nType: " + typeof GLOBAL_API_POST);
     });
 
     // If assigning the config variables fail, we pass the error here to debug.
-    config.fail( function configError(){
+    configConfirm.fail( function configError(){
         console.log("Failed to assign configuration values. Current endpoints and types:");
         // TODO: write fail variables in log.
 
@@ -87,7 +87,7 @@ jQuery(document).ready(function($) {
      **************************************************/
 
     // Now that the config variables are set, we can use functions on different pages.
-    config.done(function changePages(data) {
+    configConfirm.done(function changePages(data) {
 
     // TODO: Decouple
 
@@ -134,17 +134,17 @@ jQuery(document).ready(function($) {
             console.log("Posts loaded successfully.");
     }
 
-    var list = getPosts().done(listPosts);
+    var listConfirm = getPosts().done(listPosts);
 
-    list.done(function listPostsSucceed(){
+    listConfirm.done(function listPostsSucceed(){
         console.log("Succeeded to retrieve JSON posts.");
     });
 
-    list.fail(function listPostsFail() {
+    listConfirm.fail(function listPostsFail() {
         console.log("Failed to retrieve JSON posts.");
     });
 
-    
+
 
 
     /***********************************
@@ -158,45 +158,48 @@ jQuery(document).ready(function($) {
 
     // Dynamic entry for post data.
 
+
+    // click post, get the id of that post and append it to the url.
+
+
     // TODO: Decouple & GET with parameter
-    // $.ajax({
-    //     url: GLOBAL_API_POST,
-    //     data: { format: "json"},
-    //     error: function () {
-    //         console.log("Failed to retrieve post.");
-    //     },
-    //     success: function(data) {
-    //     console.log(data);
-    //
-    //     var author = data[0].contributorAuthor;
-    //     $('#author').append("<p>" + author + "</p>"); // fix so its not small or nested
-    //     $('#title-author').append("&nbsp;" + author);
-    //     console.log(author);
-    //
-    //     var title = data[0].title;
-    //     $('#title').append("<p>" + title + "</p>"); // fix so its not small or nested
-    //     $('#post-breadcrumb-title').append("<p>" + title + "</p>");
-    //     $('#h1').prepend("&nbsp;" + title );
-    //     console.log(title);
-    //
-    //     var dateCreated = data[0].dateCreated;
-    //     $('#date-submit').append("<p>" + dateCreated + "</p>"); // fix so its not small or nested
-    //     console.log(dateCreated);
-    //
-    //     var description = data[0].description;
-    //     $('#description').append("&nbsp;" + description);
-    //     console.log(description);
-    //
-    //     // Need to write an if loop for video-audio-docs.
-    //     var assetVid = data[0].assetList[0].AssetLocation;
-    //     // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
-    //     $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
-    //
-    //     console.log(assetVid);
-    // },
-    //     type: "GET"
-    //
-    // });
+    function getPost() {
+        return $.ajax({
+            url: GLOBAL_API_POST,
+            data: { format: "json"},
+            type: 'GET'
+        });
+    }
+
+    function displayPost(data) {
+        console.log(data);
+
+        var author = data[0].contributorAuthor;
+        $('#author').append("<p>" + author + "</p>"); // fix so its not small or nested
+        $('#title-author').append("&nbsp;" + author);
+        console.log(author);
+
+        var title = data[0].title;
+        $('#title').append("<p>" + title + "</p>"); // fix so its not small or nested
+        $('#post-breadcrumb-title').append("<p>" + title + "</p>");
+        $('#h1').prepend("&nbsp;" + title );
+        console.log(title);
+
+        var dateCreated = data[0].dateCreated;
+        $('#date-submit').append("<p>" + dateCreated + "</p>"); // fix so its not small or nested
+        console.log(dateCreated);
+
+        var description = data[0].description;
+        $('#description').append("&nbsp;" + description);
+        console.log(description);
+
+        // Need to write an if loop for video-audio-docs.
+        var assetVid = data[0].assetList[0].AssetLocation;
+        // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
+        $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
+
+        console.log(assetVid);
+    }
 
 });
 
