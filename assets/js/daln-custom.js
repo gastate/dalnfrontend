@@ -90,48 +90,61 @@ jQuery(document).ready(function($) {
     config.done(function changePages(data) {
 
     // TODO: Decouple
-    $.ajax({
 
-        url: GLOBAL_API_POSTS,
-        data: { format: "json"},
-        error: function () {
-            console.log("Failed to retrieve JSON.");
-        },
-        success: function(data) {
-            console.log(data); // List the data
-            var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
-            var items = [];
 
-            console.log(size); // total posts in the database.
-              // get all the titles and descriptions of the posts.
-              for(var i=0; i <= size - 1; i++) {
-
-                  var listtitle = data[i].title;
-                  var listdesc = data[i].description;
-                  var listId = data[i].postId;
-
-                  if( typeof(listtitle) != 'undefined' || typeof(listdesc) != 'undefined') {
-                //   console.log(listtitle + " | " + listdesc);
-                  items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
-                } else if (typeof(listtitle) == 'undefined') {
-                //   console.log("No title | " + listdesc);
-                items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'> No Title </a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
-                } else {
-                    // console.log(listtitle + "| No description.");
-                    items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em> No description </em> </p> </div> </li>" );
-                }
-                // console.log(items);
-
-              }
-
-                for(var j=0; j <= items.length; j++) {
-                    $(".thumbnails").append(items[j]);
-                }
-
-                console.log("Posts loaded successfully.");
-            },
-            type:"GET"
+    function getPosts() {
+        return $.ajax({
+            url: GLOBAL_API_POSTS,
+            data: { format: "json"},
+            type: 'GET'
         });
+    }
+
+    function listPosts(data) {
+        console.log(data); // List the data
+        var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
+        var items = [];
+
+        console.log(size); // total posts in the database.
+          // get all the titles and descriptions of the posts.
+          for(var i=0; i <= size - 1; i++) {
+
+              var listtitle = data[i].title;
+              var listdesc = data[i].description;
+              var listId = data[i].postId;
+
+              if( typeof(listtitle) != 'undefined' || typeof(listdesc) != 'undefined') {
+            //   console.log(listtitle + " | " + listdesc);
+              items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
+            } else if (typeof(listtitle) == 'undefined') {
+            //   console.log("No title | " + listdesc);
+            items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'> No Title </a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
+            } else {
+                // console.log(listtitle + "| No description.");
+                items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em> No description </em> </p> </div> </li>" );
+            }
+            // console.log(items);
+
+          }
+
+            for(var j=0; j <= items.length; j++) {
+                $(".thumbnails").append(items[j]);
+            }
+
+            console.log("Posts loaded successfully.");
+    }
+
+    var list = getPosts().done(listPosts);
+
+    list.done(function listPostsSucceed(){
+        console.log("Succeeded to retrieve JSON posts.");
+    });
+
+    list.fail(function listPostsFail() {
+        console.log("Failed to retrieve JSON posts.");
+    });
+
+    
 
 
     /***********************************
