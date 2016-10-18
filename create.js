@@ -105,23 +105,31 @@ jQuery(document).ready(function($) {
         var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
         var items = [];
 
+        var assets = ["https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4", ] // assets to be inserted.
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
         console.log(size); // total posts in the database.
           // get all the titles and descriptions of the posts.
-          for(var i=0; i <= size - 1; i++) {
+          for(var i=0; i <= 20; i++) {
 
               var listtitle = data[i].title;
               var listdesc = data[i].description;
               var listId = data[i].postId;
 
+
+
               if( typeof(listtitle) != 'undefined' || typeof(listdesc) != 'undefined') {
             //   console.log(listtitle + " | " + listdesc);
-              items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
+              items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
             } else if (typeof(listtitle) == 'undefined') {
             //   console.log("No title | " + listdesc);
-            items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'> No Title </a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
+            items.push( "<li class= 'span3 item-block'><div class='desc'><a href='#'> No Title </a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
             } else {
                 // console.log(listtitle + "| No description.");
-                items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em> No description </em> </p> </div> </li>" );
+                items.push( "<li class= 'span3 item-block'><div class='desc'><a href='#'>" + listtitle + "</a> <p> <em> No description </em> </p> </div> </li>" );
             }
             // console.log(items);
 

@@ -1,6 +1,8 @@
 # PRIORITY
 - HARDCODE EVERYTHING
 - home page and detail view
+    - GET MEDIA ON IT
+    - For homepage, may want to just get pics and use isotope.js
 - list view
 
 
@@ -36,6 +38,7 @@ Later:
     - DOCUMENTATION!!!! Need to know GET and POST methods, for I am just assuming.
     - upload, update, create functions
     - wtf is this: /dalnws/api/DALNService
+    - JSON needs to be lowercase or its invalid (also no spaces plz).
 
 - Jaro: config file structure.
     - api_url for base url (currently http://ec2-54-211-221-216.compute-1.amazonaws.com:8080) and the latter half (/dalnws/api/DALNService/json/posts/all)
