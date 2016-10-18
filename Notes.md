@@ -1,3 +1,10 @@
+# PRIORITY
+- HARDCODE EVERYTHING
+- home page and detail view
+- list view
+
+
+
 # Today's tasks
 - ~~Get JSON config working with ajax callback~~
 - detail page
