@@ -107,23 +107,26 @@ jQuery(document).ready(function($) {
 
         console.log(size); // total posts in the database.
           // get all the titles and descriptions of the posts.
-          for(var i=0; i <= size - 1; i++) {
+          for(var i=0; i <= 20; i++) {
 
-              var listtitle = data[i].title;
-              var listdesc = data[i].description;
+              var listTitle = data[i].title;
+              var listDesc = data[i].description;
               var listId = data[i].postId;
 
-              if( typeof(listtitle) != 'undefined' || typeof(listdesc) != 'undefined') {
-            //   console.log(listtitle + " | " + listdesc);
-              items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
-            } else if (typeof(listtitle) == 'undefined') {
-            //   console.log("No title | " + listdesc);
-            items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'> No Title </a> <p> <em>" + listdesc +"</em> </p> </div> </li>" );
-            } else {
-                // console.log(listtitle + "| No description.");
-                items.push( "<li class= 'span3 item-block'> <div class='desc'><a href='#'>" + listtitle + "</a> <p> <em> No description </em> </p> </div> </li>" );
+
+              if( listTitle === undefined || listDesc === undefined) { // Should never happen since every post must at least have a title. But we put it here to make sure we don't break at an undefined.
+              items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
+            } else if (listTitle === undefined) {
+            listDesc = listDesc.substring(0,41);
+            items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+        } else if (listDesc === undefined) {
+            listTitle = listTitle.substring(0,19);
+            items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'>"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
+        } else {
+                listTitle = listTitle.substring(0,19);
+                listDesc = listDesc.substring(0,41);
+                items.push( "<li class='span3 item-block'><video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
             }
-            // console.log(items);
 
           }
 
