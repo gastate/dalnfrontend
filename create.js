@@ -116,7 +116,7 @@ jQuery(document).ready(function($) {
               var listDesc = data[i].description;
               var listId = data[i].postId;
               var asset = data[i].assetList
-
+sdsd
               // PROBLEMS WITH TITLES NOT undefined
         if( listTitle === undefined || listDesc === undefined) { // Should never happen since every post must at least have a title. But we put it here to make sure we don't break at an undefined.
             items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
