@@ -65,18 +65,18 @@ jQuery(document).ready(function($) {
 
     // Here we just log that the config succeeds and the variables are what we want them to be.
     configConfirm.done(function configSuccess(){
-        console.log("Configuration variables set!");
-        console.log("All posts endpoint: " + GLOBAL_API_POSTS + "\nType: " + typeof GLOBAL_API_POSTS);
-        console.log("Single post endpoint: " + GLOBAL_API_POST + "\nType: " + typeof GLOBAL_API_POST);
+        ////console.log("Configuration variables set!");
+        //console.log("All posts endpoint: " + GLOBAL_API_POSTS + "\nType: " + typeof GLOBAL_API_POSTS);
+        //console.log("Single post endpoint: " + GLOBAL_API_POST + "\nType: " + typeof GLOBAL_API_POST);
     });
 
     // If assigning the config variables fail, we pass the error here to debug.
     configConfirm.fail( function configError(){
-        console.log("Failed to assign configuration values. Current endpoints and types:");
+        //console.log("Failed to assign configuration values. Current endpoints and types:");
         // TODO: write fail variables in log.
 
         // Use to find out if  GLOBAL_API_POSTS is undefined.
-        // console.log(GLOBAL_API_POSTS);
+        // //console.log(GLOBAL_API_POSTS);
     });
 
 
@@ -89,8 +89,6 @@ jQuery(document).ready(function($) {
     // Now that the config variables are set, we can use functions on different pages.
     configConfirm.done(function changePages(data) {
 
-    // TODO: Decouple
-
 
     function getPosts() {
         return $.ajax({
@@ -101,31 +99,36 @@ jQuery(document).ready(function($) {
     }
 
     function listPosts(data) {
-        console.log(data); // List the data
+        //console.log(data); // List the data
         var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
         var items = [];
 
-        console.log(size); // total posts in the database.
+        //console.log(size); // total posts in the database.
           // get all the titles and descriptions of the posts.
           for(var i=0; i <= 20; i++) {
 
               var listTitle = data[i].title;
               var listDesc = data[i].description;
-              var listId = data[i].postId;
 
+              var listId = data[i].postId; // get the postId
+              var postLink = GLOBAL_API_POST.concat("/").concat(listId); // concatenate the two strings for url use; might be bad to use "/".
 
+            // //console.log(listId); // To look at postIds.
+            // Example url: http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/930da322-d6f6-4428-9969-fc8605428474
+
+              // PROBLEMS WITH UNDEFINED NOT UNDEFINED. Possible cause: quotes.
               if( listTitle === undefined || listDesc === undefined) { // Should never happen since every post must at least have a title. But we put it here to make sure we don't break at an undefined.
-              items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
+              items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='"+ postLink + "'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
             } else if (listTitle === undefined) {
             listDesc = listDesc.substring(0,41);
-            items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+            items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='"+ postLink + "'>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
         } else if (listDesc === undefined) {
             listTitle = listTitle.substring(0,19);
             items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'>"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
         } else {
                 listTitle = listTitle.substring(0,19);
                 listDesc = listDesc.substring(0,41);
-                items.push( "<li class='span3 item-block'><video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='#'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+                items.push( "<li class='span3 item-block'><video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='"+ postLink + "'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
             }
 
           }
@@ -134,17 +137,18 @@ jQuery(document).ready(function($) {
                 $(".thumbnails").append(items[j]);
             }
 
-            console.log("Posts loaded successfully.");
+            //console.log("Posts loaded successfully.");
+
     }
 
     var listConfirm = getPosts().done(listPosts);
 
     listConfirm.done(function listPostsSucceed(){
-        console.log("Succeeded to retrieve JSON posts.");
+        //console.log("Succeeded to retrieve JSON posts.");
     });
 
     listConfirm.fail(function listPostsFail() {
-        console.log("Failed to retrieve JSON posts.");
+        //console.log("Failed to retrieve JSON posts.");
     });
 
 
@@ -164,8 +168,6 @@ jQuery(document).ready(function($) {
 
     // click post, get the id of that post and append it to the url.
 
-
-    // TODO: Decouple & GET with parameter
     function getPost() {
         return $.ajax({
             url: GLOBAL_API_POST,
@@ -178,30 +180,30 @@ jQuery(document).ready(function($) {
         console.log(data);
 
         var author = data[0].contributorAuthor;
+        var dateCreated = data[0].dateCreated;
+        var title = data[0].title;
+        var assetVid = data[0].assetList[0].AssetLocation;
+        var description = data[0].description;
+
+
         $('#author').append("<p>" + author + "</p>"); // fix so its not small or nested
         $('#title-author').append("&nbsp;" + author);
         console.log(author);
 
-        var title = data[0].title;
         $('#title').append("<p>" + title + "</p>"); // fix so its not small or nested
         $('#post-breadcrumb-title').append("<p>" + title + "</p>");
         $('#h1').prepend("&nbsp;" + title );
         console.log(title);
 
-        var dateCreated = data[0].dateCreated;
         $('#date-submit').append("<p>" + dateCreated + "</p>"); // fix so its not small or nested
         console.log(dateCreated);
 
-        var description = data[0].description;
         $('#description').append("&nbsp;" + description);
         console.log(description);
 
         // Need to write an if loop for video-audio-docs.
-        var assetVid = data[0].assetList[0].AssetLocation;
         // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
         $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
-
-        console.log(assetVid);
     }
 
 });
