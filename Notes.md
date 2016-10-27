@@ -8,16 +8,12 @@
 
 
 # Today's tasks
-- ~~Get JSON config working with ajax callback~~
-- detail page
-- finish coding display of randomly selected narratives on main page (each post has title of narrative and embedded media type)
-- Selenium Testing
-- research the social media tokens
+- Meeting with Lisa Thursday at 1pm at Jaro's office.
+- research browser side routing
 
 ## Notes:
-- **Run insecurely via http for all URLs.**
-- One single post works: http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/c529509f-2b9a-49d0-bb0d-2f1825544968
-- index url: https://daln.s3.amazonaws.com/frontend/index.html
+
+
 
 ## Questions:
 
