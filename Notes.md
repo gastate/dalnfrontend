@@ -1,16 +1,14 @@
-# PRIORITY
-- HARDCODE EVERYTHING
-- home page and detail view
-    - GET MEDIA ON IT
-    - For homepage, may want to just get pics and use isotope.js
-- list view
-
-
 
 # Today's tasks
-- Meeting with Lisa Thursday at 1pm at Jaro's office.
-- research browser side routing
-
+-  jquery for each function:
+    -  iterate through to get video, then audio, then text (place a picture for text)
+    - for video, copy default iframe and put in id; same for audio
+- Audio asset embed:
+    - match json asset id with the curl id of soundcloud using arrays.filter: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+        - basically the second example where you match the curl object to the api object
+    - get the uri
+    - post uri there
+- Start router with library
 ## Notes:
 
 

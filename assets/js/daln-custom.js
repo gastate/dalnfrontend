@@ -98,6 +98,12 @@ jQuery(document).ready(function($) {
         });
     }
 
+    function assetHandler (assetList) {
+        $.each(assetList, function (i, item) {
+            console.log(assetList[i].["Asset Location"]);
+        });
+    }
+
     function listPosts(data) {
         //console.log(data); // List the data
         var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
@@ -107,296 +113,24 @@ jQuery(document).ready(function($) {
           // get all the titles and descriptions of the posts.
           for(var i=0; i <= 20; i++) {
 
-              var listTitle = data[i].title;
-              var listDesc = data[i].description;
+             var listTitle = data[i].title;
+             var listDesc = data[i].description;
 
-              var listId = data[i].postId; // get the postId
-            // jqeury for each function: iterate through, get video, hten audio, then text (place a picture for text)
+             var listId = data[i].postId; // get the postId
+
+             var assetList = data[i].assetList;
+             assetHandler(assetList);
+
+
+
+            // jqeury for each function: iterate through, get video,  then audio, then text (place a picture for text)
             // for video, copy default iframe and put in id
             // same for audio
-
+            //
             // Audio asset embed:
-            // - match json asset id with the curl id of soundcloud
+            // - match json asset id with the curl id of soundcloud using arrays.filter
             // - get the uri
-            // -
-
-             sounds = [
-    {
-        "kind": "track",
-        "id": 290085421,
-        "created_at": "2016/10/26 17:44:41 +0000",
-        "user_id": 158644866,
-        "duration": 221041,
-        "commentable": true,
-        "state": "finished",
-        "original_content_size": 5304427,
-        "last_modified": "2016/10/26 17:44:43 +0000",
-        "sharing": "public",
-        "tag_list": "Blues",
-        "permalink": "marvin-se-joga-extend-daddo-dj",
-        "streamable": true,
-        "embeddable_by": "all",
-        "downloadable": true,
-        "purchase_url": null,
-        "label_id": null,
-        "purchase_title": null,
-        "genre": "",
-        "title": "MARVIN - SE JOGA - EXTEND DADDO DJ",
-        "description": "",
-        "label_name": null,
-        "release": null,
-        "track_type": null,
-        "key_signature": null,
-        "isrc": null,
-        "video_url": null,
-        "bpm": null,
-        "release_year": null,
-        "release_month": null,
-        "release_day": null,
-        "original_format": "mp3",
-        "license": "all-rights-reserved",
-        "uri": "https://api.soundcloud.com/tracks/290085421",
-        "user": {
-            "id": 158644866,
-            "kind": "user",
-            "permalink": "daddodj-01",
-            "username": "DaddoDj",
-            "last_modified": "2016/10/14 15:30:33 +0000",
-            "uri": "https://api.soundcloud.com/users/158644866",
-            "permalink_url": "http://soundcloud.com/daddodj-01",
-            "avatar_url": "https://i1.sndcdn.com/avatars-000213201685-07v663-large.jpg"
-        },
-        "permalink_url": "http://soundcloud.com/daddodj-01/marvin-se-joga-extend-daddo-dj",
-        "artwork_url": "https://i1.sndcdn.com/artworks-000190749184-edcc6t-large.jpg",
-        "waveform_url": "https://w1.sndcdn.com/u6co0ZhhpsbY_m.png",
-        "stream_url": "https://api.soundcloud.com/tracks/290085421/stream",
-        "download_url": "https://api.soundcloud.com/tracks/290085421/download",
-        "playback_count": 0,
-        "download_count": 0,
-        "favoritings_count": 0,
-        "comment_count": 0,
-        "attachments_uri": "https://api.soundcloud.com/tracks/290085421/attachments"
-    },
-    {
-        "kind": "track",
-        "id": 290085417,
-        "created_at": "2016/10/26 17:44:40 +0000",
-        "user_id": 207631678,
-        "duration": 120382,
-        "commentable": true,
-        "state": "finished",
-        "original_content_size": 2406470,
-        "last_modified": "2016/10/26 17:44:41 +0000",
-        "sharing": "public",
-        "tag_list": "\"David Guetta\" Pop \"Big Room\"",
-        "permalink": "verrigni-id-prewiev",
-        "streamable": true,
-        "embeddable_by": "all",
-        "downloadable": false,
-        "purchase_url": null,
-        "label_id": null,
-        "purchase_title": null,
-        "genre": "Dance & EDM",
-        "title": "Verrigni - ID (Prewiev)",
-        "description": "",
-        "label_name": null,
-        "release": null,
-        "track_type": null,
-        "key_signature": null,
-        "isrc": null,
-        "video_url": null,
-        "bpm": null,
-        "release_year": null,
-        "release_month": null,
-        "release_day": null,
-        "original_format": "mp3",
-        "license": "all-rights-reserved",
-        "uri": "https://api.soundcloud.com/tracks/290085417",
-        "user": {
-            "id": 207631678,
-            "kind": "user",
-            "permalink": "verrigniofficial",
-            "username": "VerrigniOfficial",
-            "last_modified": "2016/08/24 17:23:40 +0000",
-            "uri": "https://api.soundcloud.com/users/207631678",
-            "permalink_url": "http://soundcloud.com/verrigniofficial",
-            "avatar_url": "https://i1.sndcdn.com/avatars-000244618637-rwt9l4-large.jpg"
-        },
-        "permalink_url": "http://soundcloud.com/verrigniofficial/verrigni-id-prewiev",
-        "artwork_url": null,
-        "waveform_url": "https://w1.sndcdn.com/qMwU9b98Mn5D_m.png",
-        "stream_url": "https://api.soundcloud.com/tracks/290085417/stream",
-        "playback_count": 0,
-        "download_count": 0,
-        "favoritings_count": 0,
-        "comment_count": 0,
-        "attachments_uri": "https://api.soundcloud.com/tracks/290085417/attachments"
-    },
-    {
-        "kind": "track",
-        "id": 290085415,
-        "created_at": "2016/10/26 17:44:39 +0000",
-        "user_id": 15034777,
-        "duration": 45169,
-        "commentable": true,
-        "state": "finished",
-        "original_content_size": 1444542,
-        "last_modified": "2016/10/26 17:44:40 +0000",
-        "sharing": "public",
-        "tag_list": "",
-        "permalink": "minirocrec-mix",
-        "streamable": true,
-        "embeddable_by": "all",
-        "downloadable": false,
-        "purchase_url": null,
-        "label_id": null,
-        "purchase_title": null,
-        "genre": "Home Recording",
-        "title": "MiniRocRec - Mix",
-        "description": "",
-        "label_name": null,
-        "release": null,
-        "track_type": null,
-        "key_signature": null,
-        "isrc": null,
-        "video_url": null,
-        "bpm": null,
-        "release_year": null,
-        "release_month": null,
-        "release_day": null,
-        "original_format": "mp3",
-        "license": "all-rights-reserved",
-        "uri": "https://api.soundcloud.com/tracks/290085415",
-        "user": {
-            "id": 15034777,
-            "kind": "user",
-            "permalink": "tony-lamarca",
-            "username": "Tony LaMarca",
-            "last_modified": "2015/09/22 02:35:24 +0000",
-            "uri": "https://api.soundcloud.com/users/15034777",
-            "permalink_url": "http://soundcloud.com/tony-lamarca",
-            "avatar_url": "https://i1.sndcdn.com/avatars-000058472490-b0xr1a-large.jpg"
-        },
-        "permalink_url": "http://soundcloud.com/tony-lamarca/minirocrec-mix",
-        "artwork_url": "https://i1.sndcdn.com/artworks-000190749179-5smxwe-large.jpg",
-        "waveform_url": "https://w1.sndcdn.com/Nv37aaCFO2U1_m.png",
-        "stream_url": "https://api.soundcloud.com/tracks/290085415/stream",
-        "playback_count": 0,
-        "download_count": 0,
-        "favoritings_count": 0,
-        "comment_count": 0,
-        "attachments_uri": "https://api.soundcloud.com/tracks/290085415/attachments"
-    },
-    {
-        "kind": "track",
-        "id": 290085414,
-        "created_at": "2016/10/26 17:44:39 +0000",
-        "user_id": 209453712,
-        "duration": 121401,
-        "commentable": true,
-        "state": "finished",
-        "original_content_size": 1941145,
-        "last_modified": "2016/10/26 17:44:40 +0000",
-        "sharing": "public",
-        "tag_list": "",
-        "permalink": "carlos-chacon-juegos-comunales",
-        "streamable": true,
-        "embeddable_by": "all",
-        "downloadable": false,
-        "purchase_url": null,
-        "label_id": null,
-        "purchase_title": null,
-        "genre": "",
-        "title": "Carlos Chacon Juegos Comunales",
-        "description": "En la unidad deportiva de Bojacá sector Bochica se viene desarrollando la segunda fase de los Juegos Comunales en fútbol de salón en los que este miércoles 26 de octubre se dará continuidad a la programación de esta integración deportiva.",
-        "label_name": null,
-        "release": null,
-        "track_type": null,
-        "key_signature": null,
-        "isrc": null,
-        "video_url": null,
-        "bpm": null,
-        "release_year": null,
-        "release_month": null,
-        "release_day": null,
-        "original_format": "mp3",
-        "license": "all-rights-reserved",
-        "uri": "https://api.soundcloud.com/tracks/290085414",
-        "user": {
-            "id": 209453712,
-            "kind": "user",
-            "permalink": "user-521508419",
-            "username": "►",
-            "last_modified": "2016/08/02 17:24:22 +0000",
-            "uri": "https://api.soundcloud.com/users/209453712",
-            "permalink_url": "http://soundcloud.com/user-521508419",
-            "avatar_url": "https://i1.sndcdn.com/avatars-000208578918-o54e68-large.jpg"
-        },
-        "permalink_url": "http://soundcloud.com/user-521508419/carlos-chacon-juegos-comunales",
-        "artwork_url": "https://i1.sndcdn.com/artworks-000190749177-zr9vqv-large.jpg",
-        "waveform_url": "https://w1.sndcdn.com/b7pTHrCFm6gu_m.png",
-        "stream_url": "https://api.soundcloud.com/tracks/290085414/stream",
-        "playback_count": 0,
-        "download_count": 0,
-        "favoritings_count": 0,
-        "comment_count": 0,
-        "attachments_uri": "https://api.soundcloud.com/tracks/290085414/attachments"
-    },
-    {
-        "kind": "track",
-        "id": 290085412,
-        "created_at": "2016/10/26 17:44:38 +0000",
-        "user_id": 716265,
-        "duration": 86472,
-        "commentable": true,
-        "state": "finished",
-        "original_content_size": 9851474,
-        "last_modified": "2016/10/26 17:44:38 +0000",
-        "sharing": "public",
-        "tag_list": "",
-        "permalink": "promo-glrs-tv-lotteri",
-        "streamable": true,
-        "embeddable_by": "all",
-        "downloadable": false,
-        "purchase_url": null,
-        "label_id": null,
-        "purchase_title": null,
-        "genre": "Entertainment",
-        "title": "Promo GLRs tv-lotteri",
-        "description": "",
-        "label_name": null,
-        "release": null,
-        "track_type": null,
-        "key_signature": null,
-        "isrc": null,
-        "video_url": null,
-        "bpm": null,
-        "release_year": null,
-        "release_month": null,
-        "release_day": null,
-        "original_format": "m4a",
-        "license": "all-rights-reserved",
-        "uri": "https://api.soundcloud.com/tracks/290085412",
-        "user": {
-            "id": 716265,
-            "kind": "user",
-            "permalink": "guovdageainnulagasradio",
-            "username": "Guovdageainnu Lagasradio",
-            "last_modified": "2016/10/06 15:44:01 +0000",
-            "uri": "https://api.soundcloud.com/users/716265",
-            "permalink_url": "http://soundcloud.com/guovdageainnulagasradio",
-            "avatar_url": "https://i1.sndcdn.com/avatars-000267056980-rxdiih-large.jpg"
-        },
-        "permalink_url": "http://soundcloud.com/guovdageainnulagasradio/promo-glrs-tv-lotteri",
-        "artwork_url": null,
-        "waveform_url": "https://w1.sndcdn.com/Dct7BZ7RmSeE_m.png",
-        "stream_url": "https://api.soundcloud.com/tracks/290085412/stream",
-        "playback_count": 0,
-        "download_count": 0,
-        "favoritings_count": 0,
-        "comment_count": 0,
-        "attachments_uri": "https://api.soundcloud.com/tracks/290085412/attachments"
-    }];
+            // - post uri there
               var postLink = GLOBAL_API_POST.concat("/").concat(listId); // concatenate the two strings for url use; might be bad to use "/".
             // //console.log(listId); // To look at postIds.
             // Example url: http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/930da322-d6f6-4428-9969-fc8605428474
