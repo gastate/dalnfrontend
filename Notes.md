@@ -9,7 +9,53 @@
     - get the uri
     - post uri there
 - Start router with library
+
 ## Notes:
+- https://wedding.vids.io/ HAHAHAHAHAHA
+> *Late night coding with Wasfi*
+
+```
+> be me
+> be coding in javascript for about 3 hours cuz of stupid ways javascript handles shit and also idk how do
+> finished coding the handling of several audio, video, and document assets
+> time to start hitting some APIs
+> letsdothis.jpg
+> all of the sudden no videos showing up
+> wtf
+> check video urls; returning no video data
+> FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+> check code
+> check code part 2
+> check code part 3
+> can't find out
+> look at url again
+> "DNS server not resolved"
+> wait
+> check other parts of video service that feed in videos api
+> mfw the DNS is down
+> mfw I remember that there have been massive DDOS attacks everywhere this week
+> ffs
+> send message to boss
+> "hey the internet is down so im going to bed now"
+```
+
+- Should we combine all of our issues for later or as we go on?
+
+- what was the key we were looking for: https://developers.soundcloud.com/docs/api/reference#tracks?
+
+- BIG ISSUE: Sprout video
+    - Have: API Key, video Id; Need: security token
+    - Cannot access security token through javascript
+    - Can use Javascript Player. Upload is through API no problem.
+        - http://sproutvideo.com/help/api/javascript_player_api
+        - http://sproutvideo.com/docs/api.html
+        - Or can use direct url api key
+
+
+- Ask Shakib:
+   -  all of the types of Asset Types, specifically (you didn't do anything like different Audios)?
+   - Not every Asset has a Location?
+    - Kara's Narrative
 
 
 
@@ -22,7 +68,7 @@ Currently:
 
 Later:        
 
-- Shakib: Next week will have to collab with Shakib.
+- Shakib:
     - DOCUMENTATION!!!! Need to know GET and POST methods, for I am just assuming.
     - upload, update, create functions
     - wtf is this: /dalnws/api/DALNService
