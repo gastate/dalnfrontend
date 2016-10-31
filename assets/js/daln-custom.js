@@ -18,6 +18,7 @@ var GLOBAL_UPLOAD_MEDIA = $.Deferred();
 
 jQuery(document).ready(function($) {
 
+<<<<<<< HEAD
 
     /**************************************************
      * All Pages:                                     *
@@ -147,12 +148,142 @@ jQuery(document).ready(function($) {
         var videoURI = "http://videos.sproutvideo.com/embed/a49bd0b91c1be3c72c/1d96dca100d12c13";
 
 
+=======
+>>>>>>> 5a0b67573f3058160c339cfb79418e2e35c0025e
+
+    /**************************************************
+     * All Pages:                                     *
+     *  - Configuration variable setup.               *
+     **************************************************/
+
+    // $().UItoTop({ easingType: 'easeOutQuart'}); // function from template that handles easing for uitotop button.
+
+
+    /**
+     * getConfig() is an ajax GET call that will get dev_config.json and return the json to be used in assignConfig.
+     * @return {Object} data [returns a JSON Object to be parsed.]
+     */
+    function getConfig() {
+        return $.ajax({
+            url: "dev_config.json",
+            data: {format : "json"},
+            type: 'GET'
+        });
+    }
+
+    /**
+     * assignConfig() sets the global variables by getting the name-value pairs in the JSON. It is the "decoupled" function, meaning that it could've been used in getConfig() above, but we want to have the actual handling of the data separate from retriving the data, so we "decouple" it.
+     * @param  {Object} data [JSON Object data given by getConfig().]
+     * @return {Object} var  [Technically, the global variables are objects so this will return a Deferred Object, however we can use it as Strings.]
+     */
+    function assignConfig(data) {
+
+        /*******************************************************************************
+         * TODO:                                                                       *
+         *  - API_POST needs to be query executed                                      *
+         *  - Need to check for valid JSON somewhere. either another function or here. *
+         *                                                                             *
+         *******************************************************************************/
+        GLOBAL_API_URL = data[0].api_url;
+        GLOBAL_API_POSTS = data[0].api_posts;
+        GLOBAL_API_POST = data[0].api_post;
+        GLOBAL_API_CREATE_POST = data[0].api_create_post;
+        GLOBAL_UPLOAD_MEDIA = data[0].api_upload_media;
+    }
+
+    var configConfirm = getConfig().done(assignConfig); // This is a callback to the getConfig() function. Once getConfig() completes, assignConfig() will run. After this, var config will be able to use for multiple callbacks, other functions, events, or errors that we want to do.
+
+    // TODO: CLient-side error message.
+
+    // Here we just log that the config succeeds and the variables are what we want them to be.
+    configConfirm.done(function configSuccess(){
+        ////console.log("Configuration variables set!");
+        //console.log("All posts endpoint: " + GLOBAL_API_POSTS + "\nType: " + typeof GLOBAL_API_POSTS);
+        //console.log("Single post endpoint: " + GLOBAL_API_POST + "\nType: " + typeof GLOBAL_API_POST);
+    });
+
+    // If assigning the config variables fail, we pass the error here to debug.
+    configConfirm.fail( function configError(){
+        //console.log("Failed to assign configuration values. Current endpoints and types:");
+        // TODO: write fail variables in log.
+
+        // Use to find out if  GLOBAL_API_POSTS is undefined.
+        // //console.log(GLOBAL_API_POSTS);
+    });
+
+
+    /**************************************************
+     * Index.html:                                    *
+     *  - Populates page with random posts or ones    *
+     *  from a collection.                            *
+     **************************************************/
+
+    // Now that the config variables are set, we can use functions on different pages.
+    configConfirm.done(function changePages(data) {
+
+
+    function getPosts() {
+        return $.ajax({
+            url: GLOBAL_API_POSTS,
+            data: { format: "json"},
+            type: 'GET'
+        });
+    }
+
+    function videoHandle (video) {
+        return (video['Asset Type'] === 'Audio/Video' && video['Asset Location'] !== undefined) ;
+    }
+
+    function audioHandle (audio) {
+        return audio['Asset Type'] === 'Audio' && audio['Asset Location'] !== undefined;
+    }
+
+    function docHandle (doc) {
+        return doc['Asset Type'] === 'Text';
+    }
+
+
+    function assetHandler (i , assetList) {
+
+        // Use Arrays.prototype.find() to get the first value to use as a display for each post.
+        if (assetList.find(videoHandle)) {
+            // console.log("Found Video");
+            // console.log(assetList.find(videoHandle)["Asset Location"]);
+            return assetList.find(videoHandle)["Asset Location"];
+        } else if (assetList.find(audioHandle)){
+            // console.log("Found Audio");
+            // console.log(assetList.find(audioHandle)["Asset Location"]);
+            return assetList.find(audioHandle)["Asset Location"];
+        } else if (assetList.find(docHandle)) {
+            // console.log("Found Text");
+            return null;
+        } else {
+            // console.log("No File");
+            return null;
+
+        }
+    }
+
+    function getVideoEmbed (convertURI) {
+
+        // console.log(convertURI); // current API url to be found using Sprout
+        // https://mwharker.vids.io/videos/e89bd0bf1d1de1cb60/25c44ded-91bd-40c0-9b85-600ccdbce9bb
+
+        // var player = new SV.Player({videoId: 'e89bd0bf1d1de1cb60'});
+        var videoURI = "http://videos.sproutvideo.com/embed/2898d2bb141ce2c990/2a3ed5a6d9baecd1?type=sd";
 
 
 
         return "<iframe class='sproutvideo-player' type='text/html' src='"+ videoURI +"' width='270' height='135' frameborder='0'></iframe>";
     }
 
+<<<<<<< HEAD
+
+        return "<iframe class='sproutvideo-player' type='text/html' src='"+ videoURI +"' width='270' height='135' frameborder='0'></iframe>";
+    }
+
+=======
+>>>>>>> 5a0b67573f3058160c339cfb79418e2e35c0025e
     function getAudioEmbed (matchURI) {
 //         https://api.soundcloud.com/tracks?client_id=2b9b6641f376ef230312ec09259e2146
 //
@@ -230,11 +361,19 @@ jQuery(document).ready(function($) {
     var listConfirm = getPosts().done(listPosts);
 
     listConfirm.done(function listPostsSucceed(){
+<<<<<<< HEAD
         console.log("Succeeded to retrieve JSON posts.");
     });
 
     listConfirm.fail(function listPostsFail() {
         console.log("Failed to retrieve JSON posts.");
+=======
+        //console.log("Succeeded to retrieve JSON posts.");
+    });
+
+    listConfirm.fail(function listPostsFail() {
+        //console.log("Failed to retrieve JSON posts.");
+>>>>>>> 5a0b67573f3058160c339cfb79418e2e35c0025e
     });
 
 
