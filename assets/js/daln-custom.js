@@ -137,8 +137,16 @@ jQuery(document).ready(function($) {
         // console.log(convertURI); // current API url to be found using Sprout
         // https://mwharker.vids.io/videos/e89bd0bf1d1de1cb60/25c44ded-91bd-40c0-9b85-600ccdbce9bb
 
+        // <iframe class='sproutvideo-player' type='text/html' src='http://videos.sproutvideo.com/embed/2898d2bb141ce2c990/2a3ed5a6d9baecd1?type=sd' width='630' height='352' frameborder='0'></iframe>
+
         // var player = new SV.Player({videoId: 'e89bd0bf1d1de1cb60'});
-        var videoURI = "http://videos.sproutvideo.com/embed/2898d2bb141ce2c990/2a3ed5a6d9baecd1?type=sd";
+        // var videoURI = "http://videos.sproutvideo.com/embed/2898d2bb141ce2c990/2a3ed5a6d9baecd1";
+
+        var videoID = "";
+
+        var videoURI = "http://videos.sproutvideo.com/embed/a49bd0b91c1be3c72c/1d96dca100d12c13";
+
+
 
 
 
@@ -222,11 +230,11 @@ jQuery(document).ready(function($) {
     var listConfirm = getPosts().done(listPosts);
 
     listConfirm.done(function listPostsSucceed(){
-        //console.log("Succeeded to retrieve JSON posts.");
+        console.log("Succeeded to retrieve JSON posts.");
     });
 
     listConfirm.fail(function listPostsFail() {
-        //console.log("Failed to retrieve JSON posts.");
+        console.log("Failed to retrieve JSON posts.");
     });
 
 

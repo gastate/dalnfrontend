@@ -1,48 +1,25 @@
 
 # Today's tasks
--  jquery for each function:
-    -  iterate through to get video, then audio, then text (place a picture for text)
-    - for video, copy default iframe and put in id; same for audio
+
 - Audio asset embed:
     - match json asset id with the curl id of soundcloud using arrays.filter: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         - basically the second example where you match the curl object to the api object
     - get the uri
     - post uri there
-- Start router with library
+- word wrap on the title
+- Start router with library or jquery update detail by jquery update or routing
 
 ## Notes:
-- https://wedding.vids.io/ HAHAHAHAHAHA
-> *Late night coding with Wasfi*
+- get shakib's client id
 
-```
-> be me
-> be coding in javascript for about 3 hours cuz of stupid ways javascript handles shit and also idk how do
-> finished coding the handling of several audio, video, and document assets
-> time to start hitting some APIs
-> letsdothis.jpg
-> all of the sudden no videos showing up
-> wtf
-> check video urls; returning no video data
-> FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-> check code
-> check code part 2
-> check code part 3
-> can't find out
-> look at url again
-> "DNS server not resolved"
-> wait
-> check other parts of video service that feed in videos api
-> mfw the DNS is down
-> mfw I remember that there have been massive DDOS attacks everywhere this week
-> ffs
-> send message to boss
-> "hey the internet is down so im going to bed now"
-```
+- Video location is the embedded link add https://mwharker.vids.io/videos/videoID for shareable.
 
-- Should we combine all of our issues for later or as we go on?
 
-- what was the key we were looking for: https://developers.soundcloud.com/docs/api/reference#tracks?
 
+- SoundCloud is wrong??????
+-  http://api.soundcloud.com/tracks/288649343?client_id=2b9b6641f376ef230312ec09259e2146
+- http://stackoverflow.com/questions/10159802/getting-specific-users-track-list-with-soundcloud-api
+- WE ARE MATCHING THE PERMALINK
 - BIG ISSUE: Sprout video
     - Have: API Key, video Id; Need: security token
     - Cannot access security token through javascript
@@ -63,8 +40,7 @@
 
 Currently:
 
-- Ask Jaro what happens once in development, do I rewrite my console.log options to tests that will run in a different page?
-- AWS 8,000 development objects, ways to reduce load on AWS?
+
 
 Later:        
 
@@ -85,3 +61,41 @@ Later:
     - Above returns a 404
     - what is the difference between /posts/get and /posts/{postId}
         - **Answer**: both functionally the same, but /posts/get can be made into a search function using a textbox. (See Shakib's frontend for more information)
+- what was the key we were looking for: https://developers.soundcloud.com/docs/api/reference#tracks?
+    - Pretty sure it is the permalink
+- Ask Jaro what happens once in development, do I rewrite my console.log options to tests that will run in a different page?
+    - Yeah just put on an html page. Be sure to take out once in development.
+
+- DNS:
+    - https://wedding.vids.io/ HAHAHAHAHAHA
+    > *Late night coding with Wasfi*
+
+    ```
+    > be me
+    > be coding in javascript for about 3 hours cuz of stupid ways javascript handles shit and also idk how do
+    > finished coding the handling of several audio, video, and document assets
+    > time to start hitting some APIs
+    > letsdothis.jpg
+    > all of the sudden no videos showing up
+    > wtf
+    > check video urls; returning no video data
+    > FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+    > check code
+    > check code part 2
+    > check code part 3
+    > can't find out
+    > look at url again
+    > "DNS server not resolved"
+    > wait
+    > check other parts of video service that feed in videos api
+    > mfw the DNS is down
+    > mfw I remember that there have been massive DDOS attacks everywhere this week
+    > ffs
+    > send message to boss
+    > "hey the internet is down so im going to bed now"
+    ```
+# Previous Tasks:
+
+-  jquery for each function:
+    -  iterate through to get video, then audio, then text (place a picture for text)
+    - for video, copy default iframe and put in id; same for audio
