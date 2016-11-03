@@ -135,7 +135,7 @@ jQuery(document).ready(function($) {
         // https://mwharker.vids.io/videos/e89bd0bf1d1de1cb60/25c44ded-91bd-40c0-9b85-600ccdbce9bb
 
         // var player = new SV.Player({videoId: 'e89bd0bf1d1de1cb60'});
-        var videoURI = "http://videos.sproutvideo.com/embed/2898d2bb141ce2c990/2a3ed5a6d9baecd1?type=sd";
+        var videoURI = "http://videos.sproutvideo.com/embed/4c9bd0ba191ae6c7c4/41e95f0db113fee4";
 
 
 
