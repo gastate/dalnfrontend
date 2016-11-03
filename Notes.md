@@ -9,7 +9,14 @@
     - get the uri
     - post uri there
 - Start router with library
+
 ## Notes:
+- word wrap on the title
+- Start router with library or jquery update detail by jquery update or routing
+
+## Notes:
+
+- Video location is the embedded link add https://mwharker.vids.io/videos/videoID for shareable.
 
 
 
@@ -18,15 +25,9 @@
 Currently:
 
 - Ask Jaro what happens once in development, do I rewrite my console.log options to tests that will run in a different page?
-- AWS 8,000 development objects, ways to reduce load on AWS?
+
 
 Later:        
-
-- Shakib: Next week will have to collab with Shakib.
-    - DOCUMENTATION!!!! Need to know GET and POST methods, for I am just assuming.
-    - upload, update, create functions
-    - wtf is this: /dalnws/api/DALNService
-    - JSON needs to be lowercase or its invalid (also no spaces plz).
 
 - Jaro: config file structure.
     - api_url for base url (currently http://ec2-54-211-221-216.compute-1.amazonaws.com:8080) and the latter half (/dalnws/api/DALNService/json/p   osts/all)
@@ -39,3 +40,44 @@ Later:
     - Above returns a 404
     - what is the difference between /posts/get and /posts/{postId}
         - **Answer**: both functionally the same, but /posts/get can be made into a search function using a textbox. (See Shakib's frontend for more information)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+- what was the key we were looking for: https://developers.soundcloud.com/docs/api/reference#tracks?
+    - Pretty sure it is the permalink
+- Ask Jaro what happens once in development, do I rewrite my console.log options to tests that will run in a different page?
+    - Yeah just put on an html page. Be sure to take out once in development.
+
+- DNS:
+    - https://wedding.vids.io/ HAHAHAHAHAHA
+    > *Late night coding with Wasfi*
+
+    ```
+    > be me
+    > be coding in javascript for about 3 hours cuz of stupid ways javascript handles shit and also idk how do
+    > finished coding the handling of several audio, video, and document assets
+    > time to start hitting some APIs
+    > letsdothis.jpg
+    > all of the sudden no videos showing up
+    > wtf
+    > check video urls; returning no video data
+    > FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+    > check code
+    > check code part 2
+    > check code part 3
+    > can't find out
+    > look at url again
+    > "DNS server not resolved"
+    > wait
+    > check other parts of video service that feed in videos api
+    > mfw the DNS is down
+    > mfw I remember that there have been massive DDOS attacks everywhere this week
+    > ffs
+    > send message to boss
+    > "hey the internet is down so im going to bed now"
+    ```
+# Previous Tasks:
+
+-  jquery for each function:
+    -  iterate through to get video, then audio, then text (place a picture for text)
+    - for video, copy default iframe and put in id; same for audio

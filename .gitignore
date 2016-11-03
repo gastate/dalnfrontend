@@ -1,7 +1,4 @@
-<<<<<<< HEAD
+
 *.json
-!dev_config.json
-=======
 *.md
 !Notes.md
->>>>>>> ccc1212eba0fe8495c5a206a80f3b3f51b32f245

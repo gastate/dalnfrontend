@@ -18,7 +18,6 @@ var GLOBAL_UPLOAD_MEDIA = $.Deferred();
 
 jQuery(document).ready(function($) {
 
-
     /**************************************************
      * All Pages:                                     *
      *  - Configuration variable setup.               *
@@ -65,20 +64,19 @@ jQuery(document).ready(function($) {
 
     // Here we just log that the config succeeds and the variables are what we want them to be.
     configConfirm.done(function configSuccess(){
-        ////console.log("Configuration variables set!");
-        //console.log("All posts endpoint: " + GLOBAL_API_POSTS + "\nType: " + typeof GLOBAL_API_POSTS);
-        //console.log("Single post endpoint: " + GLOBAL_API_POST + "\nType: " + typeof GLOBAL_API_POST);
+        console.log("Configuration variables set!");
+        console.log("All posts endpoint: " + GLOBAL_API_POSTS + "\nType: " + typeof GLOBAL_API_POSTS);
+        console.log("Single post endpoint: " + GLOBAL_API_POST + "\nType: " + typeof GLOBAL_API_POST);
     });
 
     // If assigning the config variables fail, we pass the error here to debug.
     configConfirm.fail( function configError(){
-        //console.log("Failed to assign configuration values. Current endpoints and types:");
+        console.log("Failed to assign configuration values. Current endpoints and types:");
         // TODO: write fail variables in log.
 
         // Use to find out if  GLOBAL_API_POSTS is undefined.
-        // //console.log(GLOBAL_API_POSTS);
+        // console.log(GLOBAL_API_POSTS);
     });
-
 
     /**************************************************
      * Index.html:                                    *
@@ -98,14 +96,64 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function assetHandler (assetList) {
-        $.each(assetList, function (i, item) {
-            console.log(assetList[i].["Asset Location"]);
-        });
+    function videoHandle (video) {
+        return (video['Asset Type'] === 'Audio/Video' && video['Asset Location'] !== undefined) ;
+    }
+
+    function audioHandle (audio) {
+        return audio['Asset Type'] === 'Audio' && audio['Asset Location'] !== undefined;
+    }
+
+    function docHandle (doc) {
+        return doc['Asset Type'] === 'Text' && doc['Asset Location'] !== undefined;
+    }
+
+    function assetHandler (i , assetList) {
+
+        // Use Arrays.prototype.find() to get the first value to use as a display for each post.
+        if (assetList.find(videoHandle)) {
+            // console.log("Found Video");
+            // console.log(assetList.find(videoHandle)["Asset Location"]);
+            return assetList.find(videoHandle)["Asset Location"];
+        } else if (assetList.find(audioHandle)){
+            // console.log("Found Audio");
+            // console.log(assetList.find(audioHandle)["Asset Location"]);
+            return assetList.find(audioHandle)["Asset Location"];
+        } else if (assetList.find(docHandle)) {
+            // console.log("Found Text");
+            return null;
+        } else {
+            // console.log("No File");
+            return null;
+
+        }
+    }
+
+    function getVideoEmbed (convertURI) {
+
+        // console.log(convertURI); // current API url to be found using Sprout
+        // https://mwharker.vids.io/videos/e89bd0bf1d1de1cb60/25c44ded-91bd-40c0-9b85-600ccdbce9bb
+
+        // var player = new SV.Player({videoId: 'e89bd0bf1d1de1cb60'});
+        var videoURI = "http://videos.sproutvideo.com/embed/2898d2bb141ce2c990/2a3ed5a6d9baecd1?type=sd";
+
+
+
+        return "<iframe class='sproutvideo-player' type='text/html' src='"+ videoURI +"' width='270' height='135' frameborder='0'></iframe>";
+    }
+
+    function getAudioEmbed (matchURI) {
+//         https://api.soundcloud.com/tracks?client_id=2b9b6641f376ef230312ec09259e2146
+//
+//         http://api.soundcloud.com/tracks/288649343?client_id=2b9b6641f376ef230312ec09259e2146
+//
+//         http://soundcloud.com/user-15072191/9b5cd16a-03db-41db-bfe3
+//
+// <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/288649343&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
     }
 
     function listPosts(data) {
-        //console.log(data); // List the data
+        //  console.log(data); // List the data
         var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
         var items = [];
 
@@ -119,14 +167,11 @@ jQuery(document).ready(function($) {
              var listId = data[i].postId; // get the postId
 
              var assetList = data[i].assetList;
-             assetHandler(assetList);
+            //  console.log(assetList); // get assetList array
+             var displayThumb = assetHandler(i, assetList); // get the asset to be displayed on the list.
+            //  console.log(displayThumb); Check string value to return.
 
 
-
-            // jqeury for each function: iterate through, get video,  then audio, then text (place a picture for text)
-            // for video, copy default iframe and put in id
-            // same for audio
-            //
             // Audio asset embed:
             // - match json asset id with the curl id of soundcloud using arrays.filter
             // - get the uri
@@ -135,21 +180,28 @@ jQuery(document).ready(function($) {
             // //console.log(listId); // To look at postIds.
             // Example url: http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/930da322-d6f6-4428-9969-fc8605428474
 
+            // The actual HTML string to put into the list tag.
+            var htmlIn;
 
+            if (displayThumb !== null) {
+                htmlIn = getVideoEmbed(displayThumb);
+            } else {
+                htmlIn = "<a href='assets/img/bootstrap-mdo-sfmoma-01.jpg' class='zoom' rel='prettyPhoto' title='Not Video File'></a><a href='"+ postLink + "'class='link'></a><a class='thumbnail' href='"+ postLink + "'><img src='assets/img/example-sites/example1.jpg' alt='example-item'></a>";
+            }
 
               // PROBLEMS WITH UNDEFINED NOT UNDEFINED. Possible cause: quotes.
               if( listTitle === undefined || listDesc === undefined) { // Should never happen since every post must at least have a title. But we put it here to make sure we don't break at an undefined.
-              items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='"+ postLink + "'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
+              items.push("<li class='span3 item-block'>"+ htmlIn +"<div class='desc'><a href='"+ postLink + "'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
             } else if (listTitle === undefined) {
             listDesc = listDesc.substring(0,41);
-            items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='"+ postLink + "'>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+            items.push("<li class='span3 item-block'>"+ htmlIn +"<div class='desc'><a href='"+ postLink + "'>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
         } else if (listDesc === undefined) {
             listTitle = listTitle.substring(0,19);
-            items.push("<li class='span3 item-block'> <video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='"+ postLink +"'>"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
+            items.push("<li class='span3 item-block'>"+ htmlIn + "<div class='desc'><a href='"+ postLink +"'>"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
         } else {
                 listTitle = listTitle.substring(0,19);
                 listDesc = listDesc.substring(0,41);
-                items.push( "<li class='span3 item-block'><video width='270' height='131' controls> <source src='https://s3-us-west-1.amazonaws.com/daln/Posts/1754/VID00008.MP4' type='video/mp4'></video> <div class='desc'><a href='"+ postLink + "'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+                items.push( "<li class='span3 item-block'>"+ htmlIn +"<div class='desc'><a href='"+ postLink + "'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
             }
 
           }
@@ -165,14 +217,13 @@ jQuery(document).ready(function($) {
     var listConfirm = getPosts().done(listPosts);
 
     listConfirm.done(function listPostsSucceed(){
-        //console.log("Succeeded to retrieve JSON posts.");
+        console.log("Succeeded to retrieve JSON posts.");
     });
+
 
     listConfirm.fail(function listPostsFail() {
-        //console.log("Failed to retrieve JSON posts.");
+        console.log("Failed to retrieve JSON posts.");
     });
-
-
 
 
     /***********************************
