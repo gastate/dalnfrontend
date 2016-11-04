@@ -97,7 +97,8 @@ jQuery(document).ready(function($) {
     }
 
     function videoHandle (video) {
-        return (video['Asset Type'] === 'Audio/Video' && video['Asset Location'] !== undefined) ;
+        return (video['Asset Type'] === 'Audio/Video' && video['Asset Location'] !== undefined);
+
     }
 
     function audioHandle (audio) {
@@ -108,17 +109,23 @@ jQuery(document).ready(function($) {
         return doc['Asset Type'] === 'Text' && doc['Asset Location'] !== undefined;
     }
 
-    function assetHandler (i , assetList) {
+    function assetHandler (htmlIn, i, assetList) {
 
         // Use Arrays.prototype.find() to get the first value to use as a display for each post.
         if (assetList.find(videoHandle)) {
             // console.log("Found Video");
             // console.log(assetList.find(videoHandle)["Asset Location"]);
-            return assetList.find(videoHandle)["Asset Location"];
+            var videoAsset = assetList.find(videoHandle)["Asset Location"];
+            htmlIn = getVideoEmbed(videoAsset);
+            return htmlIn;
+
         } else if (assetList.find(audioHandle)){
             // console.log("Found Audio");
             // console.log(assetList.find(audioHandle)["Asset Location"]);
-            return assetList.find(audioHandle)["Asset Location"];
+            var audioAsset = assetList.find(audioHandle)["Asset Location"];
+            htmlIn = getAudioEmbed(audioAsset);
+            return htmlIn;
+
         } else if (assetList.find(docHandle)) {
             // console.log("Found Text");
             return null;
@@ -137,19 +144,43 @@ jQuery(document).ready(function($) {
         // var player = new SV.Player({videoId: 'e89bd0bf1d1de1cb60'});
         var videoURI = "http://videos.sproutvideo.com/embed/4c9bd0ba191ae6c7c4/41e95f0db113fee4";
 
-
-
         return "<iframe class='sproutvideo-player' type='text/html' src='"+ videoURI +"' width='270' height='135' frameborder='0'></iframe>";
     }
 
+
+    // /**
+    //  * TEMPORARY function to get the list of soundcloud tracks. If needed, put into config file.
+    //  * @return {[type]} [description]
+    //  */
+    // function getSoundCloud() {
+    //     return $.ajax({
+    //         url: "api.soundcloud.com/users/239905003/tracks?client_id=2b9b6641f376ef230312ec09259e2146",
+    //         data: { format: "json"},
+    //         type: 'GET'
+    //     });
+    // }
+    //
+    //
+    //
+    // function getAudioData (data){
+    //     console.log(data);
+    // }
+    //
+    // var getSounds = getSoundCloud().done(getAudioData);
+
+
+
     function getAudioEmbed (matchURI) {
-//         https://api.soundcloud.com/tracks?client_id=2b9b6641f376ef230312ec09259e2146
-//
-//         http://api.soundcloud.com/tracks/288649343?client_id=2b9b6641f376ef230312ec09259e2146
-//
+//              http://api.soundcloud.com/users/239905003/tracks?client_id=2b9b6641f376ef230312ec09259e2146
 //         http://soundcloud.com/user-15072191/9b5cd16a-03db-41db-bfe3
 //
-// <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/288649343&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+//
+
+    // matchURI is the Asset Location of the audio asset we wish to match with the soundcloud embed\
+    // console.log(matchURI);
+
+    return "<iframe width='270' height='135' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/288649343&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe>";
+
     }
 
     function listPosts(data) {
@@ -157,9 +188,13 @@ jQuery(document).ready(function($) {
         var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
         var items = [];
 
+        // console.log(data);
         //console.log(size); // total posts in the database.
           // get all the titles and descriptions of the posts.
           for(var i=0; i <= 20; i++) {
+
+            // variable to get the asset to be displayed on the list.
+             var htmlIn;
 
              var listTitle = data[i].title;
              var listDesc = data[i].description;
@@ -168,8 +203,7 @@ jQuery(document).ready(function($) {
 
              var assetList = data[i].assetList;
             //  console.log(assetList); // get assetList array
-             var displayThumb = assetHandler(i, assetList); // get the asset to be displayed on the list.
-            //  console.log(displayThumb); Check string value to return.
+             var displayThumb = assetHandler(htmlIn, i, assetList); // displayThumb holds the html code to be put in.
 
 
             // Audio asset embed:
@@ -180,28 +214,27 @@ jQuery(document).ready(function($) {
             // //console.log(listId); // To look at postIds.
             // Example url: http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/930da322-d6f6-4428-9969-fc8605428474
 
-            // The actual HTML string to put into the list tag.
-            var htmlIn;
+
 
             if (displayThumb !== null) {
-                htmlIn = getVideoEmbed(displayThumb);
+                displayThumb;
             } else {
-                htmlIn = "<a href='assets/img/bootstrap-mdo-sfmoma-01.jpg' class='zoom' rel='prettyPhoto' title='Not Video File'></a><a href='"+ postLink + "'class='link'></a><a class='thumbnail' href='"+ postLink + "'><img src='assets/img/example-sites/example1.jpg' alt='example-item'></a>";
+                displayThumb = "<a href='assets/img/bootstrap-mdo-sfmoma-01.jpg' class='zoom' rel='prettyPhoto' title='Not Video File'></a><a href='"+ postLink + "'class='link'></a><a class='thumbnail' href='"+ postLink + "'><img src='assets/img/example-sites/example1.jpg' alt='example-item'></a>";
             }
 
               // PROBLEMS WITH UNDEFINED NOT UNDEFINED. Possible cause: quotes.
               if( listTitle === undefined || listDesc === undefined) { // Should never happen since every post must at least have a title. But we put it here to make sure we don't break at an undefined.
-              items.push("<li class='span3 item-block'>"+ htmlIn +"<div class='desc'><a href='"+ postLink + "'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
+              items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
             } else if (listTitle === undefined) {
             listDesc = listDesc.substring(0,41);
-            items.push("<li class='span3 item-block'>"+ htmlIn +"<div class='desc'><a href='"+ postLink + "'>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+            items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "'>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
         } else if (listDesc === undefined) {
             listTitle = listTitle.substring(0,19);
-            items.push("<li class='span3 item-block'>"+ htmlIn + "<div class='desc'><a href='"+ postLink +"'>"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
+            items.push("<li class='span3 item-block'>"+ displayThumb + "<div class='desc'><a href='"+ postLink +"'>"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
         } else {
                 listTitle = listTitle.substring(0,19);
                 listDesc = listDesc.substring(0,41);
-                items.push( "<li class='span3 item-block'>"+ htmlIn +"<div class='desc'><a href='"+ postLink + "'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+                items.push( "<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
             }
 
           }

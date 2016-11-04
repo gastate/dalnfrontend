@@ -728,6 +728,7 @@ a.thumbnail:hover {
 .item-block {
     position: relative;
     overflow: hidden;
+    height: 227px;
     margin-bottom: 30px;
 }
 .item-block .desc {
@@ -1588,6 +1589,7 @@ ul.arrow li {
     -moz-border-radius: 125px;
     border-radius: 125px;
 }
+
 /* Responsive
 -------------------------------------------------- */
 
