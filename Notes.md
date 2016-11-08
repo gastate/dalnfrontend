@@ -1,14 +1,11 @@
 
 # Today's tasks
--  jquery for each function:
-    -  iterate through to get video, then audio, then text (place a picture for text)
-    - for video, copy default iframe and put in id; same for audio
-- Audio asset embed:
-    - match json asset id with the curl id of soundcloud using arrays.filter: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-        - basically the second example where you match the curl object to the api object
-    - get the uri
-    - post uri there
-- Start router with library
+- have no Hardcoded elements, dynamically get post elements
+- work on pages
+    - dynamic pages using crossroads
+    - 2nd priority is history
+- add sorting data
+
 
 ## Notes:
 - word wrap on the title

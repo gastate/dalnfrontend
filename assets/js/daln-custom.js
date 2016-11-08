@@ -210,31 +210,33 @@ jQuery(document).ready(function($) {
             // - match json asset id with the curl id of soundcloud using arrays.filter
             // - get the uri
             // - post uri there
-              var postLink = GLOBAL_API_POST.concat("/").concat(listId); // concatenate the two strings for url use; might be bad to use "/".
+            //   var postLink = GLOBAL_API_POST.concat("/").concat(listId); // concatenate the two strings for url use; might be bad to use "/".
             // //console.log(listId); // To look at postIds.
             // Example url: http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/930da322-d6f6-4428-9969-fc8605428474
+
+            var postLink = "javascript: onClicks();";
 
 
 
             if (displayThumb !== null) {
                 displayThumb;
             } else {
-                displayThumb = "<a href='assets/img/bootstrap-mdo-sfmoma-01.jpg' class='zoom' rel='prettyPhoto' title='Not Video File'></a><a href='"+ postLink + "'class='link' onClick ='displayOnPage(); return false;'></a><a class='thumbnail' href='"+ postLink + "'><img src='assets/img/example-sites/example1.jpg' alt='example-item'></a>";
+                displayThumb = "<a href='assets/img/bootstrap-mdo-sfmoma-01.jpg' class='zoom' rel='prettyPhoto' title='Not Video File'></a><a href='"+ postLink + "' id='"+ listId +"' class='link'></a><a class='thumbnail' href='"+ postLink + "'><img src='assets/img/example-sites/example1.jpg' alt='example-item'></a>";
             }
 
               // PROBLEMS WITH UNDEFINED NOT UNDEFINED. Possible cause: quotes.
               if( listTitle === undefined || listDesc === undefined) { // Should never happen since every post must at least have a title. But we put it here to make sure we don't break at an undefined.
-              items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "'onClick ='displayOnPage(); return false;'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
+              items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "' id = '"+ listId +"'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
             } else if (listTitle === undefined) {
             listDesc = listDesc.substring(0,41);
-            items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "' onClick ='displayOnPage(); return false;'>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+            items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "' id='"+ listId +"' '>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
         } else if (listDesc === undefined) {
             listTitle = listTitle.substring(0,19);
-            items.push("<li class='span3 item-block'>"+ displayThumb + "<div class='desc'><a href='"+ postLink +"' onClick ='displayOnPage(); return false;'>"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
+            items.push("<li class='span3 item-block'>"+ displayThumb + "<div class='desc'><a href='"+ postLink +"' id='"+ listId +"' >"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
         } else {
                 listTitle = listTitle.substring(0,19);
                 listDesc = listDesc.substring(0,41);
-                items.push( "<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "' onClick ='displayOnPage(); return false;'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+                items.push( "<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "'     id='"+ listId +"'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
             }
 
           }
@@ -245,7 +247,16 @@ jQuery(document).ready(function($) {
 
             //console.log("Posts loaded successfully.");
 
+        $(listId).click(function () {
+            console.log("Hello");
+        });
+
     }
+
+
+
+
+
 
     var listConfirm = getPosts().done(listPosts);
 
@@ -257,6 +268,8 @@ jQuery(document).ready(function($) {
     listConfirm.fail(function listPostsFail() {
         console.log("Failed to retrieve JSON posts.");
     });
+
+
 
 
     /***********************************
@@ -291,20 +304,7 @@ jQuery(document).ready(function($) {
         var description = data[0].description;
 
 
-        /*
-            TEMPORARY
-         */
 
-         $("a").click(function () {
-             return false;
-
-         });
-
-        function displayOnPage() {
-
-
-            return false;
-        }
 
 
 
