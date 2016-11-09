@@ -1,15 +1,18 @@
 
 # Today's tasks
-- have no Hardcoded elements, dynamically get post elements
 - work on pages
     - dynamic pages using crossroads
     - 2nd priority is history
+- cleanup embeds:
+    - WARNING: Hardcoded height at 227px for item spans.
+    - titles for audio assets not working
 - add sorting data
+    - change the for loop to be configurable in listPosts. Tie to UI.
+    - add Shakib's pagination.
 
 
 ## Notes:
 - word wrap on the title
-- WARNING: Hardcoded height at 227px for item spans.
 - Start router with library or jquery update detail by jquery update or routing
 
 ## Notes:
@@ -22,20 +25,33 @@
 
 Currently:
 - still receiving mwharker vids. Should I trust the API or should I handle different cases (mwharker, s3, and videos.sprout)?
-- ask lisa if its okay for code that might be risky. Like backups. Example in getAudioEmbed();
 - weird responses from sprout
+
+
+
+- Jaro: where to handle pagination? should it be handled frontend or backend? (next 10 posts vs posts and page)
+    - Also pagination url parameters
+    - Also handle exceptions. AWS goes down, shit goes to hell, what do.
 
 - our emails are being posted to github? https://github.com/gastate/dalnfrontend/issues/9
 
 
 
-Later:        
+Later:     
+
+- Michael and Ben:
+    - how do people research the DALN, would it be helpful to do a Netflix like preview?
+    - priotizing video, then audio, and then document, and then no files.
+    - All DALNs at least need a title.
+        - what would you even do with DALN post without any files or info for that matter?
+
 
 - Jaro: config file structure.
     - api_url for base url (currently http://ec2-54-211-221-216.compute-1.amazonaws.com:8080) and the latter half (/dalnws/api/DALNService/json/p   osts/all)
         - Should I append each function or just keep all the same url?
         - Checkup: Also should I keep the last "/" character, or assume it won't be there. Like /posts/all is the url endpoint. For some methods this is critical of whether to add or not since it won't call correctly if "/" is not escaped.
     - should I log okay HTTP requests?
+    -
 
 # Answered:
 - Ask Jaro what happens once in development, do I rewrite my console.log options to tests that will run in a different page?

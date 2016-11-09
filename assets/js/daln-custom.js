@@ -94,16 +94,16 @@ jQuery(document).ready(function($) {
     }
 
     function videoHandle (video) {
-        return (video['assetType'] === 'Audio/Video' && video['assetLocation'] !== undefined);
+        return (video['assetType'] === 'Audio/Video' && video['assetEmbedLink'] !== undefined);
 
     }
 
     function audioHandle (audio) {
-        return audio['assetType'] === 'Audio' && audio['assetLocation'] !== undefined;
+        return audio['assetType'] === 'Audio' && audio['assetEmbedLink'] !== undefined;
     }
 
     function docHandle (doc) {
-        return doc['assetType'] === 'Text' && doc['assetLocation'] !== undefined;
+        return doc['assetType'] === 'Text' && doc['assetEmbedLink'] !== undefined;
     }
 
     function assetHandler (htmlIn, i, assetList) {
@@ -112,7 +112,7 @@ jQuery(document).ready(function($) {
         if (assetList.find(videoHandle)) {
             // console.log("Found Video");
             // console.log(assetList.find(videoHandle)["assetLocation"]);
-            var videoAsset = assetList.find(videoHandle)["assetLocation"];
+            var videoAsset = assetList.find(videoHandle)["assetEmbedLink"];
             htmlIn = getVideoEmbed(videoAsset);
             return htmlIn;
 
@@ -158,23 +158,46 @@ jQuery(document).ready(function($) {
     function listPosts(data) {
         //  console.log(data); // List the data
         var size = Object.keys(data).length - 1; // amount of Objects in the data. MAY NOT WORK IN IE.
+
+        // var size;
+        // var i;
+        //
+        // for (i in data) {
+        //     if (data.hasOwnProperty(i)) {
+        //         size++;
+        //     }
+        // }
+        // console.log(size);
+
         var items = [];
 
         // console.log(data); // see the actual data received
         //console.log(size); // total posts in the database.
 
 
-          for(var i=0; i <= 31; i++) { // TODO: replace 32 with size once API is paginated
+          for(var i=0; i <= size - 1; i++) { // TODO: replace 32 with size once API is paginated.
 
-
+             // TODO: check for undefineds
              var htmlIn; // variable to get the asset to be displayed on the list.
 
-             var listTitle = data[i].title;
-             var listDesc = data[i].description;
+             var listTitle;
+             var listDesc;
+             var listId;
+             var assetList;
 
-             var listId = data[i].postId; // get the postId
+             // try to assign the variables, if anything returns undefined or unexpected, then we skip it.
 
-             var assetList = data[i].assetList;
+             try {
+                 listTitle = data[i].title;
+                 listDesc = data[i].description;
+                 listId = data[i].postId;
+                 assetList = data[i].assetList;
+            } catch (e) {
+                // TODO: manage bigger expectations between DALN posts and our posts
+                console.log(data[i].title); // log the title
+                i++; // skip the post with problems.
+            }
+
             //  console.log(assetList); // get assetList array
              var displayThumb = assetHandler(htmlIn, i, assetList); // displayThumb holds the html code to be put in.
 
@@ -217,9 +240,6 @@ jQuery(document).ready(function($) {
         });
 
     }
-
-
-
 
 
 
