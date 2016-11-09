@@ -119,7 +119,7 @@ jQuery(document).ready(function($) {
         } else if (assetList.find(audioHandle)){
             // console.log("Found Audio");
             // console.log(assetList.find(audioHandle)["assetLocation"]);
-            var audioAsset = assetList.find(audioHandle)["assetLocation"];
+            var audioAsset = assetList.find(audioHandle)["assetEmbedLink"];
             htmlIn = getAudioEmbed(audioAsset);
             return htmlIn;
 
@@ -146,20 +146,25 @@ jQuery(document).ready(function($) {
     // matchURI is the assetLocation of the audio asset we wish to match with the soundcloud embed\
     // console.log(matchURI);
 
-    return "<iframe width='270' height='135' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/288649343&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe>";
+
+    var numberPattern = /\d+/g; // use this as our regex pattern
+    var audioURI = matchURI.match(numberPattern); // use String.match to get the track id of the soundcloud post and return an array of the matched number of the track id
+    // console.log(audioURI); // return an array of one element containing the id of the soundcloud track
+
+    return "<iframe width='270' height='135' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/"+ audioURI +"&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe>"
 
     }
 
     function listPosts(data) {
         //  console.log(data); // List the data
-        var size = Object.keys(data).length; // amount of Objects in the data. MAY NOT WORK IN IE.
+        var size = Object.keys(data).length - 1; // amount of Objects in the data. MAY NOT WORK IN IE.
         var items = [];
 
         // console.log(data); // see the actual data received
         //console.log(size); // total posts in the database.
 
 
-          for(var i=0; i <= 31; i++) {
+          for(var i=0; i <= 31; i++) { // TODO: replace 32 with size once API is paginated
 
 
              var htmlIn; // variable to get the asset to be displayed on the list.
