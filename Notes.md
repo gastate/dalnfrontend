@@ -14,22 +14,19 @@
 
 ## Notes:
 
-- Video location is the embedded link add https://mwharker.vids.io/videos/videoID for shareable.
+
 
 
 
 ## Questions:
 
 Currently:
-
-- If we do no api changes, no dynamic videos. Can do sounds because I can match up with the soundcloud api now.
+- still receiving mwharker vids. Should I trust the API or should I handle different cases (mwharker, s3, and videos.sprout)?
 
 
 
 
 Later:        
-
-
 
 - Jaro: config file structure.
     - api_url for base url (currently http://ec2-54-211-221-216.compute-1.amazonaws.com:8080) and the latter half (/dalnws/api/DALNService/json/p   osts/all)
@@ -80,8 +77,13 @@ Later:
     > send message to boss
     > "hey the internet is down so im going to bed now"
     ```
-# Previous Tasks:
+# Previous Tasks/Notes:
 
 -  jquery for each function:
     -  iterate through to get video, then audio, then text (place a picture for text)
     - for video, copy default iframe and put in id; same for audio
+
+- Video location is the embedded link add https://mwharker.vids.io/videos/videoID for shareable.
+- Soundcloud api tracks: http://api.soundcloud.com/users/239905003/tracks?client_id=2b9b6641f376ef230312ec09259e2146
+
+- If we do no api changes, no dynamic videos. Can do sounds because I can match up with the soundcloud api now.
