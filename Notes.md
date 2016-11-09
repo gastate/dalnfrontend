@@ -23,6 +23,7 @@
 Currently:
 - still receiving mwharker vids. Should I trust the API or should I handle different cases (mwharker, s3, and videos.sprout)?
 - ask lisa if its okay for code that might be risky. Like backups. Example in getAudioEmbed();
+- weird responses from sprout
 
 - our emails are being posted to github? https://github.com/gastate/dalnfrontend/issues/9
 
