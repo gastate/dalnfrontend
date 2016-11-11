@@ -174,8 +174,16 @@ jQuery(document).ready(function($) {
         // console.log(data); // see the actual data received
         //console.log(size); // total posts in the database.
 
+        var paginate;
 
-          for(var i=0; i <= size - 1; i++) { // TODO: replace 32 with size once API is paginated.
+        if(size > 30) {
+            paginate = 30;
+        } else {
+            paginate = size - 1;
+        }
+
+
+          for(var i=0; i <= paginate; i++) { // TODO: replace 32 with size once API is paginated.
 
              // TODO: check for undefineds
              var htmlIn; // variable to get the asset to be displayed on the list.
