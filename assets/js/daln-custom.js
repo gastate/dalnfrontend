@@ -1,11 +1,13 @@
 jQuery.support.cors = true;
 
+
+
 // TODO: Write pre and post conditions as well as invariants.
 
 /**
  * Global variables that come from dev_config.json to be used in the application.
  * Note that while these are global variables, Javascript WILL manipulate in the local function scope and mess up the global variable.
- * These variables are all set to be Deferred objects: https://api.jquery.com/category/deferred-object/. It seems Deferred Objects are being deprecated in favor of better design patterns, but Jquery is built on them and as long as the valid 1.5 version is there it is okay. I used it here since I didn't want to mess with Promises or go into Callback Hell: http://callbackhell.com/. Further explanation below.
+ * These variables are all set to be Deferred objects: https://api.jquery.com/category/deferred-object/. It seems Deferred Objects are being deprecated in favor of better design patterns, but Jquery is built on them and as long as the valid 1.5 version is thKere it is okay. I used it here since I didn't want to mess with Promises or go into Callback Hell: http://callbackhell.com/. Further explanation below.
  */
 
  // Need to check all cases for what's gonna be put into the config.
@@ -53,6 +55,7 @@ jQuery(document).ready(function($) {
         GLOBAL_API_POST = data[0].api_post;
         GLOBAL_API_CREATE_POST = data[0].api_create_post;
         GLOBAL_UPLOAD_MEDIA = data[0].api_upload_media;
+
     }
 
     var configConfirm = getConfig().done(assignConfig); // This is a callback to the getConfig() function. Once getConfig() completes, assignConfig() will run. After this, var config will be able to use for multiple callbacks, other functions, events, or errors that we want to do.
@@ -74,6 +77,46 @@ jQuery(document).ready(function($) {
         // Use to find out if  GLOBAL_API_POSTS is undefined.
         // console.log(GLOBAL_API_POSTS);
     });
+
+    configConfirm.done(
+
+        function routingConfig() {
+            $.when(
+                $.getScript("/assets/js/crossroads.min.js"),
+                $.getScript("assets/js/signals.min.js"),
+                $.Deferred(function(deferred){ $(deferred.resolve);
+                })
+            ).done(function (){
+                console.log("JS loaded");
+            });
+        }
+
+
+        //         // Define the routes
+        // crossroads.addRoute('/', function() {
+        //     $('#routeContent').load('index.html');
+        // });
+        // crossroads.addRoute('/user/{userId}', function(userId) {
+        //     $('#routeContent').load('user/details.html');
+        // });
+        // crossroads.bypassed.add(function(request) {
+        //     console.error(request + ' seems to be a dead end...');
+        // });
+        //
+        // //Listen to hash changes
+        // window.addEventListener("hashchange", function() {
+        //     var route = '/';
+        //     var hash = window.location.hash;
+        //     if (hash.length > 0) {
+        //         route = hash.split('#').pop();
+        //     }
+        //     crossroads.parse(route);
+        // });
+        //
+        // // trigger hashchange on first page load
+        // window.dispatchEvent(new CustomEvent("hashchange"));
+
+    );
 
     /**************************************************
      * Index.html:                                    *
@@ -192,22 +235,24 @@ jQuery(document).ready(function($) {
              var listDesc;
              var listId;
              var assetList;
+             var displayThumb;
+
 
              // try to assign the variables, if anything returns undefined or unexpected, then we skip it.
-
              try {
                  listTitle = data[i].title;
                  listDesc = data[i].description;
                  listId = data[i].postId;
                  assetList = data[i].assetList;
+                 displayThumb = assetHandler(htmlIn, i, assetList); // displayThumb holds the html code to be put in.
             } catch (e) {
                 // TODO: manage bigger expectations between DALN posts and our posts
-                console.log(data[i].title); // log the title
+                console.log(data[i].postId); // log the title
                 i++; // skip the post with problems.
             }
 
             //  console.log(assetList); // get assetList array
-             var displayThumb = assetHandler(htmlIn, i, assetList); // displayThumb holds the html code to be put in.
+
 
 
             var postLink = "javascript: onClicks();"; // variable to contain the actual html containing the asset.
