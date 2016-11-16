@@ -4,7 +4,7 @@
     - dynamic pages using crossroads
     - 2nd priority is history
 - cleanup embeds:
-    - WARNING: Hardcoded height at 227px for item spans.
+    - **WARNING: Hardcoded height at 227px for item spans.**
     - titles for audio assets not working
 - add sorting data
     - change the for loop to be configurable in listPosts. Tie to UI.

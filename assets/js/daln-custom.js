@@ -10,7 +10,7 @@ jQuery.support.cors = true;
  * These variables are all set to be Deferred objects: https://api.jquery.com/category/deferred-object/. It seems Deferred Objects are being deprecated in favor of better design patterns, but Jquery is built on them and as long as the valid 1.5 version is thKere it is okay. I used it here since I didn't want to mess with Promises or go into Callback Hell: http://callbackhell.com/. Further explanation below.
  */
 
- // Need to check all cases for what's gonna be put into the config.
+ // TODO: Need to check all cases for what's gonna be put into the config.
 var GLOBAL_API_URL = $.Deferred();
 var GLOBAL_API_POSTS = $.Deferred();
 var GLOBAL_API_POST = $.Deferred();
@@ -78,47 +78,6 @@ jQuery(document).ready(function($) {
         // console.log(GLOBAL_API_POSTS);
     });
 
-    configConfirm.done(
-
-        function routingConfig() {
-            $.when(
-                $.getScript("/assets/js/signals.min.js"),
-                $.getScript("/assets/js/crossroads.min.js"),
-                $.Deferred(function(deferred){ $(deferred.resolve);
-                })
-            ).done(function (){
-                console.log("JS loaded");
-            });
-        }
-
-
-
-
-        // //         // Define the routes
-        // crossroads.addRoute('/', function() {
-        //     $('#routeContent').load('index.html');
-        // });
-        // crossroads.addRoute('/user/{userId}', function(userId) {
-        //     $('#routeContent').load('user/details.html');
-        // });
-        // crossroads.bypassed.add(function(request) {
-        //     console.error(request + ' seems to be a dead end...');
-        // });
-        //
-        // //Listen to hash changes
-        // window.addEventListener("hashchange", function() {
-        //     var route = '/';
-        //     var hash = window.location.hash;
-        //     if (hash.length > 0) {
-        //         route = hash.split('#').pop();
-        //     }
-        //     crossroads.parse(route);
-        // });
-        //
-        // // trigger hashchange on first page load
-        // window.dispatchEvent(new CustomEvent("hashchange"));
-
-    );
 
     /**************************************************
      * Index.html:                                    *
@@ -129,6 +88,9 @@ jQuery(document).ready(function($) {
     // Now that the config variables are set, we can use functions on different pages.
     configConfirm.done(function changePages(data) {
 
+    /***************************
+    * Configuration functions *
+    ***************************/
 
     function getPosts() {
         return $.ajax({
@@ -137,6 +99,21 @@ jQuery(document).ready(function($) {
             type: 'GET'
         });
     }
+
+    function routingConfig() {
+        $.when(
+            $.getScript("/assets/js/signals.min.js"),
+            $.getScript("/assets/js/crossroads.min.js"),
+            $.Deferred(function(deferred){ $(deferred.resolve);
+            })
+        ).done(function (){
+            console.log("JS loaded");
+        });
+    }
+
+    /***************************
+     * Asset Utility functions *
+     ***************************/
 
     function videoHandle (video) {
         return (video['assetType'] === 'Audio/Video' && video['assetEmbedLink'] !== undefined);
@@ -149,6 +126,27 @@ jQuery(document).ready(function($) {
 
     function docHandle (doc) {
         return doc['assetType'] === 'Text' && doc['assetEmbedLink'] !== undefined;
+    }
+
+    function getVideoEmbed (convertURI) {
+
+        var videoURI = convertURI;
+
+        return "<iframe class='sproutvideo-player' type='text/html' src='"+ videoURI +"' width='270' height='135' frameborder='0'></iframe>";
+    }
+
+
+    function getAudioEmbed (matchURI) {
+
+        // matchURI is the assetLocation of the audio asset we wish to match with the soundcloud embed\
+        // console.log(matchURI);
+
+        var numberPattern = /\d+/g; // use this as our regex pattern
+        var audioURI = matchURI.match(numberPattern); // use String.match to get the track id of the soundcloud post and return an array of the matched number of the track id
+        // console.log(audioURI); // return an array of one element containing the id of the soundcloud track
+
+        return "<iframe width='270' height='135' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/"+ audioURI +"&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe>"
+
     }
 
     function assetHandler (htmlIn, i, assetList) {
@@ -178,27 +176,43 @@ jQuery(document).ready(function($) {
         }
     }
 
-    function getVideoEmbed (convertURI) {
+    function postlinkHandler (id) {
 
-        var videoURI = convertURI;
 
-        return "<iframe class='sproutvideo-player' type='text/html' src='"+ videoURI +"' width='270' height='135' frameborder='0'></iframe>";
+        var link = crossroads.addRoute('/json/posts/all');
+
+        return link;
+
+        // crossroads.addRoute('/', function() {
+        //     $('#routeContent').load('index.html');
+        // });
+        // crossroads.addRoute('/user/{userId}', function(userId) {
+        //     $('#routeContent').load('user/details.html');
+        // });
+        // crossroads.bypassed.add(function(request) {
+        //     console.error(request + ' seems to be a dead end...');
+        // });
+        //
+        // //Listen to hash changes
+        // window.addEventListener("hashchange", function() {
+        //     var route = '/';
+        //     var hash = window.location.hash;
+        //     if (hash.length > 0) {
+        //         route = hash.split('#').pop();
+        //     }
+        //     crossroads.parse(route);
+        // });
+        //
+        // // trigger hashchange on first page load
+        // window.dispatchEvent(new CustomEvent("hashchange"));
+
+
+
     }
 
-
-    function getAudioEmbed (matchURI) {
-
-    // matchURI is the assetLocation of the audio asset we wish to match with the soundcloud embed\
-    // console.log(matchURI);
-
-
-    var numberPattern = /\d+/g; // use this as our regex pattern
-    var audioURI = matchURI.match(numberPattern); // use String.match to get the track id of the soundcloud post and return an array of the matched number of the track id
-    // console.log(audioURI); // return an array of one element containing the id of the soundcloud track
-
-    return "<iframe width='270' height='135' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/"+ audioURI +"&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe>"
-
-    }
+    /***************************
+     * Page-changing functions *
+     ***************************/
 
     function listPosts(data) {
         //  console.log(data); // List the data
@@ -219,6 +233,7 @@ jQuery(document).ready(function($) {
         // console.log(data); // see the actual data received
         //console.log(size); // total posts in the database.
 
+        // conditional loop that determines the number of items to display.
         var paginate;
 
         if(size > 30) {
@@ -230,14 +245,14 @@ jQuery(document).ready(function($) {
 
           for(var i=0; i <= paginate; i++) { // TODO: replace 32 with size once API is paginated.
 
-             // TODO: check for undefineds
+
              var htmlIn; // variable to get the asset to be displayed on the list.
 
-             var listTitle;
-             var listDesc;
-             var listId;
-             var assetList;
-             var displayThumb;
+             var listTitle; // title of the post
+             var listDesc; // description of the post
+             var listId; // ID of the post
+             var assetList; // All assets of the post
+             var displayThumb; // asset to be displayed
 
 
              // try to assign the variables, if anything returns undefined or unexpected, then we skip it.
@@ -249,6 +264,7 @@ jQuery(document).ready(function($) {
                  displayThumb = assetHandler(htmlIn, i, assetList); // displayThumb holds the html code to be put in.
             } catch (e) {
                 // TODO: manage bigger exceptions between DALN posts and our posts
+                console.log("Issues with posts with the following ID(s):");
                 console.log(data[i].postId); // log the title
                 i++; // skip the post with problems.
             }
@@ -257,7 +273,7 @@ jQuery(document).ready(function($) {
 
 
 
-            var postLink = "javascript: onClicks();"; // variable to contain the actual html containing the asset.
+            var postLink = postlinkHandler(listId); // string variable to contain the actual html containing the asset.
 
 
 
