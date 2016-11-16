@@ -82,8 +82,8 @@ jQuery(document).ready(function($) {
 
         function routingConfig() {
             $.when(
+                $.getScript("/assets/js/signals.min.js"),
                 $.getScript("/assets/js/crossroads.min.js"),
-                $.getScript("assets/js/signals.min.js"),
                 $.Deferred(function(deferred){ $(deferred.resolve);
                 })
             ).done(function (){
@@ -92,7 +92,9 @@ jQuery(document).ready(function($) {
         }
 
 
-        //         // Define the routes
+
+
+        // //         // Define the routes
         // crossroads.addRoute('/', function() {
         //     $('#routeContent').load('index.html');
         // });
@@ -246,7 +248,7 @@ jQuery(document).ready(function($) {
                  assetList = data[i].assetList;
                  displayThumb = assetHandler(htmlIn, i, assetList); // displayThumb holds the html code to be put in.
             } catch (e) {
-                // TODO: manage bigger expectations between DALN posts and our posts
+                // TODO: manage bigger exceptions between DALN posts and our posts
                 console.log(data[i].postId); // log the title
                 i++; // skip the post with problems.
             }

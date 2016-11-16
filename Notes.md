@@ -24,10 +24,6 @@
 ## Questions:
 
 Currently:
-- still receiving mwharker vids. Should I trust the API or should I handle different cases (mwharker, s3, and videos.sprout)?
-- weird responses from sprout
-
-
 
 - Jaro: where to handle pagination? should it be handled frontend or backend? (next 10 posts vs posts and page)
     - Also pagination url parameters
