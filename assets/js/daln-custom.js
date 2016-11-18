@@ -337,16 +337,25 @@ jQuery(document).ready(function($) {
                 url: link,
                 data: { format: "json"},
                 type: 'GET'
-            }).done(function () {  console.log("data received"); console.log(data);});
+            }).done(function (data) {
 
-            function displayPost(data) {
+             console.log("data received");
+            //  console.log(data);
+
+
                 console.log(data);
 
-                var author = data[0].contributorAuthor;
-                var dateCreated = data[0].dateCreated;
-                var title = data[0].title;
-                var assetVid = data[0].assetList[0].assetLocation;
-                var description = data[0].description;
+                try {
+
+                var author = data.contributorAuthor;
+                var dateCreated = data.dateCreated;
+                var title = data.title;
+                var assetVid = data.assetList[0].assetLocation;
+                var description = data.description;
+            } catch (e){
+                console.log("PRoblem");
+            }
+
 
 
                 $('#author').append("<p>" + author + "</p>"); // fix so its not small or nested
@@ -367,8 +376,8 @@ jQuery(document).ready(function($) {
                 // Need to write an if loop for video-audio-docs.
                 // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
                 $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
-            }
 
+            });
         });
 
     }
@@ -398,45 +407,45 @@ jQuery(document).ready(function($) {
     $(".collapse").collapse();
 
 
-    // Dynamic entry for post data.
-
-    function getPost() {
-        return $.ajax({
-            url: GLOBAL_API_POST,
-            data: { format: "json"},
-            type: 'GET'
-        });
-    }
-
-    function displayPost(data) {
-        console.log(data);
-
-        var author = data[0].contributorAuthor;
-        var dateCreated = data[0].dateCreated;
-        var title = data[0].title;
-        var assetVid = data[0].assetList[0].assetLocation;
-        var description = data[0].description;
-
-
-        $('#author').append("<p>" + author + "</p>"); // fix so its not small or nested
-        $('#title-author').append("&nbsp;" + author);
-        console.log(author);
-
-        $('#title').append("<p>" + title + "</p>"); // fix so its not small or nested
-        $('#post-breadcrumb-title').append("<p>" + title + "</p>");
-        $('#h1').prepend("&nbsp;" + title );
-        console.log(title);
-
-        $('#date-submit').append("<p>" + dateCreated + "</p>"); // fix so its not small or nested
-        console.log(dateCreated);
-
-        $('#description').append("&nbsp;" + description);
-        console.log(description);
-
-        // Need to write an if loop for video-audio-docs.
-        // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
-        $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
-    }
+    // // Dynamic entry for post data.
+    //
+    // function getPost() {
+    //     return $.ajax({
+    //         url: GLOBAL_API_POST,
+    //         data: { format: "json"},
+    //         type: 'GET'
+    //     });
+    // }
+    //
+    // function displayPost(data) {
+    //     console.log(data);
+    //
+    //     var author = data[0].contributorAuthor;
+    //     var dateCreated = data[0].dateCreated;
+    //     var title = data[0].title;
+    //     var assetVid = data[0].assetList[0].assetLocation;
+    //     var description = data[0].description;
+    //
+    //
+    //     $('#author').append("<p>" + author + "</p>"); // fix so its not small or nested
+    //     $('#title-author').append("&nbsp;" + author);
+    //     console.log(author);
+    //
+    //     $('#title').append("<p>" + title + "</p>"); // fix so its not small or nested
+    //     $('#post-breadcrumb-title').append("<p>" + title + "</p>");
+    //     $('#h1').prepend("&nbsp;" + title );
+    //     console.log(title);
+    //
+    //     $('#date-submit').append("<p>" + dateCreated + "</p>"); // fix so its not small or nested
+    //     console.log(dateCreated);
+    //
+    //     $('#description').append("&nbsp;" + description);
+    //     console.log(description);
+    //
+    //     // Need to write an if loop for video-audio-docs.
+    //     // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
+    //     $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
+    // }
 
 });
 
