@@ -328,8 +328,47 @@ jQuery(document).ready(function($) {
 
         $(".here").click(function (event) {
             event.preventDefault();
+            var id = ($(this).attr("id"));
+            var link = GLOBAL_API_POST + id;
+            console.log(link);
 
             $("#index").load("detail-page.html");
+            $.ajax({
+                url: link,
+                data: { format: "json"},
+                type: 'GET'
+            }).done(function () {  console.log("data received"); console.log(data);});
+
+            function displayPost(data) {
+                console.log(data);
+
+                var author = data[0].contributorAuthor;
+                var dateCreated = data[0].dateCreated;
+                var title = data[0].title;
+                var assetVid = data[0].assetList[0].assetLocation;
+                var description = data[0].description;
+
+
+                $('#author').append("<p>" + author + "</p>"); // fix so its not small or nested
+                $('#title-author').append("&nbsp;" + author);
+                console.log(author);
+
+                $('#title').append("<p>" + title + "</p>"); // fix so its not small or nested
+                $('#post-breadcrumb-title').append("<p>" + title + "</p>");
+                $('#h1').prepend("&nbsp;" + title );
+                console.log(title);
+
+                $('#date-submit').append("<p>" + dateCreated + "</p>"); // fix so its not small or nested
+                console.log(dateCreated);
+
+                $('#description').append("&nbsp;" + description);
+                console.log(description);
+
+                // Need to write an if loop for video-audio-docs.
+                // $('#video').append("<iframe src=" + assetVid + " width ='768' height='432'></iframe>");
+                $('#video').append("<iframe src="+ assetVid +" width ='768' height='432'></iframe>")
+            }
+
         });
 
     }
