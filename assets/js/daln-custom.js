@@ -100,16 +100,56 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function routingConfig() {
-        $.when(
-            $.getScript("/assets/js/signals.min.js"),
-            $.getScript("/assets/js/crossroads.min.js"),
-            $.Deferred(function(deferred){ $(deferred.resolve);
-            })
-        ).done(function (){
-            console.log("JS loaded");
-        });
-    }
+    // function routingConfig() {
+    //
+    //     // /posts/get
+    //     // /posts/create
+    //     // /posts/{postId}
+    //     // /json/posts/all
+    //     // /json/posts/from/{daysAgo}
+    //     // /json/posts/random={size}
+    //     // /json/posts/size={pageSize}page={page}
+    //     // /json/posts/query/title={title}
+    //     // /json/posts/query/date={date}
+    //     // /update
+    //     // /upload
+    //
+    //     page.base('/'); //base url
+    //     page('/', '/post/');
+    //     page('/post/:postId', postHandle);
+    //     page('*', notfound);
+    //     page();
+    //
+    //
+    //     function notfound() {
+    //         // var currentBody = document.getElementById("index");
+    //         // currentBody.
+    //         $("#index").load("detail-page.html #detail");
+    //         document.getElementById("wut").textContent = "not ofund";
+    //     }
+    //
+    //     function postHandle(ctx) {
+    //         var page = ~~ctx.params.page;
+    //         var from = page
+    //     }
+    //
+    //     function adjustPager(page, id) {
+    //           if (page) {
+    //             prev.setAttribute('href', '/post/' + );
+    //           } else {
+    //             prev.style.display = 'none';
+    //           }
+    //
+    //           next.setAttribute('href', '/album/photos/' + (page + 1));
+    //         }
+    //
+    //
+    //
+    // }
+
+
+
+
 
     /***************************
      * Asset Utility functions *
@@ -179,36 +219,16 @@ jQuery(document).ready(function($) {
     function postlinkHandler (id) {
 
 
-        var link = crossroads.addRoute('/json/posts/all');
 
-        return link;
+        var result;
 
-        // crossroads.addRoute('/', function() {
-        //     $('#routeContent').load('index.html');
-        // });
-        // crossroads.addRoute('/user/{userId}', function(userId) {
-        //     $('#routeContent').load('user/details.html');
-        // });
-        // crossroads.bypassed.add(function(request) {
-        //     console.error(request + ' seems to be a dead end...');
-        // });
-        //
-        // //Listen to hash changes
-        // window.addEventListener("hashchange", function() {
-        //     var route = '/';
-        //     var hash = window.location.hash;
-        //     if (hash.length > 0) {
-        //         route = hash.split('#').pop();
-        //     }
-        //     crossroads.parse(route);
-        // });
-        //
-        // // trigger hashchange on first page load
-        // window.dispatchEvent(new CustomEvent("hashchange"));
+        // result = window.location.href.split('/index.html')[0]; // removing the /index.html part
+        result = "./post/" + id;
 
-
+        return result;
 
     }
+
 
     /***************************
      * Page-changing functions *
@@ -275,27 +295,27 @@ jQuery(document).ready(function($) {
 
             var postLink = postlinkHandler(listId); // string variable to contain the actual html containing the asset.
 
-
+            // GET RID OF ALL CLASS
 
             if (displayThumb !== null) {
                 displayThumb;
             } else {
-                displayThumb = "<a href='assets/img/bootstrap-mdo-sfmoma-01.jpg' class='zoom' rel='prettyPhoto' title='Not Video File'></a><a href='"+ postLink + "' id='"+ listId +"' class='link'></a><a class='thumbnail' href='"+ postLink + "'><img src='assets/img/example-sites/example1.jpg' alt='example-item'></a>";
+                displayThumb = "<a href='assets/img/bootstrap-mdo-sfmoma-01.jpg' class='zoom' rel='prettyPhoto' title='Not Video File'></a><a href='"+ postLink + "' id='"+ listId +"' class='here'></a><a class='thumbnail' href='"+ postLink + "'><img src='assets/img/example-sites/example1.jpg' alt='example-item'></a>";
             }
 
               // PROBLEMS WITH UNDEFINED NOT UNDEFINED. Possible cause: quotes.
               if( listTitle === undefined || listDesc === undefined) { // Should never happen since every post must at least have a title. But we put it here to make sure we don't break at an undefined.
-              items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "' id = '"+ listId +"'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
+              items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "' id = '"+ listId +"' class='here'> Untitled </a> <p> <em> No description</em> </p> </div> </li>" );
             } else if (listTitle === undefined) {
             listDesc = listDesc.substring(0,41);
-            items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "' id='"+ listId +"' '>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+            items.push("<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "' id='"+ listId +"' class='here'>Untitled</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
         } else if (listDesc === undefined) {
             listTitle = listTitle.substring(0,19);
-            items.push("<li class='span3 item-block'>"+ displayThumb + "<div class='desc'><a href='"+ postLink +"' id='"+ listId +"' >"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
+            items.push("<li class='span3 item-block'>"+ displayThumb + "<div class='desc'><a href='"+ postLink +"' id='"+ listId +"' class='here' >"+ listTitle +"</a> <p> <em> No description</em> </p> </div> </li>" );
         } else {
                 listTitle = listTitle.substring(0,19);
                 listDesc = listDesc.substring(0,41);
-                items.push( "<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "'     id='"+ listId +"'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
+                items.push( "<li class='span3 item-block'>"+ displayThumb +"<div class='desc'><a href='"+ postLink + "'     id='"+ listId +"' class='here'>" + listTitle + "</a> <p> <em>"+ listDesc +"</em> </p> </div> </li>" );
             }
 
           }
@@ -306,8 +326,10 @@ jQuery(document).ready(function($) {
 
             //console.log("Posts loaded successfully.");
 
-        $(listId).click(function () {
-            console.log("Hello");
+        $(".here").click(function (event) {
+            event.preventDefault();
+
+            $("#index").load("detail-page.html");
         });
 
     }
