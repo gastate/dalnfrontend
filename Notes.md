@@ -1,8 +1,8 @@
 
 # Today's tasks
-- work on pages
-    - dynamic pages using crossroads
-    - 2nd priority is history
+- get views up for design
+    - no worries about routing
+- start learning Angular 2
 - cleanup embeds:
     - **WARNING: Hardcoded height at 227px for item spans.**
     - titles for audio assets not working
