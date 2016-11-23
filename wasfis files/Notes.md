@@ -1,15 +1,20 @@
-
 # Today's tasks
-- work on pages
-    - dynamic pages using crossroads
-    - 2nd priority is history
+- get views up for design
+    - no worries about routing
+    - just list and detail view
+- start learning Angular 2
+    - https://www.lynda.com/AngularJS-tutorials/Creating-simple-component/428058/482937-4.html
+    - https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
+    - https://angular.io/docs/ts/latest/quickstart.html
+    - http://dev.venntro.com/2013/09/es6-part-1/
+    - https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
+    - Lisa will startup the application, wait to pull.
 - cleanup embeds:
     - **WARNING: Hardcoded height at 227px for item spans.**
     - titles for audio assets not working
 - add sorting data
     - change the for loop to be configurable in listPosts. Tie to UI.
     - add Shakib's pagination.
-
 
 ## Notes:
 - word wrap on the title
