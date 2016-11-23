@@ -14,17 +14,17 @@ import {PostService} from './PostService';
 @Component({
   selector: 'daln-app',
   templateUrl: 'templates/home.html',
-  directives: [PostItemComponent]
+  directives: [PostListComponent]
 })
 
 	
 export class AppComponent {
-
+	posts:any;
 constructor(private _postService: PostService){}
 
 ngOnInit() {
-	  this.postList = this._postService.getAllPosts();
-		console.log("app.com postList: ", this.postList);
+	  this.posts = this._postService.getAllPosts();
+		console.log("app.com postList: ", this.posts);
         // this._postService.getAllPosts().subscribe((data)=>{
 		// 	this.postList = data;
 		// 	console.log("app.com postList: ", this.postList);

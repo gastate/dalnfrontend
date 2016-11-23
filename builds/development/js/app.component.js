@@ -1,4 +1,4 @@
-System.register(['angular2/core', './post-item.comp', './post-detail.comp', 'angular2/router', './PostService'], function(exports_1, context_1) {
+System.register(['angular2/core', './post-list.comp', './post-detail.comp', 'angular2/router', './PostService'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,15 @@ System.register(['angular2/core', './post-item.comp', './post-detail.comp', 'ang
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, post_item_comp_1, post_detail_comp_1, router_1, PostService_1;
+    var core_1, post_list_comp_1, post_detail_comp_1, router_1, PostService_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (post_item_comp_1_1) {
-                post_item_comp_1 = post_item_comp_1_1;
+            function (post_list_comp_1_1) {
+                post_list_comp_1 = post_list_comp_1_1;
             },
             function (post_detail_comp_1_1) {
                 post_detail_comp_1 = post_detail_comp_1_1;
@@ -35,8 +35,8 @@ System.register(['angular2/core', './post-item.comp', './post-detail.comp', 'ang
                     this._postService = _postService;
                 }
                 AppComponent.prototype.ngOnInit = function () {
-                    this.postList = this._postService.getAllPosts();
-                    console.log("app.com postList: ", this.postList);
+                    this.posts = this._postService.getAllPosts();
+                    console.log("app.com postList: ", this.posts);
                     // this._postService.getAllPosts().subscribe((data)=>{
                     // 	this.postList = data;
                     // 	console.log("app.com postList: ", this.postList);
@@ -49,7 +49,7 @@ System.register(['angular2/core', './post-item.comp', './post-detail.comp', 'ang
                     core_1.Component({
                         selector: 'daln-app',
                         templateUrl: 'templates/home.html',
-                        directives: [post_item_comp_1.PostItemComponent]
+                        directives: [post_list_comp_1.PostListComponent]
                     }), 
                     __metadata('design:paramtypes', [PostService_1.PostService])
                 ], AppComponent);
