@@ -1,0 +1,9 @@
+
+*.md
+!Notes.md
+node_modules
+.tmp
+npm-debug.log
+builds/development/js,
+dev_config.json
+

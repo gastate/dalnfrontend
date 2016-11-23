@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<!-- Example: http://daln.osu.edu/handle/2374.DALN/3344 -->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Reading through Video Games</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- CSS files begin-->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700|Open+Sans+Condensed:700,300,300italic|Open+Sans:400,300italic,400italic,600,600italic,700,700italic,800,800italic|PT+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.css" rel="stylesheet" >
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="assets/css/responsiveslides.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/prettyPhoto.css" type='text/css'>
+    <link rel="stylesheet" href="assets/build/mediaelementplayer.min.css" />
+    <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="assets/css/slide-in.ie.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="assets/css/ie.css" /><![endif]-->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+</head>
+
+<body>
+
+
+<!-- Logo / Menu
+================================================== -->
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="span4"> <a href="#" class="logo"> <img src="assets/img/header.jpg" alt=""> </a> </div>
+      <div class="span8">
+        <nav>
+
+                <ul class="right">
+                    <li> <a href="#"> home </a></li>
+                    <li> <a href="#"> about </a> </li>
+                    <li> <a href="#"> contact </a> </li>
+                    <li> <a href="#"> blog </a> </li>
+                    <li> <a href="#"> login </a> </li>
+                    <li> <a href="submit-form-sidebar.html"> submit a literacy narrative </a> </li>
+                </ul>
+              </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<div class="container">
+
+<!-- TODO: Will have to figure out the exact breadcrumb design as all pages are created -->
+    <ul class="breadcrumb">
+      <li>
+        <a href="#">Home</a> /
+      </li>
+      <li>
+        <a href="potential-list-view.html">Results</a> /
+      </li>
+      <li>
+          <a href="#" id="post-breadcrumb-title"></a>
+      </li>
+
+    </ul>
+
+<!-- Issue with responsiveness -->
+
+<header id="pagehead">
+
+    <h1 id="h1"><small>&nbsp; &frasl; &nbsp;&nbsp;a Digital Literacy Narrative by </small><span id="title-author"></span>
+
+
+        <!-- social begin here -->
+                        <ul class="socicon right">
+                           <li>
+                                <a href="#" class="share-icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="google">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="twitter">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flickr">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dribbble">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="linkedin">
+                                </a>
+                            </li>
+                            <li class="last">
+                                <a href="#" class="vimeo">
+                                </a>
+                            </li>
+                        </ul>
+    </h1>
+</header>
+
+</div>
+</div>
+
+
+
+<div class="container">
+
+<section>
+    <div class="row">
+        <!-- Project info
+        ================================================== -->
+        <div class="span4">
+
+            <!-- Use the ul class. -->
+            <ul class="nav nav-list">
+                <li>
+                    <h3>Title</h3>
+                    <p id="title"></p>
+                <li>
+                    <h3>Date Submitted</h3>
+                    <p id="date-submit"></p>
+                </li>
+                <li>
+                    <h3>Author</h3>
+                    <p id="author"></p>
+                </li>
+
+            </ul>
+
+            <br />
+
+            <ul class ="nav nav-list">
+                <li>
+                    <h3>Collections</h3>
+                    <p>All literacy narratives that are not part of a topical collection.</p>
+                </li>
+                <li>
+                    <h3>Tags/Subjects</h3>
+                    <span class="label label-info">Reading</span>
+                </li>
+
+            </ul>
+
+            <br />
+
+            <ul class="nav nav-list">
+                <li>
+                    <h3>Description</h3>
+                    <p id="description"></p>
+                </li>
+            </ul>
+
+            <br />
+
+            <!-- Idea from here: http://commkit.gsu.edu/shortcodes/ -->
+            <!-- Needs work -->
+                <!-- TODO: Add CSS class; REMOVE style tags-->
+
+            <div class="details" id="detail-drop" style="margin-bottom:35px;">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                      Detailed Record
+                    </a>
+                  </div>
+                  <div id="collapseOne" class="accordion-body in collapse" style="height: auto;">
+                    <div class="span4">
+                    <div class="accordion-inner">
+                        <a href="http://commkit.gsu.edu/shortcodes/" target="_blank">Idea</a>
+
+                    </div>
+                </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+        </div>
+            <div class="span8">
+
+                <!-- SoundCloud -->
+                <iframe id="sc-widget" width="100%" height="166" scrolling="no"  src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/user-15072191/tracks"></iframe>
+
+
+
+
+            <!-- Sprout Video -->
+            <div class="span8" style="margin-top:20px;">
+
+                <!-- Would like to see stylized player, TODO: Mess with CSS for stylized player. -->
+
+
+                <!-- Adding just an s after http serves content over https for AWS.
+                Tested only in v1 of Sprout API, subject to change. -->
+                    <!-- <iframe class='sproutvideo-player' type='text/html' src='https://videos.sproutvideo.com/embed/489bd0bc1c19e5c1c0/73e914bfc0b44c51' width='768' height='432'> </iframe> -->
+                <div id="video">
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+</section>
+
+
+<div class="divider"></div>
+
+    </div><!-- /container -->
+
+     <!-- Footer
+      ================================================== -->
+      <footer>
+      <div class="container">
+      <div class="row">
+
+      <div class="span4">
+      <h3>About</h3>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+      <h3>Connect With Us</h3>
+
+
+      </div>
+
+
+
+
+
+      </div>
+      </div>
+  </footer>
+
+  <div class="span12 copy">
+  </div>
+
+
+
+      <div class="divider"></div>
+
+
+    <!-- JavaScript files begin-->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery.form.js"></script>
+    <script src="assets/js/jquery.ufvalidator-1.0.5.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.cycle.all.js"></script>
+    <script src="assets/js/jquery.prettyPhoto.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap-transition.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/application.js"></script>
+    <script src="assets/js/responsiveslides.min.js"></script>
+    <script src="assets/js/soundcloudapi.js" type="text/javascript"></script>
+    <script src="assets/build/mediaelement-and-player.min.js"></script>
+    <script src="assets/js/gmap3.min.js"></script>
+    <script src="assets/js/carusel.js"></script>
+    <script src="assets/js/jquery.ui.totop.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.isotope.min.js" type="text/javascript"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <!-- Custom Jquery here -->
+    <script src="create.js"></script>
+
+
+
+
+
+  </body>
+</html>
