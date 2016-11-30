@@ -2,6 +2,8 @@
 - get views up for design
     - no worries about routing
     - just list and detail view
+
+- get a detail page angular branch
 - start learning Angular 2
     - https://www.lynda.com/AngularJS-tutorials/Creating-simple-component/428058/482937-4.html
     - https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
