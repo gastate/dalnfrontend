@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostListComponent} from './post-list.comp';
 import {PostService} from './post.service';
-import {Post} from './post'; 
+import {Post} from './post';
 
 @Component({
   selector: 'home',
@@ -10,17 +10,35 @@ import {Post} from './post';
 `
 })
 
-export class HomeComponent  { 
-    constructor(private _postService: PostService){}
-    title = 'DALN Frontend';
-    posts: Post[];
+export class HomeComponent {
 
-
-    getPosts(): void {
-    this._postService.getAllPosts().then(data => this.posts = data);
+  constructor(private _postService: PostService) {
   }
+
+  title = 'DALN Frontend';
+  posts: Post[];
+
 
   ngOnInit(): void {
-    this.getPosts();
+    this.getAllPosts();
   }
+
+  getAllPosts(): void {
+    this._postService.getAllPosts().subscribe(
+      (data) => this.posts = data, //Bind to view
+      err => {
+        // Log errors if any
+        console.log(err);
+      });
+  }
+
+  /*TODO Figure out why this causes a mapping error: Do not use this structure
+    Instead use the Observable
+  */
+  // getPosts(): void {
+  //   this._postService.getPosts().then((data) => this.posts = data);
+  // }
+
+
+
 }

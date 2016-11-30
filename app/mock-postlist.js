@@ -18,7 +18,7 @@ exports.POSTS = [
         "title": "Jeff Welbaum's Literacy Narrative",
         "description": "",
         "identifierUri": "http://hdl.handle.net/2374.DALN/66",
-        // "dateAccessioned": "2008-12-18T18:56:20Z",
+        //"dateAccessioned": "2008-12-18T18:56:20Z",
         // "dateAvailable": "2008-12-18T18:56:20Z",
         "dateCreated": "2008-12-18",
         // "dateIssued": "2008-12-18T18:56:20Z",

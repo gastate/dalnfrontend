@@ -15,12 +15,17 @@ var HomeComponent = (function () {
         this._postService = _postService;
         this.title = 'DALN Frontend';
     }
-    HomeComponent.prototype.getPosts = function () {
-        var _this = this;
-        this._postService.getAllPosts().then(function (data) { return _this.posts = data; });
-    };
     HomeComponent.prototype.ngOnInit = function () {
-        this.getPosts();
+        this.getAllPosts();
+    };
+    HomeComponent.prototype.getAllPosts = function () {
+        var _this = this;
+        this._postService.getAllPosts().subscribe(function (data) { return _this.posts = data; }, //Bind to view
+        function (//Bind to view
+            err) {
+            // Log errors if any
+            console.log(err);
+        });
     };
     HomeComponent = __decorate([
         core_1.Component({
