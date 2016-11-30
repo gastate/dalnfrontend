@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var router_1 = require('@angular/router');
+var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var home_comp_1 = require('./home.comp');
 var post_list_comp_1 = require('./post-list.comp');
@@ -19,6 +19,7 @@ var post_detail_comp_1 = require('./post-detail.comp');
 var about_comp_1 = require('./about.comp');
 var post_service_1 = require('./post.service');
 var contact_comp_1 = require('./contact.comp');
+var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,33 +27,9 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                router_1.RouterModule.forRoot([
-                    {
-                        path: '',
-                        redirectTo: '/home',
-                        pathMatch: 'full'
-                    },
-                    {
-                        path: 'home',
-                        component: home_comp_1.HomeComponent
-                    },
-                    {
-                        path: 'posts',
-                        component: post_list_comp_1.PostListComponent
-                    },
-                    {
-                        path: 'detail/:id',
-                        component: post_detail_comp_1.PostDetailComponent
-                    },
-                    {
-                        path: 'about',
-                        component: about_comp_1.AboutComponent
-                    },
-                    {
-                        path: 'contact',
-                        component: contact_comp_1.ContactComponent
-                    }
-                ])
+                http_1.HttpModule,
+                app_routing_module_1.AppRoutingModule,
+                http_1.JsonpModule
             ],
             declarations: [
                 app_component_1.AppComponent,

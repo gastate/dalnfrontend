@@ -1,6 +1,8 @@
+
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule }   from '@angular/router';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import {HomeComponent} from './home.comp';
@@ -10,41 +12,16 @@ import {PostDetailComponent} from './post-detail.comp';
 import {AboutComponent} from './about.comp';
 import {PostService} from './post.service';
 import {ContactComponent} from './contact.comp';
-
-
+import { AppRoutingModule }     from './app-routing.module';
 
 
 @NgModule({
   imports: 
   [ 
     BrowserModule, 
-    RouterModule.forRoot([
-        {
-          path: '',
-          redirectTo: '/home',
-          pathMatch: 'full'
-        },
-        {
-        path: 'home',
-        component: HomeComponent
-        },
-        {
-          path: 'posts',
-          component: PostListComponent
-        },
-        {
-          path: 'detail/:id', 
-          component: PostDetailComponent
-        },
-        {
-        path: 'about',
-        component: AboutComponent
-        },
-        {
-        path: 'contact',
-        component: ContactComponent
-        }
-    ])
+    HttpModule,
+    AppRoutingModule,
+    JsonpModule
   ],
   declarations: [ 
     AppComponent,
