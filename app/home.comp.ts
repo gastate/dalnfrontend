@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PostListComponent} from './post-list.comp';
 import {PostService} from './post.service';
-import {Post} from './post';
+import {Post} from './post-model';
 
 @Component({
   selector: 'home',
@@ -33,8 +33,8 @@ export class HomeComponent {
   }
 
   /*TODO Figure out why this causes a mapping error: Do not use this structure
-    Instead use the Observable
-  */
+   Instead use the Observable
+   */
   // getPosts(): void {
   //   this._postService.getPosts().then((data) => this.posts = data);
   // }

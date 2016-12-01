@@ -18,7 +18,7 @@ require('rxjs/add/operator/catch');
 //import {API_ENDPOINTS} from './dev-config';
 //Only used in Mock
 require('rxjs/add/operator/toPromise');
-var mock_postlist_1 = require('./mock-postlist');
+//import {POSTS} from './mock-postlist';
 var PostService = (function () {
     function PostService(_http) {
         this._http = _http;
@@ -41,19 +41,6 @@ var PostService = (function () {
         // replace with api call
         return this._http.get(postEndpoint + id).map(function (res) { return res.json(); })
             .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); });
-    };
-    //Mock Services
-    PostService.prototype.getMockPosts = function () {
-        //replace with api call
-        return Promise.resolve(mock_postlist_1.POSTS);
-    };
-    PostService.prototype.filterPostsById = function (posts, id) {
-        var filtered = posts.find(function (post) { return post.postId === id; });
-        return Promise.resolve(filtered);
-    };
-    PostService.prototype.getMockPostById = function (id) {
-        // replace with api call
-        return this.filterPostsById(mock_postlist_1.POSTS, id);
     };
     PostService = __decorate([
         core_1.Injectable(), 

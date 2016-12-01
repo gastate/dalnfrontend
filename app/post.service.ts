@@ -5,12 +5,12 @@ import {Observable} from 'rxjs/Rx';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {Post} from './post';
+import {Post} from './post-model';
 //import {API_ENDPOINTS} from './dev-config';
 
 //Only used in Mock
 import 'rxjs/add/operator/toPromise';
-import {POSTS} from './mock-postlist';
+//import {POSTS} from './mock-postlist';
 
 
 
@@ -44,22 +44,21 @@ export class PostService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   }
 
-  //Mock Services
-  getMockPosts(): Promise<Post[]> {
-    //replace with api call
-    return Promise.resolve(POSTS);
-  }
-
-  filterPostsById(posts: Post[], id: string): Promise<Post> {
-    let filtered = posts.find((post) => post.postId === id);
-    return Promise.resolve(filtered);
-  }
-
-  getMockPostById(id: string) {
-    // replace with api call
-    return this.filterPostsById(POSTS, id);
-  }
-
+  // //Mock Services
+  // getMockPosts(): Promise<Post[]> {
+  //   //replace with api call
+  //   return Promise.resolve(POSTS);
+  // }
+  //
+  // filterPostsById(posts: Post[], id: string): Promise<Post> {
+  //   let filtered = posts.find((post) => post.postId === id);
+  //   return Promise.resolve(filtered);
+  // }
+  //
+  // getMockPostById(id: string) {
+  //   // replace with api call
+  //   return this.filterPostsById(POSTS, id);
+  // }
 
 
   /*TODO Figure out why this causes a mapping error: Do not use this structure "toPromise()"

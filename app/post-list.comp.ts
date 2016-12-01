@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import {PostItemComponent} from './post-item.comp';
-import {Post} from './post' 
+import {Post} from './post-model'
 
 @Component({
   selector: 'post-list',
-  templateUrl: '../templates/post-list.html'
+  templateUrl: './templates/post-list.html'
 })
 export class PostListComponent {
     @Input()

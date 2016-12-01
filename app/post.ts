@@ -3,10 +3,10 @@ export class Post {
   title: string;
   description: string;
   identifierUri: string;
-  // dateAccessioned: string;
-  // dateAvailable: string;
+  //dateAccessioned: string;
+  //dateAvailable: string;
   dateCreated: string;
-  // dateIssued:string;
+  //dateIssued:string;
   // rightsConsent: string;
   // rightsRelease: string;
   contributorAuthor: string[];
@@ -14,6 +14,6 @@ export class Post {
   // coverageStateProvince: string[];
   // creatorYearOfBirth: string[];
   // coveragePeriod: string[];
-  // subject: string[];
-  // assetList: string[];
+  //subject: string[];
+  assetList: any[];
 }

@@ -19,7 +19,7 @@ var PostListComponent = (function () {
     PostListComponent = __decorate([
         core_1.Component({
             selector: 'post-list',
-            templateUrl: '../templates/post-list.html'
+            templateUrl: './templates/post-list.html'
         }), 
         __metadata('design:paramtypes', [])
     ], PostListComponent);

@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import {PostService} from './post.service';
-import {Post} from './post';
+import {Post} from './post-model';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'post-item',
-  templateUrl: '../templates/post-item.html'
+  templateUrl: './templates/post-item.html'
 })
 
 export class PostItemComponent {
@@ -20,7 +20,7 @@ constructor(
   //****************************
   //Not in use at momement because direct lint in html template
   selectedPost: Post;
-  
+
   onSelect(post: Post): void {
     this.selectedPost = post;
     //goto detail page
