@@ -42,31 +42,31 @@
             </li>
 
         </ul>
-      <br/>
-      <ul class="nav nav-list">
-        <li>
-          <h3>Description</h3>
-          <p>{{postDetail.description}}</p>
-        </li>
-      </ul>
 
+        <br />
 
+        <ul class="nav nav-list">
+            <li>
+              <h3>Description</h3>
+              <p>{{postDetail.description}}</p>
+            </li>
+        </ul>
 
-        <br/>
+        <br />
         <ul class="nav nav-list">
           <li>
             <h3>Media List</h3>
           </li>
           <ul *ngFor="let asset of postDetail.assetList">
             <li>
-                <h3>Description</h3>
-                <p>{{postDetail.description}}</p>
+
               <!-- Change event to be click event that changes player embed link -->
               <a href="{{asset.assetLocation}}">
                 <h3>{{asset.assettitle}}</h3>
                 <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
               </a>
             </li>
+          </ul>
         </ul>
 
 
