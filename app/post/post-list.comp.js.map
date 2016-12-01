@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "post-list.comp.js",
+  "sourceRoot": "",
+  "sources": [
+    "post-list.comp.ts"
+  ],
+  "names": [],
+  "mappings": ";;;;;;;;;;AAAA,qBAAiC,eAAe,CAAC,CAAA;AASjD;IAAA;IAIA,CAAC;IAHG;QAAC,YAAK,EAAE;;uDAAA;IANZ;QAAC,gBAAS,CAAC;YACT,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,QAAQ,EAAE,WAAW;YACrB,WAAW,EAAE,kBAAkB;SAChC,CAAC;;yBAAA;IAKF,wBAAC;AAAD,CAAC,AAJD,IAIC;AAJY,yBAAiB,oBAI7B,CAAA"
+}

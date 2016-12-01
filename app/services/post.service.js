@@ -15,7 +15,7 @@ var Rx_1 = require('rxjs/Rx');
 // Import RxJs required methods
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
-var dev_config_1 = require('./dev-config');
+var dev_config_1 = require('../dev-config');
 //Only used in Mock
 require('rxjs/add/operator/toPromise');
 var mock_postlist_1 = require('./mock-postlist');

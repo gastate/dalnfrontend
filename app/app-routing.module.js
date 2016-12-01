@@ -10,11 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var home_comp_1 = require('./home.comp');
-var post_list_comp_1 = require('./post-list.comp');
-var post_detail_comp_1 = require('./post-detail.comp');
-var about_comp_1 = require('./about.comp');
-var contact_comp_1 = require('./contact.comp');
+var home_comp_1 = require('./home/home.comp');
+var post_list_comp_1 = require('./post/post-list.comp');
+var post_detail_comp_1 = require('./post/post-detail.comp');
+var about_comp_1 = require('./pages/about.comp');
+var contact_comp_1 = require('./pages/contact.comp');
 var routes = [
     {
         path: '',

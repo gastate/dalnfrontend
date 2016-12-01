@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
-import {PostService} from './post.service';
-import {Post} from './post-model';
+import {PostService} from '../services/post.service';
+import {Post} from '../model/post-model';
 import { Router } from '@angular/router';
 
 @Component({
+  moduleId: module.id,
   selector: 'post-item',
-  templateUrl: './templates/post-item.html'
+  templateUrl: './post-item.html'
 })
 
 export class PostItemComponent {

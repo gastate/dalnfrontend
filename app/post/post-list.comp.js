@@ -18,8 +18,9 @@ var PostListComponent = (function () {
     ], PostListComponent.prototype, "postList", void 0);
     PostListComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'post-list',
-            templateUrl: './templates/post-list.html'
+            templateUrl: './post-list.html'
         }), 
         __metadata('design:paramtypes', [])
     ], PostListComponent);

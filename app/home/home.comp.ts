@@ -1,12 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {PostListComponent} from './post-list.comp';
-import {PostService} from './post.service';
-import {Post} from './post-model';
+import {PostListComponent} from '../post/post-list.comp';
+import {PostService} from '../services/post.service';
+import {Post} from '../model/post-model';
 
 @Component({
   selector: 'home',
   template: `
-    <post-list [postList]="posts"></post-list>
+    <div class=" container">
+        <post-list [postList]="posts"></post-list>
+        <daln-footer></daln-footer>
+    </div>
 `
 })
 
@@ -37,7 +40,6 @@ export class HomeComponent {
   getMockPosts(): void {
     this._postService.getMockPosts().then((data) => this.posts = data);
   }
-
 
 
 }

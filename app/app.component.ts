@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'daln-app',
@@ -28,8 +28,9 @@ import { Component, OnInit } from '@angular/core';
 </header>
 
     <router-outlet>
+    
 `
 })
 
-export class AppComponent  { 
+export class AppComponent {
 }

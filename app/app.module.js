@@ -12,13 +12,14 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
-var home_comp_1 = require('./home.comp');
-var post_list_comp_1 = require('./post-list.comp');
-var post_item_comp_1 = require('./post-item.comp');
-var post_detail_comp_1 = require('./post-detail.comp');
-var about_comp_1 = require('./about.comp');
-var post_service_1 = require('./post.service');
-var contact_comp_1 = require('./contact.comp');
+var footer_comp_1 = require('./footer/footer.comp');
+var home_comp_1 = require('./home/home.comp');
+var post_list_comp_1 = require('./post/post-list.comp');
+var post_item_comp_1 = require('./post/post-item.comp');
+var post_detail_comp_1 = require('./post/post-detail.comp');
+var about_comp_1 = require('./pages/about.comp');
+var post_service_1 = require('./services/post.service');
+var contact_comp_1 = require('./pages/contact.comp');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
@@ -33,6 +34,7 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
+                footer_comp_1.FooterComponent,
                 home_comp_1.HomeComponent,
                 post_list_comp_1.PostListComponent,
                 post_item_comp_1.PostItemComponent,

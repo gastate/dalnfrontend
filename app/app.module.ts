@@ -4,13 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpModule, JsonpModule} from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import {HomeComponent} from './home.comp';
-import {PostListComponent} from './post-list.comp';
-import {PostItemComponent} from './post-item.comp';
-import {PostDetailComponent} from './post-detail.comp';
-import {AboutComponent} from './about.comp';
-import {PostService} from './post.service';
-import {ContactComponent} from './contact.comp';
+import {FooterComponent}  from './footer/footer.comp';
+import {HomeComponent} from './home/home.comp';
+import {PostListComponent} from './post/post-list.comp';
+import {PostItemComponent} from './post/post-item.comp';
+import {PostDetailComponent} from './post/post-detail.comp';
+import {AboutComponent} from './pages/about.comp';
+import {PostService} from './services/post.service';
+import {ContactComponent} from './pages/contact.comp';
 import {AppRoutingModule}     from './app-routing.module';
 
 
@@ -23,6 +24,7 @@ import {AppRoutingModule}     from './app-routing.module';
   ],
   declarations: [
     AppComponent,
+    FooterComponent,
     HomeComponent,
     PostListComponent,
     PostItemComponent,

@@ -1,0 +1,50 @@
+/**
+ * Created by lkittogsuedu on 12/1/16.
+ */
+import {Component, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'daln-footer',
+  template: `
+ 
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="span4">
+        <h3>About</h3>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+        <h3>Connect With Us</h3>
+        <!-- social begin here -->
+        <ul class="socicon left">
+          <li> <a href="#" class="share-icon"> </a> </li>
+          <li> <a href="#" class="google"> </a> </li>
+          <li> <a href="#" class="facebook"> </a> </li>
+          <li> <a href="#" class="twitter"> </a> </li>
+          <li> <a href="#" class="flickr"> </a> </li>
+          <li> <a href="#" class="dribbble"> </a> </li>
+          <li> <a href="#" class="linkedin"> </a> </li>
+          <li class="last"> <a href="#" class="vimeo"> </a> </li>
+        </ul>
+      </div>
+      <!-- tweets begin here -->
+      <div class="span4">
+        <h3>Latest Tweets</h3>
+        <div class="tweets">
+          <p> Loading Tweets... </p>
+          <ul id="tweet-list" class="span4">
+          </ul>
+        </div>
+      </div>
+      <div class="span4"> <!-- flickr begin here -->
+        <h3>From Flickr</h3>
+        <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;source=user&amp;user=52617155@N08&amp;layout=x&amp;display=random&amp;size=s"></script> </div>
+      <div class="span12 copy"> &copy; 2012 NLINE. All Rights Reserved. </div>
+    </div>
+  </div>
+</footer> 
+`
+})
+
+export class FooterComponent {
+}
+

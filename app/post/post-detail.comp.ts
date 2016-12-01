@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {PostService} from './post.service';
-import {Post} from './post-model';
+import {PostService} from '../services/post.service';
+import {Post} from '../model/post-model';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
+  moduleId: module.id,
   selector: 'post-detail',
-  templateUrl: './templates/post-detail.html'
+  templateUrl: './post-detail.html'
 })
 
 export class PostDetailComponent implements OnInit{

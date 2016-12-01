@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "footer.comp.js",
+  "sourceRoot": "",
+  "sources": [
+    "footer.comp.ts"
+  ],
+  "names": [],
+  "mappings": ";;;;;;;;;;AAAA;;GAEG;AACH,qBAAgC,eAAe,CAAC,CAAA;AA4ChD;IAAA;IACA,CAAC;IA3CD;QAAC,gBAAS,CAAC;YACT,QAAQ,EAAE,aAAa;YACvB,QAAQ,EAAE,8pDAqCX;SACA,CAAC;;uBAAA;IAGF,sBAAC;AAAD,CAAC,AADD,IACC;AADY,uBAAe,kBAC3B,CAAA"
+}

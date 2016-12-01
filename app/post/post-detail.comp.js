@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var post_service_1 = require('./post.service');
-var post_model_1 = require('./post-model');
+var post_service_1 = require('../services/post.service');
+var post_model_1 = require('../model/post-model');
 var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
 require('rxjs/add/operator/switchMap');
@@ -34,8 +34,9 @@ var PostDetailComponent = (function () {
     ], PostDetailComponent.prototype, "postDetail", void 0);
     PostDetailComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'post-detail',
-            templateUrl: './templates/post-detail.html'
+            templateUrl: './post-detail.html'
         }), 
         __metadata('design:paramtypes', [post_service_1.PostService, router_1.ActivatedRoute, common_1.Location])
     ], PostDetailComponent);

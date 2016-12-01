@@ -1,4 +1,4 @@
-import {Post} from './post-model';
+import {Post} from '../model/post-model';
 
 export const POSTS: any[] = [
   {
