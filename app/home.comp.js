@@ -17,6 +17,7 @@ var HomeComponent = (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         this.getAllPosts();
+        //this.getMockPosts();
     };
     HomeComponent.prototype.getAllPosts = function () {
         var _this = this;
@@ -26,6 +27,11 @@ var HomeComponent = (function () {
             // Log errors if any
             console.log(err);
         });
+    };
+    //Mock Data method
+    HomeComponent.prototype.getMockPosts = function () {
+        var _this = this;
+        this._postService.getMockPosts().then(function (data) { return _this.posts = data; });
     };
     HomeComponent = __decorate([
         core_1.Component({

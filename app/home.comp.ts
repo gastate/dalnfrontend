@@ -21,6 +21,7 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.getAllPosts();
+    //this.getMockPosts();
   }
 
   getAllPosts(): void {
@@ -32,12 +33,10 @@ export class HomeComponent {
       });
   }
 
-  /*TODO Figure out why this causes a mapping error: Do not use this structure
-   Instead use the Observable
-   */
-  // getPosts(): void {
-  //   this._postService.getPosts().then((data) => this.posts = data);
-  // }
+//Mock Data method
+  getMockPosts(): void {
+    this._postService.getMockPosts().then((data) => this.posts = data);
+  }
 
 
 

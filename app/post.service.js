@@ -15,32 +15,37 @@ var Rx_1 = require('rxjs/Rx');
 // Import RxJs required methods
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
-//import {API_ENDPOINTS} from './dev-config';
+var dev_config_1 = require('./dev-config');
 //Only used in Mock
 require('rxjs/add/operator/toPromise');
-//import {POSTS} from './mock-postlist';
+var mock_postlist_1 = require('./mock-postlist');
 var PostService = (function () {
     function PostService(_http) {
         this._http = _http;
-        //TODO move endpoints to config file
-        this.apiBaseEndpoint = "http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService";
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        this.endPoint = dev_config_1.API_ENDPOINTS;
     }
     PostService.prototype.getAllPosts = function () {
-        //set endpoint
-        var allPostsEndpoint = this.apiBaseEndpoint + "/json/posts/all"; //API_ENDPOINTS.all_posts;
-        console.log(allPostsEndpoint);
         //api call
-        return this._http.get(allPostsEndpoint).map(function (res) { return res.json(); })
+        return this._http.get(this.endPoint.all_posts).map(function (res) { return res.json(); })
             .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); });
     };
     ;
     PostService.prototype.getPostById = function (id) {
-        var postEndpoint = this.apiBaseEndpoint + "/posts/"; //API_ENDPOINTS.all_posts;
-        console.log(postEndpoint);
-        // replace with api call
-        return this._http.get(postEndpoint + id).map(function (res) { return res.json(); })
+        return this._http.get(this.endPoint.post + id).map(function (res) { return res.json(); })
             .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); });
+    };
+    //Mock Services
+    PostService.prototype.getMockPosts = function () {
+        //replace with api call
+        return Promise.resolve(mock_postlist_1.POSTS);
+    };
+    PostService.prototype.filterPostsById = function (posts, id) {
+        var filtered = posts.find(function (post) { return post.postId === id; });
+        return Promise.resolve(filtered);
+    };
+    PostService.prototype.getMockPostById = function (id) {
+        // replace with api call
+        return this.filterPostsById(mock_postlist_1.POSTS, id);
     };
     PostService = __decorate([
         core_1.Injectable(), 
