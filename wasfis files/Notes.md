@@ -31,16 +31,15 @@
 ## Questions:
 
 Currently:
+    - post-detail.comp.ts: what is details from observable
+    - no idea why subject isn't working FOR SOME POSTS WITH CLEAR ARRAYS FTW
+
+
+Later:     
 
 - Jaro: where to handle pagination? should it be handled frontend or backend? (next 10 posts vs posts and page)
     - Also pagination url parameters
     - Also handle exceptions. AWS goes down, shit goes to hell, what do.
-
-- our emails are being posted to github? https://github.com/gastate/dalnfrontend/issues/9
-
-
-
-Later:     
 
 - Michael and Ben:
     - how do people research the DALN, would it be helpful to do a Netflix like preview?

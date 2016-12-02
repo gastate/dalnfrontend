@@ -1,10 +1,1 @@
-{
-  "version": 3,
-  "file": "app.component.js",
-  "sourceRoot": "",
-  "sources": [
-    "app.component.ts"
-  ],
-  "names": [],
-  "mappings": ";;;;;;;;;;AAAA,qBAAgC,eAAe,CAAC,CAAA;AAkChD;IAAA;IACA,CAAC;IAjCD;QAAC,gBAAS,CAAC;YACT,QAAQ,EAAE,UAAU;YACpB,QAAQ,EAAE,63BA2BX;SACA,CAAC;;oBAAA;IAGF,mBAAC;AAAD,CAAC,AADD,IACC;AADY,oBAAY,eACxB,CAAA"
-}
+{"version":3,"file":"app.component.js","sourceRoot":"","sources":["app.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAAgC,eAAe,CAAC,CAAA;AAkChD;IAAA;IACA,CAAC;IAjCD;QAAC,gBAAS,CAAC;YACT,QAAQ,EAAE,UAAU;YACpB,QAAQ,EAAE,63BA2BX;SACA,CAAC;;oBAAA;IAGF,mBAAC;AAAD,CAAC,AADD,IACC;AADY,oBAAY,eACxB,CAAA"}
