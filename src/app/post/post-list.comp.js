@@ -13,15 +13,15 @@ var PostListComponent = (function () {
     function PostListComponent() {
     }
     __decorate([
-        core_1.Input(), 
+      core_1.Input(),
         __metadata('design:type', Array)
     ], PostListComponent.prototype, "postList", void 0);
     PostListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'post-list',
-            templateUrl: './post-list.html'
-        }), 
+          templateUrl: 'post-list.html'
+        }),
         __metadata('design:paramtypes', [])
     ], PostListComponent);
     return PostListComponent;

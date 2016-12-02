@@ -4,9 +4,9 @@ import {Post} from '../model/post-model';
 import { Router } from '@angular/router';
 
 @Component({
-  moduleId: module.id,
+  // moduleId: module.id,
   selector: 'post-item',
-  templateUrl: './post-item.html'
+  templateUrl: 'post-item.html'
 })
 
 export class PostItemComponent {

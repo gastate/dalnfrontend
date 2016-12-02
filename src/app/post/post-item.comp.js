@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var post_service_1 = require('../services/post.service');
+var post_service_1 = require('../services/post.service.ts');
 var post_model_1 = require('../model/post-model');
 var router_1 = require('@angular/router');
 var PostItemComponent = (function () {
@@ -26,15 +26,15 @@ var PostItemComponent = (function () {
         this._router.navigate(['/detail', this.selectedPost.postId]);
     };
     __decorate([
-        core_1.Input(), 
+      core_1.Input(),
         __metadata('design:type', post_model_1.Post)
     ], PostItemComponent.prototype, "postItem", void 0);
     PostItemComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'post-item',
-            templateUrl: './post-item.html'
-        }), 
+          templateUrl: 'post-item.html'
+        }),
         __metadata('design:paramtypes', [router_1.Router, post_service_1.PostService])
     ], PostItemComponent);
     return PostItemComponent;

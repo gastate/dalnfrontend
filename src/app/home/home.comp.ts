@@ -4,12 +4,14 @@ import {PostService} from '../services/post.service';
 import {Post} from '../model/post-model';
 
 @Component({
+  // moduleId: module.id,
   selector: 'home',
   template: `
     <div class=" container">
         <post-list [postList]="posts"></post-list>
-        <daln-footer></daln-footer>
     </div>
+    <daln-footer></daln-footer>
+
 `
 })
 

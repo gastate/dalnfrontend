@@ -11,16 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
-var footer_comp_1 = require('./footer/footer.comp');
-var home_comp_1 = require('./home/home.comp');
-var post_list_comp_1 = require('./post/post-list.comp');
-var post_item_comp_1 = require('./post/post-item.comp');
-var post_detail_comp_1 = require('./post/post-detail.comp');
-var about_comp_1 = require('./pages/about.comp');
-var post_service_1 = require('./services/post.service');
-var contact_comp_1 = require('./pages/contact.comp');
-var app_routing_module_1 = require('./app-routing.module');
+var app_component_1 = require('./app.component.ts');
+var footer_comp_1 = require('./footer/footer.comp.ts');
+var home_comp_1 = require('./home/home.comp.ts');
+var post_list_comp_1 = require('./post/post-list.comp.ts');
+var post_item_comp_1 = require('./post/post-item.comp.ts');
+var post_detail_comp_1 = require('./post/post-detail.comp.ts');
+var about_comp_1 = require('./pages/about.comp.ts');
+var post_service_1 = require('./services/post.service.ts');
+var contact_comp_1 = require('./pages/contact.comp.ts');
+var app_routing_module_1 = require('./app-routing.module.ts');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -44,7 +44,7 @@ var AppModule = (function () {
             ],
             providers: [post_service_1.PostService],
             bootstrap: [app_component_1.AppComponent]
-        }), 
+        }),
         __metadata('design:paramtypes', [])
     ], AppModule);
     return AppModule;

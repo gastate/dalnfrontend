@@ -6,9 +6,9 @@ import { Location }                 from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
-  moduleId: module.id,
+  // moduleId: module.id,
   selector: 'post-detail',
-  templateUrl: './post-detail.html'
+  templateUrl: 'post-detail.html'
 })
 
 export class PostDetailComponent implements OnInit{
