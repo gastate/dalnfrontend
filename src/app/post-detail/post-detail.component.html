@@ -1,0 +1,179 @@
+<div class="container" *ngIf="postDetail">
+  <button (click)="goBack()">Back</button>
+
+  <section>
+
+
+    <div class="row">
+      <!-- Project info
+      ================================================== -->
+
+
+      <div class="span4">
+
+        <!-- Use the ul class. -->
+        <ul class="nav nav-list">
+          <li>
+            <h3>{{postDetail.title}}</h3>
+            <p>{{postDetail.description}}</p>
+          <li>
+            <h3>Date Submitted</h3>
+            <p>{{postDetail.dateCreated}}</p>
+          </li>
+          <li>
+            <h3>Author</h3>
+            <p *ngFor="let author of postDetail.contributorAuthor">{{author}}</p>
+          </li>
+
+        </ul>
+
+        <br/>
+
+        <ul class="nav nav-list">
+          <li>
+            <h3>Collections</h3>
+            <p>All literacy narratives that are not part of a topical collection.</p>
+          </li>
+          <li>
+            <h3>Tags/Subjects</h3>
+            <span class="label label-info">Reading</span>
+            <span class="label label-success">Video Games</span>
+          </li>
+
+        </ul>
+
+        <br/>
+
+        <ul class="nav nav-list">
+          <li>
+            <h3>Description</h3>
+            <p>{{postDetail.description}}</p>
+          </li>
+        </ul>
+
+        <br/>
+        <ul class="nav nav-list">
+          <li>
+            <h3>Media List</h3>
+          </li>
+          <ul *ngFor="let asset of postDetail.assetList">
+            <li>
+
+              <!-- Change event to be click event that changes player embed link -->
+              <a href="{{asset.assetLocation}}">
+                <h3>{{asset.assettitle}}</h3>
+                <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
+              </a>
+            </li>
+          </ul>
+        </ul>
+
+
+        <!-- Idea from here: http://commkit.gsu.edu/shortcodes/ -->
+        <!-- Needs work -->
+        <!-- TODO: Add CSS class; REMOVE style tags-->
+
+        <div class="details" id="detail-drop" style="margin-bottom:35px;">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                Detailed Record
+              </a>
+            </div>
+            <div id="collapseOne" class="accordion-body in collapse" style="height: auto;">
+              <div class="span4">
+                <div class="accordion-inner">
+                  <a href="http://commkit.gsu.edu/shortcodes/" target="_blank">Idea</a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <!-- Video
+      ================================================== -->
+      <div class="row">
+
+        <!-- TODO: Remove style tag -->
+        <!-- social begin here -->
+        <ul class="socicon right" style="margin-bottom:10px;">
+          <li>
+            <a href="#" class="share-icon">
+            </a>
+          </li>
+          <li>
+            <a href="#" class="google">
+            </a>
+          </li>
+          <li>
+            <a href="#" class="facebook">
+            </a>
+          </li>
+          <li>
+            <a href="#" class="twitter">
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flickr">
+            </a>
+          </li>
+          <li>
+            <a href="#" class="dribbble">
+            </a>
+          </li>
+          <li>
+            <a href="#" class="linkedin">
+            </a>
+          </li>
+          <li class="last">
+            <a href="#" class="vimeo">
+            </a>
+          </li>
+
+        </ul>
+
+
+        <div class="span8">
+
+          <!-- SoundCloud -->
+          <iframe id="sc-widget" width="100%" height="166" scrolling="no"
+                  src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/user-15072191/tracks"></iframe>
+
+
+        </div>
+
+        <!-- Sprout Video -->
+        <div class="span8" style="margin-top:20px;">
+
+          <!-- Would like to see stylized player, TODO: Mess with CSS for stylized player. -->
+
+
+          <!-- Adding just an s after http serves content over https for AWS.
+          Tested only in v1 of Sprout API, subject to change. -->
+          <iframe class='sproutvideo-player' type='text/html'
+                  src='https://videos.sproutvideo.com/embed/489bd0bc1c19e5c1c0/73e914bfc0b44c51' width='768'
+                  height='432'></iframe>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+  <div class="divider"></div>
+
+</div><!-- /container -->
+<daln-footer></daln-footer>
+
+
+
