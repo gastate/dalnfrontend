@@ -1,15 +1,14 @@
-import { browser, element, by } from 'protractor';
+import {DALNWEBCLIPage} from './app.po';
 
-describe('QuickStart E2E Tests', function () {
+describe('daln-web-cli App', function () {
+  let page: DALNWEBCLIPage;
 
-  let expectedMsg = 'Hello Angular';
-
-  beforeEach(function () {
-    browser.get('');
+  beforeEach(() => {
+    page = new DALNWEBCLIPage();
   });
 
-  it('should display: ' + expectedMsg, function () {
-    expect(element(by.css('h1')).getText()).toEqual(expectedMsg);
+  it('should display message saying app works', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toEqual('app works!');
   });
-
 });

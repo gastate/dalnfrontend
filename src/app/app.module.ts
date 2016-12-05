@@ -1,38 +1,40 @@
-
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 
-import { AppComponent }  from './app.component';
-import {FooterComponent}  from './footer/footer.comp';
-import {HomeComponent} from './home/home.comp';
-import {PostListComponent} from './post/post-list.comp';
-import {PostItemComponent} from './post/post-item.comp';
-import {PostDetailComponent} from './post/post-detail.comp';
-import {AboutComponent} from './pages/about.comp';
+import {AppComponent} from './app.component';
+import {AppFooterComponent} from './app-footer/app-footer.component';
+import {HomeComponent} from './home/home.component';
+import {PostListComponent} from './post-list/post-list.component';
+import {PostItemComponent} from './post-item/post-item.component';
+import {PostDetailComponent} from './post-detail/post-detail.component';
+import {AboutComponent} from './about/about.component';
+import {ContactComponent} from './contact/contact.component';
 import {PostService} from './services/post.service';
-import {ContactComponent} from './pages/contact.comp';
 import {AppRoutingModule}     from './app-routing.module';
 
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    HttpModule,
-    AppRoutingModule,
-    JsonpModule
-  ],
   declarations: [
     AppComponent,
-    FooterComponent,
     HomeComponent,
     PostListComponent,
     PostItemComponent,
-    PostDetailComponent,
+    AppFooterComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    PostDetailComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    JsonpModule,
+    AppRoutingModule
   ],
   providers: [PostService],
-  bootstrap:    [ AppComponent ]
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
