@@ -819,7 +819,7 @@ h6 {
   *background-color: #bbbbbb;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   font-family: museo-slab, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333333;
   margin-top: 15px;
@@ -874,7 +874,7 @@ h6 {
   *background-color: #c49c38;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   *background-color: #e7d785;
   color: #333333;
   text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.25);
@@ -931,7 +931,7 @@ h6 {
   *background-color: #ffffff;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 #social-buttons .count.btn:hover,
 #social-buttons .count.btn:active,

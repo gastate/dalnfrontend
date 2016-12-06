@@ -27,10 +27,10 @@ body {
   float: right;
   font-weight: bold;
   color: #000;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
   -webkit-transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
 }
 .navbar-fixed-top .brand:hover {
   text-decoration: none;
@@ -47,10 +47,10 @@ section {
 hr.soften {
   height: 1px;
   margin: 54px 0;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
-  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   border: 0;
 }
 
@@ -77,8 +77,8 @@ hr.soften {
   padding: 14px 24px;
   margin-right: 10px;
   -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
 }
 .jumbotron .btn-large small {
   font-size: 14px;
@@ -122,29 +122,29 @@ hr.soften {
   background-color: #eeeeee; /* Old browsers */
   background-repeat: repeat-x; /* Repeat the gradient */
   background-image: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* FF3.6+ */
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee)); /* Chrome,Safari4+ */
-  background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* Chrome 10+,Safari 5.1+ */
-  background-image: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* IE10+ */
-  background-image: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* Opera 11.10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0); /* IE6-9 */
-  background-image: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* W3C */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+  background-image: -webkit-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Chrome 10+,Safari 5.1+ */
+  background-image: -ms-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* IE10+ */
+  background-image: -o-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Opera 11.10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+  background-image: linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* W3C */
   border: 1px solid #e5e5e5;
   -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
 }
 .subnav .nav {
   margin-bottom: 0;
 }
 .subnav .nav > li > a {
   margin: 0;
-  padding-top: 11px;
+  padding-top:    11px;
   padding-bottom: 11px;
   border-left: 1px solid #f5f5f5;
   border-right: 1px solid #e5e5e5;
   -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
 }
 .subnav .nav > .active > a,
 .subnav .nav > .active > a:hover {
@@ -153,9 +153,9 @@ hr.soften {
   background-color: #e9e9e9;
   border-right-color: #ddd;
   border-left: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .05);
-  -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .05);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .05);
+  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+          box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
 }
 .subnav .nav > .active > a .caret,
 .subnav .nav > .active > a:hover .caret {
@@ -166,16 +166,16 @@ hr.soften {
   border-left: 0;
   padding-left: 12px;
   -webkit-border-radius: 4px 0 0 4px;
-  -moz-border-radius: 4px 0 0 4px;
-  border-radius: 4px 0 0 4px;
+     -moz-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px;
 }
 .subnav .nav > li:last-child > a {
   border-right: 0;
 }
 .subnav .dropdown-menu {
   -webkit-border-radius: 0 0 4px 4px;
-  -moz-border-radius: 0 0 4px 4px;
-  border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
 }
 
 /* Fixed subnav on scroll, but only for 980px and up (sorry IE!) */
@@ -189,11 +189,11 @@ hr.soften {
     border-color: #d5d5d5;
     border-width: 0 0 1px; /* drop the border on the fixed edges */
     -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0, 0, 0, .1);
-    -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0, 0, 0, .1);
-    box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0, 0, 0, .1);
+       -moz-border-radius: 0;
+            border-radius: 0;
+    -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+       -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+            box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
   }
   .subnav-fixed .nav {
@@ -204,8 +204,8 @@ hr.soften {
   .subnav .nav > li:first-child > a,
   .subnav .nav > li:first-child > a:hover {
     -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
   }
 }
 
@@ -270,6 +270,8 @@ hr.soften {
   margin: 4px 5px 0 0;
 }
 
+
+
 /* Footer
 -------------------------------------------------- */
 .footer {
@@ -282,6 +284,8 @@ hr.soften {
   color: #555;
 }
 
+
+
 /* Special grid styles
 -------------------------------------------------- */
 .show-grid {
@@ -292,8 +296,8 @@ hr.soften {
   background-color: #eee;
   text-align: center;
   -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
   min-height: 30px;
   line-height: 30px;
 }
@@ -314,11 +318,11 @@ hr.soften {
 .mini-layout {
   border: 1px solid #ddd;
   -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+          box-shadow: 0 1px 2px rgba(0,0,0,.075);
 }
 .mini-layout {
   height: 240px;
@@ -327,8 +331,8 @@ hr.soften {
 }
 .mini-layout div {
   -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
 }
 .mini-layout .mini-layout-body {
   background-color: #dceaf4;
@@ -411,8 +415,8 @@ hr.soften {
   color: #555;
   background-color: #f9f9f9;
   -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
   cursor: pointer;
 }
 .download .checkbox:hover {
@@ -455,9 +459,11 @@ hr.soften {
   line-height: 1;
   text-align: center;
   -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
 }
+
+
 
 /* Color swatches on LESS docs page
 -------------------------------------------------- */
@@ -472,8 +478,8 @@ hr.soften {
   height: 20px;
   margin: -6px 0;
   -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
 }
 /* For white swatches, give a border */
 .swatch-bordered {
@@ -481,6 +487,7 @@ hr.soften {
   height: 18px;
   border: 1px solid #eee;
 }
+
 
 /* Misc
 -------------------------------------------------- */
@@ -525,10 +532,10 @@ form.well {
 
 /* Fake the :focus state to demo it */
 .focused {
-  border-color: rgba(82, 168, 236, .8);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1), 0 0 8px rgba(82, 168, 236, .6);
-  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1), 0 0 8px rgba(82, 168, 236, .6);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1), 0 0 8px rgba(82, 168, 236, .6);
+  border-color: rgba(82,168,236,.8);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+     -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+          box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
   outline: 0;
 }
 
@@ -546,7 +553,7 @@ form.well {
   list-style: none;
 }
 .the-icons i:hover {
-  background-color: rgba(255, 0, 0, .25);
+  background-color: rgba(255,0,0,.25);
 }
 
 /* Eaxmples page
@@ -598,27 +605,28 @@ form.well {
   text-align: center;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
 }
 .responsive-utilities-test li + li {
   margin-left: 10px;
 }
 .responsive-utilities-test span {
   position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
+  top:    -1px;
+  left:   -1px;
+  right:  -1px;
   bottom: -1px;
   -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
 }
 .responsive-utilities-test span {
   color: #468847;
   background-color: #dff0d8;
   border: 1px solid #d6e9c6;
 }
+
 
 /* Responsive Docs
 -------------------------------------------------- */
@@ -709,6 +717,7 @@ form.well {
 
 }
 
+
 @media (max-width: 768px) {
 
   /* Remove any padding from the body */
@@ -730,8 +739,8 @@ form.well {
     height: auto;
     background: #fff; /* whole background property since we use a background-image for gradient */
     -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
   }
   .subnav .nav > li {
     float: none;
@@ -744,9 +753,9 @@ form.well {
   }
   .subnav .nav > li:first-child > a,
   .subnav .nav > li:first-child > a:hover {
-    -webkit-border-radius: 4px 4px 0 0;
-    -moz-border-radius: 4px 4px 0 0;
-    border-radius: 4px 4px 0 0;
+      -webkit-border-radius: 4px 4px 0 0;
+         -moz-border-radius: 4px 4px 0 0;
+              border-radius: 4px 4px 0 0;
   }
 
   /* Popovers */
@@ -772,6 +781,7 @@ form.well {
 
 }
 
+
 @media (min-width: 480px) and (max-width: 768px) {
 
   /* Scale down the jumbotron content */
@@ -784,6 +794,7 @@ form.well {
   }
 
 }
+
 
 @media (min-width: 768px) and (max-width: 980px) {
 
@@ -798,6 +809,7 @@ form.well {
   }
 
 }
+
 
 @media (max-width: 980px) {
 
@@ -816,6 +828,7 @@ form.well {
   }
 
 }
+
 
 /* LARGE DESKTOP SCREENS */
 @media (min-width: 1210px) {
