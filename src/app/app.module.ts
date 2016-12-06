@@ -2,6 +2,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
+//prevent 404 on refresh in s3
+//See http://stackoverflow.com/questions/35284988/angular-2-404-error-occur-when-i-refresh-through-browser
+import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import {AppComponent} from './app.component';
 import {AppFooterComponent} from './app-footer/app-footer.component';
@@ -33,7 +36,7 @@ import {AppRoutingModule}     from './app-routing.module';
     JsonpModule,
     AppRoutingModule
   ],
-  providers: [PostService],
+  providers: [PostService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
