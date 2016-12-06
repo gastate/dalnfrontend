@@ -750,7 +750,7 @@
           that.$element.one($.support.transition.end, function () {
             that.$element.trigger('shown')
           }) :
-          that.$element.trigger('shown')
+            that.$element.trigger('shown')
 
       })
     }

@@ -1,6 +1,7 @@
 jQuery.support.cors = true;
 
 
+
 // TODO: Write pre and post conditions as well as invariants.
 
 /**
@@ -374,6 +375,7 @@ jQuery(document).ready(function ($) {
       });
 
     }
+
 
 
     var listConfirm = getPosts().done(listPosts);

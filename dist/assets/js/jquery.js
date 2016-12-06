@@ -6160,7 +6160,6 @@
       elem.defaultChecked = elem.checked;
     }
   }
-
 // Finds all inputs and passes them to fixDefaultChecked
   function findInputs(elem) {
     var nodeName = ( elem.nodeName || "" ).toLowerCase();

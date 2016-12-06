@@ -28,7 +28,6 @@
   overflow: hidden;
   z-index: 1000;
 }
-
 .mejs-container-fullscreen .mejs-mediaelement,
 .mejs-container-fullscreen video {
   width: 100%;
@@ -41,7 +40,6 @@
   top: 0;
   left: 0;
 }
-
 .mejs-mediaelement {
   position: absolute;
   top: 0;
@@ -49,30 +47,25 @@
   width: 100%;
   height: 100%;
 }
-
 .mejs-poster {
   position: absolute;
   top: 0;
   left: 0;
 }
-
 .mejs-poster img {
   border: 0;
   padding: 0;
   border: 0;
   display: block;
 }
-
 .mejs-overlay {
   position: absolute;
   top: 0;
   left: 0;
 }
-
 .mejs-overlay-play {
   cursor: pointer;
 }
-
 .mejs-overlay-button {
   position: absolute;
   top: 50%;
@@ -86,7 +79,6 @@
 .mejs-overlay:hover .mejs-overlay-button {
   background-position: 0 -100px;
 }
-
 .mejs-overlay-loading {
   position: absolute;
   top: 50%;
@@ -104,7 +96,6 @@
   background: -ms-linear-gradient(top, rgba(50, 50, 50, 0.9), rgba(0, 0, 0, 0.9));
   background: linear-gradient(rgba(50, 50, 50, 0.9), rgba(0, 0, 0, 0.9));
 }
-
 .mejs-overlay-loading span {
   display: block;
   width: 80px;
@@ -184,7 +175,6 @@
   text-align: center;
   padding: auto 4px;
 }
-
 .mejs-container .mejs-controls .mejs-time span {
   font-size: 11px;
   color: #fff;
@@ -194,25 +184,23 @@
   margin: 1px 2px 0 0;
   width: auto;
 }
-
 /* End: Time (current / duration) */
+
 
 /* Start: Play/pause */
 .mejs-controls .mejs-play button {
   background-position: 0 0;
 }
-
 .mejs-controls .mejs-pause button {
   background-position: 0 -16px;
 }
-
 /* End: Play/pause */
+
 
 /* Stop */
 .mejs-controls .mejs-stop button {
   background-position: -112px 0;
 }
-
 /* End: Play/pause */
 
 /* Start: Progress bar */
@@ -220,7 +208,6 @@
   width: 200px;
   padding-top: 5px;
 }
-
 .mejs-controls .mejs-time-rail span {
   display: block;
   position: absolute;
@@ -231,7 +218,6 @@
   border-radius: 2px;
   cursor: pointer;
 }
-
 .mejs-controls .mejs-time-rail .mejs-time-total {
   margin: 5px;
   background: #333;
@@ -243,7 +229,6 @@
   background: -ms-linear-gradient(top, rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
   background: linear-gradient(rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
 }
-
 .mejs-controls .mejs-time-rail .mejs-time-loaded {
   background: #3caac8;
   background: rgba(60, 170, 200, 0.8);
@@ -255,7 +240,6 @@
   background: linear-gradient(rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
   width: 0;
 }
-
 .mejs-controls .mejs-time-rail .mejs-time-current {
   width: 0;
   background: #fff;
@@ -303,7 +287,6 @@
   text-align: center;
   left: 0;
 }
-
 .mejs-controls .mejs-time-rail .mejs-time-float-corner {
   position: absolute;
   display: block;
@@ -331,12 +314,11 @@
 .mejs-controls .mejs-fullscreen-button button {
   background-position: -32px 0;
 }
-
 .mejs-controls .mejs-unfullscreen button {
   background-position: -32px -16px;
 }
-
 /* End: Fullscreen */
+
 
 /* Start: Mute/Volume */
 .mejs-controls .mejs-volume-button {
@@ -369,13 +351,11 @@
   position: absolute;
   margin: 0;
 }
-
 .mejs-controls .mejs-volume-button:hover {
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
 }
-
 /*
 .mejs-controls .mejs-volume-button:hover .mejs-volume-slider {
 	display: block;
@@ -418,6 +398,7 @@
   border-radius: 1px;
   margin: 0;
 }
+
 
 /* horizontal version */
 
@@ -477,6 +458,7 @@
 
 }
 
+
 .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
   display: none;
 }
@@ -491,7 +473,6 @@
 .mejs-controls .mejs-captions-button button {
   background-position: -48px 0;
 }
-
 .mejs-controls .mejs-captions-button .mejs-captions-selector {
   visibility: hidden;
   position: absolute;
@@ -508,7 +489,6 @@
   -moz-border-radius: 0;
   border-radius: 0;
 }
-
 /*
 .mejs-controls .mejs-captions-button:hover  .mejs-captions-selector {
 	visibility: visible;
@@ -552,6 +532,7 @@
   margin: 0 0 5px 0;
 }
 
+
 .mejs-chapters {
   position: absolute;
   top: 0;
@@ -559,7 +540,6 @@
   -xborder-right: solid 1px #fff;
   width: 10000px;
 }
-
 .mejs-chapters .mejs-chapter {
   position: absolute;
   float: left;
@@ -575,7 +555,6 @@
   overflow: hidden;
   border: 0;
 }
-
 .mejs-chapters .mejs-chapter .mejs-chapter-block {
   font-size: 11px;
   color: #fff;
@@ -585,7 +564,6 @@
   border-bottom: solid 1px #333;
   cursor: pointer;
 }
-
 .mejs-chapters .mejs-chapter .mejs-chapter-block-last {
   border-right: none;
 }
@@ -622,6 +600,7 @@
   text-overflow: ellipsis;
 }
 
+
 .mejs-captions-layer {
   position: absolute;
   bottom: 0;
@@ -637,7 +616,6 @@
   color: #fff;
   text-decoration: underline;
 }
-
 .mejs-captions-layer[lang=ar] {
   font-size: 20px;
   font-weight: normal;
@@ -660,7 +638,6 @@
   background: rgba(20, 20, 20, 0.8);
 
 }
-
 /* End: TRACK (Captions and Chapters) */
 
 .mejs-clear {
@@ -670,47 +647,42 @@
 /* Start: ERROR */
 .me-cannotplay {
 }
-
 .me-cannotplay a {
   color: #fff;
   font-weight: bold;
 }
-
 .me-cannotplay span {
   padding: 15px;
   display: block;
 }
-
 /* End: ERROR */
+
 
 /* Start: Loop */
 .mejs-controls .mejs-loop-off button {
   background-position: -64px -16px;
 }
-
 .mejs-controls .mejs-loop-on button {
   background-position: -64px 0;
 }
-
 /* End: Loop */
 
 /* Start: backlight */
 .mejs-controls .mejs-backlight-off button {
   background-position: -80px -16px;
 }
-
 .mejs-controls .mejs-backlight-on button {
   background-position: -80px 0;
 }
-
 /* End: backlight */
+
 
 /* Start: picture controls */
 .mejs-controls .mejs-picturecontrols-button {
   background-position: -96px 0;
 }
-
 /* End: picture controls */
+
 
 /* context menu */
 .mejs-contextmenu {
@@ -724,7 +696,6 @@
   border: solid 1px #999;
   z-index: 1001; /* make sure it shows on fullscreen */
 }
-
 .mejs-contextmenu .mejs-contextmenu-separator {
   height: 1px;
   font-size: 0;
@@ -739,7 +710,6 @@
   cursor: pointer;
   color: #333;
 }
-
 .mejs-contextmenu .mejs-contextmenu-item:hover {
   background: #2C7C91;
   color: #fff;
@@ -753,7 +723,6 @@
 .mejs-controls .mejs-sourcechooser-button button {
   background-position: -128px 0;
 }
-
 .mejs-controls .mejs-sourcechooser-button .mejs-sourcechooser-selector {
   visibility: hidden;
   position: absolute;
@@ -802,5 +771,4 @@
   font-family: helvetica, arial;
   font-size: 10px;
 }
-
 /* End: SourceChooser */
