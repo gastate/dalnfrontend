@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {PostService} from '../services/post.service';
 import {Post} from '../model/post-model';
 import {ActivatedRoute, Params}   from '@angular/router';
@@ -25,18 +25,20 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this._route.params.switchMap(
       (params: Params) => this._postService.getPostById(params['id']))
-      .subscribe((details) => this.postDetail = details);
+      .subscribe((details) => {
+        this.postDetail = details;
+        console.log(details);
+      });
+
   }
 
   goBack(): void {
     this._location.back();
   }
 
-  onSelectedAsset(asset: Asset) : void {
-      this.selectedAsset = asset;
+  onSelectedAsset(asset: Asset): void {
+    this.selectedAsset = asset;
   }
-
-
 
 
 }

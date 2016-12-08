@@ -37,9 +37,10 @@
           <li>
             <h3>Tags/Subjects</h3>
             <ul class="tags-list">
-                <!-- Track elements and limit tags with NgFor and TrackBy -->
-               <li class="tag" *ngFor = "let subject of postDetail.subject"><span class="label label-info">{{subject}}</span></li>
-           </ul>
+              <!-- Track elements and limit tags with NgFor and TrackBy -->
+              <li class="tag" *ngFor="let subject of postDetail.subject"><span
+                class="label label-info">{{subject}}</span></li>
+            </ul>
 
         </ul>
 
@@ -58,21 +59,22 @@
             <h3>Media List</h3>
           </li>
           <ul *ngFor="let asset of postDetail.assetList">
-            <li>
 
+            <li (click)="onSelectedAsset(asset)">
               <!-- Change event to be click event that changes player embed link -->
-              <div (click)="onAssetSelect(asset)" >
-                <h3>{{asset.assettitle}}</h3>
-                <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
-            </div>
+              <h3>{{asset.assettitle}}</h3>
+              <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
+              <app-player *ngIf="selectedAsset" class="" [postAsset]="selectedAsset"></app-player>
+              <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
             </li>
+
           </ul>
         </ul>
 
-        <div class="span8">
-            <app-player class="" [postAsset]="selectedAsset"></app-player>
+        <!--<div class="span8">-->
+        <!--<app-player class="" [postAsset]="selectedAsset"></app-player>-->
 
-        </div>
+        <!--</div>-->
 
 
         <!-- Idea from here: http://commkit.gsu.edu/shortcodes/ -->
@@ -89,9 +91,10 @@
             <div id="collapseOne" class="accordion-body in collapse" style="height: auto;">
               <div class="span4">
                 <div class="accordion-inner">
-                    <!-- TODO: Requires testing -->
+                  <!-- TODO: Requires testing -->
                   <p *ngFor="let author of postDetail.contributorAuthor">{{postDetail.contributorAuthor}}</p>
-                  <p *ngFor="let interview of postDetail.contributorInterviewer">{{postDetail.contributorInterviewer}}</p>
+                  <p *ngFor="let interview of postDetail.contributorInterviewer">
+                    {{postDetail.contributorInterviewer}}</p>
                 </div>
               </div>
             </div>
@@ -143,11 +146,6 @@
           </li>
 
         </ul>
-
-
-
-
-
 
 
       </div>
