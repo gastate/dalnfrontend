@@ -3,6 +3,7 @@ import {PostService} from '../services/post.service';
 import {Post} from '../model/post-model';
 import {ActivatedRoute, Params}   from '@angular/router';
 import {Location}                 from '@angular/common';
+import {Asset} from '../model/asset-model';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -19,7 +20,7 @@ export class PostDetailComponent implements OnInit {
 
   @Input()
   postDetail: Post;
-
+  selectedAsset: Asset;
 
   ngOnInit(): void {
     this._route.params.switchMap(
@@ -30,6 +31,11 @@ export class PostDetailComponent implements OnInit {
   goBack(): void {
     this._location.back();
   }
+
+  onSelectedAsset(asset: Asset) : void {
+      this.selectedAsset = asset;
+  }
+
 
 
 

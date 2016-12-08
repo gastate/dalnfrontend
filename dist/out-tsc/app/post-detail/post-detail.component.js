@@ -27,6 +27,9 @@ var PostDetailComponent = (function () {
     PostDetailComponent.prototype.goBack = function () {
         this._location.back();
     };
+    PostDetailComponent.prototype.onSelectedAsset = function (asset) {
+        this.selectedAsset = asset;
+    };
     return PostDetailComponent;
 }());
 __decorate([

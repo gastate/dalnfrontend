@@ -1,4 +1,6 @@
 # Today's tasks
+
+# Priority
 - get a detail page angular branch
 - start learning Angular 2
     - https://www.lynda.com/AngularJS-tutorials/Creating-simple-component/428058/482937-4.html
@@ -6,6 +8,8 @@
     - https://angular.io/docs/ts/latest/quickstart.html
     - http://dev.venntro.com/2013/09/es6-part-1/
     - https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
+- create a player component for postItem and postDetail.
+
 - cleanup embeds:
     - **WARNING: Hardcoded height at 227px for item spans.**
     - titles for audio assets not working
@@ -13,25 +17,22 @@
     - change the for loop to be configurable in listPosts. Tie to UI.
     - add Shakib's pagination.
 
-## Notes:
-- word wrap on the title
-- Start router with library or jquery update detail by jquery update or routing
+
 
 ## Notes:
-
-
 
 
 
 ## Questions:
 
 Currently:
-    - Its okay with all these ng-X attributes?
-    - No mobile view?
+
 
 Later:     
 
 - Jaro: where to handle pagination? should it be handled frontend or backend? (next 10 posts vs posts and page)
+    - Its okay with all these ng-X attributes?
+    - No mobile view?
     - Also pagination url parameters
     - Also handle exceptions. AWS goes down, shit goes to hell, what do.
 

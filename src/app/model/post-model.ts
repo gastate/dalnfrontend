@@ -17,5 +17,5 @@ export class Post {
   creatorYearOfBirth: string[];
   coveragePeriod: string[];
   subject: string[];
-  assetList: Asset[];
+  assetList: Array<any>;
 }

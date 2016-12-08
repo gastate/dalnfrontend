@@ -1,7 +1,7 @@
 <div id="list-container" *ngIf="postList">
 
   <ul class="thumbnails">
-    <li class="span3 item-block web all" *ngFor="let post of postList" [class.selected]="post === selectedPost">
+    <li class="span3 item-block web all" *ngFor="let post of postList">
       <post-item class="" [postItem]="post"></post-item>
     </li>
   </ul>
