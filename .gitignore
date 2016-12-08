@@ -1,6 +1,6 @@
 
 *.md
-!Notes.md
+--!Notes.md
 node_modules
 .tmp
 npm-debug.log

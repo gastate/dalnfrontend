@@ -64,7 +64,8 @@
               <!-- Change event to be click event that changes player embed link -->
               <h3>{{asset.assettitle}}</h3>
               <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
-              <app-player *ngIf="selectedAsset" class="" [postAsset]="selectedAsset"></app-player>
+              <app-player *ngIf="selectedAsset && selectedAsset.assetType==='Audio/Video'" class=""
+                          [postAsset]="selectedAsset"></app-player>
               <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
             </li>
 
