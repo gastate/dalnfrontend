@@ -31,4 +31,6 @@ export class PostDetailComponent implements OnInit {
     this._location.back();
   }
 
+
+
 }

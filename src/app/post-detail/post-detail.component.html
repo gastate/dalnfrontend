@@ -36,9 +36,10 @@
           </li>
           <li>
             <h3>Tags/Subjects</h3>
-            <span class="label label-info">Reading</span>
-            <span class="label label-success">Video Games</span>
-          </li>
+            <ul class="tags-list">
+                <!-- Track elements and limit tags with NgFor and TrackBy -->
+               <li class="tag" *ngFor = "let subject of postDetail.subject"><span class="label label-info">{{subject}}</span></li>
+           </ul>
 
         </ul>
 
@@ -83,7 +84,11 @@
             <div id="collapseOne" class="accordion-body in collapse" style="height: auto;">
               <div class="span4">
                 <div class="accordion-inner">
-                  <a href="http://commkit.gsu.edu/shortcodes/" target="_blank">Idea</a>
+                    <!-- TODO: Requires testing -->
+                  <p *ngFor="let author of postDetail.contributorAuthor">{{postDetail.contributorAuthor}}</p>
+                  <p>
+                      
+                  </p>
 
                 </div>
               </div>
@@ -174,6 +179,3 @@
 
 </div><!-- /container -->
 <daln-footer></daln-footer>
-
-
-
