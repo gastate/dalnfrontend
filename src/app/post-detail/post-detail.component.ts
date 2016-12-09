@@ -1,8 +1,9 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {PostService} from '../services/post.service';
-import {Post} from '../model/post-model';
 import {ActivatedRoute, Params}   from '@angular/router';
 import {Location}                 from '@angular/common';
+import {PostService} from '../services/post.service';
+import {Post} from '../model/post-model';
+
 import {Asset} from '../model/asset-model';
 import 'rxjs/add/operator/switchMap';
 
@@ -15,7 +16,9 @@ export class PostDetailComponent implements OnInit {
 
   constructor(private _postService: PostService,
               private _route: ActivatedRoute,
-              private _location: Location) {
+              private _location: Location,
+
+          ) {
   }
 
   @Input()

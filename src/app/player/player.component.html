@@ -16,7 +16,7 @@
   <!--&lt;!&ndash; Adding just an s after http serves content over https for AWS.-->
   <!--Tested only in v1 of Sprout API, subject to change. &ndash;&gt;-->
   <iframe class='sproutvideo-player' type='text/html'
-          src='{{postAsset.assetEmbedLink}}' width='768'
+          [src]='sanitizeUrl()' width='768'
           height='432'></iframe>
 </div>
 

@@ -8,10 +8,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component, Input } from '@angular/core';
-import { PostService } from '../services/post.service';
-import { Post } from '../model/post-model';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { PostService } from '../services/post.service';
+import { Post } from '../model/post-model';
 import 'rxjs/add/operator/switchMap';
 var PostDetailComponent = (function () {
     function PostDetailComponent(_postService, _route, _location) {
@@ -22,7 +22,10 @@ var PostDetailComponent = (function () {
     PostDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._route.params.switchMap(function (params) { return _this._postService.getPostById(params['id']); })
-            .subscribe(function (details) { return _this.postDetail = details; });
+            .subscribe(function (details) {
+            _this.postDetail = details;
+            console.log(details);
+        });
     };
     PostDetailComponent.prototype.goBack = function () {
         this._location.back();

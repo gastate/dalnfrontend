@@ -8,30 +8,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component, Input } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { PostService } from '../services/post.service';
 import { Asset } from '../model/asset-model';
-var PlayerComponent = (function () {
-    function PlayerComponent(sanitizer) {
-        this.sanitizer = sanitizer;
+var PlayerComponentComponent = (function () {
+    function PlayerComponentComponent(_postService) {
+        this._postService = _postService;
     }
-    PlayerComponent.prototype.ngOnInit = function () {
+    PlayerComponentComponent.prototype.ngOnInit = function () {
     };
-    PlayerComponent.prototype.sanitizeUrl = function (asset) {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
+    PlayerComponentComponent.prototype.onSelectedAsset = function (asset) {
+        this.selectedAsset = asset;
     };
-    return PlayerComponent;
+    return PlayerComponentComponent;
 }());
 __decorate([
     Input(),
     __metadata("design:type", Asset)
-], PlayerComponent.prototype, "postAsset", void 0);
-PlayerComponent = __decorate([
+], PlayerComponentComponent.prototype, "postAsset", void 0);
+PlayerComponentComponent = __decorate([
     Component({
-        selector: 'app-player',
-        templateUrl: './player.component.html',
-        styleUrls: ['./player.component.css']
+        selector: 'app-player-component',
+        templateUrl: './player-component.component.html',
+        styleUrls: ['./player-component.component.css']
     }),
-    __metadata("design:paramtypes", [DomSanitizer])
-], PlayerComponent);
-export { PlayerComponent };
-//# sourceMappingURL=../../../../src/app/player/player.component.js.map
+    __metadata("design:paramtypes", [PostService])
+], PlayerComponentComponent);
+export { PlayerComponentComponent };
+//# sourceMappingURL=../../../../src/app/player-component/player.component.js.map

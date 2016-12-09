@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 import {Asset} from '../model/asset-model';
 
 @Component({
@@ -9,7 +10,7 @@ import {Asset} from '../model/asset-model';
 
 export class PlayerComponent implements OnInit {
 
-  constructor() {
+  constructor(private sanitizer: DomSanitizer) {
   }
 
   @Input()
@@ -18,6 +19,10 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  sanitizeUrl(asset: Asset) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
   }
 
 }
