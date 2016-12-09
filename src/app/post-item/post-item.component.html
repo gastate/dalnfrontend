@@ -1,0 +1,12 @@
+<div *ngIf="postItem">
+  <a href="#" class="link"></a>
+  <a class="thumbnail" href="#">
+
+    <app-player class=""
+                [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
+  </a>
+  <div class="desc">
+    <a [routerLink]="['/detail', postItem.postId]"> {{postItem.title}} </a>
+    <p><em>{{postItem.description}}</em></p>
+  </div>
+</div>
