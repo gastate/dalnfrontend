@@ -100,6 +100,57 @@ jQuery(document).ready(function($) {
         });
     }
 
+    // function routingConfig() {
+    //
+    //     // /posts/get
+    //     // /posts/create
+    //     // /posts/{postId}
+    //     // /json/posts/all
+    //     // /json/posts/from/{daysAgo}
+    //     // /json/posts/random={size}
+    //     // /json/posts/size={pageSize}page={page}
+    //     // /json/posts/query/title={title}
+    //     // /json/posts/query/date={date}
+    //     // /update
+    //     // /upload
+    //
+    //     page.base('/'); //base url
+    //     page('/', '/post/');
+    //     page('/post/:postId', postHandle);
+    //     page('*', notfound);
+    //     page();
+    //
+    //
+    //     function notfound() {
+    //         // var currentBody = document.getElementById("index");
+    //         // currentBody.
+    //         $("#index").load("detail-page.html #detail");
+    //         document.getElementById("wut").textContent = "not ofund";
+    //     }
+    //
+    //     function postHandle(ctx) {
+    //         var page = ~~ctx.params.page;
+    //         var from = page
+    //     }
+    //
+    //     function adjustPager(page, id) {
+    //           if (page) {
+    //             prev.setAttribute('href', '/post/' + );
+    //           } else {
+    //             prev.style.display = 'none';
+    //           }
+    //
+    //           next.setAttribute('href', '/album/photos/' + (page + 1));
+    //         }
+    //
+    //
+    //
+    // }
+
+
+
+
+
     /***************************
      * Asset Utility functions *
      ***************************/
@@ -299,11 +350,8 @@ jQuery(document).ready(function($) {
                 var author = data.contributorAuthor;
                 var dateCreated = data.dateCreated;
                 var title = data.title;
-                var description = data.description;
-
-                
                 var assetVid = data.assetList[0].assetLocation;
-
+                var description = data.description;
             } catch (e){
                 console.log("PRoblem");
             }
