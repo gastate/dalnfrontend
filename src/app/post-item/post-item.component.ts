@@ -24,23 +24,7 @@ export class PostItemComponent implements OnInit {
   //****************************
 
   getPreview(postAssets: Asset[]): Asset {
-
-    if (postAssets) {
-      let preview: Asset;
-
-      preview = postAssets.find((asset) => asset.assetType === 'Audio/Video');
-      if (preview) {
-        return preview;
-      } else {
-        preview = postAssets.find((asset) => asset.assetType === 'Audio');
-        if (preview) {
-          return preview;
-        } else {
-          return postAssets[0];
-        }
-      }
-    }
-
+    return this._postService.getPreview(postAssets);
   }
 
   onSelect(post: Post): void {

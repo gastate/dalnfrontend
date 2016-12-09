@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Post} from '../model/post-model';
+import {Asset} from '../model/asset-model';
 import {API_ENDPOINTS} from '../dev-config';
 
 //Only used in Mock
@@ -34,6 +35,27 @@ export class PostService {
     //...errors if any
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   }
+
+  getPreview(postAssets: Asset[]): Asset {
+
+    if (postAssets) {
+      let preview: Asset;
+
+      preview = postAssets.find((asset) => asset.assetType === 'Audio/Video');
+      if (preview) {
+        return preview;
+      } else {
+        preview = postAssets.find((asset) => asset.assetType === 'Audio');
+        if (preview) {
+          return preview;
+        } else {
+          return postAssets[0];
+        }
+      }
+    }
+
+  }
+
 
   //Mock Services
   getMockPosts(): Promise<Post[]> {
