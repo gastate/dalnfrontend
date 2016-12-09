@@ -22,7 +22,24 @@ export class PlayerComponent implements OnInit {
   }
 
   sanitizeUrl(asset: Asset) {
-      return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
+      if (this.postAsset.assetType === "Audio/Video"){
+          return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
+      } else if (this.postAsset.assetType === "Audio") {
+          var url = ""; // don't need let function scope. use for concatanating full audio url.
+          var audioID = this.postAsset.assetEmbedLink;
+
+          var pattern = /\d+/g;
+          audioID = pattern.exec(audioID).toString(); // JS to find the audio track ID.
+
+          url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID; // append the ID and query SoundCloud to get player.
+
+
+          // sanitizer takes in a string.
+          return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+
+      } else {
+          return null;
+      }
   }
 
 }

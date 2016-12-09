@@ -64,8 +64,7 @@
               <!-- Change event to be click event that changes player embed link -->
               <h3>{{asset.assettitle}}</h3>
               <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
-              <app-player *ngIf="selectedAsset && selectedAsset.assetType==='Audio/Video'" class=""
-                          [postAsset]="selectedAsset"></app-player>
+
               <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
             </li>
 
@@ -147,15 +146,23 @@
           </li>
 
         </ul>
+        <div class="span8">
+            <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" class=""
+                        [postAsset]="selectedAsset"></app-player>
+
+        </div>
 
 
       </div>
+
 
 
     </div>
 
 
   </section>
+
+
 
 
   <div class="divider"></div>

@@ -1,8 +1,8 @@
 <div *ngIf="postItem">
-  <a href="assets/img/bootstrap-mdo-sfmoma-01.jpg" class="zoom" rel="prettyPhoto" title="{{postItem.title}}"></a>
   <a href="#" class="link"></a>
   <a class="thumbnail" href="#">
     <img src="assets/img/example-sites/example1.jpg" alt="example-item">
+
   </a>
   <div class="desc">
     <a [routerLink]="['/detail', postItem.postId]"> {{postItem.title}} </a>

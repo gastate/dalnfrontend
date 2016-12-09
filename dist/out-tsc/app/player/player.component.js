@@ -17,7 +17,20 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.ngOnInit = function () {
     };
     PlayerComponent.prototype.sanitizeUrl = function (asset) {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
+        if (this.postAsset.assetType === "Audio/Video") {
+            return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
+        }
+        else if (this.postAsset.assetType === "Audio") {
+            var url = "";
+            var audioID = this.postAsset.assetEmbedLink;
+            var pattern = /\d+/g;
+            audioID = pattern.exec(audioID).toString();
+            url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID;
+            return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+        }
+        else {
+            return null;
+        }
     };
     return PlayerComponent;
 }());

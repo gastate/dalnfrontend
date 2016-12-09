@@ -1,18 +1,13 @@
 # Today's tasks
 
 # Priority
-- get a detail page angular branch
 - start learning Angular 2
     - https://www.lynda.com/AngularJS-tutorials/Creating-simple-component/428058/482937-4.html
     - https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
     - https://angular.io/docs/ts/latest/quickstart.html
     - http://dev.venntro.com/2013/09/es6-part-1/
     - https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
-- create a player component for postItem and postDetail.
 
-- cleanup embeds:
-    - **WARNING: Hardcoded height at 227px for item spans.**
-    - titles for audio assets not working
 - add sorting data
     - change the for loop to be configurable in listPosts. Tie to UI.
     - add Shakib's pagination.
@@ -20,12 +15,17 @@
 
 
 ## Notes:
+-  [for docs](http://stackoverflow.com/questions/39393431/how-with-angular2-rc-6-disable-sanitize-on-embed-html-tag-which-display-pdf/39394814#39394814)?
+- [research data binding](http://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html)
 
 
 
 ## Questions:
 
 Currently:
+ - notify Jaro of security issue.
+ - router detects #document as part of routing service
+ - gotta mess with CSS.
 
 
 Later:     

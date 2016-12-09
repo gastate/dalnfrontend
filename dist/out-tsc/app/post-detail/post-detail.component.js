@@ -24,7 +24,6 @@ var PostDetailComponent = (function () {
         this._route.params.switchMap(function (params) { return _this._postService.getPostById(params['id']); })
             .subscribe(function (details) {
             _this.postDetail = details;
-            console.log(details);
         });
     };
     PostDetailComponent.prototype.goBack = function () {
