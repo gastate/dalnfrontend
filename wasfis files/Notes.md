@@ -2,10 +2,9 @@
 
 # Priority
 - start learning Angular 2
-    - https://www.lynda.com/AngularJS-tutorials/Creating-simple-component/428058/482937-4.html
-    - https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
-    - https://angular.io/docs/ts/latest/quickstart.html
-    - http://dev.venntro.com/2013/09/es6-part-1/
+
+
+    -
     - https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
 
 - add sorting data
@@ -15,10 +14,23 @@
 
 
 ## Notes:
--  [for docs](http://stackoverflow.com/questions/39393431/how-with-angular2-rc-6-disable-sanitize-on-embed-html-tag-which-display-pdf/39394814#39394814)?
+
+
+
+### Research:
+**Other**
+-  [for docs](http://stackoverflow.com/questions/39393431/how-with-angular2-rc-6-disable-sanitize-on-embed-html-tag-which-display-pdf/39394814#39394814)
 - [research data binding](http://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html)
 
+**Auth**
+- [sign-in component](https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/)
+- [auth](https://auth0.com/authenticate/angular2/oauth2)
+- [auth](https://auth0.com/docs/quickstart/spa/angular2)
+- [auth basics](https://aaronparecki.com/2012/07/29/2/oauth2-simplified)
 
+**Social**
+- [twitter](https://dev.twitter.com/web/tweet-button)
+- [facebook](https://developers.facebook.com/docs/plugins/like-button)
 
 ## Questions:
 
