@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Post} from '../model/post-model';
 import {Asset} from '../model/asset-model';
-import {API_ENDPOINTS} from '../dev-config';
+import {environment} from '../../environments/environment'
 
 //Only used in Mock
 import 'rxjs/add/operator/toPromise';
@@ -19,7 +19,7 @@ export class PostService {
   constructor(private _http: Http) {
   }
 
-  private endPoint = API_ENDPOINTS;
+  private endPoint = environment.API_ENDPOINTS;
 
   getAllPosts(): Observable<Post[]> {
 
