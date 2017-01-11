@@ -1,9 +1,5 @@
 @charset "utf-8";
-/* CSS Document */
-/* This is the only CSS document that should be edited. Follow these rules:
-    - DO write comments and provide explanation for why you did what you did.
-    - DO NOT mess up the responsiveness.
-*/
+
 
 @font-face {
   font-family: 'FontAwesome';
@@ -1913,4 +1909,3 @@ nav select {
 /* LARGE DESKTOP SCREENS */
 @media (min-width: 1210px) {
 }
-

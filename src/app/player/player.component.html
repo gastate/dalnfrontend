@@ -1,26 +1,25 @@
 <!--&lt;!&ndash; SoundCloud &ndash;&gt;-->
 <div *ngIf="postAsset">
 
+  <div *ngIf="noAsset === true">
+     <img src="assets/img/example-sites/example1.jpg" alt="example-item">
+  </div>
+
   <div *ngIf="postAsset.assetType==='Audio'">
-    <iframe id="sc-widget" width="100%" height="166" scrolling="no"
+    <iframe id="sc-widget" scrolling="no"
             [src]="sanitizeUrl()"></iframe>
   </div>
 
-  <!-- Sprout Video -->
-  <!--&lt;!&ndash; Would like to see stylized player, TODO: Mess with CSS for stylized player. &ndash;&gt;-->
-
-
-  <!--&lt;!&ndash; Adding just an s after http serves content over https for AWS.-->
-  <!--Tested only in v1 of Sprout API, subject to change. &ndash;&gt;-->
   <div *ngIf="postAsset.assetType === 'Audio/Video'">
     <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
-            [src]='sanitizeUrl()' width='768'
-            height='432'></iframe>
+            [src]='sanitizeUrl()'></iframe>
     <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html'
-            [src]='sanitizeUrl()' width="100%" height="166"></iframe>
+            [src]='sanitizeUrl()'></iframe>
   </div>
 
-  <div *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType!=='Audio'">
+  <div *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio'">
     <img src="assets/img/example-sites/example1.jpg" alt="example-item">
   </div>
+
+
 </div>

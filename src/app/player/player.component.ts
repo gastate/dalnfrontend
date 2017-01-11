@@ -1,6 +1,8 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Asset} from '../model/asset-model';
+import {Post} from '../model/post-model';
+
 
 @Component({
   selector: 'app-player',
@@ -15,18 +17,30 @@ export class PlayerComponent implements OnInit {
 
   @Input()
   postAsset: Asset;
+  postCheck: Post;
 
   @Input()
   thumb: boolean;
+  noAsset: boolean;
 
 
   ngOnInit(): void {
 
   }
 
+  checkAssetList(post: Post): void {
+      
+      if (this.postCheck.hasOwnProperty('assetList') === false) {
+         this.noAsset = true;
+      }
+
+  }
+
   sanitizeUrl(asset: Asset) {
+
     if (this.postAsset.assetType === "Audio/Video") {
       return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
+
     } else if (this.postAsset.assetType === "Audio") {
       var url = ""; // don't need let function scope. use for concatanating full audio url.
       var audioID = this.postAsset.assetEmbedLink;
@@ -36,11 +50,11 @@ export class PlayerComponent implements OnInit {
 
       url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID; // append the ID and query SoundCloud to get player.
 
-
       // sanitizer takes in a string.
       return this.sanitizer.bypassSecurityTrustResourceUrl(url);
 
     } else {
+
       return null;
     }
   }
