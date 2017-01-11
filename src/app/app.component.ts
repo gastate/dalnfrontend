@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
   selector: 'daln-app',
   template: `
   <h1>{{title}}</h1>
-    
+
 
     <!-- Logo / Menu
 ================================================== -->
@@ -14,12 +14,13 @@ import {Component} from '@angular/core';
       <div class="span4"> <a href="index.html" class="logo"> <img src="assets/img/header.jpg" alt=""> </a> </div>
       <div class="span8">
         <nav>
-                <ul class="right">
-                    <li class="current"> <a routerLink="/home"> home </a>
+                <ul class="right" id="main-menu">
+                    <li> <a routerLink="/home"> home </a>
                     <li> <a routerLink="/about"> about </a> </li>
                     <li> <a routerLink="/contact"> contact </a> </li>
                     <li> <a routerLink="/#"> login </a> </li>
                     <li> <a routerLink="/create"> submit a literacy narrative </a> </li>
+                    <li class="icon"> <a href="javascript:void(0);" style="font-size:15px;">☰</a> </li>
                 </ul>
         </nav>
       </div>
@@ -28,7 +29,7 @@ import {Component} from '@angular/core';
 </header>
 
     <router-outlet>
-    
+
 `
 })
 
