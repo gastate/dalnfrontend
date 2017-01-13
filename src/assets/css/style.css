@@ -1888,7 +1888,9 @@ nav select {
   display: inline-block;
 }
 
-.right li a:hover {color: #fefefe; background-color: #262626;  }
+.right li a:hover {color: #fefefe; background-color: #262626;}
+#header-wrap { position: relative;}
+#header-wrap img {width: 22%; height: auto; margin: 3px; }
 
 @media (max-width: 480px) {
     .right {float: none;}
@@ -1905,10 +1907,12 @@ nav select {
         display: inline;
     }
     li.span3.item-block.web.all {
-        
+
     }
+    #header-wrap img {display: block; margin: 0 auto;}
 
 }
+
 
 
 @media (max-width: 768px) {

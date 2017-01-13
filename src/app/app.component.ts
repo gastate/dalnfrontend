@@ -11,7 +11,7 @@ import {Component} from '@angular/core';
 <header class="header">
   <div class="container">
     <div class="row">
-      <div class="span4"> <a href="index.html" class="logo"> <img src="assets/img/header.jpg" alt=""> </a> </div>
+      <div class="span4"> <div id="header-wrap"> <a href="index.html" class="logo"> <img src="assets/img/logodraft1.png" alt=""> </a> </div> </div>
       <div class="span8">
         <nav>
                 <ul class="right" id="main-menu">
