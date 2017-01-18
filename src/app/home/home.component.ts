@@ -36,10 +36,10 @@ export class HomeComponent implements OnInit {
       });
   }
 
-//Mock Data method
-  getMockPosts(): void {
-    this._postService.getMockPosts().then((data) => this.posts = data);
-  }
+// //Mock Data method
+//   getMockPosts(): void {
+//     this._postService.getMockPosts().then((data) => this.posts = data);
+//   }
 
 
 }

@@ -17,6 +17,7 @@ import {Component} from '@angular/core';
                 <ul class="right" id="main-menu">
                     <li> <a routerLink="/home"> home </a>
                     <li> <a routerLink="/about"> about </a> </li>
+                    <li> <a href="https://thedaln.wordpress.com/"> DALN Blog </a> </li>
                     <li> <a routerLink="/contact"> contact </a> </li>
                     <li> <a routerLink="/#"> login </a> </li>
                     <li> <a routerLink="/create"> submit a literacy narrative </a> </li>
