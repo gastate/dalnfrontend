@@ -852,9 +852,9 @@ a.thumbnail:hover {
 }
 
 .item-block .desc {
-  padding: 20px 0;
+  padding: 10px 0;
   text-align: center;
-  border-bottom: 1px #e3e3e8 solid;
+  /*border-bottom: 1px #e3e3e8 solid;*/
   font-family: 'PT Sans', sans-serif;
 }
 
@@ -1891,6 +1891,14 @@ nav select {
 .right li a:hover {color: #fefefe; background-color: #262626;}
 #header-wrap { position: relative;}
 #header-wrap img {width: 22%; height: auto; margin: 3px; }
+.thumbnails {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.thumbnails > li {
+    height: 275px;
+}
+
 
 @media (max-width: 480px) {
     .right {float: none;}
