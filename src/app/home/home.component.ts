@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAllPosts(): void {
+
     this._postService.getAllPosts().subscribe(
       (data) => this.posts = data, //Bind to view
       err => {
@@ -35,11 +36,12 @@ export class HomeComponent implements OnInit {
         console.log(err);
       });
 
+
     //   this._postService.getPostPage(10, 1).subscribe(
     //     (data) => {
     //         let IDs : string [] = []; // to hold string IDs
     //         let hold_posts : Post[] = []; // to hold final data for this.posts.
-      //
+    //
     //         // iterate over each postId and
     //         for(var x = 0; x < data.length; x++) {
     //             var data_object = data[x];
@@ -48,14 +50,13 @@ export class HomeComponent implements OnInit {
     //             this._postService.getPostById(IDs[x]).subscribe();
     //             console.log(hold_posts);
     //         }
-      //
-      //
+    //
+    //
     //     }, //Bind to view
     //     err => {
     //       // Log errors if any
     //       console.log(err);
     //     });
-  }
 
 // //Mock Data method
 //   getMockPosts(): void {
@@ -63,4 +64,5 @@ export class HomeComponent implements OnInit {
 //   }
 
 
+    }
 }

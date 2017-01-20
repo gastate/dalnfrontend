@@ -17,6 +17,7 @@ import {ContactComponent} from './contact/contact.component';
 import {PostService} from './services/post.service';
 import {AppRoutingModule}     from './app-routing.module';
 import {PlayerComponent} from './player/player.component';
+import { SearchComponentComponent } from './search-component/search-component.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {PlayerComponent} from './player/player.component';
     AboutComponent,
     ContactComponent,
     PostDetailComponent,
-    PlayerComponent
+    PlayerComponent,
+    SearchComponentComponent
   ],
   imports: [
     BrowserModule,
