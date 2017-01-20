@@ -18,7 +18,7 @@ export class SearchServiceService {
     private endPoint = environment.API_ENDPOINTS;
 
     search(term: string) : Observable<Post[]> {
-        return this._http.get(` app/heroes/?name=${term}`).map((r: Response) => r.json().data as Post[]);
+        return this._http.get(`app/heroes/?name=${term}`).map((r: Response) => r.json().data as Post[]);
     }
 
 
