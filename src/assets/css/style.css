@@ -1905,6 +1905,10 @@ nav select {
 .thumbnails > li {
     height: 275px;
 }
+.span8 .sproutvideo-player {
+    width: 100%;
+    height: 432px;
+}
 
 
 @media (max-width: 480px) {
@@ -1925,6 +1929,10 @@ nav select {
 
     }
     #header-wrap img {display: block; margin: 0 auto;}
+    .sproutvideo-player {
+        width:100%;
+        height: 100%;
+    }
 
 }
 
