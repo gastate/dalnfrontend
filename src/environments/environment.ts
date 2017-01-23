@@ -8,6 +8,7 @@ const all_posts = api_url + "/json/posts/all";
 const create_post = api_url + "/posts/create";
 const page_posts = api_url + "/json/posts/";
 const post = api_url + "/posts/";
+const search_posts = api_url + "/json/posts/"
 const upload_media = api_url + "/upload";
 const update_post = api_url + "/update";
 
@@ -19,6 +20,7 @@ export const environment = {
     create_post: create_post,
     page_posts: page_posts,
     post: post,
+    search_posts: search_posts,
     upload_media: upload_media,
     update_post: update_post
   }

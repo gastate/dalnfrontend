@@ -2,9 +2,9 @@
   <h4>Hero Search</h4>
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
   <div>
-    <div *ngFor="let post of postList | async"
+    <div *ngFor="let post of posts| async"
          (click)="gotoDetail(post)" class="search-result" >
-      {{post.name}}
+      {{post.title}}
     </div>
   </div>
 </div>
