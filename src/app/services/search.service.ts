@@ -21,7 +21,7 @@ export class SearchService {
 
       this._http.get(this.endPoint.search_posts + "search=" + term).map(res => res.json()).subscribe(data => console.log(data));
 
-      return this._http.get(this.endPoint.search_posts + "search=" + term).map((r: Response) => r.json().data as Post[]);
+      return this._http.get(this.endPoint.search_posts + "search=" + term).map((r: Response) => r.json());
 
 }
 

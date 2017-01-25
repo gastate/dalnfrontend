@@ -26,6 +26,7 @@ import {Component} from '@angular/core';
         </nav>
       </div>
     </div>
+
   </div>
 </header>
 

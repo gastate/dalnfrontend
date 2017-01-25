@@ -31,8 +31,7 @@ export class SearchComponent implements OnInit {
       this.posts = this.searchTerm
       .debounceTime(300)
       .distinctUntilChanged()
-      .switchMap(term => term ?
-          this._searchService.search(term): Observable.of<Post[]>([]))
+      .switchMap(term => term ? this._searchService.search(term): Observable.of<Post[]>([]))
           .catch(error => {
               console.log(error);
               return Observable.of<Post[]>([]);
