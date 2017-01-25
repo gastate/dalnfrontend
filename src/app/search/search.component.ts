@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import {Http, Response, Headers, RequestOptions} from '@angular/http';
 
 import { SearchService } from '../services/search.service';
+import { PostService } from '../services/post.service';
 import {Post} from '../model/post-model';
 
 @Component({
@@ -20,6 +22,7 @@ export class SearchComponent implements OnInit {
 
 
   constructor(
+    private _postService: PostService,
     private _searchService : SearchService,
     private _router: Router) { }
 
@@ -38,8 +41,11 @@ export class SearchComponent implements OnInit {
       });
   }
 
+
   gotoDetail(post: Post): void {
-      this._router.navigate(['/detail', this.selectedPost.postId]);
+
+    //   let link = ['/detail', this.posts.subscribe(data => console.log(data))];
+    //   this._router.navigate(link);
   }
 
 }

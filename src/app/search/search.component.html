@@ -4,7 +4,7 @@
   <div>
     <div *ngFor="let post of posts | async"
          (click)="gotoDetail(post)" class="search-result" >
-      {{post.id}}
+      {{post.fields.title[0]}}
     </div>
   </div>
 </div>

@@ -5,12 +5,12 @@ import {Post} from '../model/post-model';
 @Component({
   selector: 'home',
   template: `
-   <app-search>
-   </app-search>
-    <!--<div class=" container">
+
+    <div class=" container">
+        <app-search></app-search>
         <post-list [postList]="posts"></post-list>
     </div>
-    -->
+
     <daln-footer></daln-footer>
 
 `,
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   getAllPosts(): void {
 
-    this._postService.getAllPosts().subscribe(
+    this._postService.getAllPosts().take(10).subscribe(
       (data) => this.posts = data, //Bind to view
       err => {
         // Log errors if any
