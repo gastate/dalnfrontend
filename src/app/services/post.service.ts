@@ -24,7 +24,11 @@ export class PostService {
   getAllPosts(): Observable<Post[]> {
 
     //api call
-    return this._http.get(this.endPoint.all_posts).map((res: Response) => res.json())
+    return this._http.get(this.endPoint.all_posts).map((res: Response) => {
+      let posts = res.json();
+      console.log("Get All Posts ", posts);
+      return posts;
+    })
     //...errors if any
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   };
