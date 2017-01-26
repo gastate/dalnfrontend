@@ -1,13 +1,15 @@
+
 import { Injectable } from '@angular/core';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 //Use instead of Promise
-import {Observable} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import {Post} from '../model/post-model';
-import {environment} from '../../environments/environment'
+import { Post } from '../model/post-model';
+import { environment } from '../../environments/environment';
+import { POSTS } from './mock-postlist';
 
 
 @Injectable()
@@ -17,12 +19,15 @@ export class SearchService {
 
   private endPoint = environment.API_ENDPOINTS;
 
-  search(term: string) : Observable<Post[]> {
+  search(term: string): Promise<Post[]> {
+    return Promise.resolve(POSTS);
+  }
 
-      this._http.get(this.endPoint.search_posts + "search=" + term).map(res => res.json() as Post[]).subscribe(data => console.log(data));
+  //   search(term: string): Observable<Post[]> {//Observable<Post[]> {
 
-      return this._http.get(this.endPoint.search_posts + "search=" + term).map((r: Response) => r.json() as Post[]);
-
-}
+  //   return this._http.get(this.endPoint.search_posts + "search=" + term).map((res) => {
+  //     return res.json() as Post[]
+  //   }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  // }
 
 }

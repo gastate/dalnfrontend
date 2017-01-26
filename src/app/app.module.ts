@@ -18,6 +18,7 @@ import {PostService} from './services/post.service';
 import {AppRoutingModule}     from './app-routing.module';
 import {PlayerComponent} from './player/player.component';
 import { SearchComponent } from './search/search.component';
+import { SearchComponent2 } from './search/search2.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SearchComponent } from './search/search.component';
     ContactComponent,
     PostDetailComponent,
     PlayerComponent,
-    SearchComponent
+    SearchComponent,
+    SearchComponent2
   ],
   imports: [
     BrowserModule,

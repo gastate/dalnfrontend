@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {PostService} from '../services/post.service';
-import {Post} from '../model/post-model';
+import { Component, OnInit } from '@angular/core';
+import { PostService } from '../services/post.service';
+import { Post } from '../model/post-model';
 
 @Component({
   selector: 'home',
   template: `
 
     <div class=" container">
-        <app-search></app-search>
+        <app-search2 (searchResults)="onSearch($event)" ></app-search2>
         <post-list [postList]="posts"></post-list>
     </div>
 
@@ -30,6 +30,16 @@ export class HomeComponent implements OnInit {
     //this.getMockPosts();
   }
 
+  onSearch($posts: Post[]): void {
+    console.log("Post Event", $posts);
+    if(!$posts){
+      this.getAllPosts();
+    }
+    console.log("in home component onSearch")
+    this.posts = $posts;
+  }
+
+
   getAllPosts(): void {
 
     this._postService.getAllPosts().take(10).subscribe(
@@ -38,6 +48,8 @@ export class HomeComponent implements OnInit {
         // Log errors if any
         console.log(err);
       });
+
+
 
 
     //   this._postService.getPostPage(10, 1).subscribe(
@@ -61,11 +73,11 @@ export class HomeComponent implements OnInit {
     //       console.log(err);
     //     });
 
-// //Mock Data method
-//   getMockPosts(): void {
-//     this._postService.getMockPosts().then((data) => this.posts = data);
-//   }
+    // //Mock Data method
+    //   getMockPosts(): void {
+    //     this._postService.getMockPosts().then((data) => this.posts = data);
+    //   }
 
 
-    }
+  }
 }
