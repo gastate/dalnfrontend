@@ -22,6 +22,7 @@ export class SearchComponent2 { //implements OnInit {
   @Output()
   searchResults: EventEmitter<Post[]>;
 
+  allIden: Array<string>;
   posts: Observable<Post[]>;
   private searchTerm = new Subject<string>();
   // using a Subject retains the state of the given data, so later we can subscribe other Observables to it. Like future updates will include other things like "literacy + video games" or other enhanced search options.
@@ -53,6 +54,10 @@ export class SearchComponent2 { //implements OnInit {
     this._searchService.search(term)
       .subscribe(
       (data) => {
+
+        this.allIden = data.map(val => val.id);
+        console.log("All Ids:" , this.allIden);
+        console.log(typeof this.allIden);
         // console.log("In Emmitter: ", data);
         this.searchResults.emit(data), //Bind to view
           err => {
