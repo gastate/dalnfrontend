@@ -10,7 +10,7 @@
 }
 
 /***** General *****/
-html,body
+html, body
 {
     width: 100%;
     height: 100%;
@@ -1897,6 +1897,9 @@ nav select {
 
 .right li a:hover {color: #fefefe; background-color: #262626;}
 #header-wrap { position: relative;}
+
+.span3 .offset3 {}
+
 #header-wrap img {width: 22%; height: auto; margin: 3px; }
 .thumbnails {
     padding-top: 20px;
@@ -1936,13 +1939,11 @@ nav select {
 
 }
 
-
-
 @media (max-width: 768px) {
 
 }
 
-@media (min-width: 480px) and (max-width: 768px) {
+@media (max-width: 480px) and (max-width: 768px) {
     .right {float: none;}
     .span8 {float:none;}
     /* need to ngIf current */
@@ -1960,6 +1961,168 @@ nav select {
 
     }
     #header-wrap img {display: block; margin: 0 auto;}
+
+    #menuToggle
+    {
+      display: block;
+      position: relative;
+      top: -36px;
+      left: 8px;
+
+      z-index: 1;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+       -ms-user-select: none;
+           user-select: none;
+    }
+
+    #menuToggle input
+    {
+      display: block;
+      width: 40px;
+      height: 32px;
+      position: absolute;
+      top: -7px;
+      left: -5px;
+
+      cursor: pointer;
+
+      opacity: 0; /* hide this */
+      z-index: 2; /* and place it over the hamburger */
+
+      -webkit-touch-callout: none;
+    }
+
+    /*
+     * Just a quick hamburger
+     */
+    #menuToggle span
+    {
+      display: block;
+      width: 33px;
+      height: 4px;
+      margin-bottom: 5px;
+      position: relative;
+
+      background: #cdcdcd;
+      border-radius: 3px;
+
+      z-index: 1;
+
+      -webkit-transform-origin: 4px 0px;
+
+              transform-origin: 4px 0px;
+
+      -webkit-transition: background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  opacity 0.55s ease,
+                  -webkit-transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+      transition: background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  opacity 0.55s ease,
+                  -webkit-transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  opacity 0.55s ease;
+
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  opacity 0.55s ease,
+                  -webkit-transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    }
+
+    #menuToggle span:first-child
+    {
+      -webkit-transform-origin: 0% 0%;
+              transform-origin: 0% 0%;
+    }
+
+    #menuToggle span:nth-last-child(2)
+    {
+      -webkit-transform-origin: 0% 100%;
+              transform-origin: 0% 100%;
+    }
+
+    /*
+     * Transform all the slices of hamburger
+     * into a crossmark.
+     */
+    #menuToggle input:checked ~ span
+    {
+      opacity: 1;
+      -webkit-transform: rotate(45deg) translate(-2px, -1px);
+              transform: rotate(45deg) translate(-2px, -1px);
+      background: #232323;
+    }
+
+    /*
+     * But let's hide the middle one.
+     */
+    #menuToggle input:checked ~ span:nth-last-child(3)
+    {
+      opacity: 0;
+      -webkit-transform: rotate(0deg) scale(0.2, 0.2);
+              transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    /*
+     * Ohyeah and the last one should go the other direction
+     */
+    #menuToggle input:checked ~ span:nth-last-child(2)
+    {
+      opacity: 1;
+      -webkit-transform: rotate(-45deg) translate(0, -1px);
+              transform: rotate(-45deg) translate(0, -1px);
+    }
+
+    /*
+     * Make this absolute positioned
+     * at the top left of the screen
+     */
+    #main-menu
+    {
+      position: absolute;
+      width: 300px;
+      margin: -100px 0 0 -50px;
+      padding: 50px;
+      padding-top: 125px;
+
+      background: #ededed;
+      list-style-type: none;
+      -webkit-font-smoothing: antialiased;
+      /* to stop flickering of text in safari */
+
+      -webkit-transform-origin: 0% 0%;
+
+              transform-origin: 0% 0%;
+      -webkit-transform: translate(-100%, 0);
+              transform: translate(-100%, 0);
+
+      -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+      transition: -webkit-transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), -webkit-transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    }
+
+    #main-menu li
+    {
+      padding: 10px 0;
+      font-size: 22px;
+    }
+
+    /*
+     * And let's fade it in from the left
+     */
+    #menuToggle input:checked ~ ul
+    {
+      -webkit-transform: scale(1.0, 1.0);
+              transform: scale(1.0, 1.0);
+      opacity: 1;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 980px) {
@@ -1974,6 +2137,6 @@ nav select {
 
 /* LARGE DESKTOP SCREENS */
 @media (min-width: 1210px) {
-    .icon {display: none;}
+    #menu-button {display: none;}
 
 }

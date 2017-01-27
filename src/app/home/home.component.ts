@@ -7,8 +7,7 @@ import { Post } from '../model/post-model';
   template: `
 
     <div class=" container">
-        <app-search2 (searchResults)="onSearch($event)" ></app-search2>
-        <post-list [postList]="posts"></post-list>
+         <post-list [postList]="posts"></post-list> 
     </div>
 
     <daln-footer></daln-footer>
