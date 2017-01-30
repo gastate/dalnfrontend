@@ -24,6 +24,7 @@ export class PostDetailComponent implements OnInit {
   @Input()
   postDetail: Post;
   selectedAsset: Asset;
+  shareUrl : string;
 
   ngOnInit(): void {
     this._route.params.switchMap(
@@ -33,7 +34,6 @@ export class PostDetailComponent implements OnInit {
         // console.log(details);
         this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
       });
-
 
   }
 
