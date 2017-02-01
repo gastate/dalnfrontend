@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ElementRef, Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { Post } from '../model/post-model';
 
@@ -9,7 +9,7 @@ import { Post } from '../model/post-model';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _postService: PostService) {
+  constructor(private elementRef: ElementRef, private _postService: PostService) {
   }
 
   title = 'DALN Frontend';
@@ -19,6 +19,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPosts();
     //this.getMockPosts();
+
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "responsiveslides.js";
+    this.elementRef.nativeElement.appendChild(s)
   }
 
   onSearch($posts: Post[]): void {

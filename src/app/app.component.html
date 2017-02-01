@@ -1,5 +1,6 @@
   <!-- Logo / Menu
 ================================================== -->
+<!--
 <header class="header">
 <div class="container">
   <div class="row">
@@ -23,9 +24,8 @@
                   <li> <a routerLink="/about"> about </a> </li>
                   <li> <a href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
                   <li> <a routerLink="/contact"> contact </a> </li>
-                  <!-- <li> <a routerLink="/#"> login </a> </li> -->
+                 <li> <a routerLink="/#"> login </a> </li>
                   <li> <a routerLink="/create"> submit a literacy narrative </a> </li>
-                  <!-- <li class="icon"> <a href="javascript:void(0);" style="font-size:15px;">☰</a> </li> -->
               </ul>
       </div>
       </nav>
@@ -34,7 +34,40 @@
 
 
 </div>
-</header>
+</header> -->
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+       <div id="header-wrap">
+      <!-- Be sure to leave the brand out there if you want it shown -->
+
+            <a class="brand" href="#">   Digital Archive of Literacy Narratives</a>
+        </div>
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse navbar-responsive-collapse collapse">
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+        <ul class="nav">
+            <li> <a routerLink="/home"> home </a>
+            <li> <a routerLink="/about"> about </a> </li>
+            <li> <a href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
+            <li> <a routerLink="/contact"> contact </a> </li>
+           <li> <a routerLink="/#"> login </a> </li>
+            <li> <a routerLink="/create"> submit a literacy narrative </a> </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
   <router-outlet>
