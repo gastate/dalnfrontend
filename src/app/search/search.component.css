@@ -9,6 +9,11 @@
   cursor: pointer;
 }
 #search-box{
-  width: 200px;
-  height: 20px;
+  width: 40%;
+  height: auto;
+  margin: 20px 10px;
+}
+
+#search-component {
+    text-align: center;
 }
