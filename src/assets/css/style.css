@@ -109,7 +109,6 @@ body {
 }
 
 a,
-img,
 button {
   outline: none;
 }
@@ -1895,6 +1894,15 @@ nav select {
   display: inline-block;
 }
 
+.header2 img {
+    float: left;
+    width: 8%;
+    height:auto;
+}
+.header2 h1 {
+    position: relative;
+}
+
 .right li a:hover {color: #fefefe; background-color: #262626;}
 #header-wrap { position: relative;}
 
@@ -1974,6 +1982,8 @@ nav select {
 
     }
     #header-wrap img {display: block; margin: 0 auto;}
+
+
 
     #menuToggle
     {
