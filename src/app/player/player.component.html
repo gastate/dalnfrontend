@@ -1,0 +1,25 @@
+<!--&lt;!&ndash; SoundCloud &ndash;&gt;-->
+<div  *ngIf="postAsset">
+
+  <div *ngIf="noAsset === true">
+     <img src="assets/img/example-sites/example1.jpg" alt="example-item">
+  </div>
+
+  <div  *ngIf="postAsset.assetType==='Audio'">
+    <iframe id="sc-widget" scrolling="no" width="100%" height="166px"
+            [src]="sanitizeUrl()"></iframe>
+  </div>
+
+  <div *ngIf="postAsset.assetType === 'Audio/Video'">
+    <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
+            [src]='sanitizeUrl()'></iframe>
+    <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
+            [src]='sanitizeUrl()'></iframe>
+  </div>
+
+  <div *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio'">
+    <img src="assets/img/example-sites/example1.jpg" alt="example-item">
+  </div>
+
+
+</div>
