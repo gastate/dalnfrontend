@@ -8,7 +8,10 @@
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "buildDev": "ng build",
+    "buildProd": "ng build -prod",
+    "s3Synch": "npm run buildDev && aws s3 sync ./dist s3://daln/dev-app"
   },
   "private": true,
   "dependencies": {
