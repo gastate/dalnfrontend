@@ -1,6 +1,5 @@
 # CodeFluent's attributes
 /angular2
-*.md
 !Notes.md
 
 
