@@ -1,9 +1,20 @@
 
-*.md
+# CodeFluent's attributes
+/angular2
 !Notes.md
+
+
+# Angular 2 (from Tour of Heroes)
+system-config.js*
+app/**/*.js
+app/**/*.map
 node_modules
-.tmp
-npm-debug.log
-builds/development/js,
-dev_config.json
+jspm_packages
+bower_components
+aot/*
+dist/*
+yarn.lock
+
+# WebStorm
+.idea/
 
