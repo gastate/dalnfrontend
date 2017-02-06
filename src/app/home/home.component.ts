@@ -19,11 +19,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPosts();
     //this.getMockPosts();
-
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "responsiveslides.js";
-    this.elementRef.nativeElement.appendChild(s)
+    //
+    // var s = document.createElement("script");
+    // s.type = "text/javascript";
+    // s.src = "responsiveslides.js";
+    // this.elementRef.nativeElement.appendChild(s);
+    // replace with array and make your own plugin
   }
 
   onSearch($posts: Post[]): void {

@@ -37,6 +37,10 @@ export class SearchComponent2 { //implements OnInit {
     this.searchResults = new EventEmitter<Post[]>();
   }
 
+  ngOnInit() : void {
+
+  }
+
   // onSearch(term: any): void {
   //   if(term ==='' || term === undefined){
   //     return
