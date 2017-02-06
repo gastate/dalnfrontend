@@ -1,0 +1,19 @@
+# CodeFluent's attributes
+/angular2
+*.md
+!Notes.md
+
+
+# Angular 2 (from Tour of Heroes)
+system-config.js*
+app/**/*.js
+app/**/*.map
+node_modules
+jspm_packages
+bower_components
+aot/*
+dist/*
+yarn.lock
+
+# WebStorm
+.idea/
