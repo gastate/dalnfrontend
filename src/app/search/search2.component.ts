@@ -55,9 +55,9 @@ export class SearchComponent2 { //implements OnInit {
       .subscribe(
       (data) => {
 
-        this.allIden = data.map(val => val.id);
-        console.log("All Ids:" , this.allIden);
-        console.log(typeof this.allIden);
+        // this.allIden = data.map(val => val.id);
+        // console.log("All Ids:" , this.allIden);
+        // console.log(typeof this.allIden);
         // console.log("In Emmitter: ", data);
         this.searchResults.emit(data), //Bind to view
           err => {
