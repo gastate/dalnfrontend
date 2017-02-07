@@ -11,10 +11,12 @@ const update_post = api_url + "/update";
 export const environment = {
   production: true,
   API_ENDPOINTS: {
-    api_url: api_url,
     all_posts: all_posts,
-    post: post,
+    api_url: api_url,
     create_post: create_post,
+    page_posts: page_posts,
+    post: post,
+    search_posts: search_posts,
     upload_media: upload_media,
     update_post: update_post
   }
