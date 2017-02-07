@@ -1,7 +1,10 @@
-const api_url = "INSERT_AWS_PROD_ENDPOINT_HERE/dalnws/api/DALNService";
-const all_posts = api_url + "/json/posts/all";
-const post = api_url + "/posts/";
+// TODO MAKE SURE TO REPLACE API_URI & SEARCH ENDPOINTS
+const api_url = "http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService";
+const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
+const page_posts = api_url + "/posts/";
+const post = api_url + "/posts/";
+const search_posts = api_url + "/posts/"
 const upload_media = api_url + "/upload";
 const update_post = api_url + "/update";
 

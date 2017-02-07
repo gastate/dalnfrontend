@@ -4,7 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "globals" : "npm i -g angular-cli aws-sdk",
+    "globals" : "npm cache clean && npm i -g angular-cli@1.0.0-beta.21 aws-sdk",
     "start": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
