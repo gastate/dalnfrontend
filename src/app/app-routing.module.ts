@@ -6,6 +6,8 @@ import {PostListComponent} from './post-list/post-list.component';
 import {PostDetailComponent} from './post-detail/post-detail.component';
 import {AboutComponent} from './about/about.component';
 import {ContactComponent} from './contact/contact.component';
+import { SubmitFormComponent } from './submit-form/submit-form.component';
+
 
 const routes: Routes = [
   {
@@ -32,7 +34,11 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
-  }
+},
+{
+    path: 'create',
+    component: SubmitFormComponent
+}
 ];
 
 @NgModule({

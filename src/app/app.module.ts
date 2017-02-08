@@ -19,6 +19,8 @@ import {AppRoutingModule}     from './app-routing.module';
 import {PlayerComponent} from './player/player.component';
 import { SearchComponent } from './search/search.component';
 import { SearchComponent2 } from './search/search2.component';
+import { SubmitFormComponent } from './submit-form/submit-form.component';
+import { SliderComponent } from './slider/slider.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { SearchComponent2 } from './search/search2.component';
     PostDetailComponent,
     PlayerComponent,
     SearchComponent,
-    SearchComponent2
+    SearchComponent2,
+    SubmitFormComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
