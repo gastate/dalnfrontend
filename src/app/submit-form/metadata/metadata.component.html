@@ -1,3 +1,38 @@
-<p>
-  metadata works!
-</p>
+
+<div class="container">
+
+    <form novalidate>
+    <ul>
+
+        <li>
+            <span>Author</span>
+            <input class="meta-info" type="text" name="first-name">
+            <input class="meta-info" type="text" name="last-name"> <br />
+            <p>
+            If you wish, enter the name of the author of this literacy narrative (you can click "Add More" to enter multiple names for a collaborative narrative). (Optional)
+            </p>
+        </li>
+
+        <li>
+          <span>Year-of-Birth</span>
+          <input class="meta-info" type="text" name="year-born"> <br />
+          <p>
+              To help other DALN users find narratives by people of a particular age group, please provide your year of birth (or years of birth for collaborative entries), using four digits. (Optional)
+          </p>
+        </li>
+
+        <li>
+          <span>Gender</span>
+          <input class="meta-info" type="text" name="gender"> <br />
+          <p>
+             To help other DALN users find narratives by people of a particular gender or sexual orientation, please describe your gender (for example, male, female, transgender) and/or sexual orientation (for example: gay, bisexual, heterosexual). (Optional)
+          </p>
+        </li>
+
+    </ul>
+
+    </form>
+    <button type="submit" (click)="next()">Next Step</button>
+
+
+</div>
