@@ -12,7 +12,6 @@ import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { SubmitFormComponent } from './submit-form/submit-form.component';
 var routes = [
     {
         path: '',
@@ -36,12 +35,12 @@ var routes = [
         component: AboutComponent
     },
     {
-        path: 'contact',
-        component: ContactComponent
+        path: 'create',
+        loadChildren: 'app/submit-form/submit-form.module#SubmitFormModule'
     },
     {
-        path: 'create',
-        component: SubmitFormComponent
+        path: 'contact',
+        component: ContactComponent
     },
     {
         path: '**',

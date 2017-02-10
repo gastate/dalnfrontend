@@ -22,8 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { PlayerComponent } from './player/player.component';
 import { SearchComponent } from './search/search.component';
 import { SearchComponent2 } from './search/search2.component';
-import { SubmitFormComponent } from './submit-form/submit-form.component';
 import { SliderComponent } from './slider/slider.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -43,15 +43,15 @@ AppModule = __decorate([
             PlayerComponent,
             SearchComponent,
             SearchComponent2,
-            SubmitFormComponent,
             SliderComponent,
+            PageNotFoundComponent
         ],
         imports: [
             BrowserModule,
             FormsModule,
             HttpModule,
             JsonpModule,
-            AppRoutingModule
+            AppRoutingModule,
         ],
         providers: [PostService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
         bootstrap: [AppComponent]
