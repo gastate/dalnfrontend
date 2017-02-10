@@ -16,7 +16,7 @@ var RightsComponent = (function () {
     RightsComponent.prototype.ngOnInit = function () {
     };
     RightsComponent.prototype.next = function () {
-        this._router.navigateByUrl('metadata');
+        this._router.navigateByUrl('/create/metadata');
     };
     return RightsComponent;
 }());
