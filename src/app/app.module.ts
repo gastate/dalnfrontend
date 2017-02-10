@@ -21,6 +21,8 @@ import { SearchComponent } from './search/search.component';
 import { SearchComponent2 } from './search/search2.component';
 import { SubmitFormComponent } from './submit-form/submit-form.component';
 import { SliderComponent } from './slider/slider.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { SliderComponent } from './slider/slider.component';
     SearchComponent,
     SearchComponent2,
     SubmitFormComponent,
-    SliderComponent
+    SliderComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
