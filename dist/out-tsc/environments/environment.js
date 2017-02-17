@@ -3,7 +3,7 @@ var all_posts = api_url + "/posts/all";
 var create_post = api_url + "/posts/create";
 var page_posts = api_url + "/posts/";
 var post = api_url + "/posts/";
-var search_posts = api_url + "/posts/";
+var search_posts = api_url + "/posts/search=";
 var upload_media = api_url + "/upload";
 var update_post = api_url + "/update";
 export var environment = {

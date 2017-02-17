@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 var SearchService = (function () {
     function SearchService(_http, _jsonp) {
         this._http = _http;
@@ -21,8 +21,7 @@ var SearchService = (function () {
         this.endPoint = environment.API_ENDPOINTS;
     }
     SearchService.prototype.search = function (term) {
-        console.log(this.endPoint.search_posts + "/" + term);
-        return this._jsonp.get(this.endPoint.search_posts + "/" + term).map(function (res) {
+        return this._http.get(this.endPoint.search_posts + term).map(function (res) {
             var posts = res.json();
             console.log("Get All Posts ", posts);
             return posts;

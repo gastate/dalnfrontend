@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
 import { Post } from '../model/post-model';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { POSTS } from './mock-postlist';
 
 
@@ -39,10 +39,9 @@ export class SearchService {
   // Returning Search as Observable
   search(term: string): Observable<Post[]> { // TODO : term needs to be url encoded to support multiple terms as well as boolean expressions.
     //api call
-    console.log(this.endPoint.search_posts+ "/" + term);
 
-    // you can replace the get with https://cdn.rawgit.com/gastate/dalnfrontend/dev-currently-working/test.json to see it working.
-    return this._jsonp.get(this.endPoint.search_posts + "/" + term).map((res: Response) => {
+    // you can replace the get() with https://cdn.rawgit.com/gastate/dalnfrontend/dev-currently-working/test.json to see it working.
+    return this._http.get(this.endPoint.search_posts + term).map((res: Response) => {
       let posts = res.json();
       console.log("Get All Posts ", posts);
       return posts;

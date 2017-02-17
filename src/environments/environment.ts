@@ -8,7 +8,7 @@ const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
 const page_posts = api_url + "/posts/";
 const post = api_url + "/posts/";
-const search_posts = api_url + "/posts/"
+const search_posts = api_url + "/posts/search="
 const upload_media = api_url + "/upload";
 const update_post = api_url + "/update";
 
