@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "./assets/img/favicon.ico",
-        "./assets/images/slider"
+        "./assets/images/slider/slider-img01.jpg"
       ],
       "index": "index.html",
       "main": "main.ts",
