@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Jsonp , Http, Response, Headers, RequestOptions } from '@angular/http';
 //Use instead of Promise
 import { Observable } from 'rxjs/Rx';
 // Import RxJs required methods
@@ -16,7 +16,7 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http, private _jsonp : Jsonp) { }
 
   private endPoint = environment.API_ENDPOINTS;
 
@@ -37,9 +37,11 @@ export class SearchService {
   // }
 
   // Returning Search as Observable
-  search(term: string): Observable<Post[]> {
+  search(term: string): Observable<Post[]> { // TODO : term needs to be url encoded to support multiple terms as well as boolean expressions.
     //api call
-    return this._http.get(this.endPoint.search_posts + "search=" + term).map((res: Response) => {
+
+    // you can replace the get() with https://cdn.rawgit.com/gastate/dalnfrontend/dev-currently-working/test.json to see it working.
+    return this._http.get(this.endPoint.search_posts + term).map((res: Response) => {
       let posts = res.json();
       console.log("Get All Posts ", posts);
       return posts;

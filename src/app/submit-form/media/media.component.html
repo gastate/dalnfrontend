@@ -1,3 +1,33 @@
-<p>
-  media works!
-</p>
+<div class="container">
+
+
+
+    <input type="file"  />
+
+    <p>
+        Please enter the full path of the file on your computer corresponding to your item. If you click "Browse...", a new window will allow you to select the file from your computer.
+
+       We recommend that you use the following file formats for compatibility with our system and broader accessiblity by end users, who typically must open the files on their own computers --
+
+       TEXT: Microsoft Word (.doc or .rtf); plain text (.txt); or Adobe Acrobat (.pdf)
+       IMAGES: JPEG (.jpg or .jpeg), GIF (.gif), or PNG (.png)
+       AUDIO: MP3 or QuickTime (.mov)
+       VIDEO: QuickTime (.mov)
+       WEB: HTML (.htm or .html)
+
+       If your file (particularly audio or video) is larger than 35 MB, we recommend that you split it into two or more files, with no single file larger than about 35 MB so that visitors to the site will be able to download your file(s) more conveniently.
+
+    </p>
+
+    <li>
+      <span>File Description</span>
+      <input class="meta-info" type="text" name="file"> <br />
+      <p>
+        Optionally, provide a brief description of the file, for example "Main article", or "Experiment data readings".
+      </p>
+    </li>
+
+    <button type="submit" (click)="next()">Next Step</button>
+
+
+</div>
