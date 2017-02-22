@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -24,9 +25,6 @@ export class SearchComponent2 { //implements OnInit {
 
   allIden: Array<string>;
   posts: Observable<Post[]>;
-  private searchTerm = new Subject<string>();
-  // using a Subject retains the state of the given data, so later we can subscribe other Observables to it. Like future updates will include other things like "literacy + video games" or other enhanced search options.
-  // Note that Subject errors might be hard to catch. So if there is a problem...
   selectedPost: Post;
 
 

@@ -38,7 +38,7 @@
 
 
 
-<div class="container">
+<!-- <div class="container">
 <div class="navbar">
   <div class="navbar-inner">
 
@@ -61,7 +61,7 @@
             <li> <a routerLink="/about"> about </a> </li>
             <li> <a href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
             <li> <a routerLink="/contact"> contact </a> </li>
-            <!-- <li> <a routerLink="/#"> login </a> </li> -->
+            <li> <a routerLink="/#"> login </a> </li>
             <li> <a routerLink="/create"> submit a literacy narrative </a> </li>
         </ul>
       </div>
@@ -71,6 +71,39 @@
 
 
 </div>
+
+
+
+  <router-outlet> -->
+
+
+  <div class="container">
+  	<div class="navbar">
+  		<div class="navbar-inner">
+  			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" onclick="var div = document.getElementById('navbarToggle'); div.style.height != '100%' ? div.style.height = '100%' : div.style.height = '0px';">
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  			</a>
+
+  			<div class="header2">
+  				<img src="assets/img/Logo_transparent.png" />
+  				<a class="brand" href="#">Digital Archive of Literacy Narratives</a>
+  			</div>
+
+  			<div class="nav-collapse navbar-responsive-collapse collapse" id="navbarToggle">
+  				<ul class="nav">
+  					<li> <a routerLink="/home"> home </a> </li>
+  					<li> <a routerLink="/about"> about </a> </li>
+  					<li> <a href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
+  					<li> <a routerLink="/contact"> contact </a> </li>
+  					<!-- <li> <a routerLink="/#"> login </a> </li> -->
+  					<li> <a routerLink="/create"> submit a literacy narrative </a> </li>
+  				</ul>
+  			</div>
+  		</div>
+  	</div>
+  </div>
 
 
 

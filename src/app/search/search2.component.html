@@ -1,9 +1,12 @@
 <div id="search-component">
+<form>
+
+
   <input #searchBox id="search-box" placeholder="Search the DALN..." (keydown.enter)="onSearch(searchBox.value)" />
-  <!--<div>-->
-    <!--<div *ngFor="let post of posts | async"
-         (click)="gotoDetail(post)" class="search-result" >
-      {{post.fields.title[0]}}
-    </div>-->
-  <!--</div>-->
+  <div class="no-results" *ngIf="">
+      <p>
+          Sorry, there were no results for your query.
+      </p>
+  </div>
+  </form>
 </div>
