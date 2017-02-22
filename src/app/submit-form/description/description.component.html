@@ -1,12 +1,12 @@
 
 <div class="container">
 
-    <form novalidate>
+    <form #form="ngForm" >
     <ul>
 
         <li>
             <span>Title</span>
-            <input class="meta-info" type="text" name="title"> <br />
+            <input class="meta-info" type="text" name="title" ngModel> <br />
             <p>
             To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)
             </p>
@@ -14,7 +14,7 @@
 
         <li>
           <span>Description</span>
-          <input class="meta-info" type="text" name="description"> <br />
+          <input class="meta-info" type="text" name="description" ngModel> <br />
           <p>
             To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).
           </p>
@@ -22,9 +22,66 @@
 
         <li>
           <span>Date Created</span>
-          <input class="meta-info" type="text" name="date">
-          <input class="meta-info" type="text" name="date">
-          <input class="meta-info" type="text" name="date"> <br />
+          <select>
+            <option value=''>--Select Month--</option>
+            <option selected value='1'>Janaury</option>
+            <option value='2'>February</option>
+            <option value='3'>March</option>
+            <option value='4'>April</option>
+            <option value='5'>May</option>
+            <option value='6'>June</option>
+            <option value='7'>July</option>
+            <option value='8'>August</option>
+            <option value='9'>September</option>
+            <option value='10'>October</option>
+            <option value='11'>November</option>
+            <option value='12'>December</option>
+          </select>
+          <select >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
+              <option>21</option>
+              <option>22</option>
+              <option>23</option>
+              <option>24</option>
+              <option>25</option>
+              <option>26</option>
+              <option>27</option>
+              <option>28</option>
+              <option>29</option>
+              <option>30</option>
+              <option>31</option>
+        </select>
+        <select>
+         <option>2009</option>
+         <option>2010</option>
+         <option>2011</option>
+         <option>2012</option>
+         <option>2013</option>
+         <option>2014</option>
+         <option>2015</option>
+         <option>2016</option>
+         <option>2017</option>
+         <option>2018</option>
+        </select>  <br />
           <p>
             Please provide the date on which you created your literacy narrative -- not necessarily the date on which you are filling out this form. (Optional)
           </p>
@@ -38,7 +95,7 @@
 
         <li>
           <span>Subject Keyword</span>
-          <input class="meta-info" type="text" name="subject"> <br />
+          <input class="meta-info" type="text" name="subject" ngModel> <br />
           <p>
             To help other DALN users find your literacy narrative, please enter appropriate subject keywords or phrases. You may enter as many as you like, but you should enter only one keyword or phrase at a time, then click "Add More" to enter additional keywords. (Optional)
           </p>
@@ -93,10 +150,13 @@
         </li>
 
 
-
     </ul>
 
     </form>
+
+    <pre>
+        {{form.value | json}}
+   </pre>
     <button type="submit" (click)="next()">Next Step</button>
 
 
