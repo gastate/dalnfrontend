@@ -1,19 +1,34 @@
- <!--<carousel>
- <slide>
-    <img src="assets/images/slider/slider-img01.jpg" alt="First slide">
+<!--
+<ngb-carousel>
+  <template ngbSlide>
+    <img src="assets/images/slider/slider-img01.jpg" alt="Random first slide">
     <div class="carousel-caption">
       <h3>DALN</h3>
       <p>An Introduction to the Digital Archive of Literacy Narratives</p>
     </div>
-  </slide>
-  <slide>
-    <img src="assets/images/slider/slider-img02.jpg" alt="Second slide">
+  </template>
+  <template ngbSlide>
+    <img src="assets/images/slider/slider-img02.jpg" alt="Random second slide">
     <div class="carousel-caption">
-      <a href="https://thedaln.wordpress.com/2017/01/14/the-ocean/">
-          <h3>View new DALN Blog Post!</h3>
-          <p>If you ever find yourself overwhelmed with self-doubt about any writing project you may be doing, then check out the literacy narrative titled “The Ocean.”</p>
-      </a>
+        <a href="https://thedaln.wordpress.com/2017/01/14/the-ocean/" target="_blank">
+            <h3>View new DALN Blog Post!</h3>
+            <p>If you ever find yourself overwhelmed with self-doubt about any writing project you may be doing, then check out the literacy narrative titled “The Ocean.”</p>
+        </a>
     </div>
-</slide>
-</carousel>
+  </template>
+
+</ngb-carousel>
 -->
+
+<div class="carousel">
+
+ <ul class="images">
+
+   <li *ngFor="let slide of slides">
+     <h2>DALN</h2>
+     <img src="assets/images/slider/slider-img01.jpg" alt="">
+   </li>
+
+ </ul>
+
+</div>

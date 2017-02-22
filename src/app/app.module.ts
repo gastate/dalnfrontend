@@ -6,6 +6,7 @@ import {HttpModule, JsonpModule} from '@angular/http';
 //See http://stackoverflow.com/questions/35284988/angular-2-404-error-occur-when-i-refresh-through-browser
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
 import {AppFooterComponent} from './app-footer/app-footer.component';
 import {HomeComponent} from './home/home.component';
@@ -50,6 +51,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
     HttpModule,
     JsonpModule,
     AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [PostService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
