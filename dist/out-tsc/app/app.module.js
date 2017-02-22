@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { HomeComponent } from './home/home.component';
@@ -52,6 +53,7 @@ AppModule = __decorate([
             HttpModule,
             JsonpModule,
             AppRoutingModule,
+            NgbModule.forRoot()
         ],
         providers: [PostService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
         bootstrap: [AppComponent]

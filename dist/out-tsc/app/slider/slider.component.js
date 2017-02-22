@@ -17,7 +17,7 @@ var SliderComponent = (function () {
 }());
 SliderComponent = __decorate([
     Component({
-        selector: 'app-slider',
+        selector: 'ngb-carousel',
         templateUrl: "slider.component.html",
         styles: ["slider.component.css"],
     }),
