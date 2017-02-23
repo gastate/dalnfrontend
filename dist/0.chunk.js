@@ -558,7 +558,11 @@ module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form novalidate>\r\n
 /***/ 1079:
 /***/ function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form novalidate>\r\n    <div class=\"rights-consent\">\r\n\r\n    </div>\r\n\r\n        <span>Consent to Participate</span>\r\n        <p>\r\n            Because we value your right to make an informed decision to participate in the DALN, we must have your consent before we accept a submission. Please click one of the following links to read our Adult Consent Form or Under-18 Consent Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate consent form.\r\n        </p>\r\n        <input class=\"rights-option\" type=\"radio\" name=\"rights-consent\" value=\"Adult\"> <p>Adult</p>\r\n        <input class=\"rights-option\" type=\"radio\" name=\"rights-consent\" value=\"Under-18\"> <p> Under-18</p>\r\n\r\n      <div class=\"materials-consent\">\r\n        <label>\r\n          <span>Release for Materials:</span>\r\n          <p>\r\n            Because we want you to know how your materials and personal information will be used in the DALN, we must have your release before we accept a submission. Please click one of the following links to read our Adult Release Form or Under-18 Release Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate release form.\r\n          </p>\r\n          <input type=\"radio\" name=\"rights-release\" value=\"Adult\">\r\n          <input type=\"radio\" name=\"rights-release\" value=\"Under-18\">\r\n        </label>\r\n      </div>\r\n      <button type=\"submit\">Sign up</button>\r\n    </form>\r\n\r\n</div>\r\n"
+=======
+module.exports = "<!-- Commenting here to fix merge errors --> \r\n<router-outlet></router-outlet>\r\n"
+>>>>>>> dev-currently-working
 
 /***/ },
 
