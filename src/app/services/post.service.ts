@@ -33,14 +33,14 @@ export class PostService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   };
 
-  getPostPage(size: number, page: number): Observable<Post[]> {
-
-      //size is the number of posts per page, page is the position of posts to cycle through.
-      //so a parameter of size 10 returns 10 post IDs per page, page 1 is the first 0-10 postIDs, then page 2 is the next 11-20 postIDs.
-
-      return this._http.get(this.endPoint.page_posts + "size=" + size + "page=" + page).map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
-  };
+  // getPostPage(size: number, page: number): Observable<Post[]> {
+  //
+  //     //size is the number of posts per page, page is the position of posts to cycle through.
+  //     //so a parameter of size 10 returns 10 post IDs per page, page 1 is the first 0-10 postIDs, then page 2 is the next 11-20 postIDs.
+  //
+  //     return this._http.get(this.endPoint.page_posts + "size=" + size + "page=" + page).map((res: Response) => res.json())
+  //     .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
+  // };
 
   getPostById(id: string): Observable<Post> {
 
