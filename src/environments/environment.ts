@@ -6,9 +6,9 @@
 const api_url = "http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService";
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
-const page_posts = api_url + "/posts/";
+const page_posts = api_url + "/posts/"; // becomes http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/size=10page=1
 const post = api_url + "/posts/";
-const search_posts = api_url + "/posts/search="
+const search_posts = api_url + "/posts/search=";
 const upload_media = api_url + "/upload";
 const update_post = api_url + "/update";
 
