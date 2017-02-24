@@ -1,10 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 //prevent 404 on refresh in s3
 //See http://stackoverflow.com/questions/35284988/angular-2-404-error-occur-when-i-refresh-through-browser
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
@@ -22,7 +23,6 @@ import {SearchComponent} from './search/search.component';
 import {SearchComponent2} from './search/search2.component';
 import {SliderComponent} from './slider/slider.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-
 
 
 
@@ -48,6 +48,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     JsonpModule,
     AppRoutingModule,

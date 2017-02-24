@@ -1,10 +1,12 @@
 import { NgModule }       from '@angular/core';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule}    from '@angular/forms';
 import { CommonModule }   from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 
 import {SubmitFormComponent} from './submit-form.component';
 
 import {RightsComponent} from './rights/rights.component';
+import { rights, RightsService} from '../state/rights';
 import {MetadataComponent} from './metadata/metadata.component';
 import {DescriptionComponent} from './description/description.component';
 import {MediaComponent} from './media/media.component';
@@ -17,7 +19,9 @@ import {SubmitFormRoutingModule} from './submit-form-routing.module';
   imports: [
     CommonModule,
     FormsModule,
-    SubmitFormRoutingModule
+    SubmitFormRoutingModule,
+    ReactiveFormsModule,
+    StoreModule.provideStore({rights})
   ],
   declarations: [
     RightsComponent,
