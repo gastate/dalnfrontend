@@ -49,11 +49,11 @@ export class SearchComponent2 { //implements OnInit {
   //   });
   // }
 
-  onSearch(term: any): void {
+  onSearch(term: string): void {
     if (term === '' || term === undefined) {
       return null;
     }
-    this._searchService.search(term)
+    this._searchService.search_page(term, 10, 1)
       .subscribe(
       (data) => {
 
