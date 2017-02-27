@@ -52,7 +52,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
     HttpModule,
     JsonpModule,
     AppRoutingModule,
-    // NgbModule.forRoot()
+    NgbModule.forRoot()
   ],
   providers: [PostService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
