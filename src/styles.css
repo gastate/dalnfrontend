@@ -2,14 +2,14 @@
 @import 'http://fonts.googleapis.com/css?family=Oswald:400,300,700|Open+Sans+Condensed:700,300,300italic|Open+Sans:400,300italic,400italic,600,600italic,700,700italic,800,800italic|PT+Sans:400,400italic,700,700italic';
 @import "./assets/css/bootstrap.css";
 @import "./assets/css/font-awesome.css";
-@import "./assets/css/bootstrap-responsive.css";
+/*@import "./assets/css/bootstrap-responsive.css";*/
 /*@import "./assets/js/google-code-prettify/prettify.css";*/
-@import "./assets/css/responsiveslides.css";
+/*@import "./assets/css/responsiveslides.css";*/
 /*@import "./assets/css/prettyPhoto.css";*/
 /*@import "./assets/build/mediaelementplayer.min.css";*/
 /*@import "./assets/css/slide-in.css";*/
 @import "./assets/css/style.css";
-@@import "./assets/css/bootstrap.min.css";
+@import "./assets/css/bootstrap4.min.css";
 
 /* import style.css rules */
 

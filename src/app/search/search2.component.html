@@ -1,12 +1,12 @@
 <div id="search-component">
 <form>
 
-
   <input #searchBox id="search-box" placeholder="Search the DALN..." (keydown.enter)="onSearch(searchBox.value)" />
-  <div class="no-results" *ngIf="">
+  <!-- <div class="no-results" *ngIf="noResults == true">
       <p>
           Sorry, there were no results for your query.
       </p>
-  </div>
+  </div> -->
+
   </form>
 </div>

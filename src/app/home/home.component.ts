@@ -23,19 +23,12 @@ export class HomeComponent implements OnInit {
   private isInProd = environment.production;
 
   ngOnInit(): void {
-    if (this.isInProd == true) {
+    if (this.isInProd == false) {
         this.getPagePosts();
     } else {
         this.getAllPosts();
     }
 
-    //this.getMockPosts();
-    //
-    // var s = document.createElement("script");
-    // s.type = "text/javascript";
-    // s.src = "responsiveslides.js";
-    // this.elementRef.nativeElement.appendChild(s);
-    // replace with array and make your own plugin
   }
 
   onSearch($posts: Post[]): void {
@@ -50,8 +43,9 @@ export class HomeComponent implements OnInit {
 
   getAllPosts(): void {
 
-        this._postService.getAllPosts().take(10).subscribe(
-          (data) => this.posts = data, //Bind to view
+        this._postService.getAllPosts().subscribe(
+          (data) => {this.posts = data;
+          }, //Bind to view
           err => {
             // Log errors if any
             console.log(err);
@@ -75,7 +69,11 @@ export class HomeComponent implements OnInit {
 
   getPagePosts() : void {
       this._searchService.search_page("literacy", 10, 1).subscribe(
-        (data) => this.posts = data, //Bind to view
+          (data) => {
+              this.posts = data;
+
+
+        }, //Bind to view
         err => {
           // Log errors if any
           console.log(err);
