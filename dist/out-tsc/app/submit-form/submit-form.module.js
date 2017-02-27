@@ -44,7 +44,7 @@ SubmitFormModule = __decorate([
             SummaryComponent,
             CompleteComponent,
             SubmitFormComponent,
-            ResultComponent
+            ResultComponent,
         ],
         providers: [
             RightsService,

@@ -18,6 +18,7 @@ import {SummaryComponent} from './summary/summary.component';
 import {CompleteComponent} from './complete/complete.component';
 import {SubmitFormRoutingModule} from './submit-form-routing.module';
 import {ResultComponent} from '../result/result.component';
+// import {DatePickerComponent} from './util/datepicker/datepicker.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {ResultComponent} from '../result/result.component';
     SummaryComponent,
     CompleteComponent,
     SubmitFormComponent,
-    ResultComponent
+    ResultComponent,
+    // DatePickerComponent
 ],
 providers : [
     RightsService,

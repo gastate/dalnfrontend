@@ -41,4 +41,6 @@ export class RightsComponent implements OnInit {
       this._router.navigateByUrl('/create/metadata');
   }
 
+
+
 }
