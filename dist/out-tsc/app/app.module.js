@@ -9,6 +9,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+<<<<<<< HEAD
+=======
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+>>>>>>> dev-currently-working
 import { AppComponent } from './app.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { HomeComponent } from './home/home.component';
@@ -53,6 +57,10 @@ AppModule = __decorate([
             HttpModule,
             JsonpModule,
             AppRoutingModule,
+<<<<<<< HEAD
+=======
+            NgbModule.forRoot()
+>>>>>>> dev-currently-working
         ],
         providers: [PostService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
         bootstrap: [AppComponent]
