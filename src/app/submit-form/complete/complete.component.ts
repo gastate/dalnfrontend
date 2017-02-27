@@ -11,5 +11,8 @@ export class CompleteComponent implements OnInit {
 
   ngOnInit() {
   }
+  dataAvailable: string; // date when available on DALN (admin function)
+  dateAccessioned : string; // ??????
+  dateIssued: string;
 
 }

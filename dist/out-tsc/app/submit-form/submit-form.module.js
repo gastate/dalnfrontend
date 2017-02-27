@@ -10,7 +10,9 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { SubmitFormComponent } from './submit-form.component';
 import { RightsComponent } from './rights/rights.component';
-import { rights } from '../state/rights';
+import { rights, RightsService } from '../state/rights';
+import { description, DescriptionService } from '../state/description';
+import { RemoteService } from '../state/remote';
 import { MetadataComponent } from './metadata/metadata.component';
 import { DescriptionComponent } from './description/description.component';
 import { MediaComponent } from './media/media.component';
@@ -18,6 +20,7 @@ import { LicenseComponent } from './license/license.component';
 import { SummaryComponent } from './summary/summary.component';
 import { CompleteComponent } from './complete/complete.component';
 import { SubmitFormRoutingModule } from './submit-form-routing.module';
+import { ResultComponent } from '../result/result.component';
 var SubmitFormModule = (function () {
     function SubmitFormModule() {
     }
@@ -30,7 +33,7 @@ SubmitFormModule = __decorate([
             FormsModule,
             SubmitFormRoutingModule,
             ReactiveFormsModule,
-            StoreModule.provideStore({ rights: rights })
+            StoreModule.provideStore({ rights: rights, description: description })
         ],
         declarations: [
             RightsComponent,
@@ -40,7 +43,13 @@ SubmitFormModule = __decorate([
             LicenseComponent,
             SummaryComponent,
             CompleteComponent,
-            SubmitFormComponent
+            SubmitFormComponent,
+            ResultComponent
+        ],
+        providers: [
+            RightsService,
+            DescriptionService,
+            RemoteService
         ]
     })
 ], SubmitFormModule);

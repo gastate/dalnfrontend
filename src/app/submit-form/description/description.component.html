@@ -1,20 +1,23 @@
 
 <div class="container">
 
-    <form #form="ngForm" >
+    <form [formGroup]="form" novalidate (submit)="next()">
     <ul>
 
         <li>
             <span>Title</span>
-            <input class="meta-info" type="text" name="title" ngModel> <br />
+            <input class="meta-info" type="text" name="title" formControlName="title" [(ngModel)]='title'> <br />
             <p>
             To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)
             </p>
+            <div class="error" *ngIf="form.get('title').touched && form.get('title').hasError('required')">
+              <strong>Title is required</strong>
+            </div>
         </li>
 
-        <li>
+        <!-- <li>
           <span>Description</span>
-          <input class="meta-info" type="text" name="description" ngModel> <br />
+          <input class="meta-info" type="text" name="description" formControlName="description" [(ngModel)]='description'> <br />
           <p>
             To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).
           </p>
@@ -103,7 +106,7 @@
 
         <li>
           <span>Decades covered</span>
-          <input class="meta-info" type="text" name="decades"> <br />
+          <select></select><br />
           <p>
               Please indicate the decades referred to in your literacy narrative. You can choose as many as necessary, but you may need to hold down the Shift or CTRL key to select multiple choices. (Optional)
           </p>
@@ -127,7 +130,7 @@
 
         <li>
           <span>State or Province</span>
-          <input class="meta-info" type="text" name="state"> <br />
+          <select></select><br />
           <p>
             To help other DALN users find narratives from your state or province, please list the state(s) or province(s) in which the events described in your narrative took place. (Optional)
           </p>
@@ -143,21 +146,20 @@
 
         <li>
           <span>Language</span>
-          <input class="meta-info" type="text" name="state"> <br />
+          <input class="meta-info" type="text" name="lanugage"> <br />
           <p>
             Please enter the language(s) used or referred to in your literacy narrative. (Optional)
           </p>
-        </li>
+        </li> -->
 
 
     </ul>
 
     </form>
 
-    <pre>
-        {{form.value | json}}
-   </pre>
-    <button type="submit" (click)="next()">Next Step</button>
+    <button type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button>
 
 
 </div>
+
+<app-result></app-result>

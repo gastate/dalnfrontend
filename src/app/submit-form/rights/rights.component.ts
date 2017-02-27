@@ -30,8 +30,8 @@ export class RightsComponent implements OnInit {
 
   initForm(rights: RightsProfile) {
       this.form = this.fb.group({
-          rightsConsent : [rights.rightsConsent],
-          rightsRelease : [rights.rightsRelease]
+          rightsConsent : [rights.rightsConsent, Validators.required],
+          rightsRelease : [rights.rightsRelease, Validators.required]
       });
   }
 
