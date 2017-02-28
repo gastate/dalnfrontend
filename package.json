@@ -12,7 +12,7 @@
     "e2e": "protractor",
     "buildDev": "ng build",
     "buildProd": "ng build -prod",
-    "s3Synch": "npm run buildDev && aws s3 sync ./dist s3://daln/dev-app",
+    "s3Synch": "npm run buildDev && aws s3 sync ./builds/development s3://daln/dev-app",
     "s3Prod": "npm run buildProd && aws s3 sync ./dist s3://daln/prod"
   },
   "private": true,
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@angular/cli": "^1.0.0-rc.0",
+<<<<<<< HEAD
     "@angular/common": "https://registry.npmjs.org/@angular/common/-/common-2.4.8.tgz",
     "@angular/compiler": "https://registry.npmjs.org/@angular/compiler/-/compiler-2.4.8.tgz",
     "@angular/core": "^2.4.8",
@@ -47,6 +48,9 @@
     "@angular/platform-browser": "2.2.1",
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/router": "3.2.1",
+=======
+    "@angular/compiler-cli": "^2.2.1 || >=4.0.0-beta <5.0.0",
+>>>>>>> dev-currently-working
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.20",
     "@ngrx/core": "^1.2.0",
     "@ngrx/store": "^2.2.1",
