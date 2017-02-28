@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "./assets/img/favicon.ico",
-        "assets/images/slider"
+        "./assets/images/slider/slider-img01.jpg"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -24,9 +24,9 @@
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "source": "environments/environment.dev.ts",
+        "dev": "environments/environment.dev.ts",
+        "prod": "environments/environment.ts"
       }
     }
   ],

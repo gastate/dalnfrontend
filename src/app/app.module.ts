@@ -8,6 +8,7 @@ import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import {AppComponent} from './app.component';
 import {AppFooterComponent} from './app-footer/app-footer.component';
 import {HomeComponent} from './home/home.component';
