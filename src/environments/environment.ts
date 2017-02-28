@@ -5,6 +5,7 @@
 
 const api_url = "http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService";
 const api_url2 = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production";
+
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
 const page_posts = api_url + "/posts/"; // becomes http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/size=10page=1
