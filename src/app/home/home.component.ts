@@ -23,62 +23,64 @@ export class HomeComponent implements OnInit {
   private isInProd = environment.production;
 
   ngOnInit(): void {
-    if (this.isInProd == false) {
-        this.getPagePosts();
-    } else {
-        this.getAllPosts();
-    }
+    // if (this.isInProd == false) {
+    //     this.getPagePosts();
+    // } else {
+    //     this.getAllPosts();
+    // }
 
   }
 
   onSearch($posts: Post[]): void {
     console.log("Post Event", $posts);
-    if(!$posts){
-      this.getAllPosts();
-    }
+    // if(!$posts){
+    //   this.getAllPosts();
+    // }
     console.log("in home component onSearch")
-    this.posts = $posts;
+    // this.posts = $posts;
   }
 
 
-  getAllPosts(): void {
-
-        this._postService.getAllPosts().subscribe(
-          (data) => {this.posts = data;
-          }, //Bind to view
-          err => {
-            // Log errors if any
-            console.log(err);
-          });
 
 
+  // getAllPosts(): void {
+  //
+  //       this._postService.getAllPosts().subscribe(
+  //         (data) => {this.posts = data;
+  //         }, //Bind to view
+  //         err => {
+  //           // Log errors if any
+  //           console.log(err);
+  //         });
+  // }
 
-    // //Mock Data method
-    //   getMockPosts(): void {
-    //     this._postService.getMockPosts().then((data) => this.posts = data);
-    //   }
+  //
+  //   // //Mock Data method
+  //   //   getMockPosts(): void {
+  //   //     this._postService.getMockPosts().then((data) => this.posts = data);
+  //   //   }
+  //
+  //   // this._postService.getAllPosts().take(10).subscribe(
+  //   //   (data) => this.posts = data, //Bind to view
+  //   //   err => {
+  //   //     // Log errors if any
+  //   //     console.log(err);
+  //   //   });
+  //
 
-    // this._postService.getAllPosts().take(10).subscribe(
-    //   (data) => this.posts = data, //Bind to view
-    //   err => {
-    //     // Log errors if any
-    //     console.log(err);
-    //   });
-
-  }
-
-  getPagePosts() : void {
-      this._searchService.search_page("literacy", 10, 1).subscribe(
-          (data) => {
-              this.posts = data;
-
-
-        }, //Bind to view
-        err => {
-          // Log errors if any
-          console.log(err);
-        });
-  }
+  //
+  // getPagePosts() : void {
+  //     this._searchService.search("literacy").subscribe(
+  //         (data) => {
+  //             this.posts = data;
+  //
+  //
+  //       }, //Bind to view
+  //       err => {
+  //         // Log errors if any
+  //         console.log(err);
+  //       });
+  // }
 
   // getPagePosts() : void {
   //     this._searchService.search_page("literacy", 10, 1).subscribe(
@@ -92,4 +94,6 @@ export class HomeComponent implements OnInit {
   //         console.log(err);
   //       });
   // }
+
+
 }

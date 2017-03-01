@@ -25,7 +25,7 @@ var SearchComponent2 = (function () {
         if (term === '' || term === undefined) {
             return;
         }
-        this._searchService.search(term).then(function (results) {
+        this._searchService.search(term).subscribe(function (results) {
             console.log("In Emmitter: ", results);
             _this.searchResults.emit(results);
         });

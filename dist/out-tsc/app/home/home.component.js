@@ -20,36 +20,10 @@ var HomeComponent = (function () {
         this.isInProd = environment.production;
     }
     HomeComponent.prototype.ngOnInit = function () {
-        if (this.isInProd == false) {
-            this.getPagePosts();
-        }
-        else {
-            this.getAllPosts();
-        }
     };
     HomeComponent.prototype.onSearch = function ($posts) {
         console.log("Post Event", $posts);
-        if (!$posts) {
-            this.getAllPosts();
-        }
         console.log("in home component onSearch");
-        this.posts = $posts;
-    };
-    HomeComponent.prototype.getAllPosts = function () {
-        var _this = this;
-        this._postService.getAllPosts().subscribe(function (data) {
-            _this.posts = data;
-        }, function (err) {
-            console.log(err);
-        });
-    };
-    HomeComponent.prototype.getPagePosts = function () {
-        var _this = this;
-        this._searchService.search_page("literacy", 10, 1).subscribe(function (data) {
-            _this.posts = data;
-        }, function (err) {
-            console.log(err);
-        });
     };
     return HomeComponent;
 }());
