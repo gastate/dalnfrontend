@@ -28,19 +28,17 @@ export class HomeComponent implements OnInit {
     // } else {
     //     this.getAllPosts();
     // }
-
+    this.getPagePosts();
   }
 
-  onSearch($posts: Post[]): void {
-    console.log("Post Event", $posts);
-    if(!$posts){
-      this.getAllPosts();
-    }
-    console.log("in home component onSearch")
-    this.posts = $posts;
-  }
-
-
+  // onSearch($posts: Post[]): void {
+  //   console.log("Post Event", $posts);
+  //   if(!$posts){
+  //     this.getAllPosts();
+  //   }
+  //   console.log("in home component onSearch")
+  //   this.posts = $posts;
+  // }
 
 
   getAllPosts(): void {
@@ -53,6 +51,7 @@ export class HomeComponent implements OnInit {
             console.log(err);
           });
   }
+
 
   //
   //   // //Mock Data method
@@ -68,19 +67,19 @@ export class HomeComponent implements OnInit {
   //   //   });
   //
 
-  //
-  // getPagePosts() : void {
-  //     this._searchService.search("literacy").subscribe(
-  //         (data) => {
-  //             this.posts = data;
-  //
-  //
-  //       }, //Bind to view
-  //       err => {
-  //         // Log errors if any
-  //         console.log(err);
-  //       });
-  // }
+
+  getPagePosts() : void {
+      this._searchService.search("literacy").subscribe(
+          (data) => {
+              this.posts = data;
+
+
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
+        });
+  }
 
   // getPagePosts() : void {
   //     this._searchService.search_page("literacy", 10, 1).subscribe(

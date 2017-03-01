@@ -32,7 +32,7 @@ export class PostService {
     //...errors if any
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   };
-
+  
   // getPostPage(size: number, page: number): Observable<Post[]> {
   //
   //     //size is the number of posts per page, page is the position of posts to cycle through.
