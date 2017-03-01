@@ -1,7 +1,7 @@
 {{diagonostic}}
 <div class="container">
 
-    <form [formGroup]="form" novalidate (submit)="next()">
+    <!-- <form [formGroup]="form" novalidate (submit)="next()"> -->
     <div class="rights-consent">
 
         <span>Consent to Participate</span>
@@ -11,10 +11,15 @@
             </p>
         </div>
 
-
+<!--
         <div class="form-group">
             <input class="rights-option" type="radio" name="rightsConsent" value="Adult" formControlName="rightsConsent" [(ngModel)]='rightsConsent'> <p>Adult</p>
             <input class="rights-option" type="radio" name="rightsConsent" value="Under-18" formControlName="rightsConsent" [(ngModel)]='rightsConsent'> <p> Under-18</p>
+        </div> -->
+
+        <div class="form-group">
+            <input class="rights-option" type="radio" name="rightsConsent" value="Adult"> <p>Adult</p>
+            <input class="rights-option" type="radio" name="rightsConsent" value="Under-18" > <p> Under-18</p>
         </div>
 
     </div>
@@ -26,13 +31,17 @@
                 Because we want you to know how your materials and personal information will be used in the DALN, we must have your release before we accept a submission. Please click one of the following links to read our Adult Release Form or Under-18 Release Form before completing this field. Then you must select either "Adult" or "Under-18" below to affirm that you have read and agreed to the terms of the appropriate release form.
               </p>
           </div>
-
+<!--
           <input type="radio" name="rightsRelease" value="Adult" formControlName="rightsRelease" [(ngModel)]='rightsRelease'> <p> Adult </p>
-          <input type="radio" name="rightsRelease" value="Under-18" formControlName="rightsRelease" [(ngModel)]='rightsRelease'> <p> Under-18 </p>
+          <input type="radio" name="rightsRelease" value="Under-18" formControlName="rightsRelease" [(ngModel)]='rightsRelease'> <p> Under-18 </p> -->
+
+          <input type="radio" name="rightsRelease" value="Adult" > <p> Adult </p>
+          <input type="radio" name="rightsRelease" value="Under-18"> <p> Under-18 </p>
 
       </div>
-    </form>
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button>
+    <!-- </form> -->
+    <!-- <button class="btn btn-primary" type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button> -->
+    <button class="btn btn-primary" type="submit" (click)="next()">Next Step</button>
 
 
 </div>

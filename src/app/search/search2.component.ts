@@ -39,33 +39,33 @@ export class SearchComponent2 { //implements OnInit {
 
   }
 
-  // onSearch(term: any): void {
-  //   if(term ==='' || term === undefined){
-  //     return
-  //   }
-  //     this._searchService.search(term).then( (results) => {
-  //       console.log("In Emmitter: ", results);
-  //     this.searchResults.emit(results);
-  //   });
-  // }
-
-  onSearch(term: string): void {
-    if (term === '' || term === undefined) {
-      return null;
+  onSearch(term: any): void {
+    if(term ==='' || term === undefined){
+      return
     }
-    this._searchService.search_page(term, 10, 1)
-      .subscribe(
-      (data) => {
-
-        // this.allIden = data.map(val => val.id);
-        // console.log("All Ids:" , this.allIden);
-        // console.log(typeof this.allIden);
-        // console.log("In Emmitter: ", data);
-        this.searchResults.emit(data), //Bind to view
-          err => {
-            // Log errors if any
-            console.log(err);
-          }
-      })
+      this._searchService.search(term).subscribe( (results) => {
+        console.log("In Emmitter: ", results);
+        this.searchResults.emit(results);
+    });
   }
+
+  // onSearch(term: string): void {
+  //   if (term === '' || term === undefined) {
+  //     return null;
+  //   }
+  //   this._searchService.search_page(term, 10, 1)
+  //     .subscribe(
+  //     (data) => {
+  //
+  //       // this.allIden = data.map(val => val.id);
+  //       // console.log("All Ids:" , this.allIden);
+  //       // console.log(typeof this.allIden);
+  //       // console.log("In Emmitter: ", data);
+  //       this.searchResults.emit(data), //Bind to view
+  //         err => {
+  //           // Log errors if any
+  //           console.log(err);
+  //         }
+  //     })
+  // }
 }

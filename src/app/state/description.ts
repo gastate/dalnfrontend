@@ -3,7 +3,7 @@ import { Store, Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { AppStore } from './app-store';
 
-const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
+const ADD_DESCRIPTION = 'ADD_DESCRIPTION';
 
 export interface DescriptionProfile {
     title : string;
@@ -34,8 +34,8 @@ const initialState = {
 
 export const description = (state: DescriptionProfile = initialState, action: Action) => {
   switch (action.type) {
-    case UPDATE_DESCRIPTION:
-      return action.payload;
+    case ADD_DESCRIPTION:
+      return Object.assign({}, {title: action.payload.title});
     default:
       return state;
   }
@@ -47,6 +47,6 @@ export class DescriptionService {
   constructor(private store: Store<AppStore>) {}
 
   updateDescription(description) {
-    this.store.dispatch({type: UPDATE_DESCRIPTION, payload: description});
+    this.store.dispatch({type: ADD_DESCRIPTION, payload: description });
   }
 }

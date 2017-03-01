@@ -10,6 +10,7 @@ import { rights, RightsService} from '../state/rights';
 import { description, DescriptionService} from '../state/description';
 import { AppStore } from '../state/app-store';
 import { RemoteService } from '../state/remote';
+import {SubmitService} from './services/submit.service';
 import {MetadataComponent} from './metadata/metadata.component';
 import {DescriptionComponent} from './description/description.component';
 import {MediaComponent} from './media/media.component';
@@ -20,14 +21,13 @@ import {SubmitFormRoutingModule} from './submit-form-routing.module';
 import {ResultComponent} from '../result/result.component';
 import {DatepickerComponent} from './datepicker/datepicker.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     SubmitFormRoutingModule,
     ReactiveFormsModule,
-    StoreModule.provideStore({rights, description})
+    StoreModule.provideStore({ description})
   ],
   declarations: [
     RightsComponent,
@@ -44,7 +44,8 @@ import {DatepickerComponent} from './datepicker/datepicker.component';
 providers : [
     RightsService,
     DescriptionService,
-    RemoteService
+    RemoteService,
+    SubmitService
 ]
 })
 export class SubmitFormModule {}

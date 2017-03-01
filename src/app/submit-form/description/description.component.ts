@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { Store, Action } from '@ngrx/store';
 
+import {Post} from '../../model/post-model';
+
 import { DescriptionService, DescriptionProfile } from '../../state/description';
 
 

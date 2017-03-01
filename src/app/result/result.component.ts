@@ -8,8 +8,9 @@ import { AppStore } from '../state/app-store';
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit {
+  constructor(private store: Store<AppStore>) {
 
-  constructor(private store: Store<AppStore>) { }
+   }
 
   ngOnInit() {
   }

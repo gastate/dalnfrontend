@@ -22,10 +22,10 @@ export class RightsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      this.rightsService.rights$
-        .subscribe(rights => {
-            this.initForm(rights);
-        });
+    //   this.rightsService.rights$
+    //     .subscribe(rights => {
+    //         this.initForm(rights);
+    //     });
   }
 
   initForm(rights: RightsProfile) {
@@ -37,7 +37,7 @@ export class RightsComponent implements OnInit {
 
 
   next() {
-      this.rightsService.updateRights(this.form.value);
+    //   this.rightsService.updateRights(this.form.value);
       this._router.navigateByUrl('/create/metadata');
   }
 
