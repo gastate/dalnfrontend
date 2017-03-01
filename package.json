@@ -11,7 +11,7 @@
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
     "buildDev": "ng build",
-    "buildProd": "ng build -prod",
+    "buildProd": "ng build -prod --base-href='/daln-prod/web-deploy/'",
     "s3Synch": "npm run buildDev && aws s3 sync ./dist s3://daln/dev-app",
     "s3Prod": "npm run buildProd && aws s3 sync ./dist s3://daln/prod"
   },
