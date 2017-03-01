@@ -68,21 +68,8 @@ export class HomeComponent implements OnInit {
   //
 
 
-  getPagePosts() : void {
-      this._searchService.search("literacy").subscribe(
-          (data) => {
-              this.posts = data;
-
-
-        }, //Bind to view
-        err => {
-          // Log errors if any
-          console.log(err);
-        });
-  }
-
   // getPagePosts() : void {
-  //     this._searchService.search_page("literacy", 10, 1).subscribe(
+  //     this._searchService.search("literacy").subscribe(
   //         (data) => {
   //             this.posts = data;
   //
@@ -93,6 +80,19 @@ export class HomeComponent implements OnInit {
   //         console.log(err);
   //       });
   // }
+
+  getPagePosts() : void {
+      this._searchService.search_page("literacy", 10, 1).subscribe(
+          (data) => {
+              this.posts = data;
+
+
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
+        });
+  }
 
 
 }

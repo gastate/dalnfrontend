@@ -43,7 +43,7 @@ export class SearchComponent2 { //implements OnInit {
     if(term ==='' || term === undefined){
       return
     }
-      this._searchService.search(term).subscribe( (results) => {
+      this._searchService.search_page(term, 10 ,1 ).subscribe( (results) => {
         console.log("In Emmitter: ", results);
         this.searchResults.emit(results);
     });
