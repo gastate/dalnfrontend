@@ -10,23 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { Store } from '@ngrx/store';
 var HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 var SubmitService = (function () {
-    function SubmitService(_http) {
+    function SubmitService(_http, _store) {
         this._http = _http;
+        this._store = _store;
         this.posts = [];
         this.endPoint = environment.API_ENDPOINTS;
     }
     SubmitService.prototype.create = function (post) {
-        return this._http.post(this.endPoint.create_post, JSON.stringify(post), HEADER).map(function (res) { return res.json(); }).do(function (data) {
-            return data;
-        });
+        console.log(this._http.post(this.endPoint.create_post, JSON.stringify(post), HEADER));
     };
     return SubmitService;
 }());
 SubmitService = __decorate([
     Injectable(),
-    __metadata("design:paramtypes", [Http])
+    __metadata("design:paramtypes", [Http, Store])
 ], SubmitService);
 export { SubmitService };
 //# sourceMappingURL=../../../../../src/app/submit-form/services/submit.service.js.map

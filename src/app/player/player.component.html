@@ -12,9 +12,9 @@
 
   <div *ngIf="postAsset.assetType === 'Audio/Video'">
     <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
-            [src]='sanitizeUrl()' allowfullscreen ></iframe>
+            [src]='sanitizeUrl()'  ></iframe>
     <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
-            [src]='sanitizeUrl()' allowfullscreen ></iframe>
+            [src]='sanitizeUrl()' ></iframe>
   </div>
 
   <div *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio'">

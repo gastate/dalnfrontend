@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { SubmitFormComponent } from './submit-form.component';
 import { RightsComponent } from './rights/rights.component';
-import { rights, RightsService } from '../state/rights';
+import { RightsService } from '../state/rights';
 import { description, DescriptionService } from '../state/description';
 import { RemoteService } from '../state/remote';
 import { SubmitService } from './services/submit.service';
@@ -35,7 +35,7 @@ SubmitFormModule = __decorate([
             FormsModule,
             SubmitFormRoutingModule,
             ReactiveFormsModule,
-            StoreModule.provideStore({ rights: rights, description: description })
+            StoreModule.provideStore({ description: description })
         ],
         declarations: [
             RightsComponent,

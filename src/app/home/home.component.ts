@@ -33,26 +33,26 @@ export class HomeComponent implements OnInit {
 
   onSearch($posts: Post[]): void {
     console.log("Post Event", $posts);
-    // if(!$posts){
-    //   this.getAllPosts();
-    // }
+    if(!$posts){
+      this.getAllPosts();
+    }
     console.log("in home component onSearch")
-    // this.posts = $posts;
+    this.posts = $posts;
   }
 
 
 
 
-  // getAllPosts(): void {
-  //
-  //       this._postService.getAllPosts().subscribe(
-  //         (data) => {this.posts = data;
-  //         }, //Bind to view
-  //         err => {
-  //           // Log errors if any
-  //           console.log(err);
-  //         });
-  // }
+  getAllPosts(): void {
+
+        this._postService.getAllPosts().subscribe(
+          (data) => {this.posts = data;
+          }, //Bind to view
+          err => {
+            // Log errors if any
+            console.log(err);
+          });
+  }
 
   //
   //   // //Mock Data method

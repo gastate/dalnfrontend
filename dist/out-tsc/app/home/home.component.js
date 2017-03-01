@@ -23,7 +23,19 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.onSearch = function ($posts) {
         console.log("Post Event", $posts);
+        if (!$posts) {
+            this.getAllPosts();
+        }
         console.log("in home component onSearch");
+        this.posts = $posts;
+    };
+    HomeComponent.prototype.getAllPosts = function () {
+        var _this = this;
+        this._postService.getAllPosts().subscribe(function (data) {
+            _this.posts = data;
+        }, function (err) {
+            console.log(err);
+        });
     };
     return HomeComponent;
 }());
