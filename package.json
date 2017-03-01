@@ -17,7 +17,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "1.0.0-beta.33.1",
+    "angular-cli": "1.0.0-beta.21",
     "@angular/common": "^2.4.8 || >=4.0.0-beta <5.0.0",
     "@angular/compiler": "^2.4.8 || >=4.0.0-beta <5.0.0",
     "@angular/core": "^2.4.8 || >=4.0.0-beta <5.0.0",
@@ -35,7 +35,7 @@
     "zone.js": "^0.6.26"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-beta.33.1",
+    "angular-cli": "1.0.0-beta.21",
     "@angular/core": "^2.4.8 || >=4.0.0-beta <5.0.0",
     "@angular/compiler": "^2.4.8 || >=4.0.0-beta <5.0.0",
     "@angular/compiler-cli": "^2.4.8 || >=4.0.0-beta <5.0.0",
