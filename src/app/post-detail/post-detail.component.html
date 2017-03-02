@@ -9,10 +9,10 @@
       ================================================== -->
 
 
-      <div class="span4">
+      <div class="col-4">
 
         <!-- Use the ul class. -->
-        <ul class="nav nav-list">
+        <ul class="metadata">
           <li>
             <h3>{{postDetail.title}}</h3>
             <p>{{postDetail.description}}</p>
@@ -29,7 +29,7 @@
 
         <br/>
 
-        <ul class="nav nav-list">
+        <ul class="tags">
           <li>
             <h3>Collections</h3>
             <p>All literacy narratives that are not part of a topical collection.</p>
@@ -46,7 +46,7 @@
 
         <br/>
 
-        <ul class="nav nav-list">
+        <ul class="description">
           <li>
             <h3>Description</h3>
             <p>{{postDetail.description}}</p>
@@ -54,13 +54,12 @@
         </ul>
 
         <br/>
-        <ul class="nav nav-list">
-          <li>
-            <h3>Media List</h3>
-          </li>
-          <ul *ngFor="let asset of postDetail.assetList">
+
+        <h3>Media List</h3>
+        <ul class="media" *ngFor="let asset of postDetail.assetList">
 
             <li (click)="onSelectedAsset(asset)">
+
               <!-- Change event to be click event that changes player embed link -->
               <h3>{{asset.assettitle}}</h3>
               <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
@@ -69,12 +68,6 @@
             </li>
 
           </ul>
-        </ul>
-
-        <!--<div class="span8">-->
-        <!--<app-player class="" [postAsset]="selectedAsset"></app-player>-->
-
-        <!--</div>-->
 
 
         <!-- Idea from here: http://commkit.gsu.edu/shortcodes/ -->
@@ -82,11 +75,13 @@
         <!-- TODO: Add CSS class; REMOVE style tags-->
 
         <div class="details" id="detail-drop" style="margin-bottom:35px;">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                Detailed Record
-              </a>
+          <div class="accordion">
+            <div class="card">
+                <div class="card header" role="tab" id="cardOne">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">
+                        Detailed Record
+                    </a>
+                </div>
             </div>
             <div id="collapseOne" class="accordion-body in collapse" style="height: auto;">
               <div class="span4">
@@ -107,7 +102,9 @@
 
       <!-- Video
       ================================================== -->
-      <div class="row">
+
+          <div class="col-8">
+              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
 
         <!-- TODO: Remove style tag -->
         <!-- social begin here -->
@@ -121,14 +118,14 @@
             </a>
           </li>-->
           <li>
-            <a href="#" class="facebook">
+            <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
             </a>
           </li>
           <li>
               <a class="twitter twitter-share-button"
                 href="https://twitter.com/intent/tweet?url=&text={{postDetail.title}}&via=dalnarchive" target="_blank"  ></a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#" class="flickr">
             </a>
           </li>
@@ -139,18 +136,12 @@
           <li class="last">
             <a href="#" class="vimeo">
             </a>
-          </li>
+          </li> -->
 
         </ul>
-        <div class="span8">
-            <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" class=""
-                        [postAsset]="selectedAsset"></app-player>
+
 
         </div>
-
-
-      </div>
-
 
 
     </div>

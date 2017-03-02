@@ -1,51 +1,82 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { SearchService } from '../services/search.service';
 import { PostService } from '../services/post.service';
-import {Post} from '../model/post-model';
+import { Post } from '../model/post-model';
 
 @Component({
-  selector: 'app-search',
+  selector: 'app-search2',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  providers : [ SearchService ]
+  providers: [SearchService]
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent { //implements OnInit {
+
+  @Input()
+  query: string;
+
+  @Output()
+  searchResults: EventEmitter<Post[]>;
+
+  allIden: Array<string>;
   posts: Observable<Post[]>;
-  private searchTerm = new Subject<string>(); // using a Subject retains the state of the given data, so later we can subscribe other Observables to it. Like future updates will include other things like "literacy + video games" or other enhanced search options.
-  // Note that Subject errors might be hard to catch. So if there is a problem...
   selectedPost: Post;
 
+  private noResults: boolean = false;
 
   constructor(
     private _postService: PostService,
-    private _searchService : SearchService,
-    private _router: Router) { }
-
-  search(term: string): void {
-      this.searchTerm.next(term);
+    private _searchService: SearchService,
+    private _router: Router) {
+    this.searchResults = new EventEmitter<Post[]>();
   }
 
-  ngOnInit() {
-      this.posts = this.searchTerm
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => term ? this._searchService.search(term): Observable.of<Post[]>([]))
-          .catch(error => {
-              console.log(error);
-              return Observable.of<Post[]>([]);
-      });
+  ngOnInit() : void {
+
   }
 
-
-  gotoDetail(post: Post): void {
-
-    //   let link = ['/detail', this.posts.subscribe(data => console.log(data))];
-    //   this._router.navigate(link);
+  onSearch(term: string): void {
+    if(term === '' || term === undefined){
+      return null;
+    }
+      this._searchService.search_page(term, 10, 1)
+      .subscribe((results) => {
+        console.log("In Emmitter: ", results);
+        if ((results === null) || results.length <= 0 ) {
+            this.noResults = true;
+        } else {
+            this.noResults = false;
+        }
+        this.searchResults.emit(results),
+        err => {
+            console.log(err);
+        }
+    });
   }
 
+  // trying to get by postid
+  // onSearch(term: string): void {
+  //   if (term === '' || term === undefined) {
+  //     return null;
+  //   }
+  //   this._searchService.search_page(term, 10, 1)
+  //     .subscribe(
+  //     (data) => {
+  //
+  //       // this.allIden = data.map(val => val.id);
+  //       // console.log("All Ids:" , this.allIden);
+  //       // console.log(typeof this.allIden);
+  //       // console.log("In Emmitter: ", data);
+  //       this.searchResults.emit(data), //Bind to view
+  //         err => {
+  //           // Log errors if any
+  //           console.log(err);
+  //         }
+  //     })
+  // }
 }
