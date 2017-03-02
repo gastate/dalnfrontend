@@ -33,9 +33,9 @@ export class HomeComponent implements OnInit {
 
   onSearch($posts: Post[]): void {
     console.log("Post Event", $posts);
-    if(!$posts){
-      this.getAllPosts();
-    }
+    // if(!$posts){
+    //   this.getAllPosts();
+    // }
     console.log("in home component onSearch")
     this.posts = $posts;
   }

@@ -44,10 +44,10 @@ export class SearchComponent { //implements OnInit {
     if(term === '' || term === undefined){
       return null;
     }
-      this._searchService.search(term)
+      this._searchService.search_page(term, 10, 1)
       .subscribe((results) => {
         console.log("In Emmitter: ", results);
-        if (results.length == 0) {
+        if ((results === null) || results.length <= 0 ) {
             this.noResults = true;
         } else {
             this.noResults = false;

@@ -21,7 +21,6 @@ var SearchService = (function () {
         this.endPoint = environment.API_ENDPOINTS;
     }
     SearchService.prototype.search = function (term) {
-        console.log(this.endPoint.search_posts + term);
         return this._http.get(this.endPoint.search_posts + term).map(function (res) {
             var posts = res.json();
             console.log("Get All Posts ", posts);
@@ -30,7 +29,7 @@ var SearchService = (function () {
     };
     SearchService.prototype.search_page = function (term, results, page_size) {
         console.log(this.endPoint.search_posts2 + term + "/" + results + "/" + page_size);
-        return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map(function (res) {
+        return this._http.get(this.endPoint.search_posts2 + term + "/" + results + "/" + page_size).map(function (res) {
             var posts = res.json();
             console.log("Get All Posts ", posts);
             return posts;

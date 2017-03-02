@@ -26,10 +26,10 @@ var SearchComponent = (function () {
         if (term === '' || term === undefined) {
             return null;
         }
-        this._searchService.search(term)
+        this._searchService.search_page(term, 10, 1)
             .subscribe(function (results) {
             console.log("In Emmitter: ", results);
-            if (results.length == 0) {
+            if ((results === null) || results.length <= 0) {
                 _this.noResults = true;
             }
             else {

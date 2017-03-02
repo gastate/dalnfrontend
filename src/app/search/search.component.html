@@ -2,6 +2,7 @@
 <form>
 
   <input #searchBox id="search-box" placeholder="Search the DALN..." (keydown.enter)="onSearch(searchBox.value)" />
+  <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value)" >Search</button>
   <div class="no-results" *ngIf="noResults == true">
       <p>
           Sorry, there were no results for your query.
@@ -10,3 +11,5 @@
 
   </form>
 </div>
+
+<!-- Add a little div here to custom search parameters like page and size. Start with a default. -->

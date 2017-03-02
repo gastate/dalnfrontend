@@ -23,9 +23,6 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.onSearch = function ($posts) {
         console.log("Post Event", $posts);
-        if (!$posts) {
-            this.getAllPosts();
-        }
         console.log("in home component onSearch");
         this.posts = $posts;
     };
