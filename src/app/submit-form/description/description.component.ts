@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatepickerComponent } from '../datepicker/datepicker.component';
 import { Router } from '@angular/router';
 import { Store, Action } from '@ngrx/store';
 
@@ -16,7 +19,6 @@ import { SubmitFormService } from '../submit-form.service';
   providers: [ DescriptionService, SubmitFormService]
 })
 export class DescriptionComponent implements OnInit {
-
     form: FormGroup;
 
   constructor(
