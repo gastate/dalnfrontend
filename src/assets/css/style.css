@@ -1896,7 +1896,7 @@ nav select {
 
 .header2 img {
     float: left;
-    width: 8%;
+    width: 10%;
     height:auto;
 }
 .header2 h1 {
@@ -2170,11 +2170,14 @@ input.rights-option {
 @media (max-width: 980px) {
     .icon {display: none;}
 
+}
 
+@media (max-width: 1024px) {
+    #collapseContent {width: 300%}
 }
 
 /* LARGE DESKTOP SCREENS */
 @media (min-width: 1210px) {
-    #menu-button {display: none;}
+    #collapseContent {width: 140%}
 
 }
