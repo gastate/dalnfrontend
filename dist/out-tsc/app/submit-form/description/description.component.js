@@ -11,11 +11,13 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DescriptionService } from '../../state/description';
+import { SubmitFormService } from '../submit-form.service';
 var DescriptionComponent = (function () {
-    function DescriptionComponent(_router, fb, descriptionService) {
+    function DescriptionComponent(_router, fb, descriptionService, _postCreate) {
         this._router = _router;
         this.fb = fb;
         this.descriptionService = descriptionService;
+        this._postCreate = _postCreate;
     }
     DescriptionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,8 +28,13 @@ var DescriptionComponent = (function () {
     };
     DescriptionComponent.prototype.initForm = function (description) {
         this.form = this.fb.group({
-            title: [description.title, Validators.required]
+            title: ['', Validators.required]
         });
+        console.log(typeof this.form.value.title);
+        this.createPost(this.form.value.title);
+    };
+    DescriptionComponent.prototype.createPost = function (title) {
+        this._postCreate.postCreate(title);
     };
     DescriptionComponent.prototype.next = function () {
         this._router.navigateByUrl('/create/media');
@@ -39,11 +46,12 @@ DescriptionComponent = __decorate([
         selector: 'app-description',
         templateUrl: './description.component.html',
         styleUrls: ['./description.component.css'],
-        providers: [DescriptionService]
+        providers: [DescriptionService, SubmitFormService]
     }),
     __metadata("design:paramtypes", [Router,
         FormBuilder,
-        DescriptionService])
+        DescriptionService,
+        SubmitFormService])
 ], DescriptionComponent);
 export { DescriptionComponent };
 //# sourceMappingURL=../../../../../src/app/submit-form/description/description.component.js.map
