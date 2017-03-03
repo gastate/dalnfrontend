@@ -8,12 +8,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 var AppFooterComponent = (function () {
-    function AppFooterComponent(_router) {
+    function AppFooterComponent(_router, _activatedRoute) {
         this._router = _router;
+        this._activatedRoute = _activatedRoute;
     }
     AppFooterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._router.events
+            .filter(function (event) { return event instanceof NavigationEnd; })
+            .map(function () { return _this._activatedRoute; })
+            .map(function (route) {
+            while (route.firstChild)
+                route = route.firstChild;
+            return route;
+        })
+            .filter(function (route) { return route.outlet === 'primary'; })
+            .mergeMap(function (route) { return route.data; })
+            .subscribe(function (event) { _this.twitterView(); _this.faceBookView(); });
+    };
+    AppFooterComponent.prototype.ngAfterViewInit = function () {
+    };
+    AppFooterComponent.prototype.twitterView = function () {
+        !function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + "://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, "script", "twitter-wjs");
+    };
+    AppFooterComponent.prototype.faceBookView = function () {
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     };
     return AppFooterComponent;
 }());
@@ -23,7 +60,8 @@ AppFooterComponent = __decorate([
         templateUrl: './app-footer.component.html',
         styleUrls: ['./app-footer.component.css']
     }),
-    __metadata("design:paramtypes", [Router])
+    __metadata("design:paramtypes", [Router,
+        ActivatedRoute])
 ], AppFooterComponent);
 export { AppFooterComponent };
 //# sourceMappingURL=../../../../src/app/app-footer/app-footer.component.js.map

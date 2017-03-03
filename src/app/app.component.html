@@ -107,7 +107,7 @@
 <router-outlet></router-outlet> -->
 
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#collapseContent" aria-controls="collapseContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -116,13 +116,13 @@
           <a class="brand" href="#">Digital Archive of Literacy Narratives</a>
       </div>
 
-      <div class="navbar-collapse " id="navbarsExampleDefault" aria-expanded="true">
+      <div class="navbar-collapse " id="collapseContent" aria-expanded="true">
           <ul class="navbar-nav mr-auto">
-              <li class="nav-item active"> <a class="nav-link" routerLink="/home"> home </a> </li>
-              <li class="nav-item"> <a class="nav-link" routerLink="/about"> about </a> </li>
+              <li class="nav-item"> <a class="nav-link" routerLink="/home" routerLinkActive="active"> home </a> </li>
+              <li class="nav-item"> <a class="nav-link" routerLink="/about" routerLinkActive="active"> about </a> </li>
               <li class="nav-item"> <a class="nav-link" href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
-              <li class="nav-item"> <a class="nav-link" routerLink="/contact"> contact </a> </li>
-              <li class="nav-item"> <a class="nav-link" routerLink="/create"> submit a literacy narrative </a> </li>
+              <li class="nav-item"> <a class="nav-link" routerLink="/contact" routerLinkActive="active"> contact </a> </li>
+              <li class="nav-item"> <a class="nav-link" routerLink="/create" routerLinkActive="active"> submit a literacy narrative </a> </li>
           </ul>
        </div>
 
