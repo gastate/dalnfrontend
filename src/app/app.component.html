@@ -105,18 +105,20 @@
 </nav>
 
 <router-outlet></router-outlet> -->
-
+<div class="header2">
+    <img src="assets/img/Logo_transparent.png" />
+</div>
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
     <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#collapseContent" aria-controls="collapseContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="header2">
-          <img src="assets/img/Logo_transparent.png" />
-          <a class="brand" href="#">Digital Archive of Literacy Narratives</a>
-      </div>
+    <div class="col-lg-6">
+      <a class="brand" routerLink="/home">Digital Archive of Literacy Narratives</a>
+    </div>
 
       <div class="navbar-collapse " id="collapseContent" aria-expanded="true">
+
           <ul class="navbar-nav mr-auto">
               <li class="nav-item"> <a class="nav-link" routerLink="/home" routerLinkActive="active"> home </a> </li>
               <li class="nav-item"> <a class="nav-link" routerLink="/about" routerLinkActive="active"> about </a> </li>

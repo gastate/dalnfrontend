@@ -1894,21 +1894,21 @@ nav select {
   display: inline-block;
 }
 
+.header2 {
+    position: absolute;
+    z-index: 1;
+}
+
 .header2 img {
     float: left;
     width: 10%;
     height:auto;
 }
-.header2 h1 {
-    position: relative;
-}
 
 .right li a:hover {color: #fefefe; background-color: #262626;}
-#header-wrap { position: relative;}
 
 .span3 .offset3 {}
 
-#header-wrap img {width: 40%; height: auto; margin: 3px; }
 .thumbnails {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -2164,11 +2164,9 @@ input.rights-option {
 }
 
 @media (min-width: 768px) and (max-width: 980px) {
-    .icon {display: none;}
 }
 
 @media (max-width: 980px) {
-    .icon {display: none;}
 
 }
 
@@ -2178,6 +2176,9 @@ input.rights-option {
 
 /* LARGE DESKTOP SCREENS */
 @media (min-width: 1210px) {
-    #collapseContent {width: 140%}
+    #collapseContent {
+        width: 50%;
+        float: right;
+    }
 
 }
