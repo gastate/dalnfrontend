@@ -40,7 +40,8 @@ export class DescriptionComponent implements OnInit {
 
 
   next() {
-    this.descriptionService.updateDescription(this.form.value);
+    // this.descriptionService.updateDescription(this.form.value);
+
     this._router.navigateByUrl('/create/media');
   }
 
