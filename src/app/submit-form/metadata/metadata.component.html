@@ -10,13 +10,13 @@
             <input class="meta-info" type="text" name="contributorAuthorFirstName" #firstName >
             <button class="btn btn-secondary" type="button" (click)="addName(lastName.value, firstName.value)">Add More</button>
             <p>Authors: </p>
-            <!-- <ul class="list-group">
-                <li *ngFor="let name of names" >{{names}}
+            <ul class="list-group">
+                <li *ngFor="let name of names" >{{name}}
                     <button (click)="removeName(this.name)" type="button" class="close">
                         <span>&times;</span>
                     </button>
                 </li>
-            </ul> -->
+            </ul>
             <br />
             <p>
             If you wish, enter the name of the author of this literacy narrative (you can click "Add More" to enter multiple names for a collaborative narrative). (Optional)

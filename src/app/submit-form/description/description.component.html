@@ -100,7 +100,7 @@
           </div>
           <p> Nation(s) specified: </p>
             <ul class="list-group">
-                <li *ngFor="let nation of nations" class="list-group-item">{{nations}}
+                <li *ngFor="let nation of nations" class="list-group-item">{{nation}}
                     <button (click)="removeNation(this.nation)" type="button" class="close">
                         <span>&times;</span>
                     </button>
@@ -123,7 +123,7 @@
           </div>
           <p> Region(s) specified: </p>
             <ul class="list-group">
-                <li *ngFor="let region of regions" class="list-group-item">{{regions}}
+                <li *ngFor="let region of regions" class="list-group-item">{{region}}
                     <button (click)="removeRegion(this.region)" type="button" class="close">
                         <span>&times;</span>
                     </button>
@@ -146,7 +146,7 @@
           </div>
           <p> State(s) specified: </p>
             <ul class="list-group">
-                <li *ngFor="let state of states" class="list-group-item">{{states}}
+                <li *ngFor="let state of states" class="list-group-item">{{state}}
                     <button (click)="removeState(this.state)" type="button" class="close">
                         <span>&times;</span>
                     </button>
@@ -170,7 +170,7 @@
           </div>
           <p> Georgraphical information added: </p>
             <ul class="list-group">
-                <li *ngFor="let geo of geos" class="list-group-item">{{geos}}
+                <li *ngFor="let geo of geos" class="list-group-item">{{geo}}
                     <button (click)="removeGeo(this.geo)" type="button" class="close">
                         <span>&times;</span>
                     </button>
@@ -194,7 +194,7 @@
           </div>
           <p> Languages specified: </p>
             <ul class="list-group">
-                <li *ngFor="let language of languages" class="list-group-item">{{languages}}
+                <li *ngFor="let language of languages" class="list-group-item">{{language}}
                     <button (click)="removeLanguage(this.language)" type="button" class="close">
                         <span>&times;</span>
                     </button>

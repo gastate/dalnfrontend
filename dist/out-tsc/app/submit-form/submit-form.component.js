@@ -14,7 +14,7 @@ SubmitFormComponent = __decorate([
     Component({
         selector: 'app-submit-form',
         templateUrl: './submit-form.component.html',
-        styleUrls: ['./submit-form.component.css']
+        styleUrls: ['./submit-form.component.css'],
     })
 ], SubmitFormComponent);
 export { SubmitFormComponent };
