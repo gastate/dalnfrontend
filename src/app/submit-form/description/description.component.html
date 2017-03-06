@@ -52,7 +52,11 @@
               </div>
           </div>
           <p> Current Subject(s): </p>
-         <span *ngFor="let subject of subjects" class="badge badge-primary">{{subject}}<a><i class="icon-remove"></i></a></span>
+            <span *ngFor="let subject of subjects" class="badge badge-primary">{{subject}}
+              <button (click)="removeSubject(this.subject)" type="button" class="close">
+              <span>&times;</span>
+            </button>
+            </span>
           <br />
 
           <p>

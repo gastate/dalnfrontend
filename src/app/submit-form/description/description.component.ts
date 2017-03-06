@@ -45,6 +45,10 @@ export class DescriptionComponent implements OnInit {
     this.subjects.push(subjectInput);
   }
 
+  removeSubject(subjectValue : string) {
+    this.subjects.splice(this.subjects.indexOf(subjectValue), 1);
+  }
+
 
   next() {
     // this.descriptionService.updateDescription(this.form.value);

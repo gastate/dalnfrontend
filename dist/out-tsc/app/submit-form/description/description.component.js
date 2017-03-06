@@ -30,6 +30,9 @@ var DescriptionComponent = (function () {
     DescriptionComponent.prototype.addSubject = function (subjectInput) {
         this.subjects.push(subjectInput);
     };
+    DescriptionComponent.prototype.removeSubject = function (subjectValue) {
+        this.subjects.splice(this.subjects.indexOf(subjectValue), 1);
+    };
     DescriptionComponent.prototype.next = function () {
         this._router.navigateByUrl('/create/media');
     };
