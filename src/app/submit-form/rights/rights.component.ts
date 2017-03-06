@@ -13,13 +13,14 @@ import { RightsService, RightsProfile } from '../../state/rights';
 })
 
 export class RightsComponent implements OnInit {
-    form: FormGroup;
+    rightsForm: FormGroup;
 
   constructor(
       private _router: Router,
-      private fb: FormBuilder,
-      private rightsService: RightsService
-  ) { }
+      private fb: FormBuilder
+    ) {
+      this.initForm()
+  }
 
   ngOnInit() {
     //   this.rightsService.rights$
@@ -28,10 +29,10 @@ export class RightsComponent implements OnInit {
     //     });
   }
 
-  initForm(rights: RightsProfile) {
-      this.form = this.fb.group({
-          rightsConsent : [rights.rightsConsent, Validators.required],
-          rightsRelease : [rights.rightsRelease, Validators.required]
+  initForm() {
+      this.rightsForm = this.fb.group({
+          rightsConsent : ['', Validators.required],
+          rightsRelease : ['', Validators.required]
       });
   }
 

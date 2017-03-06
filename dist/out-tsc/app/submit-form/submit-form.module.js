@@ -7,12 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
 import { SubmitFormComponent } from './submit-form.component';
 import { RightsComponent } from './rights/rights.component';
-import { RightsService } from '../state/rights';
-import { description, DescriptionService } from '../state/description';
-import { RemoteService } from '../state/remote';
 import { SubmitService } from './services/submit.service';
 import { MetadataComponent } from './metadata/metadata.component';
 import { DescriptionComponent } from './description/description.component';
@@ -34,8 +30,7 @@ SubmitFormModule = __decorate([
             CommonModule,
             FormsModule,
             SubmitFormRoutingModule,
-            ReactiveFormsModule,
-            StoreModule.provideStore({ description: description })
+            ReactiveFormsModule
         ],
         declarations: [
             RightsComponent,
@@ -50,9 +45,6 @@ SubmitFormModule = __decorate([
             DatepickerComponent
         ],
         providers: [
-            RightsService,
-            DescriptionService,
-            RemoteService,
             SubmitService
         ]
     })
