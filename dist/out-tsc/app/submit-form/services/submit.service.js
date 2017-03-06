@@ -16,7 +16,6 @@ var SubmitService = (function () {
     function SubmitService(_http, _store) {
         this._http = _http;
         this._store = _store;
-        this.posts = [];
         this.endPoint = environment.API_ENDPOINTS;
     }
     SubmitService.prototype.create = function (post) {
