@@ -32,15 +32,6 @@ export class PostService {
     //...errors if any
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   };
-  
-  // getPostPage(size: number, page: number): Observable<Post[]> {
-  //
-  //     //size is the number of posts per page, page is the position of posts to cycle through.
-  //     //so a parameter of size 10 returns 10 post IDs per page, page 1 is the first 0-10 postIDs, then page 2 is the next 11-20 postIDs.
-  //
-  //     return this._http.get(this.endPoint.page_posts + "size=" + size + "page=" + page).map((res: Response) => res.json())
-  //     .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
-  // };
 
   getPostById(id: string): Observable<Post> {
 
@@ -88,22 +79,10 @@ export class PostService {
   }
 
 
-  /*TODO Figure out why this causes a mapping error: Do not use this structure "toPromise()"
-   Instead use the Observable
-
-   getPosts(): Promise<Post[]> {
-   return this._http.get(this.allPostsEndpoint)
-   .toPromise()
-   .then(response => response.json().data as Post[])
-   .catch(this.handleError);
-   }
 
 
-   private handleError(error: any): Promise<any> {
-   console.error('An error occurred', error); // for demo purposes only
-   return Promise.reject(error.message || error);
-   }
 
-   */
+
+
 
 }

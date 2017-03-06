@@ -26,8 +26,7 @@ import {DatepickerComponent} from './datepicker/datepicker.component';
     CommonModule,
     FormsModule,
     SubmitFormRoutingModule,
-    ReactiveFormsModule,
-    StoreModule.provideStore({ description})
+    ReactiveFormsModule
   ],
   declarations: [
     RightsComponent,
@@ -42,9 +41,6 @@ import {DatepickerComponent} from './datepicker/datepicker.component';
     DatepickerComponent
 ],
 providers : [
-    RightsService,
-    DescriptionService,
-    RemoteService,
     SubmitService
 ]
 })

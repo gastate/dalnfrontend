@@ -12,11 +12,14 @@ const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 
 @Injectable()
 export class SubmitService {
-  posts : Post [] = [];
 
-  constructor(private _http: Http, private _store: Store<AppStore>) {}
+  constructor(private _http: Http, private _store: Store<AppStore>) {
+
+  }
 
   private endPoint = environment.API_ENDPOINTS;
+
+
 
 
   create(post: Post): void {

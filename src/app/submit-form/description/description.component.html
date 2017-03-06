@@ -1,7 +1,7 @@
 
 <div class="container">
 
-    <form [formGroup]="form" novalidate (submit)="next()">
+    <form [formGroup]="descForm" novalidate (submit)="next()">
     <ul>
 
         <li>
@@ -10,14 +10,14 @@
             <p>
             To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)
             </p>
-            <div class="error" *ngIf="form.get('title').touched && form.get('title').hasError('required')">
+            <!-- <div class="error" *ngIf="form.get('title').touched && form.get('title').hasError('required')">
               <strong>Title is required</strong>
-            </div>
+            </div> -->
         </li>
 
         <li>
           <span>Description</span>
-          <input class="meta-info" type="text" name="description" formControlName="description" > <br />
+          <input class="meta-info" type="text" name="description" formControlName="description" [(ngModel)]='description'> <br />
           <p>
             To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).
           </p>
@@ -32,15 +32,33 @@
           </p>
         </li>
 
-        <p>
-            NOTE: If you would like to assign a Creative Commons (CC) license to your narrative, thereby retaining ownership while specifying the uses that others may make of your narrative, please visit the Creative Commons site at http://creativecommons.org/choose/, choose a license, then place a license notification to this field, including the name of the CC license (e.g., “My Narrative’s Title” by Lewis Ulman is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License).
+    </ul>
 
-            If you wish to contribute your narrative under a Deed of Gift, thereby transferring ownership of your narrative to the DALN, which will establish its own guidelines for usage, you will have an opportunity to do so at the end of the submission process. (Optional)
-        </p>
+<div class="well well-lg">
+    <p>
+        The following form fields are optional, but recommended:
+    </p>
+
+    <ul>
 
         <li>
           <span>Subject Keyword</span>
-          <input class="meta-info" type="text" name="subject" ngModel> <br />
+          <div class="col-lg-6">
+              <div class="input-group">
+                  <input class="meta-info" type="text" name="subject" #subjectInput>
+                  <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button" (click)="addSubject(subjectInput.value)">+</button>
+                  </span>
+              </div>
+          </div>
+          <p> Current Subject(s): </p>
+            <span *ngFor="let subject of subjects" class="badge badge-primary">{{subject}}
+              <button (click)="removeSubject(this.subject)" type="button" class="close">
+              <span>&times;</span>
+            </button>
+            </span>
+          <br />
+
           <p>
             To help other DALN users find your literacy narrative, please enter appropriate subject keywords or phrases. You may enter as many as you like, but you should enter only one keyword or phrase at a time, then click "Add More" to enter additional keywords. (Optional)
           </p>
@@ -48,15 +66,46 @@
 
         <li>
           <span>Decades covered</span>
-          <select></select><br />
-          <p>
+          <div class="form-group">
+              <label for="decades">Mutiple select list (hold shift to select more than one):</label>
+                    <select multiple class="form-control" id="decades" [(ngModel)]="coveragePeriod" formControlName="coveragePeriod">
+                      <option>1900-1909</option>
+                      <option>1910-1919</option>
+                      <option>1920-1929</option>
+                      <option>1930-1939</option>
+                      <option>1940-1949</option>
+                      <option>1950-1959</option>
+                      <option>1960-1969</option>
+                      <option>1970-1979</option>
+                      <option>1980-1989</option>
+                      <option>1990-1999</option>
+                      <option>2000-2009</option>
+                      <option>2010-2019</option>
+                    </select>
+          </div>
+            <p>
               Please indicate the decades referred to in your literacy narrative. You can choose as many as necessary, but you may need to hold down the Shift or CTRL key to select multiple choices. (Optional)
           </p>
         </li>
 
         <li>
           <span>Nationality</span>
-          <input class="meta-info" type="text" name="nation"> <br />
+          <div class="col-lg-6">
+              <div class="input-group">
+                  <input class="meta-info" type="text" name="nation" #nationInput>
+                  <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button" (click)="addNation(nationInput.value)">+</button>
+                  </span>
+              </div>
+          </div>
+          <p> Nation(s) specified: </p>
+            <ul class="list-group">
+                <li *ngFor="let nation of nations" class="list-group-item">{{nations}}
+                    <button (click)="removeNation(this.nation)" type="button" class="close">
+                        <span>&times;</span>
+                    </button>
+                </li>
+            </ul>
           <p>
               To help other DALN users find narratives by people of a particular nationality, please list your nationality/nationalities during the period referred to in your narrative. (Optional)
           </p>
@@ -64,7 +113,22 @@
 
         <li>
           <span>Region</span>
-          <input class="meta-info" type="text" name="region"> <br />
+          <div class="col-lg-6">
+              <div class="input-group">
+                  <input class="meta-info" type="text" name="region" #regionInput>
+                  <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button" (click)="addRegion(regionInput.value)">+</button>
+                  </span>
+              </div>
+          </div>
+          <p> Region(s) specified: </p>
+            <ul class="list-group">
+                <li *ngFor="let region of regions" class="list-group-item">{{regions}}
+                    <button (click)="removeRegion(this.region)" type="button" class="close">
+                        <span>&times;</span>
+                    </button>
+                </li>
+            </ul>
           <p>
             To help other DALN users find narratives from particular regions (e.g., New England, Rocky Mountains, Great Plains) please list the region(s) in which the events described in your narrative took place. (Optional)
           </p>
@@ -72,7 +136,23 @@
 
         <li>
           <span>State or Province</span>
-          <select></select><br />
+          <div class="col-lg-6">
+              <div class="input-group">
+                  <input class="meta-info" type="text" name="state" #stateInput>
+                  <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button" (click)="addState(stateInput.value)">+</button>
+                  </span>
+              </div>
+          </div>
+          <p> State(s) specified: </p>
+            <ul class="list-group">
+                <li *ngFor="let state of states" class="list-group-item">{{states}}
+                    <button (click)="removeState(this.state)" type="button" class="close">
+                        <span>&times;</span>
+                    </button>
+                </li>
+            </ul>
+            <br />
           <p>
             To help other DALN users find narratives from your state or province, please list the state(s) or province(s) in which the events described in your narrative took place. (Optional)
           </p>
@@ -80,7 +160,23 @@
 
         <li>
           <span>Other Geographical Information</span>
-          <input class="meta-info" type="text" name="state"> <br />
+          <div class="col-lg-6">
+              <div class="input-group">
+                  <input class="meta-info" type="text" name="geo" #geoInput>
+                  <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button" (click)="addGeo(geoInput.value)">+</button>
+                  </span>
+              </div>
+          </div>
+          <p> Georgraphical information added: </p>
+            <ul class="list-group">
+                <li *ngFor="let geo of geos" class="list-group-item">{{geos}}
+                    <button (click)="removeGeo(this.geo)" type="button" class="close">
+                        <span>&times;</span>
+                    </button>
+                </li>
+            </ul>
+          <br />
           <p>
             Please provide any further description of the places referred to in your narrative that you consider important (e.g., urban, suburban, rural, inner-city Detroit). (Optional)
           </p>
@@ -88,7 +184,23 @@
 
         <li>
           <span>Language</span>
-          <input class="meta-info" type="text" name="lanugage"> <br />
+          <div class="col-lg-6">
+              <div class="input-group">
+                  <input class="meta-info" type="text" name="language" #languageInput>
+                  <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button" (click)="addLanguage(languageInput.value)">+</button>
+                  </span>
+              </div>
+          </div>
+          <p> Languages specified: </p>
+            <ul class="list-group">
+                <li *ngFor="let language of languages" class="list-group-item">{{languages}}
+                    <button (click)="removeLanguage(this.language)" type="button" class="close">
+                        <span>&times;</span>
+                    </button>
+                </li>
+            </ul>
+          <br />
           <p>
             Please enter the language(s) used or referred to in your literacy narrative. (Optional)
           </p>
@@ -96,10 +208,17 @@
 
 
     </ul>
-
+</div>
     </form>
 
-    <button type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button>
+    <!-- <button type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button> -->
+    <!-- <button type="submit" (click)="getConsole()">Get Console</button> -->
+    <button type="submit" class="btn btn-primary" (click)="next()">Next Step</button>
 
 
 </div>
+
+<p>
+    Form value:
+    {{descForm.value | json}}
+</p>

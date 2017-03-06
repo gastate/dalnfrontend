@@ -7,22 +7,18 @@ webpackJsonp([0,3],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngrx_store__ = __webpack_require__(1126);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__submit_form_component__ = __webpack_require__(1140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__rights_rights_component__ = __webpack_require__(1139);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__state_rights__ = __webpack_require__(1133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__state_description__ = __webpack_require__(1132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__state_remote__ = __webpack_require__(1149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_submit_service__ = __webpack_require__(1151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__metadata_metadata_component__ = __webpack_require__(1138);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__description_description_component__ = __webpack_require__(1135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__media_media_component__ = __webpack_require__(1137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__license_license_component__ = __webpack_require__(1136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__summary_summary_component__ = __webpack_require__(1141);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__complete_complete_component__ = __webpack_require__(1134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__submit_form_routing_module__ = __webpack_require__(1152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__result_result_component__ = __webpack_require__(1148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__datepicker_datepicker_component__ = __webpack_require__(1150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__submit_form_component__ = __webpack_require__(1138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rights_rights_component__ = __webpack_require__(1137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_submit_service__ = __webpack_require__(1149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__metadata_metadata_component__ = __webpack_require__(1136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__description_description_component__ = __webpack_require__(1133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_media_component__ = __webpack_require__(1135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__license_license_component__ = __webpack_require__(1134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__summary_summary_component__ = __webpack_require__(1139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__complete_complete_component__ = __webpack_require__(1132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__submit_form_routing_module__ = __webpack_require__(1150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__result_result_component__ = __webpack_require__(1146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__datepicker_datepicker_component__ = __webpack_require__(1148);
 /* harmony export (binding) */ __webpack_require__.d(exports, "SubmitFormModule", function() { return SubmitFormModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -48,10 +44,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-
 var SubmitFormModule = (function () {
     function SubmitFormModule() {
     }
@@ -60,27 +52,23 @@ var SubmitFormModule = (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_common__["c" /* CommonModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_16__submit_form_routing_module__["a" /* SubmitFormRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* ReactiveFormsModule */],
-                __WEBPACK_IMPORTED_MODULE_3__ngrx_store__["b" /* StoreModule */].provideStore({ description: __WEBPACK_IMPORTED_MODULE_7__state_description__["b" /* description */] })
+                __WEBPACK_IMPORTED_MODULE_12__submit_form_routing_module__["a" /* SubmitFormRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* ReactiveFormsModule */]
             ],
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_5__rights_rights_component__["a" /* RightsComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__metadata_metadata_component__["a" /* MetadataComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__description_description_component__["a" /* DescriptionComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__media_media_component__["a" /* MediaComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__license_license_component__["a" /* LicenseComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__summary_summary_component__["a" /* SummaryComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__complete_complete_component__["a" /* CompleteComponent */],
-                __WEBPACK_IMPORTED_MODULE_4__submit_form_component__["a" /* SubmitFormComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__result_result_component__["a" /* ResultComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__datepicker_datepicker_component__["a" /* DatepickerComponent */]
+                __WEBPACK_IMPORTED_MODULE_4__rights_rights_component__["a" /* RightsComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__metadata_metadata_component__["a" /* MetadataComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__description_description_component__["a" /* DescriptionComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__media_media_component__["a" /* MediaComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__license_license_component__["a" /* LicenseComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__summary_summary_component__["a" /* SummaryComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__complete_complete_component__["a" /* CompleteComponent */],
+                __WEBPACK_IMPORTED_MODULE_3__submit_form_component__["a" /* SubmitFormComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__result_result_component__["a" /* ResultComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__datepicker_datepicker_component__["a" /* DatepickerComponent */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_6__state_rights__["a" /* RightsService */],
-                __WEBPACK_IMPORTED_MODULE_7__state_description__["a" /* DescriptionService */],
-                __WEBPACK_IMPORTED_MODULE_8__state_remote__["a" /* RemoteService */],
-                __WEBPACK_IMPORTED_MODULE_9__services_submit_service__["a" /* SubmitService */]
+                __WEBPACK_IMPORTED_MODULE_5__services_submit_service__["a" /* SubmitService */]
             ]
         }), 
         __metadata('design:paramtypes', [])
@@ -96,13 +84,13 @@ var SubmitFormModule = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_dispatcher__ = __webpack_require__(1127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_ng2__ = __webpack_require__(1147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_ng2__ = __webpack_require__(1145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_reducer__ = __webpack_require__(1128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_state__ = __webpack_require__(1129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_store__ = __webpack_require__(1130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_utils__ = __webpack_require__(1131);
 /* unused harmony namespace reexport */
-/* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__src_ng2__["a"]; });
+/* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__src_store__["a"]; });
@@ -185,9 +173,9 @@ var Reducer = (function (_super) {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operator_withLatestFrom__ = __webpack_require__(531);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operator_withLatestFrom__ = __webpack_require__(530);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operator_withLatestFrom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_operator_withLatestFrom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_scan__ = __webpack_require__(530);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_scan__ = __webpack_require__(529);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_scan___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operator_scan__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_observeOn__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_observeOn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operator_observeOn__);
@@ -229,7 +217,7 @@ var State = (function (_super) {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngrx_core__ = __webpack_require__(1142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngrx_core__ = __webpack_require__(1140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Store; });
@@ -314,109 +302,6 @@ function combineReducers(reducers) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngrx_store__ = __webpack_require__(1126);
-/* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return description; });
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return DescriptionService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var ADD_DESCRIPTION = 'ADD_DESCRIPTION';
-var initialState = {
-    title: ''
-};
-var description = function (state, action) {
-    if (state === void 0) { state = initialState; }
-    switch (action.type) {
-        case ADD_DESCRIPTION:
-            return Object.assign({}, { title: action.payload.title });
-        default:
-            return state;
-    }
-};
-var DescriptionService = (function () {
-    function DescriptionService(store) {
-        this.store = store;
-        this.description$ = this.store.select('description');
-    }
-    DescriptionService.prototype.updateDescription = function (description) {
-        this.store.dispatch({ type: ADD_DESCRIPTION, payload: description });
-    };
-    DescriptionService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* Injectable */])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["a" /* Store */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["a" /* Store */]) === 'function' && _a) || Object])
-    ], DescriptionService);
-    return DescriptionService;
-    var _a;
-}());
-
-
-/***/ },
-
-/***/ 1133:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngrx_store__ = __webpack_require__(1126);
-/* unused harmony export rights */
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return RightsService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var UPDATE_RIGHTS = 'UPDATE_RIGHTS';
-var initialState = {
-    rightsConsent: '',
-    rightsRelease: ''
-};
-var rights = function (state, action) {
-    if (state === void 0) { state = initialState; }
-    switch (action.type) {
-        case UPDATE_RIGHTS:
-            return action.payload;
-        default:
-            return state;
-    }
-};
-var RightsService = (function () {
-    function RightsService(store) {
-        this.store = store;
-        this.rights$ = this.store.select('rights');
-    }
-    RightsService.prototype.updateRights = function (rights) {
-        this.store.dispatch({ type: UPDATE_RIGHTS, payload: rights });
-    };
-    RightsService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* Injectable */])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["a" /* Store */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["a" /* Store */]) === 'function' && _a) || Object])
-    ], RightsService);
-    return RightsService;
-    var _a;
-}());
-
-
-/***/ },
-
-/***/ 1134:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CompleteComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -436,8 +321,8 @@ var CompleteComponent = (function () {
     CompleteComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-complete',
-            template: __webpack_require__(1165),
-            styles: [__webpack_require__(1155)]
+            template: __webpack_require__(1163),
+            styles: [__webpack_require__(1153)]
         }), 
         __metadata('design:paramtypes', [])
     ], CompleteComponent);
@@ -447,15 +332,14 @@ var CompleteComponent = (function () {
 
 /***/ },
 
-/***/ 1135:
+/***/ 1133:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__state_description__ = __webpack_require__(1132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__submit_form_service__ = __webpack_require__(1153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__submit_form_service__ = __webpack_require__(1151);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return DescriptionComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -470,31 +354,72 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var DescriptionComponent = (function () {
-    function DescriptionComponent(_router, fb, descriptionService, _postCreate) {
+    function DescriptionComponent(_router, fb, _postCreate) {
         this._router = _router;
         this.fb = fb;
-        this.descriptionService = descriptionService;
         this._postCreate = _postCreate;
+        this.subjects = [];
+        this.nations = [];
+        this.regions = [];
+        this.states = [];
+        this.geos = [];
+        this.languages = [];
+        this.initForm();
     }
     DescriptionComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.descriptionService.description$
-            .subscribe(function (description) {
-            _this.initForm(description);
+    };
+    DescriptionComponent.prototype.initForm = function () {
+        this.descForm = this.fb.group({
+            title: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
+            description: [''],
+            coveragePeriod: ['']
         });
     };
-    DescriptionComponent.prototype.initForm = function (description) {
-        this.form = this.fb.group({
-            title: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
-        });
-        console.log(typeof this.form.value.title);
-        this.createPost(this.form.value.title);
+    DescriptionComponent.prototype.addSubject = function (subjectInput) {
+        this.subjects.push(subjectInput);
     };
-    DescriptionComponent.prototype.createPost = function (title) {
-        this._postCreate.postCreate(title);
+    DescriptionComponent.prototype.removeSubject = function (subjectValue) {
+        this.subjects.splice(this.subjects.indexOf(subjectValue), 1);
     };
+    DescriptionComponent.prototype.addNation = function (nation) {
+        this.nations.push(nation);
+    };
+    DescriptionComponent.prototype.removeNation = function (nation) {
+        this.nations.splice(this.nations.indexOf(nation), 1);
+    };
+    DescriptionComponent.prototype.addRegion = function (region) {
+        this.regions.push(region);
+    };
+    DescriptionComponent.prototype.removeRegion = function (region) {
+        this.regions.splice(this.regions.indexOf(region), 1);
+    };
+    DescriptionComponent.prototype.addState = function (state) {
+        this.states.push(state);
+    };
+    DescriptionComponent.prototype.removeState = function (state) {
+        this.states.splice(this.states.indexOf(state), 1);
+    };
+    DescriptionComponent.prototype.addGeo = function (geo) {
+        this.geos.push(geo);
+    };
+    DescriptionComponent.prototype.removeGeo = function (geo) {
+        this.geos.splice(this.geos.indexOf(geo), 1);
+    };
+    DescriptionComponent.prototype.addLanguage = function (language) {
+        this.languages.push(language);
+    };
+    DescriptionComponent.prototype.removeLanguage = function (language) {
+        this.languages.splice(this.languages.indexOf(language), 1);
+    };
+    // getConsole() {
+    //     console.log(this.subjects);
+    //     console.log(this.nations);
+    //     console.log(this.regions);
+    //     console.log(this.states);
+    //     console.log(this.geos);
+    //     console.log(this.languages);
+    // }
     DescriptionComponent.prototype.next = function () {
         // this.descriptionService.updateDescription(this.form.value);
         this._router.navigateByUrl('/create/media');
@@ -502,20 +427,20 @@ var DescriptionComponent = (function () {
     DescriptionComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-description',
-            template: __webpack_require__(1167),
-            styles: [__webpack_require__(1157)],
-            providers: [__WEBPACK_IMPORTED_MODULE_3__state_description__["a" /* DescriptionService */], __WEBPACK_IMPORTED_MODULE_4__submit_form_service__["a" /* SubmitFormService */]]
+            template: __webpack_require__(1165),
+            styles: [__webpack_require__(1155)],
+            providers: [__WEBPACK_IMPORTED_MODULE_3__submit_form_service__["a" /* SubmitFormService */]]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__state_description__["a" /* DescriptionService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__state_description__["a" /* DescriptionService */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__submit_form_service__["a" /* SubmitFormService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__submit_form_service__["a" /* SubmitFormService */]) === 'function' && _d) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__submit_form_service__["a" /* SubmitFormService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__submit_form_service__["a" /* SubmitFormService */]) === 'function' && _c) || Object])
     ], DescriptionComponent);
     return DescriptionComponent;
-    var _a, _b, _c, _d;
+    var _a, _b, _c;
 }());
 
 
 /***/ },
 
-/***/ 1136:
+/***/ 1134:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -545,8 +470,8 @@ var LicenseComponent = (function () {
     LicenseComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-license',
-            template: __webpack_require__(1168),
-            styles: [__webpack_require__(1158)]
+            template: __webpack_require__(1166),
+            styles: [__webpack_require__(1156)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === 'function' && _a) || Object])
     ], LicenseComponent);
@@ -557,7 +482,7 @@ var LicenseComponent = (function () {
 
 /***/ },
 
-/***/ 1137:
+/***/ 1135:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -587,8 +512,8 @@ var MediaComponent = (function () {
     MediaComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-media',
-            template: __webpack_require__(1169),
-            styles: [__webpack_require__(1159)]
+            template: __webpack_require__(1167),
+            styles: [__webpack_require__(1157)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === 'function' && _a) || Object])
     ], MediaComponent);
@@ -599,12 +524,13 @@ var MediaComponent = (function () {
 
 /***/ },
 
-/***/ 1138:
+/***/ 1136:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(59);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return MetadataComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -617,11 +543,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var MetadataComponent = (function () {
-    function MetadataComponent(_router) {
+    function MetadataComponent(_router, fb) {
         this._router = _router;
+        this.fb = fb;
+        this.names = [];
+        this.initForm();
     }
     MetadataComponent.prototype.ngOnInit = function () {
+    };
+    MetadataComponent.prototype.initForm = function () {
+        this.metaForm = this.fb.group({
+            creatorGender: ['']
+        });
+    };
+    MetadataComponent.prototype.addName = function (lastName, firstName) {
+        var name = lastName + ", " + firstName;
+        this.names.push(name);
+    };
+    MetadataComponent.prototype.removeName = function (name) {
+        this.names.splice(this.names.indexOf(name), 1);
+    };
+    MetadataComponent.prototype.getConsole = function () {
+        console.log(this.names);
     };
     MetadataComponent.prototype.next = function () {
         this._router.navigateByUrl('/create/description');
@@ -629,26 +574,26 @@ var MetadataComponent = (function () {
     MetadataComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-metadata',
-            template: __webpack_require__(1170),
-            styles: [__webpack_require__(1160)]
+            template: __webpack_require__(1168),
+            styles: [__webpack_require__(1158)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */]) === 'function' && _b) || Object])
     ], MetadataComponent);
     return MetadataComponent;
-    var _a;
+    var _a, _b;
 }());
 
 
 /***/ },
 
-/***/ 1139:
+/***/ 1137:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__state_rights__ = __webpack_require__(1133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__state_rights__ = __webpack_require__(1147);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return RightsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -664,10 +609,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var RightsComponent = (function () {
-    function RightsComponent(_router, fb, rightsService) {
+    function RightsComponent(_router, fb) {
         this._router = _router;
         this.fb = fb;
-        this.rightsService = rightsService;
+        this.initForm();
     }
     RightsComponent.prototype.ngOnInit = function () {
         //   this.rightsService.rights$
@@ -675,10 +620,10 @@ var RightsComponent = (function () {
         //         this.initForm(rights);
         //     });
     };
-    RightsComponent.prototype.initForm = function (rights) {
-        this.form = this.fb.group({
-            rightsConsent: [rights.rightsConsent, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
-            rightsRelease: [rights.rightsRelease, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
+    RightsComponent.prototype.initForm = function () {
+        this.rightsForm = this.fb.group({
+            rightsConsent: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
+            rightsRelease: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
         });
     };
     RightsComponent.prototype.next = function () {
@@ -688,20 +633,20 @@ var RightsComponent = (function () {
     RightsComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-rights',
-            template: __webpack_require__(1171),
-            styles: [__webpack_require__(1161)],
+            template: __webpack_require__(1169),
+            styles: [__webpack_require__(1159)],
             providers: [__WEBPACK_IMPORTED_MODULE_3__state_rights__["a" /* RightsService */]]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__state_rights__["a" /* RightsService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__state_rights__["a" /* RightsService */]) === 'function' && _c) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === 'function' && _b) || Object])
     ], RightsComponent);
     return RightsComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 
 
 /***/ },
 
-/***/ 1140:
+/***/ 1138:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -723,8 +668,8 @@ var SubmitFormComponent = (function () {
     SubmitFormComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-submit-form',
-            template: __webpack_require__(1172),
-            styles: [__webpack_require__(1162)]
+            template: __webpack_require__(1170),
+            styles: [__webpack_require__(1160)]
         }), 
         __metadata('design:paramtypes', [])
     ], SubmitFormComponent);
@@ -734,7 +679,7 @@ var SubmitFormComponent = (function () {
 
 /***/ },
 
-/***/ 1141:
+/***/ 1139:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -764,8 +709,8 @@ var SummaryComponent = (function () {
     SummaryComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-summary',
-            template: __webpack_require__(1173),
-            styles: [__webpack_require__(1163)]
+            template: __webpack_require__(1171),
+            styles: [__webpack_require__(1161)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === 'function' && _a) || Object])
     ], SummaryComponent);
@@ -776,14 +721,14 @@ var SummaryComponent = (function () {
 
 /***/ },
 
-/***/ 1142:
+/***/ 1140:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_operator_enterZone__ = __webpack_require__(1144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_operator_leaveZone__ = __webpack_require__(1145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_operator_select__ = __webpack_require__(1146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_compose__ = __webpack_require__(1143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_operator_enterZone__ = __webpack_require__(1142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_operator_leaveZone__ = __webpack_require__(1143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_operator_select__ = __webpack_require__(1144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_compose__ = __webpack_require__(1141);
 /* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__src_operator_select__["a"]; });
@@ -796,7 +741,7 @@ var SummaryComponent = (function () {
 
 /***/ },
 
-/***/ 1143:
+/***/ 1141:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -819,7 +764,7 @@ var compose = function () {
 
 /***/ },
 
-/***/ 1144:
+/***/ 1142:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -861,7 +806,7 @@ var EnterZoneSubscriber = (function (_super) {
 
 /***/ },
 
-/***/ 1145:
+/***/ 1143:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -903,11 +848,11 @@ var LeaveZoneSubscriber = (function (_super) {
 
 /***/ },
 
-/***/ 1146:
+/***/ 1144:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operator_pluck__ = __webpack_require__(529);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operator_pluck__ = __webpack_require__(528);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operator_pluck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_operator_pluck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_map__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operator_map__);
@@ -939,7 +884,7 @@ function select(pathOrMapFn) {
 
 /***/ },
 
-/***/ 1147:
+/***/ 1145:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -959,7 +904,7 @@ function select(pathOrMapFn) {
 /* unused harmony export _stateFactory */
 /* unused harmony export _reducerFactory */
 /* unused harmony export provideStore */
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return StoreModule; });
+/* unused harmony export StoreModule */
 
 
 
@@ -1027,7 +972,7 @@ var StoreModule = (function () {
 
 /***/ },
 
-/***/ 1148:
+/***/ 1146:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1054,8 +999,8 @@ var ResultComponent = (function () {
     ResultComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-result',
-            template: __webpack_require__(1164),
-            styles: [__webpack_require__(1154)]
+            template: __webpack_require__(1162),
+            styles: [__webpack_require__(1152)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["a" /* Store */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["a" /* Store */]) === 'function' && _a) || Object])
     ], ResultComponent);
@@ -1066,15 +1011,14 @@ var ResultComponent = (function () {
 
 /***/ },
 
-/***/ 1149:
+/***/ 1147:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngrx_store__ = __webpack_require__(1126);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_take__ = __webpack_require__(528);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_take__);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return RemoteService; });
+/* unused harmony export rights */
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return RightsService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1086,26 +1030,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-var RemoteService = (function () {
-    function RemoteService(store) {
-        this.store = store;
+var UPDATE_RIGHTS = 'UPDATE_RIGHTS';
+var initialState = {
+    rightsConsent: '',
+    rightsRelease: ''
+};
+var rights = function (state, action) {
+    if (state === void 0) { state = initialState; }
+    switch (action.type) {
+        case UPDATE_RIGHTS:
+            return action.payload;
+        default:
+            return state;
     }
-    RemoteService.prototype.sendDataToServer = function () {
-        return this.store.take(1);
+};
+var RightsService = (function () {
+    function RightsService(store) {
+        this.store = store;
+        this.rights$ = this.store.select('rights');
+    }
+    RightsService.prototype.updateRights = function (rights) {
+        this.store.dispatch({ type: UPDATE_RIGHTS, payload: rights });
     };
-    RemoteService = __decorate([
+    RightsService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* Injectable */])(), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["a" /* Store */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["a" /* Store */]) === 'function' && _a) || Object])
-    ], RemoteService);
-    return RemoteService;
+    ], RightsService);
+    return RightsService;
     var _a;
 }());
 
 
 /***/ },
 
-/***/ 1150:
+/***/ 1148:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1129,8 +1087,8 @@ var DatepickerComponent = (function () {
     DatepickerComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
             selector: 'app-datepicker',
-            template: __webpack_require__(1166),
-            styles: [__webpack_require__(1156)]
+            template: __webpack_require__(1164),
+            styles: [__webpack_require__(1154)]
         }), 
         __metadata('design:paramtypes', [])
     ], DatepickerComponent);
@@ -1140,7 +1098,7 @@ var DatepickerComponent = (function () {
 
 /***/ },
 
-/***/ 1151:
+/***/ 1149:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1167,7 +1125,6 @@ var SubmitService = (function () {
     function SubmitService(_http, _store) {
         this._http = _http;
         this._store = _store;
-        this.posts = [];
         this.endPoint = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_ENDPOINTS;
     }
     SubmitService.prototype.create = function (post) {
@@ -1188,20 +1145,20 @@ var SubmitService = (function () {
 
 /***/ },
 
-/***/ 1152:
+/***/ 1150:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__submit_form_component__ = __webpack_require__(1140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rights_rights_component__ = __webpack_require__(1139);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__metadata_metadata_component__ = __webpack_require__(1138);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__description_description_component__ = __webpack_require__(1135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__media_media_component__ = __webpack_require__(1137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__license_license_component__ = __webpack_require__(1136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__summary_summary_component__ = __webpack_require__(1141);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__complete_complete_component__ = __webpack_require__(1134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__submit_form_component__ = __webpack_require__(1138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rights_rights_component__ = __webpack_require__(1137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__metadata_metadata_component__ = __webpack_require__(1136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__description_description_component__ = __webpack_require__(1133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__media_media_component__ = __webpack_require__(1135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__license_license_component__ = __webpack_require__(1134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__summary_summary_component__ = __webpack_require__(1139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__complete_complete_component__ = __webpack_require__(1132);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return SubmitFormRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1258,7 +1215,7 @@ var SubmitFormRoutingModule = (function () {
 
 /***/ },
 
-/***/ 1153:
+/***/ 1151:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1307,6 +1264,20 @@ var SubmitFormService = (function () {
     var _a;
 }());
 
+
+/***/ },
+
+/***/ 1152:
+/***/ function(module, exports) {
+
+module.exports = ""
+
+/***/ },
+
+/***/ 1153:
+/***/ function(module, exports) {
+
+module.exports = ""
 
 /***/ },
 
@@ -1369,81 +1340,67 @@ module.exports = ""
 /***/ 1162:
 /***/ function(module, exports) {
 
-module.exports = ""
+module.exports = "<h1>App store</h1>\r\n<pre>\r\n    {{store | async | json}}\r\n</pre>\r\n"
 
 /***/ },
 
 /***/ 1163:
 /***/ function(module, exports) {
 
-module.exports = ""
+module.exports = "<div class=\"container\">\r\n\r\n    <h1>Post Submission Complete!</h1>\r\n</div>\r\n\r\n<!-- <app-result></app-result> -->\r\n"
 
 /***/ },
 
 /***/ 1164:
 /***/ function(module, exports) {
 
-module.exports = "<h1>App store</h1>\r\n<pre>\r\n    {{store | async | json}}\r\n</pre>\r\n"
+module.exports = "<!-- <form class=\"form-inline\">\r\n  <div class=\"form-group\">\r\n    <div class=\"input-group\">\r\n        <input class=\"form-control\" placeholder=\"yyyy-mm-dd\"\r\n              name=\"dp\" [(ngModel)]=\"model\" ngbDatepicker #d=\"ngbDatepicker\">\r\n      <div class=\"input-group-addon\" (click)=\"d.toggle()\" >\r\n          <i class=\"icon-calendar\"></i>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</form> -->\r\n"
 
 /***/ },
 
 /***/ 1165:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n    <h1>Post Submission Complete!</h1>\r\n</div>\r\n\r\n<!-- <app-result></app-result> -->\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form [formGroup]=\"descForm\" novalidate (submit)=\"next()\">\r\n    <ul>\r\n\r\n        <li>\r\n            <span>Title</span>\r\n            <input class=\"meta-info\" type=\"text\" name=\"title\" formControlName=\"title\" [(ngModel)]='title'> <br />\r\n            <p>\r\n            To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)\r\n            </p>\r\n            <!-- <div class=\"error\" *ngIf=\"form.get('title').touched && form.get('title').hasError('required')\">\r\n              <strong>Title is required</strong>\r\n            </div> -->\r\n        </li>\r\n\r\n        <li>\r\n          <span>Description</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"description\" formControlName=\"description\" [(ngModel)]='description'> <br />\r\n          <p>\r\n            To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Date Created</span>\r\n          <!-- <app-datepicker></app-datepicker> -->\r\n        <br />\r\n          <p>\r\n            Please provide the date on which you created your literacy narrative -- not necessarily the date on which you are filling out this form. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n    </ul>\r\n\r\n<div class=\"well well-lg\">\r\n    <p>\r\n        The following form fields are optional, but recommended:\r\n    </p>\r\n\r\n    <ul>\r\n\r\n        <li>\r\n          <span>Subject Keyword</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"subject\" #subjectInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addSubject(subjectInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Current Subject(s): </p>\r\n            <span *ngFor=\"let subject of subjects\" class=\"badge badge-primary\">{{subject}}\r\n              <button (click)=\"removeSubject(this.subject)\" type=\"button\" class=\"close\">\r\n              <span>&times;</span>\r\n            </button>\r\n            </span>\r\n          <br />\r\n\r\n          <p>\r\n            To help other DALN users find your literacy narrative, please enter appropriate subject keywords or phrases. You may enter as many as you like, but you should enter only one keyword or phrase at a time, then click \"Add More\" to enter additional keywords. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Decades covered</span>\r\n          <div class=\"form-group\">\r\n              <label for=\"decades\">Mutiple select list (hold shift to select more than one):</label>\r\n                    <select multiple class=\"form-control\" id=\"decades\" [(ngModel)]=\"coveragePeriod\" formControlName=\"coveragePeriod\">\r\n                      <option>1900-1909</option>\r\n                      <option>1910-1919</option>\r\n                      <option>1920-1929</option>\r\n                      <option>1930-1939</option>\r\n                      <option>1940-1949</option>\r\n                      <option>1950-1959</option>\r\n                      <option>1960-1969</option>\r\n                      <option>1970-1979</option>\r\n                      <option>1980-1989</option>\r\n                      <option>1990-1999</option>\r\n                      <option>2000-2009</option>\r\n                      <option>2010-2019</option>\r\n                    </select>\r\n          </div>\r\n            <p>\r\n              Please indicate the decades referred to in your literacy narrative. You can choose as many as necessary, but you may need to hold down the Shift or CTRL key to select multiple choices. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Nationality</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"nation\" #nationInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addNation(nationInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Nation(s) specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let nation of nations\" class=\"list-group-item\">{{nations}}\r\n                    <button (click)=\"removeNation(this.nation)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <p>\r\n              To help other DALN users find narratives by people of a particular nationality, please list your nationality/nationalities during the period referred to in your narrative. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Region</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"region\" #regionInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addRegion(regionInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Region(s) specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let region of regions\" class=\"list-group-item\">{{regions}}\r\n                    <button (click)=\"removeRegion(this.region)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <p>\r\n            To help other DALN users find narratives from particular regions (e.g., New England, Rocky Mountains, Great Plains) please list the region(s) in which the events described in your narrative took place. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>State or Province</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"state\" #stateInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addState(stateInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> State(s) specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let state of states\" class=\"list-group-item\">{{states}}\r\n                    <button (click)=\"removeState(this.state)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n            <br />\r\n          <p>\r\n            To help other DALN users find narratives from your state or province, please list the state(s) or province(s) in which the events described in your narrative took place. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Other Geographical Information</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"geo\" #geoInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addGeo(geoInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Georgraphical information added: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let geo of geos\" class=\"list-group-item\">{{geos}}\r\n                    <button (click)=\"removeGeo(this.geo)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <br />\r\n          <p>\r\n            Please provide any further description of the places referred to in your narrative that you consider important (e.g., urban, suburban, rural, inner-city Detroit). (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Language</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"language\" #languageInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addLanguage(languageInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Languages specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let language of languages\" class=\"list-group-item\">{{languages}}\r\n                    <button (click)=\"removeLanguage(this.language)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <br />\r\n          <p>\r\n            Please enter the language(s) used or referred to in your literacy narrative. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n\r\n    </ul>\r\n</div>\r\n    </form>\r\n\r\n    <!-- <button type=\"submit\" [disabled]=\"form.invalid\" (click)=\"next()\">Next Step</button> -->\r\n    <!-- <button type=\"submit\" (click)=\"getConsole()\">Get Console</button> -->\r\n    <button type=\"submit\" class=\"btn btn-primary\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n\r\n<p>\r\n    Form value:\r\n    {{descForm.value | json}}\r\n</p>\r\n"
 
 /***/ },
 
 /***/ 1166:
 /***/ function(module, exports) {
 
-module.exports = "<!-- <form class=\"form-inline\">\r\n  <div class=\"form-group\">\r\n    <div class=\"input-group\">\r\n        <input class=\"form-control\" placeholder=\"yyyy-mm-dd\"\r\n              name=\"dp\" [(ngModel)]=\"model\" ngbDatepicker #d=\"ngbDatepicker\">\r\n      <div class=\"input-group-addon\" (click)=\"d.toggle()\" >\r\n          <i class=\"icon-calendar\"></i>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</form> -->\r\n"
+module.exports = "<div class=\"container\">\r\n    <h1>Licensing Options</h1>\r\n    <p>\r\n        If you assigned a Creative Commons license in the description of your narrative, you are finished with licensing. Please confirm your choice by checking \"I confirm my choice. . . .\" below, then clicking the \"Complete submission\" button.\r\n    </p>\r\n    <p>\r\n        If you did not assign a Creative Commons license in the description of your narrative, please read the terms of the Deed of Gift outlined below and confirm that you accept those terms.\r\n    </p>\r\n\r\n    <div class=\"tooltip-demo well\">\r\n\r\n\r\n    <p class=\"muted\">\r\n        PLEASE READ THE FOLLOWING INFORMATION ABOUT LICENSING YOUR LITERACY NARRATIVE\r\n\r\n        If you wish to transfer all rights to your narrative to the Digital Archive of Literacy Narratives (DALN) according to the terms of our DEED OF GIFT form (see below), please make sure you DID NOT add a Creative Commons license notice to your narrative's description. Any Creative Commons license you indicated in your description will take precedence over the Deed of Gift described below.\r\n        By checking \"I confirm my choice. . . .\" below, you confirm your choice of EITHER a Creative Commons license (as noted in your narrative's description, if applicable), OR you confirm that you are contributing your narrative to the Digital Archive of Literacy Narrative under a Deed of Gift (if you did not include a Creative Commons license notice in your narrative's description).\r\n        If you have questions about those options, you can step back through the submission forms by clicking the \"Previous\" button and reviewing information about the Creative Commons licensing options.\r\n        You may also click \"Save and Exit\" in order to save your submission and complete the submission process at a later time.\r\n\r\n        Once you have checked \"I confirm my choice. . . .\" below, you may click \"Complete submission.\"\r\n        Thank you for contributing to the Digital Archive of Literacy Narratives (DALN). We hope you will browse other people's narratives and encourage others to contribute. If you have suggestions about the submission process or the DALN in general, please send e-mail to Professor Cynthia Selfe (selfe.2@osu.edu).\r\n        ------------------------------------------\r\n        DEED OF GIFT\r\n        FOR ADULTS: I (the Contributor) give my literacy narrative (including all associated files and materials that are part of this literacy narrative) to the Digital Archive of Literacy Narrative (DALN) to become part of this public online collection of literacy narratives with the understandings listed below.\r\n        FOR CONTRIBUTORS UNDER 18: As the parent or legal guardian of the minor (the Contributor) who created this literacy narrative, I give this narrative (and all associated files and materials) to the Digital Archive of Literacy Narrative (DALN) to become part of this public online collection of literacy narratives with the understandings listed below:\r\n        - The DALN will store, preserve, and provide access to the gift in accordance with its archival practices.\r\n        - The DALN will organize, index, and/or create a guide to the gift in accordance with its archival practices.\r\n        - The DALN will put the gift on a web site that is accessible to members of the public.\r\n        - The DALN may appropriately dispose of materials that, after receipt, are deemed unsuitable to those collection about literacy.\r\n        REPRESENTATION AND WARRANTY\r\n        The Contributor represents and warrants that he/she is the sole owner of the gift and has the full right, title, and interest to make the donation, and that no agreement, assignment, sale, or encumbrance has been or will be made or entered into which would conflict with this deed.\r\n        ASSIGNMENT OF RIGHTS\r\n        The Contributor gives and grants to the DALN any and all rights and/or copyrights to this gift, including the right to archive, display, and provide public access to it through the DALN.\r\n        ACCESS TO THE ARCHIVE\r\n        It is the Contributor's wish that the Gift be made available for research as soon as possible following its transfer to the DALN. Materials in the DALN will be available for use by the public subject to policies about license and copyright that are posted on the DALN website.\r\n        PROCESSING THE COLLECTION\r\n        The DALN will create an archival finding aid for the collection, which will include a listing of all literacy narratives.\r\n        TRANSFER TO ANOTHER FORMAT\r\n        The DALN reserves the right to transfer material to other formats, which in the opinion of DALN Advisory Board, and according to national archival standards, will prolong the life of the material and/or facilitate access and use. In all instances the original items will also be retained. The DALN also reserves the right, within the limit of copyright provisions, to reproduce material from the collection for physical and electronic exhibits.\r\n        PROMOTING AWARENESS OF THE ARCHIVE\r\n        All literacy narratives in the DALN collection and the DALN's finding aid/index will be available on its website which is publicly accessible worldwide.\r\n        ADDITIONS TO THE ARCHIVE\r\n        The Contributor may make additions to the DALN collection subject to DALN policies.\r\n        ------------------------------------------\r\n\r\n    </p>\r\n</div>\r\n\r\n<button type=\"submit\" (click)=\"next()\">Next Step</button>\r\n\r\n</div>\r\n\r\n<!-- <app-result></app-result> -->\r\n"
 
 /***/ },
 
 /***/ 1167:
 /***/ function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form [formGroup]=\"form\" novalidate (submit)=\"next()\">\r\n    <ul>\r\n\r\n        <li>\r\n            <span>Title</span>\r\n            <input class=\"meta-info\" type=\"text\" name=\"title\" formControlName=\"title\" [(ngModel)]='title'> <br />\r\n            <p>\r\n            To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)\r\n            </p>\r\n            <div class=\"error\" *ngIf=\"form.get('title').touched && form.get('title').hasError('required')\">\r\n              <strong>Title is required</strong>\r\n            </div>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Description</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"description\" formControlName=\"description\" > <br />\r\n          <p>\r\n            To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Date Created</span>\r\n          <!-- <app-datepicker></app-datepicker> -->\r\n        <br />\r\n          <p>\r\n            Please provide the date on which you created your literacy narrative -- not necessarily the date on which you are filling out this form. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <p>\r\n            NOTE: If you would like to assign a Creative Commons (CC) license to your narrative, thereby retaining ownership while specifying the uses that others may make of your narrative, please visit the Creative Commons site at http://creativecommons.org/choose/, choose a license, then place a license notification to this field, including the name of the CC license (e.g., “My Narrative’s Title” by Lewis Ulman is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License).\r\n\r\n            If you wish to contribute your narrative under a Deed of Gift, thereby transferring ownership of your narrative to the DALN, which will establish its own guidelines for usage, you will have an opportunity to do so at the end of the submission process. (Optional)\r\n        </p>\r\n\r\n        <li>\r\n          <span>Subject Keyword</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"subject\" ngModel> <br />\r\n          <p>\r\n            To help other DALN users find your literacy narrative, please enter appropriate subject keywords or phrases. You may enter as many as you like, but you should enter only one keyword or phrase at a time, then click \"Add More\" to enter additional keywords. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Decades covered</span>\r\n          <select></select><br />\r\n          <p>\r\n              Please indicate the decades referred to in your literacy narrative. You can choose as many as necessary, but you may need to hold down the Shift or CTRL key to select multiple choices. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Nationality</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"nation\"> <br />\r\n          <p>\r\n              To help other DALN users find narratives by people of a particular nationality, please list your nationality/nationalities during the period referred to in your narrative. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Region</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"region\"> <br />\r\n          <p>\r\n            To help other DALN users find narratives from particular regions (e.g., New England, Rocky Mountains, Great Plains) please list the region(s) in which the events described in your narrative took place. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>State or Province</span>\r\n          <select></select><br />\r\n          <p>\r\n            To help other DALN users find narratives from your state or province, please list the state(s) or province(s) in which the events described in your narrative took place. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Other Geographical Information</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"state\"> <br />\r\n          <p>\r\n            Please provide any further description of the places referred to in your narrative that you consider important (e.g., urban, suburban, rural, inner-city Detroit). (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Language</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"lanugage\"> <br />\r\n          <p>\r\n            Please enter the language(s) used or referred to in your literacy narrative. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n\r\n    </ul>\r\n\r\n    </form>\r\n\r\n    <button type=\"submit\" [disabled]=\"form.invalid\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n\r\n\r\n  <p><input type=\"file\" name=\"file1\">\r\n\r\n  <p><button type=\"submit\">Submit</button>\r\n\r\n\r\n\r\n    <p>\r\n        Please enter the full path of the file on your computer corresponding to your item. If you click \"Browse...\", a new window will allow you to select the file from your computer.\r\n\r\n       We recommend that you use the following file formats for compatibility with our system and broader accessiblity by end users, who typically must open the files on their own computers --\r\n\r\n       TEXT: Microsoft Word (.doc or .rtf); plain text (.txt); or Adobe Acrobat (.pdf)\r\n       IMAGES: JPEG (.jpg or .jpeg), GIF (.gif), or PNG (.png)\r\n       AUDIO: MP3 or QuickTime (.mov)\r\n       VIDEO: QuickTime (.mov)\r\n       WEB: HTML (.htm or .html)\r\n\r\n       If your file (particularly audio or video) is larger than 35 MB, we recommend that you split it into two or more files, with no single file larger than about 35 MB so that visitors to the site will be able to download your file(s) more conveniently.\r\n\r\n    </p>\r\n<!--\r\n    <li>\r\n      <span>File Description</span>\r\n      <input class=\"meta-info\" type=\"text\" name=\"file\"> <br />\r\n      <p>\r\n        Optionally, provide a brief description of the file, for example \"Main article\", or \"Experiment data readings\".\r\n      </p>\r\n    </li> -->\r\n\r\n    <button type=\"submit\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n"
 
 /***/ },
 
 /***/ 1168:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <h1>Licensing Options</h1>\r\n    <p>\r\n        If you assigned a Creative Commons license in the description of your narrative, you are finished with licensing. Please confirm your choice by checking \"I confirm my choice. . . .\" below, then clicking the \"Complete submission\" button.\r\n    </p>\r\n    <p>\r\n        If you did not assign a Creative Commons license in the description of your narrative, please read the terms of the Deed of Gift outlined below and confirm that you accept those terms.\r\n    </p>\r\n\r\n    <div class=\"tooltip-demo well\">\r\n\r\n\r\n    <p class=\"muted\">\r\n        PLEASE READ THE FOLLOWING INFORMATION ABOUT LICENSING YOUR LITERACY NARRATIVE\r\n\r\n        If you wish to transfer all rights to your narrative to the Digital Archive of Literacy Narratives (DALN) according to the terms of our DEED OF GIFT form (see below), please make sure you DID NOT add a Creative Commons license notice to your narrative's description. Any Creative Commons license you indicated in your description will take precedence over the Deed of Gift described below.\r\n        By checking \"I confirm my choice. . . .\" below, you confirm your choice of EITHER a Creative Commons license (as noted in your narrative's description, if applicable), OR you confirm that you are contributing your narrative to the Digital Archive of Literacy Narrative under a Deed of Gift (if you did not include a Creative Commons license notice in your narrative's description).\r\n        If you have questions about those options, you can step back through the submission forms by clicking the \"Previous\" button and reviewing information about the Creative Commons licensing options.\r\n        You may also click \"Save and Exit\" in order to save your submission and complete the submission process at a later time.\r\n\r\n        Once you have checked \"I confirm my choice. . . .\" below, you may click \"Complete submission.\"\r\n        Thank you for contributing to the Digital Archive of Literacy Narratives (DALN). We hope you will browse other people's narratives and encourage others to contribute. If you have suggestions about the submission process or the DALN in general, please send e-mail to Professor Cynthia Selfe (selfe.2@osu.edu).\r\n        ------------------------------------------\r\n        DEED OF GIFT\r\n        FOR ADULTS: I (the Contributor) give my literacy narrative (including all associated files and materials that are part of this literacy narrative) to the Digital Archive of Literacy Narrative (DALN) to become part of this public online collection of literacy narratives with the understandings listed below.\r\n        FOR CONTRIBUTORS UNDER 18: As the parent or legal guardian of the minor (the Contributor) who created this literacy narrative, I give this narrative (and all associated files and materials) to the Digital Archive of Literacy Narrative (DALN) to become part of this public online collection of literacy narratives with the understandings listed below:\r\n        - The DALN will store, preserve, and provide access to the gift in accordance with its archival practices.\r\n        - The DALN will organize, index, and/or create a guide to the gift in accordance with its archival practices.\r\n        - The DALN will put the gift on a web site that is accessible to members of the public.\r\n        - The DALN may appropriately dispose of materials that, after receipt, are deemed unsuitable to those collection about literacy.\r\n        REPRESENTATION AND WARRANTY\r\n        The Contributor represents and warrants that he/she is the sole owner of the gift and has the full right, title, and interest to make the donation, and that no agreement, assignment, sale, or encumbrance has been or will be made or entered into which would conflict with this deed.\r\n        ASSIGNMENT OF RIGHTS\r\n        The Contributor gives and grants to the DALN any and all rights and/or copyrights to this gift, including the right to archive, display, and provide public access to it through the DALN.\r\n        ACCESS TO THE ARCHIVE\r\n        It is the Contributor's wish that the Gift be made available for research as soon as possible following its transfer to the DALN. Materials in the DALN will be available for use by the public subject to policies about license and copyright that are posted on the DALN website.\r\n        PROCESSING THE COLLECTION\r\n        The DALN will create an archival finding aid for the collection, which will include a listing of all literacy narratives.\r\n        TRANSFER TO ANOTHER FORMAT\r\n        The DALN reserves the right to transfer material to other formats, which in the opinion of DALN Advisory Board, and according to national archival standards, will prolong the life of the material and/or facilitate access and use. In all instances the original items will also be retained. The DALN also reserves the right, within the limit of copyright provisions, to reproduce material from the collection for physical and electronic exhibits.\r\n        PROMOTING AWARENESS OF THE ARCHIVE\r\n        All literacy narratives in the DALN collection and the DALN's finding aid/index will be available on its website which is publicly accessible worldwide.\r\n        ADDITIONS TO THE ARCHIVE\r\n        The Contributor may make additions to the DALN collection subject to DALN policies.\r\n        ------------------------------------------\r\n\r\n    </p>\r\n</div>\r\n\r\n<button type=\"submit\" (click)=\"next()\">Next Step</button>\r\n\r\n</div>\r\n\r\n<!-- <app-result></app-result> -->\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form [formGroup]=\"metaForm\" novalidate submit=next()>\r\n    <ul>\r\n\r\n        <li>\r\n            <span>Author</span>\r\n            <input class=\"meta-info\" type=\"text\" name=\"contributorAuthorLastName\" #lastName >\r\n            <input class=\"meta-info\" type=\"text\" name=\"contributorAuthorFirstName\" #firstName >\r\n            <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addName(lastName.value, firstName.value)\">Add More</button>\r\n            <p>Authors: </p>\r\n            <!-- <ul class=\"list-group\">\r\n                <li *ngFor=\"let name of names\" >{{names}}\r\n                    <button (click)=\"removeName(this.name)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul> -->\r\n            <br />\r\n            <p>\r\n            If you wish, enter the name of the author of this literacy narrative (you can click \"Add More\" to enter multiple names for a collaborative narrative). (Optional)\r\n            </p>\r\n\r\n        </li>\r\n\r\n        <li>\r\n          <span>Year-of-Birth</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"creatorYearOfBirth\"> <br />\r\n          <p>\r\n              To help other DALN users find narratives by people of a particular age group, please provide your year of birth (or years of birth for collaborative entries), using four digits. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Gender</span>\r\n          <div class=\"form-group\">\r\n              <input type=\"radio\" name=\"creatorGender\" value=\"Male\" formControlName=\"creatorGender\" [(ngModel)]=\"creatorGender\" /><p>\r\n                  Male\r\n              </p>\r\n              <input type=\"radio\" name=\"creatorGender\" value=\"Female\" formControlName=\"creatorGender\" [(ngModel)]=\"creatorGender\" /><p>\r\n                  Female\r\n              </p>\r\n          </div>\r\n          <br />\r\n          <p>\r\n             To help other DALN users find narratives by people of a particular gender or sexual orientation, please describe your gender (for example, male, female, transgender) and/or sexual orientation (for example: gay, bisexual, heterosexual). (Optional)\r\n          </p>\r\n        </li>\r\n\r\n    </ul>\r\n\r\n    </form>\r\n\r\n    <button type=\"submit\" (click)=\"getConsole()\">Get Console</button>\r\n    <button type=\"submit\" class=\"btn btn-primary\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n\r\n<p>\r\n    Form value:\r\n    {{metaForm.value | json}}\r\n</p>\r\n"
 
 /***/ },
 
 /***/ 1169:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n\r\n  <p><input type=\"file\" name=\"file1\">\r\n\r\n  <p><button type=\"submit\">Submit</button>\r\n\r\n\r\n\r\n    <p>\r\n        Please enter the full path of the file on your computer corresponding to your item. If you click \"Browse...\", a new window will allow you to select the file from your computer.\r\n\r\n       We recommend that you use the following file formats for compatibility with our system and broader accessiblity by end users, who typically must open the files on their own computers --\r\n\r\n       TEXT: Microsoft Word (.doc or .rtf); plain text (.txt); or Adobe Acrobat (.pdf)\r\n       IMAGES: JPEG (.jpg or .jpeg), GIF (.gif), or PNG (.png)\r\n       AUDIO: MP3 or QuickTime (.mov)\r\n       VIDEO: QuickTime (.mov)\r\n       WEB: HTML (.htm or .html)\r\n\r\n       If your file (particularly audio or video) is larger than 35 MB, we recommend that you split it into two or more files, with no single file larger than about 35 MB so that visitors to the site will be able to download your file(s) more conveniently.\r\n\r\n    </p>\r\n<!--\r\n    <li>\r\n      <span>File Description</span>\r\n      <input class=\"meta-info\" type=\"text\" name=\"file\"> <br />\r\n      <p>\r\n        Optionally, provide a brief description of the file, for example \"Main article\", or \"Experiment data readings\".\r\n      </p>\r\n    </li> -->\r\n\r\n    <button type=\"submit\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n\r\n\r\n\r\n<form [formGroup]=\"rightsForm\" novalidate (submit)=\"next()\">\r\n\r\n    <div class=\"rights-consent\">\r\n        <span>Consent to Participate</span>\r\n        <div class=\"well\">\r\n            <p>\r\n                Because we value your right to make an informed decision to participate in the DALN, we must have your consent before we accept a submission. Please click one of the following links to read our Adult Consent Form or Under-18 Consent Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate consent form.\r\n            </p>\r\n        </div>\r\n\r\n\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Adult\" formControlName=\"rightsConsent\" [(ngModel)]='rightsConsent'> <p>Adult</p>\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Under-18\" formControlName=\"rightsConsent\" [(ngModel)]='rightsConsent'> <p> Under-18</p>\r\n\r\n    </div>\r\n\r\n      <div class=\"materials-consent\">\r\n          <span>Release for Materials:</span>\r\n          <div class=\"well\">\r\n              <p>\r\n                Because we want you to know how your materials and personal information will be used in the DALN, we must have your release before we accept a submission. Please click one of the following links to read our Adult Release Form or Under-18 Release Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate release form.\r\n              </p>\r\n          </div>\r\n\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Adult\" formControlName=\"rightsRelease\" [(ngModel)]='rightsRelease'> <p> Adult </p>\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Under-18\" formControlName=\"rightsRelease\" [(ngModel)]='rightsRelease'> <p> Under-18 </p>\r\n\r\n      </div>\r\n    </form>\r\n\r\n    <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"rightsForm.invalid\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n\r\n<p>\r\n    Form value:\r\n    {{rightsForm.value | json}}\r\n</p>\r\n"
 
 /***/ },
 
 /***/ 1170:
 /***/ function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form #form=\"ngForm\">\r\n    <ul>\r\n\r\n        <li>\r\n            <span>Author</span>\r\n            <input class=\"meta-info\" type=\"text\" name=\"contributorAuthorFirstName\">\r\n            <input class=\"meta-info\" type=\"text\" name=\"contributorAuthorLastName\"> <br />\r\n            <p>\r\n            If you wish, enter the name of the author of this literacy narrative (you can click \"Add More\" to enter multiple names for a collaborative narrative). (Optional)\r\n            </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Year-of-Birth</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"creatorYearOfBirth\" ngModel> <br />\r\n          <p>\r\n              To help other DALN users find narratives by people of a particular age group, please provide your year of birth (or years of birth for collaborative entries), using four digits. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Gender</span>\r\n          <select>\r\n              <option value=\"male\">Male</option>\r\n              <option value=\"female\">Female</option>\r\n          </select> <br />\r\n          <p>\r\n             To help other DALN users find narratives by people of a particular gender or sexual orientation, please describe your gender (for example, male, female, transgender) and/or sexual orientation (for example: gay, bisexual, heterosexual). (Optional)\r\n          </p>\r\n        </li>\r\n\r\n    </ul>\r\n\r\n    </form>\r\n\r\n    <button type=\"submit\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n\r\n<!-- <app-result></app-result> -->\r\n"
-
-/***/ },
-
-/***/ 1171:
-/***/ function(module, exports) {
-
-module.exports = "{{diagonostic}}\r\n<div class=\"container\">\r\n\r\n    <!-- <form [formGroup]=\"form\" novalidate (submit)=\"next()\"> -->\r\n    <div class=\"rights-consent\">\r\n\r\n        <span>Consent to Participate</span>\r\n        <div class=\"well\">\r\n            <p>\r\n                Because we value your right to make an informed decision to participate in the DALN, we must have your consent before we accept a submission. Please click one of the following links to read our Adult Consent Form or Under-18 Consent Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate consent form.\r\n            </p>\r\n        </div>\r\n\r\n<!--\r\n        <div class=\"form-group\">\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Adult\" formControlName=\"rightsConsent\" [(ngModel)]='rightsConsent'> <p>Adult</p>\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Under-18\" formControlName=\"rightsConsent\" [(ngModel)]='rightsConsent'> <p> Under-18</p>\r\n        </div> -->\r\n\r\n        <div class=\"form-group\">\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Adult\"> <p>Adult</p>\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Under-18\" > <p> Under-18</p>\r\n        </div>\r\n\r\n    </div>\r\n\r\n      <div class=\"materials-consent\">\r\n          <span>Release for Materials:</span>\r\n          <div class=\"well\">\r\n              <p>\r\n                Because we want you to know how your materials and personal information will be used in the DALN, we must have your release before we accept a submission. Please click one of the following links to read our Adult Release Form or Under-18 Release Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate release form.\r\n              </p>\r\n          </div>\r\n<!--\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Adult\" formControlName=\"rightsRelease\" [(ngModel)]='rightsRelease'> <p> Adult </p>\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Under-18\" formControlName=\"rightsRelease\" [(ngModel)]='rightsRelease'> <p> Under-18 </p> -->\r\n\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Adult\" > <p> Adult </p>\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Under-18\"> <p> Under-18 </p>\r\n\r\n      </div>\r\n    <!-- </form> -->\r\n    <!-- <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"form.invalid\" (click)=\"next()\">Next Step</button> -->\r\n    <button class=\"btn btn-primary\" type=\"submit\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n"
-
-/***/ },
-
-/***/ 1172:
-/***/ function(module, exports) {
-
 module.exports = "\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ },
 
-/***/ 1173:
+/***/ 1171:
 /***/ function(module, exports) {
 
 module.exports = "<div class=\"container\">\r\n\r\n    <p>\r\n        Summary of Post Submission\r\n    </p>\r\n\r\n    <input type=\"checkbox\" /> <p>\r\n        Confirmation check\r\n    </p>\r\n    <button type=\"submit\" (click)=\"next()\">Next Step</button>\r\n\r\n</div>\r\n\r\n<!-- <app-result></app-result> -->\r\n"
