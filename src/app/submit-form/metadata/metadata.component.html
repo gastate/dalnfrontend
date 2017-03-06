@@ -1,21 +1,32 @@
 
 <div class="container">
 
-    <form #form="ngForm">
+    <form [formGroup]="metaForm" novalidate submit=next()>
     <ul>
 
         <li>
             <span>Author</span>
-            <input class="meta-info" type="text" name="contributorAuthorFirstName">
-            <input class="meta-info" type="text" name="contributorAuthorLastName"> <br />
+            <input class="meta-info" type="text" name="contributorAuthorLastName" #lastName >
+            <input class="meta-info" type="text" name="contributorAuthorFirstName" #firstName >
+            <button class="btn btn-secondary" type="button" (click)="addName(lastName.value, firstName.value)">Add More</button>
+            <p>Authors: </p>
+            <!-- <ul class="list-group">
+                <li *ngFor="let name of names" >{{names}}
+                    <button (click)="removeName(this.name)" type="button" class="close">
+                        <span>&times;</span>
+                    </button>
+                </li>
+            </ul> -->
+            <br />
             <p>
             If you wish, enter the name of the author of this literacy narrative (you can click "Add More" to enter multiple names for a collaborative narrative). (Optional)
             </p>
+
         </li>
 
         <li>
           <span>Year-of-Birth</span>
-          <input class="meta-info" type="text" name="creatorYearOfBirth" ngModel> <br />
+          <input class="meta-info" type="text" name="creatorYearOfBirth"> <br />
           <p>
               To help other DALN users find narratives by people of a particular age group, please provide your year of birth (or years of birth for collaborative entries), using four digits. (Optional)
           </p>
@@ -23,10 +34,15 @@
 
         <li>
           <span>Gender</span>
-          <select>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-          </select> <br />
+          <div class="form-group">
+              <input type="radio" name="creatorGender" value="Male" formControlName="creatorGender" [(ngModel)]="creatorGender" /><p>
+                  Male
+              </p>
+              <input type="radio" name="creatorGender" value="Female" formControlName="creatorGender" [(ngModel)]="creatorGender" /><p>
+                  Female
+              </p>
+          </div>
+          <br />
           <p>
              To help other DALN users find narratives by people of a particular gender or sexual orientation, please describe your gender (for example, male, female, transgender) and/or sexual orientation (for example: gay, bisexual, heterosexual). (Optional)
           </p>
@@ -36,9 +52,13 @@
 
     </form>
 
-    <button type="submit" (click)="next()">Next Step</button>
+    <button type="submit" (click)="getConsole()">Get Console</button>
+    <button type="submit" class="btn btn-primary" (click)="next()">Next Step</button>
 
 
 </div>
 
-<!-- <app-result></app-result> -->
+<p>
+    Form value:
+    {{metaForm.value | json}}
+</p>

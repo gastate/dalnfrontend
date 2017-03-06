@@ -20,6 +20,11 @@ import { SubmitFormService } from '../submit-form.service';
 export class DescriptionComponent implements OnInit {
     descForm: FormGroup;
     subjects : string [] = [];
+    nations : string [] = [];
+    regions : string [] = [];
+    states : string [] = [];
+    geos : string [] = [];
+    languages : string [] = [];
 
   constructor(
     private _router: Router,
@@ -36,6 +41,7 @@ export class DescriptionComponent implements OnInit {
     this.descForm = this.fb.group({
         title: ['', Validators.required],
         description : [''],
+        coveragePeriod : ['']
         // dateCreated : [''],
 
     });
@@ -48,6 +54,57 @@ export class DescriptionComponent implements OnInit {
   removeSubject(subjectValue : string) {
     this.subjects.splice(this.subjects.indexOf(subjectValue), 1);
   }
+
+  addNation(nation : string) {
+    this.nations.push (nation);
+  }
+
+  removeNation(nation : string){
+    this.nations.splice(this.nations.indexOf(nation), 1);
+  }
+
+  addRegion(region : string) {
+    this.regions.push(region);
+  }
+
+  removeRegion(region : string){
+    this.regions.splice(this.regions.indexOf(region), 1);
+  }
+
+  addState(state : string) {
+    this.states.push(state);
+  }
+
+  removeState(state : string){
+    this.states.splice(this.states.indexOf(state), 1);
+  }
+
+  addGeo(geo : string) {
+    this.geos.push(geo);
+  }
+
+  removeGeo(geo : string){
+    this.geos.splice(this.geos.indexOf(geo), 1);
+  }
+
+  addLanguage(language : string) {
+    this.languages.push(language);
+  }
+
+  removeLanguage(language : string){
+    this.languages.splice(this.languages.indexOf(language), 1);
+  }
+
+  // getConsole() {
+  //     console.log(this.subjects);
+  //     console.log(this.nations);
+  //     console.log(this.regions);
+  //     console.log(this.states);
+  //     console.log(this.geos);
+  //     console.log(this.languages);
+  // }
+
+
 
 
   next() {

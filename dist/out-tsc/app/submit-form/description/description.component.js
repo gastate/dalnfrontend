@@ -17,6 +17,11 @@ var DescriptionComponent = (function () {
         this.fb = fb;
         this._postCreate = _postCreate;
         this.subjects = [];
+        this.nations = [];
+        this.regions = [];
+        this.states = [];
+        this.geos = [];
+        this.languages = [];
         this.initForm();
     }
     DescriptionComponent.prototype.ngOnInit = function () {
@@ -25,6 +30,7 @@ var DescriptionComponent = (function () {
         this.descForm = this.fb.group({
             title: ['', Validators.required],
             description: [''],
+            coveragePeriod: ['']
         });
     };
     DescriptionComponent.prototype.addSubject = function (subjectInput) {
@@ -32,6 +38,36 @@ var DescriptionComponent = (function () {
     };
     DescriptionComponent.prototype.removeSubject = function (subjectValue) {
         this.subjects.splice(this.subjects.indexOf(subjectValue), 1);
+    };
+    DescriptionComponent.prototype.addNation = function (nation) {
+        this.nations.push(nation);
+    };
+    DescriptionComponent.prototype.removeNation = function (nation) {
+        this.nations.splice(this.nations.indexOf(nation), 1);
+    };
+    DescriptionComponent.prototype.addRegion = function (region) {
+        this.regions.push(region);
+    };
+    DescriptionComponent.prototype.removeRegion = function (region) {
+        this.regions.splice(this.regions.indexOf(region), 1);
+    };
+    DescriptionComponent.prototype.addState = function (state) {
+        this.states.push(state);
+    };
+    DescriptionComponent.prototype.removeState = function (state) {
+        this.states.splice(this.states.indexOf(state), 1);
+    };
+    DescriptionComponent.prototype.addGeo = function (geo) {
+        this.geos.push(geo);
+    };
+    DescriptionComponent.prototype.removeGeo = function (geo) {
+        this.geos.splice(this.geos.indexOf(geo), 1);
+    };
+    DescriptionComponent.prototype.addLanguage = function (language) {
+        this.languages.push(language);
+    };
+    DescriptionComponent.prototype.removeLanguage = function (language) {
+        this.languages.splice(this.languages.indexOf(language), 1);
     };
     DescriptionComponent.prototype.next = function () {
         this._router.navigateByUrl('/create/media');
