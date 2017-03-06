@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RightsService } from '../../state/rights';
@@ -30,6 +30,10 @@ var RightsComponent = (function () {
     };
     return RightsComponent;
 }());
+__decorate([
+    Input(),
+    __metadata("design:type", String)
+], RightsComponent.prototype, "rightsConsent", void 0);
 RightsComponent = __decorate([
     Component({
         selector: 'app-rights',

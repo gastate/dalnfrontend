@@ -31,9 +31,6 @@ var MetadataComponent = (function () {
     MetadataComponent.prototype.removeName = function (name) {
         this.names.splice(this.names.indexOf(name), 1);
     };
-    MetadataComponent.prototype.getConsole = function () {
-        console.log(this.names);
-    };
     MetadataComponent.prototype.next = function () {
         this._router.navigateByUrl('/create/description');
     };

@@ -40,9 +40,9 @@ export class MetadataComponent implements OnInit {
     this.names.splice(this.names.indexOf(name), 1);
   }
 
-  getConsole(){
-      console.log(this.names);
-  }
+  // getConsole(){
+  //     console.log(this.names);
+  // }
 
 
   next() {
