@@ -10,31 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DescriptionService } from '../../state/description';
 import { SubmitFormService } from '../submit-form.service';
 var DescriptionComponent = (function () {
-    function DescriptionComponent(_router, fb, descriptionService, _postCreate) {
+    function DescriptionComponent(_router, fb, _postCreate) {
         this._router = _router;
         this.fb = fb;
-        this.descriptionService = descriptionService;
         this._postCreate = _postCreate;
+        this.subjects = [];
+        this.initForm();
     }
     DescriptionComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.descriptionService.description$
-            .subscribe(function (description) {
-            _this.initForm(description);
+    };
+    DescriptionComponent.prototype.initForm = function () {
+        this.descForm = this.fb.group({
+            title: ['', Validators.required],
+            description: [''],
         });
     };
-    DescriptionComponent.prototype.initForm = function (description) {
-        this.form = this.fb.group({
-            title: ['', Validators.required]
-        });
-        console.log(typeof this.form.value.title);
-        this.createPost(this.form.value.title);
-    };
-    DescriptionComponent.prototype.createPost = function (title) {
-        this._postCreate.postCreate(title);
+    DescriptionComponent.prototype.addSubject = function (subjectInput) {
+        this.subjects.push(subjectInput);
     };
     DescriptionComponent.prototype.next = function () {
         this._router.navigateByUrl('/create/media');
@@ -46,11 +40,10 @@ DescriptionComponent = __decorate([
         selector: 'app-description',
         templateUrl: './description.component.html',
         styleUrls: ['./description.component.css'],
-        providers: [DescriptionService, SubmitFormService]
+        providers: [SubmitFormService]
     }),
     __metadata("design:paramtypes", [Router,
         FormBuilder,
-        DescriptionService,
         SubmitFormService])
 ], DescriptionComponent);
 export { DescriptionComponent };

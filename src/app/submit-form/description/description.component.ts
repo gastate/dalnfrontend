@@ -8,7 +8,6 @@ import { Store, Action } from '@ngrx/store';
 
 import {Post} from '../../model/post-model';
 
-import { DescriptionService, DescriptionProfile } from '../../state/description';
 import { SubmitFormService } from '../submit-form.service';
 
 
@@ -16,36 +15,36 @@ import { SubmitFormService } from '../submit-form.service';
   selector: 'app-description',
   templateUrl: './description.component.html',
   styleUrls: ['./description.component.css'],
-  providers: [ DescriptionService, SubmitFormService]
+  providers: [SubmitFormService]
 })
 export class DescriptionComponent implements OnInit {
-    form: FormGroup;
+    descForm: FormGroup;
+    subjects : string [] = [];
 
   constructor(
     private _router: Router,
     private fb: FormBuilder,
-    private descriptionService: DescriptionService,
     private _postCreate : SubmitFormService
-  ) { }
+  ) {
+    this.initForm();
+  }
 
   ngOnInit() {
-      this.descriptionService.description$
-        .subscribe(description => {
-            this.initForm(description);
-        });
   }
 
-  initForm(description: DescriptionProfile) {
-    this.form = this.fb.group({
-        title: ['', Validators.required]
+  initForm() {
+    this.descForm = this.fb.group({
+        title: ['', Validators.required],
+        description : [''],
+        // dateCreated : [''],
+
     });
-        console.log(typeof this.form.value.title);
-        this.createPost(this.form.value.title);
   }
 
-  createPost(title: string) {
-    this._postCreate.postCreate(title);
+  addSubject(subjectInput : string) {
+    this.subjects.push(subjectInput);
   }
+
 
   next() {
     // this.descriptionService.updateDescription(this.form.value);

@@ -1,7 +1,7 @@
 
 <div class="container">
 
-    <form [formGroup]="form" novalidate (submit)="next()">
+    <form [formGroup]="descForm" novalidate (submit)="next()">
     <ul>
 
         <li>
@@ -10,14 +10,14 @@
             <p>
             To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)
             </p>
-            <div class="error" *ngIf="form.get('title').touched && form.get('title').hasError('required')">
+            <!-- <div class="error" *ngIf="form.get('title').touched && form.get('title').hasError('required')">
               <strong>Title is required</strong>
-            </div>
+            </div> -->
         </li>
 
         <li>
           <span>Description</span>
-          <input class="meta-info" type="text" name="description" formControlName="description" > <br />
+          <input class="meta-info" type="text" name="description" formControlName="description" [(ngModel)]='description'> <br />
           <p>
             To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).
           </p>
@@ -32,15 +32,29 @@
           </p>
         </li>
 
-        <p>
-            NOTE: If you would like to assign a Creative Commons (CC) license to your narrative, thereby retaining ownership while specifying the uses that others may make of your narrative, please visit the Creative Commons site at http://creativecommons.org/choose/, choose a license, then place a license notification to this field, including the name of the CC license (e.g., “My Narrative’s Title” by Lewis Ulman is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License).
+    </ul>
 
-            If you wish to contribute your narrative under a Deed of Gift, thereby transferring ownership of your narrative to the DALN, which will establish its own guidelines for usage, you will have an opportunity to do so at the end of the submission process. (Optional)
-        </p>
+<div class="well well-lg">
+    <p>
+        The following form fields are optional, but recommended:
+    </p>
+
+    <ul>
 
         <li>
           <span>Subject Keyword</span>
-          <input class="meta-info" type="text" name="subject" ngModel> <br />
+          <div class="col-lg-6">
+              <div class="input-group">
+                  <input class="meta-info" type="text" name="subject" #subjectInput>
+                  <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button" (click)="addSubject(subjectInput.value)">+</button>
+                  </span>
+              </div>
+          </div>
+          <p> Current Subject(s): </p>
+         <span *ngFor="let subject of subjects" class="badge badge-primary">{{subject}}<a><i class="icon-remove"></i></a></span>
+          <br />
+
           <p>
             To help other DALN users find your literacy narrative, please enter appropriate subject keywords or phrases. You may enter as many as you like, but you should enter only one keyword or phrase at a time, then click "Add More" to enter additional keywords. (Optional)
           </p>
@@ -48,7 +62,6 @@
 
         <li>
           <span>Decades covered</span>
-          <select></select><br />
           <p>
               Please indicate the decades referred to in your literacy narrative. You can choose as many as necessary, but you may need to hold down the Shift or CTRL key to select multiple choices. (Optional)
           </p>
@@ -88,7 +101,7 @@
 
         <li>
           <span>Language</span>
-          <input class="meta-info" type="text" name="lanugage"> <br />
+          <input class="meta-info" type="text" name="language"> <br />
           <p>
             Please enter the language(s) used or referred to in your literacy narrative. (Optional)
           </p>
@@ -96,10 +109,16 @@
 
 
     </ul>
-
+</div>
     </form>
 
-    <button type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button>
+    <!-- <button type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button> -->
+    <button type="submit" (click)="next()">Next Step</button>
 
 
 </div>
+
+<p>
+    Form value:
+    {{descForm.value | json}}
+</p>
