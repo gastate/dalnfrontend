@@ -107,7 +107,7 @@
 <router-outlet></router-outlet> -->
 
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#collapseContent" aria-controls="collapseContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse"  onclick="var div = document.getElementById('collapseContent'); div.style.height != '100%' ? div.style.height = '100%' : div.style.height = '0px';" aria-controls="collapseContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store, Action } from '@ngrx/store';
@@ -17,6 +17,9 @@ export class RightsComponent implements OnInit {
     @Input ()
         rightsConsent: string;
         rightsRelease: string;
+
+    @Output () rightsConsentUpdated : EventEmitter<string> = new EventEmitter<string>();
+
 
     rightsForm: FormGroup;
 
@@ -39,12 +42,20 @@ export class RightsComponent implements OnInit {
           rightsConsent : ['', Validators.required],
           rightsRelease : ['', Validators.required]
       });
+
+
   }
+
+
+
 
 
   next() {
     //   this.rightsService.updateRights(this.form.value);
+      this.rightsConsent = this.rightsForm.value.rightsConsent;
+      this.rightsRelease = this.rightsForm.value.rightsRelease;
       this._router.navigateByUrl('/create/metadata');
+
   }
 
 

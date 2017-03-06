@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RightsService } from '../../state/rights';
@@ -15,6 +15,7 @@ var RightsComponent = (function () {
     function RightsComponent(_router, fb) {
         this._router = _router;
         this.fb = fb;
+        this.rightsConsentUpdated = new EventEmitter();
         this.initForm();
     }
     RightsComponent.prototype.ngOnInit = function () {
@@ -26,6 +27,8 @@ var RightsComponent = (function () {
         });
     };
     RightsComponent.prototype.next = function () {
+        this.rightsConsent = this.rightsForm.value.rightsConsent;
+        this.rightsRelease = this.rightsForm.value.rightsRelease;
         this._router.navigateByUrl('/create/metadata');
     };
     return RightsComponent;
@@ -34,6 +37,10 @@ __decorate([
     Input(),
     __metadata("design:type", String)
 ], RightsComponent.prototype, "rightsConsent", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", EventEmitter)
+], RightsComponent.prototype, "rightsConsentUpdated", void 0);
 RightsComponent = __decorate([
     Component({
         selector: 'app-rights',
