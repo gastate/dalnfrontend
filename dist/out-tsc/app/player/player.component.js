@@ -13,6 +13,7 @@ import { Asset } from '../model/asset-model';
 var PlayerComponent = (function () {
     function PlayerComponent(sanitizer) {
         this.sanitizer = sanitizer;
+        this.url = '';
     }
     PlayerComponent.prototype.ngOnInit = function () {
     };
@@ -21,9 +22,10 @@ var PlayerComponent = (function () {
             this.noAsset = true;
         }
     };
-    PlayerComponent.prototype.sanitizeUrl = function (asset) {
+    PlayerComponent.prototype.getUrl = function (asset) {
         if (this.postAsset.assetType === "Audio/Video") {
             this.url = this.postAsset.assetEmbedLink;
+            console.log(this.url);
         }
         else if (this.postAsset.assetType === "Audio") {
             var audioID = this.postAsset.assetEmbedLink;

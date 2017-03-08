@@ -12,11 +12,12 @@ import {Post} from '../model/post-model';
 })
 
 export class PlayerComponent implements OnInit {
-
+    url : string;
   constructor(private sanitizer: DomSanitizer) {
+      this.url = '';
   }
 
-  url : string;
+
 
   @Input()
   postAsset: Asset;
@@ -39,12 +40,13 @@ export class PlayerComponent implements OnInit {
 
   }
 
-  sanitizeUrl(asset: Asset): void {
+  getUrl(asset: Asset): void {
 
     if (this.postAsset.assetType === "Audio/Video") {
     //   return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
 
         this.url =  this.postAsset.assetEmbedLink;
+        console.log(this.url);
 
     } else if (this.postAsset.assetType === "Audio") {
 
