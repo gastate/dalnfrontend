@@ -24,6 +24,7 @@ import { PlayerComponent } from './player/player.component';
 import { SearchComponent } from './search/search.component';
 import { SliderComponent } from './slider/slider.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SafePipe } from './safe.pipe';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -43,7 +44,8 @@ AppModule = __decorate([
             PlayerComponent,
             SearchComponent,
             SliderComponent,
-            PageNotFoundComponent
+            PageNotFoundComponent,
+            SafePipe
         ],
         imports: [
             BrowserModule,

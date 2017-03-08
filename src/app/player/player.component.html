@@ -7,14 +7,14 @@
 
   <div  *ngIf="postAsset.assetType==='Audio'">
     <iframe id="sc-widget" scrolling="no" width="100%" height="166px"
-            [src]="sanitizeUrl()"></iframe>
+            [src]="url | safe"></iframe>
   </div>
 
   <div *ngIf="postAsset.assetType === 'Audio/Video'">
     <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
-            [src]='sanitizeUrl()' allowfullscreen width="100%" height="436px"></iframe>
+            [src]="url | safe" allowfullscreen width="100%" height="436px"></iframe>
     <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
-            [src]='sanitizeUrl()'></iframe>
+            [src]="url | safe"></iframe>
   </div>
 
   <div *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio'">

@@ -4,6 +4,7 @@ import {Asset} from '../model/asset-model';
 import {Post} from '../model/post-model';
 
 
+
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
@@ -15,6 +16,8 @@ export class PlayerComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) {
   }
 
+  url : string;
+
   @Input()
   postAsset: Asset;
   postCheck: Post;
@@ -25,37 +28,38 @@ export class PlayerComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    //   this.checkAssetList();
   }
 
-  checkAssetList(post: Post): void {
-      
+  checkAssetList(): void {
+
       if (this.postCheck.hasOwnProperty('assetList') === false) {
          this.noAsset = true;
       }
 
   }
 
-  sanitizeUrl(asset: Asset) {
+  sanitizeUrl(asset: Asset): void {
 
     if (this.postAsset.assetType === "Audio/Video") {
-      return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
+    //   return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
+
+        this.url =  this.postAsset.assetEmbedLink;
 
     } else if (this.postAsset.assetType === "Audio") {
-      var url = ""; // don't need let function scope. use for concatanating full audio url.
+
       var audioID = this.postAsset.assetEmbedLink;
 
       var pattern = /\d+/g;
       audioID = pattern.exec(audioID).toString(); // JS to find the audio track ID.
 
-      url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID; // append the ID and query SoundCloud to get player.
+      this.url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID; // append the ID and query SoundCloud to get player.
 
       // sanitizer takes in a string.
-      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-
+    //   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
     } else {
 
-      return null;
+      this.url = null;
     }
   }
 
