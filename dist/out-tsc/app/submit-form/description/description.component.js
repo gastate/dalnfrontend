@@ -12,10 +12,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SubmitFormService } from '../submit-form.service';
 var DescriptionComponent = (function () {
-    function DescriptionComponent(_router, fb, _postCreate) {
+    function DescriptionComponent(_router, fb, _submitService) {
         this._router = _router;
         this.fb = fb;
-        this._postCreate = _postCreate;
+        this._submitService = _submitService;
         this.subjects = [];
         this.nations = [];
         this.regions = [];
@@ -70,6 +70,9 @@ var DescriptionComponent = (function () {
         this.languages.splice(this.languages.indexOf(language), 1);
     };
     DescriptionComponent.prototype.next = function () {
+        this.title = this.descForm.value.title;
+        console.log(this.title);
+        this._submitService.getDescriptionValue(this.title);
         this._router.navigateByUrl('/create/media');
     };
     return DescriptionComponent;

@@ -18,6 +18,9 @@ var SubmitService = (function () {
         this._store = _store;
         this.endPoint = environment.API_ENDPOINTS;
     }
+    SubmitService.prototype.setRightsConsent = function (value) {
+        this.rightsConsent = value;
+    };
     SubmitService.prototype.create = function (post) {
         console.log(this._http.post(this.endPoint.create_post, JSON.stringify(post), HEADER));
     };

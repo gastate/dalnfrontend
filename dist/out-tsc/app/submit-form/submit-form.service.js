@@ -16,13 +16,24 @@ import { environment } from '../../environments/environment';
 var SubmitFormService = (function () {
     function SubmitFormService(_http) {
         this._http = _http;
+        this.title = 'hellotesting';
         this.endPoint = environment.API_ENDPOINTS;
     }
-    SubmitFormService.prototype.postCreate = function (title) {
-        var body = JSON.stringify(title);
+    SubmitFormService.prototype.getDescriptionValue = function (jsonValue) {
+        this.title = jsonValue;
+    };
+    SubmitFormService.prototype.getFormData = function () {
+        var body = this.title;
+        console.log(body);
+        var headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        var options = new RequestOptions({ headers: headers, method: "post" });
+    };
+    SubmitFormService.prototype.postCreate = function () {
+        var body = this.title;
         var headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new RequestOptions({ headers: headers, method: "post" });
         return this._http.post(this.endPoint.create_post, body, options)
+            .map(function (res) { return res.json(); })
             .catch(function (error) { return Observable.throw(error.json().error || 'Post Creation Error'); });
     };
     return SubmitFormService;

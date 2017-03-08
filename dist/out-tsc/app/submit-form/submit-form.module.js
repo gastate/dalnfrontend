@@ -8,8 +8,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SubmitFormComponent } from './submit-form.component';
+import { SubmitFormService } from './submit-form.service';
 import { RightsComponent } from './rights/rights.component';
-import { SubmitService } from './services/submit.service';
 import { MetadataComponent } from './metadata/metadata.component';
 import { DescriptionComponent } from './description/description.component';
 import { MediaComponent } from './media/media.component';
@@ -45,7 +45,7 @@ SubmitFormModule = __decorate([
             DatepickerComponent
         ],
         providers: [
-            SubmitService
+            SubmitFormService
         ]
     })
 ], SubmitFormModule);

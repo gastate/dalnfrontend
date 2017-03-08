@@ -1,7 +1,7 @@
 var api_url = "http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService";
 var api_url2 = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production";
 var all_posts = api_url + "/posts/all";
-var create_post = api_url + "/posts/create";
+var create_post = api_url2 + "/posts/create";
 var page_posts = api_url + "/posts/";
 var post = api_url + "/posts/";
 var search_posts2 = api_url2 + "/posts/search/";
