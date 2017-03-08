@@ -1894,14 +1894,6 @@ nav select {
   display: inline-block;
 }
 
-.header2 img {
-    float: left;
-    width: 10%;
-    height:auto;
-}
-.header2 h1 {
-    position: relative;
-}
 
 .right li a:hover {color: #fefefe; background-color: #262626;}
 #header-wrap { position: relative;}
@@ -1946,9 +1938,27 @@ input.rights-option {
   margin: 2px 0 0 2px;
 }
 
+.header2 img {
+    float: left;
+    width: 10%;
+    z-index: 1000;
+    position: absolute;
+}
+
+.header2 {
+    width: 108%
+}
+
+
+.navbar .brand {
+    display: inline;
+    margin-left: 30px;
+    font-size: 32px;
+}
 
 
 
+#collapseContent { padding-bottom: 30px;}
 
 @media (max-width: 480px) {
     .right {float: none;}

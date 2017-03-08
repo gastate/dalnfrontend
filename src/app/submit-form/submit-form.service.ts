@@ -83,7 +83,9 @@ export class SubmitFormService {
   postCreate() {
 
      let body = this.title;
-     let headers = new Headers({'Content-Type':'application/json'});
+     let headers = new Headers();
+     headers.append('Content-Type', 'application/json');
+     headers.append('Accept', 'application/json');
      let options = new RequestOptions({ headers: headers, method: "post"});
 
      return this._http.post(this.endPoint.create_post, body, options)

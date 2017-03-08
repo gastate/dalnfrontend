@@ -26,7 +26,9 @@ var SubmitFormService = (function () {
     SubmitFormService.prototype.postCreate = function () {
         var _this = this;
         var body = this.title;
-        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
         var options = new RequestOptions({ headers: headers, method: "post" });
         return this._http.post(this.endPoint.create_post, body, options)
             .map(function (res) { return res.json(); })
