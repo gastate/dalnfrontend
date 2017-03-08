@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { environment } from '../../environments/environment';
@@ -23,18 +22,20 @@ var SubmitFormService = (function () {
         this.title = jsonValue;
     };
     SubmitFormService.prototype.getFormData = function () {
-        var body = this.title;
-        console.log(body);
-        var headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        var options = new RequestOptions({ headers: headers, method: "post" });
     };
     SubmitFormService.prototype.postCreate = function () {
+        var _this = this;
         var body = this.title;
-        var headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        var headers = new Headers({ 'Content-Type': 'application/json' });
         var options = new RequestOptions({ headers: headers, method: "post" });
         return this._http.post(this.endPoint.create_post, body, options)
             .map(function (res) { return res.json(); })
-            .catch(function (error) { return Observable.throw(error.json().error || 'Post Creation Error'); });
+            .subscribe(function (data) {
+            _this.result = data;
+            console.log(data);
+        }, function (err) {
+            console.log(err);
+        });
     };
     return SubmitFormService;
 }());

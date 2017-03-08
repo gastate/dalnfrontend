@@ -26,6 +26,7 @@ export class SubmitFormService {
     // coveragePeriod: string[];
     // subject: string[];
        rightsFormValues : string;
+       result : string;
   constructor(private _http: Http) {
    }
 
@@ -68,11 +69,11 @@ export class SubmitFormService {
   }
 
   getFormData(){
-      let body = this.title;
-      console.log(body);
-      let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-      let options = new RequestOptions({ headers: headers, method: "post"});
-    //   this._http.post(this.endPoint.create_post, body, options).map((res: Response) => console.log(res.json()));
+    //   let body = this.title;
+    //   console.log(body);
+    //   let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+    //   let options = new RequestOptions({ headers: headers, method: "post"});
+    // //   this._http.post(this.endPoint.create_post, body, options).map((res: Response) => console.log(res.json()));
   }
 
 
@@ -82,12 +83,20 @@ export class SubmitFormService {
   postCreate() {
 
      let body = this.title;
-     let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+     let headers = new Headers({'Content-Type':'application/json'});
      let options = new RequestOptions({ headers: headers, method: "post"});
 
      return this._http.post(this.endPoint.create_post, body, options)
      .map((res: Response) => res.json())
-     .catch((error : any) => Observable.throw(error.json().error || 'Post Creation Error'));
+     .subscribe(
+         data => {
+             this.result = data;
+             console.log(data);
+         },
+         err => {
+            console.log(err);
+        }
+     );
 
   }
 
