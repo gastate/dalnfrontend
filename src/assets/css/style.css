@@ -1953,7 +1953,7 @@ input.rights-option {
 .navbar .brand {
     display: inline;
     margin-left: 30px;
-    font-size: 32px;
+    font-size: 20px;
 }
 
 
@@ -2188,6 +2188,5 @@ input.rights-option {
 
 /* LARGE DESKTOP SCREENS */
 @media (min-width: 1210px) {
-    #collapseContent {width: 140%}
 
 }
