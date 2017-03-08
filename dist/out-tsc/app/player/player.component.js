@@ -13,9 +13,10 @@ import { Asset } from '../model/asset-model';
 var PlayerComponent = (function () {
     function PlayerComponent(sanitizer) {
         this.sanitizer = sanitizer;
-        this.url = '';
+        this.url = 'abcd';
     }
     PlayerComponent.prototype.ngOnInit = function () {
+        this.getUrl(this.postAsset);
     };
     PlayerComponent.prototype.checkAssetList = function () {
         if (this.postCheck.hasOwnProperty('assetList') === false) {
@@ -25,16 +26,17 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.getUrl = function (asset) {
         if (this.postAsset.assetType === "Audio/Video") {
             this.url = this.postAsset.assetEmbedLink;
-            console.log(this.url);
         }
         else if (this.postAsset.assetType === "Audio") {
             var audioID = this.postAsset.assetEmbedLink;
             var pattern = /\d+/g;
             audioID = pattern.exec(audioID).toString();
             this.url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID;
+            console.log("Sanitzer:" + this.url);
         }
         else {
             this.url = null;
+            console.log("Sanitzer:" + this.url);
         }
     };
     return PlayerComponent;
