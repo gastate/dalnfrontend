@@ -1938,7 +1938,7 @@ input.rights-option {
   margin: 2px 0 0 2px;
 }
 
-.header2 img {
+#logo {
     float: left;
     width: 10%;
     z-index: 1000;
