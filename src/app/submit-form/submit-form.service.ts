@@ -76,16 +76,21 @@ export class SubmitFormService {
     // //   this._http.post(this.endPoint.create_post, body, options).map((res: Response) => console.log(res.json()));
   }
 
-
+  makeDataJSON(){
+      // get all form inputs
+      // jsonify it
+      // validate it
+      // return as singlge
+  }
 
 
 
   postCreate() {
 
-     let body = this.title;
+     let body ='{"title": "My title 2"}';
+     console.log(body)
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');
-     headers.append('Accept', 'application/json');
      let options = new RequestOptions({ headers: headers, method: "post"});
 
      return this._http.post(this.endPoint.create_post, body, options)
