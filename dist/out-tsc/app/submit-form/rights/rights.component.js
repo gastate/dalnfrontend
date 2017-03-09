@@ -7,14 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RightsService } from '../../state/rights';
+import { SubmitFormService } from '../submit-form.service';
 var RightsComponent = (function () {
-    function RightsComponent(_router, fb) {
+    function RightsComponent(_router, fb, _submitService) {
         this._router = _router;
         this.fb = fb;
+        this._submitService = _submitService;
         this.initForm();
     }
     RightsComponent.prototype.ngOnInit = function () {
@@ -26,23 +27,24 @@ var RightsComponent = (function () {
         });
     };
     RightsComponent.prototype.next = function () {
+        this.rightsConsent = this.rightsForm.value.rightsConsent;
+        this.rightsRelease = this.rightsForm.value.rightsRelease;
+        var formObj = this.rightsForm.getRawValue();
+        var serialize = JSON.stringify(formObj);
         this._router.navigateByUrl('/create/metadata');
     };
     return RightsComponent;
 }());
-__decorate([
-    Input(),
-    __metadata("design:type", String)
-], RightsComponent.prototype, "rightsConsent", void 0);
 RightsComponent = __decorate([
     Component({
         selector: 'app-rights',
         templateUrl: './rights.component.html',
         styleUrls: ['./rights.component.css'],
-        providers: [RightsService]
+        providers: [SubmitFormService]
     }),
     __metadata("design:paramtypes", [Router,
-        FormBuilder])
+        FormBuilder,
+        SubmitFormService])
 ], RightsComponent);
 export { RightsComponent };
 //# sourceMappingURL=../../../../../src/app/submit-form/rights/rights.component.js.map

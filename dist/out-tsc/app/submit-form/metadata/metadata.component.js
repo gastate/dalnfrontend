@@ -10,11 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
+import { SubmitFormService } from '../submit-form.service';
 var MetadataComponent = (function () {
-    function MetadataComponent(_router, fb) {
+    function MetadataComponent(_router, fb, _submitService) {
         this._router = _router;
         this.fb = fb;
+        this._submitService = _submitService;
         this.names = [];
+        this.gender = [];
         this.initForm();
     }
     MetadataComponent.prototype.ngOnInit = function () {
@@ -32,6 +35,8 @@ var MetadataComponent = (function () {
         this.names.splice(this.names.indexOf(name), 1);
     };
     MetadataComponent.prototype.next = function () {
+        var serializeNames = JSON.stringify(this.names);
+        console.log(serializeNames);
         this._router.navigateByUrl('/create/description');
     };
     return MetadataComponent;
@@ -40,10 +45,12 @@ MetadataComponent = __decorate([
     Component({
         selector: 'app-metadata',
         templateUrl: './metadata.component.html',
-        styleUrls: ['./metadata.component.css']
+        styleUrls: ['./metadata.component.css'],
+        providers: [SubmitFormService]
     }),
     __metadata("design:paramtypes", [Router,
-        FormBuilder])
+        FormBuilder,
+        SubmitFormService])
 ], MetadataComponent);
 export { MetadataComponent };
 //# sourceMappingURL=../../../../../src/app/submit-form/metadata/metadata.component.js.map

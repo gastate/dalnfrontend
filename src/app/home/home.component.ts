@@ -23,11 +23,11 @@ export class HomeComponent implements OnInit {
   private isInProd = environment.production;
 
   ngOnInit(): void {
-    // if (this.isInProd == false) {
-    //     this.getPagePosts();
-    // } else {
-    //     this.getAllPosts();
-    // }
+    if (this.isInProd == false) {
+        this.getPagePosts();
+    } else {
+        this.getAllPosts();
+    }
 
   }
 
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
   //             this.posts = data;
   //
   //
-  //       }, //Bind to view
+        // }, //Bind to view
   //       err => {
   //         // Log errors if any
   //         console.log(err);

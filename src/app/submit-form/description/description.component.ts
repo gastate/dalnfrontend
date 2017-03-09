@@ -19,6 +19,7 @@ import { SubmitFormService } from '../submit-form.service';
 })
 export class DescriptionComponent implements OnInit {
     descForm: FormGroup;
+    title : string;
     subjects : string [] = [];
     nations : string [] = [];
     regions : string [] = [];
@@ -29,7 +30,7 @@ export class DescriptionComponent implements OnInit {
   constructor(
     private _router: Router,
     private fb: FormBuilder,
-    private _postCreate : SubmitFormService
+    private _submitService : SubmitFormService
   ) {
     this.initForm();
   }
@@ -109,7 +110,10 @@ export class DescriptionComponent implements OnInit {
 
   next() {
     // this.descriptionService.updateDescription(this.form.value);
-
+    this.title = this.descForm.value.title;
+    console.log(this.title);
+    this._submitService.getDescriptionValue(this.title);
+    // this._submitService.setTitle(this.title);
     this._router.navigateByUrl('/create/media');
   }
 

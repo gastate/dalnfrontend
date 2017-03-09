@@ -3,20 +3,24 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SubmitFormService } from '../submit-form.service';
 
 @Component({
   selector: 'app-metadata',
   templateUrl: './metadata.component.html',
-  styleUrls: ['./metadata.component.css']
+  styleUrls: ['./metadata.component.css'],
+  providers: [ SubmitFormService ]
 })
 export class MetadataComponent implements OnInit {
   metaForm: FormGroup;
   names : string [] = [];
+  gender : string [] = [];
 
 
   constructor(
       private _router: Router,
-      private fb: FormBuilder
+      private fb: FormBuilder,
+      private _submitService: SubmitFormService
   ) {
       this.initForm();
    }
@@ -46,6 +50,10 @@ export class MetadataComponent implements OnInit {
 
 
   next() {
+    // this._submitService.setContributorAuthor(this.names);
+    let serializeNames = JSON.stringify(this.names);
+    console.log(serializeNames);
+
     this._router.navigateByUrl('/create/description');
   }
 }
