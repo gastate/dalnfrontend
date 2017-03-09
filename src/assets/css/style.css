@@ -485,7 +485,7 @@ nav ul li ul li a:hover {
   border-radius: 0;
   border: none;
   /*padding: 10px 10px 10px 6px;*/
-  /*border-left: 4px #bacbdb solid;*/
+  border-left: 4px #bacbdb solid;
 }
 
 nav ul li ul li span.indicator-right {
@@ -512,7 +512,7 @@ nav ul li ul li ul {
 
 nav ul li ul li ul li a:hover {
   border: none;
-  /*border-right: 4px #bacbdb solid;*/
+  border-right: 4px #bacbdb solid;
   /*padding: 10px 6px 10px 10px;*/
 }
 
