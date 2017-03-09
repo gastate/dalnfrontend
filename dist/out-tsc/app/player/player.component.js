@@ -32,11 +32,9 @@ var PlayerComponent = (function () {
             var pattern = /\d+/g;
             audioID = pattern.exec(audioID).toString();
             this.url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID;
-            console.log("Sanitzer:" + this.url);
         }
         else {
             this.url = null;
-            console.log("Sanitzer:" + this.url);
         }
     };
     return PlayerComponent;

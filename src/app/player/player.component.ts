@@ -62,7 +62,7 @@ export class PlayerComponent implements OnInit {
       //
     //   this.url = this.sanitizer.bypassSecurityTrustUrl( 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID) as string; // append the ID and query SoundCloud to get player.
     this.url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID;
-      console.log( "Sanitzer:" + this.url);
+    //   console.log( "Sanitzer:" + this.url);
 
 
       // sanitizer takes in a string.
@@ -70,7 +70,7 @@ export class PlayerComponent implements OnInit {
     } else {
 
       this.url = null;
-      console.log("Sanitzer:" + this.url);
+    //   console.log("Sanitzer:" + this.url);
     }
   }
 

@@ -408,8 +408,8 @@ nav ul li.current > a {
   color: #577088;
   border: none;
   background: url(../img/bg-header.png) top center repeat-x;
-  padding: 10px 15px;
-  border: 1px #e4e4e6 solid;
+  /*padding: 10px 15px;*/
+  /*border: 1px #e4e4e6 solid;*/
 }
 
 nav ul li a:hover {
@@ -484,8 +484,8 @@ nav ul li ul li a:hover {
   -moz-border-radius: 0;
   border-radius: 0;
   border: none;
-  padding: 10px 10px 10px 6px;
-  border-left: 4px #bacbdb solid;
+  /*padding: 10px 10px 10px 6px;*/
+  /*border-left: 4px #bacbdb solid;*/
 }
 
 nav ul li ul li span.indicator-right {
@@ -512,8 +512,8 @@ nav ul li ul li ul {
 
 nav ul li ul li ul li a:hover {
   border: none;
-  border-right: 4px #bacbdb solid;
-  padding: 10px 6px 10px 10px;
+  /*border-right: 4px #bacbdb solid;*/
+  /*padding: 10px 6px 10px 10px;*/
 }
 
 nav ul li ul li ul li a {
@@ -1983,11 +1983,13 @@ input.rights-option {
         height: 100%;
     }
 
+    .responsive_home {
+        max-width: 100vw;
+    }
+
 }
 
-@media (max-width: 768px) {
 
-}
 
 @media (max-width: 480px) and (max-width: 768px) {
     .right {float: none;}
