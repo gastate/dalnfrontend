@@ -17,8 +17,8 @@ export class SubmitFormService {
     // dateAvailable: string;
     // dateCreated: string;
     // dateIssued: string;
-    // rightsConsent: string;
-    // rightsRelease: string;
+    rightsConsent: string;
+    rightsRelease: string;
     // contributorAuthor: string[];
     // creatorGender: string[];
     // creatorYearOfBirth: string[];
@@ -30,10 +30,14 @@ export class SubmitFormService {
     language: string [];
     subject: string[];
 
-    result : string;
+    postResult : string;
+    postString : string;
+
   constructor(private _http: Http) {
       this.title = "";
       this.description = "";
+      this.rightsConsent = "";
+      this.rightsRelease = "";
       this.coveragePeriod= [];
       this.coverageNationality = [];
       this.coverageStateProvince = [];
@@ -42,6 +46,7 @@ export class SubmitFormService {
       this.language = [];
       this.subject = [];
 
+
    }
 
   private endPoint = environment.API_ENDPOINTS;
@@ -49,34 +54,7 @@ export class SubmitFormService {
   setTitle(value : string){
       this.title = value;
   }
-  //
-  // setDescription(value : string){
-  //     this.description = value;
-  // }
-  //
-  // setDateCreated(value : string) {
-  //     this.dateCreated = value;
-  // }
-  //
-  // setRightsConsent(value : string) {
-  //     this.rightsConsent = value;
-  // }
-  //
-  // setRightsRelease(value : string){
-  //     this.rightsRelease = value;
-  // }
-  //
-  // setContributorAuthor(value: Array<string>) {
-  //     this.contributorAuthor = value;
-  // }
-  //
-  // setCreatorGender(value: Array<string>) {
-  //     this.creatorGender = value;
-  // }
 
-  // getRightsData(jsonValue : string) {
-  //    this.rightsFormValues =
-  // }
 
   // Get all form data from description step
   // Description form only has title, description, and coveragePeriod.
@@ -111,6 +89,33 @@ export class SubmitFormService {
 
   }
 
+  getRightsFormValues(jsonValue : string) {
+    var rightsObj = JSON.parse(jsonValue);
+    // console.log("Object:" , rightsObj);
+    var keys = Object.keys(rightsObj);
+    // console.log("Keys:",  keys);
+
+    // step through the array of keys and assign variables.
+    for (var key in keys) {
+        // idk why it doesn't work with else-if, prob cuz im using for each.
+        if (keys.indexOf("rightsConsent") > -1) {
+            this.rightsConsent = rightsObj.rightsConsent;
+        } else {
+            this.rightsConsent = null;
+        }
+        if (keys.indexOf("rightsRelease") > -1) {
+            this.rightsRelease = rightsObj.rightsRelease;
+        } else {
+            this.rightsRelease = null;
+        }
+
+    }
+    // console.log(this.title);
+    // console.log(this.description);
+    // console.log(this.coveragePeriod);
+
+  }
+
   // A terrible function that will let you pass unorganized string arrays and get the data from them to assgin to local values.
   // Just make sure you pass in the right order or string arrays.
   getDescriptionArrayValues(subjectValues : string [], nationValues : string[], regionValues : string[], stateValues: string[], geoValues : string[], languageValues : string[]) {
@@ -129,8 +134,6 @@ export class SubmitFormService {
     //   console.log(this.coverageSpatial);
     //   console.log(this.language);
 
-
-
   }
 
 
@@ -144,6 +147,11 @@ export class SubmitFormService {
       // JSON.parse()
       // validate it
       // return as singlge
+    //   var post= '{"title":' + '"' + this.title + '"' +  "," +  '}';
+      var post2 = new Object();
+
+      console.log(post2);
+
   }
 
 
@@ -160,7 +168,7 @@ export class SubmitFormService {
      .map((res: Response) => res.json())
      .subscribe(
          data => {
-             this.result = data;
+             this.postResult = data;
              console.log(data);
          },
          err => {

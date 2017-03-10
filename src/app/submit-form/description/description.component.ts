@@ -119,6 +119,7 @@ export class DescriptionComponent implements OnInit {
 
     this._submitService.getDescriptionFormValues(serialize);
     this._submitService.getDescriptionArrayValues(this.subjects, this.nations, this.regions, this.states, this.geos, this.languages);
+    this._submitService.makeDataJSON();
     this._router.navigateByUrl('/create/media');
   }
 

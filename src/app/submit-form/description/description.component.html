@@ -10,9 +10,8 @@
             <p>
             To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)
             </p>
-            <!-- <div class="error" *ngIf="form.get('title').touched && form.get('title').hasError('required')">
-              <strong>Title is required</strong>
-            </div> -->
+
+
         </li>
 
         <li>
@@ -213,12 +212,15 @@
 
     <!-- <button type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button> -->
     <!-- <button type="submit" (click)="getConsole()">Get Console</button> -->
-    <button type="submit" class="btn btn-primary" (click)="next()">Next Step</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!descForm.valid" (click)="next()">Next Step</button>
 
+    <div class="alert alert-info" role="alert" *ngIf="!descForm.controls.title.valid">
+        <strong > A title is required to make a post.</strong>
+    </div>
 
 </div>
 
-<p>
+<!-- <p>
     Form value:
     {{descForm.value | json}}
-</p>
+</p> -->
