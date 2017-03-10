@@ -7,18 +7,18 @@ webpackJsonp([0,3],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__submit_form_component__ = __webpack_require__(1135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__submit_form_component__ = __webpack_require__(1134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__submit_form_service__ = __webpack_require__(1123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__rights_rights_component__ = __webpack_require__(1134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__metadata_metadata_component__ = __webpack_require__(1133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__rights_rights_component__ = __webpack_require__(1133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__metadata_metadata_component__ = __webpack_require__(1132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__description_description_component__ = __webpack_require__(1130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_media_component__ = __webpack_require__(1132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__license_license_component__ = __webpack_require__(1131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__summary_summary_component__ = __webpack_require__(1136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_media_component__ = __webpack_require__(1131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__license_license_component__ = __webpack_require__(1145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__summary_summary_component__ = __webpack_require__(1135);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__complete_complete_component__ = __webpack_require__(1129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__submit_form_routing_module__ = __webpack_require__(1146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__result_result_component__ = __webpack_require__(1144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__datepicker_datepicker_component__ = __webpack_require__(1145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__result_result_component__ = __webpack_require__(1143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__datepicker_datepicker_component__ = __webpack_require__(1144);
 /* harmony export (binding) */ __webpack_require__.d(exports, "SubmitFormModule", function() { return SubmitFormModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -108,66 +108,200 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var SubmitFormService = (function () {
     function SubmitFormService(_http) {
         this._http = _http;
-        this.title = 'hellotesting';
         this.endPoint = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].API_ENDPOINTS;
+        this.title = "";
+        this.description = "";
+        this.rightsConsent = "";
+        this.rightsRelease = "";
+        this.contributorAuthor = [];
+        this.creatorGender = [];
+        this.coveragePeriod = [];
+        this.coverageNationality = [];
+        this.coverageStateProvince = [];
+        this.coverageRegion = [];
+        this.coverageSpatial = [];
+        this.language = [];
+        this.subject = [];
     }
-    // setTitle(value : string){
-    //     this.title = value;
-    // }
-    //
-    // setDescription(value : string){
-    //     this.description = value;
-    // }
-    //
-    // setDateCreated(value : string) {
-    //     this.dateCreated = value;
-    // }
-    //
-    // setRightsConsent(value : string) {
-    //     this.rightsConsent = value;
-    // }
-    //
-    // setRightsRelease(value : string){
-    //     this.rightsRelease = value;
-    // }
-    //
-    // setContributorAuthor(value: Array<string>) {
-    //     this.contributorAuthor = value;
-    // }
-    //
-    // setCreatorGender(value: Array<string>) {
-    //     this.creatorGender = value;
-    // }
-    // getRightsData(jsonValue : string) {
-    //    this.rightsFormValues =
-    // }
-    SubmitFormService.prototype.getDescriptionValue = function (jsonValue) {
-        this.title = jsonValue;
+    // Get all form data from description step
+    // Description form only has title, description, and coveragePeriod.
+    SubmitFormService.prototype.getDescriptionFormValues = function (jsonValue) {
+        var descriptionObj = JSON.parse(jsonValue);
+        // console.log("Object:" , descriptionObj);
+        var keys = Object.keys(descriptionObj);
+        // console.log("Keys:",  keys);
+        // step through the array of keys and assign variables.
+        for (var key in keys) {
+            // idk why it doesn't work with else-if, prob cuz im using for each.
+            if (keys.indexOf("title") > -1) {
+                this.title = descriptionObj.title;
+            }
+            else {
+                this.title = null;
+            }
+            if (keys.indexOf("description") > -1) {
+                this.description = descriptionObj.description;
+            }
+            else {
+                this.description = null;
+            }
+            if (keys.indexOf("coveragePeriod") > -1) {
+                this.coveragePeriod = descriptionObj.coveragePeriod;
+            }
+            else {
+                this.coveragePeriod = null;
+            }
+        }
+        // console.log(this.title);
+        // console.log(this.description);
+        // console.log(this.coveragePeriod);
     };
+    // TODO: NOT WORKING!!!
+    SubmitFormService.prototype.getRightsFormValues = function (jsonValue) {
+        var rightsObj = JSON.parse(jsonValue);
+        // console.log("Object:" , rightsObj);
+        var keys = Object.keys(rightsObj);
+        // console.log("Keys:",  keys);
+        // step through the array of keys and assign variables.
+        for (var key in keys) {
+            // idk why it doesn't work with else-if, prob cuz im using for each.
+            if (keys.indexOf("rightsConsent") > -1) {
+                this.rightsConsent = rightsObj.rightsConsent;
+            }
+            else {
+                this.rightsConsent = null;
+            }
+            if (keys.indexOf("rightsRelease") > -1) {
+                this.rightsRelease = rightsObj.rightsRelease;
+            }
+            else {
+                this.rightsRelease = null;
+            }
+        }
+        // console.log(this.rightsConsent);
+        // console.log(this.rightsRelease);
+    };
+    SubmitFormService.prototype.getMetaFormValues = function (jsonValue) {
+        var metaObj = JSON.parse(jsonValue);
+        // console.log("Object:" , metaObj);
+        var keys = Object.keys(metaObj);
+        // console.log("Keys:",  keys);
+        // step through the array of keys and assign variables.
+        for (var key in keys) {
+            // idk why it doesn't work with else-if, prob cuz im using for each.
+            if (keys.indexOf("creatorGender") > -1) {
+                this.creatorGender = metaObj.creatorGender;
+            }
+            else {
+                this.creatorGender = null;
+            }
+        }
+    };
+    SubmitFormService.prototype.getMetaArrayValues = function (nameValues) {
+        this.contributorAuthor = nameValues;
+    };
+    // A terrible function that will let you pass unorganized string arrays and get the data from them to assgin to local values.
+    // Just make sure you pass in the right order or string arrays.
+    SubmitFormService.prototype.getDescriptionArrayValues = function (subjectValues, nationValues, regionValues, stateValues, geoValues, languageValues) {
+        this.subject = subjectValues;
+        this.coverageNationality = nationValues;
+        this.coverageRegion = regionValues;
+        this.coverageStateProvince = stateValues;
+        this.coverageSpatial = geoValues;
+        this.language = languageValues;
+        // Don't worry about null values, empty string. TODO: Just catch any undefined
+        //   console.log(this.subject);
+        //   console.log(this.coverageNationality);
+        //   console.log(this.coverageRegion);
+        //   console.log(this.coverageStateProvince);
+        //   console.log(this.coverageSpatial);
+        //   console.log(this.language);
+    };
+    // returns a json string with all the data in the post.
     SubmitFormService.prototype.getFormData = function () {
-        //   let body = this.title;
-        //   console.log(body);
-        //   let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-        //   let options = new RequestOptions({ headers: headers, method: "post"});
-        // //   this._http.post(this.endPoint.create_post, body, options).map((res: Response) => console.log(res.json()));
+        return "Hello";
     };
     SubmitFormService.prototype.makeDataJSON = function () {
         // get all form inputs
-        // jsonify it
+        // JSON.parse()
         // validate it
         // return as singlge
+        //   var post= '{"title":' + '"' + this.title + '"' +  "," +  '}';
+        //
+        // var stringArr = [
+        //     this.title,
+        //     this.description,
+        //     this.rightsConsent,
+        //     this.rightsRelease
+        // ];
+        //
+        // var stringArrOfArr = [
+        //     this.contributorAuthor,
+        //     this.creatorGender,
+        //     this.coveragePeriod,
+        //     this.coverageNationality,
+        //     this.coverageStateProvince,
+        //     this.coverageRegion,
+        //     this.coverageSpatial,
+        //     this.language,
+        //     this.subject
+        // ];
+        // var arr = [
+        //     this.title,
+        //     this.description,
+        //     this.rightsConsent,
+        //     this.rightsRelease,
+        //     this.contributorAuthor,
+        //     this.creatorGender,
+        //     this.coveragePeriod,
+        //     this.coverageNationality,
+        //     this.coverageStateProvince,
+        //     this.coverageRegion,
+        //     this.coverageSpatial,
+        //     this.language,
+        //     this.subject
+        // ];
+        var BODY = {
+            "title": this.title,
+            "description": this.description,
+            "rightsConsent": this.rightsConsent,
+            "rightsRelease": this.rightsRelease,
+            "contributorAuthor": this.contributorAuthor,
+            "creatorGender": this.creatorGender,
+            "coveragePeriod": this.coveragePeriod,
+            "coverageNationality": this.coverageNationality,
+            "coverageStateProvince": this.coverageStateProvince,
+            "coverageRegion": this.coverageRegion,
+            "coverageSpatial": this.coverageSpatial,
+            "language": this.language,
+            "subject": this.subject
+        };
+        // var BODY = {
+        //    "contributorAuthor": [],
+        //    "title": '',
+        //    "description": ''
+        // }
+        // for (var i = 0; i < stringArr.length; i++) {
+        //     if (stringArr[i] !== "" || !stringArr[i]) {
+        //
+        //     }
+        // }
+        // console.log(stringArr);
+        //
+        console.log(BODY);
+        var tango = JSON.stringify(BODY);
+        console.log(tango);
     };
     SubmitFormService.prototype.postCreate = function () {
         var _this = this;
-        var body = '{"title": "My title 2"}';
-        console.log(body);
+        //  console.log(this.postString);
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestOptions */]({ headers: headers, method: "post" });
-        return this._http.post(this.endPoint.create_post, body, options)
+        return this._http.post(this.endPoint.create_post, this.postString, options)
             .map(function (res) { return res.json(); })
             .subscribe(function (data) {
-            _this.result = data;
+            _this.postResult = data;
             console.log(data);
         }, function (err) {
             console.log(err);
@@ -296,7 +430,7 @@ var State = (function (_super) {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngrx_core__ = __webpack_require__(1137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngrx_core__ = __webpack_require__(1136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Store; });
@@ -499,12 +633,15 @@ var DescriptionComponent = (function () {
     //     console.log(this.geos);
     //     console.log(this.languages);
     // }
+    DescriptionComponent.prototype.back = function () {
+        // return data back through submit-service.
+    };
     DescriptionComponent.prototype.next = function () {
         // this.descriptionService.updateDescription(this.form.value);
-        this.title = this.descForm.value.title;
-        console.log(this.title);
-        this._submitService.getDescriptionValue(this.title);
-        // this._submitService.setTitle(this.title);
+        var formObj = this.descForm.getRawValue();
+        var serialize = JSON.stringify(formObj);
+        this._submitService.getDescriptionFormValues(serialize);
+        this._submitService.getDescriptionArrayValues(this.subjects, this.nations, this.regions, this.states, this.geos, this.languages);
         this._router.navigateByUrl('/create/media');
     };
     DescriptionComponent = __decorate([
@@ -529,48 +666,6 @@ var DescriptionComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(104);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return LicenseComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var LicenseComponent = (function () {
-    function LicenseComponent(_router) {
-        this._router = _router;
-    }
-    LicenseComponent.prototype.ngOnInit = function () {
-    };
-    LicenseComponent.prototype.next = function () {
-        this._router.navigateByUrl('/create/summary');
-    };
-    LicenseComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
-            selector: 'app-license',
-            template: __webpack_require__(1161),
-            styles: [__webpack_require__(1151)]
-        }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === 'function' && _a) || Object])
-    ], LicenseComponent);
-    return LicenseComponent;
-    var _a;
-}());
-
-
-/***/ },
-
-/***/ 1132:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(104);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return MediaComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -590,7 +685,7 @@ var MediaComponent = (function () {
     MediaComponent.prototype.ngOnInit = function () {
     };
     MediaComponent.prototype.next = function () {
-        this._router.navigateByUrl('/create/license');
+        this._router.navigateByUrl('/create/summary');
     };
     MediaComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
@@ -607,7 +702,7 @@ var MediaComponent = (function () {
 
 /***/ },
 
-/***/ 1133:
+/***/ 1132:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -635,7 +730,6 @@ var MetadataComponent = (function () {
         this.fb = fb;
         this._submitService = _submitService;
         this.names = [];
-        this.gender = [];
         this.initForm();
     }
     MetadataComponent.prototype.ngOnInit = function () {
@@ -657,8 +751,10 @@ var MetadataComponent = (function () {
     // }
     MetadataComponent.prototype.next = function () {
         // this._submitService.setContributorAuthor(this.names);
-        var serializeNames = JSON.stringify(this.names);
-        console.log(serializeNames);
+        var formObj = this.metaForm.getRawValue();
+        var serialize = JSON.stringify(formObj);
+        this._submitService.getMetaFormValues(serialize);
+        this._submitService.getMetaArrayValues(this.names);
         this._router.navigateByUrl('/create/description');
     };
     MetadataComponent = __decorate([
@@ -677,7 +773,7 @@ var MetadataComponent = (function () {
 
 /***/ },
 
-/***/ 1134:
+/***/ 1133:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -724,7 +820,8 @@ var RightsComponent = (function () {
         this.rightsRelease = this.rightsForm.value.rightsRelease;
         var formObj = this.rightsForm.getRawValue();
         var serialize = JSON.stringify(formObj);
-        //   this._submitService.getRightsData(serialize);
+        //   console.log(serialize);
+        this._submitService.getRightsFormValues(serialize);
         //   this._submitService.setRightsConsent(this.rightsConsent);
         //   this._submitService.setRightsRelease(this.rightsRelease);
         this._router.navigateByUrl('/create/metadata');
@@ -745,7 +842,7 @@ var RightsComponent = (function () {
 
 /***/ },
 
-/***/ 1135:
+/***/ 1134:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -778,7 +875,7 @@ var SubmitFormComponent = (function () {
 
 /***/ },
 
-/***/ 1136:
+/***/ 1135:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -807,6 +904,7 @@ var SummaryComponent = (function () {
         this._submitService.getFormData();
     };
     SummaryComponent.prototype.next = function () {
+        this._submitService.makeDataJSON();
         this._submitService.postCreate();
         this._router.navigateByUrl('/create/complete');
     };
@@ -826,14 +924,14 @@ var SummaryComponent = (function () {
 
 /***/ },
 
-/***/ 1137:
+/***/ 1136:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_operator_enterZone__ = __webpack_require__(1139);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_operator_leaveZone__ = __webpack_require__(1140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_operator_select__ = __webpack_require__(1141);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_compose__ = __webpack_require__(1138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_operator_enterZone__ = __webpack_require__(1138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_operator_leaveZone__ = __webpack_require__(1139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_operator_select__ = __webpack_require__(1140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_compose__ = __webpack_require__(1137);
 /* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__src_operator_select__["a"]; });
@@ -846,7 +944,7 @@ var SummaryComponent = (function () {
 
 /***/ },
 
-/***/ 1138:
+/***/ 1137:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -869,7 +967,7 @@ var compose = function () {
 
 /***/ },
 
-/***/ 1139:
+/***/ 1138:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -911,7 +1009,7 @@ var EnterZoneSubscriber = (function (_super) {
 
 /***/ },
 
-/***/ 1140:
+/***/ 1139:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -953,7 +1051,7 @@ var LeaveZoneSubscriber = (function (_super) {
 
 /***/ },
 
-/***/ 1141:
+/***/ 1140:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -989,12 +1087,12 @@ function select(pathOrMapFn) {
 
 /***/ },
 
-/***/ 1142:
+/***/ 1141:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_dispatcher__ = __webpack_require__(1124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_ng2__ = __webpack_require__(1143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_ng2__ = __webpack_require__(1142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_reducer__ = __webpack_require__(1125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_state__ = __webpack_require__(1126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_store__ = __webpack_require__(1127);
@@ -1015,7 +1113,7 @@ function select(pathOrMapFn) {
 
 /***/ },
 
-/***/ 1143:
+/***/ 1142:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1103,12 +1201,12 @@ var StoreModule = (function () {
 
 /***/ },
 
-/***/ 1144:
+/***/ 1143:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngrx_store__ = __webpack_require__(1142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngrx_store__ = __webpack_require__(1141);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ResultComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1142,7 +1240,7 @@ var ResultComponent = (function () {
 
 /***/ },
 
-/***/ 1145:
+/***/ 1144:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1177,20 +1275,61 @@ var DatepickerComponent = (function () {
 
 /***/ },
 
+/***/ 1145:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(104);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return LicenseComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var LicenseComponent = (function () {
+    function LicenseComponent(_router) {
+        this._router = _router;
+    }
+    LicenseComponent.prototype.ngOnInit = function () {
+    };
+    LicenseComponent.prototype.next = function () {
+        this._router.navigateByUrl('/create/summary');
+    };
+    LicenseComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Component */])({
+            selector: 'app-license',
+            template: __webpack_require__(1161),
+            styles: [__webpack_require__(1151)]
+        }), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === 'function' && _a) || Object])
+    ], LicenseComponent);
+    return LicenseComponent;
+    var _a;
+}());
+
+
+/***/ },
+
 /***/ 1146:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__submit_form_component__ = __webpack_require__(1135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rights_rights_component__ = __webpack_require__(1134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__metadata_metadata_component__ = __webpack_require__(1133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__submit_form_component__ = __webpack_require__(1134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rights_rights_component__ = __webpack_require__(1133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__metadata_metadata_component__ = __webpack_require__(1132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__description_description_component__ = __webpack_require__(1130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__media_media_component__ = __webpack_require__(1132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__license_license_component__ = __webpack_require__(1131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__summary_summary_component__ = __webpack_require__(1136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__complete_complete_component__ = __webpack_require__(1129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__media_media_component__ = __webpack_require__(1131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__summary_summary_component__ = __webpack_require__(1135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__complete_complete_component__ = __webpack_require__(1129);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return SubmitFormRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1210,7 +1349,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var submitFormRoutes = [
     {
         path: '',
@@ -1221,9 +1359,9 @@ var submitFormRoutes = [
             { path: 'metadata', component: __WEBPACK_IMPORTED_MODULE_4__metadata_metadata_component__["a" /* MetadataComponent */] },
             { path: 'description', component: __WEBPACK_IMPORTED_MODULE_5__description_description_component__["a" /* DescriptionComponent */] },
             { path: 'media', component: __WEBPACK_IMPORTED_MODULE_6__media_media_component__["a" /* MediaComponent */] },
-            { path: 'license', component: __WEBPACK_IMPORTED_MODULE_7__license_license_component__["a" /* LicenseComponent */] },
-            { path: 'summary', component: __WEBPACK_IMPORTED_MODULE_8__summary_summary_component__["a" /* SummaryComponent */] },
-            { path: 'complete', component: __WEBPACK_IMPORTED_MODULE_9__complete_complete_component__["a" /* CompleteComponent */] }
+            // { path: 'license', component: LicenseComponent },
+            { path: 'summary', component: __WEBPACK_IMPORTED_MODULE_7__summary_summary_component__["a" /* SummaryComponent */] },
+            { path: 'complete', component: __WEBPACK_IMPORTED_MODULE_8__complete_complete_component__["a" /* CompleteComponent */] }
         ]
     },
 ];
@@ -1341,7 +1479,7 @@ module.exports = "<!-- <form class=\"form-inline\">\r\n  <div class=\"form-group
 /***/ 1160:
 /***/ function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form [formGroup]=\"descForm\" novalidate (submit)=\"next()\">\r\n    <ul>\r\n\r\n        <li>\r\n            <span>Title</span>\r\n            <input class=\"meta-info\" type=\"text\" name=\"title\" formControlName=\"title\" [(ngModel)]='title'> <br />\r\n            <p>\r\n            To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)\r\n            </p>\r\n            <!-- <div class=\"error\" *ngIf=\"form.get('title').touched && form.get('title').hasError('required')\">\r\n              <strong>Title is required</strong>\r\n            </div> -->\r\n        </li>\r\n\r\n        <li>\r\n          <span>Description</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"description\" formControlName=\"description\" [(ngModel)]='description'> <br />\r\n          <p>\r\n            To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Date Created</span>\r\n          <!-- <app-datepicker></app-datepicker> -->\r\n        <br />\r\n          <p>\r\n            Please provide the date on which you created your literacy narrative -- not necessarily the date on which you are filling out this form. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n    </ul>\r\n\r\n<div class=\"well well-lg\">\r\n    <p>\r\n        The following form fields are optional, but recommended:\r\n    </p>\r\n\r\n    <ul>\r\n\r\n        <li>\r\n          <span>Subject Keyword</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"subject\" #subjectInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addSubject(subjectInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Current Subject(s): </p>\r\n            <span *ngFor=\"let subject of subjects\" class=\"badge badge-primary\">{{subject}}\r\n              <button (click)=\"removeSubject(this.subject)\" type=\"button\" class=\"close\">\r\n              <span>&times;</span>\r\n            </button>\r\n            </span>\r\n          <br />\r\n\r\n          <p>\r\n            To help other DALN users find your literacy narrative, please enter appropriate subject keywords or phrases. You may enter as many as you like, but you should enter only one keyword or phrase at a time, then click \"Add More\" to enter additional keywords. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Decades covered</span>\r\n          <div class=\"form-group\">\r\n              <label for=\"decades\">Mutiple select list (hold shift to select more than one):</label>\r\n                    <select multiple class=\"form-control\" id=\"decades\" [(ngModel)]=\"coveragePeriod\" formControlName=\"coveragePeriod\">\r\n                      <option>1900-1909</option>\r\n                      <option>1910-1919</option>\r\n                      <option>1920-1929</option>\r\n                      <option>1930-1939</option>\r\n                      <option>1940-1949</option>\r\n                      <option>1950-1959</option>\r\n                      <option>1960-1969</option>\r\n                      <option>1970-1979</option>\r\n                      <option>1980-1989</option>\r\n                      <option>1990-1999</option>\r\n                      <option>2000-2009</option>\r\n                      <option>2010-2019</option>\r\n                    </select>\r\n          </div>\r\n            <p>\r\n              Please indicate the decades referred to in your literacy narrative. You can choose as many as necessary, but you may need to hold down the Shift or CTRL key to select multiple choices. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Nationality</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"nation\" #nationInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addNation(nationInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Nation(s) specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let nation of nations\" class=\"list-group-item\">{{nation}}\r\n                    <button (click)=\"removeNation(this.nation)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <p>\r\n              To help other DALN users find narratives by people of a particular nationality, please list your nationality/nationalities during the period referred to in your narrative. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Region</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"region\" #regionInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addRegion(regionInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Region(s) specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let region of regions\" class=\"list-group-item\">{{region}}\r\n                    <button (click)=\"removeRegion(this.region)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <p>\r\n            To help other DALN users find narratives from particular regions (e.g., New England, Rocky Mountains, Great Plains) please list the region(s) in which the events described in your narrative took place. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>State or Province</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"state\" #stateInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addState(stateInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> State(s) specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let state of states\" class=\"list-group-item\">{{state}}\r\n                    <button (click)=\"removeState(this.state)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n            <br />\r\n          <p>\r\n            To help other DALN users find narratives from your state or province, please list the state(s) or province(s) in which the events described in your narrative took place. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Other Geographical Information</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"geo\" #geoInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addGeo(geoInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Georgraphical information added: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let geo of geos\" class=\"list-group-item\">{{geo}}\r\n                    <button (click)=\"removeGeo(this.geo)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <br />\r\n          <p>\r\n            Please provide any further description of the places referred to in your narrative that you consider important (e.g., urban, suburban, rural, inner-city Detroit). (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Language</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"language\" #languageInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addLanguage(languageInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Languages specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let language of languages\" class=\"list-group-item\">{{language}}\r\n                    <button (click)=\"removeLanguage(this.language)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <br />\r\n          <p>\r\n            Please enter the language(s) used or referred to in your literacy narrative. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n\r\n    </ul>\r\n</div>\r\n    </form>\r\n\r\n    <!-- <button type=\"submit\" [disabled]=\"form.invalid\" (click)=\"next()\">Next Step</button> -->\r\n    <!-- <button type=\"submit\" (click)=\"getConsole()\">Get Console</button> -->\r\n    <button type=\"submit\" class=\"btn btn-primary\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n\r\n<p>\r\n    Form value:\r\n    {{descForm.value | json}}\r\n</p>\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form [formGroup]=\"descForm\" novalidate (submit)=\"next()\">\r\n    <ul>\r\n\r\n        <li>\r\n            <span>Title</span>\r\n            <input class=\"meta-info\" type=\"text\" name=\"title\" formControlName=\"title\" [(ngModel)]='title'> <br />\r\n            <p>\r\n            To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)\r\n            </p>\r\n\r\n\r\n        </li>\r\n\r\n        <li>\r\n          <span>Description</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"description\" formControlName=\"description\" [(ngModel)]='description'> <br />\r\n          <p>\r\n            To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Date Created</span>\r\n          <!-- <app-datepicker></app-datepicker> -->\r\n        <br />\r\n          <p>\r\n            Please provide the date on which you created your literacy narrative -- not necessarily the date on which you are filling out this form. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n    </ul>\r\n\r\n<div class=\" well well-lg\">\r\n    <p>\r\n        The following form fields are optional, but recommended:\r\n    </p>\r\n\r\n    <ul>\r\n\r\n        <li>\r\n          <span>Subject Keyword</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"subject\" #subjectInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addSubject(subjectInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Current Subject(s): </p>\r\n            <span *ngFor=\"let subject of subjects\" class=\"badge badge-primary\">{{subject}}\r\n              <button (click)=\"removeSubject(this.subject)\" type=\"button\" class=\"close\">\r\n              <span>&times;</span>\r\n            </button>\r\n            </span>\r\n          <br />\r\n\r\n          <p>\r\n            To help other DALN users find your literacy narrative, please enter appropriate subject keywords or phrases. You may enter as many as you like, but you should enter only one keyword or phrase at a time, then click \"Add More\" to enter additional keywords. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Decades covered</span>\r\n          <div class=\"form-group\">\r\n              <label for=\"decades\">Mutiple select list (hold shift to select more than one):</label>\r\n                    <select multiple class=\"form-control\" id=\"decades\" [(ngModel)]=\"coveragePeriod\" formControlName=\"coveragePeriod\">\r\n                      <option>1900-1909</option>\r\n                      <option>1910-1919</option>\r\n                      <option>1920-1929</option>\r\n                      <option>1930-1939</option>\r\n                      <option>1940-1949</option>\r\n                      <option>1950-1959</option>\r\n                      <option>1960-1969</option>\r\n                      <option>1970-1979</option>\r\n                      <option>1980-1989</option>\r\n                      <option>1990-1999</option>\r\n                      <option>2000-2009</option>\r\n                      <option>2010-2019</option>\r\n                    </select>\r\n          </div>\r\n            <p>\r\n              Please indicate the decades referred to in your literacy narrative. You can choose as many as necessary, but you may need to hold down the Shift or CTRL key to select multiple choices. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Nationality</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"nation\" #nationInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addNation(nationInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Nation(s) specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let nation of nations\" class=\"list-group-item\">{{nation}}\r\n                    <button (click)=\"removeNation(this.nation)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <p>\r\n              To help other DALN users find narratives by people of a particular nationality, please list your nationality/nationalities during the period referred to in your narrative. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Region</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"region\" #regionInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addRegion(regionInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Region(s) specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let region of regions\" class=\"list-group-item\">{{region}}\r\n                    <button (click)=\"removeRegion(this.region)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <p>\r\n            To help other DALN users find narratives from particular regions (e.g., New England, Rocky Mountains, Great Plains) please list the region(s) in which the events described in your narrative took place. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>State or Province</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"state\" #stateInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addState(stateInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> State(s) specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let state of states\" class=\"list-group-item\">{{state}}\r\n                    <button (click)=\"removeState(this.state)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n            <br />\r\n          <p>\r\n            To help other DALN users find narratives from your state or province, please list the state(s) or province(s) in which the events described in your narrative took place. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Other Geographical Information</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"geo\" #geoInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addGeo(geoInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Georgraphical information added: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let geo of geos\" class=\"list-group-item\">{{geo}}\r\n                    <button (click)=\"removeGeo(this.geo)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <br />\r\n          <p>\r\n            Please provide any further description of the places referred to in your narrative that you consider important (e.g., urban, suburban, rural, inner-city Detroit). (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Language</span>\r\n          <div class=\"col-lg-6\">\r\n              <div class=\"input-group\">\r\n                  <input class=\"meta-info\" type=\"text\" name=\"language\" #languageInput>\r\n                  <span class=\"input-group-btn\">\r\n                      <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addLanguage(languageInput.value)\">+</button>\r\n                  </span>\r\n              </div>\r\n          </div>\r\n          <p> Languages specified: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let language of languages\" class=\"list-group-item\">{{language}}\r\n                    <button (click)=\"removeLanguage(this.language)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n          <br />\r\n          <p>\r\n            Please enter the language(s) used or referred to in your literacy narrative. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n\r\n    </ul>\r\n</div>\r\n    </form>\r\n\r\n    <!-- <button type=\"submit\" [disabled]=\"form.invalid\" (click)=\"next()\">Next Step</button> -->\r\n    <!-- <button type=\"submit\" (click)=\"getConsole()\">Get Console</button> -->\r\n    <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!descForm.valid\" (click)=\"next()\">Next Step</button>\r\n\r\n    <div class=\"alert alert-info\" role=\"alert\" *ngIf=\"!descForm.controls.title.valid\">\r\n        <strong > A title is required to make a post.</strong>\r\n    </div>\r\n\r\n</div>\r\n\r\n<!-- <p>\r\n    Form value:\r\n    {{descForm.value | json}}\r\n</p> -->\r\n"
 
 /***/ },
 
@@ -1362,14 +1500,14 @@ module.exports = "<div class=\"container\">\r\n\r\n\r\n  <p><input type=\"file\"
 /***/ 1163:
 /***/ function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form [formGroup]=\"metaForm\" novalidate submit=next()>\r\n    <ul>\r\n\r\n        <li>\r\n            <span>Author</span>\r\n            <input class=\"meta-info\" type=\"text\" name=\"contributorAuthorLastName\" #lastName >\r\n            <input class=\"meta-info\" type=\"text\" name=\"contributorAuthorFirstName\" #firstName >\r\n            <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addName(lastName.value, firstName.value)\">Add More</button>\r\n            <p>Authors: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let name of names\" >{{name}}\r\n                    <button (click)=\"removeName(this.name)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n            <br />\r\n            <p>\r\n            If you wish, enter the name of the author of this literacy narrative (you can click \"Add More\" to enter multiple names for a collaborative narrative). (Optional)\r\n            </p>\r\n\r\n        </li>\r\n\r\n        <li>\r\n          <span>Year-of-Birth</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"creatorYearOfBirth\"> <br />\r\n          <p>\r\n              To help other DALN users find narratives by people of a particular age group, please provide your year of birth (or years of birth for collaborative entries), using four digits. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Gender</span>\r\n          <div class=\"form-group\">\r\n              <input type=\"radio\" name=\"creatorGender\" value=\"Male\" formControlName=\"creatorGender\" [(ngModel)]=\"creatorGender\" /><p>\r\n                  Male\r\n              </p>\r\n              <input type=\"radio\" name=\"creatorGender\" value=\"Female\" formControlName=\"creatorGender\" [(ngModel)]=\"creatorGender\" /><p>\r\n                  Female\r\n              </p>\r\n          </div>\r\n          <br />\r\n          <p>\r\n             To help other DALN users find narratives by people of a particular gender or sexual orientation, please describe your gender (for example, male, female, transgender) and/or sexual orientation (for example: gay, bisexual, heterosexual). (Optional)\r\n          </p>\r\n        </li>\r\n\r\n    </ul>\r\n\r\n    </form>\r\n\r\n    <!-- <button type=\"submit\" (click)=\"getConsole()\">Get Console</button> -->\r\n    <button type=\"submit\" class=\"btn btn-primary\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n\r\n<p>\r\n    Form value:\r\n    {{metaForm.value | json}}\r\n</p>\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n\r\n    <form [formGroup]=\"metaForm\" novalidate submit=next()>\r\n    <ul>\r\n\r\n        <li>\r\n            <span>Author</span>\r\n            <input class=\"meta-info\" type=\"text\" name=\"contributorAuthorLastName\" #lastName >\r\n            <input class=\"meta-info\" type=\"text\" name=\"contributorAuthorFirstName\" #firstName >\r\n            <button class=\"btn btn-secondary\" type=\"button\" (click)=\"addName(lastName.value, firstName.value)\">Add More</button>\r\n            <p>Authors: </p>\r\n            <ul class=\"list-group\">\r\n                <li *ngFor=\"let name of names\" >{{name}}\r\n                    <button (click)=\"removeName(this.name)\" type=\"button\" class=\"close\">\r\n                        <span>&times;</span>\r\n                    </button>\r\n                </li>\r\n            </ul>\r\n            <br />\r\n            <p>\r\n            If you wish, enter the name of the author of this literacy narrative (you can click \"Add More\" to enter multiple names for a collaborative narrative). (Optional)\r\n            </p>\r\n\r\n        </li>\r\n\r\n        <li>\r\n          <span>Year-of-Birth</span>\r\n          <input class=\"meta-info\" type=\"text\" name=\"creatorYearOfBirth\"> <br />\r\n          <p>\r\n              To help other DALN users find narratives by people of a particular age group, please provide your year of birth (or years of birth for collaborative entries), using four digits. (Optional)\r\n          </p>\r\n        </li>\r\n\r\n        <li>\r\n          <span>Gender</span>\r\n          <div class=\"form-group\">\r\n              <input type=\"radio\" name=\"creatorGender\" value=\"Male\" formControlName=\"creatorGender\" [(ngModel)]=\"creatorGender\" /><p>\r\n                  Male\r\n              </p>\r\n              <input type=\"radio\" name=\"creatorGender\" value=\"Female\" formControlName=\"creatorGender\" [(ngModel)]=\"creatorGender\" /><p>\r\n                  Female\r\n              </p>\r\n          </div>\r\n          <br />\r\n          <p>\r\n             To help other DALN users find narratives by people of a particular gender or sexual orientation, please describe your gender (for example, male, female, transgender) and/or sexual orientation (for example: gay, bisexual, heterosexual). (Optional)\r\n          </p>\r\n        </li>\r\n\r\n    </ul>\r\n\r\n    </form>\r\n\r\n    <!-- <button type=\"submit\" (click)=\"getConsole()\">Get Console</button> -->\r\n    <button type=\"submit\" class=\"btn btn-primary\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n\r\n<!-- <p>\r\n    Form value:\r\n    {{metaForm.value | json}}\r\n</p> -->\r\n"
 
 /***/ },
 
 /***/ 1164:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n\r\n\r\n<form [formGroup]=\"rightsForm\" novalidate (submit)=\"next()\">\r\n\r\n    <div class=\"rights-consent\">\r\n        <span>Consent to Participate</span>\r\n        <div class=\"well\">\r\n            <p>\r\n                Because we value your right to make an informed decision to participate in the DALN, we must have your consent before we accept a submission. Please click one of the following links to read our Adult Consent Form or Under-18 Consent Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate consent form.\r\n            </p>\r\n        </div>\r\n\r\n\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Adult\" formControlName=\"rightsConsent\" [(ngModel)]='rightsConsent'> <p>Adult</p>\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Under-18\" formControlName=\"rightsConsent\" [(ngModel)]='rightsConsent'> <p> Under-18</p>\r\n\r\n    </div>\r\n\r\n      <div class=\"materials-consent\">\r\n          <span>Release for Materials:</span>\r\n          <div class=\"well\">\r\n              <p>\r\n                Because we want you to know how your materials and personal information will be used in the DALN, we must have your release before we accept a submission. Please click one of the following links to read our Adult Release Form or Under-18 Release Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate release form.\r\n              </p>\r\n          </div>\r\n\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Adult\" formControlName=\"rightsRelease\" [(ngModel)]='rightsRelease'> <p> Adult </p>\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Under-18\" formControlName=\"rightsRelease\" [(ngModel)]='rightsRelease'> <p> Under-18 </p>\r\n\r\n      </div>\r\n    </form>\r\n\r\n    <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"rightsForm.invalid\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n\r\n<p>\r\n    Form value:\r\n    {{rightsForm.value | json}}\r\n</p>\r\n"
+module.exports = "<div class=\"container\">\r\n\r\n\r\n\r\n<form [formGroup]=\"rightsForm\" novalidate (submit)=\"next()\">\r\n\r\n    <div class=\"rights-consent\">\r\n        <span>Consent to Participate</span>\r\n        <div class=\"well\">\r\n            <p>\r\n                Because we value your right to make an informed decision to participate in the DALN, we must have your consent before we accept a submission. Please click one of the following links to read our Adult Consent Form or Under-18 Consent Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate consent form.\r\n            </p>\r\n        </div>\r\n\r\n\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Adult\" formControlName=\"rightsConsent\" [(ngModel)]='rightsConsent'> <p>Adult</p>\r\n            <input class=\"rights-option\" type=\"radio\" name=\"rightsConsent\" value=\"Under-18\" formControlName=\"rightsConsent\" [(ngModel)]='rightsConsent'> <p> Under-18</p>\r\n\r\n    </div>\r\n\r\n      <div class=\"materials-consent\">\r\n          <span>Release for Materials:</span>\r\n          <div class=\"well\">\r\n              <p>\r\n                Because we want you to know how your materials and personal information will be used in the DALN, we must have your release before we accept a submission. Please click one of the following links to read our Adult Release Form or Under-18 Release Form before completing this field. Then you must select either \"Adult\" or \"Under-18\" below to affirm that you have read and agreed to the terms of the appropriate release form.\r\n              </p>\r\n          </div>\r\n\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Adult\" formControlName=\"rightsRelease\" [(ngModel)]='rightsRelease'> <p> Adult </p>\r\n          <input type=\"radio\" name=\"rightsRelease\" value=\"Under-18\" formControlName=\"rightsRelease\" [(ngModel)]='rightsRelease'> <p> Under-18 </p>\r\n\r\n      </div>\r\n    </form>\r\n\r\n    <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"rightsForm.invalid\" (click)=\"next()\">Next Step</button>\r\n\r\n\r\n</div>\r\n\r\n<!-- <p>\r\n    Form value:\r\n    {{rightsForm.value | json}}\r\n</p> -->\r\n"
 
 /***/ },
 
