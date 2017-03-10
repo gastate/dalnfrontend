@@ -72,12 +72,10 @@ var DescriptionComponent = (function () {
     DescriptionComponent.prototype.back = function () {
     };
     DescriptionComponent.prototype.next = function () {
-        this.title = this.descForm.value.title;
         var formObj = this.descForm.getRawValue();
         var serialize = JSON.stringify(formObj);
         this._submitService.getDescriptionFormValues(serialize);
         this._submitService.getDescriptionArrayValues(this.subjects, this.nations, this.regions, this.states, this.geos, this.languages);
-        this._submitService.makeDataJSON();
         this._router.navigateByUrl('/create/media');
     };
     return DescriptionComponent;

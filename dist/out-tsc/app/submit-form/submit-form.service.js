@@ -20,6 +20,8 @@ var SubmitFormService = (function () {
         this.description = "";
         this.rightsConsent = "";
         this.rightsRelease = "";
+        this.contributorAuthor = [];
+        this.creatorGender = [];
         this.coveragePeriod = [];
         this.coverageNationality = [];
         this.coverageStateProvince = [];
@@ -28,9 +30,6 @@ var SubmitFormService = (function () {
         this.language = [];
         this.subject = [];
     }
-    SubmitFormService.prototype.setTitle = function (value) {
-        this.title = value;
-    };
     SubmitFormService.prototype.getDescriptionFormValues = function (jsonValue) {
         var descriptionObj = JSON.parse(jsonValue);
         var keys = Object.keys(descriptionObj);
@@ -73,6 +72,21 @@ var SubmitFormService = (function () {
             }
         }
     };
+    SubmitFormService.prototype.getMetaFormValues = function (jsonValue) {
+        var metaObj = JSON.parse(jsonValue);
+        var keys = Object.keys(metaObj);
+        for (var key in keys) {
+            if (keys.indexOf("creatorGender") > -1) {
+                this.creatorGender = metaObj.creatorGender;
+            }
+            else {
+                this.creatorGender = null;
+            }
+        }
+    };
+    SubmitFormService.prototype.getMetaArrayValues = function (nameValues) {
+        this.contributorAuthor = nameValues;
+    };
     SubmitFormService.prototype.getDescriptionArrayValues = function (subjectValues, nationValues, regionValues, stateValues, geoValues, languageValues) {
         this.subject = subjectValues;
         this.coverageNationality = nationValues;
@@ -85,17 +99,31 @@ var SubmitFormService = (function () {
         return "Hello";
     };
     SubmitFormService.prototype.makeDataJSON = function () {
-        var post2 = new Object();
-        console.log(post2);
+        var BODY = {
+            "title": this.title,
+            "description": this.description,
+            "rightsConsent": this.rightsConsent,
+            "rightsRelease": this.rightsRelease,
+            "contributorAuthor": this.contributorAuthor,
+            "creatorGender": this.creatorGender,
+            "coveragePeriod": this.coveragePeriod,
+            "coverageNationality": this.coverageNationality,
+            "coverageStateProvince": this.coverageStateProvince,
+            "coverageRegion": this.coverageRegion,
+            "coverageSpatial": this.coverageSpatial,
+            "language": this.language,
+            "subject": this.subject
+        };
+        console.log(BODY);
+        var tango = JSON.stringify(BODY);
+        console.log(tango);
     };
     SubmitFormService.prototype.postCreate = function () {
         var _this = this;
-        var body = '{"title": "My title 2"}';
-        console.log(body);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         var options = new RequestOptions({ headers: headers, method: "post" });
-        return this._http.post(this.endPoint.create_post, body, options)
+        return this._http.post(this.endPoint.create_post, this.postString, options)
             .map(function (res) { return res.json(); })
             .subscribe(function (data) {
             _this.postResult = data;

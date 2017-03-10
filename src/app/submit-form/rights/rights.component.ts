@@ -54,7 +54,7 @@ export class RightsComponent implements OnInit {
 
       let formObj = this.rightsForm.getRawValue();
       let serialize = JSON.stringify(formObj);
-      console.log(serialize);
+    //   console.log(serialize);
       this._submitService.getRightsFormValues(serialize);
 
 

@@ -14,7 +14,6 @@ import { SubmitFormService } from '../submit-form.service';
 export class MetadataComponent implements OnInit {
   metaForm: FormGroup;
   names : string [] = [];
-  gender : string [] = [];
 
 
   constructor(
@@ -51,8 +50,11 @@ export class MetadataComponent implements OnInit {
 
   next() {
     // this._submitService.setContributorAuthor(this.names);
-    let serializeNames = JSON.stringify(this.names);
-    console.log(serializeNames);
+    let formObj = this.metaForm.getRawValue();
+    let serialize = JSON.stringify(formObj);
+
+    this._submitService.getMetaFormValues(serialize);
+    this._submitService.getMetaArrayValues(this.names);
 
     this._router.navigateByUrl('/create/description');
   }

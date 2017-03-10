@@ -19,8 +19,8 @@ export class SubmitFormService {
     // dateIssued: string;
     rightsConsent: string;
     rightsRelease: string;
-    // contributorAuthor: string[];
-    // creatorGender: string[];
+    contributorAuthor: string[];
+    creatorGender: string[];
     // creatorYearOfBirth: string[];
     coveragePeriod: string[];
     coverageNationality: string [];
@@ -38,6 +38,8 @@ export class SubmitFormService {
       this.description = "";
       this.rightsConsent = "";
       this.rightsRelease = "";
+      this.contributorAuthor = [];
+      this.creatorGender = [];
       this.coveragePeriod= [];
       this.coverageNationality = [];
       this.coverageStateProvince = [];
@@ -50,10 +52,6 @@ export class SubmitFormService {
    }
 
   private endPoint = environment.API_ENDPOINTS;
-
-  setTitle(value : string){
-      this.title = value;
-  }
 
 
   // Get all form data from description step
@@ -89,6 +87,7 @@ export class SubmitFormService {
 
   }
 
+  // TODO: NOT WORKING!!!
   getRightsFormValues(jsonValue : string) {
     var rightsObj = JSON.parse(jsonValue);
     // console.log("Object:" , rightsObj);
@@ -102,17 +101,43 @@ export class SubmitFormService {
             this.rightsConsent = rightsObj.rightsConsent;
         } else {
             this.rightsConsent = null;
+
         }
         if (keys.indexOf("rightsRelease") > -1) {
             this.rightsRelease = rightsObj.rightsRelease;
         } else {
             this.rightsRelease = null;
+
         }
 
     }
-    // console.log(this.title);
-    // console.log(this.description);
-    // console.log(this.coveragePeriod);
+    // console.log(this.rightsConsent);
+    // console.log(this.rightsRelease);
+
+
+  }
+
+  getMetaFormValues(jsonValue : string) {
+      var metaObj = JSON.parse(jsonValue);
+      // console.log("Object:" , metaObj);
+      var keys = Object.keys(metaObj);
+      // console.log("Keys:",  keys);
+
+      // step through the array of keys and assign variables.
+      for (var key in keys) {
+          // idk why it doesn't work with else-if, prob cuz im using for each.
+          if (keys.indexOf("creatorGender") > -1) {
+              this.creatorGender = metaObj.creatorGender;
+          } else {
+              this.creatorGender = null;
+          }
+
+
+      }
+  }
+
+  getMetaArrayValues(nameValues : string[] ) {
+      this.contributorAuthor = nameValues;
 
   }
 
@@ -148,9 +173,76 @@ export class SubmitFormService {
       // validate it
       // return as singlge
     //   var post= '{"title":' + '"' + this.title + '"' +  "," +  '}';
-      var post2 = new Object();
+    //
+    // var stringArr = [
+    //     this.title,
+    //     this.description,
+    //     this.rightsConsent,
+    //     this.rightsRelease
+    // ];
+    //
+    // var stringArrOfArr = [
+    //     this.contributorAuthor,
+    //     this.creatorGender,
+    //     this.coveragePeriod,
+    //     this.coverageNationality,
+    //     this.coverageStateProvince,
+    //     this.coverageRegion,
+    //     this.coverageSpatial,
+    //     this.language,
+    //     this.subject
+    // ];
 
-      console.log(post2);
+    // var arr = [
+    //     this.title,
+    //     this.description,
+    //     this.rightsConsent,
+    //     this.rightsRelease,
+    //     this.contributorAuthor,
+    //     this.creatorGender,
+    //     this.coveragePeriod,
+    //     this.coverageNationality,
+    //     this.coverageStateProvince,
+    //     this.coverageRegion,
+    //     this.coverageSpatial,
+    //     this.language,
+    //     this.subject
+    // ];
+
+    var BODY = {
+        "title":  this.title,
+        "description": this.description,
+        "rightsConsent": this.rightsConsent,
+        "rightsRelease": this.rightsRelease,
+        "contributorAuthor": this.contributorAuthor,
+        "creatorGender": this.creatorGender,
+        "coveragePeriod" : this.coveragePeriod,
+        "coverageNationality": this.coverageNationality,
+        "coverageStateProvince": this.coverageStateProvince,
+        "coverageRegion": this.coverageRegion,
+        "coverageSpatial": this.coverageSpatial,
+        "language": this.language,
+        "subject": this.subject
+    }
+
+    // var BODY = {
+    //    "contributorAuthor": [],
+    //    "title": '',
+    //    "description": ''
+    // }
+
+    // for (var i = 0; i < stringArr.length; i++) {
+    //     if (stringArr[i] !== "" || !stringArr[i]) {
+    //
+    //     }
+    // }
+    // console.log(stringArr);
+    //
+    console.log(BODY);
+    var tango = JSON.stringify(BODY);
+    console.log(tango);
+
+
 
   }
 
@@ -158,13 +250,12 @@ export class SubmitFormService {
 
   postCreate() {
 
-     let body ='{"title": "My title 2"}';
-     console.log(body);
+    //  console.log(this.postString);
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');
      let options = new RequestOptions({ headers: headers, method: "post"});
 
-     return this._http.post(this.endPoint.create_post, body, options)
+     return this._http.post(this.endPoint.create_post, this.postString, options)
      .map((res: Response) => res.json())
      .subscribe(
          data => {

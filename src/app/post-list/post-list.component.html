@@ -1,8 +1,17 @@
 <div id="list-container" *ngIf="postList">
 
-  <ul class="thumbnails list-unstyled">
+  <!-- <ul class="thumbnails list-unstyled">
     <li class="span3 item-block" *ngFor="let post of postList">
       <post-item class="media" [postItem]="post"></post-item>
     </li>
-  </ul>
+  </ul> -->
+
+
+    <div class="row">
+            <div class="col-xs-18 col-sm-6 col-md-3" *ngFor="let post of postList"> 
+              <div class="thumbnail">
+                <post-item class="media" [postItem]="post"></post-item>
+              </div>
+            </div>
+    </div>
 </div>

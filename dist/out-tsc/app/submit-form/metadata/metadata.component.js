@@ -8,44 +8,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 import { SubmitFormService } from '../submit-form.service';
-var RightsComponent = (function () {
-    function RightsComponent(_router, fb, _submitService) {
+var MetadataComponent = (function () {
+    function MetadataComponent(_router, fb, _submitService) {
         this._router = _router;
         this.fb = fb;
         this._submitService = _submitService;
+        this.names = [];
         this.initForm();
     }
-    RightsComponent.prototype.ngOnInit = function () {
+    MetadataComponent.prototype.ngOnInit = function () {
     };
-    RightsComponent.prototype.initForm = function () {
-        this.rightsForm = this.fb.group({
-            rightsConsent: ['', Validators.required],
-            rightsRelease: ['', Validators.required]
+    MetadataComponent.prototype.initForm = function () {
+        this.metaForm = this.fb.group({
+            creatorGender: ['']
         });
     };
-    RightsComponent.prototype.next = function () {
-        this.rightsConsent = this.rightsForm.value.rightsConsent;
-        this.rightsRelease = this.rightsForm.value.rightsRelease;
-        var formObj = this.rightsForm.getRawValue();
-        var serialize = JSON.stringify(formObj);
-        this._submitService.getRightsFormValues(serialize);
-        this._router.navigateByUrl('/create/metadata');
+    MetadataComponent.prototype.addName = function (lastName, firstName) {
+        var name = lastName + ", " + firstName;
+        this.names.push(name);
     };
-    return RightsComponent;
+    MetadataComponent.prototype.removeName = function (name) {
+        this.names.splice(this.names.indexOf(name), 1);
+    };
+    MetadataComponent.prototype.next = function () {
+        var formObj = this.metaForm.getRawValue();
+        var serialize = JSON.stringify(formObj);
+        this._submitService.getMetaFormValues(serialize);
+        this._submitService.getMetaArrayValues(this.names);
+        this._router.navigateByUrl('/create/description');
+    };
+    return MetadataComponent;
 }());
-RightsComponent = __decorate([
+MetadataComponent = __decorate([
     Component({
-        selector: 'app-rights',
-        templateUrl: './rights.component.html',
-        styleUrls: ['./rights.component.css'],
+        selector: 'app-metadata',
+        templateUrl: './metadata.component.html',
+        styleUrls: ['./metadata.component.css'],
         providers: [SubmitFormService]
     }),
     __metadata("design:paramtypes", [Router,
         FormBuilder,
         SubmitFormService])
-], RightsComponent);
-export { RightsComponent };
-//# sourceMappingURL=../../../../../src/app/submit-form/rights/rights.component.js.map
+], MetadataComponent);
+export { MetadataComponent };
+//# sourceMappingURL=../../../../../src/app/submit-form/metadata/metadata.component.js.map
