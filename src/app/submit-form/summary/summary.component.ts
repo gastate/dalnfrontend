@@ -17,7 +17,6 @@ export class SummaryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      this._submitService.getFormData();
   }
 
   next() {

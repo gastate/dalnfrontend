@@ -34,7 +34,7 @@ export class SubmitFormService {
     postString : string;
 
   constructor(private _http: Http) {
-      this.title = "";
+      title = this.title;
       this.description = "";
       this.rightsConsent = "";
       this.rightsRelease = "";
@@ -48,8 +48,10 @@ export class SubmitFormService {
       this.language = [];
       this.subject = [];
 
+      console.log("Helloi");
 
    }
+
 
   private endPoint = environment.API_ENDPOINTS;
 
@@ -81,6 +83,7 @@ export class SubmitFormService {
             this.coveragePeriod = null;
         }
     }
+    this.postString = this.title;
     // console.log(this.title);
     // console.log(this.description);
     // console.log(this.coveragePeriod);
@@ -162,10 +165,33 @@ export class SubmitFormService {
   }
 
 
-  // returns a json string with all the data in the post.
-  getFormData() : string{
-      return "Hello";
+  getDescObj(data : string ,field : string) : string {
+
+      var descriptionObj = JSON.parse(data);
+      // console.log("Object:" , descriptionObj);
+
+      switch(descriptionObj.get(field)) {
+           case "title": {
+              console.log("Getting title");
+              return descriptionObj.title;
+           }
+           case "description": {
+               console.log("Getting desc");
+              return descriptionObj.description;
+           }
+
+           case "coveragePeriod": {
+               console.log("Getting coverage");
+               return descriptionObj.coveragePeriod;
+           }
+           default: {
+              //statements;
+              return null;
+           }
+        }
   }
+
+
 
   makeDataJSON(){
       // get all form inputs
@@ -208,8 +234,8 @@ export class SubmitFormService {
     //     this.language,
     //     this.subject
     // ];
-
-    var BODY = {
+    // console.log(this.title);
+    let BODY = {
         "title":  this.title,
         "description": this.description,
         "rightsConsent": this.rightsConsent,
@@ -238,9 +264,9 @@ export class SubmitFormService {
     // }
     // console.log(stringArr);
     //
-    console.log(BODY);
-    var tango = JSON.stringify(BODY);
-    console.log(tango);
+    // console.log(BODY);
+    // var tango = JSON.stringify(BODY);
+    // console.log(tango);
 
 
 
@@ -250,12 +276,15 @@ export class SubmitFormService {
 
   postCreate() {
 
-    //  console.log(this.postString);
+     console.log(this.title);
+     var str = JSON.stringify(this.title);
+     console.log(str);
+
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');
      let options = new RequestOptions({ headers: headers, method: "post"});
 
-     return this._http.post(this.endPoint.create_post, this.postString, options)
+     return this._http.post(this.endPoint.create_post, str, options)
      .map((res: Response) => res.json())
      .subscribe(
          data => {

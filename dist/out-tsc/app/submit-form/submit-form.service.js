@@ -16,7 +16,7 @@ var SubmitFormService = (function () {
     function SubmitFormService(_http) {
         this._http = _http;
         this.endPoint = environment.API_ENDPOINTS;
-        this.title = "";
+        title = this.title;
         this.description = "";
         this.rightsConsent = "";
         this.rightsRelease = "";
@@ -29,6 +29,7 @@ var SubmitFormService = (function () {
         this.coverageSpatial = [];
         this.language = [];
         this.subject = [];
+        console.log("Helloi");
     }
     SubmitFormService.prototype.getDescriptionFormValues = function (jsonValue) {
         var descriptionObj = JSON.parse(jsonValue);
@@ -53,6 +54,7 @@ var SubmitFormService = (function () {
                 this.coveragePeriod = null;
             }
         }
+        this.postString = this.title;
     };
     SubmitFormService.prototype.getRightsFormValues = function (jsonValue) {
         var rightsObj = JSON.parse(jsonValue);
@@ -95,8 +97,25 @@ var SubmitFormService = (function () {
         this.coverageSpatial = geoValues;
         this.language = languageValues;
     };
-    SubmitFormService.prototype.getFormData = function () {
-        return "Hello";
+    SubmitFormService.prototype.getDescObj = function (data, field) {
+        var descriptionObj = JSON.parse(data);
+        switch (descriptionObj.get(field)) {
+            case "title": {
+                console.log("Getting title");
+                return descriptionObj.title;
+            }
+            case "description": {
+                console.log("Getting desc");
+                return descriptionObj.description;
+            }
+            case "coveragePeriod": {
+                console.log("Getting coverage");
+                return descriptionObj.coveragePeriod;
+            }
+            default: {
+                return null;
+            }
+        }
     };
     SubmitFormService.prototype.makeDataJSON = function () {
         var BODY = {
@@ -114,16 +133,16 @@ var SubmitFormService = (function () {
             "language": this.language,
             "subject": this.subject
         };
-        console.log(BODY);
-        var tango = JSON.stringify(BODY);
-        console.log(tango);
     };
     SubmitFormService.prototype.postCreate = function () {
         var _this = this;
+        console.log(this.title);
+        var str = JSON.stringify(this.title);
+        console.log(str);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         var options = new RequestOptions({ headers: headers, method: "post" });
-        return this._http.post(this.endPoint.create_post, this.postString, options)
+        return this._http.post(this.endPoint.create_post, str, options)
             .map(function (res) { return res.json(); })
             .subscribe(function (data) {
             _this.postResult = data;

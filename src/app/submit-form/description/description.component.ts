@@ -116,6 +116,7 @@ export class DescriptionComponent implements OnInit {
     let formObj = this.descForm.getRawValue();
     let serialize = JSON.stringify(formObj);
 
+    // this._submitService.getDescObj(serialize);
     this._submitService.getDescriptionFormValues(serialize);
     this._submitService.getDescriptionArrayValues(this.subjects, this.nations, this.regions, this.states, this.geos, this.languages);
     this._router.navigateByUrl('/create/media');

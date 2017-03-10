@@ -21,3 +21,4 @@
     - add pagination either ng bootstrap or http://jasonwatmore.com/post/2016/08/23/angular-2-pagination-example-with-logic-like-google
     - add search controls
     - fullscreen list-view search
+    - pagination control

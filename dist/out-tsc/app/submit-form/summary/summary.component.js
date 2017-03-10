@@ -16,7 +16,6 @@ var SummaryComponent = (function () {
         this._submitService = _submitService;
     }
     SummaryComponent.prototype.ngOnInit = function () {
-        this._submitService.getFormData();
     };
     SummaryComponent.prototype.next = function () {
         this._submitService.makeDataJSON();
