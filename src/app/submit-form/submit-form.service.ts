@@ -11,8 +11,8 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SubmitFormService {
-    title: string = 'hellotesting';
-    // description: string;
+    title: string;
+    description: string;
     // dateAccessioned: string;
     // dateAvailable: string;
     // dateCreated: string;
@@ -21,20 +21,34 @@ export class SubmitFormService {
     // rightsRelease: string;
     // contributorAuthor: string[];
     // creatorGender: string[];
-    // coverageStateProvince: string[];
     // creatorYearOfBirth: string[];
-    // coveragePeriod: string[];
-    // subject: string[];
-       rightsFormValues : string;
-       result : string;
+    coveragePeriod: string[];
+    coverageNationality: string [];
+    coverageStateProvince: string [];
+    coverageRegion: string [];
+    coverageSpatial: string [];
+    language: string [];
+    subject: string[];
+
+    result : string;
   constructor(private _http: Http) {
+      this.title = "";
+      this.description = "";
+      this.coveragePeriod= [];
+      this.coverageNationality = [];
+      this.coverageStateProvince = [];
+      this.coverageRegion = [];
+      this.coverageSpatial = [];
+      this.language = [];
+      this.subject = [];
+
    }
 
   private endPoint = environment.API_ENDPOINTS;
 
-  // setTitle(value : string){
-  //     this.title = value;
-  // }
+  setTitle(value : string){
+      this.title = value;
+  }
   //
   // setDescription(value : string){
   //     this.description = value;
@@ -64,21 +78,70 @@ export class SubmitFormService {
   //    this.rightsFormValues =
   // }
 
-  getDescriptionValue(jsonValue : string) {
-      this.title = jsonValue;
+  // Get all form data from description step
+  // Description form only has title, description, and coveragePeriod.
+  getDescriptionFormValues(jsonValue : string) {
+    var descriptionObj = JSON.parse(jsonValue);
+    // console.log("Object:" , descriptionObj);
+    var keys = Object.keys(descriptionObj);
+    // console.log("Keys:",  keys);
+
+    // step through the array of keys and assign variables.
+    for (var key in keys) {
+        // idk why it doesn't work with else-if, prob cuz im using for each.
+        if (keys.indexOf("title") > -1) {
+            this.title = descriptionObj.title;
+        } else {
+            this.title = null;
+        }
+        if (keys.indexOf("description") > -1) {
+            this.description = descriptionObj.description;
+        } else {
+            this.description = null;
+        }
+        if (keys.indexOf("coveragePeriod") > -1) {
+            this.coveragePeriod = descriptionObj.coveragePeriod;
+        } else {
+            this.coveragePeriod = null;
+        }
+    }
+    // console.log(this.title);
+    // console.log(this.description);
+    // console.log(this.coveragePeriod);
+
   }
 
-  getFormData(){
-    //   let body = this.title;
-    //   console.log(body);
-    //   let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-    //   let options = new RequestOptions({ headers: headers, method: "post"});
-    // //   this._http.post(this.endPoint.create_post, body, options).map((res: Response) => console.log(res.json()));
+  // A terrible function that will let you pass unorganized string arrays and get the data from them to assgin to local values.
+  // Just make sure you pass in the right order or string arrays.
+  getDescriptionArrayValues(subjectValues : string [], nationValues : string[], regionValues : string[], stateValues: string[], geoValues : string[], languageValues : string[]) {
+      this.subject = subjectValues;
+      this.coverageNationality = nationValues;
+      this.coverageRegion = regionValues;
+      this.coverageStateProvince = stateValues;
+      this.coverageSpatial = geoValues;
+      this.language = languageValues;
+
+    // Don't worry about null values, empty string. TODO: Just catch any undefined
+    //   console.log(this.subject);
+    //   console.log(this.coverageNationality);
+    //   console.log(this.coverageRegion);
+    //   console.log(this.coverageStateProvince);
+    //   console.log(this.coverageSpatial);
+    //   console.log(this.language);
+
+
+
+  }
+
+
+  // returns a json string with all the data in the post.
+  getFormData() : string{
+      return "Hello";
   }
 
   makeDataJSON(){
       // get all form inputs
-      // jsonify it
+      // JSON.parse()
       // validate it
       // return as singlge
   }
@@ -88,7 +151,7 @@ export class SubmitFormService {
   postCreate() {
 
      let body ='{"title": "My title 2"}';
-     console.log(body)
+     console.log(body);
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');
      let options = new RequestOptions({ headers: headers, method: "post"});

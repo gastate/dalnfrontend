@@ -106,15 +106,22 @@ export class DescriptionComponent implements OnInit {
   // }
 
 
-
+  back() {
+      // return data back through submit-service.
+  }
 
   next() {
     // this.descriptionService.updateDescription(this.form.value);
     this.title = this.descForm.value.title;
-    console.log(this.title);
-    this._submitService.getDescriptionValue(this.title);
-    // this._submitService.setTitle(this.title);
+
+    let formObj = this.descForm.getRawValue();
+    let serialize = JSON.stringify(formObj);
+
+    this._submitService.getDescriptionFormValues(serialize);
+    this._submitService.getDescriptionArrayValues(this.subjects, this.nations, this.regions, this.states, this.geos, this.languages);
     this._router.navigateByUrl('/create/media');
   }
+
+
 
 }
