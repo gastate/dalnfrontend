@@ -26,6 +26,7 @@ export class AppFooterComponent implements OnInit {
     }
 
 
+
   ngAfterViewInit () {
 
 

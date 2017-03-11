@@ -16,7 +16,7 @@ var SubmitFormService = (function () {
     function SubmitFormService(_http) {
         this._http = _http;
         this.endPoint = environment.API_ENDPOINTS;
-        title = this.title;
+        this.title = "";
         this.description = "";
         this.rightsConsent = "";
         this.rightsRelease = "";

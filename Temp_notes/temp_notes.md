@@ -13,7 +13,10 @@
     - Only date picker.
     - General form design
     - Annnndddd back and next buttons
+    -  optional parentheticals
+    - add another gender input array.
 - Do all tasks asked for in emails.
+- twitter and facebook fixes
 - Circle logo with ctrl-m toggle
 - List view:
     - functional list view using bootstrap 4 (Note: span-item block doesn't exist anymore, http://bootsnipp.com/snippets/VXAxV)

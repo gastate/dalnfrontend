@@ -34,7 +34,7 @@ export class SubmitFormService {
     postString : string;
 
   constructor(private _http: Http) {
-      title = this.title;
+      this.title = "";
       this.description = "";
       this.rightsConsent = "";
       this.rightsRelease = "";
