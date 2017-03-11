@@ -122,6 +122,7 @@ var SubmitFormService = (function () {
         this.coverageSpatial = [];
         this.language = [];
         this.subject = [];
+        console.log("Helloi");
     }
     // Get all form data from description step
     // Description form only has title, description, and coveragePeriod.
@@ -152,6 +153,7 @@ var SubmitFormService = (function () {
                 this.coveragePeriod = null;
             }
         }
+        this.postString = this.title;
         // console.log(this.title);
         // console.log(this.description);
         // console.log(this.coveragePeriod);
@@ -217,9 +219,27 @@ var SubmitFormService = (function () {
         //   console.log(this.coverageSpatial);
         //   console.log(this.language);
     };
-    // returns a json string with all the data in the post.
-    SubmitFormService.prototype.getFormData = function () {
-        return "Hello";
+    SubmitFormService.prototype.getDescObj = function (data, field) {
+        var descriptionObj = JSON.parse(data);
+        // console.log("Object:" , descriptionObj);
+        switch (descriptionObj.get(field)) {
+            case "title": {
+                console.log("Getting title");
+                return descriptionObj.title;
+            }
+            case "description": {
+                console.log("Getting desc");
+                return descriptionObj.description;
+            }
+            case "coveragePeriod": {
+                console.log("Getting coverage");
+                return descriptionObj.coveragePeriod;
+            }
+            default: {
+                //statements;
+                return null;
+            }
+        }
     };
     SubmitFormService.prototype.makeDataJSON = function () {
         // get all form inputs
@@ -261,6 +281,7 @@ var SubmitFormService = (function () {
         //     this.language,
         //     this.subject
         // ];
+        // console.log(this.title);
         var BODY = {
             "title": this.title,
             "description": this.description,
@@ -288,17 +309,19 @@ var SubmitFormService = (function () {
         // }
         // console.log(stringArr);
         //
-        console.log(BODY);
-        var tango = JSON.stringify(BODY);
-        console.log(tango);
+        // console.log(BODY);
+        // var tango = JSON.stringify(BODY);
+        // console.log(tango);
     };
     SubmitFormService.prototype.postCreate = function () {
         var _this = this;
-        //  console.log(this.postString);
+        console.log(this.title);
+        var str = JSON.stringify(this.title);
+        console.log(str);
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestOptions */]({ headers: headers, method: "post" });
-        return this._http.post(this.endPoint.create_post, this.postString, options)
+        return this._http.post(this.endPoint.create_post, str, options)
             .map(function (res) { return res.json(); })
             .subscribe(function (data) {
             _this.postResult = data;
@@ -640,6 +663,7 @@ var DescriptionComponent = (function () {
         // this.descriptionService.updateDescription(this.form.value);
         var formObj = this.descForm.getRawValue();
         var serialize = JSON.stringify(formObj);
+        // this._submitService.getDescObj(serialize);
         this._submitService.getDescriptionFormValues(serialize);
         this._submitService.getDescriptionArrayValues(this.subjects, this.nations, this.regions, this.states, this.geos, this.languages);
         this._router.navigateByUrl('/create/media');
@@ -901,7 +925,6 @@ var SummaryComponent = (function () {
         this._submitService = _submitService;
     }
     SummaryComponent.prototype.ngOnInit = function () {
-        this._submitService.getFormData();
     };
     SummaryComponent.prototype.next = function () {
         this._submitService.makeDataJSON();
