@@ -8,5 +8,6 @@
   <div class="desc">
     <a [routerLink]="['/detail', postItem.postId]"> {{postItem.title}} </a>
     <p><em>{{postItem.description}}</em></p>
+    <button [routerLink]="['/detail', postItem.postId]" class="btn btn-default btn-xs" role="button">View Post</button>
   </div>
 </div>
