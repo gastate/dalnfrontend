@@ -9,13 +9,13 @@
         ![Upload](./upload.jpeg) use the array from the previous step to get the description and name of the file.
 
 # Design:
+- minor text issue: on the contact page, titles of books and journals need italics
 - Submit Form:
     - Only date picker.
     - General form design
     - Annnndddd back and next buttons
     -  optional parentheticals
     - add another gender input array.
-- Do all tasks asked for in emails.
 - twitter and facebook fixes
 - Circle logo with ctrl-m toggle
 - List view:
