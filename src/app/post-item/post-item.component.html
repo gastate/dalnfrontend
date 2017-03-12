@@ -1,13 +1,13 @@
 <div class="postItem" *ngIf="postItem">
-  <a href="#" class="link"></a>
   <a class="thumbnail" href="#">
 
     <app-player class=""
                 [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
   </a>
+<a [routerLink]="['/detail', postItem.postId]">
   <div class="desc">
-    <a [routerLink]="['/detail', postItem.postId]"> {{postItem.title}} </a>
+     {{postItem.title}}
     <p><em>{{postItem.description}}</em></p>
-    <button [routerLink]="['/detail', postItem.postId]" class="btn btn-default btn-xs" role="button">View Post</button>
   </div>
+</a>
 </div>
