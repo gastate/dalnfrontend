@@ -1946,8 +1946,8 @@ input.rights-option {
 
 #logo {
     float: left;
-    width: 10%;
-    top: 10px;
+    width: 8%;
+    top: 8px;
     z-index: 1000;
     position: absolute;
 }
@@ -1984,6 +1984,9 @@ input.rights-option {
     height: 350px;
 }
 
+#list-container {
+    margin-top: 50px;
+}
 
 
 
