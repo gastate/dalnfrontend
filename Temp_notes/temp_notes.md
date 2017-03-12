@@ -15,7 +15,6 @@
     - Annnndddd back and next buttons
     -  optional parentheticals
     - add another gender input array.
-- Do all tasks asked for in emails.
 - twitter and facebook fixes
 - Circle logo with ctrl-m toggle
 - List view:

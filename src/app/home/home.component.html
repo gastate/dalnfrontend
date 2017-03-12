@@ -2,7 +2,6 @@
 
     <div class="container responsive_home"  >
 
-        <h4>Search the DALN</h4>
         <!-- Search Component -->
         <app-search2 (searchResults)="onSearch($event)" ></app-search2>
 
@@ -14,7 +13,10 @@
 
 
 <div class="container responsive_home" >
-     <post-list [postList]="posts"></post-list>
+    <div class="post_list">
+        <post-list [postList]="posts"></post-list>
+
+    </div>
 </div>
 
 <daln-footer></daln-footer>
