@@ -1978,6 +1978,10 @@ input.rights-option {
     float: left;
 }
 
+.desc p {
+    color: black;
+}
+
 
 .slider-img {
     width: 1170px;
@@ -1986,6 +1990,10 @@ input.rights-option {
 
 #list-container {
     margin-top: 50px;
+}
+
+.postItem_image img {
+ width: 100%;
 }
 
 
@@ -2023,6 +2031,11 @@ input.rights-option {
     .navbar .brand {
         display: none;
     }
+
+    .postItem {
+        width: 24%;
+    }
+
 
 }
 
