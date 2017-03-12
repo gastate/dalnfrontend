@@ -9,6 +9,7 @@ import {PostListComponent} from './post-list/post-list.component';
 import {PostDetailComponent} from './post-detail/post-detail.component';
 import {AboutComponent} from './about/about.component';
 import {ContactComponent} from './contact/contact.component';
+import {SearchComponent} from './search/search.component';
 
 
 
@@ -41,11 +42,16 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
-},
-{
-    path:'**',
-    component: PageNotFoundComponent
-}
+  },
+  {
+      path: 'search',
+      component: SearchComponent
+
+  },
+  {
+      path:'**',
+      component: PageNotFoundComponent
+  }
 
 ];
 

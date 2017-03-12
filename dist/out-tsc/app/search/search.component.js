@@ -8,20 +8,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SearchService } from '../services/search.service';
 import { PostService } from '../services/post.service';
 var SearchComponent = (function () {
-    function SearchComponent(_postService, _searchService, _router) {
+    function SearchComponent(_postService, _searchService, _location, _router) {
+        var _this = this;
         this._postService = _postService;
         this._searchService = _searchService;
+        this._location = _location;
         this._router = _router;
+        this.showUtil = false;
         this.noResults = false;
         this.searchResults = new EventEmitter();
+        this._router.events.subscribe(function (val) {
+            _this.route = _this._location.path();
+            if (_this.route == "/search") {
+                _this.showUtil = true;
+            }
+        });
     }
     SearchComponent.prototype.ngOnInit = function () {
     };
-    SearchComponent.prototype.onSearch = function (term) {
+    SearchComponent.prototype.onSearch = function (term, $posts) {
         var _this = this;
         if (term === '' || term === undefined) {
             return null;
@@ -34,12 +44,14 @@ var SearchComponent = (function () {
             }
             else {
                 _this.noResults = false;
+                _this.posts = results;
             }
             _this.searchResults.emit(results),
                 function (err) {
                     console.log(err);
                 };
         });
+        this._router.navigateByUrl('/search');
     };
     return SearchComponent;
 }());
@@ -60,6 +72,7 @@ SearchComponent = __decorate([
     }),
     __metadata("design:paramtypes", [PostService,
         SearchService,
+        Location,
         Router])
 ], SearchComponent);
 export { SearchComponent };

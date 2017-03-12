@@ -1,11 +1,25 @@
 
-
+<div class="col-md-3 offset-md-2" *ngIf="showUtil">
+    <button class="btn btn-primary" type="submit" (click)="this._router.navigateByUrl('/home')">Go Back to Home Page</button>
+</div>
 
 <div id="search-component">
  <form>
 
-  <input #searchBox id="search-box" placeholder="Search the DALN..." (keydown.enter)="onSearch(searchBox.value)" />
-  <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value)" >Search</button>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+
+      <input #searchBox id="search-box" placeholder="Search the DALN..." (keydown.enter)="onSearch(searchBox.value, $posts)" />
+      <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, $posts)" >Search</button>
+    </div>
+  </div>
+
+<div  class="col-md-8 " *ngIf="showUtil">
+      <p>
+          Hey. This'll be the control for things like "sort by date or sort by id".
+      </p>
+  </div>
   <div class="no-results" *ngIf="noResults == true">
       <p>
           Sorry, there were no results for your query.
@@ -16,3 +30,13 @@
 
 </div>
 <!-- Add a little div here to custom search parameters like page and size. Start with a default. -->
+
+
+<div class="container responsive_home" >
+    <div class="post_list">
+        <post-list [postList]="posts"></post-list>
+
+    </div>
+</div>
+
+<daln-footer *ngIf="showUtil"></daln-footer>

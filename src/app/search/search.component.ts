@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -23,27 +24,41 @@ export class SearchComponent { //implements OnInit {
   @Output()
   searchResults: EventEmitter<Post[]>;
 
+
+  posts: Post[];
   allIden: Array<string>;
-  posts: Observable<Post[]>;
   selectedPost: Post;
 
+  showUtil: boolean = false;
+
+  route: string;
   private noResults: boolean = false;
 
   constructor(
     private _postService: PostService,
     private _searchService: SearchService,
+    private _location : Location,
     private _router: Router) {
     this.searchResults = new EventEmitter<Post[]>();
+
+    this._router.events.subscribe((val) => {
+       // see also
+       this.route = this._location.path()
+       if (this.route == "/search"){
+           this.showUtil = true;
+       }
+   });
   }
 
   ngOnInit() : void {
 
   }
 
-  onSearch(term: string): void {
+  onSearch(term: string, $posts: Post[]): void {
     if(term === '' || term === undefined){
       return null;
     }
+
       this._searchService.search_page(term, 10, 1)
       .subscribe((results) => {
         console.log("In Emmitter: ", results);
@@ -51,12 +66,16 @@ export class SearchComponent { //implements OnInit {
             this.noResults = true;
         } else {
             this.noResults = false;
+            this.posts = results;
         }
         this.searchResults.emit(results),
         err => {
             console.log(err);
         }
     });
+
+    this._router.navigateByUrl('/search');
+
   }
 
   // trying to get by postid

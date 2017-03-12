@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
   title = 'DALN Frontend';
   posts: Post[];
 
-  public showHome = true;
 
   private isInProd = environment.production;
 
@@ -33,29 +32,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  onSearch($posts: Post[]): void {
-    console.log("Post Event", $posts);
-    // if(!$posts){
-    //   this.getAllPosts();
-    // }
-    console.log("in home component onSearch");
 
-    this.posts = $posts;
-
-    // hide slider
-    this.showHome = false;
-    console.log(this.showHome);
-
-  }
-
-  // onSearch($posts: Post[]): void {
-  //   console.log("Post Event", $posts);
-  //   if(!$posts){
-  //     this.getAllPosts();
-  //   }
-  //   console.log("in home component onSearch")
-  //   this.posts = $posts;
-  // }
 
 
   getAllPosts(): void {

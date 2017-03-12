@@ -17,7 +17,6 @@ var HomeComponent = (function () {
         this._postService = _postService;
         this._searchService = _searchService;
         this.title = 'DALN Frontend';
-        this.showHome = true;
         this.isInProd = environment.production;
     }
     HomeComponent.prototype.ngOnInit = function () {
@@ -27,13 +26,6 @@ var HomeComponent = (function () {
         else {
             this.getAllPosts();
         }
-    };
-    HomeComponent.prototype.onSearch = function ($posts) {
-        console.log("Post Event", $posts);
-        console.log("in home component onSearch");
-        this.posts = $posts;
-        this.showHome = false;
-        console.log(this.showHome);
     };
     HomeComponent.prototype.getAllPosts = function () {
         var _this = this;
