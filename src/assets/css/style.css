@@ -1992,6 +1992,10 @@ input.rights-option {
     margin-top: 50px;
 }
 
+.postItem_image img {
+ width: 100%;
+}
+
 
 
 #collapseContent { padding-bottom: 30px;}
@@ -2031,6 +2035,7 @@ input.rights-option {
     .postItem {
         width: 24%;
     }
+
 
 }
 

@@ -20,11 +20,13 @@ export class HomeComponent implements OnInit {
   title = 'DALN Frontend';
   posts: Post[];
 
+  public showHome = true;
+
   private isInProd = environment.production;
 
   ngOnInit(): void {
     if (this.isInProd == false) {
-        this.getMockPosts();
+        this.getPagePosts();
     } else {
         this.getAllPosts();
     }
@@ -36,8 +38,14 @@ export class HomeComponent implements OnInit {
     // if(!$posts){
     //   this.getAllPosts();
     // }
-    console.log("in home component onSearch")
+    console.log("in home component onSearch");
+
     this.posts = $posts;
+
+    // hide slider
+    this.showHome = false;
+    console.log(this.showHome);
+
   }
 
   // onSearch($posts: Post[]): void {

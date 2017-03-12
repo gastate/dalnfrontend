@@ -18,8 +18,8 @@
             [src]="url | safe"></iframe>
   </div>
 
-  <div *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio'">
-    <img src="assets/img/example-sites/example1.jpg" alt="example-item">
+  <div class="postItem_image" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio'">
+    <img  src="assets/img/example-sites/example1.jpg" alt="example-item">
   </div>
 
 

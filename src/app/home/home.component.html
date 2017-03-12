@@ -5,7 +5,7 @@
         <!-- Search Component -->
         <app-search2 (searchResults)="onSearch($event)" ></app-search2>
 
-        <app-slider></app-slider>
+        <app-slider [hidden]="!showHome"></app-slider>
 
 
 
