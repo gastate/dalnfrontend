@@ -1978,6 +1978,10 @@ input.rights-option {
     float: left;
 }
 
+.desc p {
+    color: black;
+}
+
 
 .slider-img {
     width: 1170px;
@@ -2022,6 +2026,10 @@ input.rights-option {
     }
     .navbar .brand {
         display: none;
+    }
+
+    .postItem {
+        width: 24%;
     }
 
 }
