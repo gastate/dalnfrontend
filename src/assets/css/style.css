@@ -2009,6 +2009,18 @@ input.rights-option {
         max-width: 100vw;
     }
 
+    #logo {
+        float: none;
+        display: block;
+        width: 50%;
+        position: relative;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .navbar .brand {
+        display: none;
+    }
+
 }
 
 .contact-info {
