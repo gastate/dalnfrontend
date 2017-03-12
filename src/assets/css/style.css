@@ -266,11 +266,11 @@ a.op-cl {
   height: 103px;
 }
 
-a.logo {
+/*a.logo {
   display: block;
   margin: 0;
   padding: 0;
-}
+}*/
 
 .promo-slogan h1 {
   font-family: 'Open Sans Condensed', sans-serif;
@@ -1946,8 +1946,8 @@ input.rights-option {
 
 #logo {
     float: left;
-    margin-top: 30px;
     width: 10%;
+    top: 10px;
     z-index: 1000;
     position: absolute;
 }
@@ -2003,14 +2003,7 @@ input.rights-option {
         float: none;
         display: inline;
     }
-    li.span3.item-block.web.all {
 
-    }
-    #header-wrap img {display: block; margin: 0 auto;}
-    .sproutvideo-player {
-        width:100%;
-        height: 100%;
-    }
 
     .responsive_home {
         max-width: 100vw;
