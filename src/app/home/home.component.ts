@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.isInProd == false) {
-        this.getPagePosts();
+        this.getMockPosts();
     } else {
         this.getAllPosts();
     }
@@ -62,19 +62,12 @@ export class HomeComponent implements OnInit {
   }
 
 
-  //
-  //   // //Mock Data method
-  //   //   getMockPosts(): void {
-  //   //     this._postService.getMockPosts().then((data) => this.posts = data);
-  //   //   }
-  //
-  //   // this._postService.getAllPosts().take(10).subscribe(
-  //   //   (data) => this.posts = data, //Bind to view
-  //   //   err => {
-  //   //     // Log errors if any
-  //   //     console.log(err);
-  //   //   });
-  //
+
+    //Mock Data method
+      getMockPosts(): void {
+        this._postService.getMockPosts().then((data) => this.posts = data);
+      }
+
 
 
   // getPagePosts() : void {
