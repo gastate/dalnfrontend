@@ -59,7 +59,7 @@ export class SearchComponent { //implements OnInit {
       return null;
     }
 
-      this._searchService.search_page(term, 10, 1)
+      this._searchService.search_page(term, 10, 0)
       .subscribe((results) => {
         console.log("In Emmitter: ", results);
         if ((results === null) || results.length <= 0 ) {

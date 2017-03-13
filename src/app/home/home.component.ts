@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
   // }
 
   getPagePosts() : void {
-      this._searchService.search_page("literacy", 10, 1).subscribe(
+      this._searchService.search_page("literacy", 10, 0).subscribe(
           (data) => {
               this.posts = data;
 
