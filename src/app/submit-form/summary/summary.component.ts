@@ -21,7 +21,7 @@ export class SummaryComponent implements OnInit {
 
   next() {
     this._submitService.makeDataJSON();
-    this._submitService.postCreate();
+    // this._submitService.postCreate();
     this._router.navigateByUrl('/create/complete');
   }
 
