@@ -10,13 +10,27 @@
     <div class="col-md-6">
      <div class="input-group">
             <span class="input-group-btn">
-              <button class="btn btn-secondary" type="button">&#9660;</button>
+
+              <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
+
+
             </span>
             <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..."  />
            <button class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, $posts)" (click)="onSearch(searchBox.value,  $posts)" >Search</button>
       </div>
+
     </div>
 
+
+  </div>
+
+  <div class="collapse" id="options">
+    <div class="card card-block">
+        <div class="input-group col-md-4">
+            <span class="input-group-addon">Results per page</span>
+            <input class="form-control" id="results-size" type="text"/>
+        </div>
+    </div>
   </div>
 
 
