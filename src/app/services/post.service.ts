@@ -23,7 +23,6 @@ export class PostService {
 
   getAllPosts(): Observable<Post[]> {
 
-
     //api call
     return this._http.get(this.endPoint.all_posts).map((res: Response) => {
       let posts = res.json();
@@ -58,8 +57,7 @@ export class PostService {
           return postAssets[0];
         }
       }
-    }
-
+  }
   }
 
 

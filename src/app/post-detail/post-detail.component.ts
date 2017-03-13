@@ -32,6 +32,7 @@ export class PostDetailComponent implements OnInit {
       .subscribe((details) => {
         this.postDetail = details;
         // console.log(details);
+        // console.log()
         this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
       });
 
