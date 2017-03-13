@@ -1996,6 +1996,9 @@ input.rights-option {
  width: 100%;
 }
 
+#search-component {
+    margin: 20px;
+}
 
 
 #collapseContent { padding-bottom: 30px;}
