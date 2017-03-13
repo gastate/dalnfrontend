@@ -1992,12 +1992,19 @@ input.rights-option {
     margin-top: 50px;
 }
 
-.postItem_image img {
- width: 100%;
+.postitem_image img {
+   width: 100%;
+   border-width: 2px;
+   border-color: rgb(1, 76, 140);
 }
 
 #search-component {
     margin: 20px;
+}
+
+
+iframe {
+    border: none;
 }
 
 .details {

@@ -31,12 +31,15 @@ var SearchComponent = (function () {
     }
     SearchComponent.prototype.ngOnInit = function () {
     };
-    SearchComponent.prototype.onSearch = function (term, $posts) {
+    SearchComponent.prototype.onSearch = function (term, results, $posts) {
         var _this = this;
+        if (results == 0) {
+            results = 10;
+        }
         if (term === '' || term === undefined) {
             return null;
         }
-        this._searchService.search_page(term, 10, 0)
+        this._searchService.search_page(term, results, 0)
             .subscribe(function (results) {
             console.log("In Emmitter: ", results);
             if ((results === null) || results.length <= 0) {

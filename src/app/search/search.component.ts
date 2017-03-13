@@ -54,12 +54,15 @@ export class SearchComponent { //implements OnInit {
 
   }
 
-  onSearch(term: string, $posts: Post[]): void {
+  onSearch(term: string, results: number, $posts: Post[]): void {
+    if (results == 0) {
+        results = 10;
+    }
     if(term === '' || term === undefined){
       return null;
     }
 
-      this._searchService.search_page(term, 10, 0)
+      this._searchService.search_page(term, results, 0)
       .subscribe((results) => {
         console.log("In Emmitter: ", results);
         if ((results === null) || results.length <= 0 ) {
