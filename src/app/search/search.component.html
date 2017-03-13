@@ -4,30 +4,59 @@
 </div>
 
 <div id="search-component">
- <form novalidate>
+
 
   <div class="row justify-content-center">
-    <div class="col-md-8">
-      <input #searchBox id="search-box" placeholder="Search the DALN..."  />
-      <button class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, $posts)" (click)="onSearch(searchBox.value,  $posts)" >Search</button>
+    <div class="col-md-6">
+     <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
+            </span>
+            <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..."  />
+           <button class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, results.value, pageNum.value, $posts)" (click)="onSearch(searchBox.value, results.value, pageNum.value, $posts)" >Search</button>
+      </div>
+
     </div>
+
   </div>
 
-<div  class="col-md-8 " *ngIf="showUtil">
-      <p>
-          Hey. This'll be the control for things like "sort by date or sort by id".
-      </p>
+
+  <div class="collapse" id="options">
+  <div class="card card-block" [class.col-md-5]="showFull" [class.offset-md-3]="showFull">
+      <div class="card-header" id="option-card">
+          Options
+      </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="input-group ">
+                <span class="input-group-addon">Results per page</span>
+                <input #results class="form-control" id="results-size" type="number" min="1" max="50"/>
+            </div>
+        </div>
+        <div class="col-md-4 offset-md-4">
+            <div class="input-group">
+                <span class="input-group-addon">Page Number</span>
+                <input #pageNum class="form-control" id="pageNumber" type="number" min="1" max="50"/>
+            </div>
+        </div>
+    </div>
   </div>
-  <div class="no-results" *ngIf="noResults == true">
+  </div>
+
+<div class="row justify-content-center">
+  <div class="no-results col-md-6 " *ngIf="noResults == true">
       <p>
           Sorry, there were no results for your query.
       </p>
   </div>
+ </div>
 
-  </form>
+
+
+
+
 
 </div>
-<!-- Add a little div here to custom search parameters like page and size. Start with a default. -->
 
 
 <div class="container responsive_home" >
@@ -36,5 +65,7 @@
 
     </div>
 </div>
+
+
 
 <daln-footer *ngIf="showUtil"></daln-footer>

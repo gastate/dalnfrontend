@@ -1,5 +1,5 @@
 <div class="postItem col-xs-3" *ngIf="postItem">
-  <a class="thumbnail" href="#">
+  <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
 
     <app-player
                 [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>

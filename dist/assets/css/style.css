@@ -1992,10 +1992,29 @@ input.rights-option {
     margin-top: 50px;
 }
 
-.postItem_image img {
- width: 100%;
+.postitem_image img {
+   width: 100%;
+   border-width: 2px;
+   border-color: rgb(1, 76, 140);
 }
 
+#search-component {
+    margin: 20px;
+}
+.paginator, .page-item {
+    margin: 0px;
+}
+#option-card {
+     margin-bottom: 5px;
+ }
+
+iframe {
+    border: none;
+}
+
+.details {
+    margin-bottom: 35px;
+}
 
 
 #collapseContent { padding-bottom: 30px;}

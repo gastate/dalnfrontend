@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Directive, ElementRef, Renderer} from '@angular/core';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
@@ -30,6 +30,8 @@ export class SearchComponent { //implements OnInit {
   selectedPost: Post;
 
   showUtil: boolean = false;
+  showFull : boolean = false;
+  pageSet : number;
 
   route: string;
   private noResults: boolean = false;
@@ -38,28 +40,45 @@ export class SearchComponent { //implements OnInit {
     private _postService: PostService,
     private _searchService: SearchService,
     private _location : Location,
-    private _router: Router) {
+    private _router: Router,
+    public el: ElementRef,
+    public renderer: Renderer) {
     this.searchResults = new EventEmitter<Post[]>();
+    this.pageSet = 0;
+    // this._searchService.pageUpdate.subscribe(
+    //   (pageNum) => {
+    //     this.pageNumber = this._searchService.getPage();
+    //   }
+    // );
 
     this._router.events.subscribe((val) => {
        // see also
        this.route = this._location.path()
        if (this.route == "/search"){
            this.showUtil = true;
-       }
+           this.showFull = true;
+       } 
    });
+
   }
 
   ngOnInit() : void {
-
   }
 
-  onSearch(term: string, $posts: Post[]): void {
+  onSearch(term: string, results: number, pageNumber: number, $posts: Post[]): void {
+
+    if (results == 0) {
+        results = 10;
+    }
+    if (pageNumber == 0) {
+        pageNumber =0;
+    }
+
     if(term === '' || term === undefined){
       return null;
     }
 
-      this._searchService.search_page(term, 10, 0)
+      this._searchService.search_page(term, results, pageNumber)
       .subscribe((results) => {
         console.log("In Emmitter: ", results);
         if ((results === null) || results.length <= 0 ) {
