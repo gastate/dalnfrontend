@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Jsonp, Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -18,15 +18,18 @@ var SearchService = (function () {
     function SearchService(_http, _jsonp) {
         this._http = _http;
         this._jsonp = _jsonp;
+        this.pageUpdate = new EventEmitter();
         this.endPoint = environment.API_ENDPOINTS;
-        this.term = '';
+        this.pageNumber = 0;
     }
-    SearchService.prototype.setTerm = function (searchTerm) {
-        this.term = searchTerm;
-        console.log(this.term);
+    SearchService.prototype.nextPage = function () {
+        this.pageNumber++;
     };
-    SearchService.prototype.getTerm = function () {
-        return this.term;
+    SearchService.prototype.prevPage = function () {
+        this.pageNumber--;
+    };
+    SearchService.prototype.getPage = function () {
+        return this.pageNumber;
     };
     SearchService.prototype.search = function (term) {
         return this._http.get(this.endPoint.search_posts + term).map(function (res) {

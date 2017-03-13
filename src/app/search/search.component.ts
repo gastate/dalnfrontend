@@ -30,6 +30,7 @@ export class SearchComponent { //implements OnInit {
   selectedPost: Post;
 
   showUtil: boolean = false;
+  pageSet : number;
 
   route: string;
   private noResults: boolean = false;
@@ -40,6 +41,12 @@ export class SearchComponent { //implements OnInit {
     private _location : Location,
     private _router: Router) {
     this.searchResults = new EventEmitter<Post[]>();
+    this.pageSet = 0;
+    // this._searchService.pageUpdate.subscribe(
+    //   (pageNum) => {
+    //     this.pageNumber = this._searchService.getPage();
+    //   }
+    // );
 
     this._router.events.subscribe((val) => {
        // see also
@@ -48,21 +55,26 @@ export class SearchComponent { //implements OnInit {
            this.showUtil = true;
        }
    });
+
   }
 
   ngOnInit() : void {
-
   }
 
-  onSearch(term: string, results: number, $posts: Post[]): void {
+  onSearch(term: string, results: number, pageNumber: number, $posts: Post[]): void {
+
     if (results == 0) {
         results = 10;
     }
+    if (pageNumber == 0) {
+        pageNumber =0;
+    }
+
     if(term === '' || term === undefined){
       return null;
     }
 
-      this._searchService.search_page(term, results, 0)
+      this._searchService.search_page(term, results, pageNumber)
       .subscribe((results) => {
         console.log("In Emmitter: ", results);
         if ((results === null) || results.length <= 0 ) {

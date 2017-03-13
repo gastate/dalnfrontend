@@ -22,6 +22,7 @@ var SearchComponent = (function () {
         this.showUtil = false;
         this.noResults = false;
         this.searchResults = new EventEmitter();
+        this.pageSet = 0;
         this._router.events.subscribe(function (val) {
             _this.route = _this._location.path();
             if (_this.route == "/search") {
@@ -31,15 +32,18 @@ var SearchComponent = (function () {
     }
     SearchComponent.prototype.ngOnInit = function () {
     };
-    SearchComponent.prototype.onSearch = function (term, results, $posts) {
+    SearchComponent.prototype.onSearch = function (term, results, pageNumber, $posts) {
         var _this = this;
         if (results == 0) {
             results = 10;
         }
+        if (pageNumber == 0) {
+            pageNumber = 0;
+        }
         if (term === '' || term === undefined) {
             return null;
         }
-        this._searchService.search_page(term, results, 0)
+        this._searchService.search_page(term, results, pageNumber)
             .subscribe(function (results) {
             console.log("In Emmitter: ", results);
             if ((results === null) || results.length <= 0) {

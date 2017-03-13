@@ -1,8 +1,8 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Jsonp , Http, Response, Headers, RequestOptions } from '@angular/http';
 //Use instead of Promise
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs/Rx';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -13,28 +13,38 @@ import { environment } from '../../environments/environment';
 import { POSTS } from './mock-postlist';
 
 
+
 @Injectable()
 export class SearchService {
 
-  constructor(private _http: Http, private _jsonp : Jsonp) { }
+  pageNumber : number;
+
+  pageUpdate:EventEmitter<number> = new EventEmitter();
+
+
+  constructor(private _http: Http, private _jsonp : Jsonp) {
+
+      this.pageNumber = 0;
+ }
 
   private endPoint = environment.API_ENDPOINTS;
 
-  // ***************************
-  //Using Mock data the search return successfully
-  // ***************************
-  // search(term: string): Promise<Post[]> {
-  //   return Promise.resolve(POSTS);
-  // }
 
-  // Returning Search as Promise
-  // search(term: string): Promise<Post[]> {
-  //   return this._http.get(this.endPoint.search_posts + "search=" + term).toPromise().then((res) => {
-  //     let results = res.json()
-  //     console.log("Search Results from Service", results)
-  //     return results as Post[]
-  //   }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-  // }
+
+
+  nextPage() {
+      this.pageNumber++;
+    //   this.pageUpdate.emit(this.pageNumber);
+  }
+
+  prevPage(){
+      this.pageNumber--;
+    //   this.pageUpdate.emit(this.pageNumber);
+  }
+
+  getPage() {
+      return this.pageNumber;
+  }
 
   // Returning Search as Observable
   search(term: string): Observable<Post[]> { // TODO : term needs to be url encoded to support multiple terms as well as boolean expressions.

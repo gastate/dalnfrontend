@@ -2001,7 +2001,12 @@ input.rights-option {
 #search-component {
     margin: 20px;
 }
-
+.paginator, .page-item {
+    margin: 0px;
+}
+#option-card {
+     margin-bottom: 5px;
+ }
 
 iframe {
     border: none;
