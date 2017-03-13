@@ -7,19 +7,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, Renderer } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SearchService } from '../services/search.service';
 import { PostService } from '../services/post.service';
 var SearchComponent = (function () {
-    function SearchComponent(_postService, _searchService, _location, _router) {
+    function SearchComponent(_postService, _searchService, _location, _router, el, renderer) {
         var _this = this;
         this._postService = _postService;
         this._searchService = _searchService;
         this._location = _location;
         this._router = _router;
+        this.el = el;
+        this.renderer = renderer;
         this.showUtil = false;
+        this.showFull = false;
         this.noResults = false;
         this.searchResults = new EventEmitter();
         this.pageSet = 0;
@@ -27,6 +30,7 @@ var SearchComponent = (function () {
             _this.route = _this._location.path();
             if (_this.route == "/search") {
                 _this.showUtil = true;
+                _this.showFull = true;
             }
         });
     }
@@ -80,7 +84,9 @@ SearchComponent = __decorate([
     __metadata("design:paramtypes", [PostService,
         SearchService,
         Location,
-        Router])
+        Router,
+        ElementRef,
+        Renderer])
 ], SearchComponent);
 export { SearchComponent };
 //# sourceMappingURL=../../../../src/app/search/search.component.js.map

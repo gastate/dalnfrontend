@@ -41,7 +41,7 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.getPagePosts = function () {
         var _this = this;
-        this._searchService.search_page("literacy", 10, 0).subscribe(function (data) {
+        this._searchService.search_page("games", 10, 1).subscribe(function (data) {
             _this.posts = data;
         }, function (err) {
             console.log(err);

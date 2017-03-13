@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Directive, ElementRef, Renderer} from '@angular/core';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
@@ -30,6 +30,7 @@ export class SearchComponent { //implements OnInit {
   selectedPost: Post;
 
   showUtil: boolean = false;
+  showFull : boolean = false;
   pageSet : number;
 
   route: string;
@@ -39,7 +40,9 @@ export class SearchComponent { //implements OnInit {
     private _postService: PostService,
     private _searchService: SearchService,
     private _location : Location,
-    private _router: Router) {
+    private _router: Router,
+    public el: ElementRef,
+    public renderer: Renderer) {
     this.searchResults = new EventEmitter<Post[]>();
     this.pageSet = 0;
     // this._searchService.pageUpdate.subscribe(
@@ -53,7 +56,8 @@ export class SearchComponent { //implements OnInit {
        this.route = this._location.path()
        if (this.route == "/search"){
            this.showUtil = true;
-       }
+           this.showFull = true;
+       } 
    });
 
   }
