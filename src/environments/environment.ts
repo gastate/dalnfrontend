@@ -9,7 +9,7 @@ const api_url2 = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/product
 const all_posts = api_url + "/posts/all";
 const create_post = api_url2 + "/posts/create";
 const page_posts = api_url + "/posts/"; // becomes http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/size=10page=1
-const post = api_url + "/posts/";
+const post = api_url2 + "/posts/get/";
 // const search_posts = api_url + "/posts/search=";
 const search_posts2 = api_url2  + "/posts/search/";
 const search_posts = api_url + "/posts/search=";

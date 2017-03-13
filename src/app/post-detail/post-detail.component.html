@@ -1,5 +1,5 @@
 <div class="container" *ngIf="postDetail">
-  <button (click)="goBack()">Back</button>
+  <button class="btn btn-primary" type="submit" (click)="goBack()">Back</button>
 
   <section>
 
@@ -87,9 +87,20 @@
               <div class="span4">
                 <div class="accordion-inner">
                   <!-- TODO: Requires testing -->
+                  <p>{{postDetail.identifierUri}}</p>
                   <p *ngFor="let author of postDetail.contributorAuthor">{{postDetail.contributorAuthor}}</p>
                   <p *ngFor="let interview of postDetail.contributorInterviewer">
                     {{postDetail.contributorInterviewer}}</p>
+                  <p>
+                    {{postDetail.dateAvailable}}</p>
+                  <p>
+                    {{postDetail.dateAccessioned}}</p>
+                  <p>
+                    {{postDetail.dateCreated}}</p>
+                  <p>
+                    {{postDetail.dateIssued}}</p>
+
+
                 </div>
               </div>
             </div>
