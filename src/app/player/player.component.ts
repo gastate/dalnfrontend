@@ -26,6 +26,7 @@ export class PlayerComponent implements OnInit {
   thumb: boolean;
   noAsset: boolean;
   isPDF: boolean;
+  isWeb : boolean;
 
 
   ngOnInit(): void {
@@ -44,14 +45,8 @@ export class PlayerComponent implements OnInit {
   getUrl(asset: Asset): void {
 
     if (this.postAsset.assetType === "Audio/Video") {
-    //   return this.sanitizer.bypassSecurityTrustResourceUrl(this.postAsset.assetEmbedLink);
-
-        // this.url =  this.sanitizer.bypassSecurityTrustUrl(this.postAsset.assetEmbedLink) as string;
-        //
 
         this.url = this.postAsset.assetEmbedLink;
-
-        // console.log( "Sanitzer:" + this.url);
 
     } else if (this.postAsset.assetType === "Audio") {
 
@@ -70,6 +65,14 @@ export class PlayerComponent implements OnInit {
     } else if (this.postAsset.assetType === "Text") {
         if (/\.(pdf)$/i.test(this.postAsset.assetEmbedLink)) {
             console.log("PDF found");
+            this.isPDF = true;
+            this.url = this.postAsset.assetEmbedLink;
+        } else {
+            this.url = null;
+        }
+    } else if (this.postAsset.assetType === "Web") {
+        if (/\.(web)$/i.test(this.postAsset.assetEmbedLink)) {
+            console.log("Web found");
             this.isPDF = true;
             this.url = this.postAsset.assetEmbedLink;
         } else {

@@ -42,6 +42,16 @@ var PlayerComponent = (function () {
                 this.url = null;
             }
         }
+        else if (this.postAsset.assetType === "Web") {
+            if (/\.(web)$/i.test(this.postAsset.assetEmbedLink)) {
+                console.log("Web found");
+                this.isPDF = true;
+                this.url = this.postAsset.assetEmbedLink;
+            }
+            else {
+                this.url = null;
+            }
+        }
         else {
             this.url = null;
         }

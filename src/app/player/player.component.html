@@ -18,12 +18,16 @@
             [src]="url | safe"></iframe>
   </div>
 
-  <div class="postitem_image" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'">
+  <div class="postitem_unknown" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'">
     <img src="assets/img/example-sites/example1.jpg" alt="example-item">
   </div>
 
   <div class="postitem_text" *ngIf="postAsset.assetType === 'Text'">
       <embed [src]="url | safe" width="800px" height="800px" type="application/pdf" />
+  </div>
+
+  <div class="postitem_web" *ngIf="postAsset.assetType === 'Web'">
+      <iframe [src]="url | safe" type="text/html"></iframe>
   </div>
 
 </div>
