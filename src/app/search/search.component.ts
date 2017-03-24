@@ -24,14 +24,14 @@ export class SearchComponent { //implements OnInit {
   @Output()
   searchResults: EventEmitter<Post[]>;
 
-
   posts: Post[];
   allIden: Array<string>;
   selectedPost: Post;
 
   showUtil: boolean = false;
   showFull : boolean = false;
-  pageSet : number;
+  pageNumber
+
 
   route: string;
   private noResults: boolean = false;
@@ -44,7 +44,6 @@ export class SearchComponent { //implements OnInit {
     public el: ElementRef,
     public renderer: Renderer) {
     this.searchResults = new EventEmitter<Post[]>();
-    this.pageSet = 0;
     // this._searchService.pageUpdate.subscribe(
     //   (pageNum) => {
     //     this.pageNumber = this._searchService.getPage();
@@ -53,11 +52,11 @@ export class SearchComponent { //implements OnInit {
 
     this._router.events.subscribe((val) => {
        // see also
-       this.route = this._location.path()
+       this.route = this._location.path();
        if (this.route == "/search"){
            this.showUtil = true;
            this.showFull = true;
-       } 
+       }
    });
 
   }
@@ -65,22 +64,21 @@ export class SearchComponent { //implements OnInit {
   ngOnInit() : void {
   }
 
-  onSearch(term: string, results: number, pageNumber: number, $posts: Post[]): void {
+  onSearch(term: string, results: number, $posts: Post[]): void {
+      let pageNumber = this._searchService.getPageNum();
+      console.log(pageNumber);
 
     if (results == 0) {
         results = 10;
-    }
-    if (pageNumber == 0) {
-        pageNumber =0;
     }
 
     if(term === '' || term === undefined){
       return null;
     }
-
       this._searchService.search_page(term, results, pageNumber)
       .subscribe((results) => {
         console.log("In Emmitter: ", results);
+        console.log(pageNumber);
         if ((results === null) || results.length <= 0 ) {
             this.noResults = true;
         } else {
@@ -93,7 +91,28 @@ export class SearchComponent { //implements OnInit {
         }
     });
 
-    this._router.navigateByUrl('/search');
+    // this._router.navigateByUrl('/search');
+
+  }
+
+  onFakeSearch(term: string, results: number, pageNumber: number, $posts: Post[]) : void {
+
+      if (results == 0) {
+          results = 10;
+      }
+      if (pageNumber == 0) {
+          pageNumber = 0;
+      } else {
+          pageNumber = pageNumber;
+          console.log(pageNumber);
+          this._searchService.setPageNum(pageNumber);
+      }
+
+      if(term === '' || term === undefined){
+        return null;
+      }
+      console.log("Hello");
+      this._router.navigateByUrl('/search');
 
   }
 

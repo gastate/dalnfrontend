@@ -17,17 +17,16 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
-  pageNumber : number;
 
   pageUpdate:EventEmitter<number> = new EventEmitter();
 
 
   constructor(private _http: Http, private _jsonp : Jsonp) {
 
-      this.pageNumber = 0;
  }
 
   private endPoint = environment.API_ENDPOINTS;
+  private pageNumber : number;
 
 
 
@@ -42,8 +41,14 @@ export class SearchService {
     //   this.pageUpdate.emit(this.pageNumber);
   }
 
-  getPage() {
+  getPageNum() : number {
+      console.log("Pagenum: " + this.pageNumber);
       return this.pageNumber;
+  }
+
+  setPageNum(num: number) {
+     this.pageNumber = num;
+     console.log(this.pageNumber);
   }
 
   // Returning Search as Observable
