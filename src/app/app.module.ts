@@ -20,6 +20,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { PostService } from './services/post.service';
+import { SearchService } from './services/search.service';
 import { AppRoutingModule }     from './app-routing.module';
 import { PlayerComponent} from './player/player.component';
 import { SearchComponent } from './search/search.component';
@@ -57,7 +58,7 @@ import { SafePipe } from './safe.pipe';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [PostService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [PostService, SearchService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

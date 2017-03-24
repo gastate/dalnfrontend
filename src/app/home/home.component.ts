@@ -10,7 +10,6 @@ import {environment} from '../../environments/environment'
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [SearchService]
 })
 export class HomeComponent implements OnInit {
 
