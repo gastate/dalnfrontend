@@ -71,7 +71,7 @@ export class PlayerComponent implements OnInit {
             this.url = null;
         }
     } else if (this.postAsset.assetType === "Web") {
-        if (/\.(web)$/i.test(this.postAsset.assetEmbedLink)) {
+        if (/\.(htm|html)$/i.test(this.postAsset.assetEmbedLink)) {
             console.log("Web found");
             this.isPDF = true;
             this.url = this.postAsset.assetEmbedLink;
