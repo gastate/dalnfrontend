@@ -14,7 +14,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PlayerComponent implements OnInit {
     url : string;
   constructor(private sanitizer: DomSanitizer) {
-      this.url = 'abcd';
   }
 
 

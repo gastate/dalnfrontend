@@ -13,7 +13,6 @@ import { Asset } from '../model/asset-model';
 var PlayerComponent = (function () {
     function PlayerComponent(sanitizer) {
         this.sanitizer = sanitizer;
-        this.url = 'abcd';
     }
     PlayerComponent.prototype.ngOnInit = function () {
         this.getUrl(this.postAsset);
