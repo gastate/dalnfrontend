@@ -26,6 +26,7 @@ export class PlayerComponent implements OnInit {
   @Input()
   thumb: boolean;
   noAsset: boolean;
+  isPDF: boolean;
 
 
   ngOnInit(): void {
@@ -67,6 +68,14 @@ export class PlayerComponent implements OnInit {
 
       // sanitizer takes in a string.
     //   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    } else if (this.postAsset.assetType === "Text") {
+        if (/\.(pdf)$/i.test(this.postAsset.assetEmbedLink)) {
+            console.log("PDF found");
+            this.isPDF = true;
+            this.url = this.postAsset.assetEmbedLink;
+        } else {
+            this.url = null;
+        }
     } else {
 
       this.url = null;

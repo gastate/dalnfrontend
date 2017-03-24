@@ -63,6 +63,8 @@
               <!-- Change event to be click event that changes player embed link -->
               <h3>{{asset.assettitle}}</h3>
               <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
+              <p *ngIf="">{{asset.assetType}}: {{asset.assetDescription}}</p>
+
 
               <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
             </li>
@@ -144,7 +146,7 @@
 
           <div class="col-8">
               <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
-
+              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
         <!-- TODO: Remove style tag -->
         <!-- social begin here -->
         <ul class="socicon right" style="margin-bottom:10px;">

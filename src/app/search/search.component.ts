@@ -65,7 +65,7 @@ export class SearchComponent { //implements OnInit {
 
   onSearch(term: string, results: number, pageNum: number, $posts: Post[]): void {
       let pageNumber = this._searchService.getPageNum();
-      console.log(pageNumber);
+
 
     if (results == 0) {
         results = 10;
@@ -77,7 +77,6 @@ export class SearchComponent { //implements OnInit {
       this._searchService.search_page(term, results, pageNumber)
       .subscribe((results) => {
         console.log("In Emmitter: ", results);
-        console.log(pageNumber);
         if ((results === null) || results.length <= 0 ) {
             this.noResults = true;
         } else {
@@ -110,7 +109,6 @@ export class SearchComponent { //implements OnInit {
       if(term === '' || term === undefined){
         return null;
       }
-      console.log("onFakeSearch fired");
       this._router.navigateByUrl('/search');
 
   }

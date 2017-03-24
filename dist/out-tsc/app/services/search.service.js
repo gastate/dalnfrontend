@@ -28,8 +28,12 @@ var SearchService = (function () {
     SearchService.prototype.prevPage = function () {
         this.pageNumber--;
     };
-    SearchService.prototype.getPage = function () {
+    SearchService.prototype.getPageNum = function () {
         return this.pageNumber;
+    };
+    SearchService.prototype.setPageNum = function (num) {
+        this.pageNumber = num;
+        console.log(this.pageNumber);
     };
     SearchService.prototype.search = function (term) {
         return this._http.get(this.endPoint.search_posts + term).map(function (res) {

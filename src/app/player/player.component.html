@@ -1,26 +1,29 @@
 <!--&lt;!&ndash; SoundCloud &ndash;&gt;-->
-<div  *ngIf="postAsset">
+<div *ngIf="postAsset">
 
-  <div *ngIf="noAsset === true">
+  <div class="postitem_null" *ngIf="noAsset === true">
      <img src="assets/img/example-sites/example1.jpg" alt="example-item">
   </div>
 
 
-  <div  *ngIf="postAsset.assetType==='Audio'">
+  <div class="postitem_soundcloud" *ngIf="postAsset.assetType==='Audio'">
     <iframe id="sc-widget" scrolling="no" width="100%" height="166px"
             [src]="url | safe" ></iframe>
   </div>
 
-  <div *ngIf="postAsset.assetType === 'Audio/Video'">
+  <div class="postitem_video" *ngIf="postAsset.assetType === 'Audio/Video'">
     <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
             [src]="url | safe" allowfullscreen width="100%" height="436px"></iframe>
     <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
             [src]="url | safe"></iframe>
   </div>
 
-  <div class="postitem_image" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio'">
+  <!-- <div class="postitem_image" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio'">
     <img src="assets/img/example-sites/example1.jpg" alt="example-item">
-  </div>
+  </div> -->
 
+  <div class="postitem_text" *ngIf="postAsset.assetType === 'Text'">
+      <embed [src]="url | safe" width="800px" height="800px" type="application/pdf" />
+  </div>
 
 </div>

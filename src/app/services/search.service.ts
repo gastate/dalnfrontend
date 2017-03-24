@@ -26,7 +26,7 @@ export class SearchService {
  }
 
   private endPoint = environment.API_ENDPOINTS;
-  private pageNumber : number;
+  private pageNumber : number = 0;
 
 
 
@@ -42,7 +42,6 @@ export class SearchService {
   }
 
   getPageNum() : number {
-      console.log("Pagenum: " + this.pageNumber);
       return this.pageNumber;
   }
 

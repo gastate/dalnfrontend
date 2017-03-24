@@ -25,7 +25,6 @@ var SearchComponent = (function () {
         this.showFull = false;
         this.noResults = false;
         this.searchResults = new EventEmitter();
-        this.pageSet = 0;
         this._router.events.subscribe(function (val) {
             _this.route = _this._location.path();
             if (_this.route == "/search") {
@@ -36,13 +35,11 @@ var SearchComponent = (function () {
     }
     SearchComponent.prototype.ngOnInit = function () {
     };
-    SearchComponent.prototype.onSearch = function (term, results, pageNumber, $posts) {
+    SearchComponent.prototype.onSearch = function (term, results, pageNum, $posts) {
         var _this = this;
+        var pageNumber = this._searchService.getPageNum();
         if (results == 0) {
             results = 10;
-        }
-        if (pageNumber == 0) {
-            pageNumber = 0;
         }
         if (term === '' || term === undefined) {
             return null;
@@ -62,6 +59,22 @@ var SearchComponent = (function () {
                     console.log(err);
                 };
         });
+    };
+    SearchComponent.prototype.onFakeSearch = function (term, results, pageNumber, $posts) {
+        if (results == 0) {
+            results = 10;
+        }
+        if (pageNumber == 0) {
+            pageNumber = 0;
+        }
+        else {
+            pageNumber = pageNumber;
+            console.log(pageNumber);
+            this._searchService.setPageNum(pageNumber);
+        }
+        if (term === '' || term === undefined) {
+            return null;
+        }
         this._router.navigateByUrl('/search');
     };
     return SearchComponent;
@@ -79,7 +92,6 @@ SearchComponent = __decorate([
         selector: 'app-search2',
         templateUrl: './search.component.html',
         styleUrls: ['./search.component.css'],
-        providers: [SearchService]
     }),
     __metadata("design:paramtypes", [PostService,
         SearchService,
