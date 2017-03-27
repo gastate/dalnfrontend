@@ -35,7 +35,6 @@ export class PostService {
 
   getPostById(id: string): Observable<Post> {
 
-    console.log(this._http.get(this.endPoint.post + id).map((res: Response) => res.json().data as Post));
     return this._http.get(this.endPoint.post + id).map((res: Response) => res.json())
     //...errors if any
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
