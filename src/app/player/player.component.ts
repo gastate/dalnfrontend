@@ -30,16 +30,7 @@ export class PlayerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //   this.checkAssetList();'
     this.getUrl(this.postAsset);
-  }
-
-  checkAssetList(): void {
-
-      if (this.postCheck.hasOwnProperty('assetList') === false) {
-         this.noAsset = true;
-      }
-
   }
 
   getUrl(asset: Asset): void {
@@ -73,7 +64,7 @@ export class PlayerComponent implements OnInit {
     } else if (this.postAsset.assetType === "Web") {
         if (/\.(htm|html)$/i.test(this.postAsset.assetEmbedLink)) {
             console.log("Web found");
-            this.isPDF = true;
+            this.isWeb = true;
             this.url = this.postAsset.assetEmbedLink;
         } else {
             this.url = null;
