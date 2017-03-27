@@ -26,7 +26,8 @@
 
   <!-- Text post - only counts pdfs for now -->
   <div class="postitem_text" *ngIf="postAsset.assetType === 'Text' && url !== null">
-      <embed [src]="url | safe" width="800px" height="800px" type="application/pdf" />
+      <embed *ngIf="!thumb" [src]="url | safe" width="800px" height="800px" type="application/pdf" />
+      <embed *ngIf="thumb" [src]="url | safe" type="application/pdf" />
   </div>
 
   <!-- All other text posts that aren't pdf -->

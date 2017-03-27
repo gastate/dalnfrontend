@@ -53,8 +53,8 @@ export class SearchComponent { //implements OnInit {
        // see also
        this.route = this._location.path();
        if (this.route == "/search"){
-           this.showUtil = true;
-           this.showFull = true;
+           this.showUtil = true; // handles utility functions for ux.
+           this.showFull = true; // handles expansion of search bar
        }
    });
 
@@ -113,24 +113,4 @@ export class SearchComponent { //implements OnInit {
 
   }
 
-  // trying to get by postid
-  // onSearch(term: string): void {
-  //   if (term === '' || term === undefined) {
-  //     return null;
-  //   }
-  //   this._searchService.search_page(term, 10, 1)
-  //     .subscribe(
-  //     (data) => {
-  //
-  //       // this.allIden = data.map(val => val.id);
-  //       // console.log("All Ids:" , this.allIden);
-  //       // console.log(typeof this.allIden);
-  //       // console.log("In Emmitter: ", data);
-  //       this.searchResults.emit(data), //Bind to view
-  //         err => {
-  //           // Log errors if any
-  //           console.log(err);
-  //         }
-  //     })
-  // }
 }
