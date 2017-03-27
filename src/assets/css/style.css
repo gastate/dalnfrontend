@@ -2015,6 +2015,10 @@ iframe {
 .details {
     margin-bottom: 35px;
 }
+.empty_post {
+    width: 270px;
+}
+
 
 
 #collapseContent { padding-bottom: 30px;}

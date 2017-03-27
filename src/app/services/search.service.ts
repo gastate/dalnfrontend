@@ -57,7 +57,7 @@ export class SearchService {
     // you can replace the get() with https://cdn.rawgit.com/gastate/dalnfrontend/dev-currently-working/test.json to see it working.
     return this._http.get(this.endPoint.search_posts + term).map((res: Response) => {
       let posts = res.json();
-      console.log("Get All Posts ", posts);
+      console.log("Get Search Posts ", posts);
       return posts;
     }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -70,7 +70,7 @@ export class SearchService {
       console.log(this.endPoint.search_posts2 + term + "/" + results + "/" + page_size);
       return this._http.get(this.endPoint.search_posts2 + term + "/" + results + "/" + page_size).map((res: Response) => {
         let posts = res.json();
-        console.log("Get All Posts ", posts);
+        console.log("Get Search Page Posts", posts);
         return posts;
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 

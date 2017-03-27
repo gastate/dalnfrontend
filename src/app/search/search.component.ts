@@ -29,7 +29,7 @@ export class SearchComponent { //implements OnInit {
 
   showUtil: boolean = false;
   showFull : boolean = false;
-  pageNumber
+
 
 
   route: string;

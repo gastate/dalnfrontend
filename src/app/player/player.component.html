@@ -1,16 +1,22 @@
-<!--&lt;!&ndash; SoundCloud &ndash;&gt;-->
 <div *ngIf="postAsset">
 
+  <!-- Null post - No Assets -->
   <div class="postitem_null" *ngIf="noAsset === true">
-     <img src="assets/img/example-sites/example1.jpg" alt="example-item">
+     <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item">
   </div>
 
+  <!-- Not recorded asset type -->
+  <div class="postitem_unknown" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'">
+    <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item">
+  </div>
 
+  <!-- Audio Post -->
   <div class="postitem_soundcloud" *ngIf="postAsset.assetType==='Audio'">
     <iframe id="sc-widget" scrolling="no" width="100%" height="166px"
             [src]="url | safe" ></iframe>
   </div>
 
+  <!-- Video Post -->
   <div class="postitem_video" *ngIf="postAsset.assetType === 'Audio/Video'">
     <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
             [src]="url | safe" allowfullscreen width="100%" height="436px"></iframe>
@@ -18,14 +24,17 @@
             [src]="url | safe"></iframe>
   </div>
 
-  <div class="postitem_unknown" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'">
-    <img src="assets/img/example-sites/example1.jpg" alt="example-item">
-  </div>
-
-  <div class="postitem_text" *ngIf="postAsset.assetType === 'Text'">
+  <!-- Text post - only counts pdfs for now -->
+  <div class="postitem_text" *ngIf="postAsset.assetType === 'Text' && url !== null">
       <embed [src]="url | safe" width="800px" height="800px" type="application/pdf" />
   </div>
 
+  <!-- All other text posts that aren't pdf -->
+  <div class="postitem_text" *ngIf="postAsset.assetType === 'Text' && url === null">
+      <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item">
+  </div>
+
+  <!-- Web Asset -->
   <div class="postitem_web" *ngIf="postAsset.assetType === 'Web'">
       <iframe [src]="url | safe" type="text/html"></iframe>
   </div>
