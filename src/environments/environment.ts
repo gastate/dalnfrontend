@@ -4,7 +4,8 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 const api_url = "http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService";
-const api_url2 = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production/";
+// const api_url2 = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production/";
+const api_url2 = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development/";
 
 const all_posts = api_url + "/posts/all";
 const create_post = api_url2 + "/posts/create";
