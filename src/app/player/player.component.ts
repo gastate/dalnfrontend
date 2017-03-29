@@ -72,15 +72,17 @@ export class PlayerComponent implements OnInit {
         } else {
             this.url = null;
         }
-    } else if (this.postAsset.assetType === "Web") {
-        if (/\.(htm|html)$/i.test(this.postAsset.assetEmbedLink)) {
-            console.log("Web found");
-            this.isWeb = true;
-            this.url = this.postAsset.assetEmbedLink;
-        } else {
-            this.url = null;
-        }
-    } else {
+    }
+    // else if (this.postAsset.assetType === "Web") {
+    //     if (/\.(htm|html)$/i.test(this.postAsset.assetEmbedLink)) {
+    //         console.log("Web found");
+    //         this.isWeb = true;
+    //         this.url = this.postAsset.assetEmbedLink;
+    //     } else {
+    //         this.url = null;
+    //     }
+    // }
+    else {
 
       this.url = null;
     //   console.log("Sanitzer:" + this.url);

@@ -23,6 +23,8 @@ export class SearchComponent { //implements OnInit {
   @Output()
   searchResults: EventEmitter<Post[]>;
 
+  @Output() changeView : EventEmitter<boolean> = new EventEmitter<boolean>();
+
   posts: Post[];
   allIden: Array<string>;
   selectedPost: Post;
@@ -109,6 +111,7 @@ export class SearchComponent { //implements OnInit {
       if(term === '' || term === undefined){
         return null;
       }
+      this.changeView.emit(false);
       this._router.navigateByUrl('/search');
 
   }

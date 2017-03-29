@@ -3,8 +3,9 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
-const api_url = "http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService";
-const api_url2 = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production/";
+const api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/production";
+// const api_url2 = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production/";
+const api_url2 = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development";
 
 const all_posts = api_url + "/posts/all";
 const create_post = api_url2 + "/posts/create";
@@ -12,7 +13,7 @@ const page_posts = api_url + "/posts/"; // becomes http://ec2-54-211-221-216.com
 const post = api_url2 + "/posts/get/";
 // const search_posts = api_url + "/posts/search=";
 const search_posts2 = api_url2  + "/posts/search/";
-const search_posts = api_url + "/posts/search=";
+const search_posts = api_url + "/posts/search/";
 const upload_media = api_url + "/upload";
 const update_post = api_url + "/update";
 
