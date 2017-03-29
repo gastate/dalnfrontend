@@ -26,8 +26,10 @@
 
   <!-- Text post - only counts pdfs for now -->
   <div class="postitem_text" *ngIf="postAsset.assetType === 'Text' && url !== null">
-      <embed *ngIf="!thumb" [src]="url | safe" width="800px" height="800px" type="application/pdf" />
-      <embed *ngIf="thumb" [src]="url | safe" type="application/pdf" />
+      <!-- <embed *ngIf="!thumb" [src]="url | safe" width="800px" height="800px" type="application/pdf" />
+      <embed *ngIf="thumb" [src]="url | safe" type="application/pdf" /> -->
+      <object *ngIf="!thumb" [data]="url | safe" width="800px" height="800px" type="application/pdf"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>.</p></object>
+      <object *ngIf="thumb" [data]="url | safe" type="application/pdf"><p><b>This browser does not support PDFs. </b> Please click on the post to download the PDF to view.</p></object>
   </div>
 
   <!-- All other text posts that aren't pdf -->

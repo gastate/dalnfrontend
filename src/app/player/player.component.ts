@@ -66,7 +66,6 @@ export class PlayerComponent implements OnInit {
     //   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
     } else if (this.postAsset.assetType === "Text") {
         if (/\.(pdf)$/i.test(this.postAsset.assetEmbedLink)) {
-            console.log("PDF found");
             this.isPDF = true;
             this.url = this.postAsset.assetEmbedLink;
         } else {
