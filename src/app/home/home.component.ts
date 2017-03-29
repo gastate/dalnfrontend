@@ -1,7 +1,8 @@
-import { ElementRef, Component, OnInit } from '@angular/core';
+import { ElementRef, Component, OnInit, animate } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { SearchService } from '../services/search.service';
 import { Post } from '../model/post-model';
+
 
 // TEMP code to run production and dev environments
 import {environment} from '../../environments/environment'

@@ -1,12 +1,12 @@
 
 
-    <div class="container responsive_home"  >
+    <div class="container responsive_home">
 
         <!-- Search Component -->
-        <app-search2 ></app-search2>
+        <app-search2></app-search2>
 
-        <app-slider></app-slider>
-
+        <app-slider [isVisible]="isVisible"></app-slider>
+        <button (click)="isVisible = !isVisible">Toggle</button>
 
 
     </div>
