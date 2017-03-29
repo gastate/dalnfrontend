@@ -3,10 +3,9 @@
     <div class="container responsive_home">
 
         <!-- Search Component -->
-        <app-search2></app-search2>
+        <app-search2 (changeView)="onViewChange($event)"></app-search2>
 
-        <app-slider [isVisible]="isVisible"></app-slider>
-        <button (click)="isVisible = !isVisible">Toggle</button>
+        <app-slider></app-slider>
 
 
     </div>
@@ -15,8 +14,8 @@
 <div class="container responsive_home" >
     <div class="post_list">
         <post-list [postList]="posts"></post-list>
-
     </div>
 </div>
 
 <daln-footer></daln-footer>
+<router-outlet></router-outlet>
