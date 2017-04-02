@@ -1,5 +1,5 @@
 {
-  "name": "daln-web-cli",
+  "name": "daln-web-cli-test",
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
@@ -35,8 +35,9 @@
     "zone.js": "^0.6.26"
   },
   "devDependencies": {
+    "angular-cli": "1.0.0-beta.21",
+    "@angular/common": "^2.4.8 || >=4.0.0-beta <5.0.0",
     "@angular/compiler": "^2.4.8 || >=4.0.0-beta <5.0.0",
-    "@angular/compiler-cli": "^2.4.8 || >=4.0.0-beta <5.0.0",
     "@angular/core": "^2.4.8 || >=4.0.0-beta <5.0.0",
     "@angular/forms": "^2.4.8 || >=4.0.0-beta <5.0.0",
     "@angular/http": "2.4.8",
@@ -46,6 +47,7 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.20",
     "@ngrx/core": "^1.2.0",
     "@ngrx/store": "^2.2.1",
+    "@angular/compiler-cli": "^2.4.8 || >=4.0.0-beta <5.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.21",
@@ -61,7 +63,7 @@
     "protractor": "4.0.9",
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
-    "typescript": "~2.0.3",
+    "typescript": "2.1.1",
     "webdriver-manager": "^10.2.5"
   }
 }

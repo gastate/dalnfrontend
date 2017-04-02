@@ -1,7 +1,7 @@
 {
   "project": {
     "version": "1.0.0-beta.32",
-    "name": "daln-web-cli"
+    "name": "daln-web-cli-test"
   },
   "apps": [
     {
@@ -15,7 +15,7 @@
       "index": "index.html",
       "main": "main.ts",
       "test": "test.ts",
-      "tsconfig": "tsconfig.json",
+      "tsconfig": "tsconfig.app.json",
       "prefix": "app",
       "mobile": false,
       "styles": [
