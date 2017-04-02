@@ -4,7 +4,7 @@
     "outDir": "build/app",
     "declaration" : false,
     "target": "es6",
-    "module": "system",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
