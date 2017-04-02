@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppStore } from '../state/app-store';
 
 @Component({
   selector: 'app-result',
@@ -8,7 +6,7 @@ import { AppStore } from '../state/app-store';
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit {
-  constructor(private store: Store<AppStore>) {
+  constructor() {
 
    }
 

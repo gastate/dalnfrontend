@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatepickerComponent } from '../datepicker/datepicker.component';
 import { Router } from '@angular/router';
-import { Store, Action } from '@ngrx/store';
 
 import {Post} from '../../model/post-model';
 

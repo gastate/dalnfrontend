@@ -1,16 +1,11 @@
 import { NgModule }       from '@angular/core';
 import { FormsModule, ReactiveFormsModule}    from '@angular/forms';
 import { CommonModule }   from '@angular/common';
-import { StoreModule } from '@ngrx/store';
 
 import {SubmitFormComponent} from './submit-form.component';
 import {SubmitFormService} from './submit-form.service';
 
 import {RightsComponent} from './rights/rights.component';
-import { rights, RightsService} from '../state/rights';
-import { description, DescriptionService} from '../state/description';
-import { AppStore } from '../state/app-store';
-import { RemoteService } from '../state/remote';
 import {MetadataComponent} from './metadata/metadata.component';
 import {DescriptionComponent} from './description/description.component';
 import {MediaComponent} from './media/media.component';
