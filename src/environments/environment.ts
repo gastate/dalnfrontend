@@ -3,17 +3,13 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
-const api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/production";
-// const api_url2 = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production/";
-const api_url2 = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development";
+const api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development";
 
 const all_posts = api_url + "/posts/all";
-const create_post = api_url2 + "/posts/create";
-const page_posts = api_url + "/posts/"; // becomes http://ec2-54-211-221-216.compute-1.amazonaws.com:8080/dalnws/api/DALNService/posts/size=10page=1
-const post = api_url2 + "/posts/get/";
-// const search_posts = api_url + "/posts/search=";
-const search_posts2 = api_url2  + "/posts/search/";
-const search_posts = api_url + "/posts/search/";
+const create_post = api_url + "/posts/create";
+const page_posts = api_url + "/posts/"; // becomes https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development/posts/size=10page=1
+const post = api_url + "/posts/get/";
+const search_posts = api_url  + "/posts/search/";
 const upload_media = api_url + "/upload";
 const update_post = api_url + "/update";
 
@@ -26,7 +22,6 @@ export const environment = {
     page_posts: page_posts,
     post: post,
     search_posts : search_posts,
-    search_posts2: search_posts2,
     upload_media: upload_media,
     update_post: update_post
   }

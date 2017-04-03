@@ -67,8 +67,8 @@ export class SearchService {
   // format is the search endpoint + the term for search + the number of results per page + the page number (page number == return 50 posts of 2 results then the next two if incremented.)
 
   search_page(term: string, results: number, page_size: number) : Observable<Post[]> {
-      console.log(this.endPoint.search_posts2 + term + "/" + results + "/" + page_size);
-      return this._http.get(this.endPoint.search_posts2 + term + "/" + results + "/" + page_size).map((res: Response) => {
+      console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
+      return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
         let posts = res.json();
         console.log("Get Search Page Posts", posts);
         return posts;
