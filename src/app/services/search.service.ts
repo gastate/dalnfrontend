@@ -19,17 +19,14 @@ export class SearchService {
 
 
   pageUpdate:EventEmitter<number> = new EventEmitter();
-
-
-  constructor(private _http: Http, private _jsonp : Jsonp) {
-
- }
-
   private endPoint = environment.API_ENDPOINTS;
   private pageNumber : number = 0;
 
+  searchQuery : string;
 
-
+  constructor(private _http: Http, private _jsonp : Jsonp) {
+      this.searchQuery = "Jimmy carter";
+ }
 
   nextPage() {
       this.pageNumber++;

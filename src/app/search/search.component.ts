@@ -26,30 +26,25 @@ export class SearchComponent { //implements OnInit {
   @Output() changeView : EventEmitter<boolean> = new EventEmitter<boolean>();
 
   posts: Post[];
-  allIden: Array<string>;
   selectedPost: Post;
 
   showUtil: boolean = false;
   showFull : boolean = false;
 
 
+  searchService : SearchService;
 
   route: string;
   private noResults: boolean = false;
 
   constructor(
     private _postService: PostService,
-    private _searchService: SearchService,
+    _searchService: SearchService,
     private _location : Location,
-    private _router: Router,
-    public el: ElementRef,
-    public renderer: Renderer) {
+    private _router: Router) {
     this.searchResults = new EventEmitter<Post[]>();
-    // this._searchService.pageUpdate.subscribe(
-    //   (pageNum) => {
-    //     this.pageNumber = this._searchService.getPage();
-    //   }
-    // );
+
+    this.searchService = _searchService;
 
     this._router.events.subscribe((val) => {
        // see also
@@ -66,7 +61,7 @@ export class SearchComponent { //implements OnInit {
   }
 
   onSearch(term: string, results: number, pageNum: number, $posts: Post[]): void {
-      let pageNumber = this._searchService.getPageNum();
+      let pageNumber = this.searchService.getPageNum();
 
 
     if (results == 0) {
@@ -76,7 +71,7 @@ export class SearchComponent { //implements OnInit {
     if(term === '' || term === undefined){
       return null;
     }
-      this._searchService.search_page(term, results, pageNumber)
+      this.searchService.search_page(term, results, pageNumber)
       .subscribe((results) => {
         console.log("In Emmitter: ", results);
         if ((results === null) || results.length <= 0 ) {
@@ -105,7 +100,7 @@ export class SearchComponent { //implements OnInit {
       } else {
           pageNumber = pageNumber;
           console.log(pageNumber);
-          this._searchService.setPageNum(pageNumber);
+          this.searchService.setPageNum(pageNumber);
       }
 
       if(term === '' || term === undefined){
