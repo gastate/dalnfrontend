@@ -25,7 +25,7 @@ export class SearchService {
   searchQuery : string;
 
   constructor(private _http: Http, private _jsonp : Jsonp) {
-      this.searchQuery = "Jimmy carter";
+      this.searchQuery = null;
  }
 
   nextPage() {
