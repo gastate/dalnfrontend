@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl" : ".",
     "outDir": "build/app",
     "declaration" : false,
     "target": "es6",
