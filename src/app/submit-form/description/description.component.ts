@@ -45,7 +45,7 @@ export class DescriptionComponent implements OnInit {
 
     });
 
-    this.descForm.controls['title'].setValue(this.submitService.title);
+
   }
 
   addSubject(subjectInput : string) {
@@ -117,7 +117,7 @@ export class DescriptionComponent implements OnInit {
     let serialize = JSON.stringify(formObj);
 
     // this._submitService.getDescObj(serialize);
-    
+
     this._router.navigateByUrl('/create/media');
   }
 

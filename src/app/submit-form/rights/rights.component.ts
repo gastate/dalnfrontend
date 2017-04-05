@@ -13,16 +13,17 @@ import { SubmitFormService } from '../submit-form.service';
 
 export class RightsComponent implements OnInit {
 
-        rightsConsent: string;
-        rightsRelease: string;
-
 
     rightsForm: FormGroup;
+    submitService: SubmitFormService;
+    rightsConsent: string;
+    rightsRelease: string;
+
+
 
   constructor(
       private _router: Router,
-      private fb: FormBuilder,
-      private _submitService : SubmitFormService
+      private fb: FormBuilder
     ) {
       this.initForm()
   }
@@ -43,23 +44,13 @@ export class RightsComponent implements OnInit {
 
   }
 
-
-
-
-
   next() {
-    //   this.rightsService.updateRights(this.form.value);
       this.rightsConsent = this.rightsForm.value.rightsConsent;
       this.rightsRelease = this.rightsForm.value.rightsRelease;
 
       let formObj = this.rightsForm.getRawValue();
       let serialize = JSON.stringify(formObj);
-    //   console.log(serialize);
-      this._submitService.getRightsFormValues(serialize);
 
-
-    //   this._submitService.setRightsConsent(this.rightsConsent);
-    //   this._submitService.setRightsRelease(this.rightsRelease);
       this._router.navigateByUrl('/create/metadata');
 
   }

@@ -13,13 +13,13 @@ import { SubmitFormService } from '../submit-form.service';
 })
 export class MetadataComponent implements OnInit {
   metaForm: FormGroup;
+  submitService: SubmitFormService;
   names : string [] = [];
 
 
   constructor(
       private _router: Router,
-      private fb: FormBuilder,
-      private _submitService: SubmitFormService
+      private fb: FormBuilder
   ) {
       this.initForm();
    }
@@ -53,8 +53,6 @@ export class MetadataComponent implements OnInit {
     let formObj = this.metaForm.getRawValue();
     let serialize = JSON.stringify(formObj);
 
-    this._submitService.getMetaFormValues(serialize);
-    this._submitService.getMetaArrayValues(this.names);
 
     this._router.navigateByUrl('/create/description');
   }

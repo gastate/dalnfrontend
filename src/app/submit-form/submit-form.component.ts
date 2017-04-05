@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { RightsComponent } from './rights/rights.component';
 
 
 
