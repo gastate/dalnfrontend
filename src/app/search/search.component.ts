@@ -50,6 +50,7 @@ export class SearchComponent { //implements OnInit {
        // see also
        this.route = this._location.path();
        if (this.route == "/search"){
+           this.onSearch(this.searchService.searchQuery, 10, 0 );
            this.showUtil = true; // handles utility functions for ux.
            this.showFull = true; // handles expansion of search bar
        }
@@ -60,7 +61,7 @@ export class SearchComponent { //implements OnInit {
   ngOnInit() : void {
   }
 
-  onSearch(term: string, results: number, pageNum: number, $posts: Post[]): void {
+  onSearch(term: string, results: number, pageNum: number): void {
       let pageNumber = this.searchService.getPageNum();
 
 
@@ -90,7 +91,7 @@ export class SearchComponent { //implements OnInit {
 
   }
 
-  onFakeSearch(term: string, results: number, pageNumber: number, $posts: Post[]) : void {
+  onFakeSearch(term: string, results: number, pageNumber: number) : void {
 
       if (results == 0) {
           results = 10;
