@@ -58,29 +58,29 @@ export class SubmitFormService {
 
 
   postCreate() {
-     var tableName = "DALN-Posts-Dev";
-     var data = {
-         title: this.title,
-         tableName : tableName
-    }
-
-     var str = JSON.stringify(data);
-
-     let headers = new Headers();
-     headers.append('Content-Type', 'application/json');
-     let options = new RequestOptions({ headers: headers, method: "post"});
-
-     return this._http.post(this.endPoint.create_post, str, options)
-     .map((res: Response) => res.json())
-     .subscribe(
-         data => {
-             this.postResult = data;
-             console.log(data);
-         },
-         err => {
-            console.log(err);
-        }
-     );
+    //  var tableName = "DALN-Posts-Dev";
+    //  var data = {
+    //      title: this.title,
+    //      tableName : tableName
+    // }
+    //
+    //  var str = JSON.stringify(data);
+    //
+    //  let headers = new Headers();
+    //  headers.append('Content-Type', 'application/json');
+    //  let options = new RequestOptions({ headers: headers, method: "post"});
+    //
+    //  return this._http.post(this.endPoint.create_post, str, options)
+    //  .map((res: Response) => res.json())
+    //  .subscribe(
+    //      data => {
+    //          this.postResult = data;
+    //          console.log(data);
+    //      },
+    //      err => {
+    //         console.log(err);
+    //     }
+    //  );
 
   }
 
