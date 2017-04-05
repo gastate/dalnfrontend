@@ -58,7 +58,6 @@ export class SubmitFormService {
 
 
   postCreate() {
-
      var tableName = "DALN-Posts-Dev";
      var data = {
          title: this.title,
