@@ -29,7 +29,9 @@ export class DescriptionComponent implements OnInit {
   constructor(
     private _router: Router,
     private fb: FormBuilder,
+    _submitService: SubmitFormService
   ) {
+    this.submitService = _submitService;
     this.initForm();
   }
 

@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment';
 import { POSTS } from './mock-postlist';
 
 
- 
+
 @Injectable()
 export class SearchService {
 
