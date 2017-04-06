@@ -15,5 +15,6 @@ aot/*
 yarn.lock
 
 # WebStorm
-.idea/
+.idea/*
+.vscode/*
 
