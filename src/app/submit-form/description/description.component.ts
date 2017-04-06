@@ -13,11 +13,11 @@ import { SubmitFormService } from '../submit-form.service';
 @Component({
   selector: 'app-description',
   templateUrl: './description.component.html',
-  styleUrls: ['./description.component.css'],
-  providers: [SubmitFormService]
+  styleUrls: ['./description.component.css']
 })
 export class DescriptionComponent implements OnInit {
     descForm: FormGroup;
+    submitService : SubmitFormService;
     title : string;
     subjects : string [] = [];
     nations : string [] = [];
@@ -29,8 +29,9 @@ export class DescriptionComponent implements OnInit {
   constructor(
     private _router: Router,
     private fb: FormBuilder,
-    private _submitService : SubmitFormService
+    _submitService: SubmitFormService
   ) {
+    this.submitService = _submitService;
     this.initForm();
   }
 
@@ -45,6 +46,8 @@ export class DescriptionComponent implements OnInit {
         // dateCreated : [''],
 
     });
+
+
   }
 
   addSubject(subjectInput : string) {
@@ -116,8 +119,7 @@ export class DescriptionComponent implements OnInit {
     let serialize = JSON.stringify(formObj);
 
     // this._submitService.getDescObj(serialize);
-    this._submitService.getDescriptionFormValues(serialize);
-    this._submitService.getDescriptionArrayValues(this.subjects, this.nations, this.regions, this.states, this.geos, this.languages);
+
     this._router.navigateByUrl('/create/media');
   }
 

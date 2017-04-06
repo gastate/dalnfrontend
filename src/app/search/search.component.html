@@ -13,8 +13,8 @@
               <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
             </span>
             <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery" (input)="searchService.searchQuery = $event.target.value"/>
-           <button *ngIf="showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, results.value, pageNum.value, $posts)" (click)="onSearch(searchBox.value, results.value, pageNum.value, $posts)" >Search</button>
-           <button *ngIf="!showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onFakeSearch(searchBox.value, results.value, pageNum.value, $posts)" (click)="onFakeSearch(searchBox.value, results.value, pageNum.value, $posts)" >Search</button>
+           <button *ngIf="showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, results.value, pageNum.value, $posts)" (click)="onSearch(searchBox.value, results.value, pageNum.value)" >Search</button>
+           <button *ngIf="!showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onFakeSearch(searchBox.value, results.value, pageNum.value, $posts)" (click)="onFakeSearch(searchBox.value, results.value, pageNum.value)" >Search</button>
       </div>
 
     </div>
