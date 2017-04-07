@@ -72,6 +72,7 @@ export class SubmitFormService {
     //  headers.append('Content-Type', 'application/json');
     //  let options = new RequestOptions({ headers: headers, method: "post"});
      //
+
     //  return this._http.post(this.endPoint.create_post, str, options)
     //  .map((res: Response) => res.json())
     //  .subscribe(
