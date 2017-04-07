@@ -1,0 +1,43 @@
+<div class="container">
+
+
+
+<form [formGroup]="rightsForm" novalidate (submit)="next()">
+
+    <div class="rights-consent">
+        <span>Consent to Participate</span>
+        <div class="well">
+            <p>
+                Because we value your right to make an informed decision to participate in the DALN, we must have your consent before we accept a submission. Please click one of the following links to read our Adult Consent Form or Under-18 Consent Form before completing this field. Then you must select either "Adult" or "Under-18" below to affirm that you have read and agreed to the terms of the appropriate consent form.
+            </p>
+        </div>
+
+
+            <input class="rights-option" type="radio" name="rightsConsent" value="Adult" formControlName="rightsConsent" [(ngModel)]='rightsConsent'> <p>Adult</p>
+            <input class="rights-option" type="radio" name="rightsConsent" value="Under-18" formControlName="rightsConsent" [(ngModel)]='rightsConsent'> <p> Under-18</p>
+
+    </div>
+
+      <div class="materials-consent">
+          <span>Release for Materials:</span>
+          <div class="well">
+              <p>
+                Because we want you to know how your materials and personal information will be used in the DALN, we must have your release before we accept a submission. Please click one of the following links to read our Adult Release Form or Under-18 Release Form before completing this field. Then you must select either "Adult" or "Under-18" below to affirm that you have read and agreed to the terms of the appropriate release form.
+              </p>
+          </div>
+
+          <input type="radio" name="rightsRelease" value="Adult" formControlName="rightsRelease" [(ngModel)]='rightsRelease'> <p> Adult </p>
+          <input type="radio" name="rightsRelease" value="Under-18" formControlName="rightsRelease" [(ngModel)]='rightsRelease'> <p> Under-18 </p>
+
+      </div>
+    </form>
+
+    <button class="btn btn-primary" type="submit" [disabled]="rightsForm.invalid" (click)="next()">Next Step</button>
+
+
+</div>
+
+<!-- <p>
+    Form value:
+    {{rightsForm.value | json}}
+</p> -->

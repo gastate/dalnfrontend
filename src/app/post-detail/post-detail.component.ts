@@ -26,12 +26,15 @@ export class PostDetailComponent implements OnInit {
   selectedAsset: Asset;
   shareUrl : string;
 
+  isPDF : boolean = false;
+
   ngOnInit(): void {
     this._route.params.switchMap(
       (params: Params) => this._postService.getPostById(params['id']))
       .subscribe((details) => {
         this.postDetail = details;
         // console.log(details);
+        // console.log()
         this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
       });
 
@@ -43,6 +46,7 @@ export class PostDetailComponent implements OnInit {
 
   onSelectedAsset(asset: Asset): void {
     this.selectedAsset = asset;
+
   }
 
 

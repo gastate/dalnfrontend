@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'daln-app',
@@ -6,4 +6,14 @@ import {Component} from '@angular/core';
 })
 
 export class AppComponent {
+    @Input()
+     _class = "container";
+
+    toggleFull () : void {
+        if(this._class == "container"){
+            this._class = "container-fluid";
+        } else {
+            this._class = "container";
+        }
+    }
 }

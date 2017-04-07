@@ -37,10 +37,10 @@
 </header> -->
 
 
-
+<!--
 <div class="container">
 <div class="navbar">
-  <div class="navbar-inner">
+  <div class="navbar">
 
 
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -61,7 +61,7 @@
             <li> <a routerLink="/about"> about </a> </li>
             <li> <a href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
             <li> <a routerLink="/contact"> contact </a> </li>
-           <li> <a routerLink="/#"> login </a> </li>
+            <li> <a routerLink="/#"> login </a> </li>
             <li> <a routerLink="/create"> submit a literacy narrative </a> </li>
         </ul>
       </div>
@@ -74,4 +74,61 @@
 
 
 
-  <router-outlet>
+  <router-outlet></router-outlet> -->
+
+<!-- <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+  <div [className]="_class">
+     <button (click)="toggleFull()"><i class="icon-align-justify"></i></button>
+
+
+  			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" onclick="var div = document.getElementById('navbarToggle'); div.style.height != '100%' ? div.style.height = '100%' : div.style.height = '0px';">
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  			</a>
+
+  			<div class="header2">
+  				<img src="assets/img/Logo_transparent.png" />
+  				<a class="brand" href="#">Digital Archive of Literacy Narratives</a>
+  			</div>
+
+  			<div class="nav-collapse navbar-responsive-collapse collapse" id="navbarToggle">
+  				<ul class="nav">
+  					<li> <a routerLink="/home"> home </a> </li>
+  					<li> <a routerLink="/about"> about </a> </li>
+  					<li> <a href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
+  					<li> <a routerLink="/contact"> contact </a> </li>
+  					<li> <a routerLink="/create"> submit a literacy narrative </a> </li>
+  				</ul>
+  			</div>
+  </div>
+</nav>k
+
+<router-outlet></router-outlet> -->
+
+
+
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#collapseContent" aria-controls="collapseContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" ></span>
+      </button>
+
+      <a routerLink="/home"><img src="assets/img/Logo_transparent.png" id="logo" /></a>
+
+
+      <div class="header2 col-5 offset-md-1">
+          <a class="brand" routerLink="/home">Digital Archive of Literacy Narratives</a>
+      </div>
+
+      <div class="navbar-collapse collapse col-6" id="collapseContent" aria-expanded="true">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item"> <a class="nav-link" routerLink="/home" routerLinkActive="active"> home </a> </li>
+              <li class="nav-item"> <a class="nav-link" routerLink="/about" routerLinkActive="active"> about </a> </li>
+              <li class="nav-item"> <a class="nav-link" href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
+              <li class="nav-item"> <a class="nav-link" routerLink="/contact" routerLinkActive="active"> contact </a> </li>
+              <li class="nav-item"> <a class="nav-link" routerLink="/create" routerLinkActive="active"> submit a literacy narrative </a> </li>
+          </ul>
+       </div>
+
+</nav>
+<router-outlet></router-outlet>

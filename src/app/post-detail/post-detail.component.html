@@ -1,5 +1,5 @@
 <div class="container" *ngIf="postDetail">
-  <button (click)="goBack()">Back</button>
+  <button class="btn btn-primary" type="submit" (click)="goBack()">Back</button>
 
   <section>
 
@@ -9,10 +9,10 @@
       ================================================== -->
 
 
-      <div class="span4">
+      <div class="col-4">
 
         <!-- Use the ul class. -->
-        <ul class="nav nav-list">
+        <ul class="metadata">
           <li>
             <h3>{{postDetail.title}}</h3>
             <p>{{postDetail.description}}</p>
@@ -29,7 +29,7 @@
 
         <br/>
 
-        <ul class="nav nav-list">
+        <ul class="tags">
           <li>
             <h3>Collections</h3>
             <p>All literacy narratives that are not part of a topical collection.</p>
@@ -46,7 +46,7 @@
 
         <br/>
 
-        <ul class="nav nav-list">
+        <ul class="description">
           <li>
             <h3>Description</h3>
             <p>{{postDetail.description}}</p>
@@ -54,61 +54,99 @@
         </ul>
 
         <br/>
-        <ul class="nav nav-list">
-          <li>
-            <h3>Media List</h3>
-          </li>
-          <ul *ngFor="let asset of postDetail.assetList">
+
+        <h3>Media List</h3>
+        <ul class="media" *ngFor="let asset of postDetail.assetList">
 
             <li (click)="onSelectedAsset(asset)">
+
               <!-- Change event to be click event that changes player embed link -->
               <h3>{{asset.assettitle}}</h3>
               <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
+              <p *ngIf="">{{asset.assetType}}: {{asset.assetDescription}}</p>
+
 
               <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
             </li>
 
           </ul>
-        </ul>
 
-        <!--<div class="span8">-->
-        <!--<app-player class="" [postAsset]="selectedAsset"></app-player>-->
-
-        <!--</div>-->
-
-
-        <!-- Idea from here: http://commkit.gsu.edu/shortcodes/ -->
-        <!-- Needs work -->
-        <!-- TODO: Add CSS class; REMOVE style tags-->
-
-        <div class="details" id="detail-drop" style="margin-bottom:35px;">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                Detailed Record
-              </a>
-            </div>
-            <div id="collapseOne" class="accordion-body in collapse" style="height: auto;">
-              <div class="span4">
-                <div class="accordion-inner">
-                  <!-- TODO: Requires testing -->
-                  <p *ngFor="let author of postDetail.contributorAuthor">{{postDetail.contributorAuthor}}</p>
-                  <p *ngFor="let interview of postDetail.contributorInterviewer">
-                    {{postDetail.contributorInterviewer}}</p>
-                </div>
+          <div class="details" id="detail-drop" role="tablist">
+              <div class="card">
+                  <div class="card-header" role="tab" id="metadata">
+                      <a data-toggle="collapse" data-parent="#detail-drop" href="#metadata-table">
+                          Detailed Record
+                      </a>
+                  </div>
               </div>
-            </div>
-          </div>
+
+
+
+              <div id="metadata-table" class="collapsed collapse" role="tabpanel" style="height: auto;">
+                  <div class="card-block">
+                   <table class="table table-sm table-bordered">
+                       <thead >
+                         <tr>
+                          <th>Metadata Tag</th>
+                          <th>Content</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                               <td>identifierUri</td>
+                               <td>{{postDetail.identifierUri}}</td>
+                          </tr>
+                          <tr>
+                               <td>dateAvailable</td>
+                               <td>{{postDetail.dateAvailable}}</td>
+                          </tr>
+                          <tr>
+                               <td>dateAccessioned</td>
+                               <td>{{postDetail.dateAccessioned}}</td>
+                          </tr>
+                          <tr>
+                               <td>dateCreated</td>
+                               <td>{{postDetail.dateCreated}}</td>
+                          </tr>
+                          <tr>
+                               <td>dateIssued</td>
+                               <td>{{postDetail.dateIssued}}</td>
+                          </tr>
+                          <tr>
+                               <td>contributorAuthor</td>
+                               <td>
+                                  <ul>
+                                   <li *ngFor="let author of postDetail.contributorAuthor">{{postDetail.contributorAuthor}}</li>
+                                  </ul>
+                               </td>
+                          </tr>
+                          <tr>
+                               <td>contributorInterviewer</td>
+                               <td>
+                                  <ul>
+                                   <li *ngFor="let author of postDetail.contributorInterviewer">{{postDetail.contributorInterviewer}}</li>
+                                  </ul>
+                               </td>
+                          </tr>
+
+                      </tbody>
+                   </table>
+               </div>
+              </div>
 
         </div>
+
+
 
 
       </div>
 
       <!-- Video
       ================================================== -->
-      <div class="row">
 
+          <div class="col-8">
+              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
+              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
         <!-- TODO: Remove style tag -->
         <!-- social begin here -->
         <ul class="socicon right" style="margin-bottom:10px;">
@@ -121,14 +159,14 @@
             </a>
           </li>-->
           <li>
-            <a href="#" class="facebook">
+            <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
             </a>
           </li>
           <li>
               <a class="twitter twitter-share-button"
                 href="https://twitter.com/intent/tweet?url=&text={{postDetail.title}}&via=dalnarchive" target="_blank"  ></a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#" class="flickr">
             </a>
           </li>
@@ -139,18 +177,12 @@
           <li class="last">
             <a href="#" class="vimeo">
             </a>
-          </li>
+          </li> -->
 
         </ul>
-        <div class="span8">
-            <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" class=""
-                        [postAsset]="selectedAsset"></app-player>
+
 
         </div>
-
-
-      </div>
-
 
 
     </div>
@@ -161,7 +193,7 @@
 
 
 
-  <div class="divider"></div>
+
 
 </div><!-- /container -->
 <daln-footer></daln-footer>

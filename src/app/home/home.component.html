@@ -1,66 +1,21 @@
 
 
+    <div class="container responsive_home">
+
+        <!-- Search Component -->
+        <app-search2></app-search2>
+
+        <app-slider></app-slider>
 
 
-
-<!-- Slideshow on home page.
-================================================== -->
-<div id="slider-color" class="rslides1_s0">
-
-
-
-    <div class="container">
-
-
-            <!-- Search Component -->
-            <app-search2 (searchResults)="onSearch($event)" ></app-search2>
-
-
-
-     <div class="row slider-cont">
-
-
-    <div class="span12 cont-bs" style="position:relative;">
-
-    <ul class="rslides rslides3">
-
-    <li>
-            <img src="assets/img/slider-img01.jpg" alt="" /><div class="caption"><h3>This is a caption</h3><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...</p></div>
-    </li>
-
-              <li><img src="assets/img/slider-img03.jpg" alt="" /><div class="caption" style="background:none; padding:0;bottom:35px; left:35px;"><div class="span3 promo-area-slider">
-           <h1>justi Creative</h1>
-           <p>
-        <em>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...</em>
-        </p>
-        <a class="btn big-large-sl btn-success" href="#"> Buy Template $15</a>
-        </div></div>
-    </li>
-
-    <li>
-          <img src="assets/img/slider-img02.jpg" alt="" /><div class="caption" style="background:none; padding:0;bottom:35px; left:35px;"><div class="span3 promo-area-slider">
-           <h1>justi Creative</h1>
-           <p>
-        <em>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...</em>
-        </p>
-        <a class="btn big-large-sl btn-warning" href="#"> Buy Template $15</a>
-        </div></div>
-    </li>
-
-
-    </ul>
-
-      </div>
-
-
-     </div>
     </div>
 
-</div>
 
-
-<div class=" container">
-     <post-list [postList]="posts"></post-list>
+<div class="container responsive_home" >
+    <div class="post_list">
+        <post-list [postList]="posts"></post-list>
+    </div>
 </div>
 
 <daln-footer></daln-footer>
+<router-outlet></router-outlet>

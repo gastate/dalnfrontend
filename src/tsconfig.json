@@ -1,21 +1,25 @@
 {
   "compilerOptions": {
-    "baseUrl": "",
-    "declaration": false,
+    "baseUrl" : ".",
+    "outDir": "build/app",
+    "declaration" : false,
+    "target": "es6",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [
-      "es6",
-      "dom"
+    "removeComments": false,
+    "noImplicitAny": false
+  },
+  "typeRoots": [
+      "../../node_modules/@types/"
     ],
-    "mapRoot": "./",
-    "module": "es6",
-    "moduleResolution": "node",
-    "outDir": "../dist/out-tsc",
-    "sourceMap": true,
-    "target": "es5",
-    "typeRoots": [
-      "../node_modules/@types"
-    ]
-  }
+    "types" : [
+      "core-js"
+  ],
+  "exclude": [
+    "gulpfile.ts",
+    "node_modules/"
+  ]
 }

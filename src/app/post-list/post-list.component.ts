@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { SearchService } from '../services/search.service';
 import {Post} from '../model/post-model'
 
 @Component({
@@ -8,7 +9,7 @@ import {Post} from '../model/post-model'
 })
 export class PostListComponent implements OnInit {
 
-  constructor() {
+  constructor(public page: SearchService) {
   }
 
   @Input()
@@ -17,5 +18,7 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
 }
