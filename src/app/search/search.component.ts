@@ -101,11 +101,7 @@ export class SearchComponent { //implements OnInit {
       }
       if (pageNumber == 0) {
           pageNumber = 0;
-      } else {
-          pageNumber = pageNumber;
-          console.log(pageNumber);
-          this.searchService.setPageNum(pageNumber);
-      }
+      } 
 
       if(term === '' || term === undefined){
         return null;
