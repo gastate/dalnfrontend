@@ -8,8 +8,7 @@ import { SubmitFormService } from '../submit-form.service';
 @Component({
   selector: 'app-metadata',
   templateUrl: './metadata.component.html',
-  styleUrls: ['./metadata.component.css'],
-  providers: [ SubmitFormService ]
+  styleUrls: ['./metadata.component.css']
 })
 export class MetadataComponent implements OnInit {
   metaForm: FormGroup;

@@ -7,8 +7,7 @@ import { SubmitFormService } from '../submit-form.service';
 @Component({
   selector: 'app-rights',
   templateUrl: './rights.component.html',
-  styleUrls: ['./rights.component.css'],
-  providers : [ SubmitFormService ]
+  styleUrls: ['./rights.component.css']
 })
 
 export class RightsComponent implements OnInit {
