@@ -19,6 +19,7 @@ let SubmitFormService = class SubmitFormService {
         this._http = _http;
         this.endPoint = environment_1.environment.API_ENDPOINTS;
         this.title = null;
+        this.postResult = null;
         //   this.description = null;
         //   this.rightsConsent = null;
         //   this.rightsRelease = null;

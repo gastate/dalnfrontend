@@ -35,6 +35,7 @@ export class SubmitFormService {
 
   constructor(private _http: Http) {
       this.title = null;
+      this.postResult = null;
     //   this.description = null;
     //   this.rightsConsent = null;
     //   this.rightsRelease = null;
