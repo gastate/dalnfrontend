@@ -58,7 +58,6 @@ export class SubmitFormService {
 
 
   postCreate() {
-    //  console.log("Title: " + this.title );
      var tableName = "DALN-Posts-Dev";
      var data = {
          title: this.title,
@@ -66,11 +65,13 @@ export class SubmitFormService {
     }
 
      var str = JSON.stringify(data);
-    //  console.log(str);
+
+     console.log(str);
 
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');
      let options = new RequestOptions({ headers: headers, method: "post"});
+
 
      return this._http.post(this.endPoint.create_post, str, options)
      .map((res: Response) => res.json())

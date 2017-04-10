@@ -20,9 +20,6 @@ import { Post } from '../model/post-model';
 })
 export class SearchComponent { //implements OnInit {
 
-  @Input()
-  query: string;
-
   @Output()
   searchResults: EventEmitter<Post[]>;
 
@@ -101,10 +98,6 @@ export class SearchComponent { //implements OnInit {
       }
       if (pageNumber == 0) {
           pageNumber = 0;
-      } else {
-          pageNumber = pageNumber;
-          console.log(pageNumber);
-          this.searchService.setPageNum(pageNumber);
       }
 
       if(term === '' || term === undefined){
