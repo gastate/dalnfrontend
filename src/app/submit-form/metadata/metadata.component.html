@@ -25,8 +25,28 @@
         </li>
 
         <li>
+            <span>Interviewers</span>
+            <input class="meta-info" type="text" name="contributorInterviewerLastName" #lastNameInterviewer >
+            <input class="meta-info" type="text" name="contributorInterviewerFirstName" #firstNameInterviewer >
+            <button class="btn btn-secondary" type="button" (click)="addName(lastNameInterviewer.value, firstNameInterviewer.value)">Add More</button>
+            <p>Interviewers: </p>
+            <ul class="list-group">
+                <li *ngFor="let interview of interviews" >{{name}}
+                    <button (click)="removeInterviewer(this.interview)" type="button" class="close">
+                        <span>&times;</span>
+                    </button>
+                </li>
+            </ul>
+            <br />
+            <p>
+            If you wish, enter the name of the interviewers of this literacy narrative (you can click "Add More" to enter multiple interviewers for a collaborative narrative). (Optional)
+            </p>
+
+        </li>
+
+        <li>
           <span>Year-of-Birth</span>
-          <input class="meta-info" type="text" name="creatorYearOfBirth"> <br />
+          <input class="meta-info" type="text" name="creatorYearOfBirth" formControlName="creatorYearOfBirth" [(ngModel)]="creatorYearOfBirth"> <br />
           <p>
               To help other DALN users find narratives by people of a particular age group, please provide your year of birth (or years of birth for collaborative entries), using four digits. (Optional)
           </p>

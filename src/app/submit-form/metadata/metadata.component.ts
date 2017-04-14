@@ -14,6 +14,9 @@ export class MetadataComponent implements OnInit {
   metaForm: FormGroup;
   submitService: SubmitFormService;
   names : string [] = [];
+  interviewers: string [] = [];
+  gender: string [] = [];
+  birth_year: string [] = [];
 
 
   constructor(
@@ -28,7 +31,8 @@ export class MetadataComponent implements OnInit {
 
   initForm() {
       this.metaForm = this.fb.group({
-          creatorGender : ['']
+          creatorGender : [''],
+          creatorYearOfBirth: ['']
       });
 
   }
@@ -42,15 +46,29 @@ export class MetadataComponent implements OnInit {
     this.names.splice(this.names.indexOf(name), 1);
   }
 
+  addInterviewer(lastNameInterviewer: string, firstNameInterviewer: string) {
+      let interview = lastNameInterviewer + ", " + firstNameInterviewer;
+      this.interviewers.push(interview);
+  }
+
+  removeInterviewer(interview : string) {
+    this.interviewers.splice(this.interviewers.indexOf(interview), 1);
+  }
+
   // getConsole(){
   //     console.log(this.names);
   // }
 
 
   next() {
-    // this._submitService.setContributorAuthor(this.names);
-    let formObj = this.metaForm.getRawValue();
-    let serialize = JSON.stringify(formObj);
+    this.gender = this.metaForm.value.creatorGender;
+    this.birth_year = this.metaForm.value.creatorYearOfBirth;
+
+    this.submitService.contributorAuthor = this.names;
+    this.submitService.contributorInterviewer = this.interviewers;
+    this.submitService.creatorGender = this.gender;
+    this.submitService.creatorYearOfBirth = this.birth_year;
+
 
 
     this._router.navigateByUrl('/create/description');

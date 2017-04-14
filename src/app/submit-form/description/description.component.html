@@ -17,7 +17,7 @@
 
         <li>
           <span>Description</span>
-          <input class="meta-info" type="text" name="description" formControlName="description" [(ngModel)]='description'> <br />
+          <input class="meta-info" type="text" name="description" formControlName="description" [value]="submitService.description" (input)="$event.target.value"> <br />
           <p>
             To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).
           </p>
