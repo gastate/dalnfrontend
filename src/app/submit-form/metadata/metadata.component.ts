@@ -21,8 +21,10 @@ export class MetadataComponent implements OnInit {
 
   constructor(
       private _router: Router,
-      private fb: FormBuilder
+      private fb: FormBuilder,
+      _submitService: SubmitFormService
   ) {
+      this.submitService = _submitService;
       this.initForm();
    }
 
