@@ -14,7 +14,7 @@ export class MetadataComponent implements OnInit {
   metaForm: FormGroup;
   submitService: SubmitFormService;
   names : string [] = [];
-  // interviewers: string [] = [];
+  interviewers: string [] = [];
   gender: string [] = [];
   birth_year: string [] = [];
 
@@ -48,17 +48,19 @@ export class MetadataComponent implements OnInit {
     this.names.splice(this.names.indexOf(name), 1);
   }
 
-  // addInterviewer(lastNameInterviewer: string, firstNameInterviewer: string) {
-  //     let interview = lastNameInterviewer + ", " + firstNameInterviewer;
-  //     this.interviewers.push(interview);
-  // }
-  //
-  // removeInterviewer(interview : string) {
-  //   this.interviewers.splice(this.interviewers.indexOf(interview), 1);
-  // }
+  addInterviewer(lastNameInterviewer: string, firstNameInterviewer: string) {
+      let interview = lastNameInterviewer + ", " + firstNameInterviewer;
+      this.interviewers.push(interview);
+
+  }
+
+  removeInterviewer(interview : string) {
+    this.interviewers.splice(this.interviewers.indexOf(interview), 1);
+  }
 
   // getConsole(){
   //     console.log(this.names);
+  //
   // }
 
 
@@ -67,7 +69,7 @@ export class MetadataComponent implements OnInit {
     this.birth_year = this.metaForm.value.creatorYearOfBirth;
 
     this.submitService.contributorAuthor = this.names;
-    // this.submitService.contributorInterviewer = this.interviewers;
+    this.submitService.contributorInterviewer = this.interviewers;
     this.submitService.creatorGender = this.gender;
     this.submitService.creatorYearOfBirth = this.birth_year;
 

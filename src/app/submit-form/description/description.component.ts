@@ -19,6 +19,7 @@ export class DescriptionComponent implements OnInit {
     descForm: FormGroup;
     submitService : SubmitFormService;
     title : string;
+    description: string;
     subjects : string [] = [];
     nations : string [] = [];
     regions : string [] = [];
@@ -112,6 +113,12 @@ export class DescriptionComponent implements OnInit {
 
   next() {
     this.period = this.descForm.value.coveragePeriod;
+    this.description = this.descForm.value.description;
+    this.title = this.descForm.value.title;
+
+
+    this.submitService.description = this.description;
+    this.submitService.title = this.title;
 
     // singular service arrays are set to the plural local arrays.
     this.submitService.subject = this.subjects;
