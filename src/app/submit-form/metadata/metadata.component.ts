@@ -21,8 +21,10 @@ export class MetadataComponent implements OnInit {
 
   constructor(
       private _router: Router,
-      private fb: FormBuilder
+      private fb: FormBuilder,
+      _submitService: SubmitFormService
   ) {
+      this.submitService = _submitService;
       this.initForm();
    }
 
@@ -46,14 +48,14 @@ export class MetadataComponent implements OnInit {
     this.names.splice(this.names.indexOf(name), 1);
   }
 
-  addInterviewer(lastNameInterviewer: string, firstNameInterviewer: string) {
-      let interview = lastNameInterviewer + ", " + firstNameInterviewer;
-      this.interviewers.push(interview);
-  }
-
-  removeInterviewer(interview : string) {
-    this.interviewers.splice(this.interviewers.indexOf(interview), 1);
-  }
+  // addInterviewer(lastNameInterviewer: string, firstNameInterviewer: string) {
+  //     let interview = lastNameInterviewer + ", " + firstNameInterviewer;
+  //     this.interviewers.push(interview);
+  // }
+  //
+  // removeInterviewer(interview : string) {
+  //   this.interviewers.splice(this.interviewers.indexOf(interview), 1);
+  // }
 
   // getConsole(){
   //     console.log(this.names);
