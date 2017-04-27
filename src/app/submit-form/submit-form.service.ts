@@ -58,6 +58,10 @@ export class SubmitFormService {
 
   private endPoint = environment.API_ENDPOINTS;
 
+  uploadMedia () {
+
+  }
+
 
 
 
@@ -68,6 +72,8 @@ export class SubmitFormService {
          description: this.description,
          rightsConsent: this.rightsConsent,
          rightsRelease: this.rightsRelease,
+         creatorGender : this.creatorGender,
+         creatorYearOfBirth : this.creatorYearOfBirth,
          contributorAuthor: this.contributorAuthor,
          contributorInterviewer: this.contributorInterviewer,
          coveragePeriod: this.coveragePeriod,

@@ -5,13 +5,16 @@
 
 const api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development";
 
+const search_api_url = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production"; // using prod endpoint on both dev and prod.
+
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
-const page_posts = api_url + "/posts/"; // becomes https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development/posts/size=10page=1
+const page_posts = search_api_url + "/posts/"; // becomes https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development/posts/size=10page=1
 const post = api_url + "/posts/get/";
-const search_posts = api_url  + "/posts/search/";
-const upload_media = api_url + "/upload";
-const update_post = api_url + "/update";
+const get_dev_post = api_url + "/posts/getdev/";
+const search_posts = search_api_url  + "/posts/search/";
+const upload_media = api_url + "/asset/s3upload/";
+const link_media = api_url + "/asset/apiupload";
 
 export const environment = {
   production: false,
@@ -22,9 +25,9 @@ export const environment = {
     page_posts: page_posts,
     post: post,
     search_posts : search_posts,
-    upload_media: upload_media,
-    update_post: update_post
-  }
+    upload_media: upload_media
+
+}
 
 };
 
