@@ -11,10 +11,10 @@ const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
 const page_posts = search_api_url + "/posts/"; // becomes https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development/posts/size=10page=1
 const post = api_url + "/posts/get/";
-const get_dev_post = api_url + "/posts/getdev/";
+const get_dev_post = api_url + "/posts/getdev/"; // to get a post from the dev table (used for viewing purposes)
 const search_posts = search_api_url  + "/posts/search/";
-const upload_media = api_url + "/asset/s3upload/";
-const link_media = api_url + "/asset/apiupload";
+const get_upload_link = api_url + "/asset/s3upload/"; // to get the link for file uploading.
+const link_media = api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
 
 export const environment = {
   production: false,
@@ -25,7 +25,8 @@ export const environment = {
     page_posts: page_posts,
     post: post,
     search_posts : search_posts,
-    upload_media: upload_media
+    get_upload_link: get_upload_link,
+    link_media : link_media
 
 }
 

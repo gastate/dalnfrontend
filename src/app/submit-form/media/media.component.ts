@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { SubmitFormService } from '../submit-form.service';
+
 
 @Component({
   selector: 'app-media',
@@ -9,22 +11,29 @@ import { Router } from '@angular/router';
 export class MediaComponent implements OnInit {
 
 
-  public file : File;
+  submitService : SubmitFormService;
+
+
   constructor(
-    private _router : Router
-  ) { }
+    private _router : Router,
+    _submitService : SubmitFormService
+  ){
+    this.submitService = _submitService;
+  }
 
   ngOnInit() {
   }
 
-  fileUpload (event) {
+  setMedia (event) {
     let fileList : FileList = event.target.files;
-
-    for (var i = 0; i < fileList.length; i++) {
-        this.file = fileList[i];
-        console.log(this.file.name);
-    }
+    this.submitService.getMedia(fileList);
   }
+
+  uploadFiles() {
+      this.submitService.uploadMedia();
+  }
+
+
 
 
 
