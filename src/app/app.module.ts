@@ -10,31 +10,34 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 // Components
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { PostService } from './services/post.service';
-import { SearchService } from './services/search.service';
 import { AppRoutingModule }     from './app-routing.module';
 import { PlayerComponent} from './player/player.component';
 import { SearchComponent } from './search/search.component';
 import { SliderComponent } from './slider/slider.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+// Services
+import { PostService } from './services/post.service';
+import { SearchService } from './services/search.service';
+import { AuthService } from './services/auth.service';
+
+// Other
 import { SafePipe } from './safe.pipe';
-
-//Custom
-
-
 
 
 @NgModule({
   declarations: [
+    AdminComponent,
     AppComponent,
     HomeComponent,
     PostListComponent,
@@ -58,7 +61,7 @@ import { SafePipe } from './safe.pipe';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [PostService, SearchService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [AuthService, PostService, SearchService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

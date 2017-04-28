@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 
-
+import {AdminComponent} from './admin/admin.component';
 import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {PostListComponent} from './post-list/post-list.component';
@@ -18,6 +18,10 @@ const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
   },
   {
     path: 'home',
