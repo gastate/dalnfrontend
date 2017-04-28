@@ -78,6 +78,7 @@ export class SubmitFormService {
   uploadMedia() {
 
       console.log("Uploading Files...");
+      console.log(this.endPoint.get_upload_link + this.filename);
       this._http.get(this.endPoint.get_upload_link + this.filename)
       .map((res: Response) => res.json())
       .catch((error : any) => Observable.throw(error.json().error))
