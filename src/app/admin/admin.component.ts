@@ -19,4 +19,10 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
   }
 
+  approvePost(postId : string) {
+      this.authService.adminApprovePost(postId);
+      console.log("Approvepost fired");
+  }
+
+
 }

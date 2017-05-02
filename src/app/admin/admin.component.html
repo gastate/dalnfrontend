@@ -1,3 +1,10 @@
-<p>
-  admin works!
-</p>
+
+<div class="container">
+    <h1>Admin post approval</h1>
+
+    <p>
+        Enter the PostId:
+    </p>
+    <input type="text" value="c6098589-4253-4649-974e-02ce17e16d27" name="postId" #postId/>
+    <button class="btn btn-primary" type="submit" value="Submit" (keydown.enter)="approvePost(postId.value)" (click)="approvePost(postId.value)">Submit</button>
+</div>

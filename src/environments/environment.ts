@@ -14,7 +14,7 @@ const post = api_url + "/posts/get/";
 const get_dev_post = api_url + "/posts/getdev/"; // to get a post from the dev table (used for viewing purposes)
 const search_posts = search_api_url  + "/posts/search/";
 
-const approve_posts = search_api_url + "/approve/" // to approve posts into search engine.
+const approve_post = api_url + "/approve/" // to approve posts into search engine.
 const get_upload_link = search_api_url + "/asset/s3upload/"; // to get the link for file uploading.
 const link_media = search_api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
 
@@ -22,7 +22,7 @@ export const environment = {
   production: false,
   API_ENDPOINTS: {
     all_posts: all_posts,
-    approve_posts: approve_posts,
+    approve_post: approve_post,
     api_url: api_url,
     create_post: create_post,
     page_posts: page_posts,
