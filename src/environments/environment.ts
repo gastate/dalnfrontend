@@ -12,11 +12,20 @@ const create_post = api_url + "/posts/create";
 const page_posts = search_api_url + "/posts/"; // becomes https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development/posts/size=10page=1
 const post = api_url + "/posts/get/";
 const get_dev_post = api_url + "/posts/getdev/"; // to get a post from the dev table (used for viewing purposes)
-const search_posts = search_api_url  + "/posts/search/";
 
-const approve_post = api_url + "/posts/approve/" // to approve posts into search engine.
-const get_upload_link = search_api_url + "/asset/s3upload/"; // to get the link for file uploading.
-const link_media = search_api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
+const rand_post = api_url + "/posts/random/"; // to get a list of random posts
+const search_posts = search_api_url  + "/posts/search/";
+// Posts/search/(query)/(pageSize)/(start)/(field)/(order)
+// start = index of first post
+// field = assetlocation of whatever
+// order = asc or desc
+
+const search_size = search_api_url + "";
+
+const approve_post = api_url + "/posts/approve/"; // to approve posts into search engine.
+const unapprove_post = api_url + "/posts/unapprove";
+const get_upload_link = api_url + "/asset/s3upload/"; // to get the link for file uploading.
+const link_media = api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
 
 export const environment = {
   production: false,
@@ -25,11 +34,13 @@ export const environment = {
     approve_post: approve_post,
     api_url: api_url,
     create_post: create_post,
+    get_upload_link: get_upload_link,
+    link_media : link_media,
     page_posts: page_posts,
     post: post,
     search_posts : search_posts,
-    get_upload_link: get_upload_link,
-    link_media : link_media
+    search_size : search_size,
+    unapprove_post : unapprove_post
 
 }
 

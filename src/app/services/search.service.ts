@@ -23,6 +23,7 @@ export class SearchService {
   private pageNumber : number = 0;
 
   searchQuery : string;
+  totalNumberOfPosts : number;
 
   constructor(private _http: Http, private _jsonp : Jsonp) {
       this.searchQuery = null;
@@ -72,6 +73,17 @@ export class SearchService {
         console.log("Get Search Page Posts", posts);
         return posts;
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+
+  }
+
+  getSearchEngineSize(){
+      console.log(this.endPoint.search_size);
+      return this._http.get(this.endPoint.search_size)
+        .map( res => {
+            let data = res.json();
+            this.totalNumberOfPosts = data;
+            return this.totalNumberOfPosts;
+        });
 
   }
 
