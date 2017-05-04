@@ -1,12 +1,10 @@
 import { ElementRef, Component, OnInit, animate } from '@angular/core';
-import { PostService } from '../services/post.service';
-import { SearchService } from '../services/search.service';
-import { Post } from '../model/post-model';
+import { PostService } from '../../services/post.service';
+import { SearchService } from '../../services/search.service';
+import { Post } from '../../model/post-model';
 // import { routerTransition } from '../router.animations';
 
 
-// TEMP code to run production and dev environments
-import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'home',
@@ -22,9 +20,6 @@ export class HomeComponent implements OnInit {
 
   title = 'DALN Frontend';
   posts: Post[];
-
-
-  private isInProd = environment.production;
 
   ngOnInit(): void {
         this.getPagePosts();

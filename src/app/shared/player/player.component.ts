@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Pipe, PipeTransform} from '@angular/core';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import {Asset} from '../model/asset-model';
-import {Post} from '../model/post-model';
+import {Asset} from '../../model/asset-model';
+import {Post} from '../../model/post-model';
 import { Location } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 

@@ -7,9 +7,9 @@ import { Subject } from 'rxjs/Subject';
 
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { SearchService } from '../services/search.service';
-import { PostService } from '../services/post.service';
-import { Post } from '../model/post-model';
+import { SearchService } from '../../services/search.service';
+import { PostService } from '../../services/post.service';
+import { Post } from '../../model/post-model';
 
 
 

@@ -1,10 +1,10 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Params}   from '@angular/router';
 import {Location}                 from '@angular/common';
-import {PostService} from '../services/post.service';
-import {Post} from '../model/post-model';
+import {PostService} from '../../services/post.service';
+import {Post} from '../../model/post-model';
 
-import {Asset} from '../model/asset-model';
+import {Asset} from '../../model/asset-model';
 import 'rxjs/add/operator/switchMap';
 
 @Component({

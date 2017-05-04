@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { SearchService } from '../services/search.service';
-import {Post} from '../model/post-model'
+import { SearchService } from '../../services/search.service';
+import {Post} from '../../model/post-model'
 
 @Component({
   selector: 'post-list',

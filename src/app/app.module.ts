@@ -10,21 +10,21 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 // Components
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { AppComponent } from './app.component';
-import { AppFooterComponent } from './app-footer/app-footer.component';
-import { HomeComponent } from './home/home.component';
+import { AppFooterComponent } from './components/app-footer/app-footer.component';
+import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PostListComponent } from './post-list/post-list.component';
-import { PostItemComponent } from './post-item/post-item.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
+import { PostListComponent } from './shared/post-list/post-list.component';
+import { PostItemComponent } from './shared/post-item/post-item.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { AppRoutingModule }     from './app-routing.module';
-import { PlayerComponent} from './player/player.component';
-import { SearchComponent } from './search/search.component';
-import { SliderComponent } from './slider/slider.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PlayerComponent} from './shared/player/player.component';
+import { SearchComponent } from './components/search/search.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 // Services
 import { PostService } from './services/post.service';
