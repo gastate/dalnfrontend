@@ -1,5 +1,5 @@
 
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { Jsonp , Http, Response, Headers, RequestOptions } from '@angular/http';
 //Use instead of Promise
 import { Observable, Subject } from 'rxjs/Rx';
@@ -17,8 +17,9 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
+  @Output() paginationParameter: EventEmitter<number> = new EventEmitter();
+
   pageNumber : number = 0;
-  paginationSize : number = 10;
 
   searchQuery : string;
   resultsSize : number = 50;
@@ -30,7 +31,12 @@ export class SearchService {
  }
 
   changePaginationSize(newPageSize : number) {
-      this.paginationSize = newPageSize;
+      this.paginationParameter.emit(newPageSize);
+      console.log(newPageSize);
+  }
+
+  getPaginationParameter() {
+      return this.paginationParameter;
   }
 
 

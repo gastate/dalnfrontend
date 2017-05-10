@@ -30,7 +30,7 @@ export class SearchComponent { //implements OnInit {
   showFull : boolean = false;
 
   route: string;
-  numberOfResults: number = 50;
+  numberOfPages: number = 0; // number of pages to stay ahead of user.
   private noResults: boolean = false;
 
   constructor(
@@ -40,23 +40,25 @@ export class SearchComponent { //implements OnInit {
     private _router: Router) {
 
     this.searchService = _searchService;
-
     this.searchResults = new EventEmitter<Post[]>();
-
-
-    this._router.events.subscribe((val) => {
-       // see also
-       this.route = this._location.path();
-       if (this.route == "/search"){
-           this.onSearch(this.searchService.searchQuery, 10, 0 );
-           this.showUtil = true; // handles utility functions for ux.
-           this.showFull = true; // handles expansion of search bar
-       }
-   });
 
   }
 
-  ngOnInit() : void {
+  ngOnInit() {
+      this.searchService.getPaginationParameter()
+        .subscribe(data => this.numberOfPages = data);
+
+      console.log("Pages: " + this.numberOfPages);
+
+       this._router.events.subscribe((val) => {
+         // see also
+         this.route = this._location.path();
+         if (this.route == "/search"){
+             this.onSearch(this.searchService.searchQuery, 10, 0 );
+             this.showUtil = true; // handles utility functions for ux.
+             this.showFull = true; // handles expansion of search bar
+         }
+     });
 
   }
 
