@@ -2,9 +2,26 @@
 <div class="container">
     <h1>Admin post approval</h1>
 
-    <p>
-        Enter the PostId:
-    </p>
-    <input type="text" value="c6098589-4253-4649-974e-02ce17e16d27" name="postId" #postId/>
-    <button class="btn btn-primary" type="submit" value="Submit" (keydown.enter)="approvePost(postId.value)" (click)="approvePost(postId.value)">Submit</button>
+
+    <div class="col-md-4">
+        <p>
+            Enter the PostId:
+        </p>
+        <input type="text" value="c6098589-4253-4649-974e-02ce17e16d27" name="postId" #postId/>
+        <button class="btn btn-primary" type="submit" value="Submit" (keydown.enter)="approvePost(postId.value)" (click)="approvePost(postId.value)">Submit</button>
+    </div>
+    <hr />
+    <div class="col-md-4">
+        <p>
+            Changes the number of pages to stay ahead of the user. (Assume 10 results per page as default)
+
+            i.e. Staying 10 pages ahead of user x 10 results per page = 100 results to stay ahead of user
+
+            Will affect loading search page times at larger values and decrease at smaller values.
+        </p>
+        <input type="number" class="form-control"  min="1" max="100" #paginationSize />
+        <button class="btn btn-primary" type="submit" (keydown.enter)="changePaginationSize(paginationSize.value)" (click)="changePaginationSize(paginationSize.value)">Change Pagination Size</button>
+    </div>
+    <hr />
+
 </div>

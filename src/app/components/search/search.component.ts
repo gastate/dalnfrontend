@@ -22,19 +22,15 @@ export class SearchComponent { //implements OnInit {
 
   @Output()
   searchResults: EventEmitter<Post[]>;
-
-  @Output() changeView : EventEmitter<boolean> = new EventEmitter<boolean>();
+  searchService : SearchService;
 
   posts: Post[];
-  selectedPost: Post;
 
   showUtil: boolean = false;
   showFull : boolean = false;
 
-
-  searchService : SearchService;
-
   route: string;
+  numberOfResults: number = 50;
   private noResults: boolean = false;
 
   constructor(
@@ -42,9 +38,11 @@ export class SearchComponent { //implements OnInit {
     _searchService: SearchService,
     private _location : Location,
     private _router: Router) {
-    this.searchResults = new EventEmitter<Post[]>();
 
     this.searchService = _searchService;
+
+    this.searchResults = new EventEmitter<Post[]>();
+
 
     this._router.events.subscribe((val) => {
        // see also
@@ -59,6 +57,7 @@ export class SearchComponent { //implements OnInit {
   }
 
   ngOnInit() : void {
+
   }
 
   onSearch(term: string, results: number, pageNum: number): void {
@@ -103,7 +102,6 @@ export class SearchComponent { //implements OnInit {
       if(term === '' || term === undefined){
         return null;
       }
-      this.changeView.emit(false);
       this._router.navigateByUrl('/search');
 
   }

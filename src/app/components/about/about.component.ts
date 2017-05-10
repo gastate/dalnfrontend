@@ -20,10 +20,10 @@ export class AboutComponent implements OnInit {
   title = 'About';
 
   ngOnInit() {
-      this.searchService.getSearchEngineSize().subscribe( (data) => {
-         console.log("Number of Posts: " + data);
-         this.numberOfPosts = data;
-      });
+    //   this.searchService.getSearchEngineSize().subscribe( (data) => {
+    //      console.log("Number of Posts: " + data);
+    //      this.numberOfPosts = data;
+    //   });
   }
 
 

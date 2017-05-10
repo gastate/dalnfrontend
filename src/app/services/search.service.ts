@@ -17,27 +17,22 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
-
-  pageUpdate:EventEmitter<number> = new EventEmitter();
-  private endPoint = environment.API_ENDPOINTS;
-  private pageNumber : number = 0;
+  pageNumber : number = 0;
+  paginationSize : number = 10;
 
   searchQuery : string;
-  totalNumberOfPosts : number;
+  resultsSize : number = 50;
+
+  private endPoint = environment.API_ENDPOINTS;
 
   constructor(private _http: Http, private _jsonp : Jsonp) {
       this.searchQuery = null;
  }
 
-  nextPage() {
-      this.pageNumber++;
-    //   this.pageUpdate.emit(this.pageNumber);
+  changePaginationSize(newPageSize : number) {
+      this.paginationSize = newPageSize;
   }
 
-  prevPage(){
-      this.pageNumber--;
-    //   this.pageUpdate.emit(this.pageNumber);
-  }
 
   getPageNum() : number {
       return this.pageNumber;
@@ -68,6 +63,10 @@ export class SearchService {
 
     //   console.log("Query:" + this.searchQuery);
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
+
+
+      // X = results aka number of results to stay ahead
+
       return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
         let posts = res.json();
         console.log("Get Search Page Posts", posts);
@@ -76,16 +75,16 @@ export class SearchService {
 
   }
 
-  getSearchEngineSize(){
-      console.log(this.endPoint.search_size);
-      return this._http.get(this.endPoint.search_size)
-        .map( res => {
-            let data = res.json();
-            this.totalNumberOfPosts = data;
-            return this.totalNumberOfPosts;
-        });
-
-  }
+  // getSearchEngineSize(){
+  //     console.log(this.endPoint.search_size);
+  //     return this._http.get(this.endPoint.search_size)
+  //       .map( res => {
+  //           let data = res.json();
+  //           this.totalNumberOfPosts = data;
+  //           return this.totalNumberOfPosts;
+  //       });
+  //
+  // }
 
 
 

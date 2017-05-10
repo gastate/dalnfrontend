@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { SearchService } from '../../services/search.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -9,11 +11,14 @@ import { AuthService } from '../../services/auth.service';
 export class AdminComponent implements OnInit {
 
   authService: AuthService;
+  searchService: SearchService;
 
   constructor(
-      _authService: AuthService
+      _authService: AuthService,
+      _searchService : SearchService
   ) {
       this.authService = _authService;
+      this.searchService = _searchService;
    }
 
   ngOnInit() {
@@ -21,7 +26,11 @@ export class AdminComponent implements OnInit {
 
   approvePost(postId : string) {
       this.authService.adminApprovePost(postId);
-      console.log("Approvepost fired");
+      console.log("Approve post fired");
+  }
+
+  changePaginationSize(paginationSize : number) {
+      this.searchService.changePaginationSize(paginationSize);
   }
 
 
