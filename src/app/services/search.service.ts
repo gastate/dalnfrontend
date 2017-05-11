@@ -17,26 +17,26 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
-  @Output() paginationParameter: EventEmitter<number> = new EventEmitter();
-
-  pageNumber : number = 0;
+  pageNumber : number;
 
   searchQuery : string;
-  resultsSize : number = 50;
+  resultsSize : number;
 
   private endPoint = environment.API_ENDPOINTS;
 
   constructor(private _http: Http, private _jsonp : Jsonp) {
       this.searchQuery = null;
+      this.pageNumber = 1;
+      this.resultsSize = 0;
  }
 
   changePaginationSize(newPageSize : number) {
-      this.paginationParameter.emit(newPageSize);
-      console.log(newPageSize);
+      this.pageNumber = newPageSize;
+      console.log("Page Parameter changed"); // replace with user notice.
   }
 
   getPaginationParameter() {
-      return this.paginationParameter;
+      return this.pageNumber;
   }
 
 

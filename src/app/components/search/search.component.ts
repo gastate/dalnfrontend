@@ -18,7 +18,7 @@ import { Post } from '../../model/post-model';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent { //implements OnInit {
+export class SearchComponent implements OnInit {
 
   @Output()
   searchResults: EventEmitter<Post[]>;
@@ -30,7 +30,7 @@ export class SearchComponent { //implements OnInit {
   showFull : boolean = false;
 
   route: string;
-  numberOfPages: number = 0; // number of pages to stay ahead of user.
+  numberOfPages: number; // number of pages to stay ahead of user.
   private noResults: boolean = false;
 
   constructor(
@@ -41,14 +41,13 @@ export class SearchComponent { //implements OnInit {
 
     this.searchService = _searchService;
     this.searchResults = new EventEmitter<Post[]>();
-
+    this.numberOfPages = 0;
   }
 
   ngOnInit() {
-      this.searchService.getPaginationParameter()
-        .subscribe(data => this.numberOfPages = data);
 
-      console.log("Pages: " + this.numberOfPages);
+      this.numberOfPages = this.searchService.getPaginationParameter();
+    //   console.log("Pages: " + this.numberOfPages);
 
        this._router.events.subscribe((val) => {
          // see also
