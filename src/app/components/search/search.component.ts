@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
 
       this.numberOfPages = this.searchService.getPaginationParameter();
-    //   console.log("Pages: " + this.numberOfPages);
+      console.log("Pages: " + this.numberOfPages);
 
        this._router.events.subscribe((val) => {
          // see also
