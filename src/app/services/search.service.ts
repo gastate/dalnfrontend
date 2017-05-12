@@ -21,7 +21,7 @@ export class SearchService {
   searchQuery : string; // term to call the search engine with.
   resultsSize : number; // number of results to display in search component.
   pageNumber: number; // user specified page number to start from.
-  resultsHead: number; // admin specified number of results to stay ahead of user.
+  resultHead: number; // admin specified number of results to stay ahead of user.
 
   private endPoint = environment.API_ENDPOINTS;
 
@@ -29,6 +29,7 @@ export class SearchService {
       this.searchQuery = null;
       this.pageNumber = 0;
       this.resultsSize = 12;
+      this.resultHead = 50;
     }
 
 

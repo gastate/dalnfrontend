@@ -13,14 +13,14 @@
     <hr />
     <div class="col-md-4">
         <p>
-            Changes the number of pages to stay ahead of the user. (Assume 10 results per page as default)
+            Changes the number of results to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.
 
-            i.e. Staying 10 pages ahead of user x 10 results per page = 100 results to stay ahead of user
+            i.e. Staying 50 results ahead of user x 10 results per page = 500 posts to stay ahead of user
 
-            Will affect loading search page times at larger values and decrease at smaller values.
+            Will affect loading search page times at larger values and decrease at smaller values. Default is set to 50.
         </p>
-        <input type="number" class="form-control"  min="1" max="100" #paginationSize />
-        <button class="btn btn-primary" type="submit" (keydown.enter)="changePaginationSize(paginationSize.value)" (click)="changePaginationSize(paginationSize.value)">Change Pagination Size</button>
+        <input type="number" class="form-control"  min="1" max="100" #resultsSize [value]="searchService.resultHead"/>
+        <button class="btn btn-primary" type="submit" (keydown.enter)="changeResultHead(resultsSize.value)" (click)="changeResultHead(resultsSize.value)">Change Result Head</button>
     </div>
     <hr />
 

@@ -29,6 +29,11 @@ export class AdminComponent implements OnInit {
       console.log("Approve post fired");
   }
 
+  changeResultHead(results: number) {
+      this.searchService.resultHead = results;
+      console.log("Result head changed to " + this.searchService.resultHead);
+  }
+
 
 
 }
