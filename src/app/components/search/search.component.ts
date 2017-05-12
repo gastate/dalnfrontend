@@ -30,7 +30,10 @@ export class SearchComponent implements OnInit {
   showFull : boolean = false;
 
   route: string;
-  numberOfPages: number; // number of pages to stay ahead of user.
+
+  pageNumber: number; // user specified page number to start from.
+  resultsSize : number; // number of results to display in search component.
+
   private noResults: boolean = false;
 
   constructor(
@@ -41,19 +44,24 @@ export class SearchComponent implements OnInit {
 
     this.searchService = _searchService;
     this.searchResults = new EventEmitter<Post[]>();
-    this.numberOfPages = 0;
+
   }
 
   ngOnInit() {
+      // replace with results size.
+    //   this.numberOfPages = this.searchService.getPaginationParameter();
+    //   console.log("Pages: " + this.numberOfPages);
 
-      this.numberOfPages = this.searchService.getPaginationParameter();
-      console.log("Pages: " + this.numberOfPages);
+    this.resultsSize = this.searchService.resultsSize;
+    this.pageNumber = this.searchService.pageNumber;
+
 
        this._router.events.subscribe((val) => {
          // see also
          this.route = this._location.path();
          if (this.route == "/search"){
-             this.onSearch(this.searchService.searchQuery, 10, 0 );
+             console.log(this.searchService.searchQuery, this.resultsSize, this.pageNumber);
+             this.onSearch(this.searchService.searchQuery, this.resultsSize, this.pageNumber );
              this.showUtil = true; // handles utility functions for ux.
              this.showFull = true; // handles expansion of search bar
          }
@@ -61,20 +69,23 @@ export class SearchComponent implements OnInit {
 
   }
 
-  onSearch(term: string, results: number, pageNum: number): void {
-      let pageNumber = this.searchService.getPageNum();
+  onSearch(term: string, results: number, pageNumber: number): void {
 
+     if(this.resultsSize != results) {
+         this.resultsSize = results;
+     }
 
-    if (results == 0) {
-        results = 10;
-    }
+     if(this.pageNumber != pageNumber) {
+         this.pageNumber = pageNumber;
+     }
+
 
     if(term === '' || term === undefined){
       return null;
     }
-      this.searchService.search_page(term, results, pageNumber)
+      this.searchService.search_page(term, this.resultsSize, this.pageNumber)
       .subscribe((results) => {
-        console.log("In Emmitter: ", results);
+        console.log("In Emmitter: ", this.resultsSize);
         if ((results === null) || results.length <= 0 ) {
             this.noResults = true;
         } else {
@@ -91,20 +102,27 @@ export class SearchComponent implements OnInit {
 
   }
 
-  onFakeSearch(term: string, results: number, pageNumber: number) : void {
 
-      if (results == 0) {
-          results = 10;
-      }
-      if (pageNumber == 0) {
-          pageNumber = 0;
+ /**
+  * All onFakeSearch does is take the given user input parameters for pagination and results and navigate to the search route. All parameters are intialized in the constructor if no user input is given.
+  * @param {number} results    number of results to display on component
+  * @param {number} pageNumber page number to start from
+  */
+  onFakeSearch(results: number, pageNumber: number) : void {
+
+      if(this.resultsSize != results) {
+          this.resultsSize = results;
+          this.searchService.changeResultsDisplayed(this.resultsSize);
       }
 
-      if(term === '' || term === undefined){
-        return null;
+      if(this.pageNumber != pageNumber) {
+          this.pageNumber = pageNumber;
+          this.searchService.changePageStart(this.pageNumber);
       }
+
       this._router.navigateByUrl('/search');
 
   }
+
 
 }

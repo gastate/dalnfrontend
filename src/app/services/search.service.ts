@@ -17,37 +17,33 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
-  pageNumber : number;
 
-  searchQuery : string;
-  resultsSize : number;
+  searchQuery : string; // term to call the search engine with.
+  resultsSize : number; // number of results to display in search component.
+  pageNumber: number; // user specified page number to start from.
+  resultsHead: number; // admin specified number of results to stay ahead of user.
 
   private endPoint = environment.API_ENDPOINTS;
 
   constructor(private _http: Http, private _jsonp : Jsonp) {
       this.searchQuery = null;
-      this.pageNumber = 1;
-      this.resultsSize = 0;
- }
+      this.pageNumber = 0;
+      this.resultsSize = 12;
+    }
 
-  changePaginationSize(newPageSize : number) {
-      this.pageNumber = newPageSize;
-      console.log("Page Parameter changed"); // replace with user notice.
+
+// These all can be observables...
+
+
+  changeResultsDisplayed(results: number) {
+    this.resultsSize = results;
   }
 
-  getPaginationParameter() {
-      return this.pageNumber;
+  changePageStart(page: number) {
+      this.pageNumber = page;
   }
 
 
-  getPageNum() : number {
-      return this.pageNumber;
-  }
-
-  setPageNum(num: number) {
-     this.pageNumber = num;
-     console.log(this.pageNumber);
-  }
 
   // Returning Search as Observable
   search(term: string): Observable<Post[]> { // TODO : term needs to be url encoded to support multiple terms as well as boolean expressions.

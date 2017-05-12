@@ -29,9 +29,6 @@ export class AdminComponent implements OnInit {
       console.log("Approve post fired");
   }
 
-  changePaginationSize(paginationSize : number) {
-      this.searchService.changePaginationSize(paginationSize);
-  }
 
 
 }

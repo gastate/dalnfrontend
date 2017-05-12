@@ -13,8 +13,8 @@
               <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
             </span>
             <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery" (input)="searchService.searchQuery = $event.target.value"/>
-           <button *ngIf="showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, results.value, pageNum.value, $posts)" (click)="onSearch(searchBox.value, results.value, pageNum.value)" >Search</button>
-           <button *ngIf="!showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onFakeSearch(searchBox.value, results.value, pageNum.value, $posts)" (click)="onFakeSearch(searchBox.value, results.value, pageNum.value)" >Search</button>
+           <button *ngIf="showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, results.value, pageNum.value)" (click)="onSearch(searchBox.value, results.value, pageNum.value)" >Search</button>
+           <button *ngIf="!showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onFakeSearch(results.value, pageNum.value)" (click)="onFakeSearch(results.value, pageNum.value)" >Search</button>
       </div>
 
     </div>
@@ -23,7 +23,7 @@
 
   <!-- Search Options -->
   <div class="collapse" id="options">
-  <div class="card card-block" [class.col-md-5]="showFull" [class.offset-md-3]="showFull">
+  <div class="card card-block" [class.col-md-6]="showFull" [class.offset-md-3]="showFull">
       <div class="card-header" id="option-card">
           Options
       </div>
@@ -31,13 +31,13 @@
         <div class="col-md-4">
             <div class="input-group ">
                 <span class="input-group-addon">Results per page</span>
-                <input #results class="form-control" id="results-size" type="number" min="0" max="50"/>
+                <input #results class="form-control" id="results-size" type="number" min="1" max="50" [value]="searchService.resultsSize"/>
             </div>
         </div>
         <div class="col-md-4 offset-md-4">
             <div class="input-group">
                 <span class="input-group-addon">Page Number</span>
-                <input #pageNum class="form-control" id="pageNumber" type="number" min="0" max="50"/>
+                <input #pageNum class="form-control" id="pageNumber" type="number" min="0" max="50" [value]="searchService.pageNumber"/>
             </div>
         </div>
     </div>
