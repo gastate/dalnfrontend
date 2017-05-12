@@ -60,8 +60,8 @@ export class SearchComponent implements OnInit {
          // see also
          this.route = this._location.path();
          if (this.route == "/search"){
-             console.log(this.searchService.searchQuery, this.resultsSize, this.pageNumber);
-             this.onSearch(this.searchService.searchQuery, this.resultsSize, this.pageNumber );
+             console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
+             this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber );
              this.showUtil = true; // handles utility functions for ux.
              this.showFull = true; // handles expansion of search bar
          }
@@ -73,10 +73,12 @@ export class SearchComponent implements OnInit {
 
      if(this.resultsSize != results) {
          this.resultsSize = results;
+         this.searchService.changeResultsDisplayed(this.resultsSize);
      }
 
      if(this.pageNumber != pageNumber) {
          this.pageNumber = pageNumber;
+         this.searchService.changePageStart(this.pageNumber);
      }
 
 
