@@ -27,6 +27,9 @@ const unapprove_post = api_url + "/posts/unapprove";
 const get_upload_link = api_url + "/asset/s3upload/"; // to get the link for file uploading.
 const link_media = api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
 
+const get_unapproved_posts = api_url + "/posts/unapproved";
+
+
 export const environment = {
   production: false,
   API_ENDPOINTS: {
@@ -35,6 +38,7 @@ export const environment = {
     api_url: api_url,
     create_post: create_post,
     get_upload_link: get_upload_link,
+    get_unapproved_posts: get_unapproved_posts,
     link_media : link_media,
     page_posts: page_posts,
     post: post,

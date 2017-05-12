@@ -13,6 +13,8 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class AuthService {
 
+
+
     constructor(private _http: Http) {
 
    }
@@ -47,6 +49,24 @@ export class AuthService {
           );
 
     console.log("adminApprovePost fired");
+
+}
+
+getApprovalList(): Observable<Post[]> {
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({  headers: headers, method: "post"});
+
+    console.log(this.endPoint.get_unapproved_posts);
+
+    return this._http.post(this.endPoint.get_unapproved_posts, options)
+    .map((res: Response) => {
+        let posts = res.json();
+        console.log("Unapproved Posts:", posts);
+        return posts;
+    })
+    .catch((error : any) => Observable.throw(error.json().error))
 
 }
 

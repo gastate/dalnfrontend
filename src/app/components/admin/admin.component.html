@@ -23,5 +23,12 @@
         <button class="btn btn-primary" type="submit" (keydown.enter)="changeResultHead(resultsSize.value)" (click)="changeResultHead(resultsSize.value)">Change Result Head</button>
     </div>
     <hr />
+    <div class="col-md-4">
+        <p>
+            Approval List
+        </p>
+        <post-list [postList]="approval_list"></post-list>
+
+    </div>
 
 </div>
