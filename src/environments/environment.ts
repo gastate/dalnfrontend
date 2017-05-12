@@ -3,6 +3,21 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
+///////////////////////
+// Cognito Functions //
+///////////////////////
+
+const region = 'us-east-1';
+
+const userPoolId = 'us-east-1_0lPzLvk1m';
+const clientId = '9dnchcukjhdjh1vf5co990cjn';
+
+
+
+//////////////////////
+// Lambda Functions //
+//////////////////////
+
 const api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development";
 
 const search_api_url = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production"; // using prod endpoint on both dev and prod.
@@ -45,7 +60,11 @@ export const environment = {
     search_posts : search_posts,
     search_size : search_size,
     unapprove_post : unapprove_post
-
+},
+  COGNITO_INFO: {
+    region: region,
+    userPoolId: userPoolId,
+    clientId: clientId
 }
 
 };
