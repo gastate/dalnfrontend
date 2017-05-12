@@ -1,0 +1,34 @@
+
+<div class="container">
+    <h1>Admin post approval</h1>
+
+
+    <div class="col-md-4">
+        <p>
+            Enter the PostId:
+        </p>
+        <input type="text" value="c6098589-4253-4649-974e-02ce17e16d27" name="postId" #postId/>
+        <button class="btn btn-primary" type="submit" value="Submit" (keydown.enter)="approvePost(postId.value)" (click)="approvePost(postId.value)">Submit</button>
+    </div>
+    <hr />
+    <div class="col-md-4">
+        <p>
+            Changes the number of results to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.
+
+            i.e. Staying 50 results ahead of user x 10 results per page = 500 posts to stay ahead of user
+
+            Will affect loading search page times at larger values and decrease at smaller values. Default is set to 50.
+        </p>
+        <input type="number" class="form-control"  min="1" max="100" #resultsSize [value]="searchService.resultHead"/>
+        <button class="btn btn-primary" type="submit" (keydown.enter)="changeResultHead(resultsSize.value)" (click)="changeResultHead(resultsSize.value)">Change Result Head</button>
+    </div>
+    <hr />
+    <div class="col-md-4">
+        <p>
+            Approval List
+        </p>
+        <post-list [postList]="approval_list"></post-list>
+
+    </div>
+
+</div>

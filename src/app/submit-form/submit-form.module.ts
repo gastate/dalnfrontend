@@ -13,7 +13,6 @@ import {LicenseComponent} from './license/license.component';
 import {SummaryComponent} from './summary/summary.component';
 import {CompleteComponent} from './complete/complete.component';
 import {SubmitFormRoutingModule} from './submit-form-routing.module';
-import {ResultComponent} from '../result/result.component';
 import {DatepickerComponent} from './datepicker/datepicker.component';
 
 
@@ -34,7 +33,6 @@ import {DatepickerComponent} from './datepicker/datepicker.component';
     SummaryComponent,
     CompleteComponent,
     SubmitFormComponent,
-    ResultComponent,
     DatepickerComponent
 ],
 providers : [

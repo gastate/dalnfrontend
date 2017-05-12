@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {PostService} from '../services/post.service';
-import {Post} from '../model/post-model';
-import {Asset} from '../model/asset-model';
+import {PostService} from '../../services/post.service';
+import {Post} from '../../model/post-model';
+import {Asset} from '../../model/asset-model';
 
 @Component({
   selector: 'post-item',

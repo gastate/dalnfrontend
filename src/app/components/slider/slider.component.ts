@@ -1,7 +1,7 @@
 // Import Component form the angular core package
 import { Component, NgModule, OnChanges, Input, trigger, state, animate, transition, style } from '@angular/core';
 // Will use Slide model in admin level
-import {Slide} from '../model/slide-model';
+import {Slide} from '../../model/slide-model';
 
 
 
