@@ -22,9 +22,11 @@ export class SearchComponent implements OnInit {
 
   @Output()
   searchResults: EventEmitter<Post[]>;
-  searchService : SearchService;
+
 
   posts: Post[];
+  pagedPosts: Post[];
+  searchService : SearchService;
 
   showUtil: boolean = false;
   showFull : boolean = false;
@@ -87,12 +89,18 @@ export class SearchComponent implements OnInit {
     }
       this.searchService.search_page(term, this.resultsSize, this.pageNumber)
       .subscribe((results) => {
-        console.log("In Emmitter: ", this.resultsSize);
+        console.log("In Emmitter: ", results.length);
         if ((results === null) || results.length <= 0 ) {
             this.noResults = true;
         } else {
             this.noResults = false;
             this.posts = results;
+        }
+
+        if (this.searchService.resultsSize > this.posts.length) {
+            this.pagedPosts = this.posts;
+        } else {
+            console.log("Greater.")
         }
         this.searchResults.emit(results),
         err => {
