@@ -2016,14 +2016,14 @@ iframe {
     margin-bottom: 35px;
 }
 .empty_post {
-    width: 270px;
+    width: 100%;
 }
 
 
 
 #collapseContent { padding-bottom: 30px;}
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .right {float: none;}
     .span8 {float:none;}
     /* need to ngIf current */
@@ -2056,7 +2056,7 @@ iframe {
     }
 
     .postItem {
-        width: 24%;
+        width: 100%;
     }
 
 
@@ -2080,7 +2080,7 @@ span.italic {
     font-style: italic;
 }
 
-@media (max-width: 480px) and (max-width: 768px) {
+@media (max-width: 576px) and (max-width: 768px) {
     .right {float: none;}
     .span8 {float:none;}
     /* need to ngIf current */
