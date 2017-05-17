@@ -23,7 +23,7 @@ export class AuthService {
 
 
 
-   adminApprovePost(postId: string) {
+ adminApprovePost(postId: string) {
 
       var tableName = 'DALN-Posts-Dev';
 
@@ -51,6 +51,7 @@ export class AuthService {
     console.log("adminApprovePost fired");
 
 }
+
 
 getApprovalList(): Observable<Post[]> {
 

@@ -19,9 +19,9 @@ export class SearchService {
 
 
   searchQuery : string; // term to call the search engine with.
-  resultsSize : number; // number of results to display in search component.
+  resultsSize : number; // user specified number of results to display.
   pageNumber: number; // user specified page number to start from.
-  resultHead: number; // admin specified number of results to stay ahead of user.
+  pageHead: number; // admin specified number of results to stay ahead of user.
 
   private endPoint = environment.API_ENDPOINTS;
 
@@ -29,7 +29,7 @@ export class SearchService {
       this.searchQuery = null;
       this.pageNumber = 0;
       this.resultsSize = 12;
-      this.resultHead = 50;
+      this.pageHead = 10;
     }
 
 
@@ -43,6 +43,7 @@ export class SearchService {
   changePageStart(page: number) {
       this.pageNumber = page;
   }
+
 
 
 
@@ -68,8 +69,6 @@ export class SearchService {
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
 
 
-      // X = results aka number of results to stay ahead
-
       return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
         let posts = res.json();
         console.log("Get Search Page Posts", posts);
@@ -89,6 +88,8 @@ export class SearchService {
   //
   // }
   //
+
+    // get resultSize,
 
   // getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
   //       // calculate total pages
