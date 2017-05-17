@@ -35,9 +35,9 @@ export class AdminComponent implements OnInit {
       console.log("Approve post fired");
   }
 
-  changeResultHead(results: number) {
-      this.searchService.resultHead = results;
-      console.log("Result head changed to " + this.searchService.resultHead);
+  changePageHead(page: number) {
+      this.searchService.pageHead = page;
+      console.log("page head changed to " + this.searchService.pageHead);
   }
 
   getApproveList(){

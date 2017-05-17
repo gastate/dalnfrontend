@@ -6,14 +6,10 @@ import {Component, Input} from '@angular/core';
 })
 
 export class AppComponent {
-    @Input()
-     _class = "container";
+    isNewDesign: boolean = false;
 
-    toggleFull () : void {
-        if(this._class == "container"){
-            this._class = "container-fluid";
-        } else {
-            this._class = "container";
-        }
-    }
+
+    
+
+
 }

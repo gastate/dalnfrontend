@@ -1946,8 +1946,8 @@ input.rights-option {
 
 #logo {
     float: left;
-    width: 8%;
-    top: 8px;
+    width: 12%;
+    top: 4px;
     z-index: 1000;
     position: absolute;
 }
@@ -1959,9 +1959,9 @@ input.rights-option {
 
 .navbar .brand {
     display: inline;
-    margin-left: 30px;
-    font-size: 28px;
-    /*color: rgba(255,255,255,.5);*/
+    margin-left: 64px;
+    font-size: 31px;
+    color: #213f71;
 
 }
 
@@ -2072,7 +2072,7 @@ h4 {
 }
 
 .post_list {
-    width: 1170px;
+    width: 100%;
     height: auto;
 }
 

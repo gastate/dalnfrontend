@@ -22,7 +22,6 @@ export class AuthService {
    private endPoint = environment.API_ENDPOINTS;
 
 
-
 adminApprovePost(postId: string) {
 
       var tableName = 'DALN-Posts-Dev';
@@ -51,6 +50,7 @@ adminApprovePost(postId: string) {
     console.log("adminApprovePost fired");
 
 }
+
 
 getApprovalList(): Observable<Post[]> {
 
