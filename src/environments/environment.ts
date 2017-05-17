@@ -10,7 +10,7 @@ const search_api_url = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/p
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
 const page_posts = search_api_url + "/posts/"; // becomes https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development/posts/size=10page=1
-const post = api_url + "/posts/get/";
+const post = search_api_url + "/posts/get/";
 const get_dev_post = api_url + "/posts/getdev/"; // to get a post from the dev table (used for viewing purposes)
 
 const rand_post = api_url + "/posts/random/"; // to get a list of random posts
