@@ -2080,6 +2080,12 @@ span.italic {
     font-style: italic;
 }
 
+.postitem_text {
+	width: 100%;
+	height: 166px;
+	background: #000;
+}
+
 @media (max-width: 576px) and (max-width: 768px) {
     .right {float: none;}
     .span8 {float:none;}
