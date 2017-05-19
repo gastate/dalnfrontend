@@ -1926,11 +1926,6 @@ input.rights-option {
     float: left;
 }
 
-.desc p {
-    color: black;
-}
-
-
 .slider-img {
     width: 1170px;
     height: 350px;
@@ -1944,6 +1939,14 @@ input.rights-option {
    width: 100%;
    border-width: 2px;
    border-color: rgb(1, 76, 140);
+}
+
+.post_desc {
+    margin-top: -6%;
+}
+
+.post_title {
+    color: #0275d8;
 }
 
 #search-component {
