@@ -1959,7 +1959,7 @@ input.rights-option {
 
 .navbar .brand {
     display: inline;
-    margin-left: 64px;
+    /*margin-left: 64px;*/
     font-size: 31px;
     color: #213f71;
 
@@ -1984,8 +1984,8 @@ input.rights-option {
 
 
 .slider-img {
-    width: 1170px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
 }
 
 #list-container {
@@ -2084,6 +2084,14 @@ span.italic {
 	width: 100%;
 	height: 166px;
 	background: #000;
+}
+
+.carousel-item {
+	height: 100%;
+}
+
+.brandContainer {
+	margin-left: 12%;
 }
 
 @media (max-width: 576px) and (max-width: 768px) {
