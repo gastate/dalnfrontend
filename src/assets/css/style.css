@@ -2059,7 +2059,9 @@ iframe {
         width: 100%;
     }
 
-
+	h3 {
+		font-size: 1.75em;
+	}
 }
 
 .contact-info {
