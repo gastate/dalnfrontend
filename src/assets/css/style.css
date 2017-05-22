@@ -1810,44 +1810,8 @@ ul.arrow li {
 -------------------------------------------------- */
 
 
-
-nav {
-  margin: 0 0 25px 0;
-}
-
-nav select {
-  display: inline-block;
-}
-
-.rslides .caption {
-  display: none;
-}
-
-.container {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.block-info {
-  text-align: center;
-  padding: 0;
-  width: 270px;
-  border-bottom: 1px #e3e3e8 solid;
-}
-
-#price .block,
-#price2 .block,
-#price3 .block {
-  width: 100%;
-  margin: 20px 0;
-  display: inline-block;
-}
-
-
 .right li a:hover {color: #fefefe; background-color: #262626;}
 #header-wrap { position: relative;}
-
-.span3 .offset3 {}
 
 #header-wrap img {width: 40%; height: auto; margin: 3px; }
 .thumbnails {
@@ -1878,19 +1842,6 @@ nav select {
     margin-top: 30px;
 }
 
-
-label {
-  float: left;
-  clear: none;
-  display: block;
-  padding: 2px 1em 0 0;
-}
-input[type=radio],
-input.rights-option {
-  float: left;
-  clear: none;
-  margin: 2px 0 0 2px;
-}
 
 #logo {
     float: left;
