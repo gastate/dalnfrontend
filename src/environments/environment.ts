@@ -11,6 +11,7 @@ const region = 'us-east-1';
 
 const userPoolId = 'us-east-1_0lPzLvk1m';
 const clientId = '9dnchcukjhdjh1vf5co990cjn';
+const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 
 
 //////////////////////
@@ -62,6 +63,7 @@ export const environment = {
 }, COGNITO_INFO : {
     region: region,
     userPoolId: userPoolId,
+    identityPoolId: identityPoolId,
     clientId: clientId
 }
 
