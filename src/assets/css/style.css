@@ -2023,6 +2023,7 @@ h4 {
 .post_list {
     width: 100%;
     height: auto;
+    margin-bottom: 2%;
 }
 
 span.italic {
