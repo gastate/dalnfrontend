@@ -216,7 +216,6 @@ h6 {
 }
 
 .header {
-  background: #ffffff url(../img/bg-header.png) bottom repeat-x;
   border-bottom: 1px #d4d9df solid;
 }
 
@@ -254,11 +253,9 @@ a.op-cl {
 }
 
 .op-cl.aopen {
-  background: url(../img/open-close-topbar.png) 0 0 no-repeat;
 }
 
 .op-cl.aclose {
-  background: url(../img/open-close-topbar.png) 0 -21px no-repeat;
 }
 
 .strip-line {
@@ -297,7 +294,6 @@ a.op-cl {
 }
 
 .navbar-search .search-query {
-  background: #ffffff url(../img/search-icon.png) top right no-repeat;
   border-color: #d2d2d7;
   width: 8px;
 }
@@ -338,35 +334,27 @@ ul.socicon li a {
 }
 
 ul.socicon li a.dribbble {
-  background: url(../img/social/dribbble_dark.png) 0 0 no-repeat;
 }
 
 ul.socicon li a.facebook {
-  background: url(../img/social/facebook_dark.png) 0 0 no-repeat;
 }
 
 ul.socicon li a.twitter {
-  background: url(../img/social/twitter_dark.png) 0 0 no-repeat;
 }
 
 ul.socicon li a.flickr {
-  background: url(../img/social/flickr_dark.png) 0 0 no-repeat;
 }
 
 ul.socicon li a.linkedin {
-  background: url(../img/social/in_dark.png) 0 0 no-repeat;
 }
 
 ul.socicon li a.vimeo {
-  background: url(../img/social/vimeo_dark.png) 0 0 no-repeat;
 }
 
 ul.socicon li a.google {
-  background: url(../img/social/google_dark.png) 0 0 no-repeat;
 }
 
 ul.socicon li a.share-icon {
-  background: url(../img/social/share-icon.png) 0 0 no-repeat;
 }
 
 ul.socicon li.last {
@@ -408,19 +396,16 @@ nav ul li a:hover,
 nav ul li.current > a {
   color: #577088;
   border: none;
-  background: url(../img/bg-header.png) top center repeat-x;
   /*padding: 10px 15px;*/
   /*border: 1px #e4e4e6 solid;*/
 }
 
 nav ul li a:hover {
-  background: url(../img/bg-header.png) bottom center repeat-x;
 }
 
 nav ul li span.indicator {
   width: 12px;
   height: 13px;
-  background: url(../img/sub-indicator.png) top center no-repeat;
   position: absolute;
   top: 13px;
   right: 3px;
@@ -463,7 +448,6 @@ nav ul li ul li:first-child a:after {
   left: 25px;
   top: -6px;
   content: '';
-  background: url(../img/sub-arrow-top.png) no-repeat 0 0;
   z-index: 10;
   border: none;
 }
@@ -473,14 +457,12 @@ nav ul li ul li a {
   display: block;
   padding: 10px;
   color: #f8f8f8;
-  background: url(../img/bg-menu.png);
   border: none;
   margin-bottom: 1px;
 }
 
 nav ul li ul li a:hover {
   color: #ffffff;
-  background: url(../img/bg-menu.png);
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -492,7 +474,6 @@ nav ul li ul li a:hover {
 nav ul li ul li span.indicator-right {
   width: 12px;
   height: 13px;
-  background: url(../img/sub-indicator-right.png) top center no-repeat;
   position: absolute;
   top: 12px;
   right: 5px;
@@ -529,25 +510,21 @@ nav ul li ul li ul li:first-child a:after {
   left: -6px;
   top: 9px;
   content: '';
-  background: url(../img/sub-arrow.png) no-repeat 0 0;
   z-index: 10;
 }
 
 /***** Slider *****/
 
 .slider-home {
-  background: #f8f8f8 url(../img/shadow_bg.png) top center no-repeat;
   border-bottom: 1px #e3e3e8 solid;
 }
 
 .slider-cont {
-  background: url(../img/shadow_bg.png) top center no-repeat;
 }
 
 .cont-bs {
   padding-top: 70px;
   padding-bottom: 25px;
-  background: url(../img/bg-slider-two.png) bottom center no-repeat;
 }
 
 .rslides .caption {
@@ -598,7 +575,6 @@ nav ul li ul li ul li:first-child a:after {
   text-decoration: none;
   height: 20px;
   width: 20px;
-  background: #577088 url(../img/arrow-slider.png) no-repeat left top;
 }
 
 .rslides1_nav.next {
@@ -615,7 +591,6 @@ nav ul li ul li ul li:first-child a:after {
   text-decoration: none;
   height: 20px;
   width: 20px;
-  background: #577088 url(../img/arrow-slider.png) no-repeat left top;
 }
 
 .port-slider .rslides1_nav.next {
@@ -632,7 +607,6 @@ nav ul li ul li ul li:first-child a:after {
   text-decoration: none;
   height: 20px;
   width: 20px;
-  background: #577088 url(../img/arrow-slider.png) no-repeat left top;
 }
 
 .port-slider-a a.rslides_nav.next {
@@ -693,7 +667,6 @@ nav ul li ul li ul li:first-child a:after {
 }
 
 .promo-area-slider {
-  background: url(../img/bg-promo-slider.png);
   padding: 25px;
   margin: 0;
 }
@@ -732,11 +705,9 @@ nav ul li ul li ul li:first-child a:after {
 }
 
 .testimonialswrap .testimonials-controls a.next-l {
-  background: #ccc url(../img/tes-arrows.png) 0 0 no-repeat
 }
 
 .testimonialswrap .testimonials-controls a.prev-l {
-  background: #ccc url(../img/tes-arrows.png) 0 -19px no-repeat
 }
 
 .testimonialswrap .testimonials-controls a.carousel-disabled {
@@ -883,7 +854,6 @@ a.thumbnail:hover {
 .item-block .zoom {
   width: 40px;
   height: 40px;
-  background: url(../img/zoom.png) no-repeat top center;
   display: block;
   position: absolute;
   top: 55px;
@@ -894,7 +864,6 @@ a.thumbnail:hover {
 .item-block .link {
   width: 40px;
   height: 40px;
-  background: url(../img/link.png) no-repeat top center;
   display: block;
   position: absolute;
   top: 55px;
@@ -990,7 +959,6 @@ ul.filter-data li a:hover {
 .loader {
   width: 41px;
   height: 29px;
-  background: #f14a29 url(../img/load-ajax.gif) no-repeat 50% 50%;
   display: block;
   margin: 0 2px;
 }
@@ -1043,7 +1011,6 @@ ul.filter-data li a:hover {
   width: 40px;
   height: 40px;
   display: block;
-  background: #577088 url(../img/post-format-sprite.png) 50% 40px no-repeat;
   margin-bottom: 10px;
   -webkit-border-radius: 125px;
   -moz-border-radius: 125px;
@@ -1054,7 +1021,6 @@ ul.filter-data li a:hover {
   width: 40px;
   height: 40px;
   display: block;
-  background: #577088 url(../img/post-format-sprite.png) 50% 40px no-repeat;
   margin: -10px auto 10px auto
 }
 
@@ -1223,7 +1189,6 @@ ul.price.best li.cost h3 {
 ul.price li a.plus {
   width: 20px;
   height: 20px;
-  background: url(../img/plus-tabs.png) bottom center no-repeat;
   display: block;
   position: absolute;
   bottom: 0;
@@ -1261,7 +1226,6 @@ ul.price li.buy {
   background-repeat: no-repeat;
   opacity: 0.8;
   filter: alpha(opacity=80);
-  background-image: url(../img/tipsy.gif);
 }
 
 .tipsy-inner {
@@ -1375,7 +1339,6 @@ footer h3 {
 }
 
 .tweets ul li {
-  background: #262626 url(../img/bird-small.png) 8px 12px no-repeat;
   padding: 10px 10px 10px 35px;
   margin: 0 0 15px 0;
   -moz-box-shadow: 0 0 4px #444;
@@ -1418,11 +1381,9 @@ footer h3 {
   height: 51px;
   border: none;
   text-indent: -999px;
-  background: url(../img/ui.totop.png) no-repeat left top;
 }
 
 #toTopHover {
-  background: url(../img/ui.totop.png) no-repeat left -50px;
   width: 50px;
   height: 50px;
   display: block;
@@ -1535,28 +1496,24 @@ footer h3 {
 
 ul.circle li {
   padding: 0 0 1px 14px;
-  background: url(../images/circle.png) no-repeat left 2px;
   list-style: none outside none;
   font-size: 13px;
 }
 
 ul.square li {
   padding: 0 0 1px 14px;
-  background: url(../images/square.png) no-repeat left 2px;
   list-style: none outside none;
   font-size: 13px;
 }
 
 ul.bullet li {
   padding: 0 0 1px 14px;
-  background: url(../images/bullet.png) no-repeat left 2px;
   list-style: none outside none;
   font-size: 13px;
 }
 
 ul.arrow li {
   padding: 0 0 1px 14px;
-  background: url(../images/arrow.png) no-repeat left 2px;
   list-style: none outside none;
   font-size: 13px;
 }
@@ -1592,7 +1549,6 @@ ul.arrow li {
 }
 
 .message-box.info .closemsg {
-  background-image: url(../images/close-info.png);
 }
 
 .message-box.note {
@@ -1602,7 +1558,6 @@ ul.arrow li {
 }
 
 .message-box.note .closemsg {
-  background-image: url(../images/close-note.png);
 }
 
 .message-box.confirm {
@@ -1612,7 +1567,6 @@ ul.arrow li {
 }
 
 .message-box.confirm .closemsg {
-  background-image: url(../images/close-confirm.png);
 }
 
 .message-box.error {
@@ -1622,7 +1576,6 @@ ul.arrow li {
 }
 
 .message-box.error .closemsg {
-  background-image: url(../images/close-error.png);
 }
 
 /***** Accordion / Toggle *****/
@@ -1632,7 +1585,6 @@ ul.arrow li {
   width: 100%;
   padding: 10px 0 10px 0;
   margin: 0 0 5px 0;
-  background: #eee url(../images/open-close.png) 97% 10px no-repeat;
   cursor: pointer;
 }
 
@@ -1641,7 +1593,6 @@ ul.arrow li {
 }
 
 .open-block-acc.active {
-  background: #577088 url(../images/open-close.png) 98% -30px no-repeat;
   color: #fff;
 }
 
@@ -1660,11 +1611,9 @@ ul.arrow li {
   display: block;
   padding: 10px 10px 10px 15px;
   text-decoration: none;
-  background: #eee url(../images/open-close.png) 97% 10px no-repeat;
 }
 
 .open-block.active a {
-  background: #577088 url(../images/open-close.png) 98% -30px no-repeat;
   color: #fff;
 }
 
@@ -1848,7 +1797,6 @@ ul.arrow li {
   width: 40px;
   height: 40px;
   display: block;
-  background: #f14a29 url(../img/info_w.png) 50% 50% no-repeat;
   position: absolute;
   bottom: 10%;
   right: 5%;
@@ -1959,7 +1907,7 @@ input.rights-option {
 
 .navbar .brand {
     display: inline;
-    margin-left: 64px;
+    /*margin-left: 64px;*/
     font-size: 31px;
     color: #213f71;
 
@@ -1972,16 +1920,13 @@ input.rights-option {
 
 .desc {
     text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .desc button {
     float: left;
 }
-
-.desc p {
-    color: black;
-}
-
 
 .slider-img {
     width: 1170px;
@@ -1996,6 +1941,14 @@ input.rights-option {
    width: 100%;
    border-width: 2px;
    border-color: rgb(1, 76, 140);
+}
+
+.post_desc {
+    /*margin-top: -6%;*/
+}
+
+.post_title {
+    color: #0275d8;
 }
 
 #search-component {
@@ -2016,18 +1969,18 @@ iframe {
     margin-bottom: 35px;
 }
 .empty_post {
-    width: 270px;
+    width: 100%;
 }
 
 
 
 #collapseContent { padding-bottom: 30px;}
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .right {float: none;}
     .span8 {float:none;}
     /* need to ngIf current */
-    .row {margin-bottom: 20%; }
+    /*.row {margin-bottom: 20%; }*/
     .right li:not(:first-child) {}
     .right li.icon {
         float: right;
@@ -2056,10 +2009,8 @@ iframe {
     }
 
     .postItem {
-        width: 24%;
+        width: 100%;
     }
-
-
 }
 
 .contact-info {
@@ -2074,17 +2025,28 @@ h4 {
 .post_list {
     width: 100%;
     height: auto;
+    margin-bottom: 2%;
 }
 
 span.italic {
     font-style: italic;
 }
 
-@media (max-width: 480px) and (max-width: 768px) {
+.postitem_text {
+	width: 100%;
+	height: 166px;
+	background: #000;
+}
+
+.brandContainer {
+	margin-left: 12%;
+}
+
+@media (max-width: 576px) and (max-width: 768px) {
     .right {float: none;}
     .span8 {float:none;}
     /* need to ngIf current */
-    .row {margin-bottom: 20%; }
+    /*.row {margin-bottom: 20%; }*/
     .right li:not(:first-child) {}
     .right li.icon {
         float: right;

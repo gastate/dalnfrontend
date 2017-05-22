@@ -2,12 +2,12 @@
   <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
 
     <app-player
-                [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
+                [postAsset]="getPreview( postItem.assetList)" [thumb]="true"></app-player>
   </a>
 <a [routerLink]="['/detail', postItem.postId]">
   <div class="desc">
-     {{postItem.title}}
-    <p><em>{{postItem.description}}</em></p>
+    <p class="post_title">{{postItem.title}}</p>
+    <p class="post_desc"><em>{{postItem.description}}</em></p>
   </div>
 </a>
 </div>
