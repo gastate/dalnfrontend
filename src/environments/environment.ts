@@ -13,7 +13,6 @@ const userPoolId = 'us-east-1_0lPzLvk1m';
 const clientId = '9dnchcukjhdjh1vf5co990cjn';
 
 
-
 //////////////////////
 // Lambda Functions //
 //////////////////////
@@ -60,8 +59,7 @@ export const environment = {
     search_posts : search_posts,
     search_size : search_size,
     unapprove_post : unapprove_post
-},
-  COGNITO_INFO: {
+}, COGNITO_INFO : {
     region: region,
     userPoolId: userPoolId,
     clientId: clientId
