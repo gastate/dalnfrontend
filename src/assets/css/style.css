@@ -1920,6 +1920,8 @@ input.rights-option {
 
 .desc {
     text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .desc button {
@@ -1942,7 +1944,7 @@ input.rights-option {
 }
 
 .post_desc {
-    margin-top: -6%;
+    /*margin-top: -6%;*/
 }
 
 .post_title {
