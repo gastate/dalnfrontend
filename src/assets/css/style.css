@@ -1918,6 +1918,10 @@ input.rights-option {
 
 }
 
+.bg-inverse {
+    background-color: #8A8A8A !important;
+}
+
 .desc {
     text-align: center;
 }
