@@ -1924,6 +1924,8 @@ input.rights-option {
 
 .desc {
     text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .desc button {
@@ -1931,8 +1933,8 @@ input.rights-option {
 }
 
 .slider-img {
-    width: 100%;
-    height: 100%;
+    width: 1170px;
+    height: 350px;
 }
 
 #list-container {
@@ -1946,7 +1948,7 @@ input.rights-option {
 }
 
 .post_desc {
-    margin-top: -6%;
+    /*margin-top: -6%;*/
 }
 
 .post_title {
@@ -2027,6 +2029,7 @@ h4 {
 .post_list {
     width: 100%;
     height: auto;
+    margin-bottom: 2%;
 }
 
 span.italic {
@@ -2036,6 +2039,7 @@ span.italic {
 .postitem_text {
 	width: 100%;
 	height: 166px;
+	background: #000;
 }
 
 .brandContainer {

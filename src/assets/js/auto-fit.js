@@ -1,7 +1,7 @@
 // This script automatically fit the img tags in the empty_posts into its container keeping the img aspect ratio.
 
-var SLIDER_ASPECT_RATIO = 1170 / 350;
-var SLIDER_FONT_TO_WIDTH_RATIO = 20 / 1170;
+/*var SLIDER_ASPECT_RATIO = 1170 / 350;
+var SLIDER_FONT_TO_WIDTH_RATIO = 20 / 1170;*/
 
 function autoSizeImg(imgElement, container) {
 	var imgElementWidth = imgElement.offsetWidth;
@@ -37,8 +37,8 @@ setInterval(function () {
 		for (var i = 0; i < emptyPosts.length; i++) {
 			autoSizeImg(emptyPosts[i], emptyPosts[i].parentNode);
 		}
-		
+		/*
 		var slider = document.getElementsByClassName('carousel-inner')[0];
 		slider.style.height = parseInt(slider.offsetWidth / SLIDER_ASPECT_RATIO) + 'px';
-		slider.style.fontSize = parseInt(slider.offsetWidth * SLIDER_FONT_TO_WIDTH_RATIO) + 'px';
+		slider.style.fontSize = parseInt(slider.offsetWidth * SLIDER_FONT_TO_WIDTH_RATIO) + 'px';*/
 	}, 1000);
