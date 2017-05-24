@@ -1869,8 +1869,14 @@ ul.arrow li {
 
 }
 
+.bg-inverse {
+    background-color: #8A8A8A !important;
+}
+
 .desc {
     text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .desc button {
@@ -1893,7 +1899,7 @@ ul.arrow li {
 }
 
 .post_desc {
-    margin-top: -6%;
+    /*margin-top: -6%;*/
 }
 
 .post_title {
