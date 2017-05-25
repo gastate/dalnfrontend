@@ -76,6 +76,10 @@ export class SubmitFormService {
   }
 
   uploadMedia() {
+      // TODO: loop through every file in the fileList
+      let headers = new Headers();
+      headers.append('Content-Type', ' ');
+      let options = new RequestOptions({headers: headers, method: "put"});
 
       console.log("Uploading Files...");
       console.log(this.endPoint.get_upload_link + this.filename);
@@ -85,7 +89,7 @@ export class SubmitFormService {
       .subscribe(
           // data is the link returned from get_upload_link, will use this link to submit the formData.
           data => {
-              this._http.put(data, this.formData)
+              this._http.put(data, this.formData, options)
               .map((res: Response) => res.json())
               .catch((error: any) => Observable.throw(error.json().error))
               .subscribe(
@@ -145,18 +149,18 @@ export class SubmitFormService {
              console.log(data);
 
              var jsonLink = {
-                //  stagingareabucket : "dalnfileupload",
-                //  finalbucketname: "?????"
-                //  PostId: {var that holds postId},
-                //  filename: {var that holds the first file's filename}
-
+                 stagingAreaBucketName : "daln-file-staging-area",
+                 assetDescription: "Asset",
+                 finalBucketName: "daln-development",
+                 PostId: this.postResult,
+                 key: this.filename
              }
-
              let headers = new Headers();
              headers.append('Content-Type', 'application/json');
              let options = new RequestOptions({headers: headers, method: "post"});
 
              var input = JSON.stringify(jsonLink);
+
 
              this._http.post(this.endPoint.link_media, input, options)
              .map((res: Response) => res.json())
