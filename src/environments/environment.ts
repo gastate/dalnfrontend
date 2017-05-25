@@ -10,8 +10,9 @@
 const region = 'us-east-1';
 
 const userPoolId = 'us-east-1_0lPzLvk1m';
-const clientId = '9dnchcukjhdjh1vf5co990cjn';
+const clientId = '5jor2041aact5jm0ka79c67dr4';
 const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
+
 
 
 //////////////////////
