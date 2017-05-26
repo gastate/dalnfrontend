@@ -11,10 +11,16 @@ export interface CognitoCallback {
     cognitoCallback(message: string, result: any): void;
 }
 
+export interface LoggedInCallback {
+    isLoggedIn(message: string, loggedIn: boolean): void;
+}
+
 export interface Callback {
     callback(): void;
     callbackWithParam(result: any): void;
 }
+
+
 
 @Injectable()
 export class CognitoUtil {
@@ -133,11 +139,11 @@ export class UserLoginService {
 
     }
 
-    logout() {
-        console.log("UserLoginService: Logging out");
-        this.ddb.writeLogEntry("logout");
-        this.cognitoUtil.getCurrentUser().signOut();
-    }
+    // logout() {
+    //     console.log("UserLoginService: Logging out");
+    //     this.ddb.writeLogEntry("logout");
+    //     this.cognitoUtil.getCurrentUser().signOut();
+    // }
 
     isAuthenticated(callback: LoggedInCallback) {
         if (callback == null)
