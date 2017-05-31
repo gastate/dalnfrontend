@@ -1,3 +1,4 @@
+<div class="child-container">
 
 <div class="col-md-3 offset-md-2" *ngIf="showUtil">
 <button class="btn btn-primary" type="submit" (click)="this._router.navigateByUrl('/home')">Go Back to Home Page</button>
@@ -62,19 +63,20 @@
 
 <div class="container responsive_home" >
     <div class="post_list">
-        <post-list [postList]="pagedPosts"></post-list>
+        <post-list [postList]="posts"></post-list>
     </div>
 
-    <nav aria-label="page navigation">
+    <!-- <nav aria-label="page navigation">
       <ul class="pagination">
         <li class="page-item" *ngFor="let page of pagedPosts" [ngClass]="{active: pagedPosts.length < this.searchService.resultsSize}">
             <a class="page-link">{{this.pageNumber}}</a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
 
 </div>
 
 <!-- <daln-footer *ngIf="showUtil"></daln-footer> -->
 
+</div>
 <router-outlet></router-outlet>

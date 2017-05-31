@@ -87,20 +87,35 @@ export class SearchComponent implements OnInit {
     if(term === '' || term === undefined){
       return null;
     }
-      this.searchService.search_page(term, this.resultsSize, this.pageNumber)
+    //   this.searchService.search_page(term, this.resultsSize, this.pageNumber)
+    //   .subscribe((results) => {
+    //     console.log("In Emmitter: ", results.length);
+    //     if ((results === null) || results.length <= 0 ) {
+    //         this.noResults = true;
+    //     } else {
+    //         this.noResults = false;
+    //         this.posts = results;
+    //     }
+    //
+    //     if (this.searchService.resultsSize > this.posts.length) {
+    //         this.pagedPosts = this.posts;
+    //     } else {
+    //         console.log("Greater.")
+    //     }
+    //     this.searchResults.emit(results),
+    //     err => {
+    //         console.log(err);
+    //     }
+    // });
+
+    this.searchService.search_page(term, this.resultsSize, this.pageNumber)
       .subscribe((results) => {
-        console.log("In Emmitter: ", results.length);
+        console.log("In Emmitter: ", this.resultsSize);
         if ((results === null) || results.length <= 0 ) {
             this.noResults = true;
         } else {
             this.noResults = false;
             this.posts = results;
-        }
-
-        if (this.searchService.resultsSize > this.posts.length) {
-            this.pagedPosts = this.posts;
-        } else {
-            console.log("Greater.")
         }
         this.searchResults.emit(results),
         err => {
