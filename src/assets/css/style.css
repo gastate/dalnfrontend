@@ -895,8 +895,28 @@ ul.arrow li {
     height: 350px;
 }
 
+/**** Post List ****/
+
 #list-container {
     margin-top: 50px;
+}
+
+.postAsset {
+    width: 100%;
+}
+
+.post-header {
+    padding: 5% 8%;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid transparent;
+}
+
+.post-header h3 {
+    font-size: 133%;
+}
+
+.post-desc {
+    padding-top: 4%;
 }
 
 .postitem_image img {
@@ -905,8 +925,11 @@ ul.arrow li {
    border-color: rgb(1, 76, 140);
 }
 
-.post_desc {
-    /*margin-top: -6%;*/
+.post_list {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2%;
+    padding: 2% 2%;
 }
 
 .post_title {
@@ -984,11 +1007,7 @@ h4 {
     text-align: center;
 }
 
-.post_list {
-    width: 100%;
-    height: auto;
-    margin-bottom: 2%;
-}
+
 
 span.italic {
     font-style: italic;
