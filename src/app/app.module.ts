@@ -13,6 +13,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AdminComponent } from './components/admin/admin.component';
 import { AppComponent } from './app.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
+import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostListComponent } from './shared/post-list/post-list.component';
@@ -40,6 +41,7 @@ import { SafePipe } from './safe.pipe';
     AdminComponent,
     AppComponent,
     HomeComponent,
+    LoginComponent,
     PostListComponent,
     PostItemComponent,
     AppFooterComponent,

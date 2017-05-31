@@ -22,8 +22,7 @@ export class AuthService {
    private endPoint = environment.API_ENDPOINTS;
 
 
-
- adminApprovePost(postId: string) {
+adminApprovePost(postId: string) {
 
       var tableName = 'DALN-Posts-Dev';
 
