@@ -873,7 +873,6 @@ ul.arrow li {
 
 .carousel-caption a {
     color: #fff;
-
 }
 
 .bg-inverse {
@@ -919,6 +918,10 @@ ul.arrow li {
     padding-top: 4%;
 }
 
+.child-container {
+    margin-top: 2%;
+}
+
 .postitem_image img {
    width: 100%;
    border-width: 2px;
@@ -955,6 +958,11 @@ iframe {
 }
 .empty_post {
     width: 100%;
+}
+
+.postitem_text {
+	width: 100%;
+	height: 166px;
 }
 
 
@@ -1013,11 +1021,7 @@ span.italic {
     font-style: italic;
 }
 
-.postitem_text {
-	width: 100%;
-	height: 166px;
-	background: #000;
-}
+
 
 .brandContainer {
 	margin-left: 12%;
