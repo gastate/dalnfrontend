@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPagePosts() : void {
-      this._searchService.search_page("games", 10, 1).subscribe(
+      this._searchService.search_page("games", 8, 1).subscribe(
           (data) => {
               this.posts = data;
         }, //Bind to view

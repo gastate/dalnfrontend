@@ -15,15 +15,13 @@
 <div class="postItem" *ngIf="postItem">
     <article class="card">
         <header class="post-header">
-            <h3>{{postItem.title}}</h3>
+            <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
+                <h3>{{postItem?.title}}</h3>
+            </a>
         </header>
         <div class="card-block">
-                <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
-                    <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
-                </a>
-            <a [routerLink]="['/detail', postItem.postId]">
-                <p class="post-desc card-text text-xs-center">{{postItem.description}}</p>
-            </a>
+                <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
+                <p>{{postItem?.description}}</p>
         </div>
     </article>
 </div>

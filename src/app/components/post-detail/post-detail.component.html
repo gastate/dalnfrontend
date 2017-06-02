@@ -14,11 +14,11 @@
         <!-- Use the ul class. -->
         <ul class="metadata">
           <li>
-            <h3>{{postDetail.title}}</h3>
-            <p>{{postDetail.description}}</p>
+            <h3>{{postDetail?.title}}</h3>
+            <p>{{postDetail?.description}}</p>
           <li>
             <h3>Date Submitted</h3>
-            <p>{{postDetail.dateCreated}}</p>
+            <p>{{postDetail?.dateCreated}}</p>
           </li>
           <li>
             <h3>Author</h3>
@@ -49,7 +49,7 @@
         <ul class="description">
           <li>
             <h3>Description</h3>
-            <p>{{postDetail.description}}</p>
+            <p>{{postDetail?.description}}</p>
           </li>
         </ul>
 
@@ -71,19 +71,9 @@
 
           </ul>
 
-          <div class="details" id="detail-drop" role="tablist">
-              <div class="card">
-                  <div class="card-header" role="tab" id="metadata">
-                      <a data-toggle="collapse" data-parent="#detail-drop" href="#metadata-table">
-                          Detailed Record
-                      </a>
-                  </div>
-              </div>
 
 
-
-              <div id="metadata-table" class="collapsed collapse" role="tabpanel" style="height: auto;">
-                  <div class="card-block">
+              <div id="metadata-table">
                    <table class="table table-sm table-bordered">
                        <thead >
                          <tr>
@@ -94,29 +84,29 @@
                       <tbody>
                           <tr>
                                <td>identifierUri</td>
-                               <td>{{postDetail.identifierUri}}</td>
+                               <td>{{postDetail?.identifierUri}}</td>
                           </tr>
                           <tr>
                                <td>dateAvailable</td>
-                               <td>{{postDetail.dateAvailable}}</td>
+                               <td>{{postDetail?.dateAvailable}}</td>
                           </tr>
                           <tr>
                                <td>dateAccessioned</td>
-                               <td>{{postDetail.dateAccessioned}}</td>
+                               <td>{{postDetail?.dateAccessioned}}</td>
                           </tr>
                           <tr>
                                <td>dateCreated</td>
-                               <td>{{postDetail.dateCreated}}</td>
+                               <td>{{postDetail?.dateCreated}}</td>
                           </tr>
                           <tr>
                                <td>dateIssued</td>
-                               <td>{{postDetail.dateIssued}}</td>
+                               <td>{{postDetail?.dateIssued}}</td>
                           </tr>
                           <tr>
                                <td>contributorAuthor</td>
                                <td>
                                   <ul>
-                                   <li *ngFor="let author of postDetail.contributorAuthor">{{postDetail.contributorAuthor}}</li>
+                                   <li *ngFor="let author of postDetail.contributorAuthor">{{postDetail?.contributorAuthor}}</li>
                                   </ul>
                                </td>
                           </tr>
@@ -124,17 +114,15 @@
                                <td>contributorInterviewer</td>
                                <td>
                                   <ul>
-                                   <li *ngFor="let author of postDetail.contributorInterviewer">{{postDetail.contributorInterviewer}}</li>
+                                   <li *ngFor="let author of postDetail.contributorInterviewer">{{postDetail?.contributorInterviewer}}</li>
                                   </ul>
                                </td>
                           </tr>
 
                       </tbody>
                    </table>
-               </div>
               </div>
 
-        </div>
 
 
 
@@ -164,7 +152,7 @@
           </li>
           <li>
               <a class="twitter twitter-share-button"
-                href="https://twitter.com/intent/tweet?url=&text={{postDetail.title}}&via=dalnarchive" target="_blank"  ></a>
+                href="https://twitter.com/intent/tweet?url=&text={{postDetail?.title}}&via=dalnarchive" target="_blank"  ></a>
           </li>
           <!-- <li>
             <a href="#" class="flickr">

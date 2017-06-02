@@ -61,7 +61,7 @@
 </div>
 
 
-<div class="container responsive_home" >
+<div class="container responsive_home" *ngIf="showUtil" >
     <div class="post_list">
         <post-list [postList]="posts"></post-list>
     </div>

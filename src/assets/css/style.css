@@ -821,13 +821,7 @@ ul.arrow li {
 #header-wrap { position: relative;}
 
 #header-wrap img {width: 40%; height: auto; margin: 3px; }
-.thumbnails {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-.thumbnails > li {
-    height: 275px;
-}
+
 .span8 .sproutvideo-player {
     width: 100%;
     height: 432px;
@@ -965,6 +959,19 @@ iframe {
 	height: 166px;
 }
 
+/* Fixes for spacing */
+
+.card {
+    height: 375px;
+    margin-bottom: 10%;
+}
+
+.text-wrap {
+
+}
+
+
+
 
 
 #collapseContent { padding-bottom: 30px;}
@@ -1001,9 +1008,7 @@ iframe {
         display: none;
     }
 
-    .postItem {
-        width: 100%;
-    }
+
 }
 
 .contact-info {

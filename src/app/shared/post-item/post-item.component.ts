@@ -18,27 +18,12 @@ export class PostItemComponent implements OnInit {
   @Input()
   postItem: Post;
 
-  //****************************
-  //Not in use at momement because direct lint in html template
-  selectedPost: Post;
-  //****************************
+  ngOnInit() {
+    //   if (this.postItem.description ==)
+  }
 
   getPreview(postAssets: Asset[]): Asset {
     return this._postService.getPreview(postAssets);
-  }
-
-  onSelect(post: Post): void {
-    this.selectedPost = post;
-    //goto detail page
-    this.gotoDetail();
-  }
-
-  gotoDetail(): void {
-    this._router.navigate(['/detail', this.selectedPost.postId]);
-  }
-
-
-  ngOnInit() {
   }
 
 }
