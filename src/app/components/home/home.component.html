@@ -12,9 +12,60 @@
 
 
 <div class="container responsive_home" >
-    <div class="post_list">
-        <post-list [postList]="posts"></post-list>
-    </div>
+    <section class="post_list" id="post_list">
+        <div class="row">
+            <post-list [postList]="posts"></post-list>
+        </div>
+    </section>
+        <section class="movies" id="movies">
+            <h2>Featured Movies</h2>
+        	<div class="row">
+
+        		<div class="col-lg-3 col-md-4 col-sm-6">
+            		<article class="card">
+        				<header class="post-header">
+        					<h3>Movie Title</h3>
+        				</header>
+        				<div class="card-block">
+        					<div class="img-card">
+        						<img src="https://placehold.it/300x250" alt="Movie" class="w-100" />
+        					</div>
+        					<p class="post-desc card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+        				</div>
+        			</article>
+        		</div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+            		<article class="card">
+        				<header class="post-header">
+        					<h3>Movie Title</h3>
+        				</header>
+        				<div class="card-block">
+        					<div class="img-card">
+        						<img src="https://placehold.it/300x250" alt="Movie" class="w-100" />
+        					</div>
+        					<p class="post-desc card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+        				</div>
+        			</article>
+        		</div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+            		<article class="card">
+        				<header class="post-header">
+        					<h3>Movie Title</h3>
+        				</header>
+        				<div class="card-block">
+        					<div class="img-card">
+        						<img src="https://placehold.it/300x250" alt="Movie" title="Movie" class="w-100" />
+        					</div>
+        					<p class="post-desc card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+        				</div>
+        			</article>
+        		</div>
+        	</div>
+        </section>
+
 </div>
 
 <daln-footer></daln-footer>

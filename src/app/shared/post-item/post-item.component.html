@@ -1,4 +1,4 @@
-<div class="postItem col-xs-3" *ngIf="postItem">
+<!-- <div class="postItem col-xs-3" *ngIf="postItem">
   <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
 
     <app-player
@@ -10,6 +10,22 @@
     <p class="post_desc"><em>{{postItem.description}}</em></p>
   </div>
 </a>
+</div> -->
+
+<div class="postItem" *ngIf="postItem">
+    <article class="card">
+        <header class="post-header">
+            <h3>{{postItem.title}}</h3>
+        </header>
+        <div class="card-block">
+                <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
+                    <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
+                </a>
+            <a [routerLink]="['/detail', postItem.postId]">
+                <p class="post-desc card-text text-xs-center">{{postItem.description}}</p>
+            </a>
+        </div>
+    </article>
 </div>
 
 <router-outlet></router-outlet>
