@@ -19,9 +19,9 @@
   <!-- Video Post -->
   <div class="postitem_video" *ngIf="postAsset.assetType === 'Audio/Video'">
     <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
-            [src]="url | safe" allowfullscreen width="100%" height="436px"></iframe>
+            [src]="url | safe" width="100%" height="436px" allowfullscreen ></iframe>
     <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
-            [src]="url | safe"></iframe>
+            [src]="url | safe" ></iframe>
   </div>
 
   <!-- Text post - only counts pdfs for now -->
