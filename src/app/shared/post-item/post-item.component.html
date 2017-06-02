@@ -15,15 +15,33 @@
 <div class="postItem" *ngIf="postItem">
     <article class="card">
         <header class="post-header">
+        <div>
             <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
                 <h3>{{postItem?.title}}</h3>
             </a>
+        </div>
         </header>
         <div class="card-block">
                 <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
-                <p>{{postItem?.description}}</p>
+                <div class="post-desc">
+                    <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
+                        <p>{{postItem?.description}}</p>
+                    </a>
+                </div>
         </div>
     </article>
 </div>
+
+<!-- <div class="postItem" *ngIf="postItem">
+      <div class="card">
+        <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
+        <div class="card-block">
+            <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
+                <h3>{{postItem?.title}}</h3>
+            </a>
+          <p class="card-text">{{postItem?.description}}</p>
+        </div>
+      </div>
+</div> -->
 
 <router-outlet></router-outlet>

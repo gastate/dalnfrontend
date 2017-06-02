@@ -956,7 +956,6 @@ iframe {
 
 .postitem_text {
 	width: 100%;
-	height: 166px;
 }
 
 /* Fixes for spacing */
@@ -966,12 +965,15 @@ iframe {
     margin-bottom: 10%;
 }
 
-.text-wrap {
-
+.card-block {
+    overflow: hidden;
 }
 
-
-
+.post-desc {
+    max-height: 150px;
+    position: relative;
+    overflow: hidden;
+}
 
 
 #collapseContent { padding-bottom: 30px;}
