@@ -12,7 +12,7 @@ export class MediaComponent implements OnInit {
 
 
   submitService : SubmitFormService;
-
+  fileList: FileList;
 
   constructor(
     private _router : Router,
@@ -25,12 +25,12 @@ export class MediaComponent implements OnInit {
   }
 
   setMedia (event) {
-    let fileList : FileList = event.target.files;
-    this.submitService.getMedia(fileList);
+    this.fileList = event.target.files;
+    this.submitService.getMedia(this.fileList);
   }
 
   uploadFiles() {
-      this.submitService.uploadMedia();
+      this.submitService.uploadMedia(this.fileList);
   }
 
 

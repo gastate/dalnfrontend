@@ -32,7 +32,7 @@ export class SubmitFormService {
     subject: string[];
 
     postResult : string;
-    formData : FormData = new FormData();
+    formData : FormData = new FormData(); // only data that needs to be sent to upload files.
     filename : string = null;
 
 
@@ -63,8 +63,6 @@ export class SubmitFormService {
   getMedia (fileList : FileList) {
 
     let file : File;
-    this.filename = fileList[0].name; // to use in the get_upload_link key.
-
 
     console.log(fileList);
 
@@ -72,33 +70,46 @@ export class SubmitFormService {
         file = fileList[i];
         this.formData.append("userFile", file, file.name);
     }
-
   }
 
-  uploadMedia() {
+  uploadMedia(fileList: FileList) {
       // TODO: loop through every file in the fileList
       let headers = new Headers();
       headers.append('Content-Type', ' ');
       let options = new RequestOptions({headers: headers, method: "put"});
 
-      console.log("Uploading Files...");
-      console.log(this.endPoint.get_upload_link + this.filename);
-      this._http.get(this.endPoint.get_upload_link + this.filename)
-      .map((res: Response) => res.json())
-      .catch((error : any) => Observable.throw(error.json().error))
-      .subscribe(
-          // data is the link returned from get_upload_link, will use this link to submit the formData.
-          data => {
-              this._http.put(data, this.formData, options)
+
+      let file: File; // file to handle during the upload process.
+
+      if (fileList) {
+          for (var i = 0; i < fileList.length; i++) {
+              file = fileList[i];
+              console.log(this.endPoint.get_upload_link + file.name);
+              this._http.get(this.endPoint.get_upload_link + file.name)
               .map((res: Response) => res.json())
-              .catch((error: any) => Observable.throw(error.json().error))
+              .catch((error : any) => Observable.throw(error.json().error))
               .subscribe(
-                  data => { console.log('response', data); },
-                  error => { console.log(error); }
+                  // data is the link returned from get_upload_link, will use this link to submit the formData.
+                  data => {
+                      this._http.put(data, this.formData, options)
+                      .map((res: Response) => res.json())
+                      .catch((error: any) => Observable.throw(error.json().error))
+                      .subscribe(
+                          data => { console.log('response', data); },
+                          error => { console.log(error); }
+                      );
+                  }
+
               );
           }
+      } else {
+          console.log("The fileList is empty");
+      }
 
-      );
+    //   console.log("Uploading Files...");
+    //   console.log(this.endPoint.get_upload_l
+    //       ink + this.filename);
+
     //   // Testing mock http service
     //   this._http.put('https://httpbin.org/put', this.formData)
     //   .map((res: Response) => res.json())

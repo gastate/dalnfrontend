@@ -1,9 +1,8 @@
 
 <div class="container">
 
-    <form [formGroup]="descForm" novalidate (submit)="next()">
+<form [formGroup]="descForm" novalidate (submit)="next()">
     <ul>
-
         <li>
             <span>Title</span>
 
@@ -41,7 +40,7 @@
         </p>
     </div>
 
-    <ul class="thumbnails">
+    <ul>
         <li>
           <span>Subject Keyword</span>
           <div class="col-lg-6">
@@ -206,22 +205,21 @@
             Please enter the language(s) used or referred to in your literacy narrative. (Optional)
           </p>
         </li>
-
-
     </ul>
-</div>
-    </form>
+    </div>
+</form>
 
     <!-- <button type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button> -->
     <!-- <button type="submit" (click)="getConsole()">Get Console</button> -->
+</div>
+
+<div class="container">
     <button type="submit" class="btn btn-primary" [disabled]="!descForm.valid" (click)="next()">Next Step</button>
 
     <div class="alert alert-info" role="alert" *ngIf="!descForm.controls.title.valid">
         <strong > A title is required to make a post.</strong>
     </div>
-
 </div>
-
 <!-- <p>
     Form value:
     {{descForm.value | json}}
