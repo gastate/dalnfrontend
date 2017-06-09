@@ -68,13 +68,26 @@ export class SearchService {
     //   console.log("Query:" + this.searchQuery);
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
 
-
-      return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
+    return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
         let posts = res.json();
         console.log("Get Search Page Posts", posts);
         return posts;
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-
+    //   Q1) Is the size of the post object returned in search slowing down the request?
+    //
+    //   - If so, create a seperate search endpoint that returns a minimal post object with only the items needed for display
+    //
+    //   Try to bring back 1000 results quickly. or at the very least 100 results.
+    //
+    //   Then, divide the length of results by display result parameter
+    //    
+    //   this = the number of pages
+    //
+    //   The other thing that shakib give you is the totla number of results
+    //
+    //   This will let you know if you need to make additional calls to the server to get more results
+    //
+    //   create an totla atribute on the json that = total_number_results
   }
 
   // getSearchEngineSize(){
