@@ -26,18 +26,26 @@ export class PostDetailComponent implements OnInit {
   selectedAsset: Asset;
   shareUrl : string;
 
+  loading: boolean = false;
+  failed: boolean = false;
+
   isPDF : boolean = false;
 
   ngOnInit(): void {
+    this.loading = true;
     this._route.params.switchMap(
       (params: Params) => this._postService.getPostById(params['id']))
-      .subscribe((details) => {
-        this.postDetail = details;
-        // console.log(details);
-        // console.log()
-        this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
-      });
-
+      .subscribe(
+          (details) => {
+                this.postDetail = details;
+                // console.log(details);
+                this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
+            },
+          err => {
+              this.loading = false;
+              this.failed = true;
+              console.log(err);
+          });
   }
 
   goBack(): void {

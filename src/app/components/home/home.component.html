@@ -1,23 +1,22 @@
 
+<div class="container responsive_home">
 
-    <div class="container responsive_home">
+    <!-- Search Component -->
+    <app-search2></app-search2>
 
-        <!-- Search Component -->
-        <app-search2></app-search2>
-
-        <app-slider></app-slider>
+    <app-slider></app-slider>
 
 
-    </div>
-
-<div class="center">
-  <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
 </div>
+
+
 <div class="container responsive_home" >
         <post-list [postList]="posts"></post-list>
 </div>
 
-
+<div class="center">
+  <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
+</div>
 
 
 
