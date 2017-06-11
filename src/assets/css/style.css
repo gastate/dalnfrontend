@@ -1072,3 +1072,10 @@ span.italic {
 @media (min-width: 1210px) {
 
 }
+
+/* Loading Icon */
+.loader {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(33, 63, 113);
+}
