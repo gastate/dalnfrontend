@@ -13,6 +13,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AdminComponent } from './components/admin/admin.component';
 import { AppComponent } from './app.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
+import { FancyLoaderComponent } from './shared/fancy-loader/fancy-loader.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -40,6 +41,7 @@ import { SafePipe } from './safe.pipe';
   declarations: [
     AdminComponent,
     AppComponent,
+    FancyLoaderComponent,
     HomeComponent,
     LoginComponent,
     PostListComponent,

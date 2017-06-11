@@ -16,11 +16,12 @@ export class PostListComponent implements OnInit {
   postList: Post[];
   selectedPost: Post;
 
+
   ngOnInit() {
   }
 
   setPage(){
-      
+
   }
 
 

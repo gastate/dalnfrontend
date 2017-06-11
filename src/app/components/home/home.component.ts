@@ -20,19 +20,23 @@ export class HomeComponent implements OnInit {
 
   title = 'DALN Frontend';
   posts: Post[];
+  loading: boolean = false;
+  failed: boolean = false;
 
   ngOnInit(): void {
         this.getPagePosts();
-
-
   }
 
   getPagePosts() : void {
+      this.loading = true;
       this._searchService.search_page("games", 8, 1).subscribe(
           (data) => {
               this.posts = data;
+              this.loading = false;
         }, //Bind to view
         err => {
+          this.loading = false;
+          this.failed = true;
           // Log errors if any
           console.log(err);
         });

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FancyErrorComponent } from './fancy-error.component';
+import { FancyLoaderComponent } from './fancy-loader.component';
 
-describe('FancyErrorComponent', () => {
-  let component: FancyErrorComponent;
-  let fixture: ComponentFixture<FancyErrorComponent>;
+describe('FancyLoaderComponent', () => {
+  let component: FancyLoaderComponent;
+  let fixture: ComponentFixture<FancyLoaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FancyErrorComponent ]
+      declarations: [ FancyLoaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FancyErrorComponent);
+    fixture = TestBed.createComponent(FancyLoaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
