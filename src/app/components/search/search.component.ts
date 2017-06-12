@@ -33,8 +33,12 @@ export class SearchComponent implements OnInit {
 
   route: string;
 
+
+  // count: number = 0; // number of total results returned from a query.
   pageNumber: number; // user specified page number to start from.
   resultsSize : number; // number of results to display in search component.
+  // total_posts: number; // total number of posts in array NOTE: Currently not in use since endpoint does not return it.
+
 
   private noResults: boolean = false;
 
@@ -83,30 +87,9 @@ export class SearchComponent implements OnInit {
          this.searchService.changePageStart(this.pageNumber);
      }
 
-
     if(term === '' || term === undefined){
       return null;
     }
-    //   this.searchService.search_page(term, this.resultsSize, this.pageNumber)
-    //   .subscribe((results) => {
-    //     console.log("In Emmitter: ", results.length);
-    //     if ((results === null) || results.length <= 0 ) {
-    //         this.noResults = true;
-    //     } else {
-    //         this.noResults = false;
-    //         this.posts = results;
-    //     }
-    //
-    //     if (this.searchService.resultsSize > this.posts.length) {
-    //         this.pagedPosts = this.posts;
-    //     } else {
-    //         console.log("Greater.")
-    //     }
-    //     this.searchResults.emit(results),
-    //     err => {
-    //         console.log(err);
-    //     }
-    // });
 
     this.searchService.search_page(term, this.resultsSize, this.pageNumber)
       .subscribe((results) => {

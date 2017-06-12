@@ -17,19 +17,27 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
+  // If you're wondering about the paraentheses, see: http://g00glen00b.be/component-angular-2/
+  //  check out what each parameter means here: https://pokeapi.co/docsv2/
+  //  test out the parameters on the pokeapi endpoint here: http://pokeapi.co/api/v2/evolution-chain/?limit=10&offset=0
 
   searchQuery : string; // term to call the search engine with.
-  resultsSize : number; // user specified number of results to display.
-  pageNumber: number; // user specified page number to start from.
+  resultsSize : number; // user specified number of results to display. (limit)
+  pageNumber: number; // user specified page number to start from. (offset)
+  // total_posts: number; // total number of posts in array (count) NOTE: Currently not in use since endpoint does not return it.
+
   pageHead: number; // admin specified number of results to stay ahead of user.
+
 
   private endPoint = environment.API_ENDPOINTS;
 
   constructor(private _http: Http, private _jsonp : Jsonp) {
       this.searchQuery = null;
-      this.pageNumber = 0;
       this.resultsSize = 12;
-      this.pageHead = 10;
+      this.pageNumber = 0;
+    //   this.total_posts = 0; // NOTE: Currently not in use since endpoint does not return it.
+
+      this.pageHead = 50;
     }
 
 
@@ -43,6 +51,7 @@ export class SearchService {
   changePageStart(page: number) {
       this.pageNumber = page;
   }
+
 
 
 
@@ -68,6 +77,9 @@ export class SearchService {
     //   console.log("Query:" + this.searchQuery);
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
 
+    this.searchQuery = term; // NOTE: Temp for pagination.
+    this.resultsSize = results; // NOTE: Temp for pagination.
+
     return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
         let posts = res.json();
         console.log("Get Search Page Posts", posts);
@@ -80,7 +92,7 @@ export class SearchService {
     //   Try to bring back 1000 results quickly. or at the very least 100 results.
     //
     //   Then, divide the length of results by display result parameter
-    //    
+    //
     //   this = the number of pages
     //
     //   The other thing that shakib give you is the totla number of results
@@ -90,63 +102,10 @@ export class SearchService {
     //   create an totla atribute on the json that = total_number_results
   }
 
-  // getSearchEngineSize(){
-  //     console.log(this.endPoint.search_size);
-  //     return this._http.get(this.endPoint.search_size)
-  //       .map( res => {
-  //           let data = res.json();
-  //           this.totalNumberOfPosts = data;
-  //           return this.totalNumberOfPosts;
-  //       });
-  //
-  // }
-  //
 
-    // get resultSize,
 
-  // getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
-  //       // calculate total pages
-  //       let totalPages = Math.ceil(totalItems / pageSize);
-  //
-  //       let startPage: number, endPage: number;
-  //       if (totalPages <= 10) {
-  //           // less than 10 total pages so show all
-  //           startPage = 1;
-  //           endPage = totalPages;
-  //       } else {
-  //           // more than 10 total pages so calculate start and end pages
-  //           if (currentPage <= 6) {
-  //               startPage = 1;
-  //               endPage = 10;
-  //           } else if (currentPage + 4 >= totalPages) {
-  //               startPage = totalPages - 9;
-  //               endPage = totalPages;
-  //           } else {
-  //               startPage = currentPage - 5;
-  //               endPage = currentPage + 4;
-  //           }
-  //       }
-  //
-  //       // calculate start and end item indexes
-  //       let startIndex = (currentPage - 1) * pageSize;
-  //       let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
-  //
-  //       // create an array of pages to ng-repeat in the pager control
-  //       let pages = _.range(startPage, endPage + 1);
-  //
-  //       // return object with all pager properties required by the view
-  //       return {
-  //           totalItems: totalItems,
-  //           currentPage: currentPage,
-  //           pageSize: pageSize,
-  //           totalPages: totalPages,
-  //           startPage: startPage,
-  //           endPage: endPage,
-  //           startIndex: startIndex,
-  //           endIndex: endIndex,
-  //           pages: pages
-  //       };
-  //   }
+
+
 
 
 
