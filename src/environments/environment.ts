@@ -21,7 +21,7 @@ const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 
 const api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development";
 
-const search_api_url = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production"; // using prod endpoint on both dev and prod.
+const search_api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development"; // using prod endpoint on both dev and prod.
 
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";

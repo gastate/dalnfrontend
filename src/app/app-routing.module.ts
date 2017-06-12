@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {AdminComponent} from './components/admin/admin.component';
 import {HomeComponent} from './components/home/home.component';
-import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {PageNotFoundComponent} from './shared/page-not-found/page-not-found.component';
 import {PostListComponent} from './shared/post-list/post-list.component';
 import {PostDetailComponent} from './components/post-detail/post-detail.component';
 import {AboutComponent} from './components/about/about.component';

@@ -24,6 +24,24 @@ export class PostListComponent implements OnInit {
 
   }
 
+  hoverLink() {
+      var elms = document.getElementsByClassName("hover-post");
+        // var n = elms.length;
+        // function changeColor(color) {
+        //     for(var i = 0; i < n; i ++) {
+        //         elms[i].style.backgroundColor = color;
+        //     }
+        // }
+        // for(var i = 0; i < n; i ++) {
+        //     elms[i].onmouseover = function() {
+        //         changeColor("yellow");
+        //     };
+        //     elms[i].onmouseout = function() {
+        //         changeColor("white");
+        //     };
+        // }
+  }
+
 
 
 }

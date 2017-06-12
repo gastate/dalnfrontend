@@ -888,7 +888,14 @@ ul.arrow li {
     height: 350px;
 }
 
-/**** Post List ****/
+                    /****  Miscellaneous ****/
+
+/*For other non-home components that need spacing at the top.*/
+.add-top-margin {
+    margin-top: 2%;
+}
+
+                    /**** Post List ****/
 
 #list-container {
     margin-top: 50px;
@@ -958,7 +965,7 @@ iframe {
 	width: 100%;
 }
 
-/* Fixes for spacing */
+/* Fixes for spacing on post_list*/
 
 .card {
     height: 375px;

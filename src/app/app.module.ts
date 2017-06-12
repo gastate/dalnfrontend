@@ -26,7 +26,7 @@ import { AppRoutingModule }     from './app-routing.module';
 import { PlayerComponent} from './shared/player/player.component';
 import { SearchComponent } from './components/search/search.component';
 import { SliderComponent } from './components/slider/slider.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 // Services
 import { PostService } from './services/post.service';
