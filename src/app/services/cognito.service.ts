@@ -89,8 +89,7 @@ export class UserLoginService {
 
     authenticate(username: string, password: string, callback: CognitoCallback) {
 
-        // Don't need since unauthenticated access is allowed on the user pool.
-        // AWS.config.update({accessKeyId: 'anything', secretAccessKey: 'anything'})
+        AWS.config.update({accessKeyId: 'anything', secretAccessKey: 'anything'})
 
         let authenticationData = {
             Username: username,
