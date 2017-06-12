@@ -56,7 +56,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   // }
 
    areMorePages() {
-       this.searchService.search_page(this.searchService.searchQuery, this.searchService.pageHead, this.next_posts)
+       this.searchService.search_page(this.searchService.searchTerm, this.searchService.pageHead, this.next_posts)
         .subscribe((data) => {
             if ((data == null) || (data.length <= 0)) {
                 this.more_pages = false;

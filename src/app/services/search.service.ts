@@ -29,6 +29,7 @@ export class SearchService {
   pageHead: number; // admin specified number of results to stay ahead of user.
 
   // NOTE: Temp pagination parameters.
+  searchTerm: string;
 
   private endPoint = environment.API_ENDPOINTS;
 
@@ -78,7 +79,7 @@ export class SearchService {
     //   console.log("Query:" + this.searchQuery);
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
 
-    this.searchQuery = term; // NOTE: Temp for pagination.
+    this.searchTerm = term; // NOTE: Temp for pagination.
     this.resultsSize = results; // NOTE: Temp for pagination.
 
     return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
