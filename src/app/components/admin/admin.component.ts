@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
    }
 
   ngOnInit() {
-      this.getApproveList();
+    //   this.getApproveList();
   }
 
   approvePost(postId : string) {
@@ -40,12 +40,12 @@ export class AdminComponent implements OnInit {
       console.log("page head changed to " + this.searchService.pageHead);
   }
 
-  getApproveList(){
-      this.authService.getApprovalList().subscribe((data) => {
-          // TODO: handle edge cases
-          this.approval_list = data;
-      });
-  }
+  // getApproveList(){
+  //     this.authService.getApprovalList().subscribe((data) => {
+  //         // TODO: handle edge cases
+  //         this.approval_list = data;
+  //     });
+  // }
 
 
 

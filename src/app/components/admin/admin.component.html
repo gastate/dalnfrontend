@@ -7,7 +7,7 @@
         <p>
             Enter the PostId:
         </p>
-        <input type="text" value="c6098589-4253-4649-974e-02ce17e16d27" name="postId" #postId/>
+        <input type="text" name="postId" #postId/>
         <button class="btn btn-primary" type="submit" value="Submit" (keydown.enter)="approvePost(postId.value)" (click)="approvePost(postId.value)">Submit</button>
     </div>
     <hr />
@@ -21,18 +21,18 @@
 
             i.e. Staying 10 pages ahead of user x 100 results per page = 1000 posts to stay ahead of user.
 
-            Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10. 
+            Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10.
         </p>
         <input type="number" class="form-control"  min="1" max="100" #pageHead [value]="searchService.pageHead"/>
         <button class="btn btn-primary" type="submit" (keydown.enter)="changePageHead(pageHead.value)" (click)="changePageHead(pageHead.value)">Change Page Head</button>
     </div>
     <hr />
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
         <p>
             Approval List
         </p>
         <post-list [postList]="approval_list"></post-list>
 
-    </div>
+    </div> -->
 
 </div>

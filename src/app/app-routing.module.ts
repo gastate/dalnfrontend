@@ -2,12 +2,13 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 
+import {AboutComponent} from './components/about/about.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {HomeComponent} from './components/home/home.component';
+import {LoginComponent} from './components/login/login.component';
 import {PageNotFoundComponent} from './shared/page-not-found/page-not-found.component';
 import {PostListComponent} from './shared/post-list/post-list.component';
 import {PostDetailComponent} from './components/post-detail/post-detail.component';
-import {AboutComponent} from './components/about/about.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {SearchComponent} from './components/search/search.component';
 
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'home',

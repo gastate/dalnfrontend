@@ -32,6 +32,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { PostService } from './services/post.service';
 import { SearchService } from './services/search.service';
 import { AuthService } from './services/auth.service';
+import { CognitoUtil, UserLoginService } from './services/cognito.service';
 
 // Other
 import { SafePipe } from './safe.pipe';
@@ -65,7 +66,7 @@ import { SafePipe } from './safe.pipe';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthService, PostService, SearchService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

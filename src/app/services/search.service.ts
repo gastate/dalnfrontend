@@ -28,6 +28,7 @@ export class SearchService {
 
   pageHead: number; // admin specified number of results to stay ahead of user.
 
+  // NOTE: Temp pagination parameters.
 
   private endPoint = environment.API_ENDPOINTS;
 
