@@ -15,5 +15,4 @@ export class FancyLoaderComponent implements OnInit {
   ngOnInit() {
   }
 
-// use the size of each card to determine the width and height of the component.
 }

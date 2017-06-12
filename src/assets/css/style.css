@@ -1086,3 +1086,23 @@ span.italic {
     width: 100%;
     background-color: rgb(33, 63, 113);
 }
+
+.loader h1 {
+    text-align: center;
+    color: rgb(247,249,253);
+}
+
+
+/* Loading Component */
+
+.loading-grid {
+    height: 300px;
+    background-color: rgb(211, 211, 211);
+    margin-bottom: 2%;
+}
+
+.failed-grid {
+    height: 300px;
+    background-color: rgb(242, 87, 90);
+    margin-bottom: 2%;
+}
