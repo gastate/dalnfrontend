@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
 
+ <!-- Polyfill -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+
   <!-- CSS files begin-->
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -15,9 +18,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
+
+    <!-- Cognito -->
+    <script src="assets/js/sjcl.js"></script>
+    <script src="assets/js/aws-cognito-sdk.min.js"></script>
+    <script src="assets/js/amazon-cognito-identity.min.js"></script>
+    <script src="assets/js/aws-sdk-2.7.13.min.js"></script>
+    <!-- /Cognito -->
+
+    <!-- <script src="assets/js/auto-fit.js" ></script> -->
+
 </head>
 <body>
-<daln-app>Loading...</daln-app>
+<daln-app>
+    <div class="center loader">
+            <h1>Loading the DALN...</h1>
+    </div>
+</daln-app>
 
 <script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
 

@@ -19,12 +19,14 @@ export class DescriptionComponent implements OnInit {
     descForm: FormGroup;
     submitService : SubmitFormService;
     title : string;
+    description: string;
     subjects : string [] = [];
     nations : string [] = [];
     regions : string [] = [];
     states : string [] = [];
     geos : string [] = [];
     languages : string [] = [];
+    period :  string [] = [];
 
   constructor(
     private _router: Router,
@@ -108,17 +110,24 @@ export class DescriptionComponent implements OnInit {
   // }
 
 
-  back() {
-      // return data back through submit-service.
-  }
 
   next() {
-    // this.descriptionService.updateDescription(this.form.value);
+    this.period = this.descForm.value.coveragePeriod;
+    this.description = this.descForm.value.description;
+    this.title = this.descForm.value.title;
 
-    let formObj = this.descForm.getRawValue();
-    let serialize = JSON.stringify(formObj);
 
-    // this._submitService.getDescObj(serialize);
+    this.submitService.description = this.description;
+    this.submitService.title = this.title;
+
+    // singular service arrays are set to the plural local arrays.
+    this.submitService.subject = this.subjects;
+    this.submitService.language = this.languages;
+    this.submitService.coveragePeriod = this.period;
+    this.submitService.coverageNationality = this.nations;
+    this.submitService.coverageRegion = this.regions;
+    this.submitService.coverageStateProvince = this.states;
+    this.submitService.coverageSpatial = this.geos;
 
     this._router.navigateByUrl('/create/media');
   }

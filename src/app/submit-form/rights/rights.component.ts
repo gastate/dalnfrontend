@@ -7,8 +7,7 @@ import { SubmitFormService } from '../submit-form.service';
 @Component({
   selector: 'app-rights',
   templateUrl: './rights.component.html',
-  styleUrls: ['./rights.component.css'],
-  providers : [ SubmitFormService ]
+  styleUrls: ['./rights.component.css']
 })
 
 export class RightsComponent implements OnInit {
@@ -23,9 +22,12 @@ export class RightsComponent implements OnInit {
 
   constructor(
       private _router: Router,
-      private fb: FormBuilder
+      private fb: FormBuilder,
+      _submitService : SubmitFormService
     ) {
-      this.initForm()
+      this.submitService = _submitService;
+      this.initForm();
+
   }
 
   ngOnInit() {
@@ -41,6 +43,7 @@ export class RightsComponent implements OnInit {
           rightsRelease : ['', Validators.required]
       });
 
+      // check if submitService has value
 
   }
 
@@ -48,8 +51,8 @@ export class RightsComponent implements OnInit {
       this.rightsConsent = this.rightsForm.value.rightsConsent;
       this.rightsRelease = this.rightsForm.value.rightsRelease;
 
-      let formObj = this.rightsForm.getRawValue();
-      let serialize = JSON.stringify(formObj);
+      this.submitService.rightsConsent = this.rightsConsent;
+      this.submitService.rightsRelease = this.rightsRelease;
 
       this._router.navigateByUrl('/create/metadata');
 

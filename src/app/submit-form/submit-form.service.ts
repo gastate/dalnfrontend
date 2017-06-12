@@ -12,41 +12,47 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class SubmitFormService {
     title: string;
-    // description: string;
+    description: string;
     // // dateAccessioned: string;
     // // dateAvailable: string;
     // // dateCreated: string;
     // // dateIssued: string;
-    // rightsConsent: string;
-    // rightsRelease: string;
-    // contributorAuthor: string[];
-    // creatorGender: string[];
-    // // creatorYearOfBirth: string[];
-    // coveragePeriod: string[];
-    // coverageNationality: string [];
-    // coverageStateProvince: string [];
-    // coverageRegion: string [];
-    // coverageSpatial: string [];
-    // language: string [];
-    // subject: string[];
+    rightsConsent: string;
+    rightsRelease: string;
+    contributorAuthor: string[];
+    contributorInterviewer: string[];
+    creatorGender: string[];
+    creatorYearOfBirth: string[];
+    coveragePeriod: string[];
+    coverageNationality: string [];
+    coverageStateProvince: string [];
+    coverageRegion: string [];
+    coverageSpatial: string [];
+    language: string [];
+    subject: string[];
 
     postResult : string;
+    formData : FormData = new FormData(); // only data that needs to be sent to upload files.
+    filename : string = null;
 
 
   constructor(private _http: Http) {
       this.title = null;
-    //   this.description = null;
-    //   this.rightsConsent = null;
-    //   this.rightsRelease = null;
-    //   this.contributorAuthor = [];
-    //   this.creatorGender = [];
-    //   this.coveragePeriod= [];
-    //   this.coverageNationality = [];
-    //   this.coverageStateProvince = [];
-    //   this.coverageRegion = [];
-    //   this.coverageSpatial = [];
-    //   this.language = [];
-    //   this.subject = [];
+      this.postResult = null;
+      this.description = null;
+      this.rightsConsent = null;
+      this.rightsRelease = null;
+      this.contributorAuthor = [];
+      this.contributorInterviewer = [];
+      this.creatorGender = [];
+      this.creatorYearOfBirth = [];
+      this.coveragePeriod = [];
+      this.coverageNationality = [];
+      this.coverageStateProvince = [];
+      this.coverageRegion = [];
+      this.coverageSpatial = [];
+      this.language = [];
+      this.subject = [];
 
 
    }
@@ -54,33 +60,131 @@ export class SubmitFormService {
 
   private endPoint = environment.API_ENDPOINTS;
 
+  getMedia (fileList : FileList) {
 
+    let file : File;
+
+    console.log(fileList);
+
+    for (var i = 0; i < fileList.length; i++) {
+        file = fileList[i];
+        this.formData.append("userFile", file, file.name);
+    }
+  }
+
+  uploadMedia(fileList: FileList) {
+      // TODO: loop through every file in the fileList
+      let headers = new Headers();
+      headers.append('Content-Type', ' ');
+      let options = new RequestOptions({headers: headers, method: "put"});
+
+
+      let file: File; // file to handle during the upload process.
+
+      if (fileList) {
+          for (var i = 0; i < fileList.length; i++) {
+              file = fileList[i];
+              console.log(this.endPoint.get_upload_link + file.name);
+              this._http.get(this.endPoint.get_upload_link + file.name)
+              .map((res: Response) => res.json())
+              .catch((error : any) => Observable.throw(error.json().error))
+              .subscribe(
+                  // data is the link returned from get_upload_link, will use this link to submit the formData.
+                  data => {
+                      this._http.put(data, this.formData, options)
+                      .map((res: Response) => res.json())
+                      .catch((error: any) => Observable.throw(error.json().error))
+                      .subscribe(
+                          data => { console.log('response', data); },
+                          error => { console.log(error); }
+                      );
+                  }
+
+              );
+          }
+      } else {
+          console.log("The fileList is empty");
+      }
+
+    //   console.log("Uploading Files...");
+    //   console.log(this.endPoint.get_upload_l
+    //       ink + this.filename);
+
+    //   // Testing mock http service
+    //   this._http.put('https://httpbin.org/put', this.formData)
+    //   .map((res: Response) => res.json())
+    //   .catch((error: any) => Observable.throw(error.json().error))
+    //   .subscribe(
+    //       data => { console.log('response', data); },
+    //       error => { console.log(error); }
+    //   );
+  }
 
 
   postCreate() {
-    //  var tableName = "DALN-Posts-Dev";
-    //  var data = {
-    //      title: this.title,
-    //      tableName : tableName
-    // }
-    //
-    //  var str = JSON.stringify(data);
-    //
-    //  let headers = new Headers();
-    //  headers.append('Content-Type', 'application/json');
-    //  let options = new RequestOptions({ headers: headers, method: "post"});
-    //
-    //  return this._http.post(this.endPoint.create_post, str, options)
-    //  .map((res: Response) => res.json())
-    //  .subscribe(
-    //      data => {
-    //          this.postResult = data;
-    //          console.log(data);
-    //      },
-    //      err => {
-    //         console.log(err);
-    //     }
-    //  );
+     var tableName = "DALN-Posts-Dev";
+     var data = {
+         title: this.title,
+         description: this.description,
+         rightsConsent: this.rightsConsent,
+         rightsRelease: this.rightsRelease,
+         creatorGender : this.creatorGender,
+         creatorYearOfBirth : this.creatorYearOfBirth,
+         contributorAuthor: this.contributorAuthor,
+         contributorInterviewer: this.contributorInterviewer,
+         coveragePeriod: this.coveragePeriod,
+         coverageRegion: this.coverageRegion,
+         coverageNationality: this.coverageNationality,
+         coverageSpatial: this.coverageSpatial,
+         coverageStateProvince: this.coverageStateProvince,
+         subject: this.subject,
+         language: this.language,
+         tableName : tableName
+    }
+
+     var str = JSON.stringify(data);
+
+     console.log(str);
+
+     let headers = new Headers();
+     headers.append('Content-Type', 'application/json');
+     let options = new RequestOptions({ headers: headers, method: "post"});
+
+
+     this._http.post(this.endPoint.create_post, str, options)
+     .map((res: Response) => res.json())
+     .subscribe(
+         // data here is the postId. Using it for link_media.
+         data => {
+             this.postResult = data;
+             console.log(data);
+
+             var jsonLink = {
+                 stagingAreaBucketName : "daln-file-staging-area",
+                 assetDescription: "Asset",
+                 finalBucketName: "daln-development",
+                 PostId: this.postResult,
+                 key: this.filename
+             }
+             let headers = new Headers();
+             headers.append('Content-Type', 'application/json');
+             let options = new RequestOptions({headers: headers, method: "post"});
+
+             var input = JSON.stringify(jsonLink);
+
+
+             this._http.post(this.endPoint.link_media, input, options)
+             .map((res: Response) => res.json())
+             .catch((error : any) => Observable.throw(error.json().error))
+             .subscribe(
+                 data => { console.log ('Link response: ', data);},
+                 error => { console.log(error); }
+             );
+         },
+         err => {
+            console.log(err);
+        }
+     );
 
   }
 

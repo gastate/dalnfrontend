@@ -16,7 +16,9 @@ import {POSTS} from './mock-postlist';
 
 @Injectable()
 export class PostService {
+
   constructor(private _http: Http) {
+
   }
 
   private endPoint = environment.API_ENDPOINTS;

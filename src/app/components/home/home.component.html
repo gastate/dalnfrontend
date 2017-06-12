@@ -1,0 +1,27 @@
+
+<div class="container responsive_home">
+
+    <!-- Search Component -->
+    <app-search2></app-search2>
+
+    <app-slider></app-slider>
+
+
+</div>
+
+
+<div class="container responsive_home" >
+        <post-list [postList]="posts"></post-list>
+</div>
+
+<div class="container responsive_home">
+    <div class="center add-top-margin">
+      <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
+    </div>
+</div>
+
+
+
+
+<daln-footer></daln-footer>
+<router-outlet></router-outlet>

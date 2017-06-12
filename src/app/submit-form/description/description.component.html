@@ -1,12 +1,13 @@
 
 <div class="container">
 
-    <form [formGroup]="descForm" novalidate (submit)="next()">
+<form [formGroup]="descForm" novalidate (submit)="next()">
     <ul>
-
         <li>
             <span>Title</span>
-            <input class="meta-info" type="text" name="title" formControlName="title" [(ngModel)]='submitService.title'> <br />
+
+            <input class="meta-info" type="text" name="title" formControlName="title" [value]='submitService.title' (input)="submitService.title = $event.target.value"> <br />
+
             <p>
             To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)
             </p>
@@ -15,7 +16,7 @@
 
         <li>
           <span>Description</span>
-          <input class="meta-info" type="text" name="description" formControlName="description" [(ngModel)]='description'> <br />
+          <input class="meta-info" type="text" name="description" formControlName="description" [value]="submitService.description" (input)="$event.target.value"> <br />
           <p>
             To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).
           </p>
@@ -39,7 +40,7 @@
         </p>
     </div>
 
-    <ul class="thumbnails">
+    <ul>
         <li>
           <span>Subject Keyword</span>
           <div class="col-lg-6">
@@ -204,22 +205,21 @@
             Please enter the language(s) used or referred to in your literacy narrative. (Optional)
           </p>
         </li>
-
-
     </ul>
-</div>
-    </form>
+    </div>
+</form>
 
     <!-- <button type="submit" [disabled]="form.invalid" (click)="next()">Next Step</button> -->
     <!-- <button type="submit" (click)="getConsole()">Get Console</button> -->
+</div>
+
+<div class="container">
     <button type="submit" class="btn btn-primary" [disabled]="!descForm.valid" (click)="next()">Next Step</button>
 
     <div class="alert alert-info" role="alert" *ngIf="!descForm.controls.title.valid">
         <strong > A title is required to make a post.</strong>
     </div>
-
 </div>
-
 <!-- <p>
     Form value:
     {{descForm.value | json}}

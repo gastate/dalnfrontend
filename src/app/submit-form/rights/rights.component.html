@@ -13,8 +13,8 @@
         </div>
 
 
-            <input class="rights-option" type="radio" name="rightsConsent" value="Adult" formControlName="rightsConsent" [(ngModel)]='rightsConsent'> <p>Adult</p>
-            <input class="rights-option" type="radio" name="rightsConsent" value="Under-18" formControlName="rightsConsent" [(ngModel)]='rightsConsent'> <p> Under-18</p>
+            <input class="rights-option" type="radio" name="rightsConsent" value="Adult" formControlName="rightsConsent"> <p>Adult</p>
+            <input class="rights-option" type="radio" name="rightsConsent" value="Under-18" formControlName="rightsConsent"> <p> Under-18</p>
 
     </div>
 
@@ -26,13 +26,13 @@
               </p>
           </div>
 
-          <input type="radio" name="rightsRelease" value="Adult" formControlName="rightsRelease" [(ngModel)]='rightsRelease'> <p> Adult </p>
-          <input type="radio" name="rightsRelease" value="Under-18" formControlName="rightsRelease" [(ngModel)]='rightsRelease'> <p> Under-18 </p>
+          <input type="radio" name="rightsRelease" value="Adult" formControlName="rightsRelease"> <p> Adult </p>
+          <input type="radio" name="rightsRelease" value="Under-18" formControlName="rightsRelease"> <p> Under-18 </p>
 
       </div>
     </form>
 
-    <button class="btn btn-primary" type="submit" [disabled]="rightsForm.invalid" (click)="next()">Next Step</button>
+    <button class="btn btn-primary" type="submit" (click)="next()">Next Step</button>
 
 
 </div>

@@ -1,8 +1,10 @@
 <div class="container">
 
 
-  <p><input class="btn btn-primary" type="file" name="file1"></p>
+  <!-- <p><input class="btn btn-primary" type="file" name="file1"></p> -->
+  <p><input type="file" (change)="setMedia($event)" placeholder="Upload file" name="file" multiple></p>
 
+    <button class="btn btn-secondary" type="button" (click)="uploadFiles()">Upload Files</button>
 
 
 
