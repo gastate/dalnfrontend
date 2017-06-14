@@ -2,16 +2,21 @@
 <div class="container responsive_home">
 
     <!-- Search Component -->
-    <app-search2></app-search2>
+    <app-search2 (searchResults)="displayResults($event)"></app-search2>
 
-    <app-slider></app-slider>
+    <app-slider *ngIf="searchPosts.length === 0"></app-slider>
 
 
 </div>
 
 
 <div class="container responsive_home" >
-        <post-list [postList]="posts"></post-list>
+        <p *ngIf="searchPosts.length === 0">
+            games
+        </p>
+        <post-list *ngIf="searchPosts.length === 0" [postList]="posts"></post-list>
+        <post-list *ngIf="searchPosts.length > 0" [postList]="searchPosts"></post-list>
+
 </div>
 
 <div class="container responsive_home">

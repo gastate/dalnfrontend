@@ -19,7 +19,11 @@ export class HomeComponent implements OnInit {
   }
 
   title = 'DALN Frontend';
+  searchPosts: Post[] = [];
   posts: Post[];
+
+  searchLoader: any;
+
   loading: boolean = false;
   failed: boolean = false;
 
@@ -40,6 +44,11 @@ export class HomeComponent implements OnInit {
           // Log errors if any
           console.log(err);
         });
+  }
+
+  displayResults(event) {
+      console.log("Search hit.", event);
+      this.searchPosts = event;
   }
 
 

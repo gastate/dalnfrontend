@@ -68,16 +68,16 @@ export class SearchComponent implements OnInit {
     this.pageNumber = this.searchService.pageNumber;
 
 
-       this._router.events.subscribe((val) => {
-         // see also
-         this.route = this._location.path();
-         if (this.route == "/search"){
-             console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
-             this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber );
-             this.showUtil = true; // handles utility functions for ux.
-             this.showFull = true; // handles expansion of search bar
-         }
-     });
+    //    this._router.events.subscribe((val) => {
+    //      // see also
+    //      this.route = this._location.path();
+    //      if (this.route == "/search"){
+    //          console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
+    //          this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber );
+    //          this.showUtil = true; // handles utility functions for ux.
+    //          this.showFull = true; // handles expansion of search bar
+    //      }
+    //  });
 
   }
 
@@ -126,28 +126,6 @@ export class SearchComponent implements OnInit {
   }
 
 
-
-
- /**
-  * All onFakeSearch does is take the given user input parameters for pagination and results and navigate to the search route. All parameters are intialized in the constructor if no user input is given.
-  * @param {number} results    number of results to display on component
-  * @param {number} pageNumber page number to start from
-  */
-  onFakeSearch(results: number, pageNumber: number) : void {
-
-      if(this.resultsSize != results) {
-          this.resultsSize = results;
-          this.searchService.changeResultsDisplayed(this.resultsSize);
-      }
-
-      if(this.pageNumber != pageNumber) {
-          this.pageNumber = pageNumber;
-          this.searchService.changePageStart(this.pageNumber);
-      }
-
-      this._router.navigateByUrl('/search');
-
-  }
 
 
 }
