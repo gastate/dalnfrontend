@@ -1,8 +1,5 @@
 <div class="child-container">
 
-    <div class="col-md-3 offset-md-2" *ngIf="showUtil">
-    <button class="btn btn-primary" type="submit" (click)="this._router.navigateByUrl('/home')">Go Back to Home Page</button>
-    </div>
 
     <div id="search-component">
 
@@ -54,12 +51,6 @@
 
     </div>
 
-
-    <div class="container responsive_home" *ngIf="showUtil" >
-        <div class="post_list">
-            <post-list [postList]="posts"></post-list>
-        </div>
-    </div>
 
 
 

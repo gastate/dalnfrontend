@@ -51,6 +51,12 @@ export class HomeComponent implements OnInit {
       this.searchPosts = event;
   }
 
+  clearSearch() {
+      this.searchPosts = [];
+      this._searchService.searchQuery = "";
+      // add to search history of browser
+  }
+
 
 
 

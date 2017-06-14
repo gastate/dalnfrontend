@@ -11,11 +11,18 @@
 
 
 <div class="container responsive_home" >
-        <p *ngIf="searchPosts.length === 0">
-            games
-        </p>
-        <post-list *ngIf="searchPosts.length === 0" [postList]="posts"></post-list>
-        <post-list *ngIf="searchPosts.length > 0" [postList]="searchPosts"></post-list>
+
+        <div class="featured-post-list" *ngIf="searchPosts.length === 0">
+            <h3>Featured Posts</h3>
+            <post-list [postList]="posts" [totalNumberOfPosts]="posts.length"></post-list>
+        </div>
+
+
+        <div class="search-post-list" *ngIf="searchPosts.length > 0">
+            <button (click)="clearSearch()" class="btn btn-primary" type="submit">Clear Search</button>
+            <post-list [postList]="searchPosts" [totalNumberOfPosts]="searchPosts.length"></post-list>
+        </div>
+
 
 </div>
 

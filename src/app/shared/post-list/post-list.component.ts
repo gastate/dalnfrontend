@@ -14,7 +14,9 @@ export class PostListComponent implements OnInit {
 
   @Input()
   postList: Post[];
-  selectedPost: Post;
+  pagedPosts: Post[];
+
+  @Input() totalNumberOfPosts: number;
 
 
   ngOnInit() {
