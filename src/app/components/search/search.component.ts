@@ -93,15 +93,18 @@ export class SearchComponent implements OnInit {
     }
 
     this.searchService.search_page(term, this.resultsSize, this.pageNumber)
-      .subscribe((results) => {
-        console.log("In Emmitter: ", this.resultsSize);
-        if ((results === null) || results.length <= 0 ) {
-            this.noResults = true;
-        } else {
-            this.noResults = false;
-            this.posts = results;
-        }
-        this.searchResults.emit(results),
+      .subscribe(
+        (results) => {
+            // console.log("In Emmitter: ", this.resultsSize);
+            if ((results === null) || results.length <= 0 ) {
+                this.noResults = true;
+            } else {
+                this.noResults = false;
+                console.log("API resposne: ", results.hit);
+                this.posts = this.translatePosts(results.hit);
+                console.log("le posts: ", this.posts);
+            }
+            this.searchResults.emit(this.posts),
         err => {
             console.log(err);
         }
@@ -109,6 +112,20 @@ export class SearchComponent implements OnInit {
 
     // this._router.navigateByUrl('/search');
 
+  }
+
+  translatePosts(search_results: any[]) {
+      let posts = [];
+      console.log("translatePosts: ", search_results);
+      search_results.forEach((i) => {
+        let post = new Post();
+        post.postId = i.id;
+        post.title = "title" + post.postId;
+        post.description = "description" + post.postId;
+        // post.assetList = [];
+        posts.push(post);
+      });
+      return posts;
   }
 
 
