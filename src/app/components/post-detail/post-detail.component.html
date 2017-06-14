@@ -1,4 +1,4 @@
-<div class="container" *ngIf="postDetail">
+<div class="container add-top-margin" *ngIf="postDetail">
   <button class="btn btn-primary" type="submit" (click)="goBack()">Back</button>
 
   <section>
@@ -9,7 +9,7 @@
       ================================================== -->
 
 
-      <div class="col-4">
+      <div class="col-md-4">
 
         <!-- Use the ul class. -->
         <ul class="metadata">
@@ -132,7 +132,7 @@
       <!-- Video
       ================================================== -->
 
-          <div class="col-8">
+          <div class="col-md-8">
               <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
               <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
         <!-- TODO: Remove style tag -->

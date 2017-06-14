@@ -37,6 +37,7 @@ export class PostDetailComponent implements OnInit {
       (params: Params) => this._postService.getPostById(params['id']))
       .subscribe(
           (details) => {
+                this.loading = false;
                 this.postDetail = details;
                 // console.log(details);
                 this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
