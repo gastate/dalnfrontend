@@ -14,7 +14,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   @Input() pageNumber: number = 0; // user specified page number to start from. (offset)
   @Input() resultsSize: number = 1; // number of results to display in search component. (limit)
-  // @Input() total_posts: number = 1; // number of total results in a search query. (size) NOTE: Currently not in use since endpoint does not return it.
+  @Input() total_posts: number = 1; // number of total results in a search query. (size)
   @Input() range: number = 10; // page range to display. (range)
 
   currentPage: number;
@@ -27,6 +27,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   ngOnInit() {
       this.currentPage = 0;
+      this.total_posts = 0;
       this.max_pages = 0;
       this.more_pages = true;
       this.next_posts = 0;

@@ -106,6 +106,20 @@ export class SearchService {
     //   create an totla atribute on the json that = total_number_results
   }
 
+  translatePosts(search_results: any[]) {
+      let posts = [];
+      console.log("translatePosts: ", search_results);
+      search_results.forEach((i) => {
+        let post = new Post();
+        post.postId = i.id;
+        post.title = "title" + post.postId;
+        post.description = "description" + post.postId;
+        // post.assetList = [];
+        posts.push(post);
+      });
+      return posts;
+  }
+
 
 
 

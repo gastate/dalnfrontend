@@ -23,8 +23,12 @@ export class SearchComponent implements OnInit {
   @Output()
   searchResults: EventEmitter<Post[]>;
 
+  @Output()
+  totalResults: EventEmitter<number>;
+
 
   posts: Post[];
+  total_results: number;
   pagedPosts: Post[];
   searchService : SearchService;
 
@@ -51,6 +55,7 @@ export class SearchComponent implements OnInit {
 
     this.searchService = _searchService;
     this.searchResults = new EventEmitter<Post[]>();
+    this.totalResults = new EventEmitter<number>();
 
   }
 
@@ -58,7 +63,7 @@ export class SearchComponent implements OnInit {
       // replace with results size.
     //   this.numberOfPages = this.searchService.getPaginationParameter();
     //   console.log("Pages: " + this.numberOfPages);
-
+    console.log("in search compoonent");
     this.resultsSize = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
 
@@ -100,33 +105,27 @@ export class SearchComponent implements OnInit {
                 this.noResults = true;
             } else {
                 this.noResults = false;
-                console.log("API resposne: ", results.hit);
-                this.posts = this.translatePosts(results.hit);
+                console.log("API resposne for hits: ", results.hit);
+                console.log("API response for total hits: ", results.found);
+
+                this.total_results = results.found;
+
+                this.posts = this.searchService.translatePosts(results.hit);
                 console.log("le posts: ", this.posts);
+
+                this.searchResults.emit(this.posts);
+                this.totalResults.emit(this.total_results);
             }
-            this.searchResults.emit(this.posts),
-        err => {
-            console.log(err);
-        }
+
+    }, err => {
+        console.log(err);
     });
 
     // this._router.navigateByUrl('/search');
 
   }
 
-  translatePosts(search_results: any[]) {
-      let posts = [];
-      console.log("translatePosts: ", search_results);
-      search_results.forEach((i) => {
-        let post = new Post();
-        post.postId = i.id;
-        post.title = "title" + post.postId;
-        post.description = "description" + post.postId;
-        // post.assetList = [];
-        posts.push(post);
-      });
-      return posts;
-  }
+
 
 
  /**

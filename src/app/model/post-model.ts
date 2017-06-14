@@ -18,6 +18,4 @@ export class Post {
   coveragePeriod: string[];
   subject: string[];
   assetList: Array<Asset>;
-
-  constructor(){}
 }

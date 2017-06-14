@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       this.loading = true;
       this._searchService.search_page("games", 8, 1).subscribe(
           (data) => {
-              this.posts = data;
+              this.posts = this._searchService.translatePosts(data.hit);
               this.loading = false;
         }, //Bind to view
         err => {
