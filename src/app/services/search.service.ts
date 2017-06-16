@@ -74,7 +74,7 @@ export class SearchService {
   // https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production/posts/search/literacy/10/1
   // format is the search endpoint + the term for search + the number of results per page + the page number (page number == return 50 posts of 2 results then the next two if incremented.)
 
-  search_page(term: string, results: number, page_size: number) : Observable<Post[]> {
+  search_page(term: string, results: number, page_size: number) : Observable<any> {
 
     //   console.log("Query:" + this.searchQuery);
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
@@ -83,9 +83,11 @@ export class SearchService {
     this.resultsSize = results; // NOTE: Temp for pagination.
 
     return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
-        let posts = res.json();
-        console.log("Get Search Page Posts", posts);
-        return posts;
+        // let posts = res.json();
+        // console.log("Get Search Page Posts", posts);
+        // return posts;
+        //
+        return res.json();
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     //   Q1) Is the size of the post object returned in search slowing down the request?
     //
@@ -102,6 +104,23 @@ export class SearchService {
     //   This will let you know if you need to make additional calls to the server to get more results
     //
     //   create an totla atribute on the json that = total_number_results
+  }
+
+  translatePosts(search_results: any[]) {
+      let posts = [];
+    //   console.log("translatePosts: ", search_results);
+      search_results.forEach((i) => {
+        let post = new Post();
+        post.postId = i.id;
+        post.title =  i.fields.title[0];
+        console.log("Title of post:", post.title);
+
+        post.description = (i.fields.description && i.fields.description[0] ? i.fields.description[0]  : "No description provided.") ;
+        console.log("description of post:", post.description);
+        post.assetList = [];
+        posts.push(post);
+      });
+      return posts;
   }
 
 

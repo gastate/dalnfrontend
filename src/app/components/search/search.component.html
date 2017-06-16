@@ -1,8 +1,5 @@
 <div class="child-container">
 
-    <div class="col-md-3 offset-md-2" *ngIf="showUtil">
-    <button class="btn btn-primary" type="submit" (click)="this._router.navigateByUrl('/home')">Go Back to Home Page</button>
-    </div>
 
     <div id="search-component">
 
@@ -14,8 +11,7 @@
                   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
                 </span>
                 <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery" (input)="searchService.searchQuery = $event.target.value"/>
-               <button *ngIf="showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, results.value, pageNum.value)" (click)="onSearch(searchBox.value, results.value, pageNum.value)" >Search</button>
-               <button *ngIf="!showUtil" class="btn btn-primary" type="submit" (keydown.enter)="onFakeSearch(results.value, pageNum.value)" (click)="onFakeSearch(results.value, pageNum.value)" >Search</button>
+               <button class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, results.value, pageNum.value)" (click)="onSearch(searchBox.value, results.value, pageNum.value)" >Search</button>
           </div>
 
         </div>
@@ -55,12 +51,6 @@
 
     </div>
 
-
-    <div class="container responsive_home" *ngIf="showUtil" >
-        <div class="post_list">
-            <post-list [postList]="posts"></post-list>
-        </div>
-    </div>
 
 
 

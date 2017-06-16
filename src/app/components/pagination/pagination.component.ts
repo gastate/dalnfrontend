@@ -1,5 +1,6 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { SearchService } from '../../services/search.service';
+
 
 @Component({
   selector: 'app-pagination',
@@ -8,18 +9,20 @@ import { SearchService } from '../../services/search.service';
 })
 export class PaginationComponent implements OnInit, OnChanges {
 
+  @Output() currentPageEmitter: EventEmitter<number>;
+
   searchService : SearchService;
 
 // If you're wondering about the paraentheses, see: http://g00glen00b.be/component-angular-2/ and check out what each parameter means here: https://pokeapi.co/docsv2/ and test out the parameters here: http://pokeapi.co/api/v2/evolution-chain/?limit=10&offset=0
 
   @Input() pageNumber: number = 0; // user specified page number to start from. (offset)
-  @Input() resultsSize: number = 1; // number of results to display in search component. (limit)
-  // @Input() total_posts: number = 1; // number of total results in a search query. (size) NOTE: Currently not in use since endpoint does not return it.
+  @Input() resultsSize: number = 1; // number of results to display in post-list component. (limit)
+  @Input() total_posts: number = 1; // number of total results in a search query. (size)
   @Input() range: number = 10; // page range to display. (range)
 
   currentPage: number;
   // totalPages: number; // NOTE: Currently not in use since endpoint does not return it.
-  max_pages: number;
+
   more_pages: boolean;
   next_posts: number; // number to increment and see if there are any more posts left.
 
@@ -27,21 +30,41 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   ngOnInit() {
       this.currentPage = 0;
-      this.max_pages = 0;
+      this.total_posts = 0;
+
       this.more_pages = true;
       this.next_posts = 0;
+
+      this.currentPageEmitter = new EventEmitter<number>();
   }
 
   ngOnChanges() {
 
   }
 
-  getPages(page: number) {
-      this.currentPage = this.getCurrentPage(page);
+
+
+  setCurrentPage(page: number){
+      this.currentPage = page;
+      this.currentPageEmitter.emit(this.currentPage);
   }
 
-  getCurrentPage(page: number): number {
-      return page + 1;
+  // getCurrentPage(){
+  // }
+
+  getTotalPages() {
+
+  }
+
+  createButtons() {
+      // total_posts / resultsSize = total_pages; // number of total pages
+     // total_pages = total_buttons // ngfor through to create buttons
+  }
+
+
+  getNextPage() {
+      // increment the index of searchPosts array.slice of searchPosts
+      // displayPosts will be searchPosts, searchPosts will be the pagination head array.
   }
 
   // getMaxPages() {

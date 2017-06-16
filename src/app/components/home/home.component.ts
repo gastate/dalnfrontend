@@ -19,7 +19,11 @@ export class HomeComponent implements OnInit {
   }
 
   title = 'DALN Frontend';
-  posts: Post[];
+  searchPosts: Post[] = [];
+  posts: Post[] = [];
+
+  searchLoader: any;
+
   loading: boolean = false;
   failed: boolean = false;
 
@@ -31,7 +35,7 @@ export class HomeComponent implements OnInit {
       this.loading = true;
       this._searchService.search_page("games", 8, 1).subscribe(
           (data) => {
-              this.posts = data;
+              this.posts = this._searchService.translatePosts(data.hit);
               this.loading = false;
         }, //Bind to view
         err => {
@@ -40,6 +44,17 @@ export class HomeComponent implements OnInit {
           // Log errors if any
           console.log(err);
         });
+  }
+
+  displayResults(event) {
+      console.log("Search hit.", event);
+      this.searchPosts = event;
+  }
+
+  clearSearch() {
+      this.searchPosts = [];
+      this._searchService.searchQuery = "";
+      // add to search history of browser
   }
 
 
