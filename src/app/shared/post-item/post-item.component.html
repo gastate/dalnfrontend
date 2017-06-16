@@ -3,13 +3,12 @@
         <header class="post-header">
         <div class="hover-post">
             <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
-                TODO: Temp and get rid of postId
-                <h3>{{postItem?.title}} + {{postItem?.postId}}</h3>
+                <h3>{{postItem?.title}}</h3>
             </a>
         </div>
         </header>
         <div class="card-block">
-                <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
+                <!-- <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player> -->
                 <div class="post-desc">
                     <div class="hover-post">
                         <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
