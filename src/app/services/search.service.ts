@@ -113,14 +113,20 @@ export class SearchService {
         let post = new Post();
         post.postId = i.id;
         post.title =  i.fields.title[0];
-        console.log("Title of post:", post.title);
+        // console.log("Title of post:", post.title);
 
         post.description = (i.fields.description && i.fields.description[0] ? i.fields.description[0]  : "No description provided.") ;
-        console.log("description of post:", post.description);
+        this.translateAssets(i.fields.assettype, i.fields.assetembedlink);
+        // console.log("description of post:", post.description);
         post.assetList = [];
         posts.push(post);
       });
       return posts;
+  }
+
+  translateAssets(assetType: any, assetList: any) {
+    //   console.log("assetType available: ",  assetType);
+    //   console.log("assetList available: " , assetList);
   }
 
 
