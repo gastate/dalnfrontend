@@ -108,13 +108,16 @@ export class SearchService {
 
   translatePosts(search_results: any[]) {
       let posts = [];
-      console.log("translatePosts: ", search_results);
+    //   console.log("translatePosts: ", search_results);
       search_results.forEach((i) => {
         let post = new Post();
         post.postId = i.id;
-        post.title = "title" + post.postId;
-        post.description = "description" + post.postId;
-        // post.assetList = [];
+        post.title =  i.fields.title[0];
+        console.log("Title of post:", post.title);
+
+        post.description = (i.fields.description && i.fields.description[0] ? i.fields.description[0]  : "No description provided.") ;
+        console.log("description of post:", post.description);
+        post.assetList = [];
         posts.push(post);
       });
       return posts;
