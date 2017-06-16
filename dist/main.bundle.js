@@ -84,10 +84,10 @@ exports.environment = {
 
 /***/ }),
 
-/***/ 1094:
+/***/ 1101:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(520);
+module.exports = __webpack_require__(521);
 
 
 /***/ }),
@@ -107,16 +107,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const http_1 = __webpack_require__(143);
+const http_1 = __webpack_require__(144);
 //Use instead of Promise
-const Rx_1 = __webpack_require__(204);
+const Rx_1 = __webpack_require__(205);
 // Import RxJs required methods
+__webpack_require__(146);
 __webpack_require__(145);
-__webpack_require__(144);
 const environment_1 = __webpack_require__(106);
 //Only used in Mock
-__webpack_require__(194);
-const mock_postlist_1 = __webpack_require__(646);
+__webpack_require__(196);
+const mock_postlist_1 = __webpack_require__(648);
 let PostService = class PostService {
     constructor(_http) {
         this._http = _http;
@@ -178,7 +178,19 @@ var _a;
 
 /***/ }),
 
-/***/ 435:
+/***/ 276:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+class Post {
+}
+exports.Post = Post;
+//# sourceMappingURL=post-model.js.map
+
+/***/ }),
+
+/***/ 436:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -201,54 +213,12 @@ let AppComponent = class AppComponent {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'daln-app',
-        template: __webpack_require__(818)
+        template: __webpack_require__(821)
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 436:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-const core_1 = __webpack_require__(0);
-const search_service_1 = __webpack_require__(98);
-let AboutComponent = class AboutComponent {
-    constructor(_searchService) {
-        this.title = 'About';
-        this.searchService = _searchService;
-    }
-    ngOnInit() {
-        //   this.searchService.getSearchEngineSize().subscribe( (data) => {
-        //      console.log("Number of Posts: " + data);
-        //      this.numberOfPosts = data;
-        //   });
-    }
-};
-AboutComponent = __decorate([
-    core_1.Component({
-        selector: 'app-about',
-        template: __webpack_require__(819),
-        styles: [__webpack_require__(805)]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _a || Object])
-], AboutComponent);
-exports.AboutComponent = AboutComponent;
-var _a;
-//# sourceMappingURL=about.component.js.map
 
 /***/ }),
 
@@ -267,8 +237,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
+const search_service_1 = __webpack_require__(83);
+let AboutComponent = class AboutComponent {
+    constructor(_searchService) {
+        this.title = 'About';
+        this.searchService = _searchService;
+    }
+    ngOnInit() {
+        //   this.searchService.getSearchEngineSize().subscribe( (data) => {
+        //      console.log("Number of Posts: " + data);
+        //      this.numberOfPosts = data;
+        //   });
+    }
+};
+AboutComponent = __decorate([
+    core_1.Component({
+        selector: 'app-about',
+        template: __webpack_require__(822),
+        styles: [__webpack_require__(807)]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _a || Object])
+], AboutComponent);
+exports.AboutComponent = AboutComponent;
+var _a;
+//# sourceMappingURL=about.component.js.map
+
+/***/ }),
+
+/***/ 438:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+const core_1 = __webpack_require__(0);
 const auth_service_1 = __webpack_require__(444);
-const search_service_1 = __webpack_require__(98);
+const search_service_1 = __webpack_require__(83);
 let AdminComponent = class AdminComponent {
     constructor(_authService, _searchService) {
         this.authService = _authService;
@@ -289,8 +301,8 @@ let AdminComponent = class AdminComponent {
 AdminComponent = __decorate([
     core_1.Component({
         selector: 'app-admin',
-        template: __webpack_require__(820),
-        styles: [__webpack_require__(806)]
+        template: __webpack_require__(823),
+        styles: [__webpack_require__(808)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" && _a || Object, typeof (_b = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _b || Object])
 ], AdminComponent);
@@ -300,7 +312,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 438:
+/***/ 439:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -325,8 +337,8 @@ let ContactComponent = class ContactComponent {
 ContactComponent = __decorate([
     core_1.Component({
         selector: 'app-contact',
-        template: __webpack_require__(822),
-        styles: [__webpack_require__(808)]
+        template: __webpack_require__(825),
+        styles: [__webpack_require__(810)]
     }),
     __metadata("design:paramtypes", [])
 ], ContactComponent);
@@ -335,7 +347,7 @@ exports.ContactComponent = ContactComponent;
 
 /***/ }),
 
-/***/ 439:
+/***/ 440:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -351,7 +363,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = __webpack_require__(0);
 const post_service_1 = __webpack_require__(129);
-const search_service_1 = __webpack_require__(98);
+const search_service_1 = __webpack_require__(83);
 // import { routerTransition } from '../router.animations';
 let HomeComponent = class HomeComponent {
     constructor(elementRef, _postService, _searchService) {
@@ -359,6 +371,8 @@ let HomeComponent = class HomeComponent {
         this._postService = _postService;
         this._searchService = _searchService;
         this.title = 'DALN Frontend';
+        this.searchPosts = [];
+        this.posts = [];
         this.loading = false;
         this.failed = false;
     }
@@ -368,7 +382,7 @@ let HomeComponent = class HomeComponent {
     getPagePosts() {
         this.loading = true;
         this._searchService.search_page("games", 8, 1).subscribe((data) => {
-            this.posts = data;
+            this.posts = this._searchService.translatePosts(data.hit);
             this.loading = false;
         }, //Bind to view
         err => {
@@ -378,12 +392,21 @@ let HomeComponent = class HomeComponent {
             console.log(err);
         });
     }
+    displayResults(event) {
+        console.log("Search hit.", event);
+        this.searchPosts = event;
+    }
+    clearSearch() {
+        this.searchPosts = [];
+        this._searchService.searchQuery = "";
+        // add to search history of browser
+    }
 };
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'home',
-        template: __webpack_require__(823),
-        styles: [__webpack_require__(809)]
+        template: __webpack_require__(826),
+        styles: [__webpack_require__(811)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object, typeof (_b = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _b || Object, typeof (_c = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _c || Object])
 ], HomeComponent);
@@ -393,7 +416,7 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 440:
+/***/ 441:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -445,8 +468,8 @@ let LoginComponent = class LoginComponent {
 LoginComponent = __decorate([
     core_1.Component({
         selector: 'app-login',
-        template: __webpack_require__(824),
-        styles: [__webpack_require__(810)]
+        template: __webpack_require__(827),
+        styles: [__webpack_require__(812)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof cognito_service_1.UserLoginService !== "undefined" && cognito_service_1.UserLoginService) === "function" && _b || Object])
 ], LoginComponent);
@@ -456,7 +479,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 441:
+/***/ 442:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -474,7 +497,7 @@ const core_1 = __webpack_require__(0);
 const router_1 = __webpack_require__(74);
 const common_1 = __webpack_require__(20);
 const post_service_1 = __webpack_require__(129);
-const post_model_1 = __webpack_require__(443);
+const post_model_1 = __webpack_require__(276);
 __webpack_require__(489);
 let PostDetailComponent = class PostDetailComponent {
     constructor(_postService, _route, _location) {
@@ -489,6 +512,7 @@ let PostDetailComponent = class PostDetailComponent {
         this.loading = true;
         this._route.params.switchMap((params) => this._postService.getPostById(params['id']))
             .subscribe((details) => {
+            this.loading = false;
             this.postDetail = details;
             // console.log(details);
             this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
@@ -512,8 +536,8 @@ __decorate([
 PostDetailComponent = __decorate([
     core_1.Component({
         selector: 'post-detail',
-        template: __webpack_require__(825),
-        styles: [__webpack_require__(811)]
+        template: __webpack_require__(829),
+        styles: [__webpack_require__(814)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _b || Object, typeof (_c = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _c || Object, typeof (_d = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _d || Object])
 ], PostDetailComponent);
@@ -523,7 +547,7 @@ var _a, _b, _c, _d;
 
 /***/ }),
 
-/***/ 442:
+/***/ 443:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -540,7 +564,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = __webpack_require__(0);
 const common_1 = __webpack_require__(20);
 const router_1 = __webpack_require__(74);
-const search_service_1 = __webpack_require__(98);
+const search_service_1 = __webpack_require__(83);
 const post_service_1 = __webpack_require__(129);
 let SearchComponent = class SearchComponent {
     constructor(_postService, _searchService, _location, _router) {
@@ -553,23 +577,25 @@ let SearchComponent = class SearchComponent {
         this.noResults = false;
         this.searchService = _searchService;
         this.searchResults = new core_1.EventEmitter();
+        this.totalResults = new core_1.EventEmitter();
     }
     ngOnInit() {
         // replace with results size.
         //   this.numberOfPages = this.searchService.getPaginationParameter();
         //   console.log("Pages: " + this.numberOfPages);
+        console.log("in search compoonent");
         this.resultsSize = this.searchService.resultsSize;
         this.pageNumber = this.searchService.pageNumber;
-        this._router.events.subscribe((val) => {
-            // see also
-            this.route = this._location.path();
-            if (this.route == "/search") {
-                console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
-                this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
-                this.showUtil = true; // handles utility functions for ux.
-                this.showFull = true; // handles expansion of search bar
-            }
-        });
+        //    this._router.events.subscribe((val) => {
+        //      // see also
+        //      this.route = this._location.path();
+        //      if (this.route == "/search"){
+        //          console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
+        //          this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber );
+        //          this.showUtil = true; // handles utility functions for ux.
+        //          this.showFull = true; // handles expansion of search bar
+        //      }
+        //  });
     }
     onSearch(term, results, pageNumber) {
         if (this.resultsSize != results) {
@@ -585,65 +611,45 @@ let SearchComponent = class SearchComponent {
         }
         this.searchService.search_page(term, this.resultsSize, this.pageNumber)
             .subscribe((results) => {
-            console.log("In Emmitter: ", this.resultsSize);
+            // console.log("In Emmitter: ", this.resultsSize);
             if ((results === null) || results.length <= 0) {
                 this.noResults = true;
             }
             else {
                 this.noResults = false;
-                this.posts = results;
+                console.log("API resposne for hits: ", results.hit);
+                console.log("API response for total hits: ", results.found);
+                this.total_results = results.found;
+                this.posts = this.searchService.translatePosts(results.hit);
+                console.log("le posts: ", this.posts);
+                this.searchResults.emit(this.posts);
+                this.totalResults.emit(this.total_results);
             }
-            this.searchResults.emit(results),
-                err => {
-                    console.log(err);
-                };
+        }, err => {
+            console.log(err);
         });
         // this._router.navigateByUrl('/search');
-    }
-    /**
-     * All onFakeSearch does is take the given user input parameters for pagination and results and navigate to the search route. All parameters are intialized in the constructor if no user input is given.
-     * @param {number} results    number of results to display on component
-     * @param {number} pageNumber page number to start from
-     */
-    onFakeSearch(results, pageNumber) {
-        if (this.resultsSize != results) {
-            this.resultsSize = results;
-            this.searchService.changeResultsDisplayed(this.resultsSize);
-        }
-        if (this.pageNumber != pageNumber) {
-            this.pageNumber = pageNumber;
-            this.searchService.changePageStart(this.pageNumber);
-        }
-        this._router.navigateByUrl('/search');
     }
 };
 __decorate([
     core_1.Output(),
     __metadata("design:type", typeof (_a = typeof core_1.EventEmitter !== "undefined" && core_1.EventEmitter) === "function" && _a || Object)
 ], SearchComponent.prototype, "searchResults", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", typeof (_b = typeof core_1.EventEmitter !== "undefined" && core_1.EventEmitter) === "function" && _b || Object)
+], SearchComponent.prototype, "totalResults", void 0);
 SearchComponent = __decorate([
     core_1.Component({
         selector: 'app-search2',
-        template: __webpack_require__(826),
-        styles: [__webpack_require__(812)],
+        template: __webpack_require__(830),
+        styles: [__webpack_require__(815)],
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _b || Object, typeof (_c = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _c || Object, typeof (_d = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _d || Object, typeof (_e = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _c || Object, typeof (_d = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _d || Object, typeof (_e = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _e || Object, typeof (_f = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _f || Object])
 ], SearchComponent);
 exports.SearchComponent = SearchComponent;
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=search.component.js.map
-
-/***/ }),
-
-/***/ 443:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-class Post {
-}
-exports.Post = Post;
-//# sourceMappingURL=post-model.js.map
 
 /***/ }),
 
@@ -662,13 +668,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const http_1 = __webpack_require__(143);
+const http_1 = __webpack_require__(144);
 //Use instead of Promise
-const Rx_1 = __webpack_require__(204);
+const Rx_1 = __webpack_require__(205);
 // Import RxJs required methods
+__webpack_require__(146);
 __webpack_require__(145);
-__webpack_require__(144);
-__webpack_require__(194);
+__webpack_require__(196);
 const environment_1 = __webpack_require__(106);
 let AuthService = class AuthService {
     constructor(_http) {
@@ -887,8 +893,8 @@ let PageNotFoundComponent = class PageNotFoundComponent {
 PageNotFoundComponent = __decorate([
     core_1.Component({
         selector: 'app-page-not-found',
-        template: __webpack_require__(829),
-        styles: [__webpack_require__(814)]
+        template: __webpack_require__(833),
+        styles: [__webpack_require__(817)]
     }),
     __metadata("design:paramtypes", [])
 ], PageNotFoundComponent);
@@ -912,7 +918,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const search_service_1 = __webpack_require__(98);
+const search_service_1 = __webpack_require__(83);
 let PostListComponent = class PostListComponent {
     constructor(page) {
         this.page = page;
@@ -943,11 +949,15 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", Array)
 ], PostListComponent.prototype, "postList", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], PostListComponent.prototype, "totalNumberOfPosts", void 0);
 PostListComponent = __decorate([
     core_1.Component({
         selector: 'post-list',
-        template: __webpack_require__(832),
-        styles: [__webpack_require__(817)]
+        template: __webpack_require__(836),
+        styles: [__webpack_require__(820)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _a || Object])
 ], PostListComponent);
@@ -957,12 +967,12 @@ var _a;
 
 /***/ }),
 
-/***/ 519:
+/***/ 520:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"app/submit-form/submit-form.module": [
-		1096,
+		1103,
 		0
 	]
 };
@@ -977,21 +987,21 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 519;
+webpackAsyncContext.id = 520;
 
 
 /***/ }),
 
-/***/ 520:
+/***/ 521:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-__webpack_require__(650);
-const platform_browser_dynamic_1 = __webpack_require__(605);
+__webpack_require__(652);
+const platform_browser_dynamic_1 = __webpack_require__(606);
 const core_1 = __webpack_require__(0);
 const environment_1 = __webpack_require__(106);
-const _1 = __webpack_require__(643);
+const _1 = __webpack_require__(645);
 if (environment_1.environment.production) {
     core_1.enableProdMode();
 }
@@ -1000,7 +1010,7 @@ platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(_1.AppModule
 
 /***/ }),
 
-/***/ 639:
+/***/ 640:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1016,15 +1026,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = __webpack_require__(0);
 const router_1 = __webpack_require__(74);
-const about_component_1 = __webpack_require__(436);
-const admin_component_1 = __webpack_require__(437);
-const home_component_1 = __webpack_require__(439);
-const login_component_1 = __webpack_require__(440);
+const about_component_1 = __webpack_require__(437);
+const admin_component_1 = __webpack_require__(438);
+const home_component_1 = __webpack_require__(440);
+const login_component_1 = __webpack_require__(441);
 const page_not_found_component_1 = __webpack_require__(446);
 const post_list_component_1 = __webpack_require__(447);
-const post_detail_component_1 = __webpack_require__(441);
-const contact_component_1 = __webpack_require__(438);
-const search_component_1 = __webpack_require__(442);
+const post_detail_component_1 = __webpack_require__(442);
+const contact_component_1 = __webpack_require__(439);
+const search_component_1 = __webpack_require__(443);
 const routes = [
     {
         path: '',
@@ -1086,7 +1096,7 @@ exports.AppRoutingModule = AppRoutingModule;
 
 /***/ }),
 
-/***/ 640:
+/***/ 641:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1101,38 +1111,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 // Defaults
-const platform_browser_1 = __webpack_require__(94);
+const platform_browser_1 = __webpack_require__(96);
 const core_1 = __webpack_require__(0);
 const forms_1 = __webpack_require__(59);
-const http_1 = __webpack_require__(143);
+const http_1 = __webpack_require__(144);
 //prevent 404 on refresh in s3
 //See http://stackoverflow.com/questions/35284988/angular-2-404-error-occur-when-i-refresh-through-browser
 const common_1 = __webpack_require__(20);
 // Components
-const admin_component_1 = __webpack_require__(437);
-const app_component_1 = __webpack_require__(435);
-const app_footer_component_1 = __webpack_require__(641);
-const fancy_loader_component_1 = __webpack_require__(647);
-const login_component_1 = __webpack_require__(440);
-const home_component_1 = __webpack_require__(439);
-const ng_bootstrap_1 = __webpack_require__(637);
+const admin_component_1 = __webpack_require__(438);
+const app_component_1 = __webpack_require__(436);
+const app_footer_component_1 = __webpack_require__(642);
+const fancy_loader_component_1 = __webpack_require__(649);
+const login_component_1 = __webpack_require__(441);
+const home_component_1 = __webpack_require__(440);
+const ng_bootstrap_1 = __webpack_require__(638);
+const pagination_component_1 = __webpack_require__(643);
 const post_list_component_1 = __webpack_require__(447);
-const post_item_component_1 = __webpack_require__(649);
-const post_detail_component_1 = __webpack_require__(441);
-const about_component_1 = __webpack_require__(436);
-const contact_component_1 = __webpack_require__(438);
-const app_routing_module_1 = __webpack_require__(639);
-const player_component_1 = __webpack_require__(648);
-const search_component_1 = __webpack_require__(442);
-const slider_component_1 = __webpack_require__(642);
+const post_item_component_1 = __webpack_require__(651);
+const post_detail_component_1 = __webpack_require__(442);
+const about_component_1 = __webpack_require__(437);
+const contact_component_1 = __webpack_require__(439);
+const app_routing_module_1 = __webpack_require__(640);
+const player_component_1 = __webpack_require__(650);
+const search_component_1 = __webpack_require__(443);
+const slider_component_1 = __webpack_require__(644);
 const page_not_found_component_1 = __webpack_require__(446);
 // Services
 const post_service_1 = __webpack_require__(129);
-const search_service_1 = __webpack_require__(98);
+const search_service_1 = __webpack_require__(83);
 const auth_service_1 = __webpack_require__(444);
 const cognito_service_1 = __webpack_require__(445);
 // Other
-const safe_pipe_1 = __webpack_require__(645);
+const safe_pipe_1 = __webpack_require__(647);
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -1148,6 +1159,7 @@ AppModule = __decorate([
             app_footer_component_1.AppFooterComponent,
             about_component_1.AboutComponent,
             contact_component_1.ContactComponent,
+            pagination_component_1.PaginationComponent,
             post_detail_component_1.PostDetailComponent,
             player_component_1.PlayerComponent,
             search_component_1.SearchComponent,
@@ -1174,7 +1186,7 @@ exports.AppModule = AppModule;
 
 /***/ }),
 
-/***/ 641:
+/***/ 642:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1228,8 +1240,8 @@ let AppFooterComponent = class AppFooterComponent {
 AppFooterComponent = __decorate([
     core_1.Component({
         selector: 'daln-footer',
-        template: __webpack_require__(821),
-        styles: [__webpack_require__(807)]
+        template: __webpack_require__(824),
+        styles: [__webpack_require__(809)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _b || Object])
 ], AppFooterComponent);
@@ -1239,7 +1251,114 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 642:
+/***/ 643:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+const core_1 = __webpack_require__(0);
+const search_service_1 = __webpack_require__(83);
+let PaginationComponent = class PaginationComponent {
+    constructor(_searchService) {
+        // If you're wondering about the paraentheses, see: http://g00glen00b.be/component-angular-2/ and check out what each parameter means here: https://pokeapi.co/docsv2/ and test out the parameters here: http://pokeapi.co/api/v2/evolution-chain/?limit=10&offset=0
+        this.pageNumber = 0; // user specified page number to start from. (offset)
+        this.resultsSize = 1; // number of results to display in post-list component. (limit)
+        this.total_posts = 1; // number of total results in a search query. (size)
+        this.range = 10; // page range to display. (range)
+        this.searchService = _searchService;
+    }
+    ngOnInit() {
+        this.currentPage = 0;
+        this.total_posts = 0;
+        this.more_pages = true;
+        this.next_posts = 0;
+        this.currentPageEmitter = new core_1.EventEmitter();
+    }
+    ngOnChanges() {
+    }
+    setCurrentPage(page) {
+        this.currentPage = page;
+        this.currentPageEmitter.emit(this.currentPage);
+    }
+    // getCurrentPage(){
+    // }
+    getTotalPages() {
+    }
+    createButtons() {
+        // total_posts / resultsSize = total_pages; // number of total pages
+        // total_pages = total_buttons // ngfor through to create buttons
+    }
+    getNextPage() {
+        // increment the index of searchPosts array.slice of searchPosts
+        // displayPosts will be searchPosts, searchPosts will be the pagination head array.
+    }
+    // getMaxPages() {
+    //     this.searchService.search_page(this.searchService.searchQuery, this.searchService.pageHead, 0)
+    //       .subscribe((data) => {
+    //           if ((data == null) || (data.length <= 0) ){
+    //               this.max_pages = 0;
+    //           } else if (data.length <= this.searchService.pageHead) {
+    //               this.max_pages = Math.ceil(Math.max(this.searchService.pageHead, 1) / Math.max(this.searchService.resultsSize, 1));
+    //           }
+    //       });
+    // }
+    areMorePages() {
+        this.searchService.search_page(this.searchService.searchTerm, this.searchService.pageHead, this.next_posts)
+            .subscribe((data) => {
+            if ((data == null) || (data.length <= 0)) {
+                this.more_pages = false;
+            }
+            else {
+                this.next_posts++;
+                this.more_pages = true;
+            }
+        });
+    }
+};
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", typeof (_a = typeof core_1.EventEmitter !== "undefined" && core_1.EventEmitter) === "function" && _a || Object)
+], PaginationComponent.prototype, "currentPageEmitter", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], PaginationComponent.prototype, "pageNumber", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], PaginationComponent.prototype, "resultsSize", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], PaginationComponent.prototype, "total_posts", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], PaginationComponent.prototype, "range", void 0);
+PaginationComponent = __decorate([
+    core_1.Component({
+        selector: 'app-pagination',
+        template: __webpack_require__(828),
+        styles: [__webpack_require__(813)]
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _b || Object])
+], PaginationComponent);
+exports.PaginationComponent = PaginationComponent;
+var _a, _b;
+//# sourceMappingURL=pagination.component.js.map
+
+/***/ }),
+
+/***/ 644:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1274,7 +1393,7 @@ SliderComponent = __decorate([
         //Name of our tag
         selector: 'app-slider',
         //Template for the tag
-        template: __webpack_require__(827),
+        template: __webpack_require__(831),
         //Styles for the tag
         styles: [`slider.component.css`],
         animations: [
@@ -1292,7 +1411,7 @@ exports.SliderComponent = SliderComponent;
 
 /***/ }),
 
-/***/ 643:
+/***/ 645:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1300,13 +1419,13 @@ exports.SliderComponent = SliderComponent;
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-__export(__webpack_require__(435));
-__export(__webpack_require__(640));
+__export(__webpack_require__(436));
+__export(__webpack_require__(641));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 644:
+/***/ 646:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1321,7 +1440,7 @@ exports.Asset = Asset;
 
 /***/ }),
 
-/***/ 645:
+/***/ 647:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1336,7 +1455,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const platform_browser_1 = __webpack_require__(94);
+const platform_browser_1 = __webpack_require__(96);
 let SafePipe = class SafePipe {
     constructor(sanitizer) {
         this.sanitizer = sanitizer;
@@ -1357,7 +1476,7 @@ var _a;
 
 /***/ }),
 
-/***/ 646:
+/***/ 648:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1438,7 +1557,7 @@ exports.POSTS = [
 
 /***/ }),
 
-/***/ 647:
+/***/ 649:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1472,8 +1591,8 @@ __decorate([
 FancyLoaderComponent = __decorate([
     core_1.Component({
         selector: 'app-fancy-loader',
-        template: __webpack_require__(828),
-        styles: [__webpack_require__(813)]
+        template: __webpack_require__(832),
+        styles: [__webpack_require__(816)]
     }),
     __metadata("design:paramtypes", [])
 ], FancyLoaderComponent);
@@ -1482,7 +1601,7 @@ exports.FancyLoaderComponent = FancyLoaderComponent;
 
 /***/ }),
 
-/***/ 648:
+/***/ 650:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1497,8 +1616,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const platform_browser_1 = __webpack_require__(94);
-const asset_model_1 = __webpack_require__(644);
+const platform_browser_1 = __webpack_require__(96);
+const asset_model_1 = __webpack_require__(646);
 const common_1 = __webpack_require__(20);
 const router_1 = __webpack_require__(74);
 let PlayerComponent = class PlayerComponent {
@@ -1519,7 +1638,10 @@ let PlayerComponent = class PlayerComponent {
         this.getUrl(this.postAsset);
     }
     getUrl(asset) {
-        if (this.postAsset.assetType === "Audio/Video") {
+        if (!asset) {
+            this.url = null;
+        }
+        else if (this.postAsset.assetType === "Audio/Video") {
             this.url = this.postAsset.assetEmbedLink;
         }
         else if (this.postAsset.assetType === "Audio") {
@@ -1553,8 +1675,8 @@ __decorate([
 PlayerComponent = __decorate([
     core_1.Component({
         selector: 'app-player',
-        template: __webpack_require__(830),
-        styles: [__webpack_require__(815)]
+        template: __webpack_require__(834),
+        styles: [__webpack_require__(818)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof platform_browser_1.DomSanitizer !== "undefined" && platform_browser_1.DomSanitizer) === "function" && _b || Object, typeof (_c = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object])
 ], PlayerComponent);
@@ -1564,7 +1686,7 @@ var _a, _b, _c, _d;
 
 /***/ }),
 
-/***/ 649:
+/***/ 651:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1581,7 +1703,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = __webpack_require__(0);
 const router_1 = __webpack_require__(74);
 const post_service_1 = __webpack_require__(129);
-const post_model_1 = __webpack_require__(443);
+const post_model_1 = __webpack_require__(276);
 let PostItemComponent = class PostItemComponent {
     constructor(_router, _postService) {
         this._router = _router;
@@ -1601,8 +1723,8 @@ __decorate([
 PostItemComponent = __decorate([
     core_1.Component({
         selector: 'post-item',
-        template: __webpack_require__(831),
-        styles: [__webpack_require__(816)]
+        template: __webpack_require__(835),
+        styles: [__webpack_require__(819)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _c || Object])
 ], PostItemComponent);
@@ -1612,79 +1734,65 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 650:
+/***/ 652:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // This file includes polyfills needed by Angular 2 and is loaded before
 // the app. You can add your own extra polyfills to this file.
-__webpack_require__(664);
-__webpack_require__(657);
-__webpack_require__(653);
+__webpack_require__(666);
 __webpack_require__(659);
-__webpack_require__(658);
-__webpack_require__(656);
 __webpack_require__(655);
-__webpack_require__(663);
-__webpack_require__(652);
-__webpack_require__(651);
 __webpack_require__(661);
-__webpack_require__(654);
-__webpack_require__(662);
 __webpack_require__(660);
+__webpack_require__(658);
+__webpack_require__(657);
 __webpack_require__(665);
-__webpack_require__(1093);
+__webpack_require__(654);
+__webpack_require__(653);
+__webpack_require__(663);
+__webpack_require__(656);
+__webpack_require__(664);
+__webpack_require__(662);
+__webpack_require__(667);
+__webpack_require__(1100);
 //# sourceMappingURL=polyfills.js.map
-
-/***/ }),
-
-/***/ 805:
-/***/ (function(module, exports) {
-
-module.exports = "/* About CSS\r\n-------------------------------------------------- */\r\n\r\nh1 {\r\n    margin-top: 5%;\r\n}\r\n\r\n\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
-
-/***/ }),
-
-/***/ 806:
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
 /***/ 807:
 /***/ (function(module, exports) {
 
-module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = "/* About CSS\r\n-------------------------------------------------- */\r\n\r\nh1 {\r\n    margin-top: 5%;\r\n}\r\n\r\n\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 808:
 /***/ (function(module, exports) {
 
-module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\nh1 {\r\n    margin-top: 5%;\r\n}\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = ""
 
 /***/ }),
 
 /***/ 809:
 /***/ (function(module, exports) {
 
-module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 810:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\nh1 {\r\n    margin-top: 5%;\r\n}\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 811:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
@@ -1705,137 +1813,116 @@ module.exports = ""
 /***/ 814:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 815:
 /***/ (function(module, exports) {
 
-module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/*#sc-widget {\r\n    width : \"100%\";\r\n    height : \"100%\";\r\n}\r\n\r\n.sproutvideo-player {\r\n    width : \"100%\";\r\n    height : \"100%\";\r\n}*/\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = ""
 
 /***/ }),
 
 /***/ 816:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = ""
 
 /***/ }),
 
 /***/ 817:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = ""
 
 /***/ }),
 
 /***/ 818:
 /***/ (function(module, exports) {
 
-module.exports = "  <!-- Logo / Menu\r\n================================================== -->\r\n<!--\r\n<header class=\"header\">\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n\r\n    <div class=\"span4\">\r\n       <div id=\"header-wrap\"> <a href=\"index.html\" class=\"logo\"> <img src=\"assets/img/Logo_transparent.png\" alt=\"\">         <h4>Digital Archive of Literacy Narratives</h4> </a>\r\n       </div>\r\n     </div>\r\n\r\n   <div class=\"span8\">\r\n      <nav>\r\n      <div id=\"menuToggle\">\r\n      <input id= \"menu-button\" type=\"checkbox\" />\r\n\r\n          <span></span>\r\n          <span></span>\r\n          <span></span>\r\n\r\n              <ul class=\"right\" id=\"main-menu\">\r\n                  <li> <a routerLink=\"/home\"> home </a>\r\n                  <li> <a routerLink=\"/about\"> about </a> </li>\r\n                  <li> <a href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n                  <li> <a routerLink=\"/contact\"> contact </a> </li>\r\n                 <li> <a routerLink=\"/#\"> login </a> </li>\r\n                  <li> <a routerLink=\"/create\"> submit a literacy narrative </a> </li>\r\n              </ul>\r\n      </div>\r\n      </nav>\r\n      </div>\r\n    </div>\r\n\r\n\r\n</div>\r\n</header> -->\r\n\r\n\r\n<!--\r\n<div class=\"container\">\r\n<div class=\"navbar\">\r\n  <div class=\"navbar\">\r\n\r\n\r\n      <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </a>\r\n\r\n       <div class=\"header2\">\r\n           <img src=\"assets/img/Logo_transparent.png\" />\r\n            <a class=\"brand\" href=\"#\">Digital Archive of Literacy Narratives</a>\r\n        </div>\r\n\r\n      <div class=\"nav-collapse navbar-responsive-collapse collapse\">\r\n\r\n        <ul class=\"nav\">\r\n            <li> <a routerLink=\"/home\"> home </a>\r\n            <li> <a routerLink=\"/about\"> about </a> </li>\r\n            <li> <a href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n            <li> <a routerLink=\"/contact\"> contact </a> </li>\r\n            <li> <a routerLink=\"/#\"> login </a> </li>\r\n            <li> <a routerLink=\"/create\"> submit a literacy narrative </a> </li>\r\n        </ul>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n\r\n\r\n</div>\r\n\r\n\r\n\r\n  <router-outlet></router-outlet> -->\r\n\r\n<!-- <nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\">\r\n  <div [className]=\"_class\">\r\n     <button (click)=\"toggleFull()\"><i class=\"icon-align-justify\"></i></button>\r\n\r\n\r\n  \t\t\t<a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\" onclick=\"var div = document.getElementById('navbarToggle'); div.style.height != '100%' ? div.style.height = '100%' : div.style.height = '0px';\">\r\n  \t\t\t\t<span class=\"icon-bar\"></span>\r\n  \t\t\t\t<span class=\"icon-bar\"></span>\r\n  \t\t\t\t<span class=\"icon-bar\"></span>\r\n  \t\t\t</a>\r\n\r\n  \t\t\t<div class=\"header2\">\r\n  \t\t\t\t<img src=\"assets/img/Logo_transparent.png\" />\r\n  \t\t\t\t<a class=\"brand\" href=\"#\">Digital Archive of Literacy Narratives</a>\r\n  \t\t\t</div>\r\n\r\n  \t\t\t<div class=\"nav-collapse navbar-responsive-collapse collapse\" id=\"navbarToggle\">\r\n  \t\t\t\t<ul class=\"nav\">\r\n  \t\t\t\t\t<li> <a routerLink=\"/home\"> home </a> </li>\r\n  \t\t\t\t\t<li> <a routerLink=\"/about\"> about </a> </li>\r\n  \t\t\t\t\t<li> <a href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n  \t\t\t\t\t<li> <a routerLink=\"/contact\"> contact </a> </li>\r\n  \t\t\t\t\t<li> <a routerLink=\"/create\"> submit a literacy narrative </a> </li>\r\n  \t\t\t\t</ul>\r\n  \t\t\t</div>\r\n  </div>\r\n</nav>k\r\n\r\n<router-outlet></router-outlet> -->\r\n\r\n\r\n\r\n<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-inverse\">\r\n    <button class=\"navbar-toggler navbar-toggler-right collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseContent\" aria-controls=\"collapseContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\" ></span>\r\n      </button>\r\n\r\n      <a routerLink=\"/home\"><img src=\"assets/img/Logo_transparent.png\" id=\"logo\" /></a>\r\n\r\n\r\n      <div class=\"header2 col-5 brandContainer\">\r\n          <a class=\"brand\" routerLink=\"/home\">Digital Archive of Literacy Narratives</a>\r\n      </div>\r\n\r\n      <div class=\"navbar-collapse collapse\" id=\"collapseContent\" aria-expanded=\"true\">\r\n          <ul class=\"navbar-nav mr-auto\">\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\"> home </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/about\" routerLinkActive=\"active\"> about </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/contact\" routerLinkActive=\"active\"> contact </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/create\" routerLinkActive=\"active\"> submit a literacy narrative </a> </li>\r\n          </ul>\r\n       </div>\r\n\r\n</nav>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/*#sc-widget {\r\n    width : \"100%\";\r\n    height : \"100%\";\r\n}\r\n\r\n.sproutvideo-player {\r\n    width : \"100%\";\r\n    height : \"100%\";\r\n}*/\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 819:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <h1>{{title}}</h1>\r\n\r\n  <div class=\"about-info\">\r\n      <div id=\"about-image\">\r\n          <img src=\"assets/img/osugsu.jpg\" alt=\"\" />\r\n      </div>\r\n\r\n\r\n      <p>\r\n     Co-sponsored by The Ohio State University and Georgia State University, The DALN (daln.osu.edu) is a publicly available archive of personal literacy narratives in a variety of formats (text, video, audio) that together provide a historical record of the literacy practices and values of contributors, as those practices and values change.\r\n     </p>\r\n\r\n     <p>\r\n         The DALN invites people of all ages, races, communities, backgrounds, and interests to contribute stories about how — and in what circumstances — they read, write, and compose meaning, and how they learned to do so (or helped others learn).\r\n     </p>\r\n\r\n     <p>\r\n         We welcome personal narratives about reading and composing all kinds of texts, both formal and informal: diaries, blogs, poetry, music and musical lyrics, fan zines, school papers, videos, sermons, gaming profiles, speeches, chatroom exchanges, text messages, letters, stories, photographs, etc. We also invite contributors to supplement their narratives with samples of their own writing (papers, letters, zines, speeches, etc.) and compositions (music, photographs, videos, sound recordings, etc.).\r\n     </p>\r\n\r\n     <!-- <div class=\"col-md-4 offset-md-4\" id=\"postCounter\">\r\n        <h3> Total Number of Posts\r\n            {{totalNumberOfPosts}}\r\n        </h3>\r\n     </div> -->\r\n  </div>\r\n\r\n\r\n\r\n</div>\r\n\r\n<daln-footer></daln-footer>\r\n"
+module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 820:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\">\r\n    <h1>Admin post approval</h1>\r\n\r\n\r\n    <div class=\"col-md-4\">\r\n        <p>\r\n            Enter the PostId:\r\n        </p>\r\n        <input type=\"text\" name=\"postId\" #postId/>\r\n        <button class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" (keydown.enter)=\"approvePost(postId.value)\" (click)=\"approvePost(postId.value)\">Submit</button>\r\n    </div>\r\n    <hr />\r\n    <div class=\"col-md-4\">\r\n        <p>\r\n            Changes the number of pages to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.\r\n\r\n            i.e. Staying 10 pages ahead of user x 10 results per page (user specified) = 100 posts to stay ahead of user\r\n\r\n            i.e. Staying 50 pages ahead of user x 10 results per page = 500 posts to stay ahead of user.\r\n\r\n            i.e. Staying 10 pages ahead of user x 100 results per page = 1000 posts to stay ahead of user.\r\n\r\n            Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10.\r\n        </p>\r\n        <input type=\"number\" class=\"form-control\"  min=\"1\" max=\"100\" #pageHead [value]=\"searchService.pageHead\"/>\r\n        <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"changePageHead(pageHead.value)\" (click)=\"changePageHead(pageHead.value)\">Change Page Head</button>\r\n    </div>\r\n    <hr />\r\n    <!-- <div class=\"col-md-4\">\r\n        <p>\r\n            Approval List\r\n        </p>\r\n        <post-list [postList]=\"approval_list\"></post-list>\r\n\r\n    </div> -->\r\n\r\n</div>\r\n"
+module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 821:
 /***/ (function(module, exports) {
 
-module.exports = "<footer>\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n\r\n        <h3 class=\"footer-heading\">Connect With Us</h3>\r\n        <!-- social begin here -->\r\n            <ul class=\"socicon\">\r\n              <!-- <li><a href=\"\" class=\"share-icon\"> </a></li> -->\r\n              <!-- <li><a href=\"#\" class=\"google\"> </a></li> -->\r\n              <li><a href=\"https://www.facebook.com/dalnarchive/\" target=\"_blank\" class=\"facebook\"> </a></li>\r\n              <li><a href=\"https://twitter.com/dalnarchive\" target=\"_blank\" class=\"twitter\"> </a></li>\r\n              <!-- <li><a href=\"#\" class=\"flickr\"> </a></li> -->\r\n              <!-- <li><a href=\"#\" class=\"dribbble\"> </a></li> -->\r\n              <!-- <li class=\"last\"><a href=\"#\" class=\"vimeo\"> </a></li> -->\r\n            </ul>\r\n\r\n        <h3 class=\"footer-heading\">Who We Are</h3>\r\n            <p>\r\n                Since 2007, the Digital Archive of Literacy Narratives has been collecting stories from the public about their experiences learning to read, write, and compose with different media types. Containing over 6000 individual narratives in text, video, audio, and other forms, the DALN is a resource not only for scholars and teachers, but the public at large. Tell us your story. <a routerLink=\"/create\">Submit today!</a>\r\n            </p>\r\n\r\n      </div>\r\n\r\n      <!-- tweets begin here -->\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n        <h3 class=\"footer-heading\">Latest Tweets</h3>\r\n        <div class=\"tweets\">\r\n\r\n        </div>\r\n        <a class=\"twitter-timeline\" data-width=\"300\" data-height=\"330\" data-theme=\"dark\" href=\"https://twitter.com/dalnarchive\" target=\"_blank\">Tweets by dalnarchive</a>\r\n      </div>\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n        <h3 class=\"footer-heading\">From Facebook</h3>\r\n        <div class=\"fb-page\"\r\n            data-href=\"https://www.facebook.com/dalnarchive/\"\r\n            data-tabs=\"timeline\"\r\n            data-width=\"300\"\r\n            data-height=\"330\"\r\n            data-small-header=\"false\"\r\n            data-adapt-container-width=\"true\"\r\n            data-hide-cover=\"false\"\r\n            data-show-facepile=\"false\">\r\n            <blockquote cite=\"https://www.facebook.com/dalnarchive/\" class=\"fb-xfbml-parse-ignore\">\r\n                <a href=\"https://www.facebook.com/dalnarchive/\">Digital Archive of Literacy Narratives</a>\r\n            </blockquote>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</footer>\r\n"
+module.exports = "  <!-- Logo / Menu\r\n================================================== -->\r\n<!--\r\n<header class=\"header\">\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n\r\n    <div class=\"span4\">\r\n       <div id=\"header-wrap\"> <a href=\"index.html\" class=\"logo\"> <img src=\"assets/img/Logo_transparent.png\" alt=\"\">         <h4>Digital Archive of Literacy Narratives</h4> </a>\r\n       </div>\r\n     </div>\r\n\r\n   <div class=\"span8\">\r\n      <nav>\r\n      <div id=\"menuToggle\">\r\n      <input id= \"menu-button\" type=\"checkbox\" />\r\n\r\n          <span></span>\r\n          <span></span>\r\n          <span></span>\r\n\r\n              <ul class=\"right\" id=\"main-menu\">\r\n                  <li> <a routerLink=\"/home\"> home </a>\r\n                  <li> <a routerLink=\"/about\"> about </a> </li>\r\n                  <li> <a href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n                  <li> <a routerLink=\"/contact\"> contact </a> </li>\r\n                 <li> <a routerLink=\"/#\"> login </a> </li>\r\n                  <li> <a routerLink=\"/create\"> submit a literacy narrative </a> </li>\r\n              </ul>\r\n      </div>\r\n      </nav>\r\n      </div>\r\n    </div>\r\n\r\n\r\n</div>\r\n</header> -->\r\n\r\n\r\n<!--\r\n<div class=\"container\">\r\n<div class=\"navbar\">\r\n  <div class=\"navbar\">\r\n\r\n\r\n      <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </a>\r\n\r\n       <div class=\"header2\">\r\n           <img src=\"assets/img/Logo_transparent.png\" />\r\n            <a class=\"brand\" href=\"#\">Digital Archive of Literacy Narratives</a>\r\n        </div>\r\n\r\n      <div class=\"nav-collapse navbar-responsive-collapse collapse\">\r\n\r\n        <ul class=\"nav\">\r\n            <li> <a routerLink=\"/home\"> home </a>\r\n            <li> <a routerLink=\"/about\"> about </a> </li>\r\n            <li> <a href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n            <li> <a routerLink=\"/contact\"> contact </a> </li>\r\n            <li> <a routerLink=\"/#\"> login </a> </li>\r\n            <li> <a routerLink=\"/create\"> submit a literacy narrative </a> </li>\r\n        </ul>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n\r\n\r\n</div>\r\n\r\n\r\n\r\n  <router-outlet></router-outlet> -->\r\n\r\n<!-- <nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\">\r\n  <div [className]=\"_class\">\r\n     <button (click)=\"toggleFull()\"><i class=\"icon-align-justify\"></i></button>\r\n\r\n\r\n  \t\t\t<a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\" onclick=\"var div = document.getElementById('navbarToggle'); div.style.height != '100%' ? div.style.height = '100%' : div.style.height = '0px';\">\r\n  \t\t\t\t<span class=\"icon-bar\"></span>\r\n  \t\t\t\t<span class=\"icon-bar\"></span>\r\n  \t\t\t\t<span class=\"icon-bar\"></span>\r\n  \t\t\t</a>\r\n\r\n  \t\t\t<div class=\"header2\">\r\n  \t\t\t\t<img src=\"assets/img/Logo_transparent.png\" />\r\n  \t\t\t\t<a class=\"brand\" href=\"#\">Digital Archive of Literacy Narratives</a>\r\n  \t\t\t</div>\r\n\r\n  \t\t\t<div class=\"nav-collapse navbar-responsive-collapse collapse\" id=\"navbarToggle\">\r\n  \t\t\t\t<ul class=\"nav\">\r\n  \t\t\t\t\t<li> <a routerLink=\"/home\"> home </a> </li>\r\n  \t\t\t\t\t<li> <a routerLink=\"/about\"> about </a> </li>\r\n  \t\t\t\t\t<li> <a href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n  \t\t\t\t\t<li> <a routerLink=\"/contact\"> contact </a> </li>\r\n  \t\t\t\t\t<li> <a routerLink=\"/create\"> submit a literacy narrative </a> </li>\r\n  \t\t\t\t</ul>\r\n  \t\t\t</div>\r\n  </div>\r\n</nav>k\r\n\r\n<router-outlet></router-outlet> -->\r\n\r\n\r\n\r\n<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-inverse\">\r\n    <button class=\"navbar-toggler navbar-toggler-right collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseContent\" aria-controls=\"collapseContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\" ></span>\r\n      </button>\r\n\r\n      <a routerLink=\"/home\"><img src=\"assets/img/Logo_transparent.png\" id=\"logo\" /></a>\r\n\r\n\r\n      <div class=\"header2 col-5 brandContainer\">\r\n          <a class=\"brand\" routerLink=\"/home\">Digital Archive of Literacy Narratives</a>\r\n      </div>\r\n\r\n      <div class=\"navbar-collapse collapse\" id=\"collapseContent\" aria-expanded=\"true\">\r\n          <ul class=\"navbar-nav mr-auto\">\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\"> home </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/about\" routerLinkActive=\"active\"> about </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/contact\" routerLinkActive=\"active\"> contact </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/create\" routerLinkActive=\"active\"> submit a literacy narrative </a> </li>\r\n          </ul>\r\n       </div>\r\n\r\n</nav>\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 822:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <h1>{{title}}</h1>\r\n\r\n\r\n    <div class=\"contact-info\">\r\n        <p>\r\n            <strong>Ben McCorkle</strong> is an associate professor of English and teaches courses in composition, rhetoric, and digital media studies, primarily on The Ohio State University’s Marion campus. He is the author of the book <span class=\"italic\">\r\n            Rhetorical Delivery as Technological Discourse: A Cross-Historical Study</span>, as well as several articles in publications including <span class=\"italic\"> Computers and Composition Online, Rhetoric Society Quarterly, and Composition Studies</span>. He is currently serving as Co-Director of the DALN. Email Ben: <a href=\"mailto:mccorkle.12@osu.edu\">mccorkle.12@osu.edu</a>.\r\n       </p>\r\n\r\n       <p>\r\n           <strong>Michael Harker </strong> is an associate professor of English and teaches courses in composition, rhetoric, and literacy studies at Georgia State University. He is the author of <span class=\"italic\">The Lure of Literacy: A Critical Reception of the Compulsory Composition Debate (SUNY Press)</span>. He has published articles in <span class=\"italic\"> College Composition and Communication, Literacy in Composition Studies, Computers and Composition: An International Journal</span>, and <span class=\"italic\">Computers and Composition Online</span>. He is a Co-Director of the Digital Archive of Literacy Narratives (DALN). Email Michael: <a href=\"mailto:mharker@gsu.edu\">mharker@gsu.edu</a>.\r\n       </p>\r\n    </div>\r\n\r\n</div>\r\n<!-- <daln-footer></daln-footer> -->\r\n"
+module.exports = "<div class=\"container\">\r\n  <h1>{{title}}</h1>\r\n\r\n  <div class=\"about-info\">\r\n      <div id=\"about-image\">\r\n          <img src=\"assets/img/osugsu.jpg\" alt=\"\" />\r\n      </div>\r\n\r\n\r\n      <p>\r\n     Co-sponsored by The Ohio State University and Georgia State University, The DALN (daln.osu.edu) is a publicly available archive of personal literacy narratives in a variety of formats (text, video, audio) that together provide a historical record of the literacy practices and values of contributors, as those practices and values change.\r\n     </p>\r\n\r\n     <p>\r\n         The DALN invites people of all ages, races, communities, backgrounds, and interests to contribute stories about how — and in what circumstances — they read, write, and compose meaning, and how they learned to do so (or helped others learn).\r\n     </p>\r\n\r\n     <p>\r\n         We welcome personal narratives about reading and composing all kinds of texts, both formal and informal: diaries, blogs, poetry, music and musical lyrics, fan zines, school papers, videos, sermons, gaming profiles, speeches, chatroom exchanges, text messages, letters, stories, photographs, etc. We also invite contributors to supplement their narratives with samples of their own writing (papers, letters, zines, speeches, etc.) and compositions (music, photographs, videos, sound recordings, etc.).\r\n     </p>\r\n\r\n     <!-- <div class=\"col-md-4 offset-md-4\" id=\"postCounter\">\r\n        <h3> Total Number of Posts\r\n            {{totalNumberOfPosts}}\r\n        </h3>\r\n     </div> -->\r\n  </div>\r\n\r\n\r\n\r\n</div>\r\n\r\n<daln-footer></daln-footer>\r\n"
 
 /***/ }),
 
 /***/ 823:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container responsive_home\">\r\n\r\n    <!-- Search Component -->\r\n    <app-search2></app-search2>\r\n\r\n    <app-slider></app-slider>\r\n\r\n\r\n</div>\r\n\r\n\r\n<div class=\"container responsive_home\" >\r\n        <post-list [postList]=\"posts\"></post-list>\r\n</div>\r\n\r\n<div class=\"container responsive_home\">\r\n    <div class=\"center add-top-margin\">\r\n      <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n<daln-footer></daln-footer>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n    <h1>Admin post approval</h1>\r\n\r\n\r\n    <div class=\"col-md-4\">\r\n        <p>\r\n            Enter the PostId:\r\n        </p>\r\n        <input type=\"text\" name=\"postId\" #postId/>\r\n        <button class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" (keydown.enter)=\"approvePost(postId.value)\" (click)=\"approvePost(postId.value)\">Submit</button>\r\n    </div>\r\n    <hr />\r\n    <div class=\"col-md-4\">\r\n        <p>\r\n            Changes the number of pages to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.\r\n\r\n            i.e. Staying 10 pages ahead of user x 10 results per page (user specified) = 100 posts to stay ahead of user\r\n\r\n            i.e. Staying 50 pages ahead of user x 10 results per page = 500 posts to stay ahead of user.\r\n\r\n            i.e. Staying 10 pages ahead of user x 100 results per page = 1000 posts to stay ahead of user.\r\n\r\n            Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10.\r\n        </p>\r\n        <input type=\"number\" class=\"form-control\"  min=\"1\" max=\"100\" #pageHead [value]=\"searchService.pageHead\"/>\r\n        <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"changePageHead(pageHead.value)\" (click)=\"changePageHead(pageHead.value)\">Change Page Head</button>\r\n    </div>\r\n    <hr />\r\n    <!-- <div class=\"col-md-4\">\r\n        <p>\r\n            Approval List\r\n        </p>\r\n        <post-list [postList]=\"approval_list\"></post-list>\r\n\r\n    </div> -->\r\n\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 824:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container add-top-margin\">\r\n    <div class=\"row\">\r\n        <form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n            <div class=\"form-group\">\r\n                <h2>Login</h2>\r\n            </div>\r\n            <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n                {{ errorMessage }}\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label\" for=\"signupEmail\">Email</label>\r\n                <input id=\"signupEmail\" required type=\"email\" maxlength=\"100\" class=\"form-control\" [(ngModel)]=\"email\"\r\n                       [ngModelOptions]=\"{standalone: true}\">\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label\" for=\"signupPassword\">Password</label>\r\n                <input id=\"signupPassword\" required type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n                       length=\"40\" [(ngModel)]=\"password\" [ngModelOptions]=\"{standalone: true}\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button (click)=\"onLogin()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\r\n                    Login\r\n                </button>\r\n            </div>\r\n\r\n            <hr>\r\n\r\n\r\n            <p><a [routerLink]=\"['/home/forgotPassword']\"> <i class=\"fa fa-fw fa-group\"></i> Forgot Password?</a></p>\r\n            <p>\r\n\r\n        </form>\r\n\r\n    </div>\r\n"
+module.exports = "<footer>\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n\r\n        <h3 class=\"footer-heading\">Connect With Us</h3>\r\n        <!-- social begin here -->\r\n            <ul class=\"socicon\">\r\n              <!-- <li><a href=\"\" class=\"share-icon\"> </a></li> -->\r\n              <!-- <li><a href=\"#\" class=\"google\"> </a></li> -->\r\n              <li><a href=\"https://www.facebook.com/dalnarchive/\" target=\"_blank\" class=\"facebook\"> </a></li>\r\n              <li><a href=\"https://twitter.com/dalnarchive\" target=\"_blank\" class=\"twitter\"> </a></li>\r\n              <!-- <li><a href=\"#\" class=\"flickr\"> </a></li> -->\r\n              <!-- <li><a href=\"#\" class=\"dribbble\"> </a></li> -->\r\n              <!-- <li class=\"last\"><a href=\"#\" class=\"vimeo\"> </a></li> -->\r\n            </ul>\r\n\r\n        <h3 class=\"footer-heading\">Who We Are</h3>\r\n            <p>\r\n                Since 2007, the Digital Archive of Literacy Narratives has been collecting stories from the public about their experiences learning to read, write, and compose with different media types. Containing over 6000 individual narratives in text, video, audio, and other forms, the DALN is a resource not only for scholars and teachers, but the public at large. Tell us your story. <a routerLink=\"/create\">Submit today!</a>\r\n            </p>\r\n\r\n      </div>\r\n\r\n      <!-- tweets begin here -->\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n        <h3 class=\"footer-heading\">Latest Tweets</h3>\r\n        <div class=\"tweets\">\r\n\r\n        </div>\r\n        <a class=\"twitter-timeline\" data-width=\"300\" data-height=\"330\" data-theme=\"dark\" href=\"https://twitter.com/dalnarchive\" target=\"_blank\">Tweets by dalnarchive</a>\r\n      </div>\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n        <h3 class=\"footer-heading\">From Facebook</h3>\r\n        <div class=\"fb-page\"\r\n            data-href=\"https://www.facebook.com/dalnarchive/\"\r\n            data-tabs=\"timeline\"\r\n            data-width=\"300\"\r\n            data-height=\"330\"\r\n            data-small-header=\"false\"\r\n            data-adapt-container-width=\"true\"\r\n            data-hide-cover=\"false\"\r\n            data-show-facepile=\"false\">\r\n            <blockquote cite=\"https://www.facebook.com/dalnarchive/\" class=\"fb-xfbml-parse-ignore\">\r\n                <a href=\"https://www.facebook.com/dalnarchive/\">Digital Archive of Literacy Narratives</a>\r\n            </blockquote>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</footer>\r\n"
 
 /***/ }),
 
 /***/ 825:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" *ngIf=\"postDetail\">\r\n  <button class=\"btn btn-primary\" type=\"submit\" (click)=\"goBack()\">Back</button>\r\n\r\n  <section>\r\n\r\n\r\n    <div class=\"row\">\r\n      <!-- Project info\r\n      ================================================== -->\r\n\r\n\r\n      <div class=\"col-4\">\r\n\r\n        <!-- Use the ul class. -->\r\n        <ul class=\"metadata\">\r\n          <li>\r\n            <h3>{{postDetail?.title}}</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          <li>\r\n            <h3>Date Submitted</h3>\r\n            <p>{{postDetail?.dateCreated}}</p>\r\n          </li>\r\n          <li>\r\n            <h3>Author</h3>\r\n            <p *ngFor=\"let author of postDetail.contributorAuthor\">{{author}}</p>\r\n          </li>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"tags\">\r\n          <li>\r\n            <h3>Collections</h3>\r\n            <p>All literacy narratives that are not part of a topical collection.</p>\r\n          </li>\r\n          <li>\r\n            <h3>Tags/Subjects</h3>\r\n            <ul class=\"tags-list\">\r\n              <!-- Track elements and limit tags with NgFor and TrackBy -->\r\n              <li class=\"tag\" *ngFor=\"let subject of postDetail.subject\"><span\r\n                class=\"label label-info\">{{subject}}</span></li>\r\n            </ul>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"description\">\r\n          <li>\r\n            <h3>Description</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          </li>\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <h3>Media List</h3>\r\n        <ul class=\"media\" *ngFor=\"let asset of postDetail.assetList\">\r\n\r\n            <li (click)=\"onSelectedAsset(asset)\">\r\n\r\n              <!-- Change event to be click event that changes player embed link -->\r\n              <h3>{{asset.assettitle}}</h3>\r\n              <p>{{asset.assetType}}: {{asset.assetDescription}}</p>\r\n              <p *ngIf=\"\">{{asset.assetType}}: {{asset.assetDescription}}</p>\r\n\r\n\r\n              <!--<div *ngIf=\"selectedAsset\">{{selectedAsset.assetID}}</div>-->\r\n            </li>\r\n\r\n          </ul>\r\n\r\n\r\n\r\n              <div id=\"metadata-table\">\r\n                   <table class=\"table table-sm table-bordered\">\r\n                       <thead >\r\n                         <tr>\r\n                          <th>Metadata Tag</th>\r\n                          <th>Content</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                          <tr>\r\n                               <td>identifierUri</td>\r\n                               <td>{{postDetail?.identifierUri}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAvailable</td>\r\n                               <td>{{postDetail?.dateAvailable}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAccessioned</td>\r\n                               <td>{{postDetail?.dateAccessioned}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateCreated</td>\r\n                               <td>{{postDetail?.dateCreated}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateIssued</td>\r\n                               <td>{{postDetail?.dateIssued}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorAuthor</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorAuthor\">{{postDetail?.contributorAuthor}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorInterviewer</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorInterviewer\">{{postDetail?.contributorInterviewer}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n\r\n                      </tbody>\r\n                   </table>\r\n              </div>\r\n\r\n\r\n\r\n\r\n\r\n      </div>\r\n\r\n      <!-- Video\r\n      ================================================== -->\r\n\r\n          <div class=\"col-8\">\r\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')\" [postAsset]=\"selectedAsset\"></app-player>\r\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Text')\" [postAsset]=\"selectedAsset\"></app-player>\r\n        <!-- TODO: Remove style tag -->\r\n        <!-- social begin here -->\r\n        <ul class=\"socicon right\" style=\"margin-bottom:10px;\">\r\n          <!-- <li>\r\n            <a href=\"#\" class=\"share-icon\">\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"google\">\r\n            </a>\r\n          </li>-->\r\n          <li>\r\n            <a href=\"https://www.facebook.com/dalnarchive/\" class=\"facebook\" target=\"_blank\">\r\n            </a>\r\n          </li>\r\n          <li>\r\n              <a class=\"twitter twitter-share-button\"\r\n                href=\"https://twitter.com/intent/tweet?url=&text={{postDetail?.title}}&via=dalnarchive\" target=\"_blank\"  ></a>\r\n          </li>\r\n          <!-- <li>\r\n            <a href=\"#\" class=\"flickr\">\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"linkedin\">\r\n            </a>\r\n          </li>\r\n          <li class=\"last\">\r\n            <a href=\"#\" class=\"vimeo\">\r\n            </a>\r\n          </li> -->\r\n\r\n        </ul>\r\n\r\n\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n\r\n  </section>\r\n\r\n\r\n\r\n\r\n\r\n\r\n</div><!-- /container -->\r\n<div class=\"center\">\r\n    <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n</div>\r\n<daln-footer></daln-footer>\r\n"
+module.exports = "<div class=\"container\">\r\n  <h1>{{title}}</h1>\r\n\r\n\r\n    <div class=\"contact-info\">\r\n        <p>\r\n            <strong>Ben McCorkle</strong> is an associate professor of English and teaches courses in composition, rhetoric, and digital media studies, primarily on The Ohio State University’s Marion campus. He is the author of the book <span class=\"italic\">\r\n            Rhetorical Delivery as Technological Discourse: A Cross-Historical Study</span>, as well as several articles in publications including <span class=\"italic\"> Computers and Composition Online, Rhetoric Society Quarterly, and Composition Studies</span>. He is currently serving as Co-Director of the DALN. Email Ben: <a href=\"mailto:mccorkle.12@osu.edu\">mccorkle.12@osu.edu</a>.\r\n       </p>\r\n\r\n       <p>\r\n           <strong>Michael Harker </strong> is an associate professor of English and teaches courses in composition, rhetoric, and literacy studies at Georgia State University. He is the author of <span class=\"italic\">The Lure of Literacy: A Critical Reception of the Compulsory Composition Debate (SUNY Press)</span>. He has published articles in <span class=\"italic\"> College Composition and Communication, Literacy in Composition Studies, Computers and Composition: An International Journal</span>, and <span class=\"italic\">Computers and Composition Online</span>. He is a Co-Director of the Digital Archive of Literacy Narratives (DALN). Email Michael: <a href=\"mailto:mharker@gsu.edu\">mharker@gsu.edu</a>.\r\n       </p>\r\n    </div>\r\n\r\n</div>\r\n<!-- <daln-footer></daln-footer> -->\r\n"
 
 /***/ }),
 
 /***/ 826:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"child-container\">\r\n\r\n    <div class=\"col-md-3 offset-md-2\" *ngIf=\"showUtil\">\r\n    <button class=\"btn btn-primary\" type=\"submit\" (click)=\"this._router.navigateByUrl('/home')\">Go Back to Home Page</button>\r\n    </div>\r\n\r\n    <div id=\"search-component\">\r\n\r\n      <!-- Main Search Box -->\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-md-6\">\r\n         <div class=\"input-group\">\r\n                <span class=\"input-group-btn\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#options\">&#9660;</button>\r\n                </span>\r\n                <input #searchBox class=\"form-control\" id=\"search-box\" placeholder=\"Search the DALN...\" [value]=\"searchService.searchQuery\" (input)=\"searchService.searchQuery = $event.target.value\"/>\r\n               <button *ngIf=\"showUtil\" class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"onSearch(searchBox.value, results.value, pageNum.value)\" (click)=\"onSearch(searchBox.value, results.value, pageNum.value)\" >Search</button>\r\n               <button *ngIf=\"!showUtil\" class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"onFakeSearch(results.value, pageNum.value)\" (click)=\"onFakeSearch(results.value, pageNum.value)\" >Search</button>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <!-- Search Options -->\r\n      <div class=\"collapse\" id=\"options\">\r\n      <div class=\"card card-block\" [class.col-md-6]=\"showFull\" [class.offset-md-3]=\"showFull\">\r\n          <div class=\"card-header\" id=\"option-card\">\r\n              Options\r\n          </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-4\">\r\n                <div class=\"input-group \">\r\n                    <span class=\"input-group-addon\">Results per page</span>\r\n                    <input #results class=\"form-control\" id=\"results-size\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.resultsSize\"/>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-md-4 offset-md-4\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">Page Number</span>\r\n                    <input #pageNum class=\"form-control\" id=\"pageNumber\" type=\"number\" min=\"0\" max=\"50\" [value]=\"searchService.pageNumber\"/>\r\n                </div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n      </div>\r\n\r\n    <div class=\"row justify-content-center\">\r\n      <div class=\"no-results col-md-6 \" *ngIf=\"noResults == true\">\r\n          <p>\r\n              Sorry, there were no results for your query.\r\n          </p>\r\n      </div>\r\n     </div>\r\n\r\n    </div>\r\n\r\n\r\n    <div class=\"container responsive_home\" *ngIf=\"showUtil\" >\r\n        <div class=\"post_list\">\r\n            <post-list [postList]=\"posts\"></post-list>\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n    <!-- <daln-footer *ngIf=\"showUtil\"></daln-footer> -->\r\n\r\n</div>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "\r\n<div class=\"container responsive_home\">\r\n\r\n    <!-- Search Component -->\r\n    <app-search2 (searchResults)=\"displayResults($event)\"></app-search2>\r\n\r\n    <app-slider *ngIf=\"searchPosts.length === 0\"></app-slider>\r\n\r\n\r\n</div>\r\n\r\n\r\n<div class=\"container responsive_home\" >\r\n\r\n        <div class=\"featured-post-list\" *ngIf=\"searchPosts.length === 0\">\r\n            <h3>Featured Posts</h3>\r\n            <post-list [postList]=\"posts\" [totalNumberOfPosts]=\"posts.length\"></post-list>\r\n        </div>\r\n\r\n\r\n        <div class=\"search-post-list\" *ngIf=\"searchPosts.length > 0\">\r\n            <button (click)=\"clearSearch()\" class=\"btn btn-primary\" type=\"submit\">Clear Search</button>\r\n            <post-list [postList]=\"searchPosts\" [totalNumberOfPosts]=\"searchPosts.length\"></post-list>\r\n        </div>\r\n\r\n\r\n</div>\r\n\r\n<div class=\"container responsive_home\">\r\n    <div class=\"center add-top-margin\">\r\n      <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n<daln-footer></daln-footer>\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 827:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div [@visibilityChanged]=\"visibility\" class=\"slider_component\">\r\n    <ngb-carousel>\r\n        <template ngbSlide>\r\n            <div class=\"image-background\">\r\n                       <img src=\"assets/images/slider/jimmy-carter.jpg\" class=\"slider-img\"/>\r\n               </div>\r\n\r\n            <div class=\"carousel-caption\">\r\n                <a href=\"https://thedaln.wordpress.com/2015/07/06/exciting-news-revealed-president-jimmy-carters-narrative/\" target=\"_blank\">\r\n                    <h3>Exciting News Revealed: President Jimmy Carter's Narrative!</h3>\r\n                    <p>“I’m afraid I don’t have a very good story.” This is how Jimmy Carter begins. It’s a humble beginning to a truly beautiful narrative</p>\r\n                </a>\r\n            </div>\r\n        </template>\r\n      <template ngbSlide>\r\n        <img src=\"assets/images/slider/books.jpg\" alt=\"DALN Intro\" class=\"slider-img\">\r\n        <div class=\"carousel-caption\">\r\n          <h3>DALN</h3>\r\n          <p>An Introduction to the Digital Archive of Literacy Narratives</p>\r\n        </div>\r\n      </template>\r\n      <template ngbSlide>\r\n        <img src=\"assets/images/slider/slider-img02.jpg\" alt=\"New DALN post\" class=\"slider-img\">\r\n        <div class=\"carousel-caption\">\r\n            <a href=\"https://thedaln.wordpress.com/2017/01/14/the-ocean/\" target=\"_blank\">\r\n                <h3>View new DALN Blog Post!</h3>\r\n                <p>If you ever find yourself overwhelmed with self-doubt about any writing project you may be doing, then check out the literacy narrative titled “The Ocean.”</p>\r\n            </a>\r\n        </div>\r\n      </template>\r\n\r\n    </ngb-carousel>\r\n</div>\r\n\r\n<!--\r\n<div class=\"carousel\">\r\n\r\n <ul class=\"images\">\r\n\r\n   <li *ngFor=\"let slide of slides\">\r\n     <h2>DALN</h2>\r\n     <img src=\"assets/images/slider/slider-img01.jpg\" alt=\"\">\r\n   </li>\r\n\r\n </ul>\r\n\r\n</div> -->\r\n"
+module.exports = "<div class=\"container add-top-margin\">\r\n    <div class=\"row\">\r\n        <form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n            <div class=\"form-group\">\r\n                <h2>Login</h2>\r\n            </div>\r\n            <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n                {{ errorMessage }}\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label\" for=\"signupEmail\">Email</label>\r\n                <input id=\"signupEmail\" required type=\"email\" maxlength=\"100\" class=\"form-control\" [(ngModel)]=\"email\"\r\n                       [ngModelOptions]=\"{standalone: true}\">\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label\" for=\"signupPassword\">Password</label>\r\n                <input id=\"signupPassword\" required type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n                       length=\"40\" [(ngModel)]=\"password\" [ngModelOptions]=\"{standalone: true}\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button (click)=\"onLogin()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\r\n                    Login\r\n                </button>\r\n            </div>\r\n\r\n            <hr>\r\n\r\n\r\n            <p><a [routerLink]=\"['/home/forgotPassword']\"> <i class=\"fa fa-fw fa-group\"></i> Forgot Password?</a></p>\r\n            <p>\r\n\r\n        </form>\r\n\r\n    </div>\r\n"
 
 /***/ }),
 
 /***/ 828:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"center col-md-12 loading-grid\" *ngIf=\"loading\">\r\n     Loading...\r\n</div>\r\n\r\n<div class=\"col-md-12 failed-grid\" *ngIf=\"failed\">\r\n    Failed\r\n</div>\r\n"
+module.exports = "<nav aria-label=\"page navigation\">\r\n  <ul class=\"pagination\">\r\n    <li class=\"page-item\" *ngFor=\"let page of postPages\" [ngClass]=\"{active: pagedPosts.length < this.searchService.resultsSize}\">\r\n        <a class=\"page-link\">{{this.pageNumber}}</a>\r\n    </li>\r\n    <!-- <p>\r\n        asdasdsadsa\r\n    </p> -->\r\n  </ul>\r\n</nav>\r\n"
 
 /***/ }),
 
 /***/ 829:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container add-top-margin \">\r\n    <div class=\"center\">\r\n        <h1>404</h1>\r\n        <p>\r\n            Page not found.\r\n        </p>\r\n\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container add-top-margin\" *ngIf=\"postDetail\">\r\n  <button class=\"btn btn-primary\" type=\"submit\" (click)=\"goBack()\">Back</button>\r\n\r\n  <section>\r\n\r\n\r\n    <div class=\"row\">\r\n      <!-- Project info\r\n      ================================================== -->\r\n\r\n\r\n      <div class=\"col-md-4\">\r\n\r\n        <!-- Use the ul class. -->\r\n        <ul class=\"metadata\">\r\n          <li>\r\n            <h3>{{postDetail?.title}}</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          <li>\r\n            <h3>Date Submitted</h3>\r\n            <p>{{postDetail?.dateCreated}}</p>\r\n          </li>\r\n          <li>\r\n            <h3>Author</h3>\r\n            <p *ngFor=\"let author of postDetail.contributorAuthor\">{{author}}</p>\r\n          </li>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"tags\">\r\n          <li>\r\n            <h3>Collections</h3>\r\n            <p>All literacy narratives that are not part of a topical collection.</p>\r\n          </li>\r\n          <li>\r\n            <h3>Tags/Subjects</h3>\r\n            <ul class=\"tags-list\">\r\n              <!-- Track elements and limit tags with NgFor and TrackBy -->\r\n              <li class=\"tag\" *ngFor=\"let subject of postDetail.subject\"><span\r\n                class=\"label label-info\">{{subject}}</span></li>\r\n            </ul>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"description\">\r\n          <li>\r\n            <h3>Description</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          </li>\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <h3>Media List</h3>\r\n        <ul class=\"media\" *ngFor=\"let asset of postDetail.assetList\">\r\n\r\n            <li (click)=\"onSelectedAsset(asset)\">\r\n\r\n              <!-- Change event to be click event that changes player embed link -->\r\n              <h3>{{asset.assettitle}}</h3>\r\n              <p>{{asset.assetType}}: {{asset.assetDescription}}</p>\r\n              <p *ngIf=\"\">{{asset.assetType}}: {{asset.assetDescription}}</p>\r\n\r\n\r\n              <!--<div *ngIf=\"selectedAsset\">{{selectedAsset.assetID}}</div>-->\r\n            </li>\r\n\r\n          </ul>\r\n\r\n\r\n\r\n              <div id=\"metadata-table\">\r\n                   <table class=\"table table-sm table-bordered\">\r\n                       <thead >\r\n                         <tr>\r\n                          <th>Metadata Tag</th>\r\n                          <th>Content</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                          <tr>\r\n                               <td>identifierUri</td>\r\n                               <td>{{postDetail?.identifierUri}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAvailable</td>\r\n                               <td>{{postDetail?.dateAvailable}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAccessioned</td>\r\n                               <td>{{postDetail?.dateAccessioned}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateCreated</td>\r\n                               <td>{{postDetail?.dateCreated}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateIssued</td>\r\n                               <td>{{postDetail?.dateIssued}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorAuthor</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorAuthor\">{{postDetail?.contributorAuthor}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorInterviewer</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorInterviewer\">{{postDetail?.contributorInterviewer}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n\r\n                      </tbody>\r\n                   </table>\r\n              </div>\r\n\r\n\r\n\r\n\r\n\r\n      </div>\r\n\r\n      <!-- Video\r\n      ================================================== -->\r\n\r\n          <div class=\"col-md-8\">\r\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')\" [postAsset]=\"selectedAsset\"></app-player>\r\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Text')\" [postAsset]=\"selectedAsset\"></app-player>\r\n        <!-- TODO: Remove style tag -->\r\n        <!-- social begin here -->\r\n        <ul class=\"socicon right\" style=\"margin-bottom:10px;\">\r\n          <!-- <li>\r\n            <a href=\"#\" class=\"share-icon\">\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"google\">\r\n            </a>\r\n          </li>-->\r\n          <li>\r\n            <a href=\"https://www.facebook.com/dalnarchive/\" class=\"facebook\" target=\"_blank\">\r\n            </a>\r\n          </li>\r\n          <li>\r\n              <a class=\"twitter twitter-share-button\"\r\n                href=\"https://twitter.com/intent/tweet?url=&text={{postDetail?.title}}&via=dalnarchive\" target=\"_blank\"  ></a>\r\n          </li>\r\n          <!-- <li>\r\n            <a href=\"#\" class=\"flickr\">\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"linkedin\">\r\n            </a>\r\n          </li>\r\n          <li class=\"last\">\r\n            <a href=\"#\" class=\"vimeo\">\r\n            </a>\r\n          </li> -->\r\n\r\n        </ul>\r\n\r\n\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n\r\n  </section>\r\n\r\n\r\n\r\n\r\n\r\n\r\n</div><!-- /container -->\r\n<div class=\"center\">\r\n    <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n</div>\r\n<daln-footer></daln-footer>\r\n"
 
 /***/ }),
 
-/***/ 830:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"postAsset\" *ngIf=\"postAsset\">\r\n\r\n  <!-- Null post - No Assets -->\r\n  <div class=\"postitem_null\" *ngIf=\"noAsset === true\">\r\n     <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Not recorded asset type -->\r\n  <div class=\"postitem_unknown\" *ngIf=\"postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'\">\r\n    <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Audio Post -->\r\n  <div class=\"postitem_soundcloud\" *ngIf=\"postAsset.assetType==='Audio'\">\r\n    <iframe id=\"sc-widget\" scrolling=\"no\" width=\"100%\" height=\"166px\"\r\n            [src]=\"url | safe\" ></iframe>\r\n  </div>\r\n\r\n  <!-- Video Post -->\r\n  <div class=\"postitem_video\" *ngIf=\"postAsset.assetType === 'Audio/Video'\">\r\n    <iframe *ngIf=\"!thumb\" class='sproutvideo-player' type='text/html'\r\n            [src]=\"url | safe\" width=\"100%\" height=\"436px\" allowfullscreen ></iframe>\r\n    <iframe *ngIf=\"thumb\" class='sproutvideo-player' type='text/html' width=\"100%\" height=\"166px\"\r\n            [src]=\"url | safe\" ></iframe>\r\n  </div>\r\n\r\n  <!-- Text post - only counts pdfs for now -->\r\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url !== null\">\r\n      <!-- <embed *ngIf=\"!thumb\" [src]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\" />\r\n      <embed *ngIf=\"thumb\" [src]=\"url | safe\" type=\"application/pdf\" /> -->\r\n      <object *ngIf=\"!thumb\" [data]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href=\"/pdf/sample-3pp.pdf\">Download PDF</a>.</p></object>\r\n      <object *ngIf=\"thumb\" [data]=\"url | safe\" type=\"application/pdf\"><p><b>This browser does not support PDFs. </b> Please click on the post to download the PDF to view.</p></object>\r\n  </div>\r\n\r\n  <!-- All other text posts that aren't pdf -->\r\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url === null\">\r\n      <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Web Asset -->\r\n  <!-- <div class=\"postitem_web\" *ngIf=\"postAsset.assetType === 'Web'\">\r\n      <iframe [src]=\"url | safe\" type=\"text/html\"></iframe>\r\n  </div> -->\r\n\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ 831:
-/***/ (function(module, exports) {
-
-module.exports = "<!-- <div class=\"postItem col-xs-3\" *ngIf=\"postItem\">\r\n  <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n\r\n    <app-player\r\n                [postAsset]=\"getPreview( postItem.assetList)\" [thumb]=\"true\"></app-player>\r\n  </a>\r\n<a [routerLink]=\"['/detail', postItem.postId]\">\r\n  <div class=\"desc\">\r\n    <p class=\"post_title\">{{postItem.title}}</p>\r\n    <p class=\"post_desc\"><em>{{postItem.description}}</em></p>\r\n  </div>\r\n</a>\r\n</div> -->\r\n\r\n<div class=\"postItem\" *ngIf=\"postItem\">\r\n    <article class=\"card\">\r\n        <header class=\"post-header\">\r\n        <div class=\"hover-post\">\r\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n        </div>\r\n        </header>\r\n        <div class=\"card-block\">\r\n                <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\r\n                <div class=\"post-desc\">\r\n                    <div class=\"hover-post\">\r\n                        <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                            <p>{{postItem?.description}}</p>\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n        </div>\r\n    </article>\r\n</div>\r\n\r\n<!-- <div class=\"postItem\" *ngIf=\"postItem\">\r\n      <div class=\"card\">\r\n        <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\r\n        <div class=\"card-block\">\r\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n          <p class=\"card-text\">{{postItem?.description}}</p>\r\n        </div>\r\n      </div>\r\n</div> -->\r\n\r\n<router-outlet></router-outlet>\r\n"
-
-/***/ }),
-
-/***/ 832:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row\" id=\"list-container\" *ngIf=\"postList\">\r\n\r\n    <!-- With Card Deck (differing post headers) -->\r\n    <!-- <div class=\"card-deck col-lg-3 col-md-4 col-sm-6\" *ngFor=\"let post of postList\">\r\n        <post-item class=\"media\" [postItem]=\"post\"></post-item>\r\n    </div> -->\r\n\r\n    <!-- Without Card Deck (same post headers but not on special cases) -->\r\n    <div class=\"col-lg-3 col-md-4 col-sm-6\" *ngFor=\"let post of postList\">\r\n        <post-item class=\"media\" [postItem]=\"post\"></post-item>\r\n    </div>\r\n\r\n\r\n<!--\r\n<nav class=\"paginator\">\r\n  <ul class=\"pagination\">\r\n    <li class=\"page-item\">\r\n      <a class=\"page-link\" href=\"#\" aria-label=\"Previous\">\r\n        <span aria-hidden=\"true\">&laquo;</span>\r\n        <span class=\"sr-only\">Previous</span>\r\n      </a>\r\n    </li>\r\n    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">1</a></li>\r\n    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">2</a></li>\r\n    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li>\r\n    <li class=\"page-item\">\r\n      <a class=\"page-link\" (click)=\"page.nextPage()\" aria-label=\"Next\">\r\n        <span aria-hidden=\"true\">&raquo;</span>\r\n        <span class=\"sr-only\">Next</span>\r\n      </a>\r\n    </li>\r\n  </ul>\r\n</nav> -->\r\n\r\n<!-- pager -->\r\n<!-- <ul *ngIf=\"pager.pages && pager.pages.length\" class=\"pagination\">\r\n\r\n    <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n        <a (click)=\"setPage(pager.currentPage - 1)\">Previous</a>\r\n    </li>\r\n    <li *ngFor=\"let page of pager.pages\" [ngClass]=\"{active:pager.currentPage === page}\">\r\n        <a (click)=\"setPage(page)\">{{page}}</a>\r\n    </li>\r\n    <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n        <a (click)=\"setPage(pager.currentPage + 1)\">Next</a>\r\n    </li>\r\n</ul> -->\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ 98:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1850,13 +1937,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const http_1 = __webpack_require__(143);
+const http_1 = __webpack_require__(144);
 //Use instead of Promise
-const Rx_1 = __webpack_require__(204);
+const Rx_1 = __webpack_require__(205);
 // Import RxJs required methods
+__webpack_require__(146);
 __webpack_require__(145);
-__webpack_require__(144);
-__webpack_require__(194);
+__webpack_require__(196);
+const post_model_1 = __webpack_require__(276);
 const environment_1 = __webpack_require__(106);
 let SearchService = class SearchService {
     constructor(_http, _jsonp) {
@@ -1894,9 +1982,11 @@ let SearchService = class SearchService {
         this.searchTerm = term; // NOTE: Temp for pagination.
         this.resultsSize = results; // NOTE: Temp for pagination.
         return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res) => {
-            let posts = res.json();
-            console.log("Get Search Page Posts", posts);
-            return posts;
+            // let posts = res.json();
+            // console.log("Get Search Page Posts", posts);
+            // return posts;
+            //
+            return res.json();
         }).catch((error) => Rx_1.Observable.throw(error.json().error || 'Server error'));
         //   Q1) Is the size of the post object returned in search slowing down the request?
         //
@@ -1914,6 +2004,21 @@ let SearchService = class SearchService {
         //
         //   create an totla atribute on the json that = total_number_results
     }
+    translatePosts(search_results) {
+        let posts = [];
+        //   console.log("translatePosts: ", search_results);
+        search_results.forEach((i) => {
+            let post = new post_model_1.Post();
+            post.postId = i.id;
+            post.title = i.fields.title[0];
+            console.log("Title of post:", post.title);
+            post.description = (i.fields.description && i.fields.description[0] ? i.fields.description[0] : "No description provided.");
+            console.log("description of post:", post.description);
+            post.assetList = [];
+            posts.push(post);
+        });
+        return posts;
+    }
 };
 SearchService = __decorate([
     core_1.Injectable(),
@@ -1923,7 +2028,56 @@ exports.SearchService = SearchService;
 var _a, _b;
 //# sourceMappingURL=search.service.js.map
 
+/***/ }),
+
+/***/ 830:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"child-container\">\r\n\r\n\r\n    <div id=\"search-component\">\r\n\r\n      <!-- Main Search Box -->\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-md-6\">\r\n         <div class=\"input-group\">\r\n                <span class=\"input-group-btn\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#options\">&#9660;</button>\r\n                </span>\r\n                <input #searchBox class=\"form-control\" id=\"search-box\" placeholder=\"Search the DALN...\" [value]=\"searchService.searchQuery\" (input)=\"searchService.searchQuery = $event.target.value\"/>\r\n               <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"onSearch(searchBox.value, results.value, pageNum.value)\" (click)=\"onSearch(searchBox.value, results.value, pageNum.value)\" >Search</button>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <!-- Search Options -->\r\n      <div class=\"collapse\" id=\"options\">\r\n      <div class=\"card card-block\" [class.col-md-6]=\"showFull\" [class.offset-md-3]=\"showFull\">\r\n          <div class=\"card-header\" id=\"option-card\">\r\n              Options\r\n          </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-4\">\r\n                <div class=\"input-group \">\r\n                    <span class=\"input-group-addon\">Results per page</span>\r\n                    <input #results class=\"form-control\" id=\"results-size\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.resultsSize\"/>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-md-4 offset-md-4\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">Page Number</span>\r\n                    <input #pageNum class=\"form-control\" id=\"pageNumber\" type=\"number\" min=\"0\" max=\"50\" [value]=\"searchService.pageNumber\"/>\r\n                </div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n      </div>\r\n\r\n    <div class=\"row justify-content-center\">\r\n      <div class=\"no-results col-md-6 \" *ngIf=\"noResults == true\">\r\n          <p>\r\n              Sorry, there were no results for your query.\r\n          </p>\r\n      </div>\r\n     </div>\r\n\r\n    </div>\r\n\r\n\r\n\r\n\r\n    <!-- <daln-footer *ngIf=\"showUtil\"></daln-footer> -->\r\n\r\n</div>\r\n<router-outlet></router-outlet>\r\n"
+
+/***/ }),
+
+/***/ 831:
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<div [@visibilityChanged]=\"visibility\" class=\"slider_component\">\r\n    <ngb-carousel>\r\n        <template ngbSlide>\r\n            <div class=\"image-background\">\r\n                       <img src=\"assets/images/slider/jimmy-carter.jpg\" class=\"slider-img\"/>\r\n               </div>\r\n\r\n            <div class=\"carousel-caption\">\r\n                <a href=\"https://thedaln.wordpress.com/2015/07/06/exciting-news-revealed-president-jimmy-carters-narrative/\" target=\"_blank\">\r\n                    <h3>Exciting News Revealed: President Jimmy Carter's Narrative!</h3>\r\n                    <p>“I’m afraid I don’t have a very good story.” This is how Jimmy Carter begins. It’s a humble beginning to a truly beautiful narrative</p>\r\n                </a>\r\n            </div>\r\n        </template>\r\n      <template ngbSlide>\r\n        <img src=\"assets/images/slider/books.jpg\" alt=\"DALN Intro\" class=\"slider-img\">\r\n        <div class=\"carousel-caption\">\r\n          <h3>DALN</h3>\r\n          <p>An Introduction to the Digital Archive of Literacy Narratives</p>\r\n        </div>\r\n      </template>\r\n      <template ngbSlide>\r\n        <img src=\"assets/images/slider/slider-img02.jpg\" alt=\"New DALN post\" class=\"slider-img\">\r\n        <div class=\"carousel-caption\">\r\n            <a href=\"https://thedaln.wordpress.com/2017/01/14/the-ocean/\" target=\"_blank\">\r\n                <h3>View new DALN Blog Post!</h3>\r\n                <p>If you ever find yourself overwhelmed with self-doubt about any writing project you may be doing, then check out the literacy narrative titled “The Ocean.”</p>\r\n            </a>\r\n        </div>\r\n      </template>\r\n\r\n    </ngb-carousel>\r\n</div>\r\n\r\n<!--\r\n<div class=\"carousel\">\r\n\r\n <ul class=\"images\">\r\n\r\n   <li *ngFor=\"let slide of slides\">\r\n     <h2>DALN</h2>\r\n     <img src=\"assets/images/slider/slider-img01.jpg\" alt=\"\">\r\n   </li>\r\n\r\n </ul>\r\n\r\n</div> -->\r\n"
+
+/***/ }),
+
+/***/ 832:
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<div class=\"center col-md-12 loading-grid\" *ngIf=\"loading\">\r\n     Loading...\r\n</div>\r\n\r\n<div class=\"col-md-12 failed-grid\" *ngIf=\"failed\">\r\n    Failed\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ 833:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container add-top-margin \">\r\n    <div class=\"center\">\r\n        <h1>404</h1>\r\n        <p>\r\n            Page not found.\r\n        </p>\r\n\r\n    </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ 834:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"postAsset\" *ngIf=\"postAsset\">\r\n\r\n  <!-- Null post - No Assets -->\r\n  <div class=\"postitem_null\" *ngIf=\"noAsset === true\">\r\n     <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Not recorded asset type -->\r\n  <div class=\"postitem_unknown\" *ngIf=\"postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'\">\r\n    <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Audio Post -->\r\n  <div class=\"postitem_soundcloud\" *ngIf=\"postAsset.assetType==='Audio'\">\r\n    <iframe id=\"sc-widget\" scrolling=\"no\" width=\"100%\" height=\"166px\"\r\n            [src]=\"url | safe\" ></iframe>\r\n  </div>\r\n\r\n  <!-- Video Post -->\r\n  <div class=\"postitem_video\" *ngIf=\"postAsset.assetType === 'Audio/Video'\">\r\n    <iframe *ngIf=\"!thumb\" class='sproutvideo-player' type='text/html'\r\n            [src]=\"url | safe\" width=\"100%\" height=\"436px\" allowfullscreen ></iframe>\r\n    <iframe *ngIf=\"thumb\" class='sproutvideo-player' type='text/html' width=\"100%\" height=\"166px\"\r\n            [src]=\"url | safe\" ></iframe>\r\n  </div>\r\n\r\n  <!-- Text post - only counts pdfs for now -->\r\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url !== null\">\r\n      <!-- <embed *ngIf=\"!thumb\" [src]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\" />\r\n      <embed *ngIf=\"thumb\" [src]=\"url | safe\" type=\"application/pdf\" /> -->\r\n      <object *ngIf=\"!thumb\" [data]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href=\"/pdf/sample-3pp.pdf\">Download PDF</a>.</p></object>\r\n      <object *ngIf=\"thumb\" [data]=\"url | safe\" type=\"application/pdf\"><p><b>This browser does not support PDFs. </b> Please click on the post to download the PDF to view.</p></object>\r\n  </div>\r\n\r\n  <!-- All other text posts that aren't pdf -->\r\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url === null\">\r\n      <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Web Asset -->\r\n  <!-- <div class=\"postitem_web\" *ngIf=\"postAsset.assetType === 'Web'\">\r\n      <iframe [src]=\"url | safe\" type=\"text/html\"></iframe>\r\n  </div> -->\r\n\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ 835:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"postItem\" *ngIf=\"postItem\">\r\n    <article class=\"card\">\r\n        <header class=\"post-header\">\r\n        <div class=\"hover-post\">\r\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n        </div>\r\n        </header>\r\n        <div class=\"card-block\">\r\n                <!-- <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player> -->\r\n                <div class=\"post-desc\">\r\n                    <div class=\"hover-post\">\r\n                        <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                            <p>{{postItem?.description}}</p>\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n        </div>\r\n    </article>\r\n</div>\r\n\r\n<!-- <div class=\"postItem\" *ngIf=\"postItem\">\r\n      <div class=\"card\">\r\n        <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\r\n        <div class=\"card-block\">\r\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n          <p class=\"card-text\">{{postItem?.description}}</p>\r\n        </div>\r\n      </div>\r\n</div> -->\r\n\r\n<router-outlet></router-outlet>\r\n"
+
+/***/ }),
+
+/***/ 836:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\" id=\"list-container\" *ngIf=\"postList\">\r\n\r\n    <!-- With Card Deck (differing post headers) -->\r\n    <!-- <div class=\"card-deck col-lg-3 col-md-4 col-sm-6\" *ngFor=\"let post of postList\">\r\n        <post-item class=\"media\" [postItem]=\"post\"></post-item>\r\n    </div> -->\r\n\r\n\r\n    <!-- Without Card Deck (same post headers but not on special cases) -->\r\n    <div class=\"col-lg-3 col-md-4 col-sm-6\" *ngFor=\"let post of postList\">\r\n        <post-item class=\"media\" [postItem]=\"post\"></post-item>\r\n    </div>\r\n\r\n    <app-pagination></app-pagination>\r\n\r\n</div>\r\n"
+
 /***/ })
 
-},[1094]);
+},[1101]);
 //# sourceMappingURL=main.bundle.map
