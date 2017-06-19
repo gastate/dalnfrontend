@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "build/app",
     "target": "es5",
     "lib": [
       "es5",
@@ -9,7 +10,12 @@
       "dom",
       "scripthost"
     ],
+    "exclude": [
+     "gulpfile.ts",
+     "node_modules/"
+   ],
     "module": "commonjs",
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true
   }
