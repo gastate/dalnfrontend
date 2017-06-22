@@ -9,6 +9,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
 import { Post } from '../model/post-model';
+import { Asset } from '../model/asset-model';
 import { environment } from '../../environments/environment';
 import { POSTS } from './mock-postlist';
 
@@ -89,26 +90,11 @@ export class SearchService {
         //
         return res.json();
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-    //   Q1) Is the size of the post object returned in search slowing down the request?
-    //
-    //   - If so, create a seperate search endpoint that returns a minimal post object with only the items needed for display
-    //
-    //   Try to bring back 1000 results quickly. or at the very least 100 results.
-    //
-    //   Then, divide the length of results by display result parameter
-    //
-    //   this = the number of pages
-    //
-    //   The other thing that shakib give you is the totla number of results
-    //
-    //   This will let you know if you need to make additional calls to the server to get more results
-    //
-    //   create an totla atribute on the json that = total_number_results
   }
 
   translatePosts(search_results: any[]) {
       let posts = [];
-    //   console.log("translatePosts: ", search_results);
+      console.log("translatePosts: ", search_results);
       search_results.forEach((i) => {
         let post = new Post();
         post.postId = i.id;
@@ -116,19 +102,24 @@ export class SearchService {
         // console.log("Title of post:", post.title);
 
         post.description = (i.fields.description && i.fields.description[0] ? i.fields.description[0]  : "No description provided.") ;
-        this.translateAssets(i.fields.assettype, i.fields.assetembedlink);
+        this.translateAssets(i.fields);
         // console.log("description of post:", post.description);
         post.assetList = [];
+        // console.log(post);
         posts.push(post);
       });
       return posts;
   }
 
-  translateAssets(assetType: any, assetList: any) {
-    //   console.log("assetType available: ",  assetType);
-    //   console.log("assetList available: " , assetList);
-  }
+  translateAssets(fields: any) {
 
+      // assumes assetList will contain same number of elements across arrays.
+      // get assetLocation, assetEmbedLink, assetId, assetName, assetDescription and assetType.
+
+      let assetList = [];
+      console.log(fields);
+
+    }
 
 
 
