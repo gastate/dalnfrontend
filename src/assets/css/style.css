@@ -661,6 +661,10 @@ ul.arrow li {
 
                     /**** Post List ****/
 
+.featured-post-list h3 {
+    margin-top: 7%;
+}
+
 #list-container {
     margin-top: 50px;
 }

@@ -3,7 +3,7 @@ import { PostService } from '../../services/post.service';
 import { SearchService } from '../../services/search.service';
 import { Post } from '../../model/post-model';
 // import { routerTransition } from '../router.animations';
-
+import 'rxjs/add/observable/fromPromise';
 
 
 @Component({
@@ -33,17 +33,27 @@ export class HomeComponent implements OnInit {
 
   getPagePosts() : void {
       this.loading = true;
-      this._searchService.search_page("games", 8, 1).subscribe(
-          (data) => {
-              this.posts = this._searchService.translatePosts(data.hit);
-              this.loading = false;
-        }, //Bind to view
+    //   this._searchService.search_page("games", 8, 1).subscribe(
+    //       (data) => {
+    //           this.posts = this._searchService.translatePosts(data.hit);
+    //           this.loading = false;
+    //     }, //Bind to view
+    //     err => {
+    //       this.loading = false;
+    //       this.failed = true;
+    //       // Log errors if any
+    //       console.log(err);
+    //     });
+    this._postService.getMockPosts().then(
+        (data) => {
+            this.posts = this._searchService.translatePosts(data.hit);
+            this.loading = false;
+        },
         err => {
-          this.loading = false;
-          this.failed = true;
-          // Log errors if any
-          console.log(err);
-        });
+            this.loading = false;
+            this.failed = true;
+            console.log(err);
+    });
   }
 
   displayResults(event) {

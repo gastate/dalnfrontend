@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, Directive, ElementRef, Renderer} from '@angular/core';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit {
   @Output()
   totalResults: EventEmitter<number>;
 
+  location: Location;
 
   posts: Post[];
   total_results: number;
@@ -50,12 +51,12 @@ export class SearchComponent implements OnInit {
   constructor(
     private _postService: PostService,
     _searchService: SearchService,
-    private _location : Location,
     private _router: Router) {
 
     this.searchService = _searchService;
     this.searchResults = new EventEmitter<Post[]>();
     this.totalResults = new EventEmitter<number>();
+
 
   }
 
@@ -66,7 +67,6 @@ export class SearchComponent implements OnInit {
     console.log("in search compoonent");
     this.resultsSize = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
-
 
     //    this._router.events.subscribe((val) => {
     //      // see also

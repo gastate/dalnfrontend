@@ -117,7 +117,7 @@ export class SearchService {
       // get assetLocation, assetEmbedLink, assetId, assetName, assetDescription and assetType.
 
       let assetList = [];
-      console.log(fields);
+    //   console.log(fields);
 
     }
 

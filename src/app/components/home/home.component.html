@@ -10,10 +10,11 @@
 </div>
 
 
-<div class="container responsive_home" >
+<div class="container responsive_home">
 
         <div class="featured-post-list" *ngIf="searchPosts.length === 0">
             <h3>Featured Posts</h3>
+            <hr />
             <post-list [postList]="posts" [totalNumberOfPosts]="posts.length"></post-list>
         </div>
 
