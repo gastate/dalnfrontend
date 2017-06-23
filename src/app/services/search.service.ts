@@ -14,7 +14,6 @@ import { environment } from '../../environments/environment';
 import { POSTS } from './mock-postlist';
 
 
-
 @Injectable()
 export class SearchService {
 
@@ -25,7 +24,7 @@ export class SearchService {
   searchQuery : string; // term to call the search engine with.
   resultsSize : number; // user specified number of results to display. (limit)
   pageNumber: number; // user specified page number to start from. (offset)
-  // total_posts: number; // total number of posts in array (count) NOTE: Currently not in use since endpoint does not return it.
+  // total_results: number; // total number of posts in array (count)
 
   pageHead: number; // admin specified number of results to stay ahead of user.
 
@@ -37,10 +36,11 @@ export class SearchService {
   constructor(private _http: Http, private _jsonp : Jsonp) {
       this.searchQuery = null;
       this.resultsSize = 12;
-      this.pageNumber = 0;
-    //   this.total_posts = 0; // NOTE: Currently not in use since endpoint does not return it.
+      this.pageNumber = 1;
+    //   this.total_results = 0;
 
       this.pageHead = 50;
+
     }
 
 
@@ -54,6 +54,7 @@ export class SearchService {
   changePageStart(page: number) {
       this.pageNumber = page;
   }
+
 
 
 
@@ -87,7 +88,7 @@ export class SearchService {
         // let posts = res.json();
         // console.log("Get Search Page Posts", posts);
         // return posts;
-        //
+        console.log("Search API Response", res.json());
         return res.json();
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -121,6 +122,47 @@ export class SearchService {
 
     }
 
+    getPager(total_results: number, user_pageSize: number = 10, user_pageNumber: number = 1) {
+
+        let totalPages = Math.ceil(total_results / user_pageSize);
+
+        let startPage: number;
+        let endPage: number;
+
+        if(totalPages <= 10) {
+            startPage = 1;
+            endPage = totalPages;
+        } else {
+            if (user_pageNumber <= 6) {
+                startPage = 1;
+                endPage = 10;
+            } else if (user_pageNumber + 4 >= totalPages) {
+                startPage = totalPages - 9;
+                endPage = totalPages;
+            } else {
+                startPage = user_pageNumber - 5;
+                endPage = user_pageNumber + 4;
+            }
+        }
+
+        let startIndex = (user_pageNumber - 1) * user_pageSize;
+        let endIndex = Math.min(startIndex + user_pageSize - 1, total_results - 1);
+
+        let pages = Array.from(new Array(startPage + endPage + 1), (x,i) => i);
+        // console.log(pages);
+
+        return {
+            total_reuslts: total_results,
+            user_pageNumber: user_pageNumber,
+            user_pageSize: user_pageSize,
+            totalPages: totalPages,
+            startPage: startPage,
+            endPage: endPage,
+            startIndex: startIndex,
+            endIndex: endIndex,
+            pages: pages
+        };
+    }
 
 
 

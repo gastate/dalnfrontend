@@ -23,19 +23,20 @@ export class SearchComponent implements OnInit {
   @Output()
   searchResults: EventEmitter<Post[]>;
 
-  @Output()
-  totalResults: EventEmitter<number>;
-
+  @Input() showPage: boolean;
+  
   location: Location;
 
   posts: Post[];
   total_results: number;
-  pagedPosts: Post[];
   searchService : SearchService;
 
   showUtil: boolean = false;
   showFull : boolean = false;
 
+  pager: any = {};
+  pagedItems: any[];
+  allPosts: any[];
 
   route: string;
 
@@ -55,8 +56,7 @@ export class SearchComponent implements OnInit {
 
     this.searchService = _searchService;
     this.searchResults = new EventEmitter<Post[]>();
-    this.totalResults = new EventEmitter<number>();
-
+    this.total_results = 0;
 
   }
 
@@ -97,7 +97,7 @@ export class SearchComponent implements OnInit {
       return null;
     }
 
-    this.searchService.search_page(term, this.resultsSize, this.pageNumber)
+    this.searchService.search_page(term, this.searchService.pageHead, 0)
       .subscribe(
         (results) => {
             // console.log("In Emmitter: ", this.resultsSize);
@@ -110,11 +110,12 @@ export class SearchComponent implements OnInit {
 
                 this.total_results = results.found;
 
-                this.posts = this.searchService.translatePosts(results.hit);
+                this.allPosts= this.searchService.translatePosts(results.hit);
                 console.log("le posts: ", this.posts);
 
-                this.searchResults.emit(this.posts);
-                this.totalResults.emit(this.total_results);
+                // this.searchResults.emit(this.posts);
+                this.setPage(1);
+
             }
 
     }, err => {
@@ -123,6 +124,17 @@ export class SearchComponent implements OnInit {
 
     // this._router.navigateByUrl('/search');
 
+  }
+
+  setPage(page: number) {
+      if (page < 1 || page > this.pager.totalPages) {
+          return;
+      }
+
+      this.pager = this.searchService.getPager(this.total_results, page);
+      this.pagedItems = this.allPosts.slice(this.pager.startIndex, this.pager.endIndex + 1);
+
+      this.searchResults.emit(this.pagedItems);
   }
 
 

@@ -17,7 +17,8 @@ import { FancyLoaderComponent } from './shared/fancy-loader/fancy-loader.compone
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PaginationComponent } from './components/pagination/pagination.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { PagedPostsComponent } from './shared/pagedposts/pagedposts.component';
 import { PostListComponent } from './shared/post-list/post-list.component';
 import { PostItemComponent } from './shared/post-item/post-item.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
@@ -27,7 +28,6 @@ import { AppRoutingModule }     from './app-routing.module';
 import { PlayerComponent} from './shared/player/player.component';
 import { SearchComponent } from './components/search/search.component';
 import { SliderComponent } from './components/slider/slider.component';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 // Services
 import { PostService } from './services/post.service';
@@ -51,7 +51,7 @@ import { SafePipe } from './safe.pipe';
     AppFooterComponent,
     AboutComponent,
     ContactComponent,
-    PaginationComponent,
+    PagedPostsComponent,
     PostDetailComponent,
     PlayerComponent,
     SearchComponent,
