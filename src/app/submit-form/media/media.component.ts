@@ -30,7 +30,7 @@ export class MediaComponent implements OnInit {
   }
 
   uploadFiles() {
-      this.submitService.uploadMedia(this.fileList);
+      Array.from(this.fileList).forEach((file) => this.submitService.uploadMedia(file));
   }
 
 

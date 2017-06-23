@@ -72,19 +72,16 @@ export class SubmitFormService {
     }
   }
 
-  uploadMedia(fileList: FileList) {
+  uploadMedia(file: File) {
       // TODO: loop through every file in the fileList
       let headers = new Headers();
       headers.append('Content-Type', ' ');
       let options = new RequestOptions({headers: headers, method: "put"});
 
 
-      let file: File; // file to handle during the upload process.
-
-      if (fileList) {
-          for (var i = 0; i < fileList.length; i++) {
-              file = fileList[i];
+      if (file) {
               console.log(this.endPoint.get_upload_link + file.name);
+
               this._http.get(this.endPoint.get_upload_link + file.name)
               .map((res: Response) => res.json())
               .catch((error : any) => Observable.throw(error.json().error))
@@ -98,11 +95,8 @@ export class SubmitFormService {
                           data => { console.log('response', data); },
                           error => { console.log(error); }
                       );
-                  }
-
-              );
-          }
-      } else {
+                  });
+          } else {
           console.log("The fileList is empty");
       }
 
