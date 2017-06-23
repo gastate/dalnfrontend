@@ -658,7 +658,10 @@ ul.arrow li {
 .add-top-margin {
     margin-top: 2%;
 }
-
+                    /**** Post Item ****/
+.postItem {
+    width: 100%;
+}
                     /**** Post List ****/
 
 .featured-post-list h3 {
@@ -754,6 +757,7 @@ iframe {
   margin: 10px 0;
   font-size: 36px
 }
+
 
 
 
