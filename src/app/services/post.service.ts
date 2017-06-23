@@ -63,7 +63,7 @@ export class PostService {
 
 
   //Mock Services
-  getMockPosts(): Promise<Post[]> {
+  getMockPosts(): Promise <any> {
     //replace with api call
     return Promise.resolve(POSTS);
   }

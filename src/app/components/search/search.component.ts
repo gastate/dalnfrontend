@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, Directive, ElementRef, Renderer} from '@angular/core';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -23,14 +23,20 @@ export class SearchComponent implements OnInit {
   @Output()
   searchResults: EventEmitter<Post[]>;
 
+  @Input() showPage: boolean;
+  
+  location: Location;
 
   posts: Post[];
-  pagedPosts: Post[];
+  total_results: number;
   searchService : SearchService;
 
   showUtil: boolean = false;
   showFull : boolean = false;
 
+  pager: any = {};
+  pagedItems: any[];
+  allPosts: any[];
 
   route: string;
 
@@ -46,11 +52,11 @@ export class SearchComponent implements OnInit {
   constructor(
     private _postService: PostService,
     _searchService: SearchService,
-    private _location : Location,
     private _router: Router) {
 
     this.searchService = _searchService;
     this.searchResults = new EventEmitter<Post[]>();
+    this.total_results = 0;
 
   }
 
@@ -58,21 +64,20 @@ export class SearchComponent implements OnInit {
       // replace with results size.
     //   this.numberOfPages = this.searchService.getPaginationParameter();
     //   console.log("Pages: " + this.numberOfPages);
-
+    console.log("in search compoonent");
     this.resultsSize = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
 
-
-       this._router.events.subscribe((val) => {
-         // see also
-         this.route = this._location.path();
-         if (this.route == "/search"){
-             console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
-             this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber );
-             this.showUtil = true; // handles utility functions for ux.
-             this.showFull = true; // handles expansion of search bar
-         }
-     });
+    //    this._router.events.subscribe((val) => {
+    //      // see also
+    //      this.route = this._location.path();
+    //      if (this.route == "/search"){
+    //          console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
+    //          this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber );
+    //          this.showUtil = true; // handles utility functions for ux.
+    //          this.showFull = true; // handles expansion of search bar
+    //      }
+    //  });
 
   }
 
@@ -92,46 +97,47 @@ export class SearchComponent implements OnInit {
       return null;
     }
 
-    this.searchService.search_page(term, this.resultsSize, this.pageNumber)
-      .subscribe((results) => {
-        console.log("In Emmitter: ", this.resultsSize);
-        if ((results === null) || results.length <= 0 ) {
-            this.noResults = true;
-        } else {
-            this.noResults = false;
-            this.posts = results;
-        }
-        this.searchResults.emit(results),
-        err => {
-            console.log(err);
-        }
+    this.searchService.search_page(term, this.searchService.pageHead, 0)
+      .subscribe(
+        (results) => {
+            // console.log("In Emmitter: ", this.resultsSize);
+            if ((results === null) || results.length <= 0 ) {
+                this.noResults = true;
+            } else {
+                this.noResults = false;
+                console.log("API resposne for hits: ", results.hit);
+                console.log("API response for total hits: ", results.found);
+
+                this.total_results = results.found;
+
+                this.allPosts= this.searchService.translatePosts(results.hit);
+                console.log("le posts: ", this.posts);
+
+                // this.searchResults.emit(this.posts);
+                this.setPage(1);
+
+            }
+
+    }, err => {
+        console.log(err);
     });
 
     // this._router.navigateByUrl('/search');
 
   }
 
-
- /**
-  * All onFakeSearch does is take the given user input parameters for pagination and results and navigate to the search route. All parameters are intialized in the constructor if no user input is given.
-  * @param {number} results    number of results to display on component
-  * @param {number} pageNumber page number to start from
-  */
-  onFakeSearch(results: number, pageNumber: number) : void {
-
-      if(this.resultsSize != results) {
-          this.resultsSize = results;
-          this.searchService.changeResultsDisplayed(this.resultsSize);
+  setPage(page: number) {
+      if (page < 1 || page > this.pager.totalPages) {
+          return;
       }
 
-      if(this.pageNumber != pageNumber) {
-          this.pageNumber = pageNumber;
-          this.searchService.changePageStart(this.pageNumber);
-      }
+      this.pager = this.searchService.getPager(this.total_results, page);
+      this.pagedItems = this.allPosts.slice(this.pager.startIndex, this.pager.endIndex + 1);
 
-      this._router.navigateByUrl('/search');
-
+      this.searchResults.emit(this.pagedItems);
   }
+
+
 
 
 }

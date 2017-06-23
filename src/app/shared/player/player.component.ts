@@ -45,8 +45,9 @@ export class PlayerComponent implements OnInit {
   }
 
   getUrl(asset: Asset): void {
-
-    if (this.postAsset.assetType === "Audio/Video") {
+    if (!asset) {
+        this.url = null;
+    } else if (this.postAsset.assetType === "Audio/Video") {
 
         this.url = this.postAsset.assetEmbedLink;
 

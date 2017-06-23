@@ -5,44 +5,11 @@
         <post-item class="media" [postItem]="post"></post-item>
     </div> -->
 
+
     <!-- Without Card Deck (same post headers but not on special cases) -->
     <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let post of postList">
         <post-item class="media" [postItem]="post"></post-item>
     </div>
 
 
-<!--
-<nav class="paginator">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" (click)="page.nextPage()" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
-</nav> -->
-
-<!-- pager -->
-<!-- <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-
-    <li [ngClass]="{disabled:pager.currentPage === 1}">
-        <a (click)="setPage(pager.currentPage - 1)">Previous</a>
-    </li>
-    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-        <a (click)="setPage(page)">{{page}}</a>
-    </li>
-    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-        <a (click)="setPage(pager.currentPage + 1)">Next</a>
-    </li>
-</ul> -->
 </div>

@@ -6,10 +6,9 @@ import {Component, Input} from '@angular/core';
 })
 
 export class AppComponent {
-    isNewDesign: boolean = false;
 
 
-    
+
 
 
 }

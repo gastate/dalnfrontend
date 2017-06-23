@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { SearchService } from '../../services/search.service';
-import {Post} from '../../model/post-model'
+import {Post} from '../../model/post-model';
 
 @Component({
   selector: 'post-list',
@@ -14,7 +14,9 @@ export class PostListComponent implements OnInit {
 
   @Input()
   postList: Post[];
-  selectedPost: Post;
+  pagedPosts: Post[];
+
+  @Input() totalNumberOfPosts: number;
 
 
   ngOnInit() {

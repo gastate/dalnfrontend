@@ -3,7 +3,7 @@ import { PostService } from '../../services/post.service';
 import { SearchService } from '../../services/search.service';
 import { Post } from '../../model/post-model';
 // import { routerTransition } from '../router.animations';
-
+import 'rxjs/add/observable/fromPromise';
 
 
 @Component({
@@ -19,7 +19,12 @@ export class HomeComponent implements OnInit {
   }
 
   title = 'DALN Frontend';
-  posts: Post[];
+  searchPosts: Post[] = [];
+  showPage : boolean = false;
+  posts: Post[] = [];
+
+  searchLoader: any;
+
   loading: boolean = false;
   failed: boolean = false;
 
@@ -31,7 +36,7 @@ export class HomeComponent implements OnInit {
       this.loading = true;
       this._searchService.search_page("games", 8, 1).subscribe(
           (data) => {
-              this.posts = data;
+              this.posts = this._searchService.translatePosts(data.hit);
               this.loading = false;
         }, //Bind to view
         err => {
@@ -40,6 +45,31 @@ export class HomeComponent implements OnInit {
           // Log errors if any
           console.log(err);
         });
+
+        // Use for development if search is down.
+    // this._postService.getMockPosts().then(
+    //     (data) => {
+    //         this.posts = this._searchService.translatePosts(data.hit);
+    //         this.loading = false;
+    //     },
+    //     err => {
+    //         this.loading = false;
+    //         this.failed = true;
+    //         console.log(err);
+    // });
+  }
+
+  displayResults(event) {
+      console.log("Search hit.", event);
+      this.searchPosts = event;
+      this.showPage = true;
+  }
+
+  clearSearch() {
+      this.searchPosts = [];
+      this.showPage = false;
+      this._searchService.searchQuery = "";
+      // add to search history of browser
   }
 
 
