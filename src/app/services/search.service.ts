@@ -125,7 +125,6 @@ export class SearchService {
     getPager(total_results: number, user_pageSize: number = 10, user_pageNumber: number = 1) {
 
         let totalPages = Math.ceil(total_results / user_pageSize);
-
         let startPage: number;
         let endPage: number;
 
@@ -150,7 +149,15 @@ export class SearchService {
 
         let pages = Array.from(new Array(startPage + endPage + 1), (x,i) => i);
         // console.log(pages);
-
+        console.log({total_reuslts: total_results,
+        user_pageNumber: user_pageNumber,
+        user_pageSize: user_pageSize,
+        totalPages: totalPages,
+        startPage: startPage,
+        endPage: endPage,
+        startIndex: startIndex,
+        endIndex: endIndex,
+        pages: pages});
         return {
             total_reuslts: total_results,
             user_pageNumber: user_pageNumber,
