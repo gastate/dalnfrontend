@@ -1,9 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, Directive, ElementRef, Renderer} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, NavigationEnd} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
@@ -30,28 +28,17 @@ export class SearchComponent implements OnInit {
 
   posts: Post[];
   total_results: number;
-  pagedPosts: Post[];
   searchService : SearchService;
 
-  showUtil: boolean = false;
-  showFull : boolean = false;
-
-
-  route: string;
-
-
-  // count: number = 0; // number of total results returned from a query.
   pageNumber: number; // user specified page number to start from.
   resultsSize : number; // number of results to display in search component.
-  // total_posts: number; // total number of posts in array NOTE: Currently not in use since endpoint does not return it.
 
 
   private noResults: boolean = false;
 
   constructor(
     private _postService: PostService,
-    _searchService: SearchService,
-    private _router: Router) {
+    _searchService: SearchService) {
 
     this.searchService = _searchService;
     this.searchResults = new EventEmitter<Post[]>();
@@ -61,23 +48,10 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-      // replace with results size.
-    //   this.numberOfPages = this.searchService.getPaginationParameter();
-    //   console.log("Pages: " + this.numberOfPages);
+
     console.log("in search compoonent");
     this.resultsSize = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
-
-    //    this._router.events.subscribe((val) => {
-    //      // see also
-    //      this.route = this._location.path();
-    //      if (this.route == "/search"){
-    //          console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
-    //          this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber );
-    //          this.showUtil = true; // handles utility functions for ux.
-    //          this.showFull = true; // handles expansion of search bar
-    //      }
-    //  });
 
   }
 
@@ -120,8 +94,6 @@ export class SearchComponent implements OnInit {
     }, err => {
         console.log(err);
     });
-
-    // this._router.navigateByUrl('/search');
 
   }
 

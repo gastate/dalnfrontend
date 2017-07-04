@@ -18,19 +18,14 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
-  // If you're wondering about the paraentheses, see: http://g00glen00b.be/component-angular-2/
-  //  check out what each parameter means here: https://pokeapi.co/docsv2/
-  //  test out the parameters on the pokeapi endpoint here: http://pokeapi.co/api/v2/evolution-chain/?limit=10&offset=0
 
   searchQuery : string; // term to call the search engine with.
   resultsSize : number; // user specified number of results to display. (limit)
   pageNumber: number; // user specified page number to start from. (offset)
-  // total_posts: number; // total number of posts in array (count) NOTE: Currently not in use since endpoint does not return it.
+
 
   pageHead: number; // admin specified number of results to stay ahead of user.
 
-  // NOTE: Temp pagination parameters.
-  searchTerm: string;
 
   private endPoint = environment.API_ENDPOINTS;
 
@@ -38,7 +33,7 @@ export class SearchService {
       this.searchQuery = null;
       this.resultsSize = 12;
       this.pageNumber = 0;
-    //   this.total_posts = 0; // NOTE: Currently not in use since endpoint does not return it.
+
 
       this.pageHead = 50;
     }
@@ -54,10 +49,6 @@ export class SearchService {
   changePageStart(page: number) {
       this.pageNumber = page;
   }
-
-
-
-
 
   // Returning Search as Observable
   search(term: string): Observable<Post[]> { // TODO : term needs to be url encoded to support multiple terms as well as boolean expressions.
@@ -79,9 +70,6 @@ export class SearchService {
 
     //   console.log("Query:" + this.searchQuery);
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
-
-    this.searchTerm = term; // NOTE: Temp for pagination.
-    this.resultsSize = results; // NOTE: Temp for pagination.
 
     return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
         // let posts = res.json();

@@ -22,7 +22,12 @@ export class HomeComponent implements OnInit {
   searchPosts: Post[] = [];
   posts: Post[] = [];
 
-  searchLoader: any;
+  // pagination
+  resultList: Post[];
+  nextResultList: Post[];
+  startOffset: number;
+  endOffset: number;
+
 
   loading: boolean = false;
   failed: boolean = false;
@@ -58,6 +63,7 @@ export class HomeComponent implements OnInit {
     // });
   }
 
+
   displayResults(event) {
       console.log("Search hit.", event);
       this.searchPosts = event;
@@ -67,6 +73,10 @@ export class HomeComponent implements OnInit {
       this.searchPosts = [];
       this._searchService.searchQuery = "";
       // add to search history of browser
+  }
+
+  calculateOffset(event) {
+      
   }
 
 
