@@ -658,6 +658,10 @@ ul.arrow li {
 .add-top-margin {
     margin-top: 2%;
 }
+
+.admin-sidebar {
+    margin-top: 45%;
+}
                     /**** Post Item ****/
 .postItem {
     width: 100%;

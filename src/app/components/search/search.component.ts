@@ -21,8 +21,7 @@ export class SearchComponent implements OnInit {
   @Output()
   searchResults: EventEmitter<Post[]>;
 
-  @Output()
-  totalResults: EventEmitter<number>;
+  @Input() showPage: boolean;
 
   location: Location;
 
@@ -42,8 +41,7 @@ export class SearchComponent implements OnInit {
 
     this.searchService = _searchService;
     this.searchResults = new EventEmitter<Post[]>();
-    this.totalResults = new EventEmitter<number>();
-
+    this.total_results = 0;
 
   }
 
@@ -71,7 +69,7 @@ export class SearchComponent implements OnInit {
       return null;
     }
 
-    this.searchService.search_page(term, this.resultsSize, this.pageNumber)
+    this.searchService.search_page(term, this.searchService.pageHead, 0)
       .subscribe(
         (results) => {
             // console.log("In Emmitter: ", this.resultsSize);
@@ -79,16 +77,12 @@ export class SearchComponent implements OnInit {
                 this.noResults = true;
             } else {
                 this.noResults = false;
-                console.log("API resposne for hits: ", results.hit);
-                console.log("API response for total hits: ", results.found);
 
                 this.total_results = results.found;
-
+                
                 this.posts = this.searchService.translatePosts(results.hit);
-                console.log("le posts: ", this.posts);
 
                 this.searchResults.emit(this.posts);
-                this.totalResults.emit(this.total_results);
             }
 
     }, err => {
@@ -96,7 +90,6 @@ export class SearchComponent implements OnInit {
     });
 
   }
-
 
 
 

@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
 
   title = 'DALN Frontend';
   searchPosts: Post[] = [];
+  showPage : boolean = false;
   posts: Post[] = [];
 
   // pagination
@@ -67,10 +68,12 @@ export class HomeComponent implements OnInit {
   displayResults(event) {
       console.log("Search hit.", event);
       this.searchPosts = event;
+      this.showPage = true;
   }
 
   clearSearch() {
       this.searchPosts = [];
+      this.showPage = false;
       this._searchService.searchQuery = "";
       // add to search history of browser
   }

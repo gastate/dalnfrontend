@@ -14,7 +14,6 @@ import { environment } from '../../environments/environment';
 import { POSTS } from './mock-postlist';
 
 
-
 @Injectable()
 export class SearchService {
 
@@ -22,7 +21,6 @@ export class SearchService {
   searchQuery : string; // term to call the search engine with.
   resultsSize : number; // user specified number of results to display. (limit)
   pageNumber: number; // user specified page number to start from. (offset)
-
 
   pageHead: number; // admin specified number of results to stay ahead of user.
 
@@ -33,9 +31,8 @@ export class SearchService {
       this.searchQuery = null;
       this.resultsSize = 12;
       this.pageNumber = 0;
-
-
       this.pageHead = 50;
+
     }
 
 
@@ -75,7 +72,7 @@ export class SearchService {
         // let posts = res.json();
         // console.log("Get Search Page Posts", posts);
         // return posts;
-        //
+        console.log("Search API Response", res.json());
         return res.json();
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -108,8 +105,6 @@ export class SearchService {
     //   console.log(fields);
 
     }
-
-
 
 
 
