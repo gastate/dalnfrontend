@@ -9,6 +9,9 @@ import { SearchService } from '../../services/search.service';
 export class PaginationComponent implements OnInit {
 
   @Input()
+  resultList: Post[];
+
+  @Input()
   parentStartOffset;
 
   @Output()
@@ -18,7 +21,6 @@ export class PaginationComponent implements OnInit {
   skipToResultList: EventEmitter<any>;
 
   searchService: SearchService;
-  resultList: Post[];
   pagedPost: Post[];
 
   resultsPerPage: number;
