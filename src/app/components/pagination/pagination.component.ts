@@ -36,13 +36,14 @@ export class PaginationComponent implements OnInit {
   }
 
   getPagedPost() {
+      let lastIndex = (this.startOffset * this.resultsPerPage - 1);
+      let firstIndex = (lastIndex - this.resultsPerPage + 1);
       console.log("resultList", this.resultList);
   }
-  //
-  // calculateButtonRange() {
-  //     let numberOfButtons;
-  //     numberOfButtons = this.resultList.length / this.resultsPerPage;
-  // }
+
+  calculateButtonRange() {
+      let numberOfButtons = this.resultList.length / this.resultsPerPage;
+  }
 
 
 
