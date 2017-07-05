@@ -23,23 +23,12 @@ export class HomeComponent implements OnInit {
   showPage : boolean = false;
   posts: Post[] = [];
 
-  // pagination
-  resultList: Post[] = [];
-  nextResultList: Post[];
-  startOffset: number;
-  endOffset: number;
-  total_offset: number;
-
-  // taken from searchService
-  total_results : number;
-  resultsPerPage: number;
 
   loading: boolean = false;
   failed: boolean = false;
 
   ngOnInit(): void {
-        this.total_results = this._searchService.total_results;
-        this.resultsPerPage = this._searchService.resultsSize;
+
         this.getPagePosts();
   }
 
@@ -73,22 +62,17 @@ export class HomeComponent implements OnInit {
 
   displayResults(event) {
     //   console.log("Search hit.", event);
-      this.resultList = event;
+      this.searchPosts = event;
       this.showPage = true;
   }
 
   clearSearch() {
-      this.resultList = [];
+      this.searchPosts = [];
       this.showPage = false;
       this._searchService.searchQuery = "";
       // add to search history of browser
   }
 
-  calculateOffset(event) {
-      this.total_offset = this._searchService.total_offset;
-      
-
-  }
 
 
 

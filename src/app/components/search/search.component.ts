@@ -21,16 +21,23 @@ export class SearchComponent implements OnInit {
   @Output()
   searchResults: EventEmitter<Post[]>;
 
-  @Input() showPage: boolean;
 
   location: Location;
 
-  posts: Post[];
-  total_results: number;
+  resultList: Post[];
+  nextResultList: Post[];
   searchService : SearchService;
+
+  // pagination
+  startOffset: number;
+  endOffset: number;
+  total_offset: number;
+  total_results: number;
 
   pageNumber: number; // user specified page number to start from.
   resultsSize : number; // number of results to display in search component.
+
+
 
 
   private noResults: boolean = false;
@@ -41,7 +48,6 @@ export class SearchComponent implements OnInit {
 
     this.searchService = _searchService;
     this.searchResults = new EventEmitter<Post[]>();
-    this.total_results = 0;
 
   }
 
@@ -50,7 +56,8 @@ export class SearchComponent implements OnInit {
     console.log("in search compoonent");
     this.resultsSize = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
-
+    this.total_offset = this.searchService.total_offset;
+    this.total_results = this.searchService.total_results;
   }
 
   onSearch(term: string, results: number, pageNumber: number): void {
@@ -78,16 +85,19 @@ export class SearchComponent implements OnInit {
             } else {
                 this.noResults = false;
 
-                this.total_results = results.found;
+                this.resultList = this.searchService.translatePosts(results.hit);
 
-                this.posts = this.searchService.translatePosts(results.hit);
-
-                this.searchResults.emit(this.posts);
+                this.searchResults.emit(this.resultList);
             }
 
     }, err => {
         console.log(err);
     });
+
+  }
+
+  calculateOffset(event) {
+      this.total_offset = this.searchService.total_offset;
 
   }
 
