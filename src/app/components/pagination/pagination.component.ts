@@ -33,7 +33,7 @@ export class PaginationComponent implements OnInit {
   }
 
 
-
+// get currentPageOffset, report to home
 
 
 

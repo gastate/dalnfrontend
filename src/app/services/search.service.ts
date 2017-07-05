@@ -22,7 +22,12 @@ export class SearchService {
   resultsSize : number; // user specified number of results to display. (limit)
   pageNumber: number; // user specified page number to start from. (offset)
 
+
+
+  // pagination
   pageHead: number; // admin specified number of results to stay ahead of user.
+  total_offset: number; // total offsets for pagination.
+  total_results: number; // total results from search api.
 
 
   private endPoint = environment.API_ENDPOINTS;
@@ -32,6 +37,9 @@ export class SearchService {
       this.resultsSize = 12;
       this.pageNumber = 0;
       this.pageHead = 50;
+
+      this.total_results = 0;
+      this.total_offset = 0;
 
     }
 
@@ -69,9 +77,11 @@ export class SearchService {
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
 
     return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
-        // let posts = res.json();
-        // console.log("Get Search Page Posts", posts);
-        // return posts;
+
+        this.total_results = res.json().found;
+        this.total_offset = Math.ceil(this.total_results / this.resultsSize);
+        console.log("number of total offsets", this.total_offset);
+
         console.log("Search API Response", res.json());
         return res.json();
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));

@@ -24,22 +24,28 @@ export class HomeComponent implements OnInit {
   posts: Post[] = [];
 
   // pagination
-  resultList: Post[];
+  resultList: Post[] = [];
   nextResultList: Post[];
   startOffset: number;
   endOffset: number;
+  total_offset: number;
 
+  // taken from searchService
+  total_results : number;
+  resultsPerPage: number;
 
   loading: boolean = false;
   failed: boolean = false;
 
   ngOnInit(): void {
+        this.total_results = this._searchService.total_results;
+        this.resultsPerPage = this._searchService.resultsSize;
         this.getPagePosts();
   }
 
   getPagePosts() : void {
       this.loading = true;
-      this._searchService.search_page("games", 8, 1).subscribe(
+      this._searchService.search_page("games", 8, 0).subscribe(
           (data) => {
               this.posts = this._searchService.translatePosts(data.hit);
               this.loading = false;
@@ -66,20 +72,22 @@ export class HomeComponent implements OnInit {
 
 
   displayResults(event) {
-      console.log("Search hit.", event);
-      this.searchPosts = event;
+    //   console.log("Search hit.", event);
+      this.resultList = event;
       this.showPage = true;
   }
 
   clearSearch() {
-      this.searchPosts = [];
+      this.resultList = [];
       this.showPage = false;
       this._searchService.searchQuery = "";
       // add to search history of browser
   }
 
   calculateOffset(event) {
+      this.total_offset = this._searchService.total_offset;
       
+
   }
 
 

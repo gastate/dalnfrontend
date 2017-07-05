@@ -69,7 +69,7 @@ export class SearchComponent implements OnInit {
       return null;
     }
 
-    this.searchService.search_page(term, this.searchService.pageHead, 0)
+    this.searchService.search_page(term, this.searchService.pageHead, this.searchService.pageNumber)
       .subscribe(
         (results) => {
             // console.log("In Emmitter: ", this.resultsSize);
@@ -79,7 +79,7 @@ export class SearchComponent implements OnInit {
                 this.noResults = false;
 
                 this.total_results = results.found;
-                
+
                 this.posts = this.searchService.translatePosts(results.hit);
 
                 this.searchResults.emit(this.posts);
