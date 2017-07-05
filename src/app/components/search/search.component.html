@@ -34,7 +34,7 @@
             <div class="col-md-4 offset-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">Page Number</span>
-                    <input #pageNum class="form-control" id="pageNumber" type="number" min="0" max="50" [value]="searchService.pageNumber"/>
+                    <input #pageNum class="form-control" id="pageNumber" type="number" min="1" max="50" [value]="searchService.pageNumber"/>
                 </div>
             </div>
         </div>
@@ -58,6 +58,6 @@
 
 </div>
 
-<app-pagination [resultList]="resultList"></app-pagination>
+<app-pagination (getResult)="getResult($event)" [startOffset]="this.startOffset" [resultList]="resultList"></app-pagination>
 
 <router-outlet></router-outlet>

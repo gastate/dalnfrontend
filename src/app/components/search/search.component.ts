@@ -18,12 +18,10 @@ import { Post } from '../../model/post-model';
 })
 export class SearchComponent implements OnInit {
 
-  @Output()
-  searchResults: EventEmitter<Post[]>;
+  // @Output()
+  // searchResults: EventEmitter<Post[]>;
 
-
-  location: Location;
-
+  posts: Post[] = [];
   resultList: Post[];
   nextResultList: Post[];
   searchService : SearchService;
@@ -36,7 +34,9 @@ export class SearchComponent implements OnInit {
 
   pageNumber: number; // user specified page number to start from.
   resultsSize : number; // number of results to display in search component.
+  pageParameter: number = 0;
 
+  currentOffset: number; // received by pagination component.
 
 
 
@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit {
     _searchService: SearchService) {
 
     this.searchService = _searchService;
-    this.searchResults = new EventEmitter<Post[]>();
+    // this.searchResults = new EventEmitter<Post[]>();
 
   }
 
@@ -58,6 +58,7 @@ export class SearchComponent implements OnInit {
     this.pageNumber = this.searchService.pageNumber;
     this.total_offset = this.searchService.total_offset;
     this.total_results = this.searchService.total_results;
+
   }
 
   onSearch(term: string, results: number, pageNumber: number): void {
@@ -76,7 +77,7 @@ export class SearchComponent implements OnInit {
       return null;
     }
 
-    this.searchService.search_page(term, this.searchService.pageHead, this.searchService.pageNumber)
+    this.searchService.search_page(term, this.searchService.pageHead, this.pageParameter)
       .subscribe(
         (results) => {
             // console.log("In Emmitter: ", this.resultsSize);
@@ -85,10 +86,12 @@ export class SearchComponent implements OnInit {
             } else {
                 this.noResults = false;
 
-                this.resultList = this.searchService.translatePosts(results.hit);
-
-                this.searchResults.emit(this.resultList);
+                this.posts = this.searchService.translatePosts(results.hit);
+                this.resultList = this.posts;
+                this.calculateOffset();
+                // this.searchResults.emit(this.resultList);
             }
+
 
     }, err => {
         console.log(err);
@@ -96,9 +99,47 @@ export class SearchComponent implements OnInit {
 
   }
 
-  calculateOffset(event) {
-      this.total_offset = this.searchService.total_offset;
+  calculateOffset() {
+      this.startOffset = this.searchService.pageNumber;
+      // console.log("Parent Offset", this.startOffset);
+      this.endOffset = this.searchService.total_offset;
+      console.log("startOffset, endOffset", this.startOffset, this.endOffset);
+  }
 
+  getResult(event) {
+
+      this.currentOffset = event;
+
+      // get the next resultList going forwards.
+      if (this.currentOffset === this.endOffset - 1) {
+          this.pageParameter++;
+
+        //   this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
+
+          console.log("PageNumber:", this.searchService.pageNumber);
+          console.log("Next Result List:", this.nextResultList);
+
+      // get the next result list going backwards.
+      } else if (this.currentOffset === this.startOffset + 1) {
+          this.pageParameter--;
+
+        //   this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
+
+          console.log("PageNumber:", this.searchService.pageNumber);
+          console.log("Next Result List:", this.nextResultList);
+
+      // if currentOffset is either the start or end offset, either set the resultList to nextResultList or populate resultList.
+      } else if ((this.currentOffset === this.endOffset) || (this.currentOffset === this.startOffset)) {
+          if (this.nextResultList !== null) {
+              this.resultList = this.nextResultList;
+          } else {
+            //    this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
+          }
+
+      // all conditions fail so currentOffset > endOffset or < startOffset. Need to get the resultList corresponding to the currentOffset. (Skip function).
+      } else {
+          console.log("Skip.");
+      }
   }
 
 

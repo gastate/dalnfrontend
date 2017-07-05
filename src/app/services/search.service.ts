@@ -35,7 +35,7 @@ export class SearchService {
   constructor(private _http: Http, private _jsonp : Jsonp) {
       this.searchQuery = null;
       this.resultsSize = 12;
-      this.pageNumber = 0;
+      this.pageNumber = 1;
       this.pageHead = 50;
 
       this.total_results = 0;
@@ -80,7 +80,7 @@ export class SearchService {
 
         this.total_results = res.json().found;
         this.total_offset = Math.ceil(this.total_results / this.resultsSize);
-        console.log("number of total offsets", this.total_offset);
+        // console.log("number of total offsets", this.total_offset);
 
         console.log("Search API Response", res.json());
         return res.json();
