@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Post } from '../../model/post-model';
 import { SearchService } from '../../services/search.service';
 
@@ -6,7 +6,7 @@ import { SearchService } from '../../services/search.service';
   selector: 'app-pagination',
   templateUrl: './pagination.component.html'
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnChanges {
 
   @Input()
   resultList: Post[];
@@ -34,7 +34,7 @@ export class PaginationComponent implements OnInit {
 
   ngOnInit() {
      this.resultsPerPage = this.searchService.resultsSize;
-     this.getPagedPost();
+     console.log("pagination startOffset", this.startOffset);
   }
 
   getPagedPost() {
@@ -55,6 +55,11 @@ export class PaginationComponent implements OnInit {
       console.log("Button Array", buttonArray);
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+      if(changes['resultList']) {
+          console.log("pagination change", this.resultList);
+      }
+  }
 
 
 

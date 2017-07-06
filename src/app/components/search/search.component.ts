@@ -11,6 +11,7 @@ import { Post } from '../../model/post-model';
 
 
 
+
 @Component({
   selector: 'app-search2',
   templateUrl: './search.component.html',
@@ -20,6 +21,7 @@ export class SearchComponent implements OnInit {
 
   // @Output()
   // searchResults: EventEmitter<Post[]>;
+
 
   posts: Post[] = [];
   resultList: Post[] = [];
@@ -142,6 +144,7 @@ export class SearchComponent implements OnInit {
           console.log("Skip.");
       }
   }
+
 
 
 
