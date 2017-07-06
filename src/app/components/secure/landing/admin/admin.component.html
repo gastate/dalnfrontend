@@ -1,0 +1,76 @@
+<div id="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-sm-3 col-md-2 bg-faded sidebar">
+                <ul class="nav nav-pills flex-column admin-sidebar">
+                    <li class="nav-item">
+                        <a class="nav-link">Overview</a>
+                        <a class="nav-link">Statistics</a>
+                        <a class="nav-link">Testing &amp; Service Status</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link">Community Management</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link">Post Approval</a>
+                        <a class="nav-link">Post Editing</a>
+                        <a class="nav-link">Import/Export Posts</a>
+                        <a class="nav-link">Withdrawn Posts</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link">Admin List</a>
+                        <a class="nav-link">Metadata Lists</a>
+                        <a class="nav-link">Logs</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main class="col-sm-9  col-md-10  pt-3">
+                <div class="col-md-4">
+                    <h1>Admin post approval</h1>
+                    <p>
+                        Enter the PostId:
+                    </p>
+                    <input type="text" name="postId" #postId/>
+                    <button class="btn btn-primary" type="submit" value="Submit" (keydown.enter)="approvePost(postId.value)" (click)="approvePost(postId.value)">Submit</button>
+                </div>
+                <hr />
+                <div class="col-md-4">
+                    <p>
+                        Changes the number of pages to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.
+
+                        i.e. Staying 10 pages ahead of user x 10 results per page (user specified) = 100 posts to stay ahead of user
+
+                        i.e. Staying 50 pages ahead of user x 10 results per page = 500 posts to stay ahead of user.
+
+                        i.e. Staying 10 pages ahead of user x 100 results per page = 1000 posts to stay ahead of user.
+
+                        Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10.
+                    </p>
+                    <input type="number" class="form-control"  min="1" max="100" #pageHead [value]="searchService.pageHead"/>
+                    <button class="btn btn-primary" type="submit" (keydown.enter)="changePageHead(pageHead.value)" (click)="changePageHead(pageHead.value)">Change Page Head</button>
+                </div>
+                <hr />
+                <!-- <div class="col-md-4">
+                    <p>
+                        Approval List
+                    </p>
+                    <post-list [postList]="approval_list"></post-list>
+
+                </div> -->
+            </main>
+
+            </div>
+
+
+
+    </div>
+</div>
+
+<router-outlet></router-outlet>
