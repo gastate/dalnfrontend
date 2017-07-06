@@ -89,7 +89,7 @@ export class SearchService {
 
   translatePosts(search_results: any[]) {
       let posts = [];
-      console.log("translatePosts: ", search_results);
+    //   console.log("translatePosts: ", search_results);
       search_results.forEach((i) => {
         let post = new Post();
         post.postId = i.id;

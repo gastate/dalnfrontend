@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
   // searchResults: EventEmitter<Post[]>;
 
   posts: Post[] = [];
-  resultList: Post[];
+  resultList: Post[] = [];
   nextResultList: Post[];
   searchService : SearchService;
 
@@ -88,6 +88,7 @@ export class SearchComponent implements OnInit {
 
                 this.posts = this.searchService.translatePosts(results.hit);
                 this.resultList = this.posts;
+                console.log("Search resultList", this.resultList);
                 this.calculateOffset();
                 // this.searchResults.emit(this.resultList);
             }

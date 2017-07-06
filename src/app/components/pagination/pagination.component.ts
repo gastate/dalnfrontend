@@ -24,6 +24,7 @@ export class PaginationComponent implements OnInit {
   pagedPost: Post[];
 
 
+
   resultsPerPage: number;
 
 
@@ -33,16 +34,25 @@ export class PaginationComponent implements OnInit {
 
   ngOnInit() {
      this.resultsPerPage = this.searchService.resultsSize;
+     this.getPagedPost();
   }
 
   getPagedPost() {
       let lastIndex = (this.startOffset * this.resultsPerPage - 1);
       let firstIndex = (lastIndex - this.resultsPerPage + 1);
-      console.log("resultList", this.resultList);
+      this.calculateButtonRange();
+      console.log("pagination resultList", this.resultList);
   }
 
   calculateButtonRange() {
       let numberOfButtons = this.resultList.length / this.resultsPerPage;
+      let buttonArray: number[] = [];
+
+      for(var i = 0; i < numberOfButtons; i++) {
+          buttonArray.push(this.startOffset);
+          this.startOffset++;
+      }
+      console.log("Button Array", buttonArray);
   }
 
 
