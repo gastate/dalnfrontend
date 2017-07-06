@@ -54,13 +54,10 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    console.log("in search compoonent");
     this.resultsSize = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
     this.total_offset = this.searchService.total_offset;
     this.total_results = this.searchService.total_results;
-
   }
 
   onSearch(term: string, results: number, pageNumber: number): void {
@@ -90,7 +87,7 @@ export class SearchComponent implements OnInit {
 
                 this.posts = this.searchService.translatePosts(results.hit);
                 this.resultList = this.posts;
-                console.log("Search resultList", this.resultList);
+                // console.log("Search resultList", this.resultList);
                 this.calculateOffset();
                 // this.searchResults.emit(this.resultList);
             }
@@ -105,13 +102,14 @@ export class SearchComponent implements OnInit {
   calculateOffset() {
       this.startOffset = this.searchService.pageNumber;
       // console.log("Parent Offset", this.startOffset);
-      this.endOffset = this.searchService.total_offset;
+      this.endOffset = Math.floor(this.searchService.pageHead / this.searchService.resultsSize);
       console.log("startOffset, endOffset", this.startOffset, this.endOffset);
   }
 
   getResult(event) {
 
       this.currentOffset = event;
+      console.log("search comp event", event);
 
       // get the next resultList going forwards.
       if (this.currentOffset === this.endOffset - 1) {
