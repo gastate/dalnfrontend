@@ -34,7 +34,8 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   currentPage: number;
   resultsPerPage: number;
-  buttonArray: number[] = [];
+  buttonArray: number[] = []; // holds all possible buttons
+  pagedButtonArray: number[] = []; // holds the current view buttons.
   pageHead: number;
 
 
@@ -89,16 +90,20 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   calculateButtonRange() {
 
-    //   console.log("total_offset", this.searchService.total_offset);
-    //   for(let i = 0; i < this.searchService.total_offset; i++) {
-    //       this.buttonArray.push(i + 1);
-    //   }
-      console.log("Button Array", this.buttonArray);
-      console.log("endOffset", this.endOffset);
-      for(let i = 0; i < this.endOffset; i++) {
+      console.log("total_offset", this.searchService.total_offset);
+      for(let i = 0; i < this.searchService.total_offset; i++) {
           this.buttonArray.push(i + 1);
       }
       console.log("Button Array", this.buttonArray);
+
+    //   buttonArray.slice(this.startOffset, this.endOffset + 6);
+
+
+      console.log("endOffset", this.endOffset);
+    //   for(let i = 0; i < this.endOffset; i++) {
+    //       this.buttonArray.push(i + 1);
+    //   }
+    //   console.log("Button Array", this.buttonArray);
   }
 
   populatePosts(firstIndex, lastIndex) {
