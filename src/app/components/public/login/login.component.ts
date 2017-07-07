@@ -1,20 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {CognitoCallback, UserLoginService, LoggedInCallback} from "../../../services/cognito.service";
+import {CognitoCallback, LoggedInCallback} from "../../../services/cognito.service";
+import {UserLoginService} from '../../../services/user-login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, CognitoCallback, LoggedInCallback, OnInit {
+export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit {
 
   email: string;
   password: string;
   errorMessage: string;
 
   constructor(public router: Router,
-              public userService: UserLoginService) { }
+              public userService: UserLoginService) {
+                  console.log("In LoginComponent");
+    }
 
   ngOnInit() {
     this.errorMessage = null;

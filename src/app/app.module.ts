@@ -41,7 +41,8 @@ import {WithdrawnComponent} from './components/secure/withdrawn/withdrawn.compon
 import { PostService } from './services/post.service';
 import { SearchService } from './services/search.service';
 import { AuthService } from './services/auth.service';
-import { CognitoUtil, UserLoginService } from './services/cognito.service';
+import { CognitoUtil } from './services/cognito.service';
+import { UserLoginService } from './services/user-login.service';
 
 // Other
 import { AppRoutingModule } from './app-routing.module';
