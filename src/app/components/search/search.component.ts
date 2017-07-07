@@ -1,15 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter, Directive, ElementRef, Renderer} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, NavigationEnd} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { SearchService } from '../../services/search.service';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../model/post-model';
+
 
 
 
@@ -20,65 +19,45 @@ import { Post } from '../../model/post-model';
 })
 export class SearchComponent implements OnInit {
 
-  @Output()
-  searchResults: EventEmitter<Post[]>;
+  // @Output()
+  // searchResults: EventEmitter<Post[]>;
 
-  @Input() showPage: boolean;
-  
-  location: Location;
 
-  posts: Post[];
-  total_results: number;
+  posts: Post[] = [];
+  resultList: Post[] = [];
+  nextResultList: Post[];
   searchService : SearchService;
 
-  showUtil: boolean = false;
-  showFull : boolean = false;
+  // pagination
+  startOffset: number;
+  endOffset: number;
+  total_offset: number;
+  total_results: number;
 
-  pager: any = {};
-  pagedItems: any[];
-  allPosts: any[];
-
-  route: string;
-
-
-  // count: number = 0; // number of total results returned from a query.
   pageNumber: number; // user specified page number to start from.
   resultsSize : number; // number of results to display in search component.
-  // total_posts: number; // total number of posts in array NOTE: Currently not in use since endpoint does not return it.
+  pageParameter: number = 0;
+
+  currentOffset: number; // received by pagination component.
+
 
 
   private noResults: boolean = false;
 
   constructor(
     private _postService: PostService,
-    _searchService: SearchService,
-    private _router: Router) {
+    _searchService: SearchService) {
 
     this.searchService = _searchService;
-    this.searchResults = new EventEmitter<Post[]>();
-    this.total_results = 0;
+    // this.searchResults = new EventEmitter<Post[]>();
 
   }
 
   ngOnInit() {
-      // replace with results size.
-    //   this.numberOfPages = this.searchService.getPaginationParameter();
-    //   console.log("Pages: " + this.numberOfPages);
-    console.log("in search compoonent");
     this.resultsSize = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
-
-    //    this._router.events.subscribe((val) => {
-    //      // see also
-    //      this.route = this._location.path();
-    //      if (this.route == "/search"){
-    //          console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
-    //          this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber );
-    //          this.showUtil = true; // handles utility functions for ux.
-    //          this.showFull = true; // handles expansion of search bar
-    //      }
-    //  });
-
+    this.total_offset = this.searchService.total_offset;
+    this.total_results = this.searchService.total_results;
   }
 
   onSearch(term: string, results: number, pageNumber: number): void {
@@ -97,7 +76,7 @@ export class SearchComponent implements OnInit {
       return null;
     }
 
-    this.searchService.search_page(term, this.searchService.pageHead, 0)
+    this.searchService.search_page(term, this.searchService.pageHead, this.pageParameter)
       .subscribe(
         (results) => {
             // console.log("In Emmitter: ", this.resultsSize);
@@ -105,36 +84,63 @@ export class SearchComponent implements OnInit {
                 this.noResults = true;
             } else {
                 this.noResults = false;
-                console.log("API resposne for hits: ", results.hit);
-                console.log("API response for total hits: ", results.found);
 
-                this.total_results = results.found;
-
-                this.allPosts= this.searchService.translatePosts(results.hit);
-                console.log("le posts: ", this.posts);
-
-                // this.searchResults.emit(this.posts);
-                this.setPage(1);
-
+                this.posts = this.searchService.translatePosts(results.hit);
+                this.resultList = this.posts;
+                // console.log("Search resultList", this.resultList);
+                this.calculateOffset();
+                // this.searchResults.emit(this.resultList);
             }
+
 
     }, err => {
         console.log(err);
     });
 
-    // this._router.navigateByUrl('/search');
-
   }
 
-  setPage(page: number) {
-      if (page < 1 || page > this.pager.totalPages) {
-          return;
+  calculateOffset() {
+      this.startOffset = this.searchService.pageNumber;
+      // console.log("Parent Offset", this.startOffset);
+      this.endOffset = Math.floor(this.searchService.pageHead / this.searchService.resultsSize);
+      console.log("startOffset, endOffset", this.startOffset, this.endOffset);
+  }
+
+  getResult(event) {
+      console.log("Emit received");
+      this.currentOffset = event;
+      console.log("search comp event", event);
+
+      // get the next resultList going forwards.
+      if (this.currentOffset === this.endOffset - 1) {
+          this.pageParameter++;
+
+        //   this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
+
+          console.log("PageNumber:", this.searchService.pageNumber);
+          console.log("Next Result List:", this.nextResultList);
+
+      // get the next result list going backwards.
+      } else if (this.currentOffset === this.startOffset + 1) {
+          this.pageParameter--;
+
+        //   this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
+
+          console.log("PageNumber:", this.searchService.pageNumber);
+          console.log("Next Result List:", this.nextResultList);
+
+      // if currentOffset is either the start or end offset, either set the resultList to nextResultList or populate resultList.
+      } else if ((this.currentOffset === this.endOffset) || (this.currentOffset === this.startOffset)) {
+          if (this.nextResultList !== null) {
+              this.resultList = this.nextResultList;
+          } else {
+            //    this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
+          }
+
+      // all conditions fail so currentOffset > endOffset or < startOffset. Need to get the resultList corresponding to the currentOffset. (Skip function).
+      } else {
+          console.log("Skip.");
       }
-
-      this.pager = this.searchService.getPager(this.total_results, page);
-      this.pagedItems = this.allPosts.slice(this.pager.startIndex, this.pager.endIndex + 1);
-
-      this.searchResults.emit(this.pagedItems);
   }
 
 

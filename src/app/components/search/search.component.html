@@ -34,7 +34,7 @@
             <div class="col-md-4 offset-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">Page Number</span>
-                    <input #pageNum class="form-control" id="pageNumber" type="number" min="0" max="50" [value]="searchService.pageNumber"/>
+                    <input #pageNum class="form-control" id="pageNumber" type="number" min="1" max="50" [value]="searchService.pageNumber"/>
                 </div>
             </div>
         </div>
@@ -49,24 +49,6 @@
       </div>
      </div>
 
-     <ul *ngIf="pager.pages && pager.pages.length && showPage" class="pagination">
-                <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
-                    <a class="page-link" (click)="setPage(1)">First</a>
-                </li>
-                <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
-                    <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
-                </li>
-                <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                    <a class="page-link" (click)="setPage(page)">{{page}}</a>
-                </li>
-                <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                    <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
-                </li>
-                <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                    <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
-                </li>
-        </ul>
-
     </div>
 
 
@@ -75,4 +57,7 @@
     <!-- <daln-footer *ngIf="showUtil"></daln-footer> -->
 
 </div>
+
+<app-pagination (getResult)="getResult($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="resultList"></app-pagination>
+
 <router-outlet></router-outlet>

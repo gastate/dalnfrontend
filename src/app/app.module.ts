@@ -1,5 +1,6 @@
 
 // Defaults
+import { AppRoutingModule }     from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, PlatformRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,13 +19,12 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { PagedPostsComponent } from './shared/pagedposts/pagedposts.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 import { PostListComponent } from './shared/post-list/post-list.component';
 import { PostItemComponent } from './shared/post-item/post-item.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { AppRoutingModule }     from './app-routing.module';
 import { PlayerComponent} from './shared/player/player.component';
 import { SearchComponent } from './components/search/search.component';
 import { SliderComponent } from './components/slider/slider.component';
@@ -51,7 +51,7 @@ import { SafePipe } from './safe.pipe';
     AppFooterComponent,
     AboutComponent,
     ContactComponent,
-    PagedPostsComponent,
+    PaginationComponent,
     PostDetailComponent,
     PlayerComponent,
     SearchComponent,
