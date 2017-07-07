@@ -84,7 +84,7 @@ exports.environment = {
 
 /***/ }),
 
-/***/ 1101:
+/***/ 1100:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(522);
@@ -116,7 +116,7 @@ __webpack_require__(145);
 var environment_1 = __webpack_require__(106);
 //Only used in Mock
 __webpack_require__(196);
-var mock_postlist_1 = __webpack_require__(648);
+var mock_postlist_1 = __webpack_require__(649);
 var PostService = (function () {
     function PostService(_http) {
         this._http = _http;
@@ -217,7 +217,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'daln-app',
-        template: __webpack_require__(822)
+        template: __webpack_require__(821)
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);
@@ -241,7 +241,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var search_service_1 = __webpack_require__(83);
+var search_service_1 = __webpack_require__(82);
 var AboutComponent = (function () {
     function AboutComponent(_searchService) {
         this.title = 'About';
@@ -258,7 +258,7 @@ var AboutComponent = (function () {
 AboutComponent = __decorate([
     core_1.Component({
         selector: 'app-about',
-        template: __webpack_require__(823),
+        template: __webpack_require__(822),
         styles: [__webpack_require__(808)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _a || Object])
@@ -285,7 +285,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var auth_service_1 = __webpack_require__(444);
-var search_service_1 = __webpack_require__(83);
+var search_service_1 = __webpack_require__(82);
 var AdminComponent = (function () {
     function AdminComponent(_authService, _searchService) {
         this.authService = _authService;
@@ -307,7 +307,7 @@ var AdminComponent = (function () {
 AdminComponent = __decorate([
     core_1.Component({
         selector: 'app-admin',
-        template: __webpack_require__(824),
+        template: __webpack_require__(823),
         styles: [__webpack_require__(809)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" && _a || Object, typeof (_b = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _b || Object])
@@ -344,7 +344,7 @@ var ContactComponent = (function () {
 ContactComponent = __decorate([
     core_1.Component({
         selector: 'app-contact',
-        template: __webpack_require__(826),
+        template: __webpack_require__(825),
         styles: [__webpack_require__(811)]
     }),
     __metadata("design:paramtypes", [])
@@ -370,7 +370,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var post_service_1 = __webpack_require__(129);
-var search_service_1 = __webpack_require__(83);
+var search_service_1 = __webpack_require__(82);
 // import { routerTransition } from '../router.animations';
 __webpack_require__(489);
 var HomeComponent = (function () {
@@ -380,7 +380,6 @@ var HomeComponent = (function () {
         this._searchService = _searchService;
         this.title = 'DALN Frontend';
         this.searchPosts = [];
-        this.showPage = false;
         this.posts = [];
         this.loading = false;
         this.failed = false;
@@ -391,7 +390,7 @@ var HomeComponent = (function () {
     HomeComponent.prototype.getPagePosts = function () {
         var _this = this;
         this.loading = true;
-        this._searchService.search_page("games", 8, 1).subscribe(function (data) {
+        this._searchService.search_page("games", 8, 0).subscribe(function (data) {
             _this.posts = _this._searchService.translatePosts(data.hit);
             _this.loading = false;
         }, //Bind to view
@@ -415,13 +414,11 @@ var HomeComponent = (function () {
         // });
     };
     HomeComponent.prototype.displayResults = function (event) {
-        console.log("Search hit.", event);
+        //   console.log("Search hit.", event);
         this.searchPosts = event;
-        this.showPage = true;
     };
     HomeComponent.prototype.clearSearch = function () {
         this.searchPosts = [];
-        this.showPage = false;
         this._searchService.searchQuery = "";
         // add to search history of browser
     };
@@ -430,7 +427,7 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'home',
-        template: __webpack_require__(827),
+        template: __webpack_require__(826),
         styles: [__webpack_require__(812)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object, typeof (_b = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _b || Object, typeof (_c = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _c || Object])
@@ -456,7 +453,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(74);
+var router_1 = __webpack_require__(89);
 var cognito_service_1 = __webpack_require__(445);
 var LoginComponent = (function () {
     function LoginComponent(router, userService) {
@@ -494,7 +491,7 @@ var LoginComponent = (function () {
 LoginComponent = __decorate([
     core_1.Component({
         selector: 'app-login',
-        template: __webpack_require__(828),
+        template: __webpack_require__(827),
         styles: [__webpack_require__(813)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof cognito_service_1.UserLoginService !== "undefined" && cognito_service_1.UserLoginService) === "function" && _b || Object])
@@ -520,7 +517,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(74);
+var router_1 = __webpack_require__(89);
 var common_1 = __webpack_require__(21);
 var post_service_1 = __webpack_require__(129);
 var post_model_1 = __webpack_require__(276);
@@ -590,39 +587,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(74);
-var search_service_1 = __webpack_require__(83);
+var search_service_1 = __webpack_require__(82);
 var post_service_1 = __webpack_require__(129);
 var SearchComponent = (function () {
-    function SearchComponent(_postService, _searchService, _router) {
+    function SearchComponent(_postService, _searchService) {
         this._postService = _postService;
-        this._router = _router;
-        this.showUtil = false;
-        this.showFull = false;
-        this.pager = {};
-        // total_posts: number; // total number of posts in array NOTE: Currently not in use since endpoint does not return it.
+        // @Output()
+        // searchResults: EventEmitter<Post[]>;
+        this.posts = [];
+        this.resultList = [];
+        this.pageParameter = 0;
         this.noResults = false;
         this.searchService = _searchService;
-        this.searchResults = new core_1.EventEmitter();
-        this.total_results = 0;
+        // this.searchResults = new EventEmitter<Post[]>();
     }
     SearchComponent.prototype.ngOnInit = function () {
-        // replace with results size.
-        //   this.numberOfPages = this.searchService.getPaginationParameter();
-        //   console.log("Pages: " + this.numberOfPages);
-        console.log("in search compoonent");
         this.resultsSize = this.searchService.resultsSize;
         this.pageNumber = this.searchService.pageNumber;
-        //    this._router.events.subscribe((val) => {
-        //      // see also
-        //      this.route = this._location.path();
-        //      if (this.route == "/search"){
-        //          console.log(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber);
-        //          this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.searchService.pageNumber );
-        //          this.showUtil = true; // handles utility functions for ux.
-        //          this.showFull = true; // handles expansion of search bar
-        //      }
-        //  });
+        this.total_offset = this.searchService.total_offset;
+        this.total_results = this.searchService.total_results;
     };
     SearchComponent.prototype.onSearch = function (term, results, pageNumber) {
         var _this = this;
@@ -637,7 +620,7 @@ var SearchComponent = (function () {
         if (term === '' || term === undefined) {
             return null;
         }
-        this.searchService.search_page(term, this.searchService.pageHead, 0)
+        this.searchService.search_page(term, this.searchService.pageHead, this.pageParameter)
             .subscribe(function (results) {
             // console.log("In Emmitter: ", this.resultsSize);
             if ((results === null) || results.length <= 0) {
@@ -645,47 +628,61 @@ var SearchComponent = (function () {
             }
             else {
                 _this.noResults = false;
-                console.log("API resposne for hits: ", results.hit);
-                console.log("API response for total hits: ", results.found);
-                _this.total_results = results.found;
-                _this.allPosts = _this.searchService.translatePosts(results.hit);
-                console.log("le posts: ", _this.posts);
-                // this.searchResults.emit(this.posts);
-                _this.setPage(1);
+                _this.posts = _this.searchService.translatePosts(results.hit);
+                _this.resultList = _this.posts;
+                // console.log("Search resultList", this.resultList);
+                _this.calculateOffset();
             }
         }, function (err) {
             console.log(err);
         });
-        // this._router.navigateByUrl('/search');
     };
-    SearchComponent.prototype.setPage = function (page) {
-        if (page < 1 || page > this.pager.totalPages) {
-            return;
+    SearchComponent.prototype.calculateOffset = function () {
+        this.startOffset = this.searchService.pageNumber;
+        // console.log("Parent Offset", this.startOffset);
+        this.endOffset = Math.floor(this.searchService.pageHead / this.searchService.resultsSize);
+        console.log("startOffset, endOffset", this.startOffset, this.endOffset);
+    };
+    SearchComponent.prototype.getResult = function (event) {
+        console.log("Emit received");
+        this.currentOffset = event;
+        console.log("search comp event", event);
+        // get the next resultList going forwards.
+        if (this.currentOffset === this.endOffset - 1) {
+            this.pageParameter++;
+            //   this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
+            console.log("PageNumber:", this.searchService.pageNumber);
+            console.log("Next Result List:", this.nextResultList);
         }
-        this.pager = this.searchService.getPager(this.total_results, page);
-        this.pagedItems = this.allPosts.slice(this.pager.startIndex, this.pager.endIndex + 1);
-        this.searchResults.emit(this.pagedItems);
+        else if (this.currentOffset === this.startOffset + 1) {
+            this.pageParameter--;
+            //   this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
+            console.log("PageNumber:", this.searchService.pageNumber);
+            console.log("Next Result List:", this.nextResultList);
+        }
+        else if ((this.currentOffset === this.endOffset) || (this.currentOffset === this.startOffset)) {
+            if (this.nextResultList !== null) {
+                this.resultList = this.nextResultList;
+            }
+            else {
+            }
+        }
+        else {
+            console.log("Skip.");
+        }
     };
     return SearchComponent;
 }());
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", typeof (_a = typeof core_1.EventEmitter !== "undefined" && core_1.EventEmitter) === "function" && _a || Object)
-], SearchComponent.prototype, "searchResults", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], SearchComponent.prototype, "showPage", void 0);
 SearchComponent = __decorate([
     core_1.Component({
         selector: 'app-search2',
         template: __webpack_require__(830),
         styles: [__webpack_require__(815)],
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _b || Object, typeof (_c = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _a || Object, typeof (_b = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _b || Object])
 ], SearchComponent);
 exports.SearchComponent = SearchComponent;
-var _a, _b, _c, _d;
+var _a, _b;
 //# sourceMappingURL=search.component.js.map
 
 /***/ }),
@@ -961,7 +958,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var search_service_1 = __webpack_require__(83);
+var search_service_1 = __webpack_require__(82);
 var PostListComponent = (function () {
     function PostListComponent(page) {
         this.page = page;
@@ -969,23 +966,6 @@ var PostListComponent = (function () {
     PostListComponent.prototype.ngOnInit = function () {
     };
     PostListComponent.prototype.setPage = function () {
-    };
-    PostListComponent.prototype.hoverLink = function () {
-        var elms = document.getElementsByClassName("hover-post");
-        // var n = elms.length;
-        // function changeColor(color) {
-        //     for(var i = 0; i < n; i ++) {
-        //         elms[i].style.backgroundColor = color;
-        //     }
-        // }
-        // for(var i = 0; i < n; i ++) {
-        //     elms[i].onmouseover = function() {
-        //         changeColor("yellow");
-        //     };
-        //     elms[i].onmouseout = function() {
-        //         changeColor("white");
-        //     };
-        // }
     };
     return PostListComponent;
 }());
@@ -1000,8 +980,8 @@ __decorate([
 PostListComponent = __decorate([
     core_1.Component({
         selector: 'post-list',
-        template: __webpack_require__(837),
-        styles: [__webpack_require__(821)]
+        template: __webpack_require__(836),
+        styles: [__webpack_require__(820)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _a || Object])
 ], PostListComponent);
@@ -1016,7 +996,7 @@ var _a;
 
 var map = {
 	"app/submit-form/submit-form.module": [
-		1103,
+		1102,
 		0
 	]
 };
@@ -1045,7 +1025,7 @@ __webpack_require__(653);
 var platform_browser_dynamic_1 = __webpack_require__(607);
 var core_1 = __webpack_require__(0);
 var environment_1 = __webpack_require__(106);
-var _1 = __webpack_require__(645);
+var _1 = __webpack_require__(646);
 if (environment_1.environment.production) {
     core_1.enableProdMode();
 }
@@ -1069,7 +1049,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(74);
+var router_1 = __webpack_require__(89);
 var about_component_1 = __webpack_require__(437);
 var admin_component_1 = __webpack_require__(438);
 var home_component_1 = __webpack_require__(440);
@@ -1158,6 +1138,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 // Defaults
+var app_routing_module_1 = __webpack_require__(641);
 var platform_browser_1 = __webpack_require__(96);
 var core_1 = __webpack_require__(0);
 var forms_1 = __webpack_require__(59);
@@ -1169,28 +1150,27 @@ var common_1 = __webpack_require__(21);
 var admin_component_1 = __webpack_require__(438);
 var app_component_1 = __webpack_require__(436);
 var app_footer_component_1 = __webpack_require__(643);
-var fancy_loader_component_1 = __webpack_require__(649);
+var fancy_loader_component_1 = __webpack_require__(650);
 var login_component_1 = __webpack_require__(441);
 var home_component_1 = __webpack_require__(440);
 var ng_bootstrap_1 = __webpack_require__(639);
 var page_not_found_component_1 = __webpack_require__(446);
-var pagedposts_component_1 = __webpack_require__(650);
+var pagination_component_1 = __webpack_require__(644);
 var post_list_component_1 = __webpack_require__(447);
 var post_item_component_1 = __webpack_require__(652);
 var post_detail_component_1 = __webpack_require__(442);
 var about_component_1 = __webpack_require__(437);
 var contact_component_1 = __webpack_require__(439);
-var app_routing_module_1 = __webpack_require__(641);
 var player_component_1 = __webpack_require__(651);
 var search_component_1 = __webpack_require__(443);
-var slider_component_1 = __webpack_require__(644);
+var slider_component_1 = __webpack_require__(645);
 // Services
 var post_service_1 = __webpack_require__(129);
-var search_service_1 = __webpack_require__(83);
+var search_service_1 = __webpack_require__(82);
 var auth_service_1 = __webpack_require__(444);
 var cognito_service_1 = __webpack_require__(445);
 // Other
-var safe_pipe_1 = __webpack_require__(647);
+var safe_pipe_1 = __webpack_require__(648);
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1209,7 +1189,7 @@ AppModule = __decorate([
             app_footer_component_1.AppFooterComponent,
             about_component_1.AboutComponent,
             contact_component_1.ContactComponent,
-            pagedposts_component_1.PagedPostsComponent,
+            pagination_component_1.PaginationComponent,
             post_detail_component_1.PostDetailComponent,
             player_component_1.PlayerComponent,
             search_component_1.SearchComponent,
@@ -1251,7 +1231,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(74);
+var router_1 = __webpack_require__(89);
 var AppFooterComponent = (function () {
     function AppFooterComponent(_router, _activatedRoute) {
         this._router = _router;
@@ -1291,7 +1271,7 @@ var AppFooterComponent = (function () {
 AppFooterComponent = __decorate([
     core_1.Component({
         selector: 'daln-footer',
-        template: __webpack_require__(825),
+        template: __webpack_require__(824),
         styles: [__webpack_require__(810)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _b || Object])
@@ -1303,6 +1283,131 @@ var _a, _b;
 /***/ }),
 
 /***/ 644:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = __webpack_require__(0);
+var search_service_1 = __webpack_require__(82);
+var PaginationComponent = (function () {
+    function PaginationComponent(searchService) {
+        this.searchService = searchService;
+        this.buttonArray = []; // holds all possible buttons
+        this.pagedButtonArray = []; // holds the current view buttons.
+        //   this.searchService = _searchService;
+        this.currentPageEmitter = new core_1.EventEmitter();
+    }
+    PaginationComponent.prototype.ngOnInit = function () {
+        // intiate values from service.
+        this.resultsPerPage = this.searchService.resultsSize;
+        this.startOffset = this.searchService.pageNumber;
+        this.pageHead = this.searchService.pageHead;
+    };
+    /**
+     * getPagedPost is the button click event to calulate the next indicies to split resultList by to get pagedPost and emit to the parent the current page.
+     * @param  {number} event button number that was clicked on. Will output to parent component.
+     */
+    PaginationComponent.prototype.getPagedPost = function (event) {
+        if (event && event.target) {
+            this.currentPage = event.target.innerText; // button is just the event's innerText.
+            this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
+            console.log("Emit fired");
+            this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
+        }
+    };
+    PaginationComponent.prototype.calculateIndicies = function () {
+        if (!this.currentPage) {
+            console.log("starting offset", this.startOffset);
+            this.currentPage = this.startOffset;
+        }
+        var firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage + 1);
+        var lastIndex = (firstIndex + this.resultsPerPage - 1);
+        // since the index of the array starts at 0, just make the firstIndex = 0 whenever the value is 1.
+        if (firstIndex === 1) {
+            firstIndex = 0;
+        }
+        else {
+            // else make the lastIndex + 1.
+            lastIndex = lastIndex + 1;
+        }
+        console.log("lastIndex, firstIndex", lastIndex, firstIndex);
+        // populate pagedPost and push to the view.
+        this.populatePosts(firstIndex, lastIndex);
+    };
+    PaginationComponent.prototype.calculateButtonRange = function () {
+        console.log("total_offset", this.searchService.total_offset);
+        for (var i = 0; i < this.searchService.total_offset; i++) {
+            this.buttonArray.push(i + 1);
+        }
+        console.log("Button Array", this.buttonArray);
+        //   buttonArray.slice(this.startOffset, this.endOffset + 6);
+        console.log("endOffset", this.endOffset);
+        //   for(let i = 0; i < this.endOffset; i++) {
+        //       this.buttonArray.push(i + 1);
+        //   }
+        //   console.log("Button Array", this.buttonArray);
+    };
+    PaginationComponent.prototype.populatePosts = function (firstIndex, lastIndex) {
+        this.pagedPost = this.resultList.slice(firstIndex, lastIndex);
+        console.log("PagedPost:", this.pagedPost);
+    };
+    PaginationComponent.prototype.ngOnChanges = function (changes) {
+        if (changes['startOffset']) {
+            console.log("startOffset change", this.startOffset);
+            this.calculateButtonRange();
+        }
+        if (changes['resultList']) {
+            console.log("pagination change", this.resultList);
+            //   this.getPagedPost(event);
+            this.calculateIndicies();
+            this.calculateButtonRange();
+        }
+        //   if (changes['endOffset']) {
+        //       console.log("endOffset change", this.endOffset);
+        //       this.calculateButtonRange();
+        //   }
+    };
+    return PaginationComponent;
+}());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Array)
+], PaginationComponent.prototype, "resultList", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], PaginationComponent.prototype, "startOffset", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], PaginationComponent.prototype, "endOffset", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", typeof (_a = typeof core_1.EventEmitter !== "undefined" && core_1.EventEmitter) === "function" && _a || Object)
+], PaginationComponent.prototype, "currentPageEmitter", void 0);
+PaginationComponent = __decorate([
+    core_1.Component({
+        selector: 'app-pagination',
+        template: __webpack_require__(828)
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _b || Object])
+], PaginationComponent);
+exports.PaginationComponent = PaginationComponent;
+var _a, _b;
+//# sourceMappingURL=pagination.component.js.map
+
+/***/ }),
+
+/***/ 645:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1356,7 +1461,7 @@ exports.SliderComponent = SliderComponent;
 
 /***/ }),
 
-/***/ 645:
+/***/ 646:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1370,7 +1475,7 @@ __export(__webpack_require__(642));
 
 /***/ }),
 
-/***/ 646:
+/***/ 647:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1388,7 +1493,7 @@ exports.Asset = Asset;
 
 /***/ }),
 
-/***/ 647:
+/***/ 648:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1425,7 +1530,7 @@ var _a;
 
 /***/ }),
 
-/***/ 648:
+/***/ 649:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2092,7 +2197,7 @@ exports.POSTS = {
 
 /***/ }),
 
-/***/ 649:
+/***/ 650:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2137,44 +2242,6 @@ exports.FancyLoaderComponent = FancyLoaderComponent;
 
 /***/ }),
 
-/***/ 650:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = __webpack_require__(0);
-var search_service_1 = __webpack_require__(83);
-var PagedPostsComponent = (function () {
-    function PagedPostsComponent(searchService) {
-        this.searchService = searchService;
-    }
-    PagedPostsComponent.prototype.ngOnInit = function () {
-    };
-    return PagedPostsComponent;
-}());
-PagedPostsComponent = __decorate([
-    core_1.Component({
-        selector: 'app-pagedposts',
-        template: __webpack_require__(834),
-        styles: [__webpack_require__(818)]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _a || Object])
-], PagedPostsComponent);
-exports.PagedPostsComponent = PagedPostsComponent;
-var _a;
-//# sourceMappingURL=pagedposts.component.js.map
-
-/***/ }),
-
 /***/ 651:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2191,9 +2258,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var platform_browser_1 = __webpack_require__(96);
-var asset_model_1 = __webpack_require__(646);
+var asset_model_1 = __webpack_require__(647);
 var common_1 = __webpack_require__(21);
-var router_1 = __webpack_require__(74);
+var router_1 = __webpack_require__(89);
 var PlayerComponent = (function () {
     function PlayerComponent(sanitizer, _location, _router) {
         this.sanitizer = sanitizer;
@@ -2251,8 +2318,8 @@ __decorate([
 PlayerComponent = __decorate([
     core_1.Component({
         selector: 'app-player',
-        template: __webpack_require__(835),
-        styles: [__webpack_require__(819)]
+        template: __webpack_require__(834),
+        styles: [__webpack_require__(818)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof platform_browser_1.DomSanitizer !== "undefined" && platform_browser_1.DomSanitizer) === "function" && _b || Object, typeof (_c = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object])
 ], PlayerComponent);
@@ -2277,7 +2344,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(74);
+var router_1 = __webpack_require__(89);
 var post_service_1 = __webpack_require__(129);
 var post_model_1 = __webpack_require__(276);
 var PostItemComponent = (function () {
@@ -2300,8 +2367,8 @@ __decorate([
 PostItemComponent = __decorate([
     core_1.Component({
         selector: 'post-item',
-        template: __webpack_require__(836),
-        styles: [__webpack_require__(820)]
+        template: __webpack_require__(835),
+        styles: [__webpack_require__(819)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _c || Object])
 ], PostItemComponent);
@@ -2333,7 +2400,7 @@ __webpack_require__(657);
 __webpack_require__(665);
 __webpack_require__(663);
 __webpack_require__(668);
-__webpack_require__(1100);
+__webpack_require__(1099);
 //# sourceMappingURL=polyfills.js.map
 
 /***/ }),
@@ -2411,88 +2478,18 @@ module.exports = ""
 /***/ 818:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "/* Asset Audio and Video CSS\n-------------------------------------------------- */\n\n/*#sc-widget {\n    width : \"100%\";\n    height : \"100%\";\n}\n\n.sproutvideo-player {\n    width : \"100%\";\n    height : \"100%\";\n}*/\n\n/* Responsive\n-------------------------------------------------- */\n\n@media (max-width: 480px) {\n\n}\n\n@media (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 480px) and (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 768px) and (max-width: 980px) {\n\n\n\n}\n\n\n@media (max-width: 980px) {\n\n\n\n}\n\n/* LARGE DESKTOP SCREENS */\n@media (min-width: 1210px) {\n\n\n}\n"
 
 /***/ }),
 
 /***/ 819:
 /***/ (function(module, exports) {
 
-module.exports = "/* Asset Audio and Video CSS\n-------------------------------------------------- */\n\n/*#sc-widget {\n    width : \"100%\";\n    height : \"100%\";\n}\n\n.sproutvideo-player {\n    width : \"100%\";\n    height : \"100%\";\n}*/\n\n/* Responsive\n-------------------------------------------------- */\n\n@media (max-width: 480px) {\n\n}\n\n@media (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 480px) and (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 768px) and (max-width: 980px) {\n\n\n\n}\n\n\n@media (max-width: 980px) {\n\n\n\n}\n\n/* LARGE DESKTOP SCREENS */\n@media (min-width: 1210px) {\n\n\n}\n"
-
-/***/ }),
-
-/***/ 820:
-/***/ (function(module, exports) {
-
 module.exports = "\n/* Asset Audio and Video CSS\n-------------------------------------------------- */\n\n\n\n/* Responsive\n-------------------------------------------------- */\n\n@media (max-width: 480px) {\n\n}\n\n@media (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 480px) and (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 768px) and (max-width: 980px) {\n\n\n\n}\n\n\n@media (max-width: 980px) {\n\n\n\n}\n\n/* LARGE DESKTOP SCREENS */\n@media (min-width: 1210px) {\n\n\n}\n"
 
 /***/ }),
 
-/***/ 821:
-/***/ (function(module, exports) {
-
-module.exports = "\n/* Asset Audio and Video CSS\n-------------------------------------------------- */\n\n\n/* Responsive\n-------------------------------------------------- */\n\n@media (max-width: 480px) {\n\n}\n\n@media (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 480px) and (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 768px) and (max-width: 980px) {\n\n\n\n}\n\n\n@media (max-width: 980px) {\n\n\n\n}\n\n/* LARGE DESKTOP SCREENS */\n@media (min-width: 1210px) {\n\n\n}\n"
-
-/***/ }),
-
-/***/ 822:
-/***/ (function(module, exports) {
-
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-inverse\">\n    <button class=\"navbar-toggler navbar-toggler-right collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseContent\" aria-controls=\"collapseContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"navbar-toggler-icon\" ></span>\n      </button>\n\n      <a routerLink=\"/home\"><img src=\"assets/img/Logo_transparent.png\" id=\"logo\" /></a>\n\n\n      <div class=\"header2 col-5 brandContainer\">\n          <a class=\"brand\" routerLink=\"/home\">Digital Archive of Literacy Narratives</a>\n      </div>\n\n      <div class=\"navbar-collapse collapse\" id=\"collapseContent\" aria-expanded=\"true\">\n          <ul class=\"navbar-nav mr-auto\">\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\"> home </a> </li>\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/about\" routerLinkActive=\"active\"> about </a> </li>\n              <li class=\"nav-item\"> <a class=\"nav-link\" href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/contact\" routerLinkActive=\"active\"> contact </a> </li>\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/create\" routerLinkActive=\"active\"> submit a literacy narrative </a> </li>\n          </ul>\n       </div>\n\n</nav>\n<router-outlet></router-outlet>\n"
-
-/***/ }),
-
-/***/ 823:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\n  <h1>{{title}}</h1>\n\n  <div class=\"about-info\">\n      <div id=\"about-image\">\n          <img src=\"assets/img/osugsu.jpg\" alt=\"\" />\n      </div>\n\n\n      <p>\n     Co-sponsored by The Ohio State University and Georgia State University, The DALN (daln.osu.edu) is a publicly available archive of personal literacy narratives in a variety of formats (text, video, audio) that together provide a historical record of the literacy practices and values of contributors, as those practices and values change.\n     </p>\n\n     <p>\n         The DALN invites people of all ages, races, communities, backgrounds, and interests to contribute stories about how — and in what circumstances — they read, write, and compose meaning, and how they learned to do so (or helped others learn).\n     </p>\n\n     <p>\n         We welcome personal narratives about reading and composing all kinds of texts, both formal and informal: diaries, blogs, poetry, music and musical lyrics, fan zines, school papers, videos, sermons, gaming profiles, speeches, chatroom exchanges, text messages, letters, stories, photographs, etc. We also invite contributors to supplement their narratives with samples of their own writing (papers, letters, zines, speeches, etc.) and compositions (music, photographs, videos, sound recordings, etc.).\n     </p>\n\n     <!-- <div class=\"col-md-4 offset-md-4\" id=\"postCounter\">\n        <h3> Total Number of Posts\n            {{totalNumberOfPosts}}\n        </h3>\n     </div> -->\n  </div>\n\n\n\n</div>\n\n<daln-footer></daln-footer>\n"
-
-/***/ }),
-
-/***/ 824:
-/***/ (function(module, exports) {
-
-module.exports = "<div id=\"wrapper\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <nav class=\"col-sm-3 col-md-2 bg-faded sidebar\">\n                <ul class=\"nav nav-pills flex-column admin-sidebar\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\">Overview</a>\n                        <a class=\"nav-link\">Statistics</a>\n                        <a class=\"nav-link\">Testing &amp; Service Status</a>\n                    </li>\n                </ul>\n                <ul class=\"nav nav-pills flex-column\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\">Community Management</a>\n                    </li>\n                </ul>\n                <ul class=\"nav nav-pills flex-column\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\">Post Approval</a>\n                        <a class=\"nav-link\">Post Editing</a>\n                        <a class=\"nav-link\">Import/Export Posts</a>\n                        <a class=\"nav-link\">Withdrawn Posts</a>\n                    </li>\n                </ul>\n                <ul class=\"nav nav-pills flex-column\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\">Admin List</a>\n                        <a class=\"nav-link\">Metadata Lists</a>\n                        <a class=\"nav-link\">Logs</a>\n                    </li>\n                </ul>\n            </nav>\n\n            <main class=\"col-sm-9  col-md-10  pt-3\">\n                <div class=\"col-md-4\">\n                    <h1>Admin post approval</h1>\n                    <p>\n                        Enter the PostId:\n                    </p>\n                    <input type=\"text\" name=\"postId\" #postId/>\n                    <button class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" (keydown.enter)=\"approvePost(postId.value)\" (click)=\"approvePost(postId.value)\">Submit</button>\n                </div>\n                <hr />\n                <div class=\"col-md-4\">\n                    <p>\n                        Changes the number of pages to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.\n\n                        i.e. Staying 10 pages ahead of user x 10 results per page (user specified) = 100 posts to stay ahead of user\n\n                        i.e. Staying 50 pages ahead of user x 10 results per page = 500 posts to stay ahead of user.\n\n                        i.e. Staying 10 pages ahead of user x 100 results per page = 1000 posts to stay ahead of user.\n\n                        Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10.\n                    </p>\n                    <input type=\"number\" class=\"form-control\"  min=\"1\" max=\"100\" #pageHead [value]=\"searchService.pageHead\"/>\n                    <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"changePageHead(pageHead.value)\" (click)=\"changePageHead(pageHead.value)\">Change Page Head</button>\n                </div>\n                <hr />\n                <!-- <div class=\"col-md-4\">\n                    <p>\n                        Approval List\n                    </p>\n                    <post-list [postList]=\"approval_list\"></post-list>\n\n                </div> -->\n            </main>\n\n            </div>\n\n\n\n    </div>\n</div>\n"
-
-/***/ }),
-
-/***/ 825:
-/***/ (function(module, exports) {
-
-module.exports = "<footer>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\n\n        <h3 class=\"footer-heading\">Connect With Us</h3>\n        <!-- social begin here -->\n            <ul class=\"socicon\">\n              <!-- <li><a href=\"\" class=\"share-icon\"> </a></li> -->\n              <!-- <li><a href=\"#\" class=\"google\"> </a></li> -->\n              <li><a href=\"https://www.facebook.com/dalnarchive/\" target=\"_blank\" class=\"facebook\"> </a></li>\n              <li><a href=\"https://twitter.com/dalnarchive\" target=\"_blank\" class=\"twitter\"> </a></li>\n              <!-- <li><a href=\"#\" class=\"flickr\"> </a></li> -->\n              <!-- <li><a href=\"#\" class=\"dribbble\"> </a></li> -->\n              <!-- <li class=\"last\"><a href=\"#\" class=\"vimeo\"> </a></li> -->\n            </ul>\n\n        <h3 class=\"footer-heading\">Who We Are</h3>\n            <p>\n                Since 2007, the Digital Archive of Literacy Narratives has been collecting stories from the public about their experiences learning to read, write, and compose with different media types. Containing over 6000 individual narratives in text, video, audio, and other forms, the DALN is a resource not only for scholars and teachers, but the public at large. Tell us your story. <a routerLink=\"/create\">Submit today!</a>\n            </p>\n\n      </div>\n\n      <!-- tweets begin here -->\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\n        <h3 class=\"footer-heading\">Latest Tweets</h3>\n        <div class=\"tweets\">\n\n        </div>\n        <a class=\"twitter-timeline\" data-width=\"300\" data-height=\"330\" data-theme=\"dark\" href=\"https://twitter.com/dalnarchive\" target=\"_blank\">Tweets by dalnarchive</a>\n      </div>\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\n        <h3 class=\"footer-heading\">From Facebook</h3>\n        <div class=\"fb-page\"\n            data-href=\"https://www.facebook.com/dalnarchive/\"\n            data-tabs=\"timeline\"\n            data-width=\"300\"\n            data-height=\"330\"\n            data-small-header=\"false\"\n            data-adapt-container-width=\"true\"\n            data-hide-cover=\"false\"\n            data-show-facepile=\"false\">\n            <blockquote cite=\"https://www.facebook.com/dalnarchive/\" class=\"fb-xfbml-parse-ignore\">\n                <a href=\"https://www.facebook.com/dalnarchive/\">Digital Archive of Literacy Narratives</a>\n            </blockquote>\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n"
-
-/***/ }),
-
-/***/ 826:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\n  <h1>{{title}}</h1>\n\n\n    <div class=\"contact-info\">\n        <p>\n            <strong>Ben McCorkle</strong> is an associate professor of English and teaches courses in composition, rhetoric, and digital media studies, primarily on The Ohio State University’s Marion campus. He is the author of the book <span class=\"italic\">\n            Rhetorical Delivery as Technological Discourse: A Cross-Historical Study</span>, as well as several articles in publications including <span class=\"italic\"> Computers and Composition Online, Rhetoric Society Quarterly, and Composition Studies</span>. He is currently serving as Co-Director of the DALN. Email Ben: <a href=\"mailto:mccorkle.12@osu.edu\">mccorkle.12@osu.edu</a>.\n       </p>\n\n       <p>\n           <strong>Michael Harker </strong> is an associate professor of English and teaches courses in composition, rhetoric, and literacy studies at Georgia State University. He is the author of <span class=\"italic\">The Lure of Literacy: A Critical Reception of the Compulsory Composition Debate (SUNY Press)</span>. He has published articles in <span class=\"italic\"> College Composition and Communication, Literacy in Composition Studies, Computers and Composition: An International Journal</span>, and <span class=\"italic\">Computers and Composition Online</span>. He is a Co-Director of the Digital Archive of Literacy Narratives (DALN). Email Michael: <a href=\"mailto:mharker@gsu.edu\">mharker@gsu.edu</a>.\n       </p>\n    </div>\n\n</div>\n<!-- <daln-footer></daln-footer> -->\n"
-
-/***/ }),
-
-/***/ 827:
-/***/ (function(module, exports) {
-
-module.exports = "\n<div class=\"container responsive_home\">\n\n    <!-- Search Component -->\n    <app-search2 [showPage]=\"showPage\" (searchResults)=\"displayResults($event)\"></app-search2>\n\n    <app-slider *ngIf=\"searchPosts.length === 0\"></app-slider>\n\n\n</div>\n\n\n<div class=\"container responsive_home\">\n\n        <div class=\"featured-post-list\" *ngIf=\"searchPosts.length === 0\">\n            <h3>Featured Posts</h3>\n            <hr />\n            <post-list [postList]=\"posts\" ></post-list>\n        </div>\n\n\n        <div class=\"search-post-list\" *ngIf=\"searchPosts.length > 0\">\n            <button (click)=\"clearSearch()\" class=\"btn btn-primary\" type=\"submit\">Clear Search</button>\n            <post-list [postList]=\"searchPosts\"></post-list>\n        </div>\n\n\n</div>\n\n<div class=\"container responsive_home\">\n    <div class=\"center add-top-margin\">\n      <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\n    </div>\n</div>\n\n\n\n\n<daln-footer></daln-footer>\n<router-outlet></router-outlet>\n"
-
-/***/ }),
-
-/***/ 828:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container add-top-margin\">\n    <div class=\"row\">\n        <form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\n            <div class=\"form-group\">\n                <h2>Login</h2>\n            </div>\n            <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\n                {{ errorMessage }}\n            </div>\n            <div class=\"form-group\">\n                <label class=\"control-label\" for=\"signupEmail\">Email</label>\n                <input id=\"signupEmail\" required type=\"email\" maxlength=\"100\" class=\"form-control\" [(ngModel)]=\"email\"\n                       [ngModelOptions]=\"{standalone: true}\">\n            </div>\n\n            <div class=\"form-group\">\n                <label class=\"control-label\" for=\"signupPassword\">Password</label>\n                <input id=\"signupPassword\" required type=\"password\" maxlength=\"25\" class=\"form-control\"\n                       length=\"40\" [(ngModel)]=\"password\" [ngModelOptions]=\"{standalone: true}\">\n            </div>\n            <div class=\"form-group\">\n                <button (click)=\"onLogin()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\n                    Login\n                </button>\n            </div>\n\n            <hr>\n\n\n            <p><a [routerLink]=\"['/home/forgotPassword']\"> <i class=\"fa fa-fw fa-group\"></i> Forgot Password?</a></p>\n            <p>\n\n        </form>\n\n    </div>\n"
-
-/***/ }),
-
-/***/ 829:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container add-top-margin\" *ngIf=\"postDetail\">\n  <button class=\"btn btn-primary\" type=\"submit\" (click)=\"goBack()\">Back</button>\n\n  <section>\n\n\n    <div class=\"row\">\n      <!-- Project info\n      ================================================== -->\n\n\n      <div class=\"col-md-4\">\n\n        <!-- Use the ul class. -->\n        <ul class=\"metadata\">\n          <li>\n            <h3>{{postDetail?.title}}</h3>\n            <p>{{postDetail?.description}}</p>\n          <li>\n            <h3>Date Submitted</h3>\n            <p>{{postDetail?.dateCreated}}</p>\n          </li>\n          <li>\n            <h3>Author</h3>\n            <p *ngFor=\"let author of postDetail.contributorAuthor\">{{author}}</p>\n          </li>\n\n        </ul>\n\n        <br/>\n\n        <ul class=\"tags\">\n          <li>\n            <h3>Collections</h3>\n            <p>All literacy narratives that are not part of a topical collection.</p>\n          </li>\n          <li>\n            <h3>Tags/Subjects</h3>\n            <ul class=\"tags-list\">\n              <!-- Track elements and limit tags with NgFor and TrackBy -->\n              <li class=\"tag\" *ngFor=\"let subject of postDetail.subject\"><span\n                class=\"label label-info\">{{subject}}</span></li>\n            </ul>\n\n        </ul>\n\n        <br/>\n\n        <ul class=\"description\">\n          <li>\n            <h3>Description</h3>\n            <p>{{postDetail?.description}}</p>\n          </li>\n        </ul>\n\n        <br/>\n\n        <h3>Media List</h3>\n        <ul class=\"media\" *ngFor=\"let asset of postDetail.assetList\">\n\n            <li (click)=\"onSelectedAsset(asset)\">\n\n              <!-- Change event to be click event that changes player embed link -->\n              <h3>{{asset.assettitle}}</h3>\n              <p>{{asset.assetType}}: {{asset.assetDescription}}</p>\n              <p *ngIf=\"\">{{asset.assetType}}: {{asset.assetDescription}}</p>\n\n\n              <!--<div *ngIf=\"selectedAsset\">{{selectedAsset.assetID}}</div>-->\n            </li>\n\n          </ul>\n\n\n\n              <div id=\"metadata-table\">\n                   <table class=\"table table-sm table-bordered\">\n                       <thead >\n                         <tr>\n                          <th>Metadata Tag</th>\n                          <th>Content</th>\n                        </tr>\n                      </thead>\n                      <tbody>\n                          <tr>\n                               <td>identifierUri</td>\n                               <td>{{postDetail?.identifierUri}}</td>\n                          </tr>\n                          <tr>\n                               <td>dateAvailable</td>\n                               <td>{{postDetail?.dateAvailable}}</td>\n                          </tr>\n                          <tr>\n                               <td>dateAccessioned</td>\n                               <td>{{postDetail?.dateAccessioned}}</td>\n                          </tr>\n                          <tr>\n                               <td>dateCreated</td>\n                               <td>{{postDetail?.dateCreated}}</td>\n                          </tr>\n                          <tr>\n                               <td>dateIssued</td>\n                               <td>{{postDetail?.dateIssued}}</td>\n                          </tr>\n                          <tr>\n                               <td>contributorAuthor</td>\n                               <td>\n                                  <ul>\n                                   <li *ngFor=\"let author of postDetail.contributorAuthor\">{{postDetail?.contributorAuthor}}</li>\n                                  </ul>\n                               </td>\n                          </tr>\n                          <tr>\n                               <td>contributorInterviewer</td>\n                               <td>\n                                  <ul>\n                                   <li *ngFor=\"let author of postDetail.contributorInterviewer\">{{postDetail?.contributorInterviewer}}</li>\n                                  </ul>\n                               </td>\n                          </tr>\n\n                      </tbody>\n                   </table>\n              </div>\n\n\n\n\n\n      </div>\n\n      <!-- Video\n      ================================================== -->\n\n          <div class=\"col-md-8\">\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')\" [postAsset]=\"selectedAsset\"></app-player>\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Text')\" [postAsset]=\"selectedAsset\"></app-player>\n        <!-- TODO: Remove style tag -->\n        <!-- social begin here -->\n        <ul class=\"socicon right\" style=\"margin-bottom:10px;\">\n          <!-- <li>\n            <a href=\"#\" class=\"share-icon\">\n            </a>\n          </li>\n          <li>\n            <a href=\"#\" class=\"google\">\n            </a>\n          </li>-->\n          <li>\n            <a href=\"https://www.facebook.com/dalnarchive/\" class=\"facebook\" target=\"_blank\">\n            </a>\n          </li>\n          <li>\n              <a class=\"twitter twitter-share-button\"\n                href=\"https://twitter.com/intent/tweet?url=&text={{postDetail?.title}}&via=dalnarchive\" target=\"_blank\"  ></a>\n          </li>\n          <!-- <li>\n            <a href=\"#\" class=\"flickr\">\n            </a>\n          </li>\n          <li>\n            <a href=\"#\" class=\"linkedin\">\n            </a>\n          </li>\n          <li class=\"last\">\n            <a href=\"#\" class=\"vimeo\">\n            </a>\n          </li> -->\n\n        </ul>\n\n\n        </div>\n\n\n    </div>\n\n\n  </section>\n\n\n\n\n\n\n</div><!-- /container -->\n<div class=\"center\">\n    <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\n</div>\n<daln-footer></daln-footer>\n"
-
-/***/ }),
-
-/***/ 83:
+/***/ 82:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2524,8 +2521,9 @@ var SearchService = (function () {
         this.searchQuery = null;
         this.resultsSize = 12;
         this.pageNumber = 1;
-        //   this.total_results = 0;
         this.pageHead = 50;
+        this.total_results = 0;
+        this.total_offset = 0;
     }
     // These all can be observables...
     SearchService.prototype.changeResultsDisplayed = function (results) {
@@ -2547,14 +2545,13 @@ var SearchService = (function () {
     // https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production/posts/search/literacy/10/1
     // format is the search endpoint + the term for search + the number of results per page + the page number (page number == return 50 posts of 2 results then the next two if incremented.)
     SearchService.prototype.search_page = function (term, results, page_size) {
+        var _this = this;
         //   console.log("Query:" + this.searchQuery);
         console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
-        this.searchTerm = term; // NOTE: Temp for pagination.
-        this.resultsSize = results; // NOTE: Temp for pagination.
         return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map(function (res) {
-            // let posts = res.json();
-            // console.log("Get Search Page Posts", posts);
-            // return posts;
+            _this.total_results = res.json().found;
+            _this.total_offset = Math.ceil(_this.total_results / _this.resultsSize);
+            // console.log("number of total offsets", this.total_offset);
             console.log("Search API Response", res.json());
             return res.json();
         }).catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); });
@@ -2562,7 +2559,7 @@ var SearchService = (function () {
     SearchService.prototype.translatePosts = function (search_results) {
         var _this = this;
         var posts = [];
-        console.log("translatePosts: ", search_results);
+        //   console.log("translatePosts: ", search_results);
         search_results.forEach(function (i) {
             var post = new post_model_1.Post();
             post.postId = i.id;
@@ -2583,46 +2580,6 @@ var SearchService = (function () {
         var assetList = [];
         //   console.log(fields);
     };
-    SearchService.prototype.getPager = function (total_results, user_pageSize, user_pageNumber) {
-        if (user_pageSize === void 0) { user_pageSize = 10; }
-        if (user_pageNumber === void 0) { user_pageNumber = 1; }
-        var totalPages = Math.ceil(total_results / user_pageSize);
-        var startPage;
-        var endPage;
-        if (totalPages <= 10) {
-            startPage = 1;
-            endPage = totalPages;
-        }
-        else {
-            if (user_pageNumber <= 6) {
-                startPage = 1;
-                endPage = 10;
-            }
-            else if (user_pageNumber + 4 >= totalPages) {
-                startPage = totalPages - 9;
-                endPage = totalPages;
-            }
-            else {
-                startPage = user_pageNumber - 5;
-                endPage = user_pageNumber + 4;
-            }
-        }
-        var startIndex = (user_pageNumber - 1) * user_pageSize;
-        var endIndex = Math.min(startIndex + user_pageSize - 1, total_results - 1);
-        var pages = Array.from(new Array(startPage + endPage + 1), function (x, i) { return i; });
-        // console.log(pages);
-        return {
-            total_reuslts: total_results,
-            user_pageNumber: user_pageNumber,
-            user_pageSize: user_pageSize,
-            totalPages: totalPages,
-            startPage: startPage,
-            endPage: endPage,
-            startIndex: startIndex,
-            endIndex: endIndex,
-            pages: pages
-        };
-    };
     return SearchService;
 }());
 SearchService = __decorate([
@@ -2635,10 +2592,80 @@ var _a, _b;
 
 /***/ }),
 
+/***/ 820:
+/***/ (function(module, exports) {
+
+module.exports = "\n/* Asset Audio and Video CSS\n-------------------------------------------------- */\n\n\n/* Responsive\n-------------------------------------------------- */\n\n@media (max-width: 480px) {\n\n}\n\n@media (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 480px) and (max-width: 768px) {\n\n\n\n}\n\n\n@media (min-width: 768px) and (max-width: 980px) {\n\n\n\n}\n\n\n@media (max-width: 980px) {\n\n\n\n}\n\n/* LARGE DESKTOP SCREENS */\n@media (min-width: 1210px) {\n\n\n}\n"
+
+/***/ }),
+
+/***/ 821:
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-inverse\">\n    <button class=\"navbar-toggler navbar-toggler-right collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseContent\" aria-controls=\"collapseContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"navbar-toggler-icon\" ></span>\n      </button>\n\n      <a routerLink=\"/home\"><img src=\"assets/img/Logo_transparent.png\" id=\"logo\" /></a>\n\n\n      <div class=\"header2 col-5 brandContainer\">\n          <a class=\"brand\" routerLink=\"/home\">Digital Archive of Literacy Narratives</a>\n      </div>\n\n      <div class=\"navbar-collapse collapse\" id=\"collapseContent\" aria-expanded=\"true\">\n          <ul class=\"navbar-nav mr-auto\">\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\"> home </a> </li>\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/about\" routerLinkActive=\"active\"> about </a> </li>\n              <li class=\"nav-item\"> <a class=\"nav-link\" href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/contact\" routerLinkActive=\"active\"> contact </a> </li>\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/create\" routerLinkActive=\"active\"> submit a literacy narrative </a> </li>\n          </ul>\n       </div>\n\n</nav>\n<router-outlet></router-outlet>\n"
+
+/***/ }),
+
+/***/ 822:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <h1>{{title}}</h1>\n\n  <div class=\"about-info\">\n      <div id=\"about-image\">\n          <img src=\"assets/img/osugsu.jpg\" alt=\"\" />\n      </div>\n\n\n      <p>\n     Co-sponsored by The Ohio State University and Georgia State University, The DALN (daln.osu.edu) is a publicly available archive of personal literacy narratives in a variety of formats (text, video, audio) that together provide a historical record of the literacy practices and values of contributors, as those practices and values change.\n     </p>\n\n     <p>\n         The DALN invites people of all ages, races, communities, backgrounds, and interests to contribute stories about how — and in what circumstances — they read, write, and compose meaning, and how they learned to do so (or helped others learn).\n     </p>\n\n     <p>\n         We welcome personal narratives about reading and composing all kinds of texts, both formal and informal: diaries, blogs, poetry, music and musical lyrics, fan zines, school papers, videos, sermons, gaming profiles, speeches, chatroom exchanges, text messages, letters, stories, photographs, etc. We also invite contributors to supplement their narratives with samples of their own writing (papers, letters, zines, speeches, etc.) and compositions (music, photographs, videos, sound recordings, etc.).\n     </p>\n\n     <!-- <div class=\"col-md-4 offset-md-4\" id=\"postCounter\">\n        <h3> Total Number of Posts\n            {{totalNumberOfPosts}}\n        </h3>\n     </div> -->\n  </div>\n\n\n\n</div>\n\n<daln-footer></daln-footer>\n"
+
+/***/ }),
+
+/***/ 823:
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"wrapper\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <nav class=\"col-sm-3 col-md-2 bg-faded sidebar\">\n                <ul class=\"nav nav-pills flex-column admin-sidebar\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\">Overview</a>\n                        <a class=\"nav-link\">Statistics</a>\n                        <a class=\"nav-link\">Testing &amp; Service Status</a>\n                    </li>\n                </ul>\n                <ul class=\"nav nav-pills flex-column\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\">Community Management</a>\n                    </li>\n                </ul>\n                <ul class=\"nav nav-pills flex-column\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\">Post Approval</a>\n                        <a class=\"nav-link\">Post Editing</a>\n                        <a class=\"nav-link\">Import/Export Posts</a>\n                        <a class=\"nav-link\">Withdrawn Posts</a>\n                    </li>\n                </ul>\n                <ul class=\"nav nav-pills flex-column\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\">Admin List</a>\n                        <a class=\"nav-link\">Metadata Lists</a>\n                        <a class=\"nav-link\">Logs</a>\n                    </li>\n                </ul>\n            </nav>\n\n            <main class=\"col-sm-9  col-md-10  pt-3\">\n                <div class=\"col-md-4\">\n                    <h1>Admin post approval</h1>\n                    <p>\n                        Enter the PostId:\n                    </p>\n                    <input type=\"text\" name=\"postId\" #postId/>\n                    <button class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" (keydown.enter)=\"approvePost(postId.value)\" (click)=\"approvePost(postId.value)\">Submit</button>\n                </div>\n                <hr />\n                <div class=\"col-md-4\">\n                    <p>\n                        Changes the number of pages to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.\n\n                        i.e. Staying 10 pages ahead of user x 10 results per page (user specified) = 100 posts to stay ahead of user\n\n                        i.e. Staying 50 pages ahead of user x 10 results per page = 500 posts to stay ahead of user.\n\n                        i.e. Staying 10 pages ahead of user x 100 results per page = 1000 posts to stay ahead of user.\n\n                        Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10.\n                    </p>\n                    <input type=\"number\" class=\"form-control\"  min=\"1\" max=\"100\" #pageHead [value]=\"searchService.pageHead\"/>\n                    <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"changePageHead(pageHead.value)\" (click)=\"changePageHead(pageHead.value)\">Change Page Head</button>\n                </div>\n                <hr />\n                <!-- <div class=\"col-md-4\">\n                    <p>\n                        Approval List\n                    </p>\n                    <post-list [postList]=\"approval_list\"></post-list>\n\n                </div> -->\n            </main>\n\n            </div>\n\n\n\n    </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 824:
+/***/ (function(module, exports) {
+
+module.exports = "<footer>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\n\n        <h3 class=\"footer-heading\">Connect With Us</h3>\n        <!-- social begin here -->\n            <ul class=\"socicon\">\n              <!-- <li><a href=\"\" class=\"share-icon\"> </a></li> -->\n              <!-- <li><a href=\"#\" class=\"google\"> </a></li> -->\n              <li><a href=\"https://www.facebook.com/dalnarchive/\" target=\"_blank\" class=\"facebook\"> </a></li>\n              <li><a href=\"https://twitter.com/dalnarchive\" target=\"_blank\" class=\"twitter\"> </a></li>\n              <!-- <li><a href=\"#\" class=\"flickr\"> </a></li> -->\n              <!-- <li><a href=\"#\" class=\"dribbble\"> </a></li> -->\n              <!-- <li class=\"last\"><a href=\"#\" class=\"vimeo\"> </a></li> -->\n            </ul>\n\n        <h3 class=\"footer-heading\">Who We Are</h3>\n            <p>\n                Since 2007, the Digital Archive of Literacy Narratives has been collecting stories from the public about their experiences learning to read, write, and compose with different media types. Containing over 6000 individual narratives in text, video, audio, and other forms, the DALN is a resource not only for scholars and teachers, but the public at large. Tell us your story. <a routerLink=\"/create\">Submit today!</a>\n            </p>\n\n      </div>\n\n      <!-- tweets begin here -->\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\n        <h3 class=\"footer-heading\">Latest Tweets</h3>\n        <div class=\"tweets\">\n\n        </div>\n        <a class=\"twitter-timeline\" data-width=\"300\" data-height=\"330\" data-theme=\"dark\" href=\"https://twitter.com/dalnarchive\" target=\"_blank\">Tweets by dalnarchive</a>\n      </div>\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\n        <h3 class=\"footer-heading\">From Facebook</h3>\n        <div class=\"fb-page\"\n            data-href=\"https://www.facebook.com/dalnarchive/\"\n            data-tabs=\"timeline\"\n            data-width=\"300\"\n            data-height=\"330\"\n            data-small-header=\"false\"\n            data-adapt-container-width=\"true\"\n            data-hide-cover=\"false\"\n            data-show-facepile=\"false\">\n            <blockquote cite=\"https://www.facebook.com/dalnarchive/\" class=\"fb-xfbml-parse-ignore\">\n                <a href=\"https://www.facebook.com/dalnarchive/\">Digital Archive of Literacy Narratives</a>\n            </blockquote>\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n"
+
+/***/ }),
+
+/***/ 825:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <h1>{{title}}</h1>\n\n\n    <div class=\"contact-info\">\n        <p>\n            <strong>Ben McCorkle</strong> is an associate professor of English and teaches courses in composition, rhetoric, and digital media studies, primarily on The Ohio State University’s Marion campus. He is the author of the book <span class=\"italic\">\n            Rhetorical Delivery as Technological Discourse: A Cross-Historical Study</span>, as well as several articles in publications including <span class=\"italic\"> Computers and Composition Online, Rhetoric Society Quarterly, and Composition Studies</span>. He is currently serving as Co-Director of the DALN. Email Ben: <a href=\"mailto:mccorkle.12@osu.edu\">mccorkle.12@osu.edu</a>.\n       </p>\n\n       <p>\n           <strong>Michael Harker </strong> is an associate professor of English and teaches courses in composition, rhetoric, and literacy studies at Georgia State University. He is the author of <span class=\"italic\">The Lure of Literacy: A Critical Reception of the Compulsory Composition Debate (SUNY Press)</span>. He has published articles in <span class=\"italic\"> College Composition and Communication, Literacy in Composition Studies, Computers and Composition: An International Journal</span>, and <span class=\"italic\">Computers and Composition Online</span>. He is a Co-Director of the Digital Archive of Literacy Narratives (DALN). Email Michael: <a href=\"mailto:mharker@gsu.edu\">mharker@gsu.edu</a>.\n       </p>\n    </div>\n\n</div>\n<!-- <daln-footer></daln-footer> -->\n"
+
+/***/ }),
+
+/***/ 826:
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class=\"container responsive_home\">\n\n    <!-- Search Component -->\n    <!-- <app-search2 (searchResults)=\"displayResults($event)\"></app-search2> -->\n    <app-search2></app-search2>\n\n    <app-slider *ngIf=\"searchPosts.length === 0\"></app-slider>\n\n\n</div>\n\n\n<div class=\"container responsive_home\">\n\n        <div class=\"featured-post-list\" *ngIf=\"searchPosts.length === 0\">\n            <h3>Featured Posts</h3>\n            <hr />\n            <post-list [postList]=\"posts\" ></post-list>\n        </div>\n\n\n        <div class=\"search-post-list\" *ngIf=\"searchPosts.length > 0\">\n            <button (click)=\"clearSearch()\" class=\"btn btn-primary\" type=\"submit\">Clear Search</button>\n            <!-- <app-pagination (currentPageOffset)=\"calculateOffset($event)\" [startOffset]=\"startOffset\"></app-pagination> -->\n        </div>\n\n\n</div>\n\n<div class=\"container responsive_home\">\n    <div class=\"center add-top-margin\">\n      <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\n    </div>\n</div>\n\n\n\n\n<daln-footer></daln-footer>\n<router-outlet></router-outlet>\n"
+
+/***/ }),
+
+/***/ 827:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container add-top-margin\">\n    <div class=\"row\">\n        <form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\n            <div class=\"form-group\">\n                <h2>Login</h2>\n            </div>\n            <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\n                {{ errorMessage }}\n            </div>\n            <div class=\"form-group\">\n                <label class=\"control-label\" for=\"signupEmail\">Email</label>\n                <input id=\"signupEmail\" required type=\"email\" maxlength=\"100\" class=\"form-control\" [(ngModel)]=\"email\"\n                       [ngModelOptions]=\"{standalone: true}\">\n            </div>\n\n            <div class=\"form-group\">\n                <label class=\"control-label\" for=\"signupPassword\">Password</label>\n                <input id=\"signupPassword\" required type=\"password\" maxlength=\"25\" class=\"form-control\"\n                       length=\"40\" [(ngModel)]=\"password\" [ngModelOptions]=\"{standalone: true}\">\n            </div>\n            <div class=\"form-group\">\n                <button (click)=\"onLogin()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\n                    Login\n                </button>\n            </div>\n\n            <hr>\n\n\n            <p><a [routerLink]=\"['/home/forgotPassword']\"> <i class=\"fa fa-fw fa-group\"></i> Forgot Password?</a></p>\n            <p>\n\n        </form>\n\n    </div>\n"
+
+/***/ }),
+
+/***/ 828:
+/***/ (function(module, exports) {
+
+module.exports = "<post-list [postList]=\"pagedPost\"></post-list>\n<nav>\n  <ul class=\"pagination\">\n    <!-- <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Previous</a></li> -->\n    <li *ngFor=\"let button of buttonArray\" class=\"page-item\">\n        <a class=\"page-link\" (click)=\"getPagedPost($event)\">{{button}}</a>\n    </li>\n    <!-- <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Next</a></li> -->\n  </ul>\n</nav>\n"
+
+/***/ }),
+
+/***/ 829:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container add-top-margin\" *ngIf=\"postDetail\">\n  <button class=\"btn btn-primary\" type=\"submit\" (click)=\"goBack()\">Back</button>\n\n  <section>\n\n\n    <div class=\"row\">\n      <!-- Project info\n      ================================================== -->\n\n\n      <div class=\"col-md-4\">\n\n        <!-- Use the ul class. -->\n        <ul class=\"metadata\">\n          <li>\n            <h3>{{postDetail?.title}}</h3>\n            <p>{{postDetail?.description}}</p>\n          <li>\n            <h3>Date Submitted</h3>\n            <p>{{postDetail?.dateCreated}}</p>\n          </li>\n          <li>\n            <h3>Author</h3>\n            <p *ngFor=\"let author of postDetail.contributorAuthor\">{{author}}</p>\n          </li>\n\n        </ul>\n\n        <br/>\n\n        <ul class=\"tags\">\n          <li>\n            <h3>Collections</h3>\n            <p>All literacy narratives that are not part of a topical collection.</p>\n          </li>\n          <li>\n            <h3>Tags/Subjects</h3>\n            <ul class=\"tags-list\">\n              <!-- Track elements and limit tags with NgFor and TrackBy -->\n              <li class=\"tag\" *ngFor=\"let subject of postDetail.subject\"><span\n                class=\"label label-info\">{{subject}}</span></li>\n            </ul>\n\n        </ul>\n\n        <br/>\n\n        <ul class=\"description\">\n          <li>\n            <h3>Description</h3>\n            <p>{{postDetail?.description}}</p>\n          </li>\n        </ul>\n\n        <br/>\n\n        <h3>Media List</h3>\n        <ul class=\"media\" *ngFor=\"let asset of postDetail.assetList\">\n\n            <li (click)=\"onSelectedAsset(asset)\">\n\n              <!-- Change event to be click event that changes player embed link -->\n              <h3>{{asset.assettitle}}</h3>\n              <p>{{asset.assetType}}: {{asset.assetDescription}}</p>\n              <p *ngIf=\"\">{{asset.assetType}}: {{asset.assetDescription}}</p>\n\n\n              <!--<div *ngIf=\"selectedAsset\">{{selectedAsset.assetID}}</div>-->\n            </li>\n\n          </ul>\n\n\n\n              <div id=\"metadata-table\">\n                   <table class=\"table table-sm table-bordered\">\n                       <thead >\n                         <tr>\n                          <th>Metadata Tag</th>\n                          <th>Content</th>\n                        </tr>\n                      </thead>\n                      <tbody>\n                          <tr>\n                               <td>identifierUri</td>\n                               <td>{{postDetail?.identifierUri}}</td>\n                          </tr>\n                          <tr>\n                               <td>dateAvailable</td>\n                               <td>{{postDetail?.dateAvailable}}</td>\n                          </tr>\n                          <tr>\n                               <td>dateAccessioned</td>\n                               <td>{{postDetail?.dateAccessioned}}</td>\n                          </tr>\n                          <tr>\n                               <td>dateCreated</td>\n                               <td>{{postDetail?.dateCreated}}</td>\n                          </tr>\n                          <tr>\n                               <td>dateIssued</td>\n                               <td>{{postDetail?.dateIssued}}</td>\n                          </tr>\n                          <tr>\n                               <td>contributorAuthor</td>\n                               <td>\n                                  <ul>\n                                   <li *ngFor=\"let author of postDetail.contributorAuthor\">{{postDetail?.contributorAuthor}}</li>\n                                  </ul>\n                               </td>\n                          </tr>\n                          <tr>\n                               <td>contributorInterviewer</td>\n                               <td>\n                                  <ul>\n                                   <li *ngFor=\"let author of postDetail.contributorInterviewer\">{{postDetail?.contributorInterviewer}}</li>\n                                  </ul>\n                               </td>\n                          </tr>\n\n                      </tbody>\n                   </table>\n              </div>\n\n\n\n\n\n      </div>\n\n      <!-- Video\n      ================================================== -->\n\n          <div class=\"col-md-8\">\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')\" [postAsset]=\"selectedAsset\"></app-player>\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Text')\" [postAsset]=\"selectedAsset\"></app-player>\n        <!-- TODO: Remove style tag -->\n        <!-- social begin here -->\n        <ul class=\"socicon right\" style=\"margin-bottom:10px;\">\n          <!-- <li>\n            <a href=\"#\" class=\"share-icon\">\n            </a>\n          </li>\n          <li>\n            <a href=\"#\" class=\"google\">\n            </a>\n          </li>-->\n          <li>\n            <a href=\"https://www.facebook.com/dalnarchive/\" class=\"facebook\" target=\"_blank\">\n            </a>\n          </li>\n          <li>\n              <a class=\"twitter twitter-share-button\"\n                href=\"https://twitter.com/intent/tweet?url=&text={{postDetail?.title}}&via=dalnarchive\" target=\"_blank\"  ></a>\n          </li>\n          <!-- <li>\n            <a href=\"#\" class=\"flickr\">\n            </a>\n          </li>\n          <li>\n            <a href=\"#\" class=\"linkedin\">\n            </a>\n          </li>\n          <li class=\"last\">\n            <a href=\"#\" class=\"vimeo\">\n            </a>\n          </li> -->\n\n        </ul>\n\n\n        </div>\n\n\n    </div>\n\n\n  </section>\n\n\n\n\n\n\n</div><!-- /container -->\n<div class=\"center\">\n    <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\n</div>\n<daln-footer></daln-footer>\n"
+
+/***/ }),
+
 /***/ 830:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"child-container\">\n\n\n    <div id=\"search-component\">\n\n      <!-- Main Search Box -->\n      <div class=\"row justify-content-center\">\n        <div class=\"col-md-6\">\n         <div class=\"input-group\">\n                <span class=\"input-group-btn\">\n                  <button class=\"btn btn-secondary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#options\">&#9660;</button>\n                </span>\n                <input #searchBox class=\"form-control\" id=\"search-box\" placeholder=\"Search the DALN...\" [value]=\"searchService.searchQuery\" (input)=\"searchService.searchQuery = $event.target.value\"/>\n               <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"onSearch(searchBox.value, results.value, pageNum.value)\" (click)=\"onSearch(searchBox.value, results.value, pageNum.value)\" >Search</button>\n          </div>\n\n        </div>\n\n      </div>\n\n      <!-- Search Options -->\n      <div class=\"collapse\" id=\"options\">\n      <div class=\"card card-block\" [class.col-md-6]=\"showFull\" [class.offset-md-3]=\"showFull\">\n          <div class=\"card-header\" id=\"option-card\">\n              Options\n          </div>\n        <div class=\"row\">\n            <div class=\"col-md-4\">\n                <div class=\"input-group \">\n                    <span class=\"input-group-addon\">Results per page</span>\n                    <input #results class=\"form-control\" id=\"results-size\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.resultsSize\"/>\n                </div>\n            </div>\n            <div class=\"col-md-4 offset-md-4\">\n                <div class=\"input-group\">\n                    <span class=\"input-group-addon\">Page Number</span>\n                    <input #pageNum class=\"form-control\" id=\"pageNumber\" type=\"number\" min=\"0\" max=\"50\" [value]=\"searchService.pageNumber\"/>\n                </div>\n            </div>\n        </div>\n      </div>\n      </div>\n\n    <div class=\"row justify-content-center\">\n      <div class=\"no-results col-md-6 \" *ngIf=\"noResults == true\">\n          <p>\n              Sorry, there were no results for your query.\n          </p>\n      </div>\n     </div>\n\n     <ul *ngIf=\"pager.pages && pager.pages.length && showPage\" class=\"pagination\">\n                <li class=\"page-item\" [ngClass]=\"{disabled:pager.currentPage === 1}\">\n                    <a class=\"page-link\" (click)=\"setPage(1)\">First</a>\n                </li>\n                <li class=\"page-item\" [ngClass]=\"{disabled:pager.currentPage === 1}\">\n                    <a class=\"page-link\" (click)=\"setPage(pager.currentPage - 1)\">Previous</a>\n                </li>\n                <li class=\"page-item\" *ngFor=\"let page of pager.pages\" [ngClass]=\"{active:pager.currentPage === page}\">\n                    <a class=\"page-link\" (click)=\"setPage(page)\">{{page}}</a>\n                </li>\n                <li class=\"page-item\" [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\n                    <a class=\"page-link\" (click)=\"setPage(pager.currentPage + 1)\">Next</a>\n                </li>\n                <li class=\"page-item\" [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\n                    <a class=\"page-link\" (click)=\"setPage(pager.totalPages)\">Last</a>\n                </li>\n        </ul>\n\n    </div>\n\n\n\n\n    <!-- <daln-footer *ngIf=\"showUtil\"></daln-footer> -->\n\n</div>\n<router-outlet></router-outlet>\n"
+module.exports = "<div class=\"child-container\">\n\n\n    <div id=\"search-component\">\n\n      <!-- Main Search Box -->\n      <div class=\"row justify-content-center\">\n        <div class=\"col-md-6\">\n         <div class=\"input-group\">\n                <span class=\"input-group-btn\">\n                  <button class=\"btn btn-secondary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#options\">&#9660;</button>\n                </span>\n                <input #searchBox class=\"form-control\" id=\"search-box\" placeholder=\"Search the DALN...\" [value]=\"searchService.searchQuery\" (input)=\"searchService.searchQuery = $event.target.value\"/>\n               <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"onSearch(searchBox.value, results.value, pageNum.value)\" (click)=\"onSearch(searchBox.value, results.value, pageNum.value)\" >Search</button>\n          </div>\n\n        </div>\n\n      </div>\n\n      <!-- Search Options -->\n      <div class=\"collapse\" id=\"options\">\n      <div class=\"card card-block\" [class.col-md-6]=\"showFull\" [class.offset-md-3]=\"showFull\">\n          <div class=\"card-header\" id=\"option-card\">\n              Options\n          </div>\n        <div class=\"row\">\n            <div class=\"col-md-4\">\n                <div class=\"input-group \">\n                    <span class=\"input-group-addon\">Results per page</span>\n                    <input #results class=\"form-control\" id=\"results-size\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.resultsSize\"/>\n                </div>\n            </div>\n            <div class=\"col-md-4 offset-md-4\">\n                <div class=\"input-group\">\n                    <span class=\"input-group-addon\">Page Number</span>\n                    <input #pageNum class=\"form-control\" id=\"pageNumber\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.pageNumber\"/>\n                </div>\n            </div>\n        </div>\n      </div>\n      </div>\n\n    <div class=\"row justify-content-center\">\n      <div class=\"no-results col-md-6 \" *ngIf=\"noResults == true\">\n          <p>\n              Sorry, there were no results for your query.\n          </p>\n      </div>\n     </div>\n\n    </div>\n\n\n\n\n    <!-- <daln-footer *ngIf=\"showUtil\"></daln-footer> -->\n\n</div>\n\n<app-pagination (getResult)=\"getResult($event)\" [startOffset]=\"startOffset\" [endOffset]=\"endOffset\" [resultList]=\"resultList\"></app-pagination>\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -2666,30 +2693,23 @@ module.exports = "<div class=\"container add-top-margin \">\n    <div class=\"ce
 /***/ 834:
 /***/ (function(module, exports) {
 
-module.exports = "<post-list></post-list>\n"
+module.exports = "<div class=\"postAsset\" *ngIf=\"postAsset\">\n\n  <!-- Null post - No Assets -->\n  <div class=\"postitem_null\" *ngIf=\"noAsset === true\">\n     <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\n  </div>\n\n  <!-- Not recorded asset type -->\n  <div class=\"postitem_unknown\" *ngIf=\"postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'\">\n    <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\n  </div>\n\n  <!-- Audio Post -->\n  <div class=\"postitem_soundcloud\" *ngIf=\"postAsset.assetType==='Audio'\">\n    <iframe id=\"sc-widget\" scrolling=\"no\" width=\"100%\" height=\"166px\"\n            [src]=\"url | safe\" ></iframe>\n  </div>\n\n  <!-- Video Post -->\n  <div class=\"postitem_video\" *ngIf=\"postAsset.assetType === 'Audio/Video'\">\n    <iframe *ngIf=\"!thumb\" class='sproutvideo-player' type='text/html'\n            [src]=\"url | safe\" width=\"100%\" height=\"436px\" allowfullscreen ></iframe>\n    <iframe *ngIf=\"thumb\" class='sproutvideo-player' type='text/html' width=\"100%\" height=\"166px\"\n            [src]=\"url | safe\" ></iframe>\n  </div>\n\n  <!-- Text post - only counts pdfs for now -->\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url !== null\">\n      <!-- <embed *ngIf=\"!thumb\" [src]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\" />\n      <embed *ngIf=\"thumb\" [src]=\"url | safe\" type=\"application/pdf\" /> -->\n      <object *ngIf=\"!thumb\" [data]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href=\"/pdf/sample-3pp.pdf\">Download PDF</a>.</p></object>\n      <object *ngIf=\"thumb\" [data]=\"url | safe\" type=\"application/pdf\"><p><b>This browser does not support PDFs. </b> Please click on the post to download the PDF to view.</p></object>\n  </div>\n\n  <!-- All other text posts that aren't pdf -->\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url === null\">\n      <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\n  </div>\n\n  <!-- Web Asset -->\n  <!-- <div class=\"postitem_web\" *ngIf=\"postAsset.assetType === 'Web'\">\n      <iframe [src]=\"url | safe\" type=\"text/html\"></iframe>\n  </div> -->\n\n</div>\n"
 
 /***/ }),
 
 /***/ 835:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"postAsset\" *ngIf=\"postAsset\">\n\n  <!-- Null post - No Assets -->\n  <div class=\"postitem_null\" *ngIf=\"noAsset === true\">\n     <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\n  </div>\n\n  <!-- Not recorded asset type -->\n  <div class=\"postitem_unknown\" *ngIf=\"postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'\">\n    <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\n  </div>\n\n  <!-- Audio Post -->\n  <div class=\"postitem_soundcloud\" *ngIf=\"postAsset.assetType==='Audio'\">\n    <iframe id=\"sc-widget\" scrolling=\"no\" width=\"100%\" height=\"166px\"\n            [src]=\"url | safe\" ></iframe>\n  </div>\n\n  <!-- Video Post -->\n  <div class=\"postitem_video\" *ngIf=\"postAsset.assetType === 'Audio/Video'\">\n    <iframe *ngIf=\"!thumb\" class='sproutvideo-player' type='text/html'\n            [src]=\"url | safe\" width=\"100%\" height=\"436px\" allowfullscreen ></iframe>\n    <iframe *ngIf=\"thumb\" class='sproutvideo-player' type='text/html' width=\"100%\" height=\"166px\"\n            [src]=\"url | safe\" ></iframe>\n  </div>\n\n  <!-- Text post - only counts pdfs for now -->\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url !== null\">\n      <!-- <embed *ngIf=\"!thumb\" [src]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\" />\n      <embed *ngIf=\"thumb\" [src]=\"url | safe\" type=\"application/pdf\" /> -->\n      <object *ngIf=\"!thumb\" [data]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href=\"/pdf/sample-3pp.pdf\">Download PDF</a>.</p></object>\n      <object *ngIf=\"thumb\" [data]=\"url | safe\" type=\"application/pdf\"><p><b>This browser does not support PDFs. </b> Please click on the post to download the PDF to view.</p></object>\n  </div>\n\n  <!-- All other text posts that aren't pdf -->\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url === null\">\n      <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\n  </div>\n\n  <!-- Web Asset -->\n  <!-- <div class=\"postitem_web\" *ngIf=\"postAsset.assetType === 'Web'\">\n      <iframe [src]=\"url | safe\" type=\"text/html\"></iframe>\n  </div> -->\n\n</div>\n"
+module.exports = "<div class=\"postItem\" *ngIf=\"postItem\">\n    <article class=\"card\">\n        <header class=\"post-header\">\n        <div class=\"hover-post\">\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\n                <h3>{{postItem?.title}}</h3>\n            </a>\n        </div>\n        </header>\n        <div class=\"card-block\">\n                <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\n                <div class=\"post-desc\">\n                    <div class=\"hover-post\">\n                        <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\n                            <p>{{postItem?.description}}</p>\n                        </a>\n                    </div>\n                </div>\n        </div>\n    </article>\n</div>\n\n<!-- <div class=\"postItem\" *ngIf=\"postItem\">\n      <div class=\"card\">\n        <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\n        <div class=\"card-block\">\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\n                <h3>{{postItem?.title}}</h3>\n            </a>\n          <p class=\"card-text\">{{postItem?.description}}</p>\n        </div>\n      </div>\n</div> -->\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
 /***/ 836:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"postItem\" *ngIf=\"postItem\">\n    <article class=\"card\">\n        <header class=\"post-header\">\n        <div class=\"hover-post\">\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\n                <h3>{{postItem?.title}}</h3>\n            </a>\n        </div>\n        </header>\n        <div class=\"card-block\">\n                <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\n                <div class=\"post-desc\">\n                    <div class=\"hover-post\">\n                        <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\n                            <p>{{postItem?.description}}</p>\n                        </a>\n                    </div>\n                </div>\n        </div>\n    </article>\n</div>\n\n<!-- <div class=\"postItem\" *ngIf=\"postItem\">\n      <div class=\"card\">\n        <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\n        <div class=\"card-block\">\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\n                <h3>{{postItem?.title}}</h3>\n            </a>\n          <p class=\"card-text\">{{postItem?.description}}</p>\n        </div>\n      </div>\n</div> -->\n\n<router-outlet></router-outlet>\n"
-
-/***/ }),
-
-/***/ 837:
-/***/ (function(module, exports) {
-
 module.exports = "<div class=\"row\" id=\"list-container\" *ngIf=\"postList\">\n\n    <!-- With Card Deck (differing post headers) -->\n    <!-- <div class=\"card-deck col-lg-3 col-md-4 col-sm-6\" *ngFor=\"let post of postList\">\n        <post-item class=\"media\" [postItem]=\"post\"></post-item>\n    </div> -->\n\n\n    <!-- Without Card Deck (same post headers but not on special cases) -->\n    <div class=\"col-lg-3 col-md-4 col-sm-6\" *ngFor=\"let post of postList\">\n        <post-item class=\"media\" [postItem]=\"post\"></post-item>\n    </div>\n\n\n</div>\n"
 
 /***/ })
 
-},[1101]);
+},[1100]);
 //# sourceMappingURL=main.bundle.map
