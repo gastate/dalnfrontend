@@ -6,8 +6,11 @@ import {RouterModule, Routes} from '@angular/router';
 
 // Main Components
 import {AboutComponent} from './components/public/about/about.component';
+import {ConfirmComponent} from './components/public/confirm/confirm.component';
+import {ForgotPasswordStep1Component, ForgotPasswordStep2Component} from './components/public/forgot-password/forgot-password.component';
 import {HomeComponent} from './components/public/home/home.component';
 import {LoginComponent} from './components/public/login/login.component';
+import {NewPasswordComponent} from './components/public/new-password/new-password.component';
 import {PageNotFoundComponent} from './shared/page-not-found/page-not-found.component';
 import {PostListComponent} from './shared/post-list/post-list.component';
 import {PostDetailComponent} from './components/public/post-detail/post-detail.component';
@@ -53,6 +56,22 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'confirm/:email',
+    component: ConfirmComponent
+  },
+  {
+    path: 'new-password',
+    component: NewPasswordComponent
+  },
+  {
+    path: 'forgotPassword',
+    component: ForgotPasswordStep1Component
+  },
+  {
+    path: 'forgotPassword/:email',
+    component: ForgotPasswordStep2Component
   },
   {
     path: 'home',

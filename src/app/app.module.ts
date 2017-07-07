@@ -12,10 +12,13 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AboutComponent } from './components/public/about/about.component';
 import { AppComponent } from './app.component';
 import { AppFooterComponent } from './components/public/app-footer/app-footer.component';
+import { ConfirmComponent } from './components/public/confirm/confirm.component';
 import { ContactComponent } from './components/public/contact/contact.component';
 import { FancyLoaderComponent } from './shared/fancy-loader/fancy-loader.component';
+import { ForgotPasswordStep1Component, ForgotPasswordStep2Component } from './components/public/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { HomeComponent } from './components/public/home/home.component';
+import { NewPasswordComponent } from './components/public/new-password/new-password.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { PlayerComponent} from './shared/player/player.component';
@@ -54,10 +57,14 @@ import { SafePipe } from './safe.pipe';
     AboutComponent,
     AppFooterComponent,
     AppComponent,
+    ConfirmComponent,
     ContactComponent,
     FancyLoaderComponent,
+    ForgotPasswordStep1Component,
+    ForgotPasswordStep2Component,
     HomeComponent,
     LoginComponent,
+    NewPasswordComponent,
     PageNotFoundComponent,
     PlayerComponent,
     PostDetailComponent,

@@ -4,6 +4,9 @@ import {AuthenticationDetails, CognitoUser} from "amazon-cognito-identity-js";
 import * as AWS from "aws-sdk/global";
 import * as STS from "aws-sdk/clients/sts";
 
+import {NewPasswordUser} from "../components/public/new-password/new-password.component";
+
+
 @Injectable()
 export class UserLoginService {
 
@@ -60,6 +63,7 @@ export class UserLoginService {
         });
 
   }
+
   forgotPassword(username: string, callback: CognitoCallback) {
         let userData = {
             Username: username,
@@ -67,13 +71,16 @@ export class UserLoginService {
         };
 
         let cognitoUser = new CognitoUser(userData);
-
+        console.log(userData);
         cognitoUser.forgotPassword({
             onSuccess: function () {
-
+                console.log('forgotPassword in userService succeeded');
             },
             onFailure: function (err) {
                 callback.cognitoCallback(err.message, null);
+            },
+            inputVerificationCode() {
+                callback.cognitoCallback(null, null);
             }
         });
     }
@@ -124,6 +131,50 @@ export class UserLoginService {
             console.log("UserLoginService: can't retrieve the current user");
             callback.isLoggedIn("Can't retrieve the CurrentUser", false);
         }
+    }
+
+    newPassword(newPasswordUser: NewPasswordUser, callback: CognitoCallback): void {
+        console.log(newPasswordUser);
+        // Get these details and call
+        // cognitoUser.completeNewPasswordChallenge(newPassword, userAttributes, this);
+        let authenticationData = {
+            Username: newPasswordUser.username,
+            Password: newPasswordUser.existingPassword,
+        };
+        let authenticationDetails = new AuthenticationDetails(authenticationData);
+
+        let userData = {
+            Username: newPasswordUser.username,
+            Pool: this.cognitoUtil.getUserPool()
+        };
+
+        console.log("UserLoginService: Params set...Authenticating the user");
+        let cognitoUser = new CognitoUser(userData);
+        console.log("UserLoginService: config is " + AWS.config);
+        cognitoUser.authenticateUser(authenticationDetails, {
+            newPasswordRequired: function (userAttributes, requiredAttributes) {
+                // User was signed up by an admin and must provide new
+                // password and required attributes, if any, to complete
+                // authentication.
+
+                // the api doesn't accept this field back
+                delete userAttributes.email_verified;
+                cognitoUser.completeNewPasswordChallenge(newPasswordUser.password, requiredAttributes, {
+                    onSuccess: function (result) {
+                        callback.cognitoCallback(null, userAttributes);
+                    },
+                    onFailure: function (err) {
+                        callback.cognitoCallback(err, null);
+                    }
+                });
+            },
+            onSuccess: function (result) {
+                callback.cognitoCallback(null, result);
+            },
+            onFailure: function (err) {
+                callback.cognitoCallback(err, null);
+            }
+        });
     }
 
 }

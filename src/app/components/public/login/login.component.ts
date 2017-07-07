@@ -24,7 +24,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
     this.userService.isAuthenticated(this);
   }
 
-  onLogin() {
+   onLogin() {
         if (this.email == null || this.password == null) {
             this.errorMessage = "All fields are required";
             return;
@@ -37,10 +37,13 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         if (message != null) {
             this.errorMessage = message;
             console.log("result: " + this.errorMessage);
-            // if (this.errorMessage === 'User is not confirmed.') {
-            //     console.log("redirecting");
-            //     this.router.navigate(['/home/confirmRegistration', this.email]);
-            // }
+                if (this.errorMessage === 'User is not confirmed.') {
+                    console.log("redirecting");
+                    this.router.navigate(['/confirmAccount', this.email]);
+                } else if (this.errorMessage === 'User needs to set password.') {
+                    console.log("redirecting to set new password");
+                    this.router.navigate(['/newPassword']);
+                }
         } else { //success
             // this.ddb.writeLogEntry("login");
             this.router.navigate(['/admin']);
