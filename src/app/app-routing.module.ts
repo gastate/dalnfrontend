@@ -6,12 +6,13 @@ import {RouterModule, Routes} from '@angular/router';
 
 // Main Components
 import {AboutComponent} from './components/public/about/about.component';
-import {ConfirmComponent} from './components/public/confirm/confirm.component';
-import {ForgotPasswordStep1Component, ForgotPasswordStep2Component} from './components/public/forgot-password/forgot-password.component';
+import {ConfirmComponent} from './components/public/auth/confirm/confirm.component';
+import {ForgotPasswordStep1Component, ForgotPasswordStep2Component} from './components/public/auth/forgot-password/forgot-password.component';
 import {HomeComponent} from './components/public/home/home.component';
 import {LoginComponent} from './components/public/login/login.component';
-import {NewPasswordComponent} from './components/public/new-password/new-password.component';
+import {NewPasswordComponent} from './components/public/auth/new-password/new-password.component';
 import {PageNotFoundComponent} from './shared/page-not-found/page-not-found.component';
+import {ResendComponent} from './components/public/auth/resend/resend.component';
 import {PostListComponent} from './shared/post-list/post-list.component';
 import {PostDetailComponent} from './components/public/post-detail/post-detail.component';
 import {ContactComponent} from './components/public/contact/contact.component';
@@ -54,28 +55,18 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'confirm/:email',
-    component: ConfirmComponent
-  },
-  {
-    path: 'new-password',
-    component: NewPasswordComponent
-  },
-  {
-    path: 'forgotPassword',
-    component: ForgotPasswordStep1Component
-  },
-  {
-    path: 'forgotPassword/:email',
-    component: ForgotPasswordStep2Component
-  },
-  {
-    path: 'home',
-    component: HomeComponent
+      path: 'home',
+      component: HomeComponent,
+      children: [
+          {path: 'confirm', component: ConfirmComponent},
+          {path: 'confirm/:email', component: ConfirmComponent},
+          {path: 'forgotPassword', component: ForgotPasswordStep1Component},
+          {path: 'forgotPassword/:email', component: ForgotPasswordStep1Component},
+          {path: 'login', component: LoginComponent},
+          {path: 'newPassword', component: NewPasswordComponent},
+          {path: 'register', component: RegisterComponent},
+          {path: 'resend', component: ResendComponent}
+      ]
   },
   {
     path: 'posts',

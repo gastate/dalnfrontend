@@ -12,13 +12,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AboutComponent } from './components/public/about/about.component';
 import { AppComponent } from './app.component';
 import { AppFooterComponent } from './components/public/app-footer/app-footer.component';
-import { ConfirmComponent } from './components/public/confirm/confirm.component';
 import { ContactComponent } from './components/public/contact/contact.component';
 import { FancyLoaderComponent } from './shared/fancy-loader/fancy-loader.component';
-import { ForgotPasswordStep1Component, ForgotPasswordStep2Component } from './components/public/forgot-password/forgot-password.component';
-import { LoginComponent } from './components/public/login/login.component';
 import { HomeComponent } from './components/public/home/home.component';
-import { NewPasswordComponent } from './components/public/new-password/new-password.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { PlayerComponent} from './shared/player/player.component';
@@ -27,6 +23,17 @@ import { PostListComponent } from './shared/post-list/post-list.component';
 import { PostDetailComponent } from './components/public/post-detail/post-detail.component';
 import { SearchComponent } from './components/public/search/search.component';
 import { SliderComponent } from './components/public/slider/slider.component';
+
+// Auth Components
+import { ConfirmComponent } from './components/public/auth/confirm/confirm.component';
+import { ForgotPasswordStep1Component, ForgotPasswordStep2Component } from './components/public/forgot-password/forgot-password.component';
+import { LoginComponent } from './components/public/auth/login/login.component';
+import { NewPasswordComponent } from './components/public/auth/new-password/new-password.component';
+import { ResendComponent } from './components/public/auth/resend/resend.component';
+import { RegisterCompoent } from './components/public/auth/register/register.component';
+
+
+
 
 // Secure Components
 import {AdminComponent} from './components/secure/landing/admin/admin.component';
@@ -70,6 +77,8 @@ import { SafePipe } from './safe.pipe';
     PostDetailComponent,
     PostItemComponent,
     PostListComponent,
+    RegisterCompoent,
+    ResendComponent,
     SearchComponent,
     SliderComponent,
     AdminComponent,
