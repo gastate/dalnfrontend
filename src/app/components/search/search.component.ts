@@ -107,7 +107,7 @@ export class SearchComponent implements OnInit {
   }
 
   getResult(event) {
-
+      console.log("Emit received");
       this.currentOffset = event;
       console.log("search comp event", event);
 

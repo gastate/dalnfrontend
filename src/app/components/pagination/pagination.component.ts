@@ -59,10 +59,9 @@ export class PaginationComponent implements OnInit, OnChanges {
    */
   getPagedPost(event) {
       if(event && event.target) {
-          console.log("getPagedPost target event", event.target);
-          console.log("getPagedPost event", event.target.innerText);
           this.currentPage = event.target.innerText; // button is just the event's innerText.
           this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
+          console.log("Emit fired");
           this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
       }
   }
@@ -75,16 +74,26 @@ export class PaginationComponent implements OnInit, OnChanges {
 
       let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage + 1);
       let lastIndex = (firstIndex + this.resultsPerPage - 1);
-      console.log("lastIndex, firstIndex", lastIndex, firstIndex);
+
+      // since the index of the array starts at 0, just make the firstIndex = 0 whenever the value is 1.
       if (firstIndex === 1) {
           firstIndex = 0;
       } else {
+          // else make the lastIndex + 1.
           lastIndex = lastIndex + 1;
       }
+      console.log("lastIndex, firstIndex", lastIndex, firstIndex);
+      // populate pagedPost and push to the view.
       this.populatePosts(firstIndex, lastIndex);
   }
 
   calculateButtonRange() {
+
+    //   console.log("total_offset", this.searchService.total_offset);
+    //   for(let i = 0; i < this.searchService.total_offset; i++) {
+    //       this.buttonArray.push(i + 1);
+    //   }
+      console.log("Button Array", this.buttonArray);
       console.log("endOffset", this.endOffset);
       for(let i = 0; i < this.endOffset; i++) {
           this.buttonArray.push(i + 1);
@@ -107,6 +116,7 @@ export class PaginationComponent implements OnInit, OnChanges {
           console.log("pagination change", this.resultList);
         //   this.getPagedPost(event);
         this.calculateIndicies();
+        this.calculateButtonRange();
       }
     //   if (changes['endOffset']) {
     //       console.log("endOffset change", this.endOffset);
