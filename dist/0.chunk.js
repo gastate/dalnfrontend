@@ -15,8 +15,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var forms_1 = __webpack_require__(59);
-var common_1 = __webpack_require__(21);
+var forms_1 = __webpack_require__(60);
+var common_1 = __webpack_require__(16);
 var submit_form_component_1 = __webpack_require__(1109);
 var submit_form_service_1 = __webpack_require__(1103);
 var rights_component_1 = __webpack_require__(1108);
@@ -263,8 +263,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var forms_1 = __webpack_require__(59);
-var router_1 = __webpack_require__(89);
+var forms_1 = __webpack_require__(60);
+var router_1 = __webpack_require__(59);
 var submit_form_service_1 = __webpack_require__(1103);
 var DescriptionComponent = (function () {
     function DescriptionComponent(_router, fb, _submitService) {
@@ -380,7 +380,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(89);
+var router_1 = __webpack_require__(59);
 var submit_form_service_1 = __webpack_require__(1103);
 var MediaComponent = (function () {
     function MediaComponent(_router, _submitService) {
@@ -431,8 +431,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(89);
-var forms_1 = __webpack_require__(59);
+var router_1 = __webpack_require__(59);
+var forms_1 = __webpack_require__(60);
 var submit_form_service_1 = __webpack_require__(1103);
 var MetadataComponent = (function () {
     function MetadataComponent(_router, fb, _submitService) {
@@ -511,8 +511,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var forms_1 = __webpack_require__(59);
-var router_1 = __webpack_require__(89);
+var forms_1 = __webpack_require__(60);
+var router_1 = __webpack_require__(59);
 var submit_form_service_1 = __webpack_require__(1103);
 var RightsComponent = (function () {
     function RightsComponent(_router, fb, _submitService) {
@@ -605,7 +605,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(89);
+var router_1 = __webpack_require__(59);
 var submit_form_service_1 = __webpack_require__(1103);
 var SummaryComponent = (function () {
     function SummaryComponent(_router, _submitService) {
@@ -684,7 +684,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(89);
+var router_1 = __webpack_require__(59);
 var LicenseComponent = (function () {
     function LicenseComponent(_router) {
         this._router = _router;
@@ -725,7 +725,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(89);
+var router_1 = __webpack_require__(59);
 var submit_form_component_1 = __webpack_require__(1109);
 var rights_component_1 = __webpack_require__(1108);
 var metadata_component_1 = __webpack_require__(1107);
