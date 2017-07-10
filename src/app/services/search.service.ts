@@ -82,7 +82,7 @@ export class SearchService {
         this.total_offset = Math.ceil(this.total_results / this.resultsSize);
         // console.log("number of total offsets", this.total_offset);
 
-        console.log("Search API Response", res.json());
+        // console.log("Search API Response", res.json());
         return res.json();
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

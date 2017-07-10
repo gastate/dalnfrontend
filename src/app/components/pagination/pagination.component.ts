@@ -68,6 +68,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   calculateIndicies() {
+
       if (!this.currentPage) {
           console.log("starting offset", this.startOffset);
           this.currentPage = this.startOffset;
@@ -91,9 +92,12 @@ export class PaginationComponent implements OnInit, OnChanges {
   calculateButtonRange() {
 
       console.log("total_offset", this.searchService.total_offset);
+    //   for(let i = 0; i < this.searchService.total_offset; i++) {
+    //       this.buttonArray.push(i + 1);
+    //   }
       for(let i = 0; i < this.searchService.total_offset; i++) {
-          this.buttonArray.push(i + 1);
-      }
+        this.buttonArray.push(i + 1);
+    }
       console.log("Button Array", this.buttonArray);
 
     //   buttonArray.slice(this.startOffset, this.endOffset + 6);
@@ -119,6 +123,7 @@ export class PaginationComponent implements OnInit, OnChanges {
       }
       if(changes['resultList']) {
           console.log("pagination change", this.resultList);
+        this.buttonArray = [];
         //   this.getPagedPost(event);
         this.calculateIndicies();
         this.calculateButtonRange();
