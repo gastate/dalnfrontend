@@ -742,9 +742,14 @@ iframe {
 
 /* Fixes for spacing on post_list*/
 
-.card-post {
+.card {
     height: 375px;
     margin-bottom: 10%;
+}
+
+/* For submit form only */
+.card-submit {
+    height: 100%;
 }
 
 .card-block {
