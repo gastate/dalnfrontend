@@ -3,9 +3,9 @@
 
     <!-- Search Component -->
     <!-- <app-search2 (searchResults)="displayResults($event)"></app-search2> -->
-    <app-search2></app-search2>
+    <app-search2 (showHomePage)="showHomePage($event)"></app-search2>
 
-    <app-slider *ngIf="searchPosts.length === 0"></app-slider>
+    <app-slider *ngIf="showPage === true"></app-slider>
 
 
 </div>
@@ -13,17 +13,12 @@
 
 <div class="container responsive_home">
 
-        <div class="featured-post-list" *ngIf="searchPosts.length === 0">
+        <div class="featured-post-list" *ngIf="showPage === true">
             <h3>Featured Posts</h3>
             <hr />
-            <post-list [postList]="posts" ></post-list>
+            <post-list [postList]="posts"></post-list>
         </div>
 
-
-        <div class="search-post-list" *ngIf="searchPosts.length > 0">
-            <button (click)="clearSearch()" class="btn btn-primary" type="submit">Clear Search</button>
-            <!-- <app-pagination (currentPageOffset)="calculateOffset($event)" [startOffset]="startOffset"></app-pagination> -->
-        </div>
 
 
 </div>

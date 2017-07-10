@@ -92,22 +92,10 @@ export class PaginationComponent implements OnInit, OnChanges {
   calculateButtonRange() {
 
       console.log("total_offset", this.searchService.total_offset);
-    //   for(let i = 0; i < this.searchService.total_offset; i++) {
-    //       this.buttonArray.push(i + 1);
-    //   }
       for(let i = 0; i < this.searchService.total_offset; i++) {
         this.buttonArray.push(i + 1);
     }
       console.log("Button Array", this.buttonArray);
-
-    //   buttonArray.slice(this.startOffset, this.endOffset + 6);
-
-
-      console.log("endOffset", this.endOffset);
-    //   for(let i = 0; i < this.endOffset; i++) {
-    //       this.buttonArray.push(i + 1);
-    //   }
-    //   console.log("Button Array", this.buttonArray);
   }
 
   populatePosts(firstIndex, lastIndex) {
@@ -119,12 +107,12 @@ export class PaginationComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
       if (changes['startOffset']) {
           console.log("startOffset change", this.startOffset);
+          this.buttonArray = [];
           this.calculateButtonRange();
       }
       if(changes['resultList']) {
           console.log("pagination change", this.resultList);
         this.buttonArray = [];
-        //   this.getPagedPost(event);
         this.calculateIndicies();
         this.calculateButtonRange();
       }

@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   title = 'DALN Frontend';
   searchPosts: Post[] = [];
   posts: Post[] = [];
-
+  showPage: boolean = true;
 
   loading: boolean = false;
   failed: boolean = false;
@@ -56,6 +56,10 @@ export class HomeComponent implements OnInit {
     //         this.failed = true;
     //         console.log(err);
     // });
+  }
+
+  showHomePage(event) {
+      this.showPage = event;
   }
 
 

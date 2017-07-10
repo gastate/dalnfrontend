@@ -22,11 +22,15 @@ export class SearchComponent implements OnInit {
   // @Output()
   // searchResults: EventEmitter<Post[]>;
 
+  @Output()
+  showHomePage: EventEmitter<boolean>;
+
 
   posts: Post[] = [];
   resultList: Post[] = [];
   nextResultList: Post[];
   searchService : SearchService;
+  errorMessage: string;
 
   // pagination
   startOffset: number;
@@ -49,11 +53,15 @@ export class SearchComponent implements OnInit {
     _searchService: SearchService) {
 
     this.searchService = _searchService;
+    this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
 
   }
 
   ngOnInit() {
+
+    this.errorMessage = null;
+
     this.resultsSize = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
     this.total_offset = this.searchService.total_offset;
@@ -81,17 +89,15 @@ export class SearchComponent implements OnInit {
         (results) => {
             // console.log("In Emmitter: ", this.resultsSize);
             if ((results === null) || results.length <= 0 ) {
-                this.noResults = true;
-            } else {
-                this.noResults = false;
-
-                this.posts = this.searchService.translatePosts(results.hit);
-                this.resultList = this.posts;
-                // console.log("Search resultList", this.resultList);
-                this.calculateOffset();
-                // this.searchResults.emit(this.resultList);
+                this.errorMessage = "Something went wrong...Please try again.";
             }
 
+            this.posts = this.searchService.translatePosts(results.hit);
+            this.resultList = this.posts;
+            this.showHomePage.emit(false);
+            // console.log("Search resultList", this.resultList);
+            this.calculateOffset();
+            // this.searchResults.emit(this.resultList);
 
     }, err => {
         console.log(err);

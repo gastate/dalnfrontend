@@ -42,9 +42,9 @@
       </div>
 
     <div class="row justify-content-center">
-      <div class="no-results col-md-6 " *ngIf="noResults == true">
+      <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
           <p>
-              Sorry, there were no results for your query.
+              {{errorMessage}}
           </p>
       </div>
      </div>
