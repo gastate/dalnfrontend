@@ -54,7 +54,7 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.resultsPerPage = this.searchService.resultsSize;
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
-     
+
   }
 
 
@@ -66,7 +66,7 @@ export class PaginationComponent implements OnInit, OnChanges {
       if(event && event.target) {
           this.currentPage = event.target.innerText; // button is just the event's innerText.
           this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
-          console.log("Emit fired");
+        //   console.log("Emit fired");
           this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
       }
   }
@@ -88,34 +88,34 @@ export class PaginationComponent implements OnInit, OnChanges {
           // else make the lastIndex + 1.
           lastIndex = lastIndex + 1;
       }
-      console.log("lastIndex, firstIndex", lastIndex, firstIndex);
+    //   console.log("lastIndex, firstIndex", lastIndex, firstIndex);
       // populate pagedPost and push to the view.
       this.populatePosts(firstIndex, lastIndex);
   }
 
   calculateButtonRange() {
 
-      console.log("total_offset", this.searchService.total_offset);
+    //   console.log("total_offset", this.searchService.total_offset);
       for(let i = 0; i < this.searchService.total_offset; i++) {
         this.buttonArray.push(i + 1);
     }
-      console.log("Button Array", this.buttonArray);
+    //   console.log("Button Array", this.buttonArray);
   }
 
   populatePosts(firstIndex, lastIndex) {
 
       this.pagedPost = this.resultList.slice(firstIndex, lastIndex);
-      console.log("PagedPost:", this.pagedPost);
+    //   console.log("PagedPost:", this.pagedPost);
   }
 
   ngOnChanges(changes: SimpleChanges) {
       if (changes['startOffset']) {
-          console.log("startOffset change", this.startOffset);
+        //   console.log("startOffset change", this.startOffset);
           this.buttonArray = [];
           this.calculateButtonRange();
       }
       if(changes['resultList']) {
-          console.log("pagination change", this.resultList);
+        //   console.log("pagination change", this.resultList);
         this.buttonArray = [];
         this.calculateIndicies();
         this.calculateButtonRange();
