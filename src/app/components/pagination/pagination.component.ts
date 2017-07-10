@@ -67,6 +67,7 @@ export class PaginationComponent implements OnInit, OnChanges {
           this.currentPage = event.target.innerText; // button is just the event's innerText.
           this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
         //   console.log("Emit fired");
+
           this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
       }
   }

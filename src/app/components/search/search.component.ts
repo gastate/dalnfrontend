@@ -62,7 +62,7 @@ export class SearchComponent implements OnInit {
     // this.searchResults = new EventEmitter<Post[]>();
 
     router.events.subscribe((val) => {
-        console.log(val instanceof NavigationEnd);
+        // console.log(val instanceof NavigationEnd);
         // console.log(val.url);
     });
 
@@ -124,11 +124,11 @@ export class SearchComponent implements OnInit {
     //   console.log("startOffset, endOffset", this.startOffset, this.endOffset);
   }
 
-  getResult(event) {
-    //   console.log("Emit received");
-      this.currentOffset = event;
-    //   console.log("search comp event", event);
 
+  getResultHandler(event) {
+
+      this.currentOffset = event;
+      console.log("currentOffset", this.currentOffset);
       // get the next resultList going forwards.
       if (this.currentOffset === this.endOffset - 1) {
           this.pageParameter++;

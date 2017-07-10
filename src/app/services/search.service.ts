@@ -97,9 +97,8 @@ export class SearchService {
         // console.log("Title of post:", post.title);
 
         post.description = (i.fields.description && i.fields.description[0] ? i.fields.description[0]  : "No description provided.") ;
-        this.translateAssets(i.fields);
         // console.log("description of post:", post.description);
-        post.assetList = [];
+        post.assetList = this.translateAssets(i.fields);
         // console.log(post);
         posts.push(post);
       });
@@ -112,7 +111,17 @@ export class SearchService {
       // get assetLocation, assetEmbedLink, assetId, assetName, assetDescription and assetType.
 
       let assetList = [];
-    //   console.log(fields);
+      for(var i = 0; i < fields.assetembedlink.length; i++) {
+          assetList[i] = new Asset();
+          assetList[i].assettitle = fields.assetname[i];
+          assetList[i].assetType = fields.assettype[i];
+          assetList[i].assetID = fields.assetid[i];
+          assetList[i].assetEmbedLink = fields.assetembedlink[i];
+          assetList[i].assetLocation = fields.assetlocation[i];
+          assetList[i].assetDescription = fields.assetdescription[i];
+      }
+    //   console.log(assetList);
+      return assetList;
 
     }
 
