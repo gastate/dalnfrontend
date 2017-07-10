@@ -196,15 +196,15 @@
                 </li>
             </ul>
 
-            <div class="col-lg-6">
-                    <button type="submit" class="btn btn-primary" [disabled]="!descForm.valid" (click)="next()">Next Step</button>
 
-                    <div class="alert alert-info" role="alert" *ngIf="!descForm.controls.title.valid">
-                        <strong > A title is required to make a post.</strong>
-                    </div>
-            </div>
+        </div>
 
+        <div class="col-lg-6 add-top-margin">
+                <button type="submit" class="btn btn-primary" [disabled]="!descForm.valid" (click)="next()">Next Step</button>
 
+                <div class="alert alert-info add-top-margin" role="alert" *ngIf="!descForm.controls.title.valid">
+                    <strong > A title is required to make a post.</strong>
+                </div>
         </div>
 
 
