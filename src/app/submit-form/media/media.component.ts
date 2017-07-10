@@ -38,7 +38,7 @@ export class MediaComponent implements OnInit {
 
 
   next() {
-    this._router.navigateByUrl('/create/summary');
+    this._router.navigateByUrl('/create/license');
   }
 
 }

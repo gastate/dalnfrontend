@@ -13,6 +13,8 @@ import { environment } from '../../environments/environment';
 export class SubmitFormService {
     title: string;
     description: string;
+    email: string;
+    license: string;
     // // dateAccessioned: string;
     // // dateAvailable: string;
     // // dateCreated: string;
@@ -40,6 +42,8 @@ export class SubmitFormService {
       this.title = null;
       this.postResult = null;
       this.description = null;
+      this.email = null;
+      this.license = null;
       this.rightsConsent = null;
       this.rightsRelease = null;
       this.contributorAuthor = [];
@@ -114,6 +118,28 @@ export class SubmitFormService {
     //   );
   }
 
+  returnPost() {
+      let postData = {
+          title: this.title,
+          description: this.description,
+          rightsConsent: this.rightsConsent,
+          rightsRelease: this.rightsRelease,
+          creatorGender : this.creatorGender,
+          creatorYearOfBirth : this.creatorYearOfBirth,
+          contributorAuthor: this.contributorAuthor,
+          contributorInterviewer: this.contributorInterviewer,
+          coveragePeriod: this.coveragePeriod,
+          coverageRegion: this.coverageRegion,
+          coverageNationality: this.coverageNationality,
+          coverageSpatial: this.coverageSpatial,
+          coverageStateProvince: this.coverageStateProvince,
+          subject: this.subject,
+          language: this.language,
+     };
+
+     return postData;
+  }
+
 
   postCreate() {
      var tableName = "DALN-Posts-Dev";
@@ -133,7 +159,9 @@ export class SubmitFormService {
          coverageStateProvince: this.coverageStateProvince,
          subject: this.subject,
          language: this.language,
-         tableName : tableName
+         tableName : tableName,
+         email: this.email,
+         license: this.license
     }
 
      var str = JSON.stringify(data);

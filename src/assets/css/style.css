@@ -742,7 +742,7 @@ iframe {
 
 /* Fixes for spacing on post_list*/
 
-.card {
+.card-post {
     height: 375px;
     margin-bottom: 10%;
 }

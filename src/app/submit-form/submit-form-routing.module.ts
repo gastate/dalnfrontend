@@ -20,7 +20,7 @@ const submitFormRoutes: Routes = [
             { path: 'metadata', component: MetadataComponent },
             { path: 'description', component: DescriptionComponent },
             { path: 'media', component: MediaComponent },
-            // { path: 'license', component: LicenseComponent },
+            { path: 'license', component: LicenseComponent },
             { path: 'summary', component: SummaryComponent},
             { path: 'complete', component: CompleteComponent}
           ]
