@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Location } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
@@ -26,6 +27,7 @@ export class SearchComponent implements OnInit {
   showHomePage: EventEmitter<boolean>;
 
   location: Location;
+  router: Router;
   posts: Post[] = [];
   resultList: Post[] = [];
   nextResultList: Post[];
@@ -50,6 +52,7 @@ export class SearchComponent implements OnInit {
 
   constructor(
     location: Location,
+    router: Router,
     private _postService: PostService,
     _searchService: SearchService) {
 
@@ -58,7 +61,10 @@ export class SearchComponent implements OnInit {
     this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
 
-
+    router.events.subscribe((val) => {
+        console.log(val instanceof NavigationEnd);
+        console.log(val.url);
+    });
 
 
   }

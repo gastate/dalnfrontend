@@ -45,7 +45,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     //   this.searchService = _searchService;
     this.currentPageEmitter = new EventEmitter<number>();
     router.events.subscribe((val) => {
-        console.log(val.url);
+        this.buttonArray = [];
     });
   }
 
@@ -54,7 +54,7 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.resultsPerPage = this.searchService.resultsSize;
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
-
+     
   }
 
 
