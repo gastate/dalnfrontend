@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Location } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
@@ -22,11 +23,16 @@ export class SearchComponent implements OnInit {
   // @Output()
   // searchResults: EventEmitter<Post[]>;
 
+  @Output()
+  showHomePage: EventEmitter<boolean>;
 
+  location: Location;
+  router: Router;
   posts: Post[] = [];
   resultList: Post[] = [];
   nextResultList: Post[];
   searchService : SearchService;
+  errorMessage: string;
 
   // pagination
   startOffset: number;
@@ -45,15 +51,28 @@ export class SearchComponent implements OnInit {
   private noResults: boolean = false;
 
   constructor(
+    location: Location,
+    router: Router,
     private _postService: PostService,
     _searchService: SearchService) {
 
+    this.location = location;
     this.searchService = _searchService;
+    this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
+
+    router.events.subscribe((val) => {
+        console.log(val instanceof NavigationEnd);
+        console.log(val.url);
+    });
+
 
   }
 
   ngOnInit() {
+
+    this.errorMessage = null;
+
     this.resultsSize = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
     this.total_offset = this.searchService.total_offset;
@@ -81,17 +100,16 @@ export class SearchComponent implements OnInit {
         (results) => {
             // console.log("In Emmitter: ", this.resultsSize);
             if ((results === null) || results.length <= 0 ) {
-                this.noResults = true;
-            } else {
-                this.noResults = false;
-
-                this.posts = this.searchService.translatePosts(results.hit);
-                this.resultList = this.posts;
-                // console.log("Search resultList", this.resultList);
-                this.calculateOffset();
-                // this.searchResults.emit(this.resultList);
+                this.errorMessage = "Something went wrong...Please try again.";
             }
 
+            this.posts = this.searchService.translatePosts(results.hit);
+            this.resultList = this.posts;
+            this.location.go('/search');
+            this.showHomePage.emit(false);
+            // console.log("Search resultList", this.resultList);
+            this.calculateOffset();
+            // this.searchResults.emit(this.resultList);
 
     }, err => {
         console.log(err);
@@ -102,7 +120,7 @@ export class SearchComponent implements OnInit {
   calculateOffset() {
       this.startOffset = this.searchService.pageNumber;
       // console.log("Parent Offset", this.startOffset);
-      this.endOffset = Math.floor(this.searchService.pageHead / this.searchService.resultsSize);
+      this.endOffset = Math.floor(Math.max(this.resultList.length / this.searchService.resultsSize, 1));
       console.log("startOffset, endOffset", this.startOffset, this.endOffset);
   }
 

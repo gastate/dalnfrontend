@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { Post } from '../../model/post-model';
 import { SearchService } from '../../services/search.service';
 
@@ -40,9 +41,12 @@ export class PaginationComponent implements OnInit, OnChanges {
 
 
 
-  constructor( private searchService: SearchService) {
+  constructor( private searchService: SearchService, private router: Router) {
     //   this.searchService = _searchService;
     this.currentPageEmitter = new EventEmitter<number>();
+    router.events.subscribe((val) => {
+        this.buttonArray = [];
+    });
   }
 
   ngOnInit() {
@@ -50,7 +54,7 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.resultsPerPage = this.searchService.resultsSize;
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
-
+     
   }
 
 
@@ -68,6 +72,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   calculateIndicies() {
+
       if (!this.currentPage) {
           console.log("starting offset", this.startOffset);
           this.currentPage = this.startOffset;
@@ -92,18 +97,9 @@ export class PaginationComponent implements OnInit, OnChanges {
 
       console.log("total_offset", this.searchService.total_offset);
       for(let i = 0; i < this.searchService.total_offset; i++) {
-          this.buttonArray.push(i + 1);
-      }
+        this.buttonArray.push(i + 1);
+    }
       console.log("Button Array", this.buttonArray);
-
-    //   buttonArray.slice(this.startOffset, this.endOffset + 6);
-
-
-      console.log("endOffset", this.endOffset);
-    //   for(let i = 0; i < this.endOffset; i++) {
-    //       this.buttonArray.push(i + 1);
-    //   }
-    //   console.log("Button Array", this.buttonArray);
   }
 
   populatePosts(firstIndex, lastIndex) {
@@ -115,11 +111,12 @@ export class PaginationComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
       if (changes['startOffset']) {
           console.log("startOffset change", this.startOffset);
+          this.buttonArray = [];
           this.calculateButtonRange();
       }
       if(changes['resultList']) {
           console.log("pagination change", this.resultList);
-        //   this.getPagedPost(event);
+        this.buttonArray = [];
         this.calculateIndicies();
         this.calculateButtonRange();
       }
