@@ -124,11 +124,9 @@ export class SearchComponent implements OnInit {
       console.log("startOffset, endOffset", this.startOffset, this.endOffset);
   }
 
-  getResult(event) {
-      console.log("Emit received");
+  getResultHandler(event) {
+      console.log("Emit received in search.");
       this.currentOffset = event;
-      console.log("search comp event", event);
-
       // get the next resultList going forwards.
       if (this.currentOffset === this.endOffset - 1) {
           this.pageParameter++;

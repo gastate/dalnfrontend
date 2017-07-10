@@ -54,7 +54,7 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.resultsPerPage = this.searchService.resultsSize;
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
-     
+
   }
 
 
@@ -65,8 +65,8 @@ export class PaginationComponent implements OnInit, OnChanges {
   getPagedPost(event) {
       if(event && event.target) {
           this.currentPage = event.target.innerText; // button is just the event's innerText.
-          this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
           console.log("Emit fired");
+          this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
           this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
       }
   }
