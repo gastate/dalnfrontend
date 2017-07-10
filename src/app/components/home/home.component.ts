@@ -1,4 +1,5 @@
 import { ElementRef, Component, OnInit, animate } from '@angular/core';
+import { PlatformLocation } from '@angular/common';
 import { PostService } from '../../services/post.service';
 import { SearchService } from '../../services/search.service';
 import { Post } from '../../model/post-model';
@@ -15,9 +16,14 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private elementRef: ElementRef, private _postService: PostService, private _searchService: SearchService) {
+  constructor(otherloc: PlatformLocation,  private _postService: PostService, private _searchService: SearchService) {
+
+      otherloc.onPopState(() => {
+        console.log('pressed back!');
+    });
   }
 
+  otherloc: PlatformLocation;
   title = 'DALN Frontend';
   searchPosts: Post[] = [];
   posts: Post[] = [];

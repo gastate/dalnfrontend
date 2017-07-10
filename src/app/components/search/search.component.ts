@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
   @Output()
   showHomePage: EventEmitter<boolean>;
 
-
+  location: Location;
   posts: Post[] = [];
   resultList: Post[] = [];
   nextResultList: Post[];
@@ -49,12 +49,17 @@ export class SearchComponent implements OnInit {
   private noResults: boolean = false;
 
   constructor(
+    location: Location,
     private _postService: PostService,
     _searchService: SearchService) {
 
+    this.location = location;
     this.searchService = _searchService;
     this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
+
+
+
 
   }
 
@@ -94,6 +99,7 @@ export class SearchComponent implements OnInit {
 
             this.posts = this.searchService.translatePosts(results.hit);
             this.resultList = this.posts;
+            this.location.go('/search');
             this.showHomePage.emit(false);
             // console.log("Search resultList", this.resultList);
             this.calculateOffset();
