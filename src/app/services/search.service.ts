@@ -102,12 +102,12 @@ export class SearchService {
 
         // limit post description length
         if (post.description.length > 80) {
-            post.description = post.description.substring(1, 50) + "...";
+            post.description = post.description.substring(0, 50) + "...";
         }
 
         // limit post title length
         if (post.title.length > 50) {
-            post.title = post.title.substring(1, 30) + " ...";
+            post.title = post.title.substring(0, 30) + " ...";
         }
         // console.log("description of post:", post.description);
         post.assetList = this.translateAssets(i.fields);
