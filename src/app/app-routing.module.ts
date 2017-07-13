@@ -40,9 +40,14 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+     path: 'home',
+     component: HomeComponent
+  },
+  {
     path: 'admin',
     component: AdminComponent,
     children: [
+        {path: '', component: AdminComponent},
         {path: 'import-export', component: ImportExportComponent},
         {path: 'log', component: LogComponent},
         {path: 'metadata-list', component: MetadataListComponent },
@@ -51,19 +56,17 @@ const routes: Routes = [
         {path: 'post-editing', component: PostEditingComponent},
         {path: 'statistics', component: StatisticsComponent},
         {path: 'testing', component: TestingComponent},
-        {path: 'withdrawn', component: WithdrawnComponent},
-        {path: '', component: AdminComponent},
+        {path: 'withdrawn', component: WithdrawnComponent}
     ]
   },
   {
-      path: 'home',
-      component: HomeComponent,
+      path: 'login',
       children: [
+          {path: '', component: LoginComponent},
           {path: 'confirm', component: ConfirmComponent},
           {path: 'confirm/:email', component: ConfirmComponent},
           {path: 'forgotPassword', component: ForgotPasswordStep1Component},
           {path: 'forgotPassword/:email', component: ForgotPasswordStep1Component},
-          {path: 'login', component: LoginComponent},
           {path: 'newPassword', component: NewPasswordComponent},
           {path: 'register', component: RegisterComponent},
           {path: 'resend', component: ResendComponent}
