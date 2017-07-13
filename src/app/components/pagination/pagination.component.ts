@@ -8,6 +8,7 @@ import { SearchService } from '../../services/search.service';
   templateUrl: './pagination.component.html'
 })
 
+  
 
 export class PaginationComponent implements OnInit, OnChanges {
 
