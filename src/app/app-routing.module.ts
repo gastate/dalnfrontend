@@ -66,7 +66,7 @@ const routes: Routes = [
           {path: 'confirm', component: ConfirmComponent},
           {path: 'confirm/:email', component: ConfirmComponent},
           {path: 'forgotPassword', component: ForgotPasswordStep1Component},
-          {path: 'forgotPassword/:email', component: ForgotPasswordStep1Component},
+          {path: 'forgotPassword/:email', component: ForgotPasswordStep2Component},
           {path: 'newPassword', component: NewPasswordComponent},
           {path: 'register', component: RegisterComponent},
           {path: 'resend', component: ResendComponent}
