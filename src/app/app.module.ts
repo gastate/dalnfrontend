@@ -18,6 +18,7 @@ import { FancyLoaderComponent } from './shared/fancy-loader/fancy-loader.compone
 import { HomeComponent } from './components/public/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { PaginationComponent } from './components/public/pagination/pagination.component';
 import { PlayerComponent} from './shared/player/player.component';
 import { PostItemComponent } from './shared/post-item/post-item.component';
 import { PostListComponent } from './shared/post-list/post-list.component';
@@ -73,6 +74,7 @@ import { SafePipe } from './safe.pipe';
     LoginComponent,
     NewPasswordComponent,
     PageNotFoundComponent,
+    PaginationComponent,
     PlayerComponent,
     PostDetailComponent,
     PostItemComponent,
