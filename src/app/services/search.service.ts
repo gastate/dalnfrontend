@@ -17,19 +17,18 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
-  // If you're wondering about the paraentheses, see: http://g00glen00b.be/component-angular-2/
-  //  check out what each parameter means here: https://pokeapi.co/docsv2/
-  //  test out the parameters on the pokeapi endpoint here: http://pokeapi.co/api/v2/evolution-chain/?limit=10&offset=0
 
   searchQuery : string; // term to call the search engine with.
   resultsSize : number; // user specified number of results to display. (limit)
   pageNumber: number; // user specified page number to start from. (offset)
-  // total_results: number; // total number of posts in array (count)
 
+
+
+  // pagination
   pageHead: number; // admin specified number of results to stay ahead of user.
+  total_offset: number; // total offsets for pagination.
+  total_results: number; // total results from search api.
 
-  // NOTE: Temp pagination parameters.
-  searchTerm: string;
 
   private endPoint = environment.API_ENDPOINTS;
 
@@ -37,9 +36,10 @@ export class SearchService {
       this.searchQuery = null;
       this.resultsSize = 12;
       this.pageNumber = 1;
-    //   this.total_results = 0;
-
       this.pageHead = 50;
+
+      this.total_results = 0;
+      this.total_offset = 0;
 
     }
 
@@ -54,11 +54,6 @@ export class SearchService {
   changePageStart(page: number) {
       this.pageNumber = page;
   }
-
-
-
-
-
 
   // Returning Search as Observable
   search(term: string): Observable<Post[]> { // TODO : term needs to be url encoded to support multiple terms as well as boolean expressions.
@@ -81,31 +76,41 @@ export class SearchService {
     //   console.log("Query:" + this.searchQuery);
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
 
-    this.searchTerm = term; // NOTE: Temp for pagination.
-    this.resultsSize = results; // NOTE: Temp for pagination.
-
     return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
-        // let posts = res.json();
-        // console.log("Get Search Page Posts", posts);
-        // return posts;
-        console.log("Search API Response", res.json());
+
+        this.total_results = res.json().found;
+        this.total_offset = Math.ceil(this.total_results / this.resultsSize);
+        // console.log("number of total offsets", this.total_offset);
+
+        // console.log("Search API Response", res.json());
         return res.json();
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   translatePosts(search_results: any[]) {
       let posts = [];
-      console.log("translatePosts: ", search_results);
+    //   console.log("translatePosts: ", search_results);
       search_results.forEach((i) => {
         let post = new Post();
         post.postId = i.id;
         post.title =  i.fields.title[0];
         // console.log("Title of post:", post.title);
 
+
+        // make sure description exists, but if not then add a no description provided.
         post.description = (i.fields.description && i.fields.description[0] ? i.fields.description[0]  : "No description provided.") ;
-        this.translateAssets(i.fields);
+
+        // limit post description length
+        if (post.description.length > 80) {
+            post.description = post.description.substring(0, 50) + "...";
+        }
+
+        // limit post title length
+        if (post.title.length > 50) {
+            post.title = post.title.substring(0, 30) + " ...";
+        }
         // console.log("description of post:", post.description);
-        post.assetList = [];
+        post.assetList = this.translateAssets(i.fields);
         // console.log(post);
         posts.push(post);
       });
@@ -115,62 +120,23 @@ export class SearchService {
   translateAssets(fields: any) {
 
       // assumes assetList will contain same number of elements across arrays.
-      // get assetLocation, assetEmbedLink, assetId, assetName, assetDescription and assetType.
-
       let assetList = [];
-    //   console.log(fields);
+
+      // populate the assetList, but be sure to check that each property exists. These properties are all just strings so it is okay to fill in with a string.
+
+      for(var i = 0; i < fields.assetembedlink.length; i++) {
+          assetList[i] = new Asset();
+          assetList[i].assettitle = (fields.assetname && fields.assetname[i] ? fields.assetname[i] : "No asset provided");
+          assetList[i].assetType = (fields.assettype && fields.assettype[i] ? fields.assettype[i] : "No asset provided.");
+          assetList[i].assetID = (fields.assetid && fields.assetid[i] ? fields.assetid[i] : "No asset provided");
+          assetList[i].assetEmbedLink = (fields.assetembedlink && fields.assetembedlink[i] ? fields.assetembedlink[i] : "No asset provided");
+          assetList[i].assetLocation = (fields.assetlocation && fields.assetlocation[i] ? fields.assetlocation[i] : "No asset provided.");
+          assetList[i].assetDescription = (fields.assetdescription && fields.assetdescription[i] ? fields.assetdescription[i] : "No asset provided.");
+      }
+    //   console.log(assetList);
+      return assetList;
 
     }
-
-    getPager(total_results: number, user_pageSize: number = 10, user_pageNumber: number = 1) {
-
-        let totalPages = Math.ceil(total_results / user_pageSize);
-        let startPage: number;
-        let endPage: number;
-
-        if(totalPages <= 10) {
-            startPage = 1;
-            endPage = totalPages;
-        } else {
-            if (user_pageNumber <= 6) {
-                startPage = 1;
-                endPage = 10;
-            } else if (user_pageNumber + 4 >= totalPages) {
-                startPage = totalPages - 9;
-                endPage = totalPages;
-            } else {
-                startPage = user_pageNumber - 5;
-                endPage = user_pageNumber + 4;
-            }
-        }
-
-        let startIndex = (user_pageNumber - 1) * user_pageSize;
-        let endIndex = Math.min(startIndex + user_pageSize - 1, total_results - 1);
-
-        let pages = Array.from(new Array(startPage + endPage + 1), (x,i) => i);
-        // console.log(pages);
-        console.log({total_reuslts: total_results,
-        user_pageNumber: user_pageNumber,
-        user_pageSize: user_pageSize,
-        totalPages: totalPages,
-        startPage: startPage,
-        endPage: endPage,
-        startIndex: startIndex,
-        endIndex: endIndex,
-        pages: pages});
-        return {
-            total_reuslts: total_results,
-            user_pageNumber: user_pageNumber,
-            user_pageSize: user_pageSize,
-            totalPages: totalPages,
-            startPage: startPage,
-            endPage: endPage,
-            startIndex: startIndex,
-            endIndex: endIndex,
-            pages: pages
-        };
-    }
-
 
 
 

@@ -1,5 +1,6 @@
 
 // Defaults
+import { AppRoutingModule }     from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, PlatformRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -55,7 +56,6 @@ import { CognitoUtil } from './services/cognito.service';
 import { UserLoginService } from './services/user-login.service';
 
 // Other
-import { AppRoutingModule } from './app-routing.module';
 import { SafePipe } from './safe.pipe';
 
 

@@ -1,4 +1,5 @@
 import { ElementRef, Component, OnInit, animate } from '@angular/core';
+import { PlatformLocation } from '@angular/common';
 import { PostService } from '../../../services/post.service';
 import { SearchService } from '../../../services/search.service';
 import { Post } from '../../../model/post-model';
@@ -15,26 +16,30 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private elementRef: ElementRef, private _postService: PostService, private _searchService: SearchService) {
+  constructor(otherloc: PlatformLocation,  private _postService: PostService, private _searchService: SearchService) {
+
+      otherloc.onPopState(() => {
+        console.log('pressed back!');
+    });
   }
 
+  otherloc: PlatformLocation;
   title = 'DALN Frontend';
   searchPosts: Post[] = [];
-  showPage : boolean = false;
   posts: Post[] = [];
-
-  searchLoader: any;
+  showPage: boolean = true;
 
   loading: boolean = false;
   failed: boolean = false;
 
   ngOnInit(): void {
+
         this.getPagePosts();
   }
 
   getPagePosts() : void {
       this.loading = true;
-      this._searchService.search_page("games", 8, 1).subscribe(
+      this._searchService.search_page("games", 8, 0).subscribe(
           (data) => {
               this.posts = this._searchService.translatePosts(data.hit);
               this.loading = false;
@@ -59,18 +64,22 @@ export class HomeComponent implements OnInit {
     // });
   }
 
+  showHomePage(event) {
+      this.showPage = event;
+  }
+
+
   displayResults(event) {
-      console.log("Search hit.", event);
+    //   console.log("Search hit.", event);
       this.searchPosts = event;
-      this.showPage = true;
   }
 
   clearSearch() {
       this.searchPosts = [];
-      this.showPage = false;
       this._searchService.searchQuery = "";
       // add to search history of browser
   }
+
 
 
 

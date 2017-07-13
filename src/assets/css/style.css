@@ -747,6 +747,11 @@ iframe {
     margin-bottom: 10%;
 }
 
+/* For submit form only */
+.card-submit {
+    height: 100%;
+}
+
 .card-block {
     overflow: hidden;
 }
