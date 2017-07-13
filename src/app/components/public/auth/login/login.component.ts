@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {CognitoCallback, LoggedInCallback} from "../../../services/cognito.service";
-import {UserLoginService} from '../../../services/user-login.service';
+import {CognitoCallback, LoggedInCallback} from "../../../../services/cognito.service";
+import {UserLoginService} from '../../../../services/user-login.service';
 
 @Component({
   selector: 'app-login',

@@ -9,12 +9,13 @@ import {AboutComponent} from './components/public/about/about.component';
 import {ConfirmComponent} from './components/public/auth/confirm/confirm.component';
 import {ForgotPasswordStep1Component, ForgotPasswordStep2Component} from './components/public/auth/forgot-password/forgot-password.component';
 import {HomeComponent} from './components/public/home/home.component';
-import {LoginComponent} from './components/public/login/login.component';
+import {LoginComponent} from './components/public/auth/login/login.component';
 import {NewPasswordComponent} from './components/public/auth/new-password/new-password.component';
 import {PageNotFoundComponent} from './shared/page-not-found/page-not-found.component';
 import {ResendComponent} from './components/public/auth/resend/resend.component';
 import {PostListComponent} from './shared/post-list/post-list.component';
 import {PostDetailComponent} from './components/public/post-detail/post-detail.component';
+import {RegisterComponent} from './components/public/auth/register/register.component';
 import {ContactComponent} from './components/public/contact/contact.component';
 import {SearchComponent} from './components/public/search/search.component';
 

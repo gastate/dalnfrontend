@@ -1,7 +1,7 @@
 import { Component  } from '@angular/core';
 import {Router} from '@angular/router';
-import {UserLoginService} from "../../../services/user-login.service";
-import {CognitoCallback} from "../../../services/cognito.service";
+import {UserLoginService} from "../../../../services/user-login.service";
+import {CognitoCallback} from "../../../../services/cognito.service";
 
 
 export class NewPasswordUser {

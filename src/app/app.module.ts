@@ -26,11 +26,11 @@ import { SliderComponent } from './components/public/slider/slider.component';
 
 // Auth Components
 import { ConfirmComponent } from './components/public/auth/confirm/confirm.component';
-import { ForgotPasswordStep1Component, ForgotPasswordStep2Component } from './components/public/forgot-password/forgot-password.component';
+import { ForgotPasswordStep1Component, ForgotPasswordStep2Component } from './components/public/auth/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/public/auth/login/login.component';
 import { NewPasswordComponent } from './components/public/auth/new-password/new-password.component';
 import { ResendComponent } from './components/public/auth/resend/resend.component';
-import { RegisterCompoent } from './components/public/auth/register/register.component';
+import { RegisterComponent } from './components/public/auth/register/register.component';
 
 
 
@@ -77,7 +77,7 @@ import { SafePipe } from './safe.pipe';
     PostDetailComponent,
     PostItemComponent,
     PostListComponent,
-    RegisterCompoent,
+    RegisterComponent,
     ResendComponent,
     SearchComponent,
     SliderComponent,

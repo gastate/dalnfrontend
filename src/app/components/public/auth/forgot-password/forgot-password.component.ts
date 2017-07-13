@@ -3,8 +3,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
 
-import {UserLoginService} from "../../../services/user-login.service";
-import {CognitoCallback} from "../../../services/cognito.service";
+import {UserLoginService} from "../../../../services/user-login.service";
+import {CognitoCallback} from "../../../../services/cognito.service";
 
 @Component({
   selector: 'app-forgot-password',

@@ -4,7 +4,7 @@ import {AuthenticationDetails, CognitoUser} from "amazon-cognito-identity-js";
 import * as AWS from "aws-sdk/global";
 import * as STS from "aws-sdk/clients/sts";
 
-import {NewPasswordUser} from "../components/public/new-password/new-password.component";
+import {NewPasswordUser} from "../components/public/auth/new-password/new-password.component";
 
 
 @Injectable()
