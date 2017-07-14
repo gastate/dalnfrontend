@@ -128,36 +128,9 @@ export class SearchComponent implements OnInit {
 
       this.currentOffset = event;
       console.log("currentOffset", this.currentOffset);
-      // get the next resultList going forwards.
-      if (this.currentOffset === this.endOffset - 1) {
-          this.pageParameter++;
+      console.log("startOffset", this.startOffset);
+      console.log("endOffset", this.endOffset);
 
-        //   this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
-
-          console.log("PageNumber:", this.searchService.pageNumber);
-          console.log("Next Result List:", this.nextResultList);
-
-      // get the next result list going backwards.
-      } else if (this.currentOffset === this.startOffset + 1) {
-          this.pageParameter--;
-
-        //   this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
-
-          console.log("PageNumber:", this.searchService.pageNumber);
-          console.log("Next Result List:", this.nextResultList);
-
-      // if currentOffset is either the start or end offset, either set the resultList to nextResultList or populate resultList.
-      } else if ((this.currentOffset === this.endOffset) || (this.currentOffset === this.startOffset)) {
-          if (this.nextResultList !== null) {
-              this.resultList = this.nextResultList;
-          } else {
-            //    this.nextResultList = this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.pageParameter);
-          }
-
-      // all conditions fail so currentOffset > endOffset or < startOffset. Need to get the resultList corresponding to the currentOffset. (Skip function).
-      } else {
-          console.log("Skip.");
-      }
   }
 
 
