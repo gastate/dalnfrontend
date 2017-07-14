@@ -2,16 +2,23 @@
     <article class="card">
         <header class="post-header">
         <div class="hover-post">
-            <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
+            <a *ngIf="getdev == false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
                 <h3>{{postItem?.title}}</h3>
             </a>
+            <a *ngIf="getdev == true" class="thumbnail" [routerLink]="['/getdev/detail', postItem.postId]">
+                <h3>{{postItem?.title}}</h3>
+            </a>
+
         </div>
         </header>
         <div class="card-block">
                 <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
                 <div class="post-desc">
                     <div class="hover-post">
-                        <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
+                        <a *ngIf="getdev == false" class="thumbnail" [routerLink]="['/getdev/detail', postItem.postId]">
+                            <p>{{postItem?.description}}</p>
+                        </a>
+                        <a *ngIf="getdev == true" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
                             <p>{{postItem?.description}}</p>
                         </a>
                     </div>

@@ -18,6 +18,7 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
 
   approval_list: Post[] = [];
   errorMessage: string;
+  getdev: boolean;
 
   constructor(
       public authService: AuthService,
@@ -30,6 +31,7 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
 
   ngOnInit() {
       this.getUnapproved();
+      this.getdev = true;
   }
 
   getUnapproved(){
@@ -40,6 +42,11 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
       err => {
           this.errorMessage = err;
       });
+  }
+
+  approvePost(postId : string) {
+      this.authService.adminApprovePost(postId);
+      console.log("Approve post fired");
   }
 
   isLoggedIn(message: string, isLoggedIn: boolean) {

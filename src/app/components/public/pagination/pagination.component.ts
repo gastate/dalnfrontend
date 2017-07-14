@@ -41,6 +41,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   pagedButtonArray: number[] = []; // holds the current view buttons.
   pageHead: number;
 
+  getdev: boolean; //for postlist
 
 
   constructor( private searchService: SearchService, private router: Router) {
@@ -52,6 +53,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+     this.getdev = false;
      // intiate values from service.
      this.resultsPerPage = this.searchService.resultsSize;
      this.startOffset = this.searchService.pageNumber;

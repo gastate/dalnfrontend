@@ -16,6 +16,9 @@ export class PostItemComponent implements OnInit {
   }
 
   @Input()
+  getdev: boolean;
+
+  @Input()
   postItem: Post;
 
   ngOnInit() {

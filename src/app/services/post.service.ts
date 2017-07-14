@@ -61,6 +61,14 @@ export class PostService {
   }
   }
 
+
+  getDevPostById(id: string): Observable<Post> {
+
+    return this._http.get(this.endPoint.get_dev_post + id).map((res: Response) => res.json())
+    //...errors if any
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
+  }
+
   getUnapprovedPosts(): Observable<Post[]> {
 
       var data = {

@@ -23,7 +23,6 @@ export class AdminComponent implements OnInit, LoggedInCallback {
   currentlyLoggedIn: boolean;
 
   constructor(
-      public authService: AuthService,
       public searchService: SearchService,
       public userService: UserLoginService,
       public router: Router
@@ -36,13 +35,6 @@ export class AdminComponent implements OnInit, LoggedInCallback {
     //   this.getApproveList();
   }
 
-  approvePost(postId : string) {
-      this.authService.adminApprovePost(postId);
-      console.log("Approve post fired");
-  }
-
-
-
   isLoggedIn(message: string, isLoggedIn: boolean) {
       if(!isLoggedIn) {
           console.log("Not logged in, returning to login page.");
@@ -52,13 +44,6 @@ export class AdminComponent implements OnInit, LoggedInCallback {
       this.currentlyLoggedIn = true;
   }
 
-
-  // getApproveList(){
-  //     this.authService.getApprovalList().subscribe((data) => {
-  //         // TODO: handle edge cases
-  //         this.approval_list = data;
-  //     });
-  // }
 
 
 

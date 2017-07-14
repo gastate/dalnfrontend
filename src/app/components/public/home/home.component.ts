@@ -15,6 +15,17 @@ import 'rxjs/add/observable/fromPromise';
 export class HomeComponent implements OnInit {
 
 
+    otherloc: PlatformLocation;
+    title = 'DALN Frontend';
+    searchPosts: Post[] = [];
+    posts: Post[] = [];
+    showPage: boolean = true;
+
+    loading: boolean = false;
+    failed: boolean = false;
+
+    getdev: boolean; //for postlist.
+
 
   constructor(otherloc: PlatformLocation,  private _postService: PostService, private _searchService: SearchService) {
 
@@ -23,17 +34,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  otherloc: PlatformLocation;
-  title = 'DALN Frontend';
-  searchPosts: Post[] = [];
-  posts: Post[] = [];
-  showPage: boolean = true;
 
-  loading: boolean = false;
-  failed: boolean = false;
 
   ngOnInit(): void {
-
+        this.getdev = false;
         this.getPagePosts();
   }
 

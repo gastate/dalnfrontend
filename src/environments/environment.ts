@@ -53,6 +53,7 @@ export const environment = {
     approve_post: approve_post,
     api_url: api_url,
     create_post: create_post,
+    get_dev_post: get_dev_post,
     get_upload_link: get_upload_link,
     get_unapproved_posts: get_unapproved_posts,
     link_media : link_media,

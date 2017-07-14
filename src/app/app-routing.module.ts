@@ -88,6 +88,10 @@ const routes: Routes = [
     component: PostDetailComponent
   },
   {
+    path: 'getdev/detail/:id',
+    component: PostDetailComponent
+  },
+  {
     path: 'about',
     component: AboutComponent
   },
