@@ -1,3 +1,15 @@
-<p>
-  post-approval works!
-</p>
+<div class="row">
+    <h1>Approval List</h1>
+    
+    <post-list [postList]="approval_list"></post-list>
+
+</div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-6 alert alert-danger" *ngIf="errorMessage != null">
+      <p>
+          {{errorMessage}}
+      </p>
+  </div>
+ </div>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service';
-import { SearchService } from '../../../../services/search.service';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+
+import {AuthService} from '../../../../services/auth.service';
+import {SearchService} from '../../../../services/search.service';
 import {UserLoginService} from '../../../../services/user-login.service';
 import {LoggedInCallback} from '../../../../services/cognito.service';
 
@@ -18,7 +19,6 @@ import { Post } from '../../../../model/post-model';
 export class AdminComponent implements OnInit, LoggedInCallback {
 
 
-  approval_list: Post[];
 
   currentlyLoggedIn: boolean;
 
@@ -41,10 +41,7 @@ export class AdminComponent implements OnInit, LoggedInCallback {
       console.log("Approve post fired");
   }
 
-  changePageHead(page: number) {
-      this.searchService.pageHead = page;
-      console.log("page head changed to " + this.searchService.pageHead);
-  }
+
 
   isLoggedIn(message: string, isLoggedIn: boolean) {
       if(!isLoggedIn) {

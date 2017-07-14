@@ -23,6 +23,12 @@
                 </ul>
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
+                        <a [routerLink]="['/admin/config']"
+                        class="nav-link">Other Settings</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
                         <a [routerLink]="['/admin/admin-list']"
                         class="nav-link">Admin List</a>
                         <a [routerLink]="['/admin/metadata-list']"
@@ -42,30 +48,7 @@
                     <input type="text" name="postId" #postId/>
                     <button class="btn btn-primary" type="submit" value="Submit" (keydown.enter)="approvePost(postId.value)" (click)="approvePost(postId.value)">Submit</button>
                 </div>
-                <hr />
-                <div class="col-md-4">
-                    <p>
-                        Changes the number of pages to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.
-
-                        i.e. Staying 10 pages ahead of user x 10 results per page (user specified) = 100 posts to stay ahead of user
-
-                        i.e. Staying 50 pages ahead of user x 10 results per page = 500 posts to stay ahead of user.
-
-                        i.e. Staying 10 pages ahead of user x 100 results per page = 1000 posts to stay ahead of user.
-
-                        Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10.
-                    </p>
-                    <input type="number" class="form-control"  min="1" max="100" #pageHead [value]="searchService.pageHead"/>
-                    <button class="btn btn-primary" type="submit" (keydown.enter)="changePageHead(pageHead.value)" (click)="changePageHead(pageHead.value)">Change Page Head</button>
-                </div>
                 <hr /> -->
-                <!-- <div class="col-md-4">
-                    <p>
-                        Approval List
-                    </p>
-                    <post-list [postList]="approval_list"></post-list>
-
-                </div> -->
                 <!-- Page Content -->
                     <div id="page-wrapper">
                         <div class="container-fluid">
