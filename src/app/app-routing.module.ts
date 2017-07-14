@@ -47,6 +47,7 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
+        {path: '', component: OverviewComponent},
         {path: 'import-export', component: ImportExportComponent},
         {path: 'log', component: LogComponent},
         {path: 'metadata-list', component: MetadataListComponent },
