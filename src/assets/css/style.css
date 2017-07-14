@@ -675,7 +675,14 @@ ul.arrow li {
 .logout-link {
     color: #CC0000;
 }
+                    /**** Post Detail ****/
+ul.socicon li a.twitter {
+    background: url(../img/social/twitter_dark.png) 0 0 no-repeat;
+}
 
+ul.socicon li a.facebook {
+    background: url(../img/social/facebook_dark.png) 0 0 no-repeat;
+}
                     /**** Post Item ****/
 .postItem {
     width: 100%;
