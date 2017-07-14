@@ -45,7 +45,6 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent,
     children: [
         {path: '', component: AdminComponent},
         {path: 'import-export', component: ImportExportComponent},
@@ -78,7 +77,7 @@ const routes: Routes = [
   },
   {
     path: 'logout',
-    component: LogoutComponent  
+    component: LogoutComponent
   },
   {
     path: 'detail/:id',
