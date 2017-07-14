@@ -43,6 +43,9 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
                 } else if (this.errorMessage === 'User needs to set password.') {
                     console.log("redirecting to set new password");
                     this.router.navigate(['/login/newPassword']);
+                } else if (this.errorMessage === 'User does not exist.') {
+                    console.log("User doesn't exist");
+                    this.errorMessage = this.errorMessage + 'If you are sure you have an account, please try your username instead of your email. If problem persists, please contact known administrators.';
                 }
         } else { //success
             // this.ddb.writeLogEntry("login");

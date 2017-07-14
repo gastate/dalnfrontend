@@ -16,7 +16,7 @@ export class AppComponent implements LoggedInCallback {
                     this.userService.isAuthenticated(this);
                     router.events.subscribe((val) => {
                         this.userService.isAuthenticated(this);
-                        console.log("router hit", this.showAdminButton);
+                        // console.log("router hit", this.showAdminButton);
                     });
                 }
 
