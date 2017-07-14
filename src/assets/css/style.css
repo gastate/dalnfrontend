@@ -634,7 +634,7 @@ ul.arrow li {
 }
 
 .bg-inverse {
-    background-color: #8A8A8A !important;
+    background-color: #8A8A8A !important; /* gray color */
 }
 
 .desc {
@@ -659,14 +659,23 @@ ul.arrow li {
     margin-top: 2%;
 }
 
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+                    /**** Admin View ****/
 .admin-sidebar {
     margin-top: 45%;
 }
 
-.col-centered{
-    float: none;
-    margin: 0 auto;
+.admin-link {
+    color: #213f71;
 }
+
+.logout-link {
+    color: #CC0000;
+}
+
                     /**** Post Item ****/
 .postItem {
     width: 100%;
@@ -792,10 +801,14 @@ iframe {
         display: inline;
     }
 
+    .responsive_divider {
+        display: none;
+    }
 
     .responsive_home {
         max-width: 100vw;
     }
+
 
     #logo {
         float: none;
