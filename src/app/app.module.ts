@@ -39,6 +39,7 @@ import { RegisterComponent } from './components/public/auth/register/register.co
 
 // Secure Components
 import {AdminComponent} from './components/secure/landing/admin/admin.component';
+import {AdminListComponent} from './components/secure/admin-list/admin-list.component';
 import {ImportExportComponent} from './components/secure/import-export/import-export.component';
 import {LogComponent} from './components/secure/log/log.component';
 import {MetadataListComponent} from './components/secure/metadata-list/metadata-list.component';
@@ -63,6 +64,7 @@ import { SafePipe } from './safe.pipe';
 @NgModule({
   declarations: [
     AboutComponent,
+    AdminListComponent,
     AppFooterComponent,
     AppComponent,
     ConfirmComponent,

@@ -5,28 +5,30 @@
                 <ul class="nav nav-pills flex-column admin-sidebar">
                     <li class="nav-item">
                         <a [routerLink]="['/admin/overview']" class="nav-link">Overview</a>
-                        <a class="nav-link">Statistics</a>
-                        <a class="nav-link">Testing &amp; Service Status</a>
+                        <a [routerLink]="['/admin/statistics']" class="nav-link">Statistics</a>
+                        <a [routerLink]="['/admin/testing']"
+                        class="nav-link">Testing &amp; Service Status</a>
                     </li>
                 </ul>
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link">Community Management</a>
+                        <a [routerLink]="['/admin/post-approval']"
+                        class="nav-link">Post Approval</a>
+                        <a [routerLink]="['/admin/post-editing']" class="nav-link">Post Editing</a>
+                        <a [routerLink]="['/admin/import-export']"
+                        class="nav-link">Import/Export Posts</a>
+                        <a [routerLink]="['/admin/withdrawn']"
+                        class="nav-link">Withdrawn Posts</a>
                     </li>
                 </ul>
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link">Post Approval</a>
-                        <a class="nav-link">Post Editing</a>
-                        <a class="nav-link">Import/Export Posts</a>
-                        <a class="nav-link">Withdrawn Posts</a>
-                    </li>
-                </ul>
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link">Admin List</a>
-                        <a class="nav-link">Metadata Lists</a>
-                        <a class="nav-link">Logs</a>
+                        <a [routerLink]="['/admin/admin-list']"
+                        class="nav-link">Admin List</a>
+                        <a [routerLink]="['/admin/metadata-list']"
+                        class="nav-link">Metadata Lists</a>
+                        <a [routerLink]="['/admin/log']"
+                        class="nav-link">Logs</a>
                     </li>
                 </ul>
             </nav>

@@ -21,6 +21,7 @@ import {SearchComponent} from './components/public/search/search.component';
 
 // Secure Components
 import {AdminComponent} from './components/secure/landing/admin/admin.component';
+import {AdminListComponent} from './components/secure/admin-list/admin-list.component';
 import {ImportExportComponent} from './components/secure/import-export/import-export.component';
 import {LogComponent} from './components/secure/log/log.component';
 import {MetadataListComponent} from './components/secure/metadata-list/metadata-list.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
         {path: '', component: OverviewComponent},
+        {path: 'admin-list', component: AdminListComponent},
         {path: 'import-export', component: ImportExportComponent},
         {path: 'log', component: LogComponent},
         {path: 'metadata-list', component: MetadataListComponent },
