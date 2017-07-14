@@ -45,8 +45,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    component: AdminComponent,
     children: [
-        {path: '', component: AdminComponent},
         {path: 'import-export', component: ImportExportComponent},
         {path: 'log', component: LogComponent},
         {path: 'metadata-list', component: MetadataListComponent },
@@ -55,8 +55,7 @@ const routes: Routes = [
         {path: 'post-editing', component: PostEditingComponent},
         {path: 'statistics', component: StatisticsComponent},
         {path: 'testing', component: TestingComponent},
-        {path: 'withdrawn', component: WithdrawnComponent}
-    ]
+        {path: 'withdrawn', component: WithdrawnComponent}]
   },
   {
       path: 'login',

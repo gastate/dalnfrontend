@@ -55,14 +55,6 @@ export class AdminComponent implements OnInit, LoggedInCallback {
       this.currentlyLoggedIn = true;
   }
 
-  logout(event){
-      if(this.currentlyLoggedIn){
-          console.log("logging out...");
-          this.userService.logout();
-          this.router.navigate(['/home']);
-      }
-      this.router.navigate(['/home']);
-  }
 
   // getApproveList(){
   //     this.authService.getApprovalList().subscribe((data) => {
