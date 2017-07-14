@@ -8,7 +8,7 @@
 
     <!-- Without Card Deck (same post headers but not on special cases) -->
     <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let post of postList">
-        <post-item class="media" [postItem]="post"></post-item>
+        <post-item class="media" [getdev]="getdev" [postItem]="post"></post-item>
     </div>
 
 

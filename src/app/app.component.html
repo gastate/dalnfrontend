@@ -17,8 +17,27 @@
               <li class="nav-item"> <a class="nav-link" href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
               <li class="nav-item"> <a class="nav-link" routerLink="/contact" routerLinkActive="active"> contact </a> </li>
               <li class="nav-item"> <a class="nav-link" routerLink="/create" routerLinkActive="active"> submit a literacy narrative </a> </li>
+              <li class="nav-item dropdown" *ngIf="showAdminButton == true">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+                       Admin Functions<i class="fa fa-caret-down"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user">
+                      <li>
+                          <a [routerLink]="['/admin']"  class="admin-link">Admin Panel</a>
+                      </li>
+                      <li class="divider responsive_divider"></li>
+                      <li>
+                          <a [routerLink]="['/logout']"  class="logout-link">Logout</a>
+                      </li>
+                  </ul>
+                  <!-- /.dropdown-user -->
+              </li>
+
           </ul>
        </div>
+
+
+
 
 </nav>
 <router-outlet></router-outlet>

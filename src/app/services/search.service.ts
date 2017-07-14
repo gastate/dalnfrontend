@@ -96,7 +96,19 @@ export class SearchService {
         post.title =  i.fields.title[0];
         // console.log("Title of post:", post.title);
 
+
+        // make sure description exists, but if not then add a no description provided.
         post.description = (i.fields.description && i.fields.description[0] ? i.fields.description[0]  : "No description provided.") ;
+
+        // limit post description length
+        if (post.description.length > 80) {
+            post.description = post.description.substring(0, 50) + "...";
+        }
+
+        // limit post title length
+        if (post.title.length > 50) {
+            post.title = post.title.substring(0, 30) + " ...";
+        }
         // console.log("description of post:", post.description);
         post.assetList = this.translateAssets(i.fields);
         // console.log(post);
@@ -108,17 +120,18 @@ export class SearchService {
   translateAssets(fields: any) {
 
       // assumes assetList will contain same number of elements across arrays.
-      // get assetLocation, assetEmbedLink, assetId, assetName, assetDescription and assetType.
-
       let assetList = [];
+
+      // populate the assetList, but be sure to check that each property exists. These properties are all just strings so it is okay to fill in with a string.
+
       for(var i = 0; i < fields.assetembedlink.length; i++) {
           assetList[i] = new Asset();
-          assetList[i].assettitle = fields.assetname[i];
-          assetList[i].assetType = fields.assettype[i];
-          assetList[i].assetID = fields.assetid[i];
-          assetList[i].assetEmbedLink = fields.assetembedlink[i];
-          assetList[i].assetLocation = fields.assetlocation[i];
-          assetList[i].assetDescription = fields.assetdescription[i];
+          assetList[i].assettitle = (fields.assetname && fields.assetname[i] ? fields.assetname[i] : "No asset provided");
+          assetList[i].assetType = (fields.assettype && fields.assettype[i] ? fields.assettype[i] : "No asset provided.");
+          assetList[i].assetID = (fields.assetid && fields.assetid[i] ? fields.assetid[i] : "No asset provided");
+          assetList[i].assetEmbedLink = (fields.assetembedlink && fields.assetembedlink[i] ? fields.assetembedlink[i] : "No asset provided");
+          assetList[i].assetLocation = (fields.assetlocation && fields.assetlocation[i] ? fields.assetlocation[i] : "No asset provided.");
+          assetList[i].assetDescription = (fields.assetdescription && fields.assetdescription[i] ? fields.assetdescription[i] : "No asset provided.");
       }
     //   console.log(assetList);
       return assetList;

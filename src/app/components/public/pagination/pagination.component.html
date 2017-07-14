@@ -1,0 +1,15 @@
+<div class="pagination-div" *ngIf="buttonArray.length > 0">
+
+    <post-list [getdev]="getdev" [postList]="pagedPost"></post-list>
+    <nav>
+      <ul class="pagination">
+        <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li> -->
+        <li *ngFor="let button of displayButton" class="page-item">
+            <a class="page-link" (click)="getPagedPost($event)">{{button}}</a>
+        </li>
+        <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+      </ul>
+    </nav>
+
+</div>
+<router-outlet></router-outlet>

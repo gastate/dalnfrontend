@@ -13,6 +13,9 @@ export class PostListComponent implements OnInit {
   }
 
   @Input()
+  getdev: boolean;
+
+  @Input()
   postList: Post[];
 
   @Input() totalNumberOfPosts: number;

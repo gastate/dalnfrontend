@@ -32,8 +32,8 @@ export class PostService {
       return posts;
     })
     //...errors if any
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
-  };
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
 
   getPostById(id: string): Observable<Post> {
 
@@ -61,6 +61,34 @@ export class PostService {
   }
   }
 
+
+  getDevPostById(id: string): Observable<Post> {
+
+    return this._http.get(this.endPoint.get_dev_post + id).map((res: Response) => res.json())
+    //...errors if any
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
+  }
+
+  getUnapprovedPosts(): Observable<Post[]> {
+
+      var data = {
+          tableName: 'DALN-Posts-Dev'
+      }
+
+      let str = JSON.stringify(data);
+
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      let options = new RequestOptions({ headers: headers, method: "post"});
+
+      return this._http.post(this.endPoint.get_unapproved_posts, str, options).map((res: Response) => {
+        let posts = res.json();
+        console.log("Unapproved Posts ", posts);
+        return posts;
+      })
+      //...errors if any
+        .catch((error: any) => Observable.throw(error.json().error || 'Server error...please check services.'));
+  }
 
   //Mock Services
   getMockPosts(): Promise <any> {
