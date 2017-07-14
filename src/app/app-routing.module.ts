@@ -6,7 +6,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 // Main Components
 import {AboutComponent} from './components/public/about/about.component';
-import {ConfirmComponent} from './components/public/auth/confirm/confirm.component';
+import {ConfirmComponent, LogoutComponent} from './components/public/auth/confirm/confirm.component';
 import {ForgotPasswordStep1Component, ForgotPasswordStep2Component} from './components/public/auth/forgot-password/forgot-password.component';
 import {HomeComponent} from './components/public/home/home.component';
 import {LoginComponent} from './components/public/auth/login/login.component';
@@ -75,6 +75,10 @@ const routes: Routes = [
   {
     path: 'posts',
     component: PostListComponent
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent  
   },
   {
     path: 'detail/:id',

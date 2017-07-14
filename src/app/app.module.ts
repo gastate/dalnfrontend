@@ -27,7 +27,7 @@ import { SearchComponent } from './components/public/search/search.component';
 import { SliderComponent } from './components/public/slider/slider.component';
 
 // Auth Components
-import { ConfirmComponent } from './components/public/auth/confirm/confirm.component';
+import { ConfirmComponent, LogoutComponent } from './components/public/auth/confirm/confirm.component';
 import { ForgotPasswordStep1Component, ForgotPasswordStep2Component } from './components/public/auth/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/public/auth/login/login.component';
 import { NewPasswordComponent } from './components/public/auth/new-password/new-password.component';
@@ -72,6 +72,7 @@ import { SafePipe } from './safe.pipe';
     ForgotPasswordStep2Component,
     HomeComponent,
     LoginComponent,
+    LogoutComponent,
     NewPasswordComponent,
     PageNotFoundComponent,
     PaginationComponent,
