@@ -77,22 +77,17 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   calculateIndicies() {
 
+      // if this.currentPage (the button number clicked) is null,
+      // then get the startOffset to calculate the indicies.
       if (!this.currentPage) {
           console.log("starting offset", this.startOffset);
           this.currentPage = this.startOffset;
       }
 
-      let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage + 1);
-      let lastIndex = (firstIndex + this.resultsPerPage - 1);
-
-      // since the index of the array starts at 0, just make the firstIndex = 0 whenever the value is 1.
-      if (firstIndex === 1) {
-          firstIndex = 0;
-      } else {
-          // else make the lastIndex + 1.
-          lastIndex = lastIndex + 1;
-      }
+      let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
+      let lastIndex = (firstIndex + this.resultsPerPage - 1); // minus one since index of array starts at 0.
       console.log("lastIndex, firstIndex", lastIndex, firstIndex);
+
       // populate pagedPost and push to the view.
       this.populatePosts(firstIndex, lastIndex);
   }
@@ -115,7 +110,8 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   populatePosts(firstIndex, lastIndex) {
 
-      this.pagedPost = this.resultList.slice(firstIndex, lastIndex);
+      // + 1 on lastIndex since slice() goes from 0 to actual number - 1
+      this.pagedPost = this.resultList.slice(firstIndex, lastIndex + 1);
       console.log("PagedPost:", this.pagedPost);
   }
 
@@ -131,10 +127,10 @@ export class PaginationComponent implements OnInit, OnChanges {
         this.calculateIndicies();
         this.calculateButtonRange();
       }
-    //   if (changes['endOffset']) {
-    //       console.log("endOffset change", this.endOffset);
-    //       this.calculateButtonRange();
-    //   }
+      if (changes['endOffset']) {
+          console.log("endOffset change", this.endOffset);
+          this.calculateIndicies();
+      }
 
   }
 

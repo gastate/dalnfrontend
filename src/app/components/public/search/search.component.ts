@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit {
   router: Router;
   posts: Post[] = [];
   resultList: Post[] = [];
-  nextResultList: Post[];
+  results: Post[] = [];
   searchService : SearchService;
   errorMessage: string;
 
@@ -41,7 +41,7 @@ export class SearchComponent implements OnInit {
   total_results: number;
 
   pageNumber: number; // user specified page number to start from.
-  resultsSize : number; // number of results to display in search component.
+  resultsPerPage : number; // number of results to display in search component.
   pageParameter: number = 0;
 
   currentOffset: number; // received by pagination component.
@@ -73,38 +73,45 @@ export class SearchComponent implements OnInit {
 
     this.errorMessage = null;
 
-    this.resultsSize = this.searchService.resultsSize;
+    this.resultsPerPage = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
     this.total_offset = this.searchService.total_offset;
     this.total_results = this.searchService.total_results;
   }
 
-  onSearch(term: string, results: number, pageNumber: number): void {
-
-     if(this.resultsSize != results) {
-         this.resultsSize = results;
-         this.searchService.changeResultsDisplayed(this.resultsSize);
-     }
-
-     if(this.pageNumber != pageNumber) {
-         this.pageNumber = pageNumber;
-         this.searchService.changePageStart(this.pageNumber);
-     }
+  onSearch(term: string, results: number, index: number): void {
+     //
+    //  if(this.resultsPerPage != results) {
+    //      this.resultsPerPage = results;
+    //      this.searchService.changeResultsDisplayed(this.resultsPerPage);
+    //  }
+     //
+    //  if(this.pageNumber != pageNumber) {
+    //      this.pageNumber = pageNumber;
+    //      this.searchService.changePageStart(this.pageNumber);
+    //  }
 
     if(term === '' || term === undefined){
       return null;
     }
 
-    this.searchService.search_page(term, this.searchService.pageHead, this.pageParameter)
+    if(index == 1) {
+        index = 0;
+    }
+
+    this.searchService.search_page(term, this.searchService.pageHead, index)
       .subscribe(
         (results) => {
-            // console.log("In Emmitter: ", this.resultsSize);
             if ((results === null) || results.length <= 0 ) {
                 this.errorMessage = "Something went wrong...Please try again.";
             }
 
             this.posts = this.searchService.translatePosts(results.hit);
-            this.resultList = this.posts;
+            this.posts.forEach((i) => {
+                this.results.push(i);
+            });
+            this.resultList = this.results;
+            console.log("new resultList", this.resultList);
             this.location.go('/search');
             this.showHomePage.emit(false);
             // console.log("Search resultList", this.resultList);
@@ -125,12 +132,20 @@ export class SearchComponent implements OnInit {
   }
 
   getResultHandler(event) {
-
+      console.log(this.resultList);
       this.currentOffset = event;
       console.log("currentOffset", this.currentOffset);
       console.log("startOffset", this.startOffset);
       console.log("endOffset", this.endOffset);
 
+      let leftOverItems = this.resultList.length % this.searchService.resultsSize;
+      console.log("leftover", leftOverItems);
+
+      if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
+          let index = ((this.currentOffset * this.searchService.resultsSize) - this.searchService.resultsSize);
+          console.log("index outside offset, new index is: ", index);
+          this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, index + leftOverItems);
+      }
   }
 
 

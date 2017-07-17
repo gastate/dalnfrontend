@@ -49,6 +49,7 @@ export class SearchService {
 
   changeResultsDisplayed(results: number) {
     this.resultsSize = results;
+    console.log("resultSize change", this.resultsSize);
   }
 
   changePageStart(page: number) {
