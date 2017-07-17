@@ -105,16 +105,18 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   sliceButtonRange(){
       let buttonSlice = 6;
+      let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
+
       let startButton;
 
-    //   if (!this.currentPage) {
-    //       startButton = 0;
-    //   } else {
-    //
-    //   }
+      if(firstIndex == 0) {
+          startButton = 0;
+      } else {
+          startButton = this.currentPage - 3;
+      }
 
       if (this.endOffset < this.searchService.total_offset) {
-          this.displayButton =  this.buttonArray.slice(this.startOffset - 1, this.endOffset + buttonSlice);
+          this.displayButton =  this.buttonArray.slice(startButton, this.endOffset + buttonSlice);
       } else {
           this.displayButton = this.buttonArray;
       }
@@ -134,16 +136,19 @@ export class PaginationComponent implements OnInit, OnChanges {
           console.log("startOffset change", this.startOffset);
           this.buttonArray = [];
           this.calculateButtonRange();
+          this.sliceButtonRange();
       }
       if(changes['resultList']) {
           console.log("pagination change", this.resultList);
         this.buttonArray = [];
         this.calculateIndicies();
         this.calculateButtonRange();
+        this.sliceButtonRange();
       }
       if (changes['endOffset']) {
           console.log("endOffset change", this.endOffset);
           this.calculateIndicies();
+          this.sliceButtonRange();
       }
 
   }
