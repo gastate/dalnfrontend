@@ -98,14 +98,28 @@ export class PaginationComponent implements OnInit, OnChanges {
       for(let i = 0; i < this.searchService.total_offset; i++) {
         this.buttonArray.push(i + 1);
     }
-    let buttonSlice = 6;
-    if (buttonSlice < this.searchService.total_offset) {
-        this.displayButton =  this.buttonArray.slice(this.startOffset - 1, this.endOffset + buttonSlice);
-    } else {
-        this.displayButton = this.buttonArray;
-    }
-      console.log("Button Array", this.buttonArray);
-      console.log("Display Button", this.displayButton);
+
+    this.sliceButtonRange();
+
+  }
+
+  sliceButtonRange(){
+      let buttonSlice = 6;
+      let startButton;
+
+    //   if (!this.currentPage) {
+    //       startButton = 0;
+    //   } else {
+    //
+    //   }
+
+      if (this.endOffset < this.searchService.total_offset) {
+          this.displayButton =  this.buttonArray.slice(this.startOffset - 1, this.endOffset + buttonSlice);
+      } else {
+          this.displayButton = this.buttonArray;
+      }
+        console.log("Button Array", this.buttonArray);
+        console.log("Display Button", this.displayButton);
   }
 
   populatePosts(firstIndex, lastIndex) {
