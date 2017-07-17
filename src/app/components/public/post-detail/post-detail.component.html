@@ -132,42 +132,32 @@
       <!-- Video
       ================================================== -->
 
-          <div class="col-md-8">
-              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
-              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
-        <!-- TODO: Remove style tag -->
-        <!-- social begin here -->
-        <ul class="socicon right" style="margin-bottom:10px;">
-          <!-- <li>
-            <a href="#" class="share-icon">
-            </a>
-          </li>
-          <li>
-            <a href="#" class="google">
-            </a>
-          </li>-->
-          <li>
-            <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
-            </a>
-          </li>
-          <li>
-              <a class="twitter twitter-share-button"
-                href="https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}" target="_blank"  ></a>
-          </li>
-          <!-- <li>
-            <a href="#" class="flickr">
-            </a>
-          </li>
-          <li>
-            <a href="#" class="linkedin">
-            </a>
-          </li>
-          <li class="last">
-            <a href="#" class="vimeo">
-            </a>
-          </li> -->
+      <div class="col-md-8">
 
-        </ul>
+          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
+          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
+
+            <ul class="socicon right" style="margin-bottom:10px; margin-top:10px;">
+              <li>
+                <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
+                </a>
+              </li>
+              <li>
+                  <a class="twitter twitter-share-button"
+                    href="https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}" target="_blank"  ></a>
+              </li>
+
+            </ul>
+
+            <!-- <div class="col-md-4" style="margin-top:10%;">
+                <h3>Download List</h3>
+                <ul>
+                    <li *ngFor="let asset of postDetail.assetList">
+                        {{postDetail?.assetList.assetName}}
+                    </li>
+                </ul>
+            </div> -->
+
 
 
         </div>
