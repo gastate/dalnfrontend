@@ -45,8 +45,6 @@ export class PostDetailComponent implements OnInit {
         } else {
             this.onDetail();
             this.route = "http%3A%2F%2Fdaln.gsu.edu%2F%23%2Fdetail%2F" + val.url.substring(8);
-            console.log(this.route);
-
         }
     });
 
@@ -59,13 +57,14 @@ export class PostDetailComponent implements OnInit {
             (details) => {
                   this.loading = false;
                   this.postDetail = details;
-                  // console.log(details);
+                  console.log(details);
 
                   // twitter doesn't take over 140 characters in the title
                   // slice it down to 50
                   this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
 
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
+
               },
             err => {
                 this.loading = false;
@@ -100,32 +99,6 @@ export class PostDetailComponent implements OnInit {
 
   }
 
-  ngAfterViewInit(){
-      this.sub = this.router.events.subscribe(val => {
-            if (val instanceof NavigationEnd) {
-              (<any>window).twttr = (function (d, s, id) {
-                let js: any, fjs = d.getElementsByTagName(s)[0],
-                    t = (<any>window).twttr || {};
-                if (d.getElementById(id)) return t;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "https://platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js, fjs);
-
-                t._e = [];
-                t.ready = function (f: any) {
-                    t._e.push(f);
-                };
-
-                return t;
-              }(document, "script", "twitter-wjs"));
-
-              if ((<any>window).twttr.ready())
-                (<any>window).twttr.widgets.load();
-
-            }
-          });
-  }
 
 
 }

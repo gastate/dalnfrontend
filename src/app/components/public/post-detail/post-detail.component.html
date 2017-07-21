@@ -56,15 +56,13 @@
         <br/>
 
         <h3>Media List</h3>
-        <ul class="media" *ngFor="let asset of postDetail.assetList">
+        <ul class="media" >
 
-            <li (click)="onSelectedAsset(asset)">
+            <li *ngFor="let asset of postDetail.assetList" (click)="onSelectedAsset(asset)">
 
               <!-- Change event to be click event that changes player embed link -->
-              <h3>{{asset.assettitle}}</h3>
-              <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
-              <p *ngIf="">{{asset.assetType}}: {{asset.assetDescription}}</p>
-
+              <h3>{{asset?.assettitle}}</h3>
+              <p>{{asset?.assetType}}: {{asset?.assetDescription}}</p>
 
               <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
             </li>
@@ -132,42 +130,32 @@
       <!-- Video
       ================================================== -->
 
-          <div class="col-md-8">
-              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
-              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
-        <!-- TODO: Remove style tag -->
-        <!-- social begin here -->
-        <ul class="socicon right" style="margin-bottom:10px;">
-          <!-- <li>
-            <a href="#" class="share-icon">
-            </a>
-          </li>
-          <li>
-            <a href="#" class="google">
-            </a>
-          </li>-->
-          <li>
-            <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
-            </a>
-          </li>
-          <li>
-              <a class="twitter twitter-share-button"
-                href="https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}" target="_blank"  ></a>
-          </li>
-          <!-- <li>
-            <a href="#" class="flickr">
-            </a>
-          </li>
-          <li>
-            <a href="#" class="linkedin">
-            </a>
-          </li>
-          <li class="last">
-            <a href="#" class="vimeo">
-            </a>
-          </li> -->
+      <div class="col-md-8">
 
-        </ul>
+          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
+          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
+
+            <ul class="socicon right" style="margin-bottom:10px; margin-top:10px;">
+              <li>
+                <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
+                </a>
+              </li>
+              <li>
+                  <a class="twitter twitter-share-button"
+                    href="https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}" target="_blank"  ></a>
+              </li>
+
+            </ul>
+
+            <div class="col-md-4" style="margin-top:10%;">
+                <h3>Download List</h3>
+                <ul>
+                    <li *ngFor="let asset of postDetail.assetList; let i = index">
+                        <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
+                    </li>
+                </ul>
+            </div>
+
 
 
         </div>
