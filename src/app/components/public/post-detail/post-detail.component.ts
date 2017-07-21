@@ -14,6 +14,25 @@ import 'rxjs/add/operator/switchMap';
 })
 export class PostDetailComponent implements OnInit {
 
+
+      @Input()
+      postDetail: Post;
+
+      selectedAsset: Asset;
+      shareUrl : string;
+
+      loading: boolean = false;
+      failed: boolean = false;
+
+      assets: Asset[];
+      isPDF : boolean = false;
+      isText: boolean;
+
+      //for social
+      private sub: any;
+      route: string;
+      text: string;
+
   constructor(private _postService: PostService,
               private _route: ActivatedRoute,
               private _location: Location,
@@ -22,20 +41,6 @@ export class PostDetailComponent implements OnInit {
           ) {
   }
 
-  @Input()
-  postDetail: Post;
-  selectedAsset: Asset;
-  shareUrl : string;
-
-  loading: boolean = false;
-  failed: boolean = false;
-
-  isPDF : boolean = false;
-
-  //for social
-  private sub: any;
-  route: string;
-  text: string;
 
   ngOnInit(): void {
     this.loading = true;
@@ -59,6 +64,13 @@ export class PostDetailComponent implements OnInit {
                   this.postDetail = details;
                   console.log(details);
 
+                  this.assets = this.postDetail.assetList;
+                  for(var i = 0; i <= this.assets.length - 1; i++) {
+                      if(this.assets[i].assetType === "Text") {
+                          this.isText = true;
+                      }
+                  }
+
                   // twitter doesn't take over 140 characters in the title
                   // slice it down to 50
                   this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
@@ -81,6 +93,14 @@ export class PostDetailComponent implements OnInit {
                   this.loading = false;
                   this.postDetail = details;
                   // console.log(details);
+                  
+                  this.assets = this.postDetail.assetList;
+                  for(var i = 0; i <= this.assets.length - 1; i++) {
+                      if(this.assets[i].assetType === "Text") {
+                          this.isText = true;
+                      }
+                  }
+
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
               },
             err => {
