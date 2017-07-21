@@ -56,15 +56,13 @@
         <br/>
 
         <h3>Media List</h3>
-        <ul class="media" *ngFor="let asset of postDetail.assetList">
+        <ul class="media" >
 
-            <li (click)="onSelectedAsset(asset)">
+            <li *ngFor="let asset of postDetail.assetList" (click)="onSelectedAsset(asset)">
 
               <!-- Change event to be click event that changes player embed link -->
-              <h3>{{asset.assettitle}}</h3>
-              <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
-              <p *ngIf="">{{asset.assetType}}: {{asset.assetDescription}}</p>
-
+              <h3>{{asset?.assettitle}}</h3>
+              <p>{{asset?.assetType}}: {{asset?.assetDescription}}</p>
 
               <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
             </li>
@@ -149,14 +147,14 @@
 
             </ul>
 
-            <!-- <div class="col-md-4" style="margin-top:10%;">
+            <div class="col-md-4" style="margin-top:10%;">
                 <h3>Download List</h3>
                 <ul>
-                    <li *ngFor="let asset of postDetail.assetList">
-                        {{postDetail?.assetList.assetName}}
+                    <li *ngFor="let asset of postDetail.assetList; let i = index">
+                        <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
                     </li>
                 </ul>
-            </div> -->
+            </div>
 
 
 
