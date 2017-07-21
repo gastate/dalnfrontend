@@ -1,16 +1,79 @@
 webpackJsonp([1,4],{
 
-/***/ 1054:
+/***/ 1045:
 /***/ (function(module, exports) {
 
 module.exports = "/* About CSS\r\n-------------------------------------------------- */\r\n\r\nh1 {\r\n    margin-top: 5%;\r\n}\r\n\r\n\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
-/***/ 1055:
+/***/ 1046:
 /***/ (function(module, exports) {
 
 module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+
+/***/ }),
+
+/***/ 1047:
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ 1048:
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ 1049:
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ 1050:
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ 1051:
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ 1052:
+/***/ (function(module, exports) {
+
+module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\nh1 {\r\n    margin-top: 5%;\r\n}\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+
+/***/ }),
+
+/***/ 1053:
+/***/ (function(module, exports) {
+
+module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+
+/***/ }),
+
+/***/ 1054:
+/***/ (function(module, exports) {
+
+module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+
+/***/ }),
+
+/***/ 1055:
+/***/ (function(module, exports) {
+
+module.exports = ""
 
 /***/ }),
 
@@ -52,21 +115,21 @@ module.exports = ""
 /***/ 1061:
 /***/ (function(module, exports) {
 
-module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\nh1 {\r\n    margin-top: 5%;\r\n}\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = ""
 
 /***/ }),
 
 /***/ 1062:
 /***/ (function(module, exports) {
 
-module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = ""
 
 /***/ }),
 
 /***/ 1063:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = ""
 
 /***/ }),
 
@@ -115,319 +178,256 @@ module.exports = ""
 /***/ 1070:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/*#sc-widget {\r\n    width : \"100%\";\r\n    height : \"100%\";\r\n}\r\n\r\n.sproutvideo-player {\r\n    width : \"100%\";\r\n    height : \"100%\";\r\n}*/\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 1071:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 1072:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ 1073:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-inverse\">\r\n    <button class=\"navbar-toggler navbar-toggler-right collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseContent\" aria-controls=\"collapseContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\" ></span>\r\n      </button>\r\n\r\n      <a routerLink=\"/home\"><img src=\"assets/img/Logo_transparent.png\" id=\"logo\" /></a>\r\n\r\n\r\n      <div class=\"header2 col-5 brandContainer\">\r\n          <a class=\"brand\" routerLink=\"/home\">Digital Archive of Literacy Narratives</a>\r\n      </div>\r\n\r\n      <div class=\"navbar-collapse collapse\" id=\"collapseContent\" aria-expanded=\"true\">\r\n          <ul class=\"navbar-nav mr-auto\">\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\"> home </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/about\" routerLinkActive=\"active\"> about </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/contact\" routerLinkActive=\"active\"> contact </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/create\" routerLinkActive=\"active\"> submit a literacy narrative </a> </li>\r\n              <li class=\"nav-item dropdown\" *ngIf=\"showAdminButton == true\">\r\n                  <a class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">\r\n                       Admin Functions<i class=\"fa fa-caret-down\"></i>\r\n                  </a>\r\n                  <ul class=\"dropdown-menu dropdown-user\">\r\n                      <li>\r\n                          <a [routerLink]=\"['/admin']\"  class=\"admin-link\">Admin Panel</a>\r\n                      </li>\r\n                      <li class=\"divider responsive_divider\"></li>\r\n                      <li>\r\n                          <a [routerLink]=\"['/logout']\"  class=\"logout-link\">Logout</a>\r\n                      </li>\r\n                  </ul>\r\n                  <!-- /.dropdown-user -->\r\n              </li>\r\n\r\n          </ul>\r\n       </div>\r\n\r\n\r\n\r\n\r\n</nav>\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 1074:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<div class=\"container\">\r\n  <h1>{{title}}</h1>\r\n\r\n  <div class=\"about-info\">\r\n      <div id=\"about-image\">\r\n          <img src=\"assets/img/osugsu.jpg\" alt=\"\" />\r\n      </div>\r\n\r\n\r\n      <p>\r\n     Co-sponsored by The Ohio State University and Georgia State University, The DALN (daln.osu.edu) is a publicly available archive of personal literacy narratives in a variety of formats (text, video, audio) that together provide a historical record of the literacy practices and values of contributors, as those practices and values change.\r\n     </p>\r\n\r\n     <p>\r\n         The DALN invites people of all ages, races, communities, backgrounds, and interests to contribute stories about how — and in what circumstances — they read, write, and compose meaning, and how they learned to do so (or helped others learn).\r\n     </p>\r\n\r\n     <p>\r\n         We welcome personal narratives about reading and composing all kinds of texts, both formal and informal: diaries, blogs, poetry, music and musical lyrics, fan zines, school papers, videos, sermons, gaming profiles, speeches, chatroom exchanges, text messages, letters, stories, photographs, etc. We also invite contributors to supplement their narratives with samples of their own writing (papers, letters, zines, speeches, etc.) and compositions (music, photographs, videos, sound recordings, etc.).\r\n     </p>\r\n\r\n     <!-- <div class=\"col-md-4 offset-md-4\" id=\"postCounter\">\r\n        <h3> Total Number of Posts\r\n            {{totalNumberOfPosts}}\r\n        </h3>\r\n     </div> -->\r\n  </div>\r\n\r\n\r\n\r\n</div>\r\n\r\n<daln-footer></daln-footer>\r\n"
 
 /***/ }),
 
 /***/ 1075:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<footer>\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n\r\n        <h3 class=\"footer-heading\">Connect With Us</h3>\r\n        <!-- social begin here -->\r\n            <ul class=\"socicon\">\r\n              <!-- <li><a href=\"\" class=\"share-icon\"> </a></li> -->\r\n              <!-- <li><a href=\"#\" class=\"google\"> </a></li> -->\r\n              <li><a href=\"https://www.facebook.com/dalnarchive/\" target=\"_blank\" class=\"facebook\"> </a></li>\r\n              <li><a href=\"https://twitter.com/dalnarchive\" target=\"_blank\" class=\"twitter\"> </a></li>\r\n              <!-- <li><a href=\"#\" class=\"flickr\"> </a></li> -->\r\n              <!-- <li><a href=\"#\" class=\"dribbble\"> </a></li> -->\r\n              <!-- <li class=\"last\"><a href=\"#\" class=\"vimeo\"> </a></li> -->\r\n            </ul>\r\n\r\n        <h3 class=\"footer-heading\">Who We Are</h3>\r\n            <p>\r\n                Since 2007, the Digital Archive of Literacy Narratives has been collecting stories from the public about their experiences learning to read, write, and compose with different media types. Containing over 6000 individual narratives in text, video, audio, and other forms, the DALN is a resource not only for scholars and teachers, but the public at large. Tell us your story. <a routerLink=\"/create\">Submit today!</a>\r\n            </p>\r\n\r\n      </div>\r\n\r\n      <!-- tweets begin here -->\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n        <h3 class=\"footer-heading\">Latest Tweets</h3>\r\n        <div class=\"tweets\">\r\n\r\n        </div>\r\n        <a class=\"twitter-timeline\" data-width=\"300\" data-height=\"330\" data-theme=\"dark\" href=\"https://twitter.com/dalnarchive\" target=\"_blank\">Tweets by dalnarchive</a>\r\n      </div>\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n        <h3 class=\"footer-heading\">From Facebook</h3>\r\n        <div class=\"fb-page\"\r\n            data-href=\"https://www.facebook.com/dalnarchive/\"\r\n            data-tabs=\"timeline\"\r\n            data-width=\"300\"\r\n            data-height=\"330\"\r\n            data-small-header=\"false\"\r\n            data-adapt-container-width=\"true\"\r\n            data-hide-cover=\"false\"\r\n            data-show-facepile=\"false\">\r\n            <blockquote cite=\"https://www.facebook.com/dalnarchive/\" class=\"fb-xfbml-parse-ignore\">\r\n                <a href=\"https://www.facebook.com/dalnarchive/\">Digital Archive of Literacy Narratives</a>\r\n            </blockquote>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</footer>\r\n"
 
 /***/ }),
 
 /***/ 1076:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<p>\r\n  confirm works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1077:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<div class=\"container add-top-margin\">\r\n\r\n<form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n    <div class=\"form-group\">\r\n        <h2>Forgot Password</h2>\r\n    </div>\r\n    <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n        {{ errorMessage }}\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label class=\"control-label\" for=\"signupEmail\">Email</label>\r\n        <input id=\"signupEmail\" type=\"email\" maxlength=\"50\" class=\"form-control\" [(ngModel)]=\"email\"\r\n               [ngModelOptions]=\"{standalone: true}\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button (click)=\"onNext()\" id=\"nextPage\" type=\"submit\" class=\"btn btn-info btn-block\">Next\r\n        </button>\r\n    </div>\r\n\r\n    <hr>\r\n    <p> <a [routerLink]=\"['/login']\"> <i class=\"fa fa-fw fa-user\"></i> Login</a>\r\n    </p>\r\n</form>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 1078:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<div class=\"container add-top-margin\">\r\n\r\n<form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n    <div class=\"form-group\">\r\n        <h2>Forgot Password</h2>\r\n    </div>\r\n    <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n        {{ errorMessage }}\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label class=\"control-label\" for=\"verificationCode\">Verification Code</label>\r\n        <input id=\"verificationCode\" type=\"verificationCode\" maxlength=\"50\" class=\"form-control\"\r\n               [(ngModel)]=\"verificationCode\" [ngModelOptions]=\"{standalone: true}\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label class=\"control-label\" for=\"newPassword\">New Password</label>\r\n        <input id=\"newPassword\" type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n               length=\"40\" [(ngModel)]=\"password\" [ngModelOptions]=\"{standalone: true}\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button (click)=\"onNext()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\r\n            Reset Password\r\n        </button>\r\n    </div>\r\n\r\n    <hr>\r\n    <p><a [routerLink]=\"['/login/resendCode']\"> <i class=\"fa fa-fw fa-group\"></i> Go back</a>\r\n    </p>\r\n</form>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 1079:
 /***/ (function(module, exports) {
 
-module.exports = "/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n/*#sc-widget {\r\n    width : \"100%\";\r\n    height : \"100%\";\r\n}\r\n\r\n.sproutvideo-player {\r\n    width : \"100%\";\r\n    height : \"100%\";\r\n}*/\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = "<div class=\"container add-top-margin\">\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-4 col-centered\">\r\n            <form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n                <div class=\"form-group\">\r\n                    <h2>Login</h2>\r\n                </div>\r\n                <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n                    {{ errorMessage }}\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label\" for=\"signupEmail\">Email</label>\r\n                    <input id=\"signupEmail\" required type=\"email\" maxlength=\"100\" class=\"form-control\" [(ngModel)]=\"email\"\r\n                           [ngModelOptions]=\"{standalone: true}\">\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label\" for=\"signupPassword\">Password</label>\r\n                    <input id=\"signupPassword\" required type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n                           length=\"40\" [(ngModel)]=\"password\" [ngModelOptions]=\"{standalone: true}\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <button (click)=\"onLogin()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\r\n                        Login\r\n                    </button>\r\n                </div>\r\n\r\n                <hr>\r\n\r\n\r\n                <p><a [routerLink]=\"['/login/forgotPassword']\"> <i class=\"fa fa-fw fa-group\"></i> Forgot Password?</a></p>\r\n                <p>\r\n\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 1080:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = "<div class=\"container add-top-margin\">\r\n    <form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n        <div class=\"form-group\">\r\n            <h2>Set new password</h2>\r\n        </div>\r\n        <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n            {{ errorMessage }}\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label class=\"control-label\" for=\"signupEmail\"><b>Username</b></label>\r\n            <input id=\"signupEmail\" type=\"email\" maxlength=\"50\" class=\"form-control\"\r\n                   [(ngModel)]=\"registrationUser.username\" [ngModelOptions]=\"{standalone: true}\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label class=\"control-label\" for=\"existingPassword\">Temporary Password</label>\r\n            <input id=\"existingPassword\" type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n                   placeholder=\"at least 8 characters\" length=\"40\" [(ngModel)]=\"registrationUser.existingPassword\"\r\n                   [ngModelOptions]=\"{standalone: true}\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label class=\"control-label\" for=\"signupPassword\">New Password</label>\r\n            <input id=\"signupPassword\" type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n                   placeholder=\"at least 8 characters\" length=\"40\" [(ngModel)]=\"registrationUser.password\"\r\n                   [ngModelOptions]=\"{standalone: true}\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <button (click)=\"onRegister()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\r\n                Set your password\r\n            </button>\r\n        </div>\r\n        <hr>\r\n        <p>Already have an account? <a [routerLink]=\"['/login']\"> <i class=\"fa fa-fw fa-lock\"></i>Login</a></p>\r\n    </form>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 1081:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n/* Asset Audio and Video CSS\r\n-------------------------------------------------- */\r\n\r\n\r\n/* Responsive\r\n-------------------------------------------------- */\r\n\r\n@media (max-width: 480px) {\r\n\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 480px) and (max-width: 768px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (min-width: 768px) and (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n\r\n@media (max-width: 980px) {\r\n\r\n\r\n\r\n}\r\n\r\n/* LARGE DESKTOP SCREENS */\r\n@media (min-width: 1210px) {\r\n\r\n\r\n}\r\n"
+module.exports = "<p>\r\n  register works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1082:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-inverse\">\r\n    <button class=\"navbar-toggler navbar-toggler-right collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseContent\" aria-controls=\"collapseContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\" ></span>\r\n      </button>\r\n\r\n      <a routerLink=\"/home\"><img src=\"assets/img/Logo_transparent.png\" id=\"logo\" /></a>\r\n\r\n\r\n      <div class=\"header2 col-5 brandContainer\">\r\n          <a class=\"brand\" routerLink=\"/home\">Digital Archive of Literacy Narratives</a>\r\n      </div>\r\n\r\n      <div class=\"navbar-collapse collapse\" id=\"collapseContent\" aria-expanded=\"true\">\r\n          <ul class=\"navbar-nav mr-auto\">\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\"> home </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/about\" routerLinkActive=\"active\"> about </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" href=\"https://thedaln.wordpress.com/\" target=\"_blank\"> DALN Blog </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/contact\" routerLinkActive=\"active\"> contact </a> </li>\r\n              <li class=\"nav-item\"> <a class=\"nav-link\" routerLink=\"/create\" routerLinkActive=\"active\"> submit a literacy narrative </a> </li>\r\n              <li class=\"nav-item dropdown\" *ngIf=\"showAdminButton == true\">\r\n                  <a class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">\r\n                       Admin Functions<i class=\"fa fa-caret-down\"></i>\r\n                  </a>\r\n                  <ul class=\"dropdown-menu dropdown-user\">\r\n                      <li>\r\n                          <a [routerLink]=\"['/admin']\"  class=\"admin-link\">Admin Panel</a>\r\n                      </li>\r\n                      <li class=\"divider responsive_divider\"></li>\r\n                      <li>\r\n                          <a [routerLink]=\"['/logout']\"  class=\"logout-link\">Logout</a>\r\n                      </li>\r\n                  </ul>\r\n                  <!-- /.dropdown-user -->\r\n              </li>\r\n\r\n          </ul>\r\n       </div>\r\n\r\n\r\n\r\n\r\n</nav>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<p>\r\n  resend works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1083:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <h1>{{title}}</h1>\r\n\r\n  <div class=\"about-info\">\r\n      <div id=\"about-image\">\r\n          <img src=\"assets/img/osugsu.jpg\" alt=\"\" />\r\n      </div>\r\n\r\n\r\n      <p>\r\n     Co-sponsored by The Ohio State University and Georgia State University, The DALN (daln.osu.edu) is a publicly available archive of personal literacy narratives in a variety of formats (text, video, audio) that together provide a historical record of the literacy practices and values of contributors, as those practices and values change.\r\n     </p>\r\n\r\n     <p>\r\n         The DALN invites people of all ages, races, communities, backgrounds, and interests to contribute stories about how — and in what circumstances — they read, write, and compose meaning, and how they learned to do so (or helped others learn).\r\n     </p>\r\n\r\n     <p>\r\n         We welcome personal narratives about reading and composing all kinds of texts, both formal and informal: diaries, blogs, poetry, music and musical lyrics, fan zines, school papers, videos, sermons, gaming profiles, speeches, chatroom exchanges, text messages, letters, stories, photographs, etc. We also invite contributors to supplement their narratives with samples of their own writing (papers, letters, zines, speeches, etc.) and compositions (music, photographs, videos, sound recordings, etc.).\r\n     </p>\r\n\r\n     <!-- <div class=\"col-md-4 offset-md-4\" id=\"postCounter\">\r\n        <h3> Total Number of Posts\r\n            {{totalNumberOfPosts}}\r\n        </h3>\r\n     </div> -->\r\n  </div>\r\n\r\n\r\n\r\n</div>\r\n\r\n<daln-footer></daln-footer>\r\n"
+module.exports = "<div class=\"container\">\r\n  <h1>{{title}}</h1>\r\n\r\n\r\n    <div class=\"contact-info\">\r\n        <p>\r\n            <strong>Ben McCorkle</strong> is an associate professor of English and teaches courses in composition, rhetoric, and digital media studies, primarily on The Ohio State University’s Marion campus. He is the author of the book <span class=\"italic\">\r\n            Rhetorical Delivery as Technological Discourse: A Cross-Historical Study</span>, as well as several articles in publications including <span class=\"italic\"> Computers and Composition Online, Rhetoric Society Quarterly, and Composition Studies</span>. He is currently serving as Co-Director of the DALN. Email Ben: <a href=\"mailto:mccorkle.12@osu.edu\">mccorkle.12@osu.edu</a>.\r\n       </p>\r\n\r\n       <p>\r\n           <strong>Michael Harker </strong> is an associate professor of English and teaches courses in composition, rhetoric, and literacy studies at Georgia State University. He is the author of <span class=\"italic\">The Lure of Literacy: A Critical Reception of the Compulsory Composition Debate (SUNY Press)</span>. He has published articles in <span class=\"italic\"> College Composition and Communication, Literacy in Composition Studies, Computers and Composition: An International Journal</span>, and <span class=\"italic\">Computers and Composition Online</span>. He is a Co-Director of the Digital Archive of Literacy Narratives (DALN). Email Michael: <a href=\"mailto:mharker@gsu.edu\">mharker@gsu.edu</a>.\r\n       </p>\r\n    </div>\r\n\r\n</div>\r\n<!-- <daln-footer></daln-footer> -->\r\n"
 
 /***/ }),
 
 /***/ 1084:
 /***/ (function(module, exports) {
 
-module.exports = "<footer>\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n\r\n        <h3 class=\"footer-heading\">Connect With Us</h3>\r\n        <!-- social begin here -->\r\n            <ul class=\"socicon\">\r\n              <!-- <li><a href=\"\" class=\"share-icon\"> </a></li> -->\r\n              <!-- <li><a href=\"#\" class=\"google\"> </a></li> -->\r\n              <li><a href=\"https://www.facebook.com/dalnarchive/\" target=\"_blank\" class=\"facebook\"> </a></li>\r\n              <li><a href=\"https://twitter.com/dalnarchive\" target=\"_blank\" class=\"twitter\"> </a></li>\r\n              <!-- <li><a href=\"#\" class=\"flickr\"> </a></li> -->\r\n              <!-- <li><a href=\"#\" class=\"dribbble\"> </a></li> -->\r\n              <!-- <li class=\"last\"><a href=\"#\" class=\"vimeo\"> </a></li> -->\r\n            </ul>\r\n\r\n        <h3 class=\"footer-heading\">Who We Are</h3>\r\n            <p>\r\n                Since 2007, the Digital Archive of Literacy Narratives has been collecting stories from the public about their experiences learning to read, write, and compose with different media types. Containing over 6000 individual narratives in text, video, audio, and other forms, the DALN is a resource not only for scholars and teachers, but the public at large. Tell us your story. <a routerLink=\"/create\">Submit today!</a>\r\n            </p>\r\n\r\n      </div>\r\n\r\n      <!-- tweets begin here -->\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n        <h3 class=\"footer-heading\">Latest Tweets</h3>\r\n        <div class=\"tweets\">\r\n\r\n        </div>\r\n        <a class=\"twitter-timeline\" data-width=\"300\" data-height=\"330\" data-theme=\"dark\" href=\"https://twitter.com/dalnarchive\" target=\"_blank\">Tweets by dalnarchive</a>\r\n      </div>\r\n      <div class=\"col-md-4 col-sm-4 col-lg-4\">\r\n        <h3 class=\"footer-heading\">From Facebook</h3>\r\n        <div class=\"fb-page\"\r\n            data-href=\"https://www.facebook.com/dalnarchive/\"\r\n            data-tabs=\"timeline\"\r\n            data-width=\"300\"\r\n            data-height=\"330\"\r\n            data-small-header=\"false\"\r\n            data-adapt-container-width=\"true\"\r\n            data-hide-cover=\"false\"\r\n            data-show-facepile=\"false\">\r\n            <blockquote cite=\"https://www.facebook.com/dalnarchive/\" class=\"fb-xfbml-parse-ignore\">\r\n                <a href=\"https://www.facebook.com/dalnarchive/\">Digital Archive of Literacy Narratives</a>\r\n            </blockquote>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</footer>\r\n"
+module.exports = "\r\n<div class=\"container responsive_home\">\r\n\r\n    <!-- Search Component -->\r\n    <!-- <app-search2 (searchResults)=\"displayResults($event)\"></app-search2> -->\r\n    <app-search2 (showHomePage)=\"showHomePage($event)\"></app-search2>\r\n\r\n    <app-slider *ngIf=\"showPage === true\"></app-slider>\r\n\r\n\r\n</div>\r\n\r\n\r\n<div class=\"container responsive_home\">\r\n\r\n        <div class=\"featured-post-list\" *ngIf=\"showPage === true\">\r\n            <h3>Featured Posts</h3>\r\n            <hr />\r\n            <post-list [getdev]=\"getdev\" [postList]=\"posts\"></post-list>\r\n        </div>\r\n\r\n\r\n\r\n</div>\r\n\r\n<div class=\"container responsive_home\">\r\n    <div class=\"center add-top-margin\">\r\n      <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n<daln-footer></daln-footer>\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 1085:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  confirm works!\r\n</p>\r\n"
+module.exports = "<div class=\"pagination-div\" *ngIf=\"buttonArray.length > 0\">\r\n\r\n    <post-list [getdev]=\"getdev\" [postList]=\"pagedPost\"></post-list>\r\n    <nav>\r\n      <ul class=\"pagination\">\r\n        <!-- <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Previous</a></li> -->\r\n        <li *ngFor=\"let button of displayButton\" class=\"page-item\">\r\n            <a class=\"page-link\" (click)=\"getPagedPost($event)\">{{button}}</a>\r\n        </li>\r\n        <!-- <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Next</a></li> -->\r\n      </ul>\r\n    </nav>\r\n\r\n</div>\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 1086:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container add-top-margin\">\r\n\r\n<form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n    <div class=\"form-group\">\r\n        <h2>Forgot Password</h2>\r\n    </div>\r\n    <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n        {{ errorMessage }}\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label class=\"control-label\" for=\"signupEmail\">Email</label>\r\n        <input id=\"signupEmail\" type=\"email\" maxlength=\"50\" class=\"form-control\" [(ngModel)]=\"email\"\r\n               [ngModelOptions]=\"{standalone: true}\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button (click)=\"onNext()\" id=\"nextPage\" type=\"submit\" class=\"btn btn-info btn-block\">Next\r\n        </button>\r\n    </div>\r\n\r\n    <hr>\r\n    <p> <a [routerLink]=\"['/login']\"> <i class=\"fa fa-fw fa-user\"></i> Login</a>\r\n    </p>\r\n</form>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"container add-top-margin\" *ngIf=\"postDetail\">\r\n  <button class=\"btn btn-primary\" type=\"submit\" (click)=\"goBack()\">Back</button>\r\n\r\n  <section>\r\n\r\n\r\n    <div class=\"row\">\r\n      <!-- Project info\r\n      ================================================== -->\r\n\r\n\r\n      <div class=\"col-md-4\">\r\n\r\n        <!-- Use the ul class. -->\r\n        <ul class=\"metadata\">\r\n          <li>\r\n            <h3>{{postDetail?.title}}</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          <li>\r\n            <h3>Date Submitted</h3>\r\n            <p>{{postDetail?.dateCreated}}</p>\r\n          </li>\r\n          <li>\r\n            <h3>Author</h3>\r\n            <p *ngFor=\"let author of postDetail.contributorAuthor\">{{author}}</p>\r\n          </li>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"tags\">\r\n          <li>\r\n            <h3>Collections</h3>\r\n            <p>All literacy narratives that are not part of a topical collection.</p>\r\n          </li>\r\n          <li>\r\n            <h3>Tags/Subjects</h3>\r\n            <ul class=\"tags-list\">\r\n              <!-- Track elements and limit tags with NgFor and TrackBy -->\r\n              <li class=\"tag\" *ngFor=\"let subject of postDetail.subject\"><span\r\n                class=\"label label-info\">{{subject}}</span></li>\r\n            </ul>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"description\">\r\n          <li>\r\n            <h3>Description</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          </li>\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <h3>Media List</h3>\r\n        <ul class=\"media\" >\r\n\r\n            <li *ngFor=\"let asset of postDetail.assetList\" (click)=\"onSelectedAsset(asset)\">\r\n\r\n              <!-- Change event to be click event that changes player embed link -->\r\n              <h3>{{asset?.assettitle}}</h3>\r\n              <p>{{asset?.assetType}}: {{asset?.assetDescription}}</p>\r\n\r\n              <!--<div *ngIf=\"selectedAsset\">{{selectedAsset.assetID}}</div>-->\r\n            </li>\r\n\r\n          </ul>\r\n\r\n\r\n\r\n              <div id=\"metadata-table\">\r\n                   <table class=\"table table-sm table-bordered\">\r\n                       <thead >\r\n                         <tr>\r\n                          <th>Metadata Tag</th>\r\n                          <th>Content</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                          <tr>\r\n                               <td>identifierUri</td>\r\n                               <td>{{postDetail?.identifierUri}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAvailable</td>\r\n                               <td>{{postDetail?.dateAvailable}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAccessioned</td>\r\n                               <td>{{postDetail?.dateAccessioned}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateCreated</td>\r\n                               <td>{{postDetail?.dateCreated}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateIssued</td>\r\n                               <td>{{postDetail?.dateIssued}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorAuthor</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorAuthor\">{{postDetail?.contributorAuthor}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorInterviewer</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorInterviewer\">{{postDetail?.contributorInterviewer}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n\r\n                      </tbody>\r\n                   </table>\r\n              </div>\r\n\r\n\r\n\r\n\r\n\r\n      </div>\r\n\r\n      <!-- Video\r\n      ================================================== -->\r\n\r\n      <div class=\"col-md-8\">\r\n\r\n          <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')\" [postAsset]=\"selectedAsset\"></app-player>\r\n          <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Text')\" [postAsset]=\"selectedAsset\"></app-player>\r\n\r\n            <ul class=\"socicon right\" style=\"margin-bottom:10px; margin-top:10px;\">\r\n              <li>\r\n                <a href=\"https://www.facebook.com/dalnarchive/\" class=\"facebook\" target=\"_blank\">\r\n                </a>\r\n              </li>\r\n              <li>\r\n                  <a class=\"twitter twitter-share-button\"\r\n                    href=\"https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}\" target=\"_blank\"  ></a>\r\n              </li>\r\n\r\n            </ul>\r\n\r\n            <div class=\"col-md-4\" style=\"margin-top:10%;\">\r\n                <h3>Download List</h3>\r\n                <ul>\r\n                    <li *ngFor=\"let asset of postDetail.assetList; let i = index\">\r\n                        <a href=\"{{postDetail.assetList[i].assetLocation}}\" download>{{postDetail.assetList[i].assetName}}</a>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n\r\n\r\n\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n\r\n  </section>\r\n\r\n\r\n\r\n\r\n\r\n\r\n</div><!-- /container -->\r\n<div class=\"center\">\r\n    <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n</div>\r\n<daln-footer></daln-footer>\r\n"
 
 /***/ }),
 
 /***/ 1087:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container add-top-margin\">\r\n\r\n<form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n    <div class=\"form-group\">\r\n        <h2>Forgot Password</h2>\r\n    </div>\r\n    <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n        {{ errorMessage }}\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label class=\"control-label\" for=\"verificationCode\">Verification Code</label>\r\n        <input id=\"verificationCode\" type=\"verificationCode\" maxlength=\"50\" class=\"form-control\"\r\n               [(ngModel)]=\"verificationCode\" [ngModelOptions]=\"{standalone: true}\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label class=\"control-label\" for=\"newPassword\">New Password</label>\r\n        <input id=\"newPassword\" type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n               length=\"40\" [(ngModel)]=\"password\" [ngModelOptions]=\"{standalone: true}\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button (click)=\"onNext()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\r\n            Reset Password\r\n        </button>\r\n    </div>\r\n\r\n    <hr>\r\n    <p><a [routerLink]=\"['/login/resendCode']\"> <i class=\"fa fa-fw fa-group\"></i> Go back</a>\r\n    </p>\r\n</form>\r\n</div>\r\n"
+module.exports = "<div class=\"child-container\">\r\n\r\n\r\n    <div id=\"search-component\">\r\n\r\n      <!-- Main Search Box -->\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-md-6\">\r\n         <div class=\"input-group\">\r\n                <!-- <span class=\"input-group-btn\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#options\">&#9660;</button>\r\n                </span> -->\r\n                <input #searchBox class=\"form-control\" id=\"search-box\" placeholder=\"Search the DALN...\" [value]=\"searchService.searchQuery\" (input)=\"searchService.searchQuery = $event.target.value\"/>\r\n               <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"onSearch(searchBox.value, results.value, pageNum.value)\" (click)=\"onSearch(searchBox.value, searchService.resultsSize, searchService.pageNumber)\" >Search</button>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <!-- Search Options -->\r\n      <!-- <div class=\"collapse\" id=\"options\">\r\n      <div class=\"card card-block\" [class.col-md-6]=\"showFull\" [class.offset-md-3]=\"showFull\">\r\n          <div class=\"card-header\" id=\"option-card\">\r\n              Options\r\n          </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-4\">\r\n                <div class=\"input-group \">\r\n                    <span class=\"input-group-addon\">Results per page</span>\r\n                    <input #results class=\"form-control\" id=\"results-size\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.resultsSize\"/>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-md-4 offset-md-4\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">Page Number</span>\r\n                    <input #pageNum class=\"form-control\" id=\"pageNumber\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.pageNumber\"/>\r\n                </div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n      </div> -->\r\n\r\n    <div class=\"row justify-content-center\">\r\n      <div class=\"add-top-margin col-md-6 alert alert-danger\" *ngIf=\"errorMessage != null\">\r\n          <p>\r\n              {{errorMessage}}\r\n          </p>\r\n      </div>\r\n     </div>\r\n\r\n    </div>\r\n\r\n\r\n\r\n\r\n    <!-- <daln-footer *ngIf=\"showUtil\"></daln-footer> -->\r\n\r\n</div>\r\n\r\n<app-pagination (currentPageEmitter)=\"getResultHandler($event)\" [startOffset]=\"startOffset\" [endOffset]=\"endOffset\" [resultList]=\"resultList\"></app-pagination>\r\n\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 1088:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container add-top-margin\">\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-4 col-centered\">\r\n            <form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n                <div class=\"form-group\">\r\n                    <h2>Login</h2>\r\n                </div>\r\n                <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n                    {{ errorMessage }}\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label\" for=\"signupEmail\">Email</label>\r\n                    <input id=\"signupEmail\" required type=\"email\" maxlength=\"100\" class=\"form-control\" [(ngModel)]=\"email\"\r\n                           [ngModelOptions]=\"{standalone: true}\">\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label\" for=\"signupPassword\">Password</label>\r\n                    <input id=\"signupPassword\" required type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n                           length=\"40\" [(ngModel)]=\"password\" [ngModelOptions]=\"{standalone: true}\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <button (click)=\"onLogin()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\r\n                        Login\r\n                    </button>\r\n                </div>\r\n\r\n                <hr>\r\n\r\n\r\n                <p><a [routerLink]=\"['/login/forgotPassword']\"> <i class=\"fa fa-fw fa-group\"></i> Forgot Password?</a></p>\r\n                <p>\r\n\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "\r\n<div [@visibilityChanged]=\"visibility\" class=\"slider_component\">\r\n    <ngb-carousel>\r\n        <template ngbSlide>\r\n            <div class=\"image-background\">\r\n                       <img src=\"assets/images/slider/jimmy-carter.jpg\" class=\"slider-img\"/>\r\n               </div>\r\n\r\n            <div class=\"carousel-caption\">\r\n                <a href=\"https://thedaln.wordpress.com/2015/07/06/exciting-news-revealed-president-jimmy-carters-narrative/\" target=\"_blank\">\r\n                    <h3>Exciting News Revealed: President Jimmy Carter's Narrative!</h3>\r\n                    <p>“I’m afraid I don’t have a very good story.” This is how Jimmy Carter begins. It’s a humble beginning to a truly beautiful narrative</p>\r\n                </a>\r\n            </div>\r\n        </template>\r\n      <template ngbSlide>\r\n        <img src=\"assets/images/slider/books.jpg\" alt=\"DALN Intro\" class=\"slider-img\">\r\n        <div class=\"carousel-caption\">\r\n          <h3>DALN</h3>\r\n          <p>An Introduction to the Digital Archive of Literacy Narratives</p>\r\n        </div>\r\n      </template>\r\n      <template ngbSlide>\r\n        <img src=\"assets/images/slider/slider-img02.jpg\" alt=\"New DALN post\" class=\"slider-img\">\r\n        <div class=\"carousel-caption\">\r\n            <a href=\"https://thedaln.wordpress.com/2017/01/14/the-ocean/\" target=\"_blank\">\r\n                <h3>View new DALN Blog Post!</h3>\r\n                <p>If you ever find yourself overwhelmed with self-doubt about any writing project you may be doing, then check out the literacy narrative titled “The Ocean.”</p>\r\n            </a>\r\n        </div>\r\n      </template>\r\n\r\n    </ngb-carousel>\r\n</div>\r\n\r\n<!--\r\n<div class=\"carousel\">\r\n\r\n <ul class=\"images\">\r\n\r\n   <li *ngFor=\"let slide of slides\">\r\n     <h2>DALN</h2>\r\n     <img src=\"assets/images/slider/slider-img01.jpg\" alt=\"\">\r\n   </li>\r\n\r\n </ul>\r\n\r\n</div> -->\r\n"
 
 /***/ }),
 
 /***/ 1089:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container add-top-margin\">\r\n    <form class=\"form-signin\" method=\"POST\" action=\"#\" role=\"form\">\r\n        <div class=\"form-group\">\r\n            <h2>Set new password</h2>\r\n        </div>\r\n        <div *ngIf=\"errorMessage!=null\" class=\"alert alert-danger\">\r\n            {{ errorMessage }}\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label class=\"control-label\" for=\"signupEmail\"><b>Username</b></label>\r\n            <input id=\"signupEmail\" type=\"email\" maxlength=\"50\" class=\"form-control\"\r\n                   [(ngModel)]=\"registrationUser.username\" [ngModelOptions]=\"{standalone: true}\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label class=\"control-label\" for=\"existingPassword\">Temporary Password</label>\r\n            <input id=\"existingPassword\" type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n                   placeholder=\"at least 8 characters\" length=\"40\" [(ngModel)]=\"registrationUser.existingPassword\"\r\n                   [ngModelOptions]=\"{standalone: true}\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label class=\"control-label\" for=\"signupPassword\">New Password</label>\r\n            <input id=\"signupPassword\" type=\"password\" maxlength=\"25\" class=\"form-control\"\r\n                   placeholder=\"at least 8 characters\" length=\"40\" [(ngModel)]=\"registrationUser.password\"\r\n                   [ngModelOptions]=\"{standalone: true}\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <button (click)=\"onRegister()\" id=\"signupSubmit\" type=\"submit\" class=\"btn btn-info btn-block\">\r\n                Set your password\r\n            </button>\r\n        </div>\r\n        <hr>\r\n        <p>Already have an account? <a [routerLink]=\"['/login']\"> <i class=\"fa fa-fw fa-lock\"></i>Login</a></p>\r\n    </form>\r\n</div>\r\n"
+module.exports = "<p>\r\n  admin-list works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1090:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  register works!\r\n</p>\r\n"
+module.exports = "\r\n<div class=\"col-md-6 add-top-margin\">\r\n    <p>\r\n        Changes the number of pages to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.\r\n\r\n        i.e. Staying 10 pages ahead of user x 10 results per page (user specified) = 100 posts to stay ahead of user\r\n\r\n        i.e. Staying 50 pages ahead of user x 10 results per page = 500 posts to stay ahead of user.\r\n\r\n        i.e. Staying 10 pages ahead of user x 100 results per page = 1000 posts to stay ahead of user.\r\n\r\n        Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10.\r\n    </p>\r\n    <div class=\"input-group\">\r\n        <input type=\"number\" class=\"form-control\"  min=\"1\" max=\"100\" #pageHead [value]=\"searchService.pageHead\"/>\r\n\r\n        <span class=\"input-group-btn\">\r\n            <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"changePageHead(pageHead.value)\" (click)=\"changePageHead(pageHead.value)\">Change Page Head</button>\r\n        </span>\r\n\r\n    </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 1091:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  resend works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  import-export works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1092:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <h1>{{title}}</h1>\r\n\r\n\r\n    <div class=\"contact-info\">\r\n        <p>\r\n            <strong>Ben McCorkle</strong> is an associate professor of English and teaches courses in composition, rhetoric, and digital media studies, primarily on The Ohio State University’s Marion campus. He is the author of the book <span class=\"italic\">\r\n            Rhetorical Delivery as Technological Discourse: A Cross-Historical Study</span>, as well as several articles in publications including <span class=\"italic\"> Computers and Composition Online, Rhetoric Society Quarterly, and Composition Studies</span>. He is currently serving as Co-Director of the DALN. Email Ben: <a href=\"mailto:mccorkle.12@osu.edu\">mccorkle.12@osu.edu</a>.\r\n       </p>\r\n\r\n       <p>\r\n           <strong>Michael Harker </strong> is an associate professor of English and teaches courses in composition, rhetoric, and literacy studies at Georgia State University. He is the author of <span class=\"italic\">The Lure of Literacy: A Critical Reception of the Compulsory Composition Debate (SUNY Press)</span>. He has published articles in <span class=\"italic\"> College Composition and Communication, Literacy in Composition Studies, Computers and Composition: An International Journal</span>, and <span class=\"italic\">Computers and Composition Online</span>. He is a Co-Director of the Digital Archive of Literacy Narratives (DALN). Email Michael: <a href=\"mailto:mharker@gsu.edu\">mharker@gsu.edu</a>.\r\n       </p>\r\n    </div>\r\n\r\n</div>\r\n<!-- <daln-footer></daln-footer> -->\r\n"
+module.exports = "<div id=\"wrapper\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n            <nav class=\"col-sm-3 col-md-2 bg-faded sidebar\">\r\n                <ul class=\"nav nav-pills flex-column admin-sidebar\">\r\n                    <li class=\"nav-item\">\r\n                        <a [routerLink]=\"['/admin/overview']\" class=\"nav-link\">Overview</a>\r\n                        <a [routerLink]=\"['/admin/statistics']\" class=\"nav-link\">Statistics</a>\r\n                        <a [routerLink]=\"['/admin/testing']\"\r\n                        class=\"nav-link\">Testing &amp; Service Status</a>\r\n                    </li>\r\n                </ul>\r\n                <ul class=\"nav nav-pills flex-column\">\r\n                    <li class=\"nav-item\">\r\n                        <a [routerLink]=\"['/admin/post-approval']\"\r\n                        class=\"nav-link\">Post Approval</a>\r\n                        <a [routerLink]=\"['/admin/post-editing']\" class=\"nav-link\">Post Editing</a>\r\n                        <a [routerLink]=\"['/admin/import-export']\"\r\n                        class=\"nav-link\">Import/Export Posts</a>\r\n                        <a [routerLink]=\"['/admin/withdrawn']\"\r\n                        class=\"nav-link\">Withdrawn Posts</a>\r\n                    </li>\r\n                </ul>\r\n                <ul class=\"nav nav-pills flex-column\">\r\n                    <li class=\"nav-item\">\r\n                        <a [routerLink]=\"['/admin/config']\"\r\n                        class=\"nav-link\">Other Settings</a>\r\n                    </li>\r\n                </ul>\r\n                <ul class=\"nav nav-pills flex-column\">\r\n                    <li class=\"nav-item\">\r\n                        <a [routerLink]=\"['/admin/admin-list']\"\r\n                        class=\"nav-link\">Admin List</a>\r\n                        <a [routerLink]=\"['/admin/metadata-list']\"\r\n                        class=\"nav-link\">Metadata Lists</a>\r\n                        <a [routerLink]=\"['/admin/log']\"\r\n                        class=\"nav-link\">Logs</a>\r\n                    </li>\r\n                </ul>\r\n            </nav>\r\n\r\n            <main class=\"col-sm-9  col-md-10  pt-3\">\r\n\r\n                <!-- Page Content -->\r\n                    <div id=\"page-wrapper\">\r\n                        <div class=\"container-fluid\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col-lg-12\">\r\n\r\n                                    <router-outlet></router-outlet>\r\n                                </div>\r\n                                <!-- /.col-lg-12 -->\r\n                            </div>\r\n                            <!-- /.row -->\r\n                        </div>\r\n                        <!-- /.container-fluid -->\r\n                    </div>\r\n                    <!-- /#page-wrapper -->\r\n            </main>\r\n\r\n            </div>\r\n\r\n\r\n\r\n    </div>\r\n\r\n\r\n\r\n\r\n</div>\r\n<!-- /#wrapper -->\r\n"
 
 /***/ }),
 
 /***/ 1093:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container responsive_home\">\r\n\r\n    <!-- Search Component -->\r\n    <!-- <app-search2 (searchResults)=\"displayResults($event)\"></app-search2> -->\r\n    <app-search2 (showHomePage)=\"showHomePage($event)\"></app-search2>\r\n\r\n    <app-slider *ngIf=\"showPage === true\"></app-slider>\r\n\r\n\r\n</div>\r\n\r\n\r\n<div class=\"container responsive_home\">\r\n\r\n        <div class=\"featured-post-list\" *ngIf=\"showPage === true\">\r\n            <h3>Featured Posts</h3>\r\n            <hr />\r\n            <post-list [getdev]=\"getdev\" [postList]=\"posts\"></post-list>\r\n        </div>\r\n\r\n\r\n\r\n</div>\r\n\r\n<div class=\"container responsive_home\">\r\n    <div class=\"center add-top-margin\">\r\n      <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n<daln-footer></daln-footer>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<p>\r\n  log works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1094:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"pagination-div\" *ngIf=\"buttonArray.length > 0\">\r\n\r\n    <post-list [getdev]=\"getdev\" [postList]=\"pagedPost\"></post-list>\r\n    <nav>\r\n      <ul class=\"pagination\">\r\n        <!-- <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Previous</a></li> -->\r\n        <li *ngFor=\"let button of displayButton\" class=\"page-item\">\r\n            <a class=\"page-link\" (click)=\"getPagedPost($event)\">{{button}}</a>\r\n        </li>\r\n        <!-- <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Next</a></li> -->\r\n      </ul>\r\n    </nav>\r\n\r\n</div>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<p>\r\n  metadata-list works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1095:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container add-top-margin\" *ngIf=\"postDetail\">\r\n  <button class=\"btn btn-primary\" type=\"submit\" (click)=\"goBack()\">Back</button>\r\n\r\n  <section>\r\n\r\n\r\n    <div class=\"row\">\r\n      <!-- Project info\r\n      ================================================== -->\r\n\r\n\r\n      <div class=\"col-md-4\">\r\n\r\n        <!-- Use the ul class. -->\r\n        <ul class=\"metadata\">\r\n          <li>\r\n            <h3>{{postDetail?.title}}</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          <li>\r\n            <h3>Date Submitted</h3>\r\n            <p>{{postDetail?.dateCreated}}</p>\r\n          </li>\r\n          <li>\r\n            <h3>Author</h3>\r\n            <p *ngFor=\"let author of postDetail.contributorAuthor\">{{author}}</p>\r\n          </li>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"tags\">\r\n          <li>\r\n            <h3>Collections</h3>\r\n            <p>All literacy narratives that are not part of a topical collection.</p>\r\n          </li>\r\n          <li>\r\n            <h3>Tags/Subjects</h3>\r\n            <ul class=\"tags-list\">\r\n              <!-- Track elements and limit tags with NgFor and TrackBy -->\r\n              <li class=\"tag\" *ngFor=\"let subject of postDetail.subject\"><span\r\n                class=\"label label-info\">{{subject}}</span></li>\r\n            </ul>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"description\">\r\n          <li>\r\n            <h3>Description</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          </li>\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <h3>Media List</h3>\r\n        <ul class=\"media\" *ngFor=\"let asset of postDetail.assetList\">\r\n\r\n            <li (click)=\"onSelectedAsset(asset)\">\r\n\r\n              <!-- Change event to be click event that changes player embed link -->\r\n              <h3>{{asset.assettitle}}</h3>\r\n              <p>{{asset.assetType}}: {{asset.assetDescription}}</p>\r\n              <p *ngIf=\"\">{{asset.assetType}}: {{asset.assetDescription}}</p>\r\n\r\n\r\n              <!--<div *ngIf=\"selectedAsset\">{{selectedAsset.assetID}}</div>-->\r\n            </li>\r\n\r\n          </ul>\r\n\r\n\r\n\r\n              <div id=\"metadata-table\">\r\n                   <table class=\"table table-sm table-bordered\">\r\n                       <thead >\r\n                         <tr>\r\n                          <th>Metadata Tag</th>\r\n                          <th>Content</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                          <tr>\r\n                               <td>identifierUri</td>\r\n                               <td>{{postDetail?.identifierUri}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAvailable</td>\r\n                               <td>{{postDetail?.dateAvailable}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAccessioned</td>\r\n                               <td>{{postDetail?.dateAccessioned}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateCreated</td>\r\n                               <td>{{postDetail?.dateCreated}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateIssued</td>\r\n                               <td>{{postDetail?.dateIssued}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorAuthor</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorAuthor\">{{postDetail?.contributorAuthor}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorInterviewer</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorInterviewer\">{{postDetail?.contributorInterviewer}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n\r\n                      </tbody>\r\n                   </table>\r\n              </div>\r\n\r\n\r\n\r\n\r\n\r\n      </div>\r\n\r\n      <!-- Video\r\n      ================================================== -->\r\n\r\n          <div class=\"col-md-8\">\r\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')\" [postAsset]=\"selectedAsset\"></app-player>\r\n              <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Text')\" [postAsset]=\"selectedAsset\"></app-player>\r\n        <!-- TODO: Remove style tag -->\r\n        <!-- social begin here -->\r\n        <ul class=\"socicon right\" style=\"margin-bottom:10px;\">\r\n          <!-- <li>\r\n            <a href=\"#\" class=\"share-icon\">\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"google\">\r\n            </a>\r\n          </li>-->\r\n          <li>\r\n            <a href=\"https://www.facebook.com/dalnarchive/\" class=\"facebook\" target=\"_blank\">\r\n            </a>\r\n          </li>\r\n          <li>\r\n              <a class=\"twitter twitter-share-button\"\r\n                href=\"https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}\" target=\"_blank\"  ></a>\r\n          </li>\r\n          <!-- <li>\r\n            <a href=\"#\" class=\"flickr\">\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"linkedin\">\r\n            </a>\r\n          </li>\r\n          <li class=\"last\">\r\n            <a href=\"#\" class=\"vimeo\">\r\n            </a>\r\n          </li> -->\r\n\r\n        </ul>\r\n\r\n\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n\r\n  </section>\r\n\r\n\r\n\r\n\r\n\r\n\r\n</div><!-- /container -->\r\n<div class=\"center\">\r\n    <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n</div>\r\n<daln-footer></daln-footer>\r\n"
+module.exports = "<h1>Overview</h1>\r\n<hr />\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 1096:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"child-container\">\r\n\r\n\r\n    <div id=\"search-component\">\r\n\r\n      <!-- Main Search Box -->\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-md-6\">\r\n         <div class=\"input-group\">\r\n                <!-- <span class=\"input-group-btn\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#options\">&#9660;</button>\r\n                </span> -->\r\n                <input #searchBox class=\"form-control\" id=\"search-box\" placeholder=\"Search the DALN...\" [value]=\"searchService.searchQuery\" (input)=\"searchService.searchQuery = $event.target.value\"/>\r\n               <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"onSearch(searchBox.value, results.value, pageNum.value)\" (click)=\"onSearch(searchBox.value, searchService.resultsSize, searchService.pageNumber)\" >Search</button>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <!-- Search Options -->\r\n      <!-- <div class=\"collapse\" id=\"options\">\r\n      <div class=\"card card-block\" [class.col-md-6]=\"showFull\" [class.offset-md-3]=\"showFull\">\r\n          <div class=\"card-header\" id=\"option-card\">\r\n              Options\r\n          </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-4\">\r\n                <div class=\"input-group \">\r\n                    <span class=\"input-group-addon\">Results per page</span>\r\n                    <input #results class=\"form-control\" id=\"results-size\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.resultsSize\"/>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-md-4 offset-md-4\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">Page Number</span>\r\n                    <input #pageNum class=\"form-control\" id=\"pageNumber\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.pageNumber\"/>\r\n                </div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n      </div> -->\r\n\r\n    <div class=\"row justify-content-center\">\r\n      <div class=\"add-top-margin col-md-6 alert alert-danger\" *ngIf=\"errorMessage != null\">\r\n          <p>\r\n              {{errorMessage}}\r\n          </p>\r\n      </div>\r\n     </div>\r\n\r\n    </div>\r\n\r\n\r\n\r\n\r\n    <!-- <daln-footer *ngIf=\"showUtil\"></daln-footer> -->\r\n\r\n</div>\r\n\r\n<app-pagination (currentPageEmitter)=\"getResultHandler($event)\" [startOffset]=\"startOffset\" [endOffset]=\"endOffset\" [resultList]=\"resultList\"></app-pagination>\r\n\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<div class=\"row\">\r\n    <h1>Approval List</h1>\r\n\r\n    <div class=\"col-md-4\">\r\n        <h1>Admin post approval</h1>\r\n        <p>\r\n            Enter the PostId:\r\n        </p>\r\n        <div class=\"input-group\">\r\n            <input type=\"text\" name=\"postId\" #postId/>\r\n\r\n            <span class=\"input-group-btn\">\r\n                <button class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" (keydown.enter)=\"approvePost(postId.value)\" (click)=\"approvePost(postId.value)\">Submit</button>\r\n            </span>\r\n\r\n        </div>\r\n    </div>\r\n\r\n    <post-list [getdev]=\"getdev\" [postList]=\"approval_list\"></post-list>\r\n\r\n</div>\r\n\r\n\r\n<div class=\"row justify-content-center\">\r\n  <div class=\"col-md-6 alert alert-danger\" *ngIf=\"errorMessage != null\">\r\n      <p>\r\n          {{errorMessage}}\r\n      </p>\r\n  </div>\r\n </div>\r\n"
 
 /***/ }),
 
 /***/ 1097:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div [@visibilityChanged]=\"visibility\" class=\"slider_component\">\r\n    <ngb-carousel>\r\n        <template ngbSlide>\r\n            <div class=\"image-background\">\r\n                       <img src=\"assets/images/slider/jimmy-carter.jpg\" class=\"slider-img\"/>\r\n               </div>\r\n\r\n            <div class=\"carousel-caption\">\r\n                <a href=\"https://thedaln.wordpress.com/2015/07/06/exciting-news-revealed-president-jimmy-carters-narrative/\" target=\"_blank\">\r\n                    <h3>Exciting News Revealed: President Jimmy Carter's Narrative!</h3>\r\n                    <p>“I’m afraid I don’t have a very good story.” This is how Jimmy Carter begins. It’s a humble beginning to a truly beautiful narrative</p>\r\n                </a>\r\n            </div>\r\n        </template>\r\n      <template ngbSlide>\r\n        <img src=\"assets/images/slider/books.jpg\" alt=\"DALN Intro\" class=\"slider-img\">\r\n        <div class=\"carousel-caption\">\r\n          <h3>DALN</h3>\r\n          <p>An Introduction to the Digital Archive of Literacy Narratives</p>\r\n        </div>\r\n      </template>\r\n      <template ngbSlide>\r\n        <img src=\"assets/images/slider/slider-img02.jpg\" alt=\"New DALN post\" class=\"slider-img\">\r\n        <div class=\"carousel-caption\">\r\n            <a href=\"https://thedaln.wordpress.com/2017/01/14/the-ocean/\" target=\"_blank\">\r\n                <h3>View new DALN Blog Post!</h3>\r\n                <p>If you ever find yourself overwhelmed with self-doubt about any writing project you may be doing, then check out the literacy narrative titled “The Ocean.”</p>\r\n            </a>\r\n        </div>\r\n      </template>\r\n\r\n    </ngb-carousel>\r\n</div>\r\n\r\n<!--\r\n<div class=\"carousel\">\r\n\r\n <ul class=\"images\">\r\n\r\n   <li *ngFor=\"let slide of slides\">\r\n     <h2>DALN</h2>\r\n     <img src=\"assets/images/slider/slider-img01.jpg\" alt=\"\">\r\n   </li>\r\n\r\n </ul>\r\n\r\n</div> -->\r\n"
+module.exports = "<p>\r\n  post-editing works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1098:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  admin-list works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  statistics works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1099:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"col-md-6 add-top-margin\">\r\n    <p>\r\n        Changes the number of pages to stay ahead of the user. Determines the amount of data to load in order to stay ahead of the user.\r\n\r\n        i.e. Staying 10 pages ahead of user x 10 results per page (user specified) = 100 posts to stay ahead of user\r\n\r\n        i.e. Staying 50 pages ahead of user x 10 results per page = 500 posts to stay ahead of user.\r\n\r\n        i.e. Staying 10 pages ahead of user x 100 results per page = 1000 posts to stay ahead of user.\r\n\r\n        Will affect loading search page times at larger values and decrease at smaller values. Default is set to 10.\r\n    </p>\r\n    <div class=\"input-group\">\r\n        <input type=\"number\" class=\"form-control\"  min=\"1\" max=\"100\" #pageHead [value]=\"searchService.pageHead\"/>\r\n\r\n        <span class=\"input-group-btn\">\r\n            <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"changePageHead(pageHead.value)\" (click)=\"changePageHead(pageHead.value)\">Change Page Head</button>\r\n        </span>\r\n\r\n    </div>\r\n\r\n</div>\r\n"
+module.exports = "<p>\r\n  testing works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1100:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  import-export works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  withdrawn works!\r\n</p>\r\n"
 
 /***/ }),
 
 /***/ 1101:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"wrapper\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n            <nav class=\"col-sm-3 col-md-2 bg-faded sidebar\">\r\n                <ul class=\"nav nav-pills flex-column admin-sidebar\">\r\n                    <li class=\"nav-item\">\r\n                        <a [routerLink]=\"['/admin/overview']\" class=\"nav-link\">Overview</a>\r\n                        <a [routerLink]=\"['/admin/statistics']\" class=\"nav-link\">Statistics</a>\r\n                        <a [routerLink]=\"['/admin/testing']\"\r\n                        class=\"nav-link\">Testing &amp; Service Status</a>\r\n                    </li>\r\n                </ul>\r\n                <ul class=\"nav nav-pills flex-column\">\r\n                    <li class=\"nav-item\">\r\n                        <a [routerLink]=\"['/admin/post-approval']\"\r\n                        class=\"nav-link\">Post Approval</a>\r\n                        <a [routerLink]=\"['/admin/post-editing']\" class=\"nav-link\">Post Editing</a>\r\n                        <a [routerLink]=\"['/admin/import-export']\"\r\n                        class=\"nav-link\">Import/Export Posts</a>\r\n                        <a [routerLink]=\"['/admin/withdrawn']\"\r\n                        class=\"nav-link\">Withdrawn Posts</a>\r\n                    </li>\r\n                </ul>\r\n                <ul class=\"nav nav-pills flex-column\">\r\n                    <li class=\"nav-item\">\r\n                        <a [routerLink]=\"['/admin/config']\"\r\n                        class=\"nav-link\">Other Settings</a>\r\n                    </li>\r\n                </ul>\r\n                <ul class=\"nav nav-pills flex-column\">\r\n                    <li class=\"nav-item\">\r\n                        <a [routerLink]=\"['/admin/admin-list']\"\r\n                        class=\"nav-link\">Admin List</a>\r\n                        <a [routerLink]=\"['/admin/metadata-list']\"\r\n                        class=\"nav-link\">Metadata Lists</a>\r\n                        <a [routerLink]=\"['/admin/log']\"\r\n                        class=\"nav-link\">Logs</a>\r\n                    </li>\r\n                </ul>\r\n            </nav>\r\n\r\n            <main class=\"col-sm-9  col-md-10  pt-3\">\r\n\r\n                <!-- Page Content -->\r\n                    <div id=\"page-wrapper\">\r\n                        <div class=\"container-fluid\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col-lg-12\">\r\n\r\n                                    <router-outlet></router-outlet>\r\n                                </div>\r\n                                <!-- /.col-lg-12 -->\r\n                            </div>\r\n                            <!-- /.row -->\r\n                        </div>\r\n                        <!-- /.container-fluid -->\r\n                    </div>\r\n                    <!-- /#page-wrapper -->\r\n            </main>\r\n\r\n            </div>\r\n\r\n\r\n\r\n    </div>\r\n\r\n\r\n\r\n\r\n</div>\r\n<!-- /#wrapper -->\r\n"
+module.exports = "\r\n<div class=\"center col-md-12 loading-grid\" *ngIf=\"loading\">\r\n     Loading...\r\n</div>\r\n\r\n<div class=\"col-md-12 failed-grid\" *ngIf=\"failed\">\r\n    Failed\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 1102:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  log works!\r\n</p>\r\n"
+module.exports = "<div class=\"container add-top-margin \">\r\n    <div class=\"center\">\r\n        <h1>404</h1>\r\n        <p>\r\n            Page not found.\r\n        </p>\r\n\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 1103:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  metadata-list works!\r\n</p>\r\n"
+module.exports = "<div class=\"postAsset\" *ngIf=\"postAsset\">\r\n\r\n  <!-- Null post - No Assets -->\r\n  <div class=\"postitem_null\" *ngIf=\"noAsset === true\">\r\n     <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Not recorded asset type -->\r\n  <div class=\"postitem_unknown\" *ngIf=\"postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'\">\r\n    <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Audio Post -->\r\n  <div class=\"postitem_soundcloud\" *ngIf=\"postAsset.assetType==='Audio'\">\r\n    <iframe id=\"sc-widget\" scrolling=\"no\" width=\"100%\" height=\"166px\"\r\n            [src]=\"url | safe\" ></iframe>\r\n  </div>\r\n\r\n  <!-- Video Post -->\r\n  <div class=\"postitem_video\" *ngIf=\"postAsset.assetType === 'Audio/Video'\">\r\n    <iframe *ngIf=\"!thumb\" class='sproutvideo-player' type='text/html'\r\n            [src]=\"url | safe\" width=\"100%\" height=\"436px\" allowfullscreen ></iframe>\r\n    <iframe *ngIf=\"thumb\" class='sproutvideo-player' type='text/html' width=\"100%\" height=\"166px\"\r\n            [src]=\"url | safe\" ></iframe>\r\n  </div>\r\n\r\n  <!-- Text post - only counts pdfs for now -->\r\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url !== null\">\r\n      <!-- <embed *ngIf=\"!thumb\" [src]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\" />\r\n      <embed *ngIf=\"thumb\" [src]=\"url | safe\" type=\"application/pdf\" /> -->\r\n      <object *ngIf=\"!thumb\" [data]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href=\"/pdf/sample-3pp.pdf\">Download PDF</a>.</p></object>\r\n      <object *ngIf=\"thumb\" [data]=\"url | safe\" type=\"application/pdf\"><p><b>This browser does not support PDFs. </b> Please click on the post to download the PDF to view.</p></object>\r\n  </div>\r\n\r\n  <!-- All other text posts that aren't pdf -->\r\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url === null\">\r\n      <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Web Asset -->\r\n  <!-- <div class=\"postitem_web\" *ngIf=\"postAsset.assetType === 'Web'\">\r\n      <iframe [src]=\"url | safe\" type=\"text/html\"></iframe>\r\n  </div> -->\r\n\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 1104:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  overview works!\r\n</p>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<div class=\"postItem\" *ngIf=\"postItem\">\r\n    <article class=\"card\">\r\n        <header class=\"post-header\">\r\n        <div class=\"hover-post\">\r\n            <a *ngIf=\"getdev == false\" class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n            <a *ngIf=\"getdev == true\" class=\"thumbnail\" [routerLink]=\"['/getdev/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n\r\n        </div>\r\n        </header>\r\n        <div class=\"card-block\">\r\n                <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\r\n                <div class=\"post-desc\">\r\n                    <div class=\"hover-post\">\r\n                        <a *ngIf=\"getdev == false\" class=\"thumbnail\" [routerLink]=\"['/getdev/detail', postItem.postId]\">\r\n                            <p>{{postItem?.description}}</p>\r\n                        </a>\r\n                        <a *ngIf=\"getdev == true\" class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                            <p>{{postItem?.description}}</p>\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n        </div>\r\n    </article>\r\n</div>\r\n\r\n<!-- <div class=\"postItem\" *ngIf=\"postItem\">\r\n      <div class=\"card\">\r\n        <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\r\n        <div class=\"card-block\">\r\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n          <p class=\"card-text\">{{postItem?.description}}</p>\r\n        </div>\r\n      </div>\r\n</div> -->\r\n\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 1105:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <h1>Approval List</h1>\r\n\r\n    <div class=\"col-md-4\">\r\n        <h1>Admin post approval</h1>\r\n        <p>\r\n            Enter the PostId:\r\n        </p>\r\n        <div class=\"input-group\">\r\n            <input type=\"text\" name=\"postId\" #postId/>\r\n\r\n            <span class=\"input-group-btn\">\r\n                <button class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" (keydown.enter)=\"approvePost(postId.value)\" (click)=\"approvePost(postId.value)\">Submit</button>\r\n            </span>\r\n\r\n        </div>\r\n    </div>\r\n\r\n    <post-list [getdev]=\"getdev\" [postList]=\"approval_list\"></post-list>\r\n\r\n</div>\r\n\r\n\r\n<div class=\"row justify-content-center\">\r\n  <div class=\"col-md-6 alert alert-danger\" *ngIf=\"errorMessage != null\">\r\n      <p>\r\n          {{errorMessage}}\r\n      </p>\r\n  </div>\r\n </div>\r\n"
-
-/***/ }),
-
-/***/ 1106:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\r\n  post-editing works!\r\n</p>\r\n"
-
-/***/ }),
-
-/***/ 1107:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\r\n  statistics works!\r\n</p>\r\n"
-
-/***/ }),
-
-/***/ 1108:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\r\n  testing works!\r\n</p>\r\n"
-
-/***/ }),
-
-/***/ 1109:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\r\n  withdrawn works!\r\n</p>\r\n"
-
-/***/ }),
-
-/***/ 1110:
-/***/ (function(module, exports) {
-
-module.exports = "\r\n<div class=\"center col-md-12 loading-grid\" *ngIf=\"loading\">\r\n     Loading...\r\n</div>\r\n\r\n<div class=\"col-md-12 failed-grid\" *ngIf=\"failed\">\r\n    Failed\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ 1111:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container add-top-margin \">\r\n    <div class=\"center\">\r\n        <h1>404</h1>\r\n        <p>\r\n            Page not found.\r\n        </p>\r\n\r\n    </div>\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ 1112:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"postAsset\" *ngIf=\"postAsset\">\r\n\r\n  <!-- Null post - No Assets -->\r\n  <div class=\"postitem_null\" *ngIf=\"noAsset === true\">\r\n     <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Not recorded asset type -->\r\n  <div class=\"postitem_unknown\" *ngIf=\"postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'\">\r\n    <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Audio Post -->\r\n  <div class=\"postitem_soundcloud\" *ngIf=\"postAsset.assetType==='Audio'\">\r\n    <iframe id=\"sc-widget\" scrolling=\"no\" width=\"100%\" height=\"166px\"\r\n            [src]=\"url | safe\" ></iframe>\r\n  </div>\r\n\r\n  <!-- Video Post -->\r\n  <div class=\"postitem_video\" *ngIf=\"postAsset.assetType === 'Audio/Video'\">\r\n    <iframe *ngIf=\"!thumb\" class='sproutvideo-player' type='text/html'\r\n            [src]=\"url | safe\" width=\"100%\" height=\"436px\" allowfullscreen ></iframe>\r\n    <iframe *ngIf=\"thumb\" class='sproutvideo-player' type='text/html' width=\"100%\" height=\"166px\"\r\n            [src]=\"url | safe\" ></iframe>\r\n  </div>\r\n\r\n  <!-- Text post - only counts pdfs for now -->\r\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url !== null\">\r\n      <!-- <embed *ngIf=\"!thumb\" [src]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\" />\r\n      <embed *ngIf=\"thumb\" [src]=\"url | safe\" type=\"application/pdf\" /> -->\r\n      <object *ngIf=\"!thumb\" [data]=\"url | safe\" width=\"800px\" height=\"800px\" type=\"application/pdf\"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href=\"/pdf/sample-3pp.pdf\">Download PDF</a>.</p></object>\r\n      <object *ngIf=\"thumb\" [data]=\"url | safe\" type=\"application/pdf\"><p><b>This browser does not support PDFs. </b> Please click on the post to download the PDF to view.</p></object>\r\n  </div>\r\n\r\n  <!-- All other text posts that aren't pdf -->\r\n  <div class=\"postitem_text\" *ngIf=\"postAsset.assetType === 'Text' && url === null\">\r\n      <img class=\"empty_post\" src=\"assets/img/example-sites/example1.jpg\" alt=\"example-item\">\r\n  </div>\r\n\r\n  <!-- Web Asset -->\r\n  <!-- <div class=\"postitem_web\" *ngIf=\"postAsset.assetType === 'Web'\">\r\n      <iframe [src]=\"url | safe\" type=\"text/html\"></iframe>\r\n  </div> -->\r\n\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ 1113:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"postItem\" *ngIf=\"postItem\">\r\n    <article class=\"card\">\r\n        <header class=\"post-header\">\r\n        <div class=\"hover-post\">\r\n            <a *ngIf=\"getdev == false\" class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n            <a *ngIf=\"getdev == true\" class=\"thumbnail\" [routerLink]=\"['/getdev/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n\r\n        </div>\r\n        </header>\r\n        <div class=\"card-block\">\r\n                <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\r\n                <div class=\"post-desc\">\r\n                    <div class=\"hover-post\">\r\n                        <a *ngIf=\"getdev == false\" class=\"thumbnail\" [routerLink]=\"['/getdev/detail', postItem.postId]\">\r\n                            <p>{{postItem?.description}}</p>\r\n                        </a>\r\n                        <a *ngIf=\"getdev == true\" class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                            <p>{{postItem?.description}}</p>\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n        </div>\r\n    </article>\r\n</div>\r\n\r\n<!-- <div class=\"postItem\" *ngIf=\"postItem\">\r\n      <div class=\"card\">\r\n        <app-player [postAsset]=\"getPreview(postItem.assetList)\" [thumb]=\"true\"></app-player>\r\n        <div class=\"card-block\">\r\n            <a class=\"thumbnail\" [routerLink]=\"['/detail', postItem.postId]\">\r\n                <h3>{{postItem?.title}}</h3>\r\n            </a>\r\n          <p class=\"card-text\">{{postItem?.description}}</p>\r\n        </div>\r\n      </div>\r\n</div> -->\r\n\r\n<router-outlet></router-outlet>\r\n"
-
-/***/ }),
-
-/***/ 1114:
-/***/ (function(module, exports) {
-
 module.exports = "<div class=\"row\" id=\"list-container\" *ngIf=\"postList\">\r\n\r\n    <!-- With Card Deck (differing post headers) -->\r\n    <!-- <div class=\"card-deck col-lg-3 col-md-4 col-sm-6\" *ngFor=\"let post of postList\">\r\n        <post-item class=\"media\" [postItem]=\"post\"></post-item>\r\n    </div> -->\r\n\r\n\r\n    <!-- Without Card Deck (same post headers but not on special cases) -->\r\n    <div class=\"col-lg-3 col-md-4 col-sm-6\" *ngFor=\"let post of postList\">\r\n        <post-item class=\"media\" [getdev]=\"getdev\" [postItem]=\"post\"></post-item>\r\n    </div>\r\n\r\n\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 115:
+/***/ 112:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -444,14 +444,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = __webpack_require__(0);
 var http_1 = __webpack_require__(169);
 //Use instead of Promise
-var Rx_1 = __webpack_require__(254);
+var Rx_1 = __webpack_require__(252);
 // Import RxJs required methods
 __webpack_require__(171);
 __webpack_require__(170);
-var environment_1 = __webpack_require__(124);
+var environment_1 = __webpack_require__(125);
 //Only used in Mock
-__webpack_require__(233);
-var mock_postlist_1 = __webpack_require__(794);
+__webpack_require__(230);
+var mock_postlist_1 = __webpack_require__(787);
 var PostService = (function () {
     function PostService(_http) {
         this._http = _http;
@@ -532,7 +532,7 @@ var _a;
 
 /***/ }),
 
-/***/ 124:
+/***/ 125:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -617,29 +617,29 @@ exports.environment = {
 
 /***/ }),
 
-/***/ 1403:
+/***/ 1393:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 1404:
+/***/ 1394:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 1405:
+/***/ 1395:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(667);
+module.exports = __webpack_require__(660);
 
 
 /***/ }),
 
-/***/ 325:
+/***/ 323:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -654,7 +654,7 @@ exports.Post = Post;
 
 /***/ }),
 
-/***/ 326:
+/***/ 324:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -671,12 +671,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = __webpack_require__(0);
 var http_1 = __webpack_require__(169);
 //Use instead of Promise
-var Rx_1 = __webpack_require__(254);
+var Rx_1 = __webpack_require__(252);
 // Import RxJs required methods
 __webpack_require__(171);
 __webpack_require__(170);
-__webpack_require__(233);
-var environment_1 = __webpack_require__(124);
+__webpack_require__(230);
+var environment_1 = __webpack_require__(125);
 var AuthService = (function () {
     function AuthService(_http) {
         this._http = _http;
@@ -725,14 +725,14 @@ var _a;
 
 /***/ }),
 
-/***/ 371:
+/***/ 369:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 502:
+/***/ 500:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -773,7 +773,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'daln-app',
-        template: __webpack_require__(1082)
+        template: __webpack_require__(1073)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof user_login_service_1.UserLoginService !== "undefined" && user_login_service_1.UserLoginService) === "function" && _b || Object])
 ], AppComponent);
@@ -783,7 +783,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 503:
+/***/ 501:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -798,7 +798,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var search_service_1 = __webpack_require__(80);
+var search_service_1 = __webpack_require__(81);
 var AboutComponent = (function () {
     function AboutComponent(_searchService) {
         this.title = 'About';
@@ -815,8 +815,8 @@ var AboutComponent = (function () {
 AboutComponent = __decorate([
     core_1.Component({
         selector: 'app-about',
-        template: __webpack_require__(1083),
-        styles: [__webpack_require__(1054)]
+        template: __webpack_require__(1074),
+        styles: [__webpack_require__(1045)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _a || Object])
 ], AboutComponent);
@@ -826,7 +826,7 @@ var _a;
 
 /***/ }),
 
-/***/ 504:
+/***/ 502:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -886,8 +886,8 @@ var ConfirmComponent = (function () {
 ConfirmComponent = __decorate([
     core_1.Component({
         selector: 'app-confirm',
-        template: __webpack_require__(1085),
-        styles: [__webpack_require__(1056)]
+        template: __webpack_require__(1076),
+        styles: [__webpack_require__(1047)]
     }),
     __metadata("design:paramtypes", [typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object])
 ], ConfirmComponent);
@@ -897,7 +897,7 @@ var _a, _b, _c, _d;
 
 /***/ }),
 
-/***/ 505:
+/***/ 503:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -946,8 +946,8 @@ var ForgotPasswordStep1Component = (function () {
 ForgotPasswordStep1Component = __decorate([
     core_1.Component({
         selector: 'app-forgot-password',
-        template: __webpack_require__(1086),
-        styles: [__webpack_require__(620)]
+        template: __webpack_require__(1077),
+        styles: [__webpack_require__(615)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof user_login_service_1.UserLoginService !== "undefined" && user_login_service_1.UserLoginService) === "function" && _b || Object])
 ], ForgotPasswordStep1Component);
@@ -987,8 +987,8 @@ var ForgotPasswordStep2Component = (function () {
 ForgotPasswordStep2Component = __decorate([
     core_1.Component({
         selector: 'app-forgot-password',
-        template: __webpack_require__(1087),
-        styles: [__webpack_require__(620)]
+        template: __webpack_require__(1078),
+        styles: [__webpack_require__(615)]
     }),
     __metadata("design:paramtypes", [typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object, typeof (_e = typeof user_login_service_1.UserLoginService !== "undefined" && user_login_service_1.UserLoginService) === "function" && _e || Object])
 ], ForgotPasswordStep2Component);
@@ -998,7 +998,7 @@ var _a, _b, _c, _d, _e;
 
 /***/ }),
 
-/***/ 506:
+/***/ 504:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1064,8 +1064,8 @@ var LoginComponent = (function () {
 LoginComponent = __decorate([
     core_1.Component({
         selector: 'app-login',
-        template: __webpack_require__(1088),
-        styles: [__webpack_require__(1057)]
+        template: __webpack_require__(1079),
+        styles: [__webpack_require__(1048)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof user_login_service_1.UserLoginService !== "undefined" && user_login_service_1.UserLoginService) === "function" && _b || Object])
 ], LoginComponent);
@@ -1075,7 +1075,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 507:
+/***/ 505:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1138,8 +1138,8 @@ var NewPasswordComponent = (function () {
 NewPasswordComponent = __decorate([
     core_1.Component({
         selector: 'app-new-password',
-        template: __webpack_require__(1089),
-        styles: [__webpack_require__(1058)]
+        template: __webpack_require__(1080),
+        styles: [__webpack_require__(1049)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof user_login_service_1.UserLoginService !== "undefined" && user_login_service_1.UserLoginService) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
 ], NewPasswordComponent);
@@ -1149,7 +1149,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 508:
+/***/ 506:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1174,8 +1174,8 @@ var RegisterComponent = (function () {
 RegisterComponent = __decorate([
     core_1.Component({
         selector: 'app-register',
-        template: __webpack_require__(1090),
-        styles: [__webpack_require__(1059)]
+        template: __webpack_require__(1081),
+        styles: [__webpack_require__(1050)]
     }),
     __metadata("design:paramtypes", [])
 ], RegisterComponent);
@@ -1184,7 +1184,7 @@ exports.RegisterComponent = RegisterComponent;
 
 /***/ }),
 
-/***/ 509:
+/***/ 507:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1209,8 +1209,8 @@ var ResendComponent = (function () {
 ResendComponent = __decorate([
     core_1.Component({
         selector: 'app-resend',
-        template: __webpack_require__(1091),
-        styles: [__webpack_require__(1060)]
+        template: __webpack_require__(1082),
+        styles: [__webpack_require__(1051)]
     }),
     __metadata("design:paramtypes", [])
 ], ResendComponent);
@@ -1219,7 +1219,7 @@ exports.ResendComponent = ResendComponent;
 
 /***/ }),
 
-/***/ 510:
+/***/ 508:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1245,8 +1245,8 @@ var ContactComponent = (function () {
 ContactComponent = __decorate([
     core_1.Component({
         selector: 'app-contact',
-        template: __webpack_require__(1092),
-        styles: [__webpack_require__(1061)]
+        template: __webpack_require__(1083),
+        styles: [__webpack_require__(1052)]
     }),
     __metadata("design:paramtypes", [])
 ], ContactComponent);
@@ -1255,7 +1255,7 @@ exports.ContactComponent = ContactComponent;
 
 /***/ }),
 
-/***/ 511:
+/***/ 509:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1271,10 +1271,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var common_1 = __webpack_require__(21);
-var post_service_1 = __webpack_require__(115);
-var search_service_1 = __webpack_require__(80);
+var post_service_1 = __webpack_require__(112);
+var search_service_1 = __webpack_require__(81);
 // import { routerTransition } from '../router.animations';
-__webpack_require__(626);
+__webpack_require__(620);
 var HomeComponent = (function () {
     function HomeComponent(otherloc, _postService, _searchService) {
         this._postService = _postService;
@@ -1336,8 +1336,8 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'home',
-        template: __webpack_require__(1093),
-        styles: [__webpack_require__(1062)]
+        template: __webpack_require__(1084),
+        styles: [__webpack_require__(1053)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof common_1.PlatformLocation !== "undefined" && common_1.PlatformLocation) === "function" && _a || Object, typeof (_b = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _b || Object, typeof (_c = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _c || Object])
 ], HomeComponent);
@@ -1347,7 +1347,7 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 512:
+/***/ 510:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1364,9 +1364,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(32);
 var common_1 = __webpack_require__(21);
-var post_service_1 = __webpack_require__(115);
-var post_model_1 = __webpack_require__(325);
-__webpack_require__(627);
+var post_service_1 = __webpack_require__(112);
+var post_model_1 = __webpack_require__(323);
+__webpack_require__(621);
 var PostDetailComponent = (function () {
     function PostDetailComponent(_postService, _route, _location, router) {
         this._postService = _postService;
@@ -1387,7 +1387,6 @@ var PostDetailComponent = (function () {
             else {
                 _this.onDetail();
                 _this.route = "http%3A%2F%2Fdaln.gsu.edu%2F%23%2Fdetail%2F" + val.url.substring(8);
-                console.log(_this.route);
             }
         });
     };
@@ -1397,7 +1396,7 @@ var PostDetailComponent = (function () {
             .subscribe(function (details) {
             _this.loading = false;
             _this.postDetail = details;
-            // console.log(details);
+            console.log(details);
             // twitter doesn't take over 140 characters in the title
             // slice it down to 50
             _this.text = _this.postDetail.title.length > 140 ? _this.postDetail.title.substring(0, 50) + '...' : _this.postDetail.title;
@@ -1428,28 +1427,6 @@ var PostDetailComponent = (function () {
     PostDetailComponent.prototype.onSelectedAsset = function (asset) {
         this.selectedAsset = asset;
     };
-    PostDetailComponent.prototype.ngAfterViewInit = function () {
-        this.sub = this.router.events.subscribe(function (val) {
-            if (val instanceof router_1.NavigationEnd) {
-                window.twttr = (function (d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
-                    if (d.getElementById(id))
-                        return t;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "https://platform.twitter.com/widgets.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                    t._e = [];
-                    t.ready = function (f) {
-                        t._e.push(f);
-                    };
-                    return t;
-                }(document, "script", "twitter-wjs"));
-                if (window.twttr.ready())
-                    window.twttr.widgets.load();
-            }
-        });
-    };
     return PostDetailComponent;
 }());
 __decorate([
@@ -1459,18 +1436,18 @@ __decorate([
 PostDetailComponent = __decorate([
     core_1.Component({
         selector: 'post-detail',
-        template: __webpack_require__(1095),
-        styles: [__webpack_require__(1063)]
+        template: __webpack_require__(1086),
+        styles: [__webpack_require__(1054)]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _b || Object, typeof (_c = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _c || Object, typeof (_d = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _d || Object, typeof (_f = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _f || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _b || Object, typeof (_c = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _c || Object, typeof (_d = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _d || Object, typeof (_e = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _e || Object])
 ], PostDetailComponent);
 exports.PostDetailComponent = PostDetailComponent;
-var _a, _b, _c, _d, _f;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=post-detail.component.js.map
 
 /***/ }),
 
-/***/ 513:
+/***/ 511:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1495,8 +1472,8 @@ var AdminListComponent = (function () {
 AdminListComponent = __decorate([
     core_1.Component({
         selector: 'app-admin-list',
-        template: __webpack_require__(1098),
-        styles: [__webpack_require__(1065)]
+        template: __webpack_require__(1089),
+        styles: [__webpack_require__(1056)]
     }),
     __metadata("design:paramtypes", [])
 ], AdminListComponent);
@@ -1505,7 +1482,7 @@ exports.AdminListComponent = AdminListComponent;
 
 /***/ }),
 
-/***/ 514:
+/***/ 512:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1521,8 +1498,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(32);
-var auth_service_1 = __webpack_require__(326);
-var search_service_1 = __webpack_require__(80);
+var auth_service_1 = __webpack_require__(324);
+var search_service_1 = __webpack_require__(81);
 var user_login_service_1 = __webpack_require__(61);
 var ConfigComponent = (function () {
     function ConfigComponent(authService, searchService, userService, router) {
@@ -1549,8 +1526,8 @@ var ConfigComponent = (function () {
 ConfigComponent = __decorate([
     core_1.Component({
         selector: 'app-config',
-        template: __webpack_require__(1099),
-        styles: [__webpack_require__(1066)]
+        template: __webpack_require__(1090),
+        styles: [__webpack_require__(1057)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" && _a || Object, typeof (_b = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _b || Object, typeof (_c = typeof user_login_service_1.UserLoginService !== "undefined" && user_login_service_1.UserLoginService) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object])
 ], ConfigComponent);
@@ -1560,7 +1537,7 @@ var _a, _b, _c, _d;
 
 /***/ }),
 
-/***/ 515:
+/***/ 513:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1585,8 +1562,8 @@ var ImportExportComponent = (function () {
 ImportExportComponent = __decorate([
     core_1.Component({
         selector: 'app-import-export',
-        template: __webpack_require__(1100),
-        styles: [__webpack_require__(1067)]
+        template: __webpack_require__(1091),
+        styles: [__webpack_require__(1058)]
     }),
     __metadata("design:paramtypes", [])
 ], ImportExportComponent);
@@ -1595,7 +1572,7 @@ exports.ImportExportComponent = ImportExportComponent;
 
 /***/ }),
 
-/***/ 516:
+/***/ 514:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1611,7 +1588,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(32);
-var search_service_1 = __webpack_require__(80);
+var search_service_1 = __webpack_require__(81);
 var user_login_service_1 = __webpack_require__(61);
 var AdminComponent = (function () {
     function AdminComponent(searchService, userService, router) {
@@ -1637,8 +1614,8 @@ var AdminComponent = (function () {
 AdminComponent = __decorate([
     core_1.Component({
         selector: 'app-admin',
-        template: __webpack_require__(1101),
-        styles: [__webpack_require__(1068)]
+        template: __webpack_require__(1092),
+        styles: [__webpack_require__(1059)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _a || Object, typeof (_b = typeof user_login_service_1.UserLoginService !== "undefined" && user_login_service_1.UserLoginService) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
 ], AdminComponent);
@@ -1648,7 +1625,7 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 517:
+/***/ 515:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1673,8 +1650,8 @@ var LogComponent = (function () {
 LogComponent = __decorate([
     core_1.Component({
         selector: 'app-log',
-        template: __webpack_require__(1102),
-        styles: [__webpack_require__(1069)]
+        template: __webpack_require__(1093),
+        styles: [__webpack_require__(1060)]
     }),
     __metadata("design:paramtypes", [])
 ], LogComponent);
@@ -1683,7 +1660,7 @@ exports.LogComponent = LogComponent;
 
 /***/ }),
 
-/***/ 518:
+/***/ 516:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1708,8 +1685,8 @@ var MetadataListComponent = (function () {
 MetadataListComponent = __decorate([
     core_1.Component({
         selector: 'app-metadata-list',
-        template: __webpack_require__(1103),
-        styles: [__webpack_require__(1070)]
+        template: __webpack_require__(1094),
+        styles: [__webpack_require__(1061)]
     }),
     __metadata("design:paramtypes", [])
 ], MetadataListComponent);
@@ -1718,7 +1695,7 @@ exports.MetadataListComponent = MetadataListComponent;
 
 /***/ }),
 
-/***/ 519:
+/***/ 517:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1743,8 +1720,8 @@ var OverviewComponent = (function () {
 OverviewComponent = __decorate([
     core_1.Component({
         selector: 'app-overview',
-        template: __webpack_require__(1104),
-        styles: [__webpack_require__(1071)]
+        template: __webpack_require__(1095),
+        styles: [__webpack_require__(1062)]
     }),
     __metadata("design:paramtypes", [])
 ], OverviewComponent);
@@ -1753,7 +1730,7 @@ exports.OverviewComponent = OverviewComponent;
 
 /***/ }),
 
-/***/ 520:
+/***/ 518:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1769,8 +1746,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(32);
-var auth_service_1 = __webpack_require__(326);
-var post_service_1 = __webpack_require__(115);
+var auth_service_1 = __webpack_require__(324);
+var post_service_1 = __webpack_require__(112);
 var user_login_service_1 = __webpack_require__(61);
 var PostApprovalComponent = (function () {
     function PostApprovalComponent(authService, postService, userService, router) {
@@ -1808,8 +1785,8 @@ var PostApprovalComponent = (function () {
 PostApprovalComponent = __decorate([
     core_1.Component({
         selector: 'app-post-approval',
-        template: __webpack_require__(1105),
-        styles: [__webpack_require__(1072)]
+        template: __webpack_require__(1096),
+        styles: [__webpack_require__(1063)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" && _a || Object, typeof (_b = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _b || Object, typeof (_c = typeof user_login_service_1.UserLoginService !== "undefined" && user_login_service_1.UserLoginService) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object])
 ], PostApprovalComponent);
@@ -1819,7 +1796,7 @@ var _a, _b, _c, _d;
 
 /***/ }),
 
-/***/ 521:
+/***/ 519:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1844,8 +1821,8 @@ var PostEditingComponent = (function () {
 PostEditingComponent = __decorate([
     core_1.Component({
         selector: 'app-post-editing',
-        template: __webpack_require__(1106),
-        styles: [__webpack_require__(1073)]
+        template: __webpack_require__(1097),
+        styles: [__webpack_require__(1064)]
     }),
     __metadata("design:paramtypes", [])
 ], PostEditingComponent);
@@ -1854,7 +1831,7 @@ exports.PostEditingComponent = PostEditingComponent;
 
 /***/ }),
 
-/***/ 522:
+/***/ 520:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1879,8 +1856,8 @@ var StatisticsComponent = (function () {
 StatisticsComponent = __decorate([
     core_1.Component({
         selector: 'app-statistics',
-        template: __webpack_require__(1107),
-        styles: [__webpack_require__(1074)]
+        template: __webpack_require__(1098),
+        styles: [__webpack_require__(1065)]
     }),
     __metadata("design:paramtypes", [])
 ], StatisticsComponent);
@@ -1889,7 +1866,7 @@ exports.StatisticsComponent = StatisticsComponent;
 
 /***/ }),
 
-/***/ 523:
+/***/ 521:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1914,8 +1891,8 @@ var TestingComponent = (function () {
 TestingComponent = __decorate([
     core_1.Component({
         selector: 'app-testing',
-        template: __webpack_require__(1108),
-        styles: [__webpack_require__(1075)]
+        template: __webpack_require__(1099),
+        styles: [__webpack_require__(1066)]
     }),
     __metadata("design:paramtypes", [])
 ], TestingComponent);
@@ -1924,7 +1901,7 @@ exports.TestingComponent = TestingComponent;
 
 /***/ }),
 
-/***/ 524:
+/***/ 522:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1949,8 +1926,8 @@ var WithdrawnComponent = (function () {
 WithdrawnComponent = __decorate([
     core_1.Component({
         selector: 'app-withdrawn',
-        template: __webpack_require__(1109),
-        styles: [__webpack_require__(1076)]
+        template: __webpack_require__(1100),
+        styles: [__webpack_require__(1067)]
     }),
     __metadata("design:paramtypes", [])
 ], WithdrawnComponent);
@@ -1959,7 +1936,7 @@ exports.WithdrawnComponent = WithdrawnComponent;
 
 /***/ }),
 
-/***/ 525:
+/***/ 523:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1977,7 +1954,7 @@ exports.Asset = Asset;
 
 /***/ }),
 
-/***/ 526:
+/***/ 524:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1992,9 +1969,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var environment_1 = __webpack_require__(124);
-var amazon_cognito_identity_js_1 = __webpack_require__(539);
-var AWS = __webpack_require__(116);
+var environment_1 = __webpack_require__(125);
+var amazon_cognito_identity_js_1 = __webpack_require__(537);
+var AWS = __webpack_require__(113);
 var CognitoUtil = (function () {
     function CognitoUtil() {
     }
@@ -2126,7 +2103,7 @@ exports.CognitoUtil = CognitoUtil;
 
 /***/ }),
 
-/***/ 527:
+/***/ 525:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2151,8 +2128,8 @@ var PageNotFoundComponent = (function () {
 PageNotFoundComponent = __decorate([
     core_1.Component({
         selector: 'app-page-not-found',
-        template: __webpack_require__(1111),
-        styles: [__webpack_require__(1078)]
+        template: __webpack_require__(1102),
+        styles: [__webpack_require__(1069)]
     }),
     __metadata("design:paramtypes", [])
 ], PageNotFoundComponent);
@@ -2161,7 +2138,7 @@ exports.PageNotFoundComponent = PageNotFoundComponent;
 
 /***/ }),
 
-/***/ 528:
+/***/ 526:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2176,7 +2153,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var search_service_1 = __webpack_require__(80);
+var search_service_1 = __webpack_require__(81);
 var PostListComponent = (function () {
     function PostListComponent(page) {
         this.page = page;
@@ -2202,8 +2179,8 @@ __decorate([
 PostListComponent = __decorate([
     core_1.Component({
         selector: 'post-list',
-        template: __webpack_require__(1114),
-        styles: [__webpack_require__(1081)]
+        template: __webpack_require__(1105),
+        styles: [__webpack_require__(1072)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _a || Object])
 ], PostListComponent);
@@ -2228,10 +2205,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var cognito_service_1 = __webpack_require__(526);
-var amazon_cognito_identity_js_1 = __webpack_require__(539);
-var AWS = __webpack_require__(116);
-var STS = __webpack_require__(149);
+var cognito_service_1 = __webpack_require__(524);
+var amazon_cognito_identity_js_1 = __webpack_require__(537);
+var AWS = __webpack_require__(113);
+var STS = __webpack_require__(150);
 var UserLoginService = (function () {
     function UserLoginService(cognitoUtil) {
         this.cognitoUtil = cognitoUtil;
@@ -2389,19 +2366,19 @@ var _a;
 
 /***/ }),
 
-/***/ 620:
+/***/ 615:
 /***/ (function(module, exports) {
 
 module.exports = ""
 
 /***/ }),
 
-/***/ 666:
+/***/ 659:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"app/submit-form/submit-form.module": [
-		1407,
+		1397,
 		0
 	]
 };
@@ -2416,21 +2393,21 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 666;
+webpackAsyncContext.id = 659;
 
 
 /***/ }),
 
-/***/ 667:
+/***/ 660:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-__webpack_require__(798);
-var platform_browser_dynamic_1 = __webpack_require__(752);
+__webpack_require__(791);
+var platform_browser_dynamic_1 = __webpack_require__(745);
 var core_1 = __webpack_require__(0);
-var environment_1 = __webpack_require__(124);
-var _1 = __webpack_require__(792);
+var environment_1 = __webpack_require__(125);
+var _1 = __webpack_require__(785);
 if (environment_1.environment.production) {
     core_1.enableProdMode();
 }
@@ -2439,7 +2416,7 @@ platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(_1.AppModule
 
 /***/ }),
 
-/***/ 786:
+/***/ 779:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2457,31 +2434,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(32);
 // Main Components
-var about_component_1 = __webpack_require__(503);
-var confirm_component_1 = __webpack_require__(504);
-var forgot_password_component_1 = __webpack_require__(505);
-var home_component_1 = __webpack_require__(511);
-var login_component_1 = __webpack_require__(506);
-var new_password_component_1 = __webpack_require__(507);
-var page_not_found_component_1 = __webpack_require__(527);
-var resend_component_1 = __webpack_require__(509);
-var post_list_component_1 = __webpack_require__(528);
-var post_detail_component_1 = __webpack_require__(512);
-var register_component_1 = __webpack_require__(508);
-var contact_component_1 = __webpack_require__(510);
+var about_component_1 = __webpack_require__(501);
+var confirm_component_1 = __webpack_require__(502);
+var forgot_password_component_1 = __webpack_require__(503);
+var home_component_1 = __webpack_require__(509);
+var login_component_1 = __webpack_require__(504);
+var new_password_component_1 = __webpack_require__(505);
+var page_not_found_component_1 = __webpack_require__(525);
+var resend_component_1 = __webpack_require__(507);
+var post_list_component_1 = __webpack_require__(526);
+var post_detail_component_1 = __webpack_require__(510);
+var register_component_1 = __webpack_require__(506);
+var contact_component_1 = __webpack_require__(508);
 // Secure Components
-var admin_component_1 = __webpack_require__(516);
-var admin_list_component_1 = __webpack_require__(513);
-var config_component_1 = __webpack_require__(514);
-var import_export_component_1 = __webpack_require__(515);
-var log_component_1 = __webpack_require__(517);
-var metadata_list_component_1 = __webpack_require__(518);
-var overview_component_1 = __webpack_require__(519);
-var post_approval_component_1 = __webpack_require__(520);
-var post_editing_component_1 = __webpack_require__(521);
-var statistics_component_1 = __webpack_require__(522);
-var testing_component_1 = __webpack_require__(523);
-var withdrawn_component_1 = __webpack_require__(524);
+var admin_component_1 = __webpack_require__(514);
+var admin_list_component_1 = __webpack_require__(511);
+var config_component_1 = __webpack_require__(512);
+var import_export_component_1 = __webpack_require__(513);
+var log_component_1 = __webpack_require__(515);
+var metadata_list_component_1 = __webpack_require__(516);
+var overview_component_1 = __webpack_require__(517);
+var post_approval_component_1 = __webpack_require__(518);
+var post_editing_component_1 = __webpack_require__(519);
+var statistics_component_1 = __webpack_require__(520);
+var testing_component_1 = __webpack_require__(521);
+var withdrawn_component_1 = __webpack_require__(522);
 var routes = [
     {
         path: '',
@@ -2577,7 +2554,7 @@ exports.AppRoutingModule = AppRoutingModule;
 
 /***/ }),
 
-/***/ 787:
+/***/ 780:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2592,56 +2569,56 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 // Defaults
-var app_routing_module_1 = __webpack_require__(786);
-var platform_browser_1 = __webpack_require__(111);
+var app_routing_module_1 = __webpack_require__(779);
+var platform_browser_1 = __webpack_require__(108);
 var core_1 = __webpack_require__(0);
-var forms_1 = __webpack_require__(70);
+var forms_1 = __webpack_require__(71);
 var http_1 = __webpack_require__(169);
 var common_1 = __webpack_require__(21);
 // Main Components
-var about_component_1 = __webpack_require__(503);
-var app_component_1 = __webpack_require__(502);
-var app_footer_component_1 = __webpack_require__(788);
-var contact_component_1 = __webpack_require__(510);
-var fancy_loader_component_1 = __webpack_require__(795);
-var home_component_1 = __webpack_require__(511);
-var ng_bootstrap_1 = __webpack_require__(784);
-var page_not_found_component_1 = __webpack_require__(527);
-var pagination_component_1 = __webpack_require__(789);
-var player_component_1 = __webpack_require__(796);
-var post_item_component_1 = __webpack_require__(797);
-var post_list_component_1 = __webpack_require__(528);
-var post_detail_component_1 = __webpack_require__(512);
-var search_component_1 = __webpack_require__(790);
-var slider_component_1 = __webpack_require__(791);
+var about_component_1 = __webpack_require__(501);
+var app_component_1 = __webpack_require__(500);
+var app_footer_component_1 = __webpack_require__(781);
+var contact_component_1 = __webpack_require__(508);
+var fancy_loader_component_1 = __webpack_require__(788);
+var home_component_1 = __webpack_require__(509);
+var ng_bootstrap_1 = __webpack_require__(777);
+var page_not_found_component_1 = __webpack_require__(525);
+var pagination_component_1 = __webpack_require__(782);
+var player_component_1 = __webpack_require__(789);
+var post_item_component_1 = __webpack_require__(790);
+var post_list_component_1 = __webpack_require__(526);
+var post_detail_component_1 = __webpack_require__(510);
+var search_component_1 = __webpack_require__(783);
+var slider_component_1 = __webpack_require__(784);
 // Auth Components
-var confirm_component_1 = __webpack_require__(504);
-var forgot_password_component_1 = __webpack_require__(505);
-var login_component_1 = __webpack_require__(506);
-var new_password_component_1 = __webpack_require__(507);
-var resend_component_1 = __webpack_require__(509);
-var register_component_1 = __webpack_require__(508);
+var confirm_component_1 = __webpack_require__(502);
+var forgot_password_component_1 = __webpack_require__(503);
+var login_component_1 = __webpack_require__(504);
+var new_password_component_1 = __webpack_require__(505);
+var resend_component_1 = __webpack_require__(507);
+var register_component_1 = __webpack_require__(506);
 // Secure Components
-var admin_component_1 = __webpack_require__(516);
-var admin_list_component_1 = __webpack_require__(513);
-var config_component_1 = __webpack_require__(514);
-var import_export_component_1 = __webpack_require__(515);
-var log_component_1 = __webpack_require__(517);
-var metadata_list_component_1 = __webpack_require__(518);
-var overview_component_1 = __webpack_require__(519);
-var post_approval_component_1 = __webpack_require__(520);
-var post_editing_component_1 = __webpack_require__(521);
-var statistics_component_1 = __webpack_require__(522);
-var testing_component_1 = __webpack_require__(523);
-var withdrawn_component_1 = __webpack_require__(524);
+var admin_component_1 = __webpack_require__(514);
+var admin_list_component_1 = __webpack_require__(511);
+var config_component_1 = __webpack_require__(512);
+var import_export_component_1 = __webpack_require__(513);
+var log_component_1 = __webpack_require__(515);
+var metadata_list_component_1 = __webpack_require__(516);
+var overview_component_1 = __webpack_require__(517);
+var post_approval_component_1 = __webpack_require__(518);
+var post_editing_component_1 = __webpack_require__(519);
+var statistics_component_1 = __webpack_require__(520);
+var testing_component_1 = __webpack_require__(521);
+var withdrawn_component_1 = __webpack_require__(522);
 // Services
-var post_service_1 = __webpack_require__(115);
-var search_service_1 = __webpack_require__(80);
-var auth_service_1 = __webpack_require__(326);
-var cognito_service_1 = __webpack_require__(526);
+var post_service_1 = __webpack_require__(112);
+var search_service_1 = __webpack_require__(81);
+var auth_service_1 = __webpack_require__(324);
+var cognito_service_1 = __webpack_require__(524);
 var user_login_service_1 = __webpack_require__(61);
 // Other
-var safe_pipe_1 = __webpack_require__(793);
+var safe_pipe_1 = __webpack_require__(786);
 var AppModule = (function () {
     function AppModule() {
     }
@@ -2705,7 +2682,7 @@ exports.AppModule = AppModule;
 
 /***/ }),
 
-/***/ 788:
+/***/ 781:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2764,8 +2741,8 @@ var AppFooterComponent = (function () {
 AppFooterComponent = __decorate([
     core_1.Component({
         selector: 'daln-footer',
-        template: __webpack_require__(1084),
-        styles: [__webpack_require__(1055)]
+        template: __webpack_require__(1075),
+        styles: [__webpack_require__(1046)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _b || Object])
 ], AppFooterComponent);
@@ -2775,7 +2752,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 789:
+/***/ 782:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2791,7 +2768,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(32);
-var search_service_1 = __webpack_require__(80);
+var search_service_1 = __webpack_require__(81);
 var PaginationComponent = (function () {
     function PaginationComponent(searchService, router) {
         var _this = this;
@@ -2910,7 +2887,7 @@ __decorate([
 PaginationComponent = __decorate([
     core_1.Component({
         selector: 'app-pagination',
-        template: __webpack_require__(1094)
+        template: __webpack_require__(1085)
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
 ], PaginationComponent);
@@ -2920,7 +2897,7 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 790:
+/***/ 783:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2937,8 +2914,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = __webpack_require__(0);
 var common_1 = __webpack_require__(21);
 var router_1 = __webpack_require__(32);
-var search_service_1 = __webpack_require__(80);
-var post_service_1 = __webpack_require__(115);
+var search_service_1 = __webpack_require__(81);
+var post_service_1 = __webpack_require__(112);
 var SearchComponent = (function () {
     function SearchComponent(location, router, _postService, _searchService) {
         this._postService = _postService;
@@ -3030,8 +3007,8 @@ __decorate([
 SearchComponent = __decorate([
     core_1.Component({
         selector: 'app-search2',
-        template: __webpack_require__(1096),
-        styles: [__webpack_require__(1064)],
+        template: __webpack_require__(1087),
+        styles: [__webpack_require__(1055)],
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _d || Object, typeof (_e = typeof search_service_1.SearchService !== "undefined" && search_service_1.SearchService) === "function" && _e || Object])
 ], SearchComponent);
@@ -3041,7 +3018,7 @@ var _a, _b, _c, _d, _e;
 
 /***/ }),
 
-/***/ 791:
+/***/ 784:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3077,7 +3054,7 @@ SliderComponent = __decorate([
         //Name of our tag
         selector: 'app-slider',
         //Template for the tag
-        template: __webpack_require__(1097),
+        template: __webpack_require__(1088),
         //Styles for the tag
         styles: ["slider.component.css"],
         animations: [
@@ -3095,7 +3072,7 @@ exports.SliderComponent = SliderComponent;
 
 /***/ }),
 
-/***/ 792:
+/***/ 785:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3103,13 +3080,13 @@ exports.SliderComponent = SliderComponent;
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-__export(__webpack_require__(502));
-__export(__webpack_require__(787));
+__export(__webpack_require__(500));
+__export(__webpack_require__(780));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 793:
+/***/ 786:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3124,7 +3101,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var platform_browser_1 = __webpack_require__(111);
+var platform_browser_1 = __webpack_require__(108);
 var SafePipe = (function () {
     function SafePipe(sanitizer) {
         this.sanitizer = sanitizer;
@@ -3146,7 +3123,7 @@ var _a;
 
 /***/ }),
 
-/***/ 794:
+/***/ 787:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3813,7 +3790,7 @@ exports.POSTS = {
 
 /***/ }),
 
-/***/ 795:
+/***/ 788:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3848,8 +3825,8 @@ __decorate([
 FancyLoaderComponent = __decorate([
     core_1.Component({
         selector: 'app-fancy-loader',
-        template: __webpack_require__(1110),
-        styles: [__webpack_require__(1077)]
+        template: __webpack_require__(1101),
+        styles: [__webpack_require__(1068)]
     }),
     __metadata("design:paramtypes", [])
 ], FancyLoaderComponent);
@@ -3858,7 +3835,7 @@ exports.FancyLoaderComponent = FancyLoaderComponent;
 
 /***/ }),
 
-/***/ 796:
+/***/ 789:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3873,8 +3850,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var platform_browser_1 = __webpack_require__(111);
-var asset_model_1 = __webpack_require__(525);
+var platform_browser_1 = __webpack_require__(108);
+var asset_model_1 = __webpack_require__(523);
 var common_1 = __webpack_require__(21);
 var router_1 = __webpack_require__(32);
 var PlayerComponent = (function () {
@@ -3884,15 +3861,6 @@ var PlayerComponent = (function () {
         this._router = _router;
     }
     PlayerComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this._router.events.subscribe(function (val) {
-            // see also
-            _this.route = _this._location.path();
-            _this.matchRoute = "/detail";
-            if (_this.route.indexOf(_this.matchRoute) !== -1) {
-                _this.thumb = false;
-            }
-        });
         this.getUrl(this.postAsset);
     };
     PlayerComponent.prototype.getUrl = function (asset) {
@@ -3934,8 +3902,8 @@ __decorate([
 PlayerComponent = __decorate([
     core_1.Component({
         selector: 'app-player',
-        template: __webpack_require__(1112),
-        styles: [__webpack_require__(1079)]
+        template: __webpack_require__(1103),
+        styles: [__webpack_require__(1070)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof platform_browser_1.DomSanitizer !== "undefined" && platform_browser_1.DomSanitizer) === "function" && _b || Object, typeof (_c = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object])
 ], PlayerComponent);
@@ -3945,7 +3913,7 @@ var _a, _b, _c, _d;
 
 /***/ }),
 
-/***/ 797:
+/***/ 790:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3961,8 +3929,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(32);
-var post_service_1 = __webpack_require__(115);
-var post_model_1 = __webpack_require__(325);
+var post_service_1 = __webpack_require__(112);
+var post_model_1 = __webpack_require__(323);
 var PostItemComponent = (function () {
     function PostItemComponent(_router, _postService) {
         this._router = _router;
@@ -3987,8 +3955,8 @@ __decorate([
 PostItemComponent = __decorate([
     core_1.Component({
         selector: 'post-item',
-        template: __webpack_require__(1113),
-        styles: [__webpack_require__(1080)]
+        template: __webpack_require__(1104),
+        styles: [__webpack_require__(1071)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof post_service_1.PostService !== "undefined" && post_service_1.PostService) === "function" && _c || Object])
 ], PostItemComponent);
@@ -3998,34 +3966,34 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 798:
+/***/ 791:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // This file includes polyfills needed by Angular 2 and is loaded before
 // the app. You can add your own extra polyfills to this file.
-__webpack_require__(860);
 __webpack_require__(853);
-__webpack_require__(849);
-__webpack_require__(855);
-__webpack_require__(854);
-__webpack_require__(852);
-__webpack_require__(851);
-__webpack_require__(859);
+__webpack_require__(846);
+__webpack_require__(842);
 __webpack_require__(848);
 __webpack_require__(847);
-__webpack_require__(857);
+__webpack_require__(845);
+__webpack_require__(844);
+__webpack_require__(852);
+__webpack_require__(841);
+__webpack_require__(840);
 __webpack_require__(850);
-__webpack_require__(858);
-__webpack_require__(856);
-__webpack_require__(861);
-__webpack_require__(1402);
+__webpack_require__(843);
+__webpack_require__(851);
+__webpack_require__(849);
+__webpack_require__(854);
+__webpack_require__(1392);
 //# sourceMappingURL=polyfills.js.map
 
 /***/ }),
 
-/***/ 80:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4042,14 +4010,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = __webpack_require__(0);
 var http_1 = __webpack_require__(169);
 //Use instead of Promise
-var Rx_1 = __webpack_require__(254);
+var Rx_1 = __webpack_require__(252);
 // Import RxJs required methods
 __webpack_require__(171);
 __webpack_require__(170);
-__webpack_require__(233);
-var post_model_1 = __webpack_require__(325);
-var asset_model_1 = __webpack_require__(525);
-var environment_1 = __webpack_require__(124);
+__webpack_require__(230);
+var post_model_1 = __webpack_require__(323);
+var asset_model_1 = __webpack_require__(523);
+var environment_1 = __webpack_require__(125);
 var SearchService = (function () {
     function SearchService(_http, _jsonp) {
         this._http = _http;
@@ -4148,5 +4116,5 @@ var _a, _b;
 
 /***/ })
 
-},[1405]);
+},[1395]);
 //# sourceMappingURL=main.bundle.map
