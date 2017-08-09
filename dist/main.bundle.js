@@ -290,14 +290,14 @@ module.exports = "<div class=\"pagination-div\" *ngIf=\"buttonArray.length > 0\"
 /***/ 1086:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container add-top-margin\" *ngIf=\"postDetail\">\r\n  <button class=\"btn btn-primary\" type=\"submit\" (click)=\"goBack()\">Back</button>\r\n\r\n  <section>\r\n\r\n\r\n    <div class=\"row\">\r\n      <!-- Project info\r\n      ================================================== -->\r\n\r\n\r\n      <div class=\"col-md-4\">\r\n\r\n        <!-- Use the ul class. -->\r\n        <ul class=\"metadata\">\r\n          <li>\r\n            <h3>{{postDetail?.title}}</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          <li>\r\n            <h3>Date Submitted</h3>\r\n            <p>{{postDetail?.dateCreated}}</p>\r\n          </li>\r\n          <li>\r\n            <h3>Author</h3>\r\n            <p *ngFor=\"let author of postDetail.contributorAuthor\">{{author}}</p>\r\n          </li>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"tags\">\r\n          <li>\r\n            <h3>Collections</h3>\r\n            <p>All literacy narratives that are not part of a topical collection.</p>\r\n          </li>\r\n          <li>\r\n            <h3>Tags/Subjects</h3>\r\n            <ul class=\"tags-list\">\r\n              <!-- Track elements and limit tags with NgFor and TrackBy -->\r\n              <li class=\"tag\" *ngFor=\"let subject of postDetail.subject\"><span\r\n                class=\"label label-info\">{{subject}}</span></li>\r\n            </ul>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"description\">\r\n          <li>\r\n            <h3>Description</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          </li>\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <h3>Media List</h3>\r\n        <ul class=\"media\" >\r\n\r\n            <li *ngFor=\"let asset of postDetail.assetList\" (click)=\"onSelectedAsset(asset)\">\r\n\r\n              <!-- Change event to be click event that changes player embed link -->\r\n              <h3>{{asset?.assettitle}}</h3>\r\n              <p>{{asset?.assetType}}: {{asset?.assetDescription}}</p>\r\n\r\n              <!--<div *ngIf=\"selectedAsset\">{{selectedAsset.assetID}}</div>-->\r\n            </li>\r\n\r\n          </ul>\r\n\r\n\r\n\r\n              <div id=\"metadata-table\">\r\n                   <table class=\"table table-sm table-bordered\">\r\n                       <thead >\r\n                         <tr>\r\n                          <th>Metadata Tag</th>\r\n                          <th>Content</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                          <tr>\r\n                               <td>identifierUri</td>\r\n                               <td>{{postDetail?.identifierUri}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAvailable</td>\r\n                               <td>{{postDetail?.dateAvailable}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAccessioned</td>\r\n                               <td>{{postDetail?.dateAccessioned}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateCreated</td>\r\n                               <td>{{postDetail?.dateCreated}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateIssued</td>\r\n                               <td>{{postDetail?.dateIssued}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorAuthor</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorAuthor\">{{postDetail?.contributorAuthor}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorInterviewer</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorInterviewer\">{{postDetail?.contributorInterviewer}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n\r\n                      </tbody>\r\n                   </table>\r\n              </div>\r\n\r\n\r\n\r\n\r\n\r\n      </div>\r\n\r\n      <!-- Video\r\n      ================================================== -->\r\n\r\n      <div class=\"col-md-8\">\r\n\r\n          <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')\" [postAsset]=\"selectedAsset\"></app-player>\r\n          <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Text')\" [postAsset]=\"selectedAsset\"></app-player>\r\n\r\n            <ul class=\"socicon right\" style=\"margin-bottom:10px; margin-top:10px;\">\r\n              <li>\r\n                <a href=\"https://www.facebook.com/dalnarchive/\" class=\"facebook\" target=\"_blank\">\r\n                </a>\r\n              </li>\r\n              <li>\r\n                  <a class=\"twitter twitter-share-button\"\r\n                    href=\"https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}\" target=\"_blank\"  ></a>\r\n              </li>\r\n\r\n            </ul>\r\n\r\n            <div class=\"col-md-4\" style=\"margin-top:10%;\">\r\n                <h3>Download List</h3>\r\n                <ul>\r\n                    <li *ngFor=\"let asset of postDetail.assetList; let i = index\">\r\n                        <a href=\"{{postDetail.assetList[i].assetLocation}}\" download>{{postDetail.assetList[i].assetName}}</a>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n\r\n\r\n\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n\r\n  </section>\r\n\r\n\r\n\r\n\r\n\r\n\r\n</div><!-- /container -->\r\n<div class=\"center\">\r\n    <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n</div>\r\n<daln-footer></daln-footer>\r\n"
+module.exports = "<div class=\"container add-top-margin\" *ngIf=\"postDetail\">\r\n  <button class=\"btn btn-primary\" type=\"submit\" (click)=\"goBack()\">Back</button>\r\n\r\n  <section>\r\n\r\n\r\n    <div class=\"row\">\r\n      <!-- Project info\r\n      ================================================== -->\r\n\r\n\r\n      <div class=\"col-md-4\">\r\n\r\n        <!-- Use the ul class. -->\r\n        <ul class=\"metadata\">\r\n          <li>\r\n            <h3>{{postDetail?.title}}</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          <li>\r\n            <h3>Date Submitted</h3>\r\n            <p>{{postDetail?.dateCreated}}</p>\r\n          </li>\r\n          <li>\r\n            <h3>Author</h3>\r\n            <p *ngFor=\"let author of postDetail.contributorAuthor\">{{author}}</p>\r\n          </li>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"tags\">\r\n          <li>\r\n            <h3>Collections</h3>\r\n            <p>All literacy narratives that are not part of a topical collection.</p>\r\n          </li>\r\n          <li>\r\n            <h3>Tags/Subjects</h3>\r\n            <ul class=\"tags-list\">\r\n              <!-- Track elements and limit tags with NgFor and TrackBy -->\r\n              <li class=\"tag\" *ngFor=\"let subject of postDetail.subject\"><span\r\n                class=\"label label-info\">{{subject}}</span></li>\r\n            </ul>\r\n\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <ul class=\"description\">\r\n          <li>\r\n            <h3>Description</h3>\r\n            <p>{{postDetail?.description}}</p>\r\n          </li>\r\n        </ul>\r\n\r\n        <br/>\r\n\r\n        <h3>Media List</h3>\r\n        <ul class=\"media\" >\r\n\r\n            <li *ngFor=\"let asset of postDetail.assetList\" (click)=\"onSelectedAsset(asset)\">\r\n\r\n              <!-- Change event to be click event that changes player embed link -->\r\n              <h3>{{asset?.assettitle}}</h3>\r\n              <p>{{asset?.assetType}}: {{asset?.assetDescription}}</p>\r\n\r\n              <!--<div *ngIf=\"selectedAsset\">{{selectedAsset.assetID}}</div>-->\r\n            </li>\r\n\r\n          </ul>\r\n\r\n\r\n\r\n              <div id=\"metadata-table\">\r\n                   <table class=\"table table-sm table-bordered\">\r\n                       <thead >\r\n                         <tr>\r\n                          <th>Metadata Tag</th>\r\n                          <th>Content</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                          <tr>\r\n                               <td>identifierUri</td>\r\n                               <td>{{postDetail?.identifierUri}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAvailable</td>\r\n                               <td>{{postDetail?.dateAvailable}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateAccessioned</td>\r\n                               <td>{{postDetail?.dateAccessioned}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateCreated</td>\r\n                               <td>{{postDetail?.dateCreated}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>dateIssued</td>\r\n                               <td>{{postDetail?.dateIssued}}</td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorAuthor</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorAuthor\">{{postDetail?.contributorAuthor}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n                          <tr>\r\n                               <td>contributorInterviewer</td>\r\n                               <td>\r\n                                  <ul>\r\n                                   <li *ngFor=\"let author of postDetail.contributorInterviewer\">{{postDetail?.contributorInterviewer}}</li>\r\n                                  </ul>\r\n                               </td>\r\n                          </tr>\r\n\r\n                      </tbody>\r\n                   </table>\r\n              </div>\r\n\r\n\r\n\r\n\r\n\r\n      </div>\r\n\r\n      <!-- Video\r\n      ================================================== -->\r\n\r\n      <div class=\"col-md-8\">\r\n\r\n          <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')\" [postAsset]=\"selectedAsset\"></app-player>\r\n          <app-player *ngIf=\"selectedAsset && (selectedAsset.assetType==='Text')\" [postAsset]=\"selectedAsset\"></app-player>\r\n\r\n            <ul class=\"socicon right\" style=\"margin-bottom:10px; margin-top:10px;\">\r\n              <li>\r\n                <a href=\"https://www.facebook.com/dalnarchive/\" class=\"facebook\" target=\"_blank\">\r\n                </a>\r\n              </li>\r\n              <li>\r\n                  <a class=\"twitter twitter-share-button\"\r\n                    href=\"https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}\" target=\"_blank\"  ></a>\r\n              </li>\r\n\r\n            </ul>\r\n\r\n            <div *ngIf=\"isText === true\" class=\"col-md-4\" style=\"margin-top:10%;\">\r\n                <h3>Download List</h3>\r\n                <ul>\r\n                    <li *ngFor=\"let asset of postDetail.assetList; let i = index\">\r\n                        <a href=\"{{postDetail.assetList[i].assetLocation}}\" download>{{postDetail.assetList[i].assetName}}</a>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n\r\n\r\n\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n\r\n  </section>\r\n\r\n\r\n\r\n\r\n\r\n\r\n</div><!-- /container -->\r\n<div class=\"center\">\r\n    <app-fancy-loader [loading]=\"loading\" [failed]=\"failed\"></app-fancy-loader>\r\n</div>\r\n<daln-footer></daln-footer>\r\n"
 
 /***/ }),
 
 /***/ 1087:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"child-container\">\r\n\r\n\r\n    <div id=\"search-component\">\r\n\r\n      <!-- Main Search Box -->\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-md-6\">\r\n         <div class=\"input-group\">\r\n                <!-- <span class=\"input-group-btn\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#options\">&#9660;</button>\r\n                </span> -->\r\n                <input #searchBox class=\"form-control\" id=\"search-box\" placeholder=\"Search the DALN...\" [value]=\"searchService.searchQuery\" (input)=\"searchService.searchQuery = $event.target.value\"/>\r\n               <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"onSearch(searchBox.value, results.value, pageNum.value)\" (click)=\"onSearch(searchBox.value, searchService.resultsSize, searchService.pageNumber)\" >Search</button>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <!-- Search Options -->\r\n      <!-- <div class=\"collapse\" id=\"options\">\r\n      <div class=\"card card-block\" [class.col-md-6]=\"showFull\" [class.offset-md-3]=\"showFull\">\r\n          <div class=\"card-header\" id=\"option-card\">\r\n              Options\r\n          </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-4\">\r\n                <div class=\"input-group \">\r\n                    <span class=\"input-group-addon\">Results per page</span>\r\n                    <input #results class=\"form-control\" id=\"results-size\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.resultsSize\"/>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-md-4 offset-md-4\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">Page Number</span>\r\n                    <input #pageNum class=\"form-control\" id=\"pageNumber\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.pageNumber\"/>\r\n                </div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n      </div> -->\r\n\r\n    <div class=\"row justify-content-center\">\r\n      <div class=\"add-top-margin col-md-6 alert alert-danger\" *ngIf=\"errorMessage != null\">\r\n          <p>\r\n              {{errorMessage}}\r\n          </p>\r\n      </div>\r\n     </div>\r\n\r\n    </div>\r\n\r\n\r\n\r\n\r\n    <!-- <daln-footer *ngIf=\"showUtil\"></daln-footer> -->\r\n\r\n</div>\r\n\r\n<app-pagination (currentPageEmitter)=\"getResultHandler($event)\" [startOffset]=\"startOffset\" [endOffset]=\"endOffset\" [resultList]=\"resultList\"></app-pagination>\r\n\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<div class=\"child-container\">\r\n\r\n\r\n    <div id=\"search-component\">\r\n\r\n      <!-- Main Search Box -->\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-md-6\">\r\n         <div class=\"input-group\">\r\n                <span class=\"input-group-btn\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#options\">&#9660;</button>\r\n                </span>\r\n                <input #searchBox class=\"form-control\" id=\"search-box\" placeholder=\"Search the DALN...\" [value]=\"searchService.searchQuery\" (input)=\"searchService.searchQuery = $event.target.value\"/>\r\n               <button class=\"btn btn-primary\" type=\"submit\" (keydown.enter)=\"onSearch(searchBox.value, results.value, pageNum.value)\" (click)=\"onSearch(searchBox.value, searchService.resultsSize, pageNum.value)\" >Search</button>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <!-- Search Options -->\r\n      <div class=\"collapse\" id=\"options\">\r\n      <div class=\"card card-block\" [class.col-md-6]=\"showFull\" [class.offset-md-3]=\"showFull\">\r\n          <div class=\"card-header\" id=\"option-card\">\r\n              Options\r\n          </div>\r\n        <div class=\"row\">\r\n            <!-- <div class=\"col-md-4\">\r\n                <div class=\"input-group \">\r\n                    <span class=\"input-group-addon\">Results per page</span>\r\n                    <input #results class=\"form-control\" id=\"results-size\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.resultsSize\"/>\r\n                </div>\r\n            </div> -->\r\n            <div class=\"col-md-4 offset-md-4\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">Page Number</span>\r\n                    <input #pageNum class=\"form-control\" id=\"pageNumber\" type=\"number\" min=\"1\" max=\"50\" [value]=\"searchService.pageNumber\"/>\r\n                </div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n      </div>\r\n\r\n    <div class=\"row justify-content-center\">\r\n      <div class=\"add-top-margin col-md-6 alert alert-danger\" *ngIf=\"errorMessage != null\">\r\n          <p>\r\n              {{errorMessage}}\r\n          </p>\r\n      </div>\r\n     </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>\r\n\r\n<app-pagination *ngIf=\"showPagination === false\" (currentPageEmitter)=\"getResultHandler($event)\" [startOffset]=\"startOffset\" [endOffset]=\"endOffset\" [resultList]=\"searchService.results\"></app-pagination>\r\n<!-- <app-pagination  (currentPageEmitter)=\"getResultHandler($event)\" [startOffset]=\"startOffset\" [endOffset]=\"endOffset\" [resultList]=\"searchService.results\"></app-pagination> -->\r\n\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -1296,17 +1296,24 @@ var HomeComponent = (function () {
     HomeComponent.prototype.getPagePosts = function () {
         var _this = this;
         this.loading = true;
-        this._searchService.search_page("games", 8, 0).subscribe(function (data) {
-            _this.posts = _this._searchService.translatePosts(data.hit);
-            _this.loading = false;
-        }, //Bind to view
-        function (//Bind to view
-            err) {
-            _this.loading = false;
-            _this.failed = true;
-            // Log errors if any
-            console.log(err);
-        });
+        if (this._searchService.cache_posts.length === 0) {
+            this._searchService.search_page("games", 8, 0).subscribe(function (data) {
+                _this.posts = _this._searchService.translatePosts(data.hit);
+                _this._searchService.cache_posts = _this.posts;
+                _this.loading = false;
+            }, //Bind to view
+            function (//Bind to view
+                err) {
+                _this.loading = false;
+                _this.failed = true;
+                // Log errors if any
+                console.log(err);
+            });
+        }
+        else {
+            this.posts = this._searchService.cache_posts;
+            this.loading = false;
+        }
         // Use for development if search is down.
         // this._postService.getMockPosts().then(
         //     (data) => {
@@ -1397,6 +1404,12 @@ var PostDetailComponent = (function () {
             _this.loading = false;
             _this.postDetail = details;
             console.log(details);
+            _this.assets = _this.postDetail.assetList;
+            for (var i = 0; i <= _this.assets.length - 1; i++) {
+                if (_this.assets[i].assetType === "Text") {
+                    _this.isText = true;
+                }
+            }
             // twitter doesn't take over 140 characters in the title
             // slice it down to 50
             _this.text = _this.postDetail.title.length > 140 ? _this.postDetail.title.substring(0, 50) + '...' : _this.postDetail.title;
@@ -1414,6 +1427,12 @@ var PostDetailComponent = (function () {
             _this.loading = false;
             _this.postDetail = details;
             // console.log(details);
+            _this.assets = _this.postDetail.assetList;
+            for (var i = 0; i <= _this.assets.length - 1; i++) {
+                if (_this.assets[i].assetType === "Text") {
+                    _this.isText = true;
+                }
+            }
             _this.selectedAsset = _this._postService.getPreview(_this.postDetail.assetList);
         }, function (err) {
             _this.loading = false;
@@ -2770,18 +2789,16 @@ var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(32);
 var search_service_1 = __webpack_require__(81);
 var PaginationComponent = (function () {
-    function PaginationComponent(searchService, router) {
-        var _this = this;
-        this.searchService = searchService;
+    function PaginationComponent(_searchService, router) {
         this.router = router;
         this.buttonArray = []; // holds all possible buttons
         this.displayButton = []; // for displaying buttons
         this.pagedButtonArray = []; // holds the current view buttons.
-        //   this.searchService = _searchService;
+        this.searchService = _searchService;
         this.currentPageEmitter = new core_1.EventEmitter();
-        router.events.subscribe(function (val) {
-            _this.buttonArray = [];
-        });
+        // router.events.subscribe((val) => {
+        //     this.buttonArray = [];
+        // });
     }
     PaginationComponent.prototype.ngOnInit = function () {
         this.getdev = false;
@@ -2789,6 +2806,8 @@ var PaginationComponent = (function () {
         this.resultsPerPage = this.searchService.resultsSize;
         this.startOffset = this.searchService.pageNumber;
         this.pageHead = this.searchService.pageHead;
+        console.log("pagination resultList: ", this.resultList);
+        //  console.log("start vars for pagination", this.resultsPerPage, this.startOffset, this.pageHead);
     };
     /**
      * getPagedPost is the button click event to calulate the next indicies to split resultList by to get pagedPost and emit to the parent the current page.
@@ -2806,9 +2825,12 @@ var PaginationComponent = (function () {
         // if this.currentPage (the button number clicked) is null,
         // then get the startOffset to calculate the indicies.
         if (!this.currentPage) {
-            console.log("starting offset", this.startOffset);
+            console.log("currentPage null, setting to startOffset", this.startOffset);
             this.currentPage = this.startOffset;
+            this.resultsPerPage = this.searchService.resultsSize;
         }
+        //   console.log("currentPage", this.currentPage);
+        //   console.log("resultsPerPage", this.resultsPerPage);
         var firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
         var lastIndex = (firstIndex + this.resultsPerPage - 1); // minus one since index of array starts at 0.
         console.log("lastIndex, firstIndex", lastIndex, firstIndex);
@@ -2842,6 +2864,7 @@ var PaginationComponent = (function () {
         console.log("Display Button", this.displayButton);
     };
     PaginationComponent.prototype.populatePosts = function (firstIndex, lastIndex) {
+        console.log("resultList:", this.resultList);
         // + 1 on lastIndex since slice() goes from 0 to actual number - 1
         this.pagedPost = this.resultList.slice(firstIndex, lastIndex + 1);
         console.log("PagedPost:", this.pagedPost);
@@ -2852,6 +2875,7 @@ var PaginationComponent = (function () {
             this.buttonArray = [];
             this.calculateButtonRange();
             this.sliceButtonRange();
+            this.calculateIndicies();
         }
         if (changes['resultList']) {
             console.log("pagination change", this.resultList);
@@ -2918,27 +2942,44 @@ var search_service_1 = __webpack_require__(81);
 var post_service_1 = __webpack_require__(112);
 var SearchComponent = (function () {
     function SearchComponent(location, router, _postService, _searchService) {
+        var _this = this;
         this._postService = _postService;
-        this.posts = [];
-        this.resultList = [];
-        this.results = [];
         this.pageParameter = 0;
         this.noResults = false;
         this.location = location;
+        this.router = router;
         this.searchService = _searchService;
         this.showHomePage = new core_1.EventEmitter();
         // this.searchResults = new EventEmitter<Post[]>();
+        this.posts = [];
+        this.results = [];
+        this.resultList = this.searchService.results;
         router.events.subscribe(function (val) {
             // console.log(val instanceof NavigationEnd);
             // console.log(val.url);
+            var route = val.url;
+            if (route == "/home") {
+                console.log("in home");
+                _this.showHomePage.emit(true);
+            }
+            else if (route.startsWith("/search")) {
+                console.log("in search");
+                _this.showHomePage.emit(false);
+            }
+            else {
+                console.log("in somewhere else");
+            }
         });
     }
     SearchComponent.prototype.ngOnInit = function () {
+        this.startOffset = this.searchService.pageNumber;
         this.errorMessage = null;
+        this.showPagination = true;
         this.resultsPerPage = this.searchService.resultsSize;
         this.pageNumber = this.searchService.pageNumber;
         this.total_offset = this.searchService.total_offset;
         this.total_results = this.searchService.total_results;
+        console.log("search resultList:", this.resultList);
     };
     SearchComponent.prototype.onSearch = function (term, results, index) {
         //
@@ -2955,9 +2996,19 @@ var SearchComponent = (function () {
         if (term === '' || term === undefined) {
             return null;
         }
+        var displayPage; // to use for url parameter
+        // index controls the pagination, but it needs to start from 0 if the user puts in 1
+        // since the first page in the api starts from page 0.
         if (index == 1) {
+            displayPage = index;
             index = 0;
         }
+        else {
+            displayPage = index;
+        }
+        // console.log(displayPage);
+        // console.log(index);
+        this.searchService.results = [];
         this.searchService.search_page(term, this.searchService.pageHead, index)
             .subscribe(function (results) {
             if ((results === null) || results.length <= 0) {
@@ -2968,11 +3019,13 @@ var SearchComponent = (function () {
                 _this.results.push(i);
             });
             _this.resultList = _this.results;
+            _this.searchService.results = _this.results;
             console.log("new resultList", _this.resultList);
-            _this.location.go('/search');
+            _this.showPagination = false;
             _this.showHomePage.emit(false);
-            // console.log("Search resultList", this.resultList);
             _this.calculateOffset();
+            _this.router.navigate(['/search'], { queryParams: { query: term, page: displayPage } });
+            // console.log("Search resultList", this.resultList);
             // this.searchResults.emit(this.resultList);
         }, function (err) {
             console.log(err);
@@ -4027,6 +4080,8 @@ var SearchService = (function () {
         this.resultsSize = 12;
         this.pageNumber = 1;
         this.pageHead = 50;
+        this.results = [];
+        this.cache_posts = [];
         this.total_results = 0;
         this.total_offset = 0;
     }
