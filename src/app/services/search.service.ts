@@ -28,7 +28,7 @@ export class SearchService {
   pageHead: number; // admin specified number of results to stay ahead of user.
   total_offset: number; // total offsets for pagination.
   total_results: number; // total results from search api.
-
+  results: Post[]; // holds the results for the pagination component.
 
   private endPoint = environment.API_ENDPOINTS;
 
@@ -37,7 +37,7 @@ export class SearchService {
       this.resultsSize = 12;
       this.pageNumber = 1;
       this.pageHead = 50;
-
+      this.results = [];
       this.total_results = 0;
       this.total_offset = 0;
 

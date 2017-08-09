@@ -30,7 +30,9 @@ export class SearchComponent implements OnInit {
   router: Router;
   searchService : SearchService;
 
-  posts: Post[] = [];
+  showPagination: boolean;
+
+  posts: Post[];
   resultList: Post[];
   results: Post[];
   errorMessage: string;
@@ -63,7 +65,11 @@ export class SearchComponent implements OnInit {
     this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
 
-    this.startOffset = this.searchService.pageNumber;
+    this.posts = [];
+    this.results = [];
+    this.resultList = this.searchService.results;
+
+
 
     router.events.subscribe((val) => {
         // console.log(val instanceof NavigationEnd);
@@ -85,13 +91,17 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.startOffset = this.searchService.pageNumber;
     this.errorMessage = null;
+    this.showPagination = true;
+
 
     this.resultsPerPage = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
     this.total_offset = this.searchService.total_offset;
     this.total_results = this.searchService.total_results;
+
+    console.log("search resultList:", this.resultList);
   }
 
   onSearch(term: string, results: number, index: number): void {
@@ -126,7 +136,9 @@ export class SearchComponent implements OnInit {
                 this.results.push(i);
             });
             this.resultList = this.results;
+            this.searchService.results = this.results;
             console.log("new resultList", this.resultList);
+            this.showPagination = false;
             this.showHomePage.emit(false);
             this.calculateOffset();
             this.router.navigate(['/search'], { queryParams: { query: term } });

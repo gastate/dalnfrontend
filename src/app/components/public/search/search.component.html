@@ -52,12 +52,9 @@
     </div>
 
 
-
-
-    <!-- <daln-footer *ngIf="showUtil"></daln-footer> -->
-
 </div>
 
-<app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="resultList"></app-pagination>
+<!-- <app-pagination *ngIf="showPagination === false" (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination> -->
+<app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination>
 
 <router-outlet></router-outlet>

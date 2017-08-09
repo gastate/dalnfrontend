@@ -61,8 +61,8 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.resultsPerPage = this.searchService.resultsSize;
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
-
-    console.log(this.resultList);
+     
+    console.log("pagination resultList: ", this.resultList);
     //  console.log("start vars for pagination", this.resultsPerPage, this.startOffset, this.pageHead);
 
   }
