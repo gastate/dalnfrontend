@@ -28,10 +28,11 @@ export class SearchComponent implements OnInit {
 
   location: Location;
   router: Router;
-  posts: Post[] = [];
-  resultList: Post[] = [];
-  results: Post[] = [];
   searchService : SearchService;
+
+  posts: Post[] = [];
+  resultList: Post[];
+  results: Post[];
   errorMessage: string;
 
   // pagination
@@ -57,13 +58,27 @@ export class SearchComponent implements OnInit {
     _searchService: SearchService) {
 
     this.location = location;
+    this.router = router;
     this.searchService = _searchService;
     this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
 
+    this.startOffset = this.searchService.pageNumber;
+
     router.events.subscribe((val) => {
         // console.log(val instanceof NavigationEnd);
         // console.log(val.url);
+        let route = val.url;
+
+        if(route == "/home") {
+            console.log("in home");
+            this.showHomePage.emit(true);
+        } else if (route.startsWith("/search")) {
+            console.log("in search");
+            this.showHomePage.emit(false);
+        } else {
+            console.log("in somewhere else");
+        }
     });
 
 
@@ -112,10 +127,10 @@ export class SearchComponent implements OnInit {
             });
             this.resultList = this.results;
             console.log("new resultList", this.resultList);
-            this.location.go('/search');
             this.showHomePage.emit(false);
-            // console.log("Search resultList", this.resultList);
             this.calculateOffset();
+            this.router.navigate(['/search'], { queryParams: { query: term } });
+            // console.log("Search resultList", this.resultList);
             // this.searchResults.emit(this.resultList);
 
     }, err => {
@@ -147,6 +162,7 @@ export class SearchComponent implements OnInit {
           this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, index + leftOverItems);
       }
   }
+
 
 
 

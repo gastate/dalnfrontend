@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     title = 'DALN Frontend';
     searchPosts: Post[] = [];
     posts: Post[] = [];
+
     showPage: boolean = true;
 
     loading: boolean = false;
