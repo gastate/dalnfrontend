@@ -30,6 +30,8 @@ export class SearchService {
   total_results: number; // total results from search api.
   results: Post[]; // holds the results for the pagination component.
 
+  cache_posts: Post[];
+
   private endPoint = environment.API_ENDPOINTS;
 
   constructor(private _http: Http, private _jsonp : Jsonp) {
@@ -38,6 +40,7 @@ export class SearchService {
       this.pageNumber = 1;
       this.pageHead = 50;
       this.results = [];
+      this.cache_posts = [];
       this.total_results = 0;
       this.total_offset = 0;
 

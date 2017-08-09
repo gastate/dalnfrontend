@@ -44,17 +44,25 @@ export class HomeComponent implements OnInit {
 
   getPagePosts() : void {
       this.loading = true;
-      this._searchService.search_page("games", 8, 0).subscribe(
-          (data) => {
-              this.posts = this._searchService.translatePosts(data.hit);
+
+      if (this._searchService.cache_posts.length === 0) {
+          this._searchService.search_page("games", 8, 0).subscribe(
+              (data) => {
+                  this.posts = this._searchService.translatePosts(data.hit);
+                  this._searchService.cache_posts = this.posts;
+                  this.loading = false;
+            }, //Bind to view
+            err => {
               this.loading = false;
-        }, //Bind to view
-        err => {
+              this.failed = true;
+              // Log errors if any
+              console.log(err);
+            });
+      } else {
+          this.posts = this._searchService.cache_posts;
           this.loading = false;
-          this.failed = true;
-          // Log errors if any
-          console.log(err);
-        });
+      }
+
 
         // Use for development if search is down.
     // this._postService.getMockPosts().then(
