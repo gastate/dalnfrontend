@@ -9,6 +9,7 @@ import {Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 export class AppFooterComponent implements OnInit {
 
   private sub: any;
+  private sub1: any;
 
   constructor(private _router: Router,
               private _activatedRoute : ActivatedRoute
@@ -45,6 +46,20 @@ export class AppFooterComponent implements OnInit {
             }
           });
 
+        let FB = null;
+
+        this.sub1 = this._router.events.subscribe(val => {
+            if (val instanceof NavigationEnd) {
+                (function(d, s, id) {
+                    let js: any, fjs = d.getElementsByTagName(s)[0];
+                    // if (d.getElementById(id)) return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+            }
+        });
    }
 
 
@@ -58,6 +73,10 @@ export class AppFooterComponent implements OnInit {
         //   fjs.parentNode.insertBefore(js, fjs);
         // }(document, 'script', 'facebook-jssdk'));
 
+   }
+
+   ngOnDestroy() {
+       this.sub.unsubscribe();
    }
 
 }
