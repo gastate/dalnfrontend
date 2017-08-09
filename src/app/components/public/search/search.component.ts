@@ -120,9 +120,22 @@ export class SearchComponent implements OnInit {
       return null;
     }
 
+    var displayPage; // to use for url parameter
+
+    // index controls the pagination, but it needs to start from 0 if the user puts in 1
+    // since the first page in the api starts from page 0.
     if(index == 1) {
+        displayPage = index;
         index = 0;
+    } else {
+        displayPage = index;
     }
+
+    // console.log(displayPage);
+    // console.log(index);
+
+
+    this.searchService.results = [];
 
     this.searchService.search_page(term, this.searchService.pageHead, index)
       .subscribe(
@@ -135,13 +148,15 @@ export class SearchComponent implements OnInit {
             this.posts.forEach((i) => {
                 this.results.push(i);
             });
+
             this.resultList = this.results;
             this.searchService.results = this.results;
             console.log("new resultList", this.resultList);
             this.showPagination = false;
             this.showHomePage.emit(false);
             this.calculateOffset();
-            this.router.navigate(['/search'], { queryParams: { query: term } });
+
+            this.router.navigate(['/search'], { queryParams: { query: term, page: displayPage } });
             // console.log("Search resultList", this.resultList);
             // this.searchResults.emit(this.resultList);
 

@@ -50,9 +50,9 @@ export class PaginationComponent implements OnInit, OnChanges {
   constructor( _searchService: SearchService, private router: Router) {
     this.searchService = _searchService;
     this.currentPageEmitter = new EventEmitter<number>();
-    router.events.subscribe((val) => {
-        this.buttonArray = [];
-    });
+    // router.events.subscribe((val) => {
+    //     this.buttonArray = [];
+    // });
   }
 
   ngOnInit() {
@@ -61,7 +61,7 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.resultsPerPage = this.searchService.resultsSize;
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
-     
+
     console.log("pagination resultList: ", this.resultList);
     //  console.log("start vars for pagination", this.resultsPerPage, this.startOffset, this.pageHead);
 
