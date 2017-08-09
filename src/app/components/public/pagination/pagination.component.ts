@@ -31,6 +31,9 @@ export class PaginationComponent implements OnInit, OnChanges {
   // @Output()
   // skipToResultList: EventEmitter<any>;
 
+
+  searchService : SearchService;
+
   // posts to pass off to post-list.
   pagedPost: Post[];
 
@@ -44,12 +47,12 @@ export class PaginationComponent implements OnInit, OnChanges {
   getdev: boolean; //for postlist
 
 
-  constructor( private searchService: SearchService, private router: Router) {
-    //   this.searchService = _searchService;
+  constructor( _searchService: SearchService, private router: Router) {
+    this.searchService = _searchService;
     this.currentPageEmitter = new EventEmitter<number>();
-    router.events.subscribe((val) => {
-        this.buttonArray = [];
-    });
+    // router.events.subscribe((val) => {
+    //     this.buttonArray = [];
+    // });
   }
 
   ngOnInit() {
@@ -58,6 +61,9 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.resultsPerPage = this.searchService.resultsSize;
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
+
+    console.log("pagination resultList: ", this.resultList);
+    //  console.log("start vars for pagination", this.resultsPerPage, this.startOffset, this.pageHead);
 
   }
 
@@ -80,10 +86,13 @@ export class PaginationComponent implements OnInit, OnChanges {
       // if this.currentPage (the button number clicked) is null,
       // then get the startOffset to calculate the indicies.
       if (!this.currentPage) {
-          console.log("starting offset", this.startOffset);
+          console.log("currentPage null, setting to startOffset", this.startOffset);
           this.currentPage = this.startOffset;
+          this.resultsPerPage = this.searchService.resultsSize;
       }
 
+    //   console.log("currentPage", this.currentPage);
+    //   console.log("resultsPerPage", this.resultsPerPage);
       let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
       let lastIndex = (firstIndex + this.resultsPerPage - 1); // minus one since index of array starts at 0.
       console.log("lastIndex, firstIndex", lastIndex, firstIndex);
@@ -124,8 +133,8 @@ export class PaginationComponent implements OnInit, OnChanges {
         console.log("Display Button", this.displayButton);
   }
 
-  populatePosts(firstIndex, lastIndex) {
-
+  populatePosts(firstIndex: number, lastIndex: number) {
+      console.log("resultList:", this.resultList);
       // + 1 on lastIndex since slice() goes from 0 to actual number - 1
       this.pagedPost = this.resultList.slice(firstIndex, lastIndex + 1);
       console.log("PagedPost:", this.pagedPost);
@@ -137,6 +146,7 @@ export class PaginationComponent implements OnInit, OnChanges {
           this.buttonArray = [];
           this.calculateButtonRange();
           this.sliceButtonRange();
+          this.calculateIndicies();
       }
       if(changes['resultList']) {
           console.log("pagination change", this.resultList);

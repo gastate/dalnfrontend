@@ -28,10 +28,13 @@ export class SearchComponent implements OnInit {
 
   location: Location;
   router: Router;
-  posts: Post[] = [];
-  resultList: Post[] = [];
-  results: Post[] = [];
   searchService : SearchService;
+
+  showPagination: boolean;
+
+  posts: Post[];
+  resultList: Post[];
+  results: Post[];
   errorMessage: string;
 
   // pagination
@@ -57,26 +60,48 @@ export class SearchComponent implements OnInit {
     _searchService: SearchService) {
 
     this.location = location;
+    this.router = router;
     this.searchService = _searchService;
     this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
 
+    this.posts = [];
+    this.results = [];
+    this.resultList = this.searchService.results;
+
+
+
     router.events.subscribe((val) => {
         // console.log(val instanceof NavigationEnd);
         // console.log(val.url);
+        let route = val.url;
+
+        if(route == "/home") {
+            console.log("in home");
+            this.showHomePage.emit(true);
+        } else if (route.startsWith("/search")) {
+            console.log("in search");
+            this.showHomePage.emit(false);
+        } else {
+            console.log("in somewhere else");
+        }
     });
 
 
   }
 
   ngOnInit() {
-
+    this.startOffset = this.searchService.pageNumber;
     this.errorMessage = null;
+    this.showPagination = true;
+
 
     this.resultsPerPage = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
     this.total_offset = this.searchService.total_offset;
     this.total_results = this.searchService.total_results;
+
+    console.log("search resultList:", this.resultList);
   }
 
   onSearch(term: string, results: number, index: number): void {
@@ -95,9 +120,22 @@ export class SearchComponent implements OnInit {
       return null;
     }
 
+    var displayPage; // to use for url parameter
+
+    // index controls the pagination, but it needs to start from 0 if the user puts in 1
+    // since the first page in the api starts from page 0.
     if(index == 1) {
+        displayPage = index;
         index = 0;
+    } else {
+        displayPage = index;
     }
+
+    // console.log(displayPage);
+    // console.log(index);
+
+
+    this.searchService.results = [];
 
     this.searchService.search_page(term, this.searchService.pageHead, index)
       .subscribe(
@@ -110,12 +148,16 @@ export class SearchComponent implements OnInit {
             this.posts.forEach((i) => {
                 this.results.push(i);
             });
+
             this.resultList = this.results;
+            this.searchService.results = this.results;
             console.log("new resultList", this.resultList);
-            this.location.go('/search');
+            this.showPagination = false;
             this.showHomePage.emit(false);
-            // console.log("Search resultList", this.resultList);
             this.calculateOffset();
+
+            this.router.navigate(['/search'], { queryParams: { query: term, page: displayPage } });
+            // console.log("Search resultList", this.resultList);
             // this.searchResults.emit(this.resultList);
 
     }, err => {
@@ -147,6 +189,7 @@ export class SearchComponent implements OnInit {
           this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, index + leftOverItems);
       }
   }
+
 
 
 
