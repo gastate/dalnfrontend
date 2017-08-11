@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {AuthService} from '../../../services/auth.service';
 import {PostService} from '../../../services/post.service';
 import {UserLoginService} from '../../../services/user-login.service';
+import {CognitoUtil} from '../../../services/cognito.service';
 import {LoggedInCallback} from '../../../services/cognito.service';
 
 import { Post } from '../../../model/post-model';
@@ -26,6 +27,7 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
 
   constructor(
       public authService: AuthService,
+      public cognitoService: CognitoUtil,
       public postService: PostService,
       public userService: UserLoginService,
       public router: Router
@@ -64,7 +66,7 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
       this.approval_list = [];
       this.postPoolTitle = "Your Post Pool";
       this.loading = true;
-
+    //   console.log(this.cognitoService.getCurrentUser());
   }
 
   approvePost(postId : string) {

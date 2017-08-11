@@ -13,6 +13,7 @@ const userPoolId = 'us-east-1_0lPzLvk1m';
 const clientId = '5jor2041aact5jm0ka79c67dr4';
 const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 
+const admin_ddb_table_name = "DALN-Admin-Posts";
 const dev_ddb_table_name = "DALN-Posts-Dev";
 const stagingAreaBucketName = "daln-file-staging-area";
 const finalBucketName = "daln-development";
@@ -52,6 +53,7 @@ const get_unapproved_posts = api_url + "/admin/unapproved";
 export const environment = {
   production: false,
   API_ENDPOINTS: {
+    admin_ddb_table_name: admin_ddb_table_name,
     all_posts: all_posts,
     approve_post: approve_post,
     api_url: api_url,

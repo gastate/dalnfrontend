@@ -22,7 +22,7 @@ export class PostItemComponent implements OnInit {
   postItem: Post;
 
   ngOnInit() {
-    //   if (this.postItem.description ==)
+    //   console.log(this.getdev);
   }
 
   getPreview(postAssets: Asset[]): Asset {

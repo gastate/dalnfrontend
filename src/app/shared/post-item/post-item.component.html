@@ -12,13 +12,13 @@
         </div>
         </header>
         <div class="card-block">
-                <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
+                <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" [getdev]="getdev"></app-player>
                 <div class="post-desc">
                     <div class="hover-post">
-                        <a *ngIf="getdev == false" class="thumbnail" [routerLink]="['/getdev/detail', postItem.postId]">
+                        <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
                             <p>{{postItem?.description}}</p>
                         </a>
-                        <a *ngIf="getdev == true" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
+                        <a *ngIf="getdev === true" class="thumbnail" [routerLink]="['/getdev/detail', postItem.postId]">
                             <p>{{postItem?.description}}</p>
                         </a>
                     </div>
