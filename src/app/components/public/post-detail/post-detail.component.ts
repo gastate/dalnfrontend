@@ -62,18 +62,23 @@ export class PostDetailComponent implements OnInit {
             (details) => {
                   this.loading = false;
                   this.postDetail = details;
-                  console.log(details);
+                  console.log(this.postDetail);
 
                   this.assets = this.postDetail.assetList;
-                  for(var i = 0; i <= this.assets.length - 1; i++) {
-                      if(this.assets[i].assetType === "Text") {
-                          this.isText = true;
+                  if(this.assets && this.assets.length) {
+                      for(var i = 0; i <= this.assets.length - 1; i++) {
+                          if(this.assets[i].assetType === "Text") {
+                              this.isText = true;
+                          }
                       }
                   }
 
                   // twitter doesn't take over 140 characters in the title
                   // slice it down to 50
-                  this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
+                  if(this.postDetail.title && this.postDetail.title.length) {
+                      this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
+                  }
+
 
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
 
@@ -90,18 +95,22 @@ export class PostDetailComponent implements OnInit {
         (params: Params) => this._postService.getDevPostById(params['id']))
         .subscribe(
             (details) => {
-                  this.loading = false;
                   this.postDetail = details;
-                  // console.log(details);
-                  
+                  console.log(this.postDetail);
+
                   this.assets = this.postDetail.assetList;
-                  for(var i = 0; i <= this.assets.length - 1; i++) {
-                      if(this.assets[i].assetType === "Text") {
-                          this.isText = true;
+                  if(this.assets && this.assets.length) {
+                      for(var i = 0; i <= this.assets.length - 1; i++) {
+                          if(this.assets[i].assetType === "Text") {
+                              this.isText = true;
+                          }
                       }
                   }
 
+
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
+                  this.loading = false;
+
               },
             err => {
                 this.loading = false;
