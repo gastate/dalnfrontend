@@ -21,6 +21,8 @@ export class PostItemComponent implements OnInit {
   @Input()
   postItem: Post;
 
+  isChecked: boolean;
+
   ngOnInit() {
     //   console.log(this.getdev);
   }
@@ -28,5 +30,19 @@ export class PostItemComponent implements OnInit {
   getPreview(postAssets: Asset[]): Asset {
     return this._postService.getPreview(postAssets);
   }
+
+  sendPostId() {
+      if(this.isChecked === true) {
+        this._postService.selected_posts.push(this.postItem.postId);
+        // console.log(this._postService.selected_posts);
+      } else {
+        var position = this._postService.selected_posts.indexOf(this.postItem.postId);
+        var remove_post = this._postService.selected_posts.splice(position, 1);
+        // console.log(this._postService.selected_posts);
+      }
+  }
+
+
+
 
 }

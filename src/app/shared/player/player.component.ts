@@ -35,7 +35,7 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUrl(this.postAsset);
-    console.log(this.getdev);
+    // console.log(this.getdev);
   }
 
   getUrl(asset: Asset): void {

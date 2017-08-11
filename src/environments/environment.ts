@@ -42,8 +42,8 @@ const search_posts = search_api_url  + "/posts/search/";
 
 const search_size = search_api_url + "";
 
-const approve_post = api_url + "/posts/approve/"; // to approve posts into search engine.
-const unapprove_post = api_url + "/posts/unapprove";
+const approve_post = api_url + "/admin/approve/"; // to approve posts into search engine.
+const unapprove_post = api_url + "/admin/remove";
 const get_upload_link = api_url + "/asset/s3upload/"; // to get the link for file uploading.
 const link_media = api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
 

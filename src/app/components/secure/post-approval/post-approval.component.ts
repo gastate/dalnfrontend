@@ -43,6 +43,11 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
       this.noAdminPostsMessage = null;
   }
 
+  approveSelected(){
+      this.postService.approvePosts(this.postService.selected_posts);
+      // b492f3ff-10ae-49be-b776-f98becbf55ad
+  }
+
   getUnapproved() {
       this.loading = true;
       this.postPoolTitle = "Admins Post Pool";
