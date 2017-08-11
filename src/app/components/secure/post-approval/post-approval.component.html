@@ -29,12 +29,14 @@
 
 </div>
 
-<div class="row add-top-margin">
+<div class="row">
     <h3>{{postPoolTitle}}</h3>
-    <post-list [getdev]="getdev" [postList]="approval_list"></post-list>
-    <!-- <app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="postService.unapproved_posts"></app-pagination> -->
 </div>
+<hr />
 
+
+<post-list [getdev]="getdev" [postList]="approval_list"></post-list>
+<!-- <app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="postService.unapproved_posts"></app-pagination> -->
 
 <!-- Error message and loading components -->
 <div class="row justify-content-center">
@@ -45,13 +47,13 @@
   </div>
  </div>
 
- <div class="row justify-content-center">
+ <!-- <div class="row justify-content-center">
    <div class="col-md-6 alert alert-success" *ngIf="noAdminPostsMessage !== null">
        <p>
            {{noAdminPostsMessage}}
        </p>
    </div>
-  </div>
+  </div> -->
 
  <div class="row add-top-margin justify-content-center">
      <div class="col-md-12">
