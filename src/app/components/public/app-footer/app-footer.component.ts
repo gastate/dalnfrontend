@@ -60,6 +60,8 @@ export class AppFooterComponent implements OnInit {
                         fjs.parentNode.insertBefore(js, fjs);
                     }(document, 'script', 'facebook-jssdk'));
 
+
+                // Issues of undefined.
                 // if ((<any>window).FB) {
                 //     (<any>window).FB.XFMBL.parse();
                 // }
