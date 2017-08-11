@@ -13,6 +13,9 @@ const userPoolId = 'us-east-1_0lPzLvk1m';
 const clientId = '5jor2041aact5jm0ka79c67dr4';
 const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 
+const dev_ddb_table_name = "DALN-Posts-Dev";
+const stagingAreaBucketName = "daln-file-staging-area";
+const finalBucketName = "daln-development";
 
 
 //////////////////////
@@ -53,6 +56,8 @@ export const environment = {
     approve_post: approve_post,
     api_url: api_url,
     create_post: create_post,
+    dev_ddb_table_name: dev_ddb_table_name,
+    finalBucketName: finalBucketName,
     get_dev_post: get_dev_post,
     get_upload_link: get_upload_link,
     get_unapproved_posts: get_unapproved_posts,
@@ -61,6 +66,7 @@ export const environment = {
     post: post,
     search_posts : search_posts,
     search_size : search_size,
+    stagingAreaBucketName: stagingAreaBucketName,
     unapprove_post : unapprove_post
 }, COGNITO_INFO : {
     region: region,

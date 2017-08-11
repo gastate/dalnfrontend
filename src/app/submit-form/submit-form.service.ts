@@ -142,7 +142,7 @@ export class SubmitFormService {
 
 
   postCreate() {
-     var tableName = "DALN-Posts-Dev";
+     var tableName = this.endPoint.dev_ddb_table_name;
      var data = {
          title: this.title,
          description: this.description,
@@ -182,9 +182,9 @@ export class SubmitFormService {
              console.log(data);
 
              var jsonLink = {
-                 stagingAreaBucketName : "daln-file-staging-area",
+                 stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
                  assetDescription: "Asset",
-                 finalBucketName: "daln-development",
+                 finalBucketName: this.endPoint.finalBucketName,
                  PostId: this.postResult,
                  key: this.filename
              }
