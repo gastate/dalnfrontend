@@ -17,11 +17,52 @@ import {POSTS} from './mock-postlist';
 @Injectable()
 export class PostService {
 
+  cache_admin_posts: Post[];
+  unapproved_posts: Post[];
+  selected_posts: string[];
+
+
   constructor(private _http: Http) {
+      this.cache_admin_posts = [];
+      this.unapproved_posts = [];
+      this.selected_posts = [];
 
   }
 
   private endPoint = environment.API_ENDPOINTS;
+
+  approvePosts(postId: string[]) {
+      var tableName = this.endPoint.dev_ddb_table_name;
+      var data;
+
+      if(postId.length !== 0) {
+          postId.forEach((i) => {
+            data = {
+                postId: i,
+                tableName: 'DALN-Posts'
+            }
+            var datastr = JSON.stringify(data);
+            console.log(data);
+
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            let options = new RequestOptions({  headers: headers, method: "post"});
+
+            console.log(this.endPoint.approve_post);
+            this._http.post(this.endPoint.approve_post, datastr, options)
+                .map((res: Response) => res.json())
+                .subscribe(
+                    data => { console.log(data);},
+                    err => { console.log(err); }
+                );
+
+          });
+
+      }
+
+
+
+  }
 
   getAllPosts(): Observable<Post[]> {
 
@@ -72,8 +113,8 @@ export class PostService {
   getUnapprovedPosts(): Observable<Post[]> {
 
       var data = {
-          tableName: 'DALN-Posts-Dev'
-      }
+          tableName: this.endPoint.dev_ddb_table_name
+      };
 
       let str = JSON.stringify(data);
 

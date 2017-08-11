@@ -36,6 +36,7 @@ export class SearchComponent implements OnInit {
   resultList: Post[];
   results: Post[];
   errorMessage: string;
+  sub:any;
 
   // pagination
   startOffset: number;
@@ -71,7 +72,7 @@ export class SearchComponent implements OnInit {
 
 
 
-    router.events.subscribe((val) => {
+    this.sub = router.events.subscribe((val) => {
         // console.log(val instanceof NavigationEnd);
         // console.log(val.url);
         let route = val.url;
@@ -188,6 +189,10 @@ export class SearchComponent implements OnInit {
           console.log("index outside offset, new index is: ", index);
           this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, index + leftOverItems);
       }
+  }
+
+  ngOnDestroy() {
+      this.sub.unsubscribe();
   }
 
 

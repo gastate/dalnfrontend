@@ -52,10 +52,11 @@ import {TestingComponent} from './components/secure/testing/testing.component';
 import {WithdrawnComponent} from './components/secure/withdrawn/withdrawn.component';
 
 // Services
-import { PostService } from './services/post.service';
-import { SearchService } from './services/search.service';
 import { AuthService } from './services/auth.service';
 import { CognitoUtil } from './services/cognito.service';
+import { DynamoDBService } from './services/ddb.service';
+import { PostService } from './services/post.service';
+import { SearchService } from './services/search.service';
 import { UserLoginService } from './services/user-login.service';
 
 // Other
@@ -109,7 +110,7 @@ import { SafePipe } from './safe.pipe';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

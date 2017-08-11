@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {AuthService} from '../../../services/auth.service';
 import {PostService} from '../../../services/post.service';
 import {UserLoginService} from '../../../services/user-login.service';
+import {CognitoUtil} from '../../../services/cognito.service';
 import {LoggedInCallback} from '../../../services/cognito.service';
 
 import { Post } from '../../../model/post-model';
@@ -18,10 +19,16 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
 
   approval_list: Post[] = [];
   errorMessage: string;
+  noAdminPostsMessage: string;
   getdev: boolean;
+  postPoolTitle: string;
+
+  loading: boolean = false;
+  failed: boolean = false;
 
   constructor(
       public authService: AuthService,
+      public cognitoService: CognitoUtil,
       public postService: PostService,
       public userService: UserLoginService,
       public router: Router
@@ -32,16 +39,47 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
   ngOnInit() {
       this.getUnapproved();
       this.getdev = true;
+      this.errorMessage = null;
+      this.noAdminPostsMessage = null;
   }
 
-  getUnapproved(){
-      this.postService.getUnapprovedPosts().subscribe(
-      (data) => {
-          this.approval_list = data;
-      },
-      err => {
-          this.errorMessage = err;
-      });
+  approveSelected(){
+      this.postService.approvePosts(this.postService.selected_posts);
+      // b492f3ff-10ae-49be-b776-f98becbf55ad
+  }
+
+  getUnapproved() {
+      this.loading = true;
+      this.postPoolTitle = "Admins Post Pool";
+      if (this.postService.cache_admin_posts.length === 0) {
+          this.postService.getUnapprovedPosts().subscribe(
+          (data) => {
+              this.approval_list = data;
+              this.postService.cache_admin_posts = data;
+              if(this.approval_list.length == 0) {
+                  this.noAdminPostsMessage = "No posts to be reviewed!";
+              }
+              this.loading = false;
+          },
+          err => {
+              this.errorMessage = err;
+              this.loading = false;
+              this.failed = true;
+          });
+      } else {
+          this.approval_list = this.postService.cache_admin_posts;
+          this.loading = false;
+      }
+
+  }
+
+  getUserPostPool() {
+      this.approval_list = [];
+      this.errorMessage = null;
+      this.noAdminPostsMessage = null;
+      this.postPoolTitle = "Your Post Pool";
+      this.loading = true;
+    //   console.log(this.cognitoService.getCurrentUser());
   }
 
   approvePost(postId : string) {

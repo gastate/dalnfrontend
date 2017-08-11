@@ -29,7 +29,7 @@ export class PostDetailComponent implements OnInit {
       isText: boolean;
 
       //for social
-      private sub: any;
+      sub: any;
       route: string;
       text: string;
 
@@ -44,7 +44,7 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.router.events.subscribe((val) => {
+    this.sub = this.router.events.subscribe((val) => {
         if(val.url.startsWith('/getdev')) {
             this.onDevDetail();
         } else {
@@ -62,18 +62,23 @@ export class PostDetailComponent implements OnInit {
             (details) => {
                   this.loading = false;
                   this.postDetail = details;
-                  console.log(details);
+                  console.log(this.postDetail);
 
                   this.assets = this.postDetail.assetList;
-                  for(var i = 0; i <= this.assets.length - 1; i++) {
-                      if(this.assets[i].assetType === "Text") {
-                          this.isText = true;
+                  if(this.assets && this.assets.length) {
+                      for(var i = 0; i <= this.assets.length - 1; i++) {
+                          if(this.assets[i].assetType === "Text") {
+                              this.isText = true;
+                          }
                       }
                   }
 
                   // twitter doesn't take over 140 characters in the title
                   // slice it down to 50
-                  this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
+                  if(this.postDetail.title && this.postDetail.title.length) {
+                      this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
+                  }
+
 
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
 
@@ -90,18 +95,22 @@ export class PostDetailComponent implements OnInit {
         (params: Params) => this._postService.getDevPostById(params['id']))
         .subscribe(
             (details) => {
-                  this.loading = false;
                   this.postDetail = details;
-                  // console.log(details);
-                  
+                  console.log(this.postDetail);
+
                   this.assets = this.postDetail.assetList;
-                  for(var i = 0; i <= this.assets.length - 1; i++) {
-                      if(this.assets[i].assetType === "Text") {
-                          this.isText = true;
+                  if(this.assets && this.assets.length) {
+                      for(var i = 0; i <= this.assets.length - 1; i++) {
+                          if(this.assets[i].assetType === "Text") {
+                              this.isText = true;
+                          }
                       }
                   }
 
+
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
+                  this.loading = false;
+
               },
             err => {
                 this.loading = false;
@@ -117,6 +126,10 @@ export class PostDetailComponent implements OnInit {
   onSelectedAsset(asset: Asset): void {
     this.selectedAsset = asset;
 
+  }
+
+  ngOnDestroy() {
+      this.sub.unsubscribe();
   }
 
 

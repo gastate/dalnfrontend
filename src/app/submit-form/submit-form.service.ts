@@ -88,13 +88,12 @@ export class SubmitFormService {
 
               this._http.get(this.endPoint.get_upload_link + file.name)
               .map((res: Response) => res.json())
-              .catch((error : any) => Observable.throw(error.json().error))
+              .catch((error : any) => Observable.throw(error.json.error))
               .subscribe(
                   // data is the link returned from get_upload_link, will use this link to submit the formData.
                   data => {
                       this._http.put(data, this.formData, options)
                       .map((res: Response) => res.json())
-                      .catch((error: any) => Observable.throw(error.json().error))
                       .subscribe(
                           data => { console.log('response', data); },
                           error => { console.log(error); }
@@ -142,7 +141,7 @@ export class SubmitFormService {
 
 
   postCreate() {
-     var tableName = "DALN-Posts-Dev";
+     var tableName = this.endPoint.dev_ddb_table_name;
      var data = {
          title: this.title,
          description: this.description,
@@ -182,9 +181,9 @@ export class SubmitFormService {
              console.log(data);
 
              var jsonLink = {
-                 stagingAreaBucketName : "daln-file-staging-area",
+                 stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
                  assetDescription: "Asset",
-                 finalBucketName: "daln-development",
+                 finalBucketName: this.endPoint.finalBucketName,
                  PostId: this.postResult,
                  key: this.filename
              }

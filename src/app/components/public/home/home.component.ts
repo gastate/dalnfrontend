@@ -1,7 +1,9 @@
 import { ElementRef, Component, OnInit, animate } from '@angular/core';
-import { PlatformLocation } from '@angular/common';
 import { PostService } from '../../../services/post.service';
 import { SearchService } from '../../../services/search.service';
+import {UserLoginService} from '../../../services/user-login.service';
+import {LoggedInCallback} from '../../../services/cognito.service';
+
 import { Post } from '../../../model/post-model';
 // import { routerTransition } from '../router.animations';
 import 'rxjs/add/observable/fromPromise';
@@ -15,7 +17,6 @@ import 'rxjs/add/observable/fromPromise';
 export class HomeComponent implements OnInit {
 
 
-    otherloc: PlatformLocation;
     title = 'DALN Frontend';
     searchPosts: Post[] = [];
     posts: Post[] = [];
@@ -28,17 +29,16 @@ export class HomeComponent implements OnInit {
     getdev: boolean; //for postlist.
 
 
-  constructor(otherloc: PlatformLocation,  private _postService: PostService, private _searchService: SearchService) {
+  constructor(private _postService: PostService,
+              private _searchService: SearchService,
+              public userService: UserLoginService) {
 
-      otherloc.onPopState(() => {
-        console.log('pressed back!');
-    });
+        this.userService.isAuthenticated(this);
   }
 
 
 
-  ngOnInit(): void {
-        this.getdev = false;
+  ngOnInit() {
         this.getPagePosts();
   }
 
@@ -91,6 +91,15 @@ export class HomeComponent implements OnInit {
       this.searchPosts = [];
       this._searchService.searchQuery = "";
       // add to search history of browser
+  }
+
+  isLoggedIn(message: string, isLoggedIn: boolean) {
+      if(!isLoggedIn) {
+          this.getdev = false;
+          console.log("get dev false");
+      } else {
+          this.getdev = true;
+      }
   }
 
 

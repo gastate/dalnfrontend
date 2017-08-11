@@ -12,17 +12,21 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 
 export class PlayerComponent implements OnInit {
+
+
+    @Input()
+    postAsset: Asset;
+
+    @Input()
+    thumb: boolean;
+
+    @Input()
+    getdev: boolean;
+
     url : string;
     route: string;
     matchRoute: string;
 
-    @Input()
-    postAsset: Asset;
-    postCheck: Post;
-
-    @Input()
-    thumb: boolean;
-    noAsset: boolean;
     isPDF: boolean;
     isWeb : boolean;
 
@@ -31,6 +35,7 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUrl(this.postAsset);
+    // console.log(this.getdev);
   }
 
   getUrl(asset: Asset): void {
