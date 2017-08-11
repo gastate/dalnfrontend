@@ -1,5 +1,4 @@
 import { ElementRef, Component, OnInit, animate } from '@angular/core';
-import { PlatformLocation } from '@angular/common';
 import { PostService } from '../../../services/post.service';
 import { SearchService } from '../../../services/search.service';
 import { Post } from '../../../model/post-model';
@@ -15,7 +14,6 @@ import 'rxjs/add/observable/fromPromise';
 export class HomeComponent implements OnInit {
 
 
-    otherloc: PlatformLocation;
     title = 'DALN Frontend';
     searchPosts: Post[] = [];
     posts: Post[] = [];
@@ -28,11 +26,9 @@ export class HomeComponent implements OnInit {
     getdev: boolean; //for postlist.
 
 
-  constructor(otherloc: PlatformLocation,  private _postService: PostService, private _searchService: SearchService) {
+  constructor(private _postService: PostService, private _searchService: SearchService) {
 
-      otherloc.onPopState(() => {
-        console.log('pressed back!');
-    });
+
   }
 
 

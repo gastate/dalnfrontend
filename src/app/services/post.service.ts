@@ -17,7 +17,10 @@ import {POSTS} from './mock-postlist';
 @Injectable()
 export class PostService {
 
+  cache_admin_posts: Post[];
+
   constructor(private _http: Http) {
+      this.cache_admin_posts = [];
 
   }
 

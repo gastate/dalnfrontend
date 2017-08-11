@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FancyLoaderComponent implements OnInit {
 
-  @Input() loading: boolean = false;
-  @Input() failed: boolean = false;
+  @Input() loading: boolean;
+  @Input() failed: boolean;
 
   constructor() { }
 

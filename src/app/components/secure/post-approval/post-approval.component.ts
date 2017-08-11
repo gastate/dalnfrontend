@@ -20,6 +20,9 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
   errorMessage: string;
   getdev: boolean;
 
+  loading: boolean = false;
+  failed: boolean = false;
+
   constructor(
       public authService: AuthService,
       public postService: PostService,
@@ -35,13 +38,23 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
   }
 
   getUnapproved(){
-      this.postService.getUnapprovedPosts().subscribe(
-      (data) => {
-          this.approval_list = data;
-      },
-      err => {
-          this.errorMessage = err;
-      });
+      this.loading = true;
+      if (this.postService.cache_admin_posts.length === 0) {
+          this.postService.getUnapprovedPosts().subscribe(
+          (data) => {
+              this.approval_list = data;
+              this.loading = false;
+          },
+          err => {
+              this.errorMessage = err;
+              this.loading = false;
+              this.failed = true;
+          });
+      } else {
+          this.approval_list = this.postService.cache_admin_posts;
+          this.loading = false;
+      }
+
   }
 
   approvePost(postId : string) {
