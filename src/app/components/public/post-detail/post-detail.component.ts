@@ -29,7 +29,7 @@ export class PostDetailComponent implements OnInit {
       isText: boolean;
 
       //for social
-      private sub: any;
+      sub: any;
       route: string;
       text: string;
 
@@ -44,7 +44,7 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.router.events.subscribe((val) => {
+    this.sub = this.router.events.subscribe((val) => {
         if(val.url.startsWith('/getdev')) {
             this.onDevDetail();
         } else {
@@ -126,6 +126,10 @@ export class PostDetailComponent implements OnInit {
   onSelectedAsset(asset: Asset): void {
     this.selectedAsset = asset;
 
+  }
+
+  ngOnDestroy() {
+      this.sub.unsubscribe();
   }
 
 

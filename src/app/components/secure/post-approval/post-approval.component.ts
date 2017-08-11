@@ -19,6 +19,7 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
 
   approval_list: Post[] = [];
   errorMessage: string;
+  noAdminPostsMessage: string;
   getdev: boolean;
   postPoolTitle: string;
 
@@ -38,6 +39,8 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
   ngOnInit() {
       this.getUnapproved();
       this.getdev = true;
+      this.errorMessage = null;
+      this.noAdminPostsMessage = null;
   }
 
   getUnapproved() {
@@ -48,6 +51,9 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
           (data) => {
               this.approval_list = data;
               this.postService.cache_admin_posts = data;
+              if(this.approval_list.length == 0) {
+                  this.noAdminPostsMessage = "No posts to be reviewed!";
+              }
               this.loading = false;
           },
           err => {
@@ -64,6 +70,8 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
 
   getUserPostPool() {
       this.approval_list = [];
+      this.errorMessage = null;
+      this.noAdminPostsMessage = null;
       this.postPoolTitle = "Your Post Pool";
       this.loading = true;
     //   console.log(this.cognitoService.getCurrentUser());

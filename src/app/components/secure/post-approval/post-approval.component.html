@@ -38,12 +38,20 @@
 
 <!-- Error message and loading components -->
 <div class="row justify-content-center">
-  <div class="col-md-6 alert alert-danger" *ngIf="errorMessage != null">
+  <div class="col-md-6 alert alert-danger" *ngIf="errorMessage !== null">
       <p>
           {{errorMessage}}
       </p>
   </div>
  </div>
+
+ <div class="row justify-content-center">
+   <div class="col-md-6 alert alert-success" *ngIf="noAdminPostsMessage !== null">
+       <p>
+           {{noAdminPostsMessage}}
+       </p>
+   </div>
+  </div>
 
  <div class="row add-top-margin justify-content-center">
      <div class="col-md-12">

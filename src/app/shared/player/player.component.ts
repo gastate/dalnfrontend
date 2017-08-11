@@ -27,7 +27,6 @@ export class PlayerComponent implements OnInit {
     route: string;
     matchRoute: string;
 
-    noAsset: boolean;
     isPDF: boolean;
     isWeb : boolean;
 
@@ -36,6 +35,7 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUrl(this.postAsset);
+    console.log(this.getdev);
   }
 
   getUrl(asset: Asset): void {

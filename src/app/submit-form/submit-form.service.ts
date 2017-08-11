@@ -88,13 +88,12 @@ export class SubmitFormService {
 
               this._http.get(this.endPoint.get_upload_link + file.name)
               .map((res: Response) => res.json())
-              .catch((error : any) => Observable.throw(error.json().error))
+              .catch((error : any) => Observable.throw(error.json.error))
               .subscribe(
                   // data is the link returned from get_upload_link, will use this link to submit the formData.
                   data => {
                       this._http.put(data, this.formData, options)
                       .map((res: Response) => res.json())
-                      .catch((error: any) => Observable.throw(error.json().error))
                       .subscribe(
                           data => { console.log('response', data); },
                           error => { console.log(error); }
