@@ -19,6 +19,7 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
   approval_list: Post[] = [];
   errorMessage: string;
   getdev: boolean;
+  postPoolTitle: string;
 
   loading: boolean = false;
   failed: boolean = false;
@@ -37,12 +38,14 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
       this.getdev = true;
   }
 
-  getUnapproved(){
+  getUnapproved() {
       this.loading = true;
+      this.postPoolTitle = "Admins Post Pool";
       if (this.postService.cache_admin_posts.length === 0) {
           this.postService.getUnapprovedPosts().subscribe(
           (data) => {
               this.approval_list = data;
+              this.postService.cache_admin_posts = data;
               this.loading = false;
           },
           err => {
@@ -54,6 +57,13 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
           this.approval_list = this.postService.cache_admin_posts;
           this.loading = false;
       }
+
+  }
+
+  getUserPostPool() {
+      this.approval_list = [];
+      this.postPoolTitle = "Your Post Pool";
+      this.loading = true;
 
   }
 

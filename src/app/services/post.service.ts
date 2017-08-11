@@ -18,9 +18,12 @@ import {POSTS} from './mock-postlist';
 export class PostService {
 
   cache_admin_posts: Post[];
+  unapproved_posts: Post[];
+
 
   constructor(private _http: Http) {
       this.cache_admin_posts = [];
+      this.unapproved_posts = [];
 
   }
 
