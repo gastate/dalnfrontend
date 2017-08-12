@@ -24,6 +24,9 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Input()
   endOffset: number;
 
+  @Input()
+  showPagination: boolean;
+
   // output to the parent component to see what to do next.
   @Output()
   currentPageEmitter: EventEmitter<number>;
@@ -158,6 +161,13 @@ export class PaginationComponent implements OnInit, OnChanges {
           console.log("endOffset change", this.endOffset);
           this.calculateIndicies();
           this.sliceButtonRange();
+      }
+      if (changes['showPagination']) {
+          if(this.showPagination === false) {
+              console.log("pagination in HOME");
+              this.buttonArray = [];
+              this.pagedPost = [];
+          }
       }
 
   }
