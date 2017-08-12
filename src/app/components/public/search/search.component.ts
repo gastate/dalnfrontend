@@ -49,6 +49,8 @@ export class SearchComponent implements OnInit {
   pageParameter: number = 0;
 
   currentOffset: number; // received by pagination component.
+  currentPage: number;
+  query: string;
 
 
 
@@ -101,8 +103,6 @@ export class SearchComponent implements OnInit {
     this.pageNumber = this.searchService.pageNumber;
     this.total_offset = this.searchService.total_offset;
     this.total_results = this.searchService.total_results;
-
-    console.log("search resultList:", this.resultList);
   }
 
   onSearch(term: string, results: number, index: number): void {
@@ -141,8 +141,8 @@ export class SearchComponent implements OnInit {
     this.searchService.search_page(term, this.searchService.pageHead, index)
       .subscribe(
         (results) => {
-            if ((results === null) || results.length <= 0 ) {
-                this.errorMessage = "Something went wrong...Please try again.";
+            if ( (results.found <= 0) || (results.found === null)  ) {
+                this.errorMessage = "No results found";
             }
 
             this.posts = this.searchService.translatePosts(results.hit);
@@ -156,8 +156,9 @@ export class SearchComponent implements OnInit {
             this.showPagination = false;
             this.showHomePage.emit(false);
             this.calculateOffset();
+            this.query = term;
 
-            this.router.navigate(['/search'], { queryParams: { query: term, page: displayPage } });
+            this.router.navigate(['/search'], { queryParams: { query: term, page: this.currentPage } });
             // console.log("Search resultList", this.resultList);
             // this.searchResults.emit(this.resultList);
 
@@ -177,6 +178,8 @@ export class SearchComponent implements OnInit {
   getResultHandler(event) {
       console.log(this.resultList);
       this.currentOffset = event;
+      this.currentPage = event;
+      this.router.navigate(['/search'], { queryParams: { query: this.query, page: this.currentPage } });
       console.log("currentOffset", this.currentOffset);
       console.log("startOffset", this.startOffset);
       console.log("endOffset", this.endOffset);
