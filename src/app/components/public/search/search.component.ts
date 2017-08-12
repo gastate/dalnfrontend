@@ -68,6 +68,7 @@ export class SearchComponent implements OnInit {
     this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
 
+    this.showPagination = true;
     this.posts = [];
     this.results = [];
     this.resultList = this.searchService.results;
@@ -82,6 +83,7 @@ export class SearchComponent implements OnInit {
         if(route == "/home") {
             console.log("in home");
             this.showHomePage.emit(true);
+            this.showPagination = false;
         } else if (route.startsWith("/search")) {
             console.log("in search");
             this.showHomePage.emit(false);
@@ -96,7 +98,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.startOffset = this.searchService.pageNumber;
     this.errorMessage = null;
-    this.showPagination = true;
 
 
     this.resultsPerPage = this.searchService.resultsSize;
@@ -153,7 +154,6 @@ export class SearchComponent implements OnInit {
             this.resultList = this.results;
             this.searchService.results = this.results;
             console.log("new resultList", this.resultList);
-            this.showPagination = false;
             this.showHomePage.emit(false);
             this.calculateOffset();
             this.query = term;
