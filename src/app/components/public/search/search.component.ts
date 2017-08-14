@@ -81,14 +81,15 @@ export class SearchComponent implements OnInit {
         let route = val.url;
 
         if(route == "/home") {
-            console.log("in home");
+            // console.log("in home");
             this.showHomePage.emit(true);
             this.showPagination = false;
         } else if (route.startsWith("/search")) {
-            console.log("in search");
+            // console.log("in search");
+            this.showPagination = true;
             this.showHomePage.emit(false);
         } else {
-            console.log("in somewhere else");
+            // console.log("in somewhere else");
         }
     });
 
@@ -97,6 +98,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.startOffset = this.searchService.pageNumber;
+    this.endOffset = Math.floor(Math.max(this.searchService.results.length / this.searchService.resultsSize, 1));
     this.errorMessage = null;
 
 
@@ -153,9 +155,9 @@ export class SearchComponent implements OnInit {
 
             this.resultList = this.results;
             this.searchService.results = this.results;
-            console.log("new resultList", this.resultList);
-            this.showHomePage.emit(false);
+            // console.log("new resultList", this.resultList);
             this.calculateOffset();
+            this.showHomePage.emit(false);
             this.query = term;
 
             this.router.navigate(['/search'], { queryParams: { query: term, page: this.currentPage } });
@@ -169,9 +171,9 @@ export class SearchComponent implements OnInit {
   }
 
   calculateOffset() {
+      console.log("calculateOffset called");
       this.startOffset = this.searchService.pageNumber;
-      // console.log("Parent Offset", this.startOffset);
-      this.endOffset = Math.floor(Math.max(this.resultList.length / this.searchService.resultsSize, 1));
+      this.endOffset = Math.floor(Math.max(this.searchService.results.length / this.searchService.resultsSize, 1));
       console.log("startOffset, endOffset", this.startOffset, this.endOffset);
   }
 
@@ -185,7 +187,7 @@ export class SearchComponent implements OnInit {
       console.log("endOffset", this.endOffset);
 
       let leftOverItems = this.resultList.length % this.searchService.resultsSize;
-      console.log("leftover", leftOverItems);
+    //   console.log("leftover", leftOverItems);
 
       if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
           let index = ((this.currentOffset * this.searchService.resultsSize) - this.searchService.resultsSize);

@@ -41,6 +41,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   pagedPost: Post[];
 
   currentPage: number;
+
   resultsPerPage: number;
   buttonArray: number[] = []; // holds all possible buttons
   displayButton: number[] = []; // for displaying buttons
@@ -66,6 +67,8 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.pageHead = this.searchService.pageHead;
 
     console.log("pagination resultList: ", this.resultList);
+    console.log("Parent startOffset", this.startOffset);
+    console.log("Parent endOffset", this.endOffset);
     //  console.log("start vars for pagination", this.resultsPerPage, this.startOffset, this.pageHead);
 
   }
@@ -105,7 +108,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   calculateButtonRange() {
 
-      console.log("total_offset", this.searchService.total_offset);
+    //   console.log("total_offset", this.searchService.total_offset);
       for(let i = 0; i < this.searchService.total_offset; i++) {
         this.buttonArray.push(i + 1);
     }
@@ -115,6 +118,10 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   sliceButtonRange(){
+
+      console.log("endoffset sliceButtonRange() ", this.endOffset);
+      console.log("currentPage sliceButtonRange() ", this.currentPage);
+
       let buttonSlice = 6;
       let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
 
@@ -136,31 +143,32 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   populatePosts(firstIndex: number, lastIndex: number) {
-      console.log("resultList:", this.resultList);
+    //   console.log("resultList:", this.resultList);
       // + 1 on lastIndex since slice() goes from 0 to actual number - 1
       this.pagedPost = this.resultList.slice(firstIndex, lastIndex + 1);
-      console.log("PagedPost:", this.pagedPost);
+    //   console.log("PagedPost:", this.pagedPost);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-      if (changes['startOffset']) {
-          console.log("startOffset change", this.startOffset);
-          this.buttonArray = [];
-          this.calculateButtonRange();
-          this.sliceButtonRange();
-          this.calculateIndicies();
-      }
-      if(changes['resultList']) {
-          console.log("pagination change", this.resultList);
-        this.buttonArray = [];
-        this.calculateIndicies();
-        this.calculateButtonRange();
-        this.sliceButtonRange();
-      }
+    //   if (changes['startOffset']) {
+    //       console.log("startOffset change", this.startOffset);
+    //       this.buttonArray = [];
+    //       this.calculateButtonRange();
+    //       this.sliceButtonRange();
+    //       this.calculateIndicies();
+    //   }
+    //   if(changes['resultList']) {
+    //     //   console.log("pagination change", this.resultList);
+    //     this.buttonArray = [];
+    //     this.calculateIndicies();
+    //     this.calculateButtonRange();
+    //     this.sliceButtonRange();
+    //   }
       if (changes['endOffset']) {
           console.log("endOffset change", this.endOffset);
+          this.buttonArray = [];
           this.calculateIndicies();
-          this.sliceButtonRange();
+          this.calculateButtonRange();
       }
       if (changes['showPagination']) {
           if(this.showPagination === false) {
