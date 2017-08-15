@@ -138,6 +138,10 @@ export class PaginationComponent implements OnInit, OnChanges {
       let buttonSlice = 6;
       let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
 
+
+      // if the displayed button is not the last button in the array, display the next button pageHead
+      // if the startbutton is not the first index of the button array, display the previous button
+      // if the button is clicked, calculate indicies
       let startButton;
 
       if(firstIndex == 0) {
