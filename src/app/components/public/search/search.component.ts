@@ -140,6 +140,9 @@ export class SearchComponent implements OnInit {
 
 
     this.searchService.results = [];
+    // TODO: uses input for all_results (this.results should be all_results)
+    this.results = [];
+
 
     this.searchService.search_page(term, this.searchService.pageHead, index)
       .subscribe(
@@ -155,7 +158,7 @@ export class SearchComponent implements OnInit {
 
             this.resultList = this.results;
             this.searchService.results = this.results;
-            // console.log("new resultList", this.resultList);
+            console.log("new resultList", this.resultList);
             this.calculateOffset();
             this.showHomePage.emit(false);
             this.query = term;
@@ -179,21 +182,27 @@ export class SearchComponent implements OnInit {
 
   getResultHandler(event) {
       console.log(this.resultList);
-      this.currentOffset = event;
-      this.currentPage = event;
+    //   this.currentOffset = event;
+    // //   this.currentPage = event;
+    //   console.log("currentOffset", this.currentOffset);
+    //   console.log("startOffset", this.startOffset);
+    //   console.log("endOffset", this.endOffset);
+
+    //   console.
+    //   log("leftover", leftOverItems);
+     this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.resultList.length);
+
+
+    //   if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
+    // if (this.currentOffset === this.endOffset - 1) {
+    //
+    //       console.log("index outside offset, new index is: ", index);
+    //   } else if(this.currentOffset < this.startOffset) {
+    //
+    //   }
+
       this.router.navigate(['/search'], { queryParams: { query: this.query, page: this.currentPage } });
-      console.log("currentOffset", this.currentOffset);
-      console.log("startOffset", this.startOffset);
-      console.log("endOffset", this.endOffset);
 
-      let leftOverItems = this.resultList.length % this.searchService.resultsSize;
-    //   console.log("leftover", leftOverItems);
-
-      if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
-          let index = ((this.currentOffset * this.searchService.resultsSize) - this.searchService.resultsSize);
-          console.log("index outside offset, new index is: ", index);
-          this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, index + leftOverItems);
-      }
   }
 
   ngOnDestroy() {

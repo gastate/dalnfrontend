@@ -38,9 +38,11 @@ export class PaginationComponent implements OnInit, OnChanges {
   searchService : SearchService;
 
   // posts to pass off to post-list.
-  pagedPost: Post[];
+  pagedPost: Post [];
+  all_results: Post [] = [];
 
   currentPage: number;
+  fetchIndex: number;
 
   resultsPerPage: number;
   buttonArray: number[] = []; // holds all possible buttons
@@ -66,6 +68,8 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
 
+    //  this.all_results = this.resultList;
+
     console.log("pagination resultList: ", this.resultList);
     console.log("Parent startOffset", this.startOffset);
     console.log("Parent endOffset", this.endOffset);
@@ -81,8 +85,17 @@ export class PaginationComponent implements OnInit, OnChanges {
   getPagedPost(event) {
       if(event && event.target) {
           this.currentPage = event.target.innerText; // button is just the event's innerText.
-          this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
-          this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
+
+            // this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
+            if((this.currentPage * this.searchService.resultsSize) >= this.fetchIndex) {
+                this.fetchIndex = this.fetchIndex + this.searchService.resultsSize;
+                this.currentPageEmitter.emit(this.fetchIndex);
+            } else {
+                this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
+            }
+
+
+
       }
   }
 
@@ -98,12 +111,12 @@ export class PaginationComponent implements OnInit, OnChanges {
 
     //   console.log("currentPage", this.currentPage);
     //   console.log("resultsPerPage", this.resultsPerPage);
-      let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
-      let lastIndex = (firstIndex + this.resultsPerPage - 1); // minus one since index of array starts at 0.
-      console.log("lastIndex, firstIndex", lastIndex, firstIndex);
+      let firstPagedPostsIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
+      let lastPagedPostsIndex = (firstPagedPostsIndex + this.resultsPerPage - 1); // minus one since index of array starts at 0.
+      console.log("lastIndex, firstIndex", lastPagedPostsIndex, firstPagedPostsIndex);
 
       // populate pagedPost and push to the view.
-      this.populatePosts(firstIndex, lastIndex);
+      this.populatePosts(firstPagedPostsIndex, lastPagedPostsIndex);
   }
 
   calculateButtonRange() {
@@ -125,6 +138,10 @@ export class PaginationComponent implements OnInit, OnChanges {
       let buttonSlice = 6;
       let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
 
+
+      // if the displayed button is not the last button in the array, display the next button pageHead
+      // if the startbutton is not the first index of the button array, display the previous button
+      // if the button is clicked, calculate indicies
       let startButton;
 
       if(firstIndex == 0) {
@@ -145,7 +162,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   populatePosts(firstIndex: number, lastIndex: number) {
     //   console.log("resultList:", this.resultList);
       // + 1 on lastIndex since slice() goes from 0 to actual number - 1
-      this.pagedPost = this.resultList.slice(firstIndex, lastIndex + 1);
+      this.pagedPost = this.all_results.slice(firstIndex, lastIndex + 1);
     //   console.log("PagedPost:", this.pagedPost);
   }
 
@@ -157,13 +174,20 @@ export class PaginationComponent implements OnInit, OnChanges {
     //       this.sliceButtonRange();
     //       this.calculateIndicies();
     //   }
-    //   if(changes['resultList']) {
-    //     //   console.log("pagination change", this.resultList);
-    //     this.buttonArray = [];
-    //     this.calculateIndicies();
-    //     this.calculateButtonRange();
-    //     this.sliceButtonRange();
-    //   }
+      if(changes['resultList']) {
+          console.log("pagination change", this.resultList);
+        this.buttonArray = [];
+        // this.all_results.forEach((i) => {
+        //     this.resultList[i]
+        // });
+        Array.prototype.push.apply(this.all_results, this.resultList);
+        let leftOverItems = this.all_results.length % this.searchService.resultsSize;
+        this.fetchIndex = this.all_results.length - this.searchService.resultsSize;
+        console.log("all_results", this.all_results);
+        this.calculateIndicies();
+        this.calculateButtonRange();
+        this.sliceButtonRange();
+      }
       if (changes['endOffset']) {
           console.log("endOffset change", this.endOffset);
           this.buttonArray = [];
