@@ -35,7 +35,7 @@ export class SubmitFormService {
 
     postResult : string;
     formData : FormData = new FormData(); // only data that needs to be sent to upload files.
-    filename : string = null;
+    filename : string;
 
 
   constructor(private _http: Http) {
@@ -88,6 +88,8 @@ export class SubmitFormService {
 
       if (file) {
               console.log(this.endPoint.get_upload_link + file.name);
+
+              this.filename = file.name; // set the filename for link_media.
 
               this._http.get(this.endPoint.get_upload_link + file.name)
               .map((res: Response) => res.json())
@@ -198,8 +200,11 @@ export class SubmitFormService {
                  assetDescription: "Asset",
                  finalBucketName: this.endPoint.finalBucketName,
                  PostId: this.postResult,
-                 key: this.filename
+                 key: this.filename,
+                 tableName: this.endPoint.dev_ddb_table_name
              }
+
+             console.log("data to link", jsonLink);
              let headers = new Headers();
              headers.append('Content-Type', 'application/json');
              let options = new RequestOptions({headers: headers, method: "post"});
