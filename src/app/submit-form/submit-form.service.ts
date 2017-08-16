@@ -141,7 +141,7 @@ export class SubmitFormService {
 
 
   postCreate() {
-     var tableName = this.endPoint.dev_ddb_table_name;
+     var tableName = this.endPoint.prod_ddb_table_name;
      var data = {
          title: this.title,
          description: this.description,
