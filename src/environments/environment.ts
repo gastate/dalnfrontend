@@ -51,6 +51,9 @@ const search_posts = search_api_url  + "/posts/search/";
 // field = assetlocation of whatever
 // order = asc or desc
 
+// const search_by_field =
+// /posts/search/field/order
+
 const search_size = search_api_url + "";
 
 const approve_post = api_url + "/admin/approve/"; // to approve posts into search engine.

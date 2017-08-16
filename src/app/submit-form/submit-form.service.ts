@@ -80,7 +80,10 @@ export class SubmitFormService {
       // TODO: loop through every file in the fileList
       let headers = new Headers();
       headers.append('Content-Type', ' ');
-      let options = new RequestOptions({headers: headers, method: "put"});
+      let options = new RequestOptions({
+                headers: headers,
+                method: "put"
+            });
 
 
       if (file) {
@@ -92,12 +95,22 @@ export class SubmitFormService {
               .subscribe(
                   // data is the link returned from get_upload_link, will use this link to submit the formData.
                   data => {
-                      this._http.put(data, this.formData, options)
-                      .map((res: Response) => res.json())
-                      .subscribe(
-                          data => { console.log('response', data); },
-                          error => { console.log(error); }
-                      );
+                      console.log("response from s3upload", data);
+                              this._http.put(data, this.formData, options)
+                              .map((res: Response) => res.json())
+                              .subscribe(
+                                  data => { console.log('response', data); },
+                                  (err: any) => {
+                                          console.log(err);
+                                          if (err.error instanceof Error) {
+                                            // A client-side or network error occurred. Handle it accordingly.
+                                            console.log('An error occurred:', err.error.message);
+                                          } else {
+                                            // The backend returned an unsuccessful response code.
+                                            // The response body may contain clues as to what went wrong,
+                                            console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+                                          }
+                                  })
                   });
           } else {
           console.log("The fileList is empty");
@@ -141,7 +154,7 @@ export class SubmitFormService {
 
 
   postCreate() {
-     var tableName = this.endPoint.prod_ddb_table_name;
+     var tableName = this.endPoint.dev_ddb_table_name;
      var data = {
          title: this.title,
          description: this.description,
