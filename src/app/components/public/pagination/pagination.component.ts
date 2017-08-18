@@ -103,6 +103,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
             // this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
             if((this.currentPage * this.searchService.resultsSize) >= this.fetchIndex) {
+                console.log("currentPage * resultsSize >= fetchIndex", (this.currentPage * this.searchService.resultsSize), this.fetchIndex );
                 this.fetchIndex = this.fetchIndex + this.searchService.resultsSize;
                 this.currentPageEmitter.emit(this.fetchIndex);
                 this.checkButtons();
