@@ -82,7 +82,7 @@ export class SubmitFormService {
   }
 
   uploadMedia() {
-      // TODO: loop through every file in the fileList
+      // TODO: Workaround for video uploads, just use amazon. https://stackoverflow.com/questions/36010348/angular2-file-upload-for-amazon-s3-bucket
 
       console.log("fileList", this.fileList);
       let headers = new Headers();
@@ -190,6 +190,7 @@ export class SubmitFormService {
              this.postResult = data;
              console.log(data);
 
+             // TODO: change to include multiple files from the fileList.
              var jsonLink = {
                  stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
                  assetDescription: "Asset",
