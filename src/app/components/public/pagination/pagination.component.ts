@@ -167,19 +167,9 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    //   if (changes['startOffset']) {
-    //       console.log("startOffset change", this.startOffset);
-    //       this.buttonArray = [];
-    //       this.calculateButtonRange();
-    //       this.sliceButtonRange();
-    //       this.calculateIndicies();
-    //   }
       if(changes['resultList']) {
           console.log("pagination change", this.resultList);
         this.buttonArray = [];
-        // this.all_results.forEach((i) => {
-        //     this.resultList[i]
-        // });
         Array.prototype.push.apply(this.all_results, this.resultList);
         let leftOverItems = this.all_results.length % this.searchService.resultsSize;
         this.fetchIndex = this.all_results.length - this.searchService.resultsSize;
@@ -199,6 +189,7 @@ export class PaginationComponent implements OnInit, OnChanges {
               console.log("pagination in HOME");
               this.buttonArray = [];
               this.pagedPost = [];
+              this.searchService.searchQuery = null;
           }
       }
 

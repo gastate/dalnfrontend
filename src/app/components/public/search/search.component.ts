@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Location } from '@angular/common';
-import { Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
 
   location: Location;
   router: Router;
+  activatedRoute: ActivatedRoute;
   searchService : SearchService;
 
   showPagination: boolean;
@@ -37,6 +38,7 @@ export class SearchComponent implements OnInit {
   results: Post[];
   errorMessage: string;
   sub:any;
+  subQuery: any;
 
   // pagination
   startOffset: number;
@@ -59,11 +61,13 @@ export class SearchComponent implements OnInit {
   constructor(
     location: Location,
     router: Router,
+    activatedRoute: ActivatedRoute,
     private _postService: PostService,
     _searchService: SearchService) {
 
     this.location = location;
     this.router = router;
+    this.activatedRoute = activatedRoute;
     this.searchService = _searchService;
     this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
@@ -86,6 +90,11 @@ export class SearchComponent implements OnInit {
             this.showPagination = false;
         } else if (route.startsWith("/search")) {
             // console.log("in search");
+            this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
+                this.query = params['query'];
+                this.searchService.searchQuery = this.query;
+                this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
+                });
             this.showPagination = true;
             this.showHomePage.emit(false);
         } else {
