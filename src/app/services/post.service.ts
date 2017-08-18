@@ -32,7 +32,7 @@ export class PostService {
   private endPoint = environment.API_ENDPOINTS;
 
   approvePosts(postId: string[]) {
-      var tableName = this.endPoint.prod_ddb_table_name;
+      var tableName = this.endPoint.ddb_table_name;
       var data;
 
       if(postId.length !== 0) {
@@ -113,7 +113,7 @@ export class PostService {
   getUnapprovedPosts(): Observable<Post[]> {
 
       var data = {
-          tableName: this.endPoint.dev_ddb_table_name
+          tableName: this.endPoint.ddb_table_name
       };
 
       let str = JSON.stringify(data);
