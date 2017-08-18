@@ -108,11 +108,17 @@ export class PaginationComponent implements OnInit, OnChanges {
                 this.checkButtons();
             } else {
                 this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
-                this.checkButtons();
             }
+      }
+  }
 
-
-
+  getPageButtonClick(target: number){
+      if(target === -1) {
+          this.currentPage = this.currentPage - 1;
+          this.calculateIndicies();
+      } else if (target === 1) {
+          this.currentPage = this.currentPage + 1;
+          this.calculateIndicies();
       }
   }
 
@@ -131,6 +137,9 @@ export class PaginationComponent implements OnInit, OnChanges {
       let lastPagedPostsIndex = (firstPagedPostsIndex + this.resultsPerPage - 1); // minus one since index of array starts at 0.
       console.log("lastIndex, firstIndex", lastPagedPostsIndex, firstPagedPostsIndex);
 
+      // checkButtons
+      this.checkButtons();
+
       // populate pagedPost and push to the view.
       this.populatePosts(firstPagedPostsIndex, lastPagedPostsIndex);
   }
@@ -147,7 +156,12 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   checkButtons() {
-      console.log("the current page is", this.currentPage);
+
+      // if the displayed button is not the last button in the array, display the next button
+      // if the displayed button is not the first index of the button array, display the previous button
+      // if the button is clicked, calculate indicies
+
+    //   console.log("the current page is", this.currentPage);
 
       if(this.currentPage !== this.buttonArray[this.buttonArray.length - 1]) {
           this.showNextButton = true;
@@ -165,14 +179,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   sliceButtonRange(){
-
-      // if the displayed button is not the last button in the array, display the next button pageHead
-      // if the startbutton is not the first index of the button array, display the previous button
-      // if the button is clicked, calculate indicies
-
       let startButton;
-
-
       this.checkButtons();
 
       let buttonSlice = 6;
