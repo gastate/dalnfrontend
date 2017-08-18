@@ -27,7 +27,7 @@ export class SearchService {
   // pagination
   pageHead: number; // admin specified number of results to stay ahead of user.
   total_offset: number; // total offsets for pagination.
-  total_results: number; // total results from search api.
+  total_results: number; // total number of results from search api.
   results: Post[]; // holds the results for the pagination component.
 
   cache_posts: Post[];
@@ -86,7 +86,7 @@ export class SearchService {
         this.total_offset = Math.ceil(this.total_results / this.resultsSize);
         // console.log("number of total offsets", this.total_offset);
 
-        console.log("Search API Response", res.json());
+        // console.log("Search API Response", res.json());
         return res.json();
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

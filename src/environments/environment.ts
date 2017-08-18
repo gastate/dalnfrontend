@@ -3,6 +3,9 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
+// import {key} from './key'; // use in case for file upload.
+
+
 ///////////////////////
 // Cognito Functions //
 ///////////////////////
@@ -13,11 +16,22 @@ const userPoolId = 'us-east-1_0lPzLvk1m';
 const clientId = '5jor2041aact5jm0ka79c67dr4';
 const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 
+
+///////////////////////
+// Amazon Variables  //
+///////////////////////
+
 const admin_ddb_table_name = "DALN-Admin-Posts";
 const dev_ddb_table_name = "DALN-Posts-Dev";
+const prod_ddb_table_name = "DALN-Posts";
 const stagingAreaBucketName = "daln-file-staging-area";
 const finalBucketName = "daln-development";
 
+///////////////////////////////
+// Miscellanious Functions  //
+/////////////////////////////
+
+const share_link = "http%3A%2F%2Fdaln.gsu.edu%2F%23%2Fdetail%2F";
 
 //////////////////////
 // Lambda Functions //
@@ -39,6 +53,9 @@ const search_posts = search_api_url  + "/posts/search/";
 // start = index of first post
 // field = assetlocation of whatever
 // order = asc or desc
+
+// const search_by_field =
+// /posts/search/field/order
 
 const search_size = search_api_url + "";
 
@@ -65,9 +82,11 @@ export const environment = {
     get_unapproved_posts: get_unapproved_posts,
     link_media : link_media,
     page_posts: page_posts,
+    prod_ddb_table_name: prod_ddb_table_name,
     post: post,
     search_posts : search_posts,
     search_size : search_size,
+    share_link : share_link,
     stagingAreaBucketName: stagingAreaBucketName,
     unapprove_post : unapprove_post
 }, COGNITO_INFO : {
@@ -78,24 +97,3 @@ export const environment = {
 }
 
 };
-
-// const api_url = "https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production";
-// const all_posts = api_url + "/posts/all";
-// const post = api_url + "/posts/get/";
-// // const create_post = api_url + "/posts/create";
-// // const upload_media = api_url + "/upload";
-// // const update_post = api_url + "/update";
-// const search_posts = api_url + "/posts/search/";
-//
-// export const environment = {
-//   production: true,
-//   API_ENDPOINTS: {
-//     api_url: api_url,
-//     all_posts: all_posts,
-//     post: post,
-//     // create_post: create_post,
-//     // upload_media: upload_media,
-//     // update_post: update_post
-//     search_posts: search_posts
-//   }
-// };

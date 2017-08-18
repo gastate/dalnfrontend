@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Location } from '@angular/common';
-import { Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
 
   location: Location;
   router: Router;
+  activatedRoute: ActivatedRoute;
   searchService : SearchService;
 
   showPagination: boolean;
@@ -37,6 +38,7 @@ export class SearchComponent implements OnInit {
   results: Post[];
   errorMessage: string;
   sub:any;
+  subQuery: any;
 
   // pagination
   startOffset: number;
@@ -59,11 +61,13 @@ export class SearchComponent implements OnInit {
   constructor(
     location: Location,
     router: Router,
+    activatedRoute: ActivatedRoute,
     private _postService: PostService,
     _searchService: SearchService) {
 
     this.location = location;
     this.router = router;
+    this.activatedRoute = activatedRoute;
     this.searchService = _searchService;
     this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
@@ -81,14 +85,19 @@ export class SearchComponent implements OnInit {
         let route = val.url;
 
         if(route == "/home") {
-            console.log("in home");
+            // console.log("in home");
             this.showHomePage.emit(true);
             this.showPagination = false;
         } else if (route.startsWith("/search")) {
-            console.log("in search");
+            // console.log("in search");
+            this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
+                this.query = params['query'];
+                this.searchService.searchQuery = this.query;
+                // this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
+                });
+            this.subQuery.unsubscribe();
+            this.showPagination = true;
             this.showHomePage.emit(false);
-        } else {
-            console.log("in somewhere else");
         }
     });
 
@@ -97,6 +106,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.startOffset = this.searchService.pageNumber;
+    this.endOffset = Math.floor(Math.max(this.searchService.results.length / this.searchService.resultsSize, 1));
     this.errorMessage = null;
 
 
@@ -138,6 +148,9 @@ export class SearchComponent implements OnInit {
 
 
     this.searchService.results = [];
+    // TODO: uses input for all_results (this.results should be all_results)
+    this.results = [];
+
 
     this.searchService.search_page(term, this.searchService.pageHead, index)
       .subscribe(
@@ -154,8 +167,8 @@ export class SearchComponent implements OnInit {
             this.resultList = this.results;
             this.searchService.results = this.results;
             console.log("new resultList", this.resultList);
-            this.showHomePage.emit(false);
             this.calculateOffset();
+            this.showHomePage.emit(false);
             this.query = term;
 
             this.router.navigate(['/search'], { queryParams: { query: term, page: this.currentPage } });
@@ -170,28 +183,33 @@ export class SearchComponent implements OnInit {
 
   calculateOffset() {
       this.startOffset = this.searchService.pageNumber;
-      // console.log("Parent Offset", this.startOffset);
-      this.endOffset = Math.floor(Math.max(this.resultList.length / this.searchService.resultsSize, 1));
+      this.endOffset = Math.floor(Math.max(this.searchService.results.length / this.searchService.resultsSize, 1));
       console.log("startOffset, endOffset", this.startOffset, this.endOffset);
   }
 
   getResultHandler(event) {
       console.log(this.resultList);
-      this.currentOffset = event;
-      this.currentPage = event;
+    //   this.currentOffset = event;
+    // //   this.currentPage = event;
+    //   console.log("currentOffset", this.currentOffset);
+    //   console.log("startOffset", this.startOffset);
+    //   console.log("endOffset", this.endOffset);
+
+    //   console.
+    //   log("leftover", leftOverItems);
+     this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.resultList.length);
+
+
+    //   if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
+    // if (this.currentOffset === this.endOffset - 1) {
+    //
+    //       console.log("index outside offset, new index is: ", index);
+    //   } else if(this.currentOffset < this.startOffset) {
+    //
+    //   }
+
       this.router.navigate(['/search'], { queryParams: { query: this.query, page: this.currentPage } });
-      console.log("currentOffset", this.currentOffset);
-      console.log("startOffset", this.startOffset);
-      console.log("endOffset", this.endOffset);
 
-      let leftOverItems = this.resultList.length % this.searchService.resultsSize;
-      console.log("leftover", leftOverItems);
-
-      if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
-          let index = ((this.currentOffset * this.searchService.resultsSize) - this.searchService.resultsSize);
-          console.log("index outside offset, new index is: ", index);
-          this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, index + leftOverItems);
-      }
   }
 
   ngOnDestroy() {

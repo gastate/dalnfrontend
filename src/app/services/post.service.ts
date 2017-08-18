@@ -32,14 +32,14 @@ export class PostService {
   private endPoint = environment.API_ENDPOINTS;
 
   approvePosts(postId: string[]) {
-      var tableName = this.endPoint.dev_ddb_table_name;
+      var tableName = this.endPoint.prod_ddb_table_name;
       var data;
 
       if(postId.length !== 0) {
           postId.forEach((i) => {
             data = {
                 postId: i,
-                tableName: 'DALN-Posts'
+                tableName: tableName
             }
             var datastr = JSON.stringify(data);
             console.log(data);

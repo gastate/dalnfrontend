@@ -1,10 +1,12 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Router, Params, NavigationEnd}   from '@angular/router';
-import {Location}                 from '@angular/common';
+import {Location} from '@angular/common';
 import {PostService} from '../../../services/post.service';
 import {Post} from '../../../model/post-model';
-
 import {Asset} from '../../../model/asset-model';
+
+import {environment} from '../../../../environments/environment';
+
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -33,6 +35,9 @@ export class PostDetailComponent implements OnInit {
       route: string;
       text: string;
 
+      private endPoint = environment.API_ENDPOINTS;
+
+
   constructor(private _postService: PostService,
               private _route: ActivatedRoute,
               private _location: Location,
@@ -49,7 +54,7 @@ export class PostDetailComponent implements OnInit {
             this.onDevDetail();
         } else {
             this.onDetail();
-            this.route = "http%3A%2F%2Fdaln.gsu.edu%2F%23%2Fdetail%2F" + val.url.substring(8);
+            this.route = this.endPoint.share_link  + val.url.substring(8);
         }
     });
 

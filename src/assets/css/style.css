@@ -625,7 +625,7 @@ ul.arrow li {
     display: inline;
     /*margin-left: 64px;*/
     font-size: 31px;
-    color: #213f71;
+    color: white;
 
 }
 
@@ -634,7 +634,7 @@ ul.arrow li {
 }
 
 .bg-inverse {
-    background-color: #8A8A8A !important; /* gray color */
+    background-color: #333333 !important; /* gray color */
 }
 
 .desc {

@@ -81,6 +81,10 @@
                       </thead>
                       <tbody>
                           <tr>
+                               <td>postId</td>
+                               <td>{{postDetail?.postId}}</td>
+                          </tr>
+                          <tr>
                                <td>identifierUri</td>
                                <td>{{postDetail?.identifierUri}}</td>
                           </tr>
@@ -101,6 +105,14 @@
                                <td>{{postDetail?.dateIssued}}</td>
                           </tr>
                           <tr>
+                               <td>rightsConsent</td>
+                               <td>{{postDetail?.rightsConsent}}</td>
+                          </tr>
+                          <tr>
+                               <td>rightsRelease</td>
+                               <td>{{postDetail?.rightsRelease}}</td>
+                          </tr>
+                          <tr>
                                <td>contributorAuthor</td>
                                <td>
                                   <ul>
@@ -113,6 +125,30 @@
                                <td>
                                   <ul>
                                    <li *ngFor="let author of postDetail.contributorInterviewer">{{postDetail?.contributorInterviewer}}</li>
+                                  </ul>
+                               </td>
+                          </tr>
+                          <tr>
+                               <td>coveragePeriod</td>
+                               <td>
+                                  <ul>
+                                   <li *ngFor="let period of postDetail.coveragePeriod">{{postDetail?.coveragePeriod}}</li>
+                                  </ul>
+                               </td>
+                          </tr>
+                          <tr>
+                               <td>coverageStateProvince</td>
+                               <td>
+                                  <ul>
+                                   <li *ngFor="let state of postDetail.coverageStateProvince">{{postDetail?.coverageStateProvince}}</li>
+                                  </ul>
+                               </td>
+                          </tr>
+                          <tr>
+                               <td>creatorGender</td>
+                               <td>
+                                  <ul>
+                                   <li *ngFor="let gender of postDetail.creatorGender">{{postDetail?.ccreatorGender}}</li>
                                   </ul>
                                </td>
                           </tr>

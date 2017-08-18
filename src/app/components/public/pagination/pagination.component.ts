@@ -31,16 +31,22 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Output()
   currentPageEmitter: EventEmitter<number>;
 
+
+
   // @Output()
   // skipToResultList: EventEmitter<any>;
 
-
+  sub: any;
   searchService : SearchService;
 
   // posts to pass off to post-list.
-  pagedPost: Post[];
+  pagedPost: Post [];
+  all_results: Post [] = [];
 
   currentPage: number;
+  fetchIndex: number;
+
+
   resultsPerPage: number;
   buttonArray: number[] = []; // holds all possible buttons
   displayButton: number[] = []; // for displaying buttons
@@ -48,14 +54,25 @@ export class PaginationComponent implements OnInit, OnChanges {
   pageHead: number;
 
   getdev: boolean; //for postlist
+  displayPagination: boolean; // to show pagination.
+  showNextButton: boolean;
+  showPrevButton: boolean;
 
 
   constructor( _searchService: SearchService, private router: Router) {
     this.searchService = _searchService;
     this.currentPageEmitter = new EventEmitter<number>();
-    // router.events.subscribe((val) => {
-    //     this.buttonArray = [];
-    // });
+    this.router = router;
+
+    // so unnecessary, plz fix
+    this.sub = router.events.subscribe((val) => {
+        let route = val.url;
+            if(route.startsWith("/search")) {
+                this.displayPagination = true;
+            } else {
+                this.displayPagination = false;
+            }
+    });
   }
 
   ngOnInit() {
@@ -65,7 +82,12 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
 
+    this.showNextButton = false;
+    this.showPrevButton = false;
+
     console.log("pagination resultList: ", this.resultList);
+    console.log("Parent startOffset", this.startOffset);
+    console.log("Parent endOffset", this.endOffset);
     //  console.log("start vars for pagination", this.resultsPerPage, this.startOffset, this.pageHead);
 
   }
@@ -77,9 +99,26 @@ export class PaginationComponent implements OnInit, OnChanges {
    */
   getPagedPost(event) {
       if(event && event.target) {
-          this.currentPage = event.target.innerText; // button is just the event's innerText.
-          this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
-          this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
+          this.currentPage = +event.target.innerText; // button is just the event's innerText.
+
+            // this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
+            if((this.currentPage * this.searchService.resultsSize) >= this.fetchIndex) {
+                this.fetchIndex = this.fetchIndex + this.searchService.resultsSize;
+                this.currentPageEmitter.emit(this.fetchIndex);
+                this.checkButtons();
+            } else {
+                this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
+            }
+      }
+  }
+
+  getPageButtonClick(target: number){
+      if(target === -1) {
+          this.currentPage = this.currentPage - 1;
+          this.calculateIndicies();
+      } else if (target === 1) {
+          this.currentPage = this.currentPage + 1;
+          this.calculateIndicies();
       }
   }
 
@@ -92,20 +131,22 @@ export class PaginationComponent implements OnInit, OnChanges {
           this.currentPage = this.startOffset;
           this.resultsPerPage = this.searchService.resultsSize;
       }
-
     //   console.log("currentPage", this.currentPage);
     //   console.log("resultsPerPage", this.resultsPerPage);
-      let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
-      let lastIndex = (firstIndex + this.resultsPerPage - 1); // minus one since index of array starts at 0.
-      console.log("lastIndex, firstIndex", lastIndex, firstIndex);
+      let firstPagedPostsIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
+      let lastPagedPostsIndex = (firstPagedPostsIndex + this.resultsPerPage - 1); // minus one since index of array starts at 0.
+      console.log("lastIndex, firstIndex", lastPagedPostsIndex, firstPagedPostsIndex);
+
+      // checkButtons
+      this.checkButtons();
 
       // populate pagedPost and push to the view.
-      this.populatePosts(firstIndex, lastIndex);
+      this.populatePosts(firstPagedPostsIndex, lastPagedPostsIndex);
   }
 
   calculateButtonRange() {
 
-      console.log("total_offset", this.searchService.total_offset);
+    //   console.log("total_offset", this.searchService.total_offset);
       for(let i = 0; i < this.searchService.total_offset; i++) {
         this.buttonArray.push(i + 1);
     }
@@ -114,18 +155,44 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   }
 
+  checkButtons() {
+
+      // if the displayed button is not the last button in the array, display the next button
+      // if the displayed button is not the first index of the button array, display the previous button
+      // if the button is clicked, calculate indicies
+
+    //   console.log("the current page is", this.currentPage);
+
+      if(this.currentPage !== this.buttonArray[this.buttonArray.length - 1]) {
+          this.showNextButton = true;
+          console.log("Next Button is true.");
+      } else {
+          this.showNextButton = false;
+      }
+      if(this.currentPage !== this.buttonArray[0]) {
+          console.log(this.buttonArray[0]);
+          this.showPrevButton = true;
+          console.log("Prev Button is true.");
+      } else {
+          this.showPrevButton = false;
+      }
+  }
+
   sliceButtonRange(){
+      let startButton;
+      this.checkButtons();
+
       let buttonSlice = 6;
       let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
 
-      let startButton;
+
+
 
       if(firstIndex == 0) {
           startButton = 0;
       } else {
           startButton = this.currentPage - 3;
       }
-
       if (this.endOffset < this.searchService.total_offset) {
           this.displayButton =  this.buttonArray.slice(startButton, this.endOffset + buttonSlice);
       } else {
@@ -136,40 +203,46 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   populatePosts(firstIndex: number, lastIndex: number) {
-      console.log("resultList:", this.resultList);
+    //   console.log("resultList:", this.resultList);
       // + 1 on lastIndex since slice() goes from 0 to actual number - 1
-      this.pagedPost = this.resultList.slice(firstIndex, lastIndex + 1);
-      console.log("PagedPost:", this.pagedPost);
+      this.pagedPost = this.all_results.slice(firstIndex, lastIndex + 1);
+    //   console.log("PagedPost:", this.pagedPost);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-      if (changes['startOffset']) {
-          console.log("startOffset change", this.startOffset);
-          this.buttonArray = [];
-          this.calculateButtonRange();
-          this.sliceButtonRange();
-          this.calculateIndicies();
-      }
       if(changes['resultList']) {
           console.log("pagination change", this.resultList);
         this.buttonArray = [];
-        this.calculateIndicies();
+        Array.prototype.push.apply(this.all_results, this.resultList);
+        let leftOverItems = this.all_results.length % this.searchService.resultsSize;
+        this.fetchIndex = this.all_results.length - this.searchService.resultsSize;
+        console.log("all_results", this.all_results);
         this.calculateButtonRange();
         this.sliceButtonRange();
+        this.calculateIndicies();
+
       }
       if (changes['endOffset']) {
           console.log("endOffset change", this.endOffset);
+          this.buttonArray = [];
+          this.calculateButtonRange();
+          this.checkButtons();
           this.calculateIndicies();
-          this.sliceButtonRange();
+
       }
       if (changes['showPagination']) {
           if(this.showPagination === false) {
               console.log("pagination in HOME");
               this.buttonArray = [];
               this.pagedPost = [];
+              this.searchService.searchQuery = null;
           }
       }
 
+  }
+
+  ngOnDestroy() {
+      this.sub.unsubscribe();
   }
 
 

@@ -35,7 +35,8 @@ export class SubmitFormService {
 
     postResult : string;
     formData : FormData = new FormData(); // only data that needs to be sent to upload files.
-    filename : string = null;
+    filename : string;
+    fileList: FileList;
 
 
   constructor(private _http: Http) {
@@ -64,10 +65,10 @@ export class SubmitFormService {
 
   private endPoint = environment.API_ENDPOINTS;
 
-  getMedia (fileList : FileList) {
+  setMedia (fileList : FileList) {
 
     let file : File;
-
+    this.fileList = fileList;
     console.log(fileList);
 
     for (var i = 0; i < fileList.length; i++) {
@@ -76,45 +77,54 @@ export class SubmitFormService {
     }
   }
 
-  uploadMedia(file: File) {
-      // TODO: loop through every file in the fileList
+  getMedia() {
+    return this.fileList;
+  }
+
+  uploadMedia() {
+      // TODO: Workaround for video uploads, just use amazon. https://stackoverflow.com/questions/36010348/angular2-file-upload-for-amazon-s3-bucket
+
+      console.log("fileList", this.fileList);
       let headers = new Headers();
       headers.append('Content-Type', ' ');
-      let options = new RequestOptions({headers: headers, method: "put"});
+      let options = new RequestOptions({
+                headers: headers,
+                method: "put"
+            });
+
+      let fileCount = this.fileList.length;
+
+      if(fileCount > 0) {
+          var fd;
+          for(let i = 0; i < fileCount; i++) {
+                  fd = new FormData();
+                  fd.append("file[]", this.fileList[i], this.fileList[i].name)
 
 
-      if (file) {
-              console.log(this.endPoint.get_upload_link + file.name);
+                console.log("hitting get link endpoint:", this.endPoint.get_upload_link + this.fileList[i].name);
 
-              this._http.get(this.endPoint.get_upload_link + file.name)
-              .map((res: Response) => res.json())
-              .catch((error : any) => Observable.throw(error.json.error))
-              .subscribe(
-                  // data is the link returned from get_upload_link, will use this link to submit the formData.
-                  data => {
-                      this._http.put(data, this.formData, options)
-                      .map((res: Response) => res.json())
-                      .subscribe(
-                          data => { console.log('response', data); },
-                          error => { console.log(error); }
-                      );
-                  });
-          } else {
-          console.log("The fileList is empty");
+                this._http.get(this.endPoint.get_upload_link + this.fileList[i].name)
+                    .map((res: Response) => res.json())
+                    .catch((error : any) => Observable.throw(error.json.error))
+                    .subscribe((data) => {
+                        // data is the presigned s3 url sent by the api.
+                        console.log("api link", data);
+
+                        this._http.put(data, fd, options)
+                            .map((res: Response) => res.json())
+                            .catch((error : any) => Observable.throw(error.json.error))
+                            .subscribe(
+                                (res) => { console.log("result from put", res); },
+                                (err) => { console.log("error from put", err); }
+                            );
+                    });
+
+          }
+
+      } else {
+          console.log("fileList is empty.");
       }
 
-    //   console.log("Uploading Files...");
-    //   console.log(this.endPoint.get_upload_l
-    //       ink + this.filename);
-
-    //   // Testing mock http service
-    //   this._http.put('https://httpbin.org/put', this.formData)
-    //   .map((res: Response) => res.json())
-    //   .catch((error: any) => Observable.throw(error.json().error))
-    //   .subscribe(
-    //       data => { console.log('response', data); },
-    //       error => { console.log(error); }
-    //   );
   }
 
   returnPost() {
@@ -180,13 +190,17 @@ export class SubmitFormService {
              this.postResult = data;
              console.log(data);
 
+             // TODO: change to include multiple files from the fileList.
              var jsonLink = {
                  stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
                  assetDescription: "Asset",
                  finalBucketName: this.endPoint.finalBucketName,
                  PostId: this.postResult,
-                 key: this.filename
+                 key: this.filename,
+                 tableName: this.endPoint.dev_ddb_table_name
              }
+
+             console.log("data to link", jsonLink);
              let headers = new Headers();
              headers.append('Content-Type', 'application/json');
              let options = new RequestOptions({headers: headers, method: "post"});
