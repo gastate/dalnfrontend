@@ -197,37 +197,38 @@ export class SubmitFormService {
              this.postResult = data;
              console.log(data);
 
-             // TODO: change to include multiple files from the fileList.
-             var jsonLink = {
-                 stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
-                 assetDescription: "Asset",
-                 finalBucketName: this.endPoint.finalBucketName,
-                 PostId: this.postResult,
-                 key: this.filename,
-                 tableName: this.endPoint.ddb_table_name
+             var jsonLink;
+
+             if(this.fileList.length > 0) {
+                  for(let i = 0; i < this.fileList.length; i++) {
+
+                      jsonLink = {
+                          stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
+                          assetDescription: "Asset",
+                          finalBucketName: this.endPoint.finalBucketName,
+                          PostId: this.postResult,
+                          key: this.fileList[i].name,
+                          tableName: this.endPoint.ddb_table_name
+                      };
+
+                      console.log("data to link", jsonLink);
+                      let headers = new Headers();
+                      headers.append('Content-Type', 'application/json');
+                      let options = new RequestOptions({headers: headers, method: "post"});
+
+                      var input = JSON.stringify(jsonLink);
+
+
+                      this._http.post(this.endPoint.link_media, input, options)
+                      .map((res: Response) => res.json())
+                      .catch((error : any) => Observable.throw(error.json().error))
+                      .subscribe(
+                          data => { console.log ('Link response: ', data);},
+                          error => { console.log(error); }
+                      );
+                  }
              }
-
-             console.log("data to link", jsonLink);
-             let headers = new Headers();
-             headers.append('Content-Type', 'application/json');
-             let options = new RequestOptions({headers: headers, method: "post"});
-
-             var input = JSON.stringify(jsonLink);
-
-
-             this._http.post(this.endPoint.link_media, input, options)
-             .map((res: Response) => res.json())
-             .catch((error : any) => Observable.throw(error.json().error))
-             .subscribe(
-                 data => { console.log ('Link response: ', data);},
-                 error => { console.log(error); }
-             );
-         },
-         err => {
-            console.log(err);
-        }
-     );
-
+         });
   }
 
 }
