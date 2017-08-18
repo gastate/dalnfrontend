@@ -81,8 +81,10 @@ export class SubmitFormService {
     return this.fileList;
   }
 
-  uploadMedia(file: File) {
+  uploadMedia() {
       // TODO: loop through every file in the fileList
+
+      console.log("fileList", this.fileList);
       let headers = new Headers();
       headers.append('Content-Type', ' ');
       let options = new RequestOptions({
@@ -90,51 +92,39 @@ export class SubmitFormService {
                 method: "put"
             });
 
+      let fileCount = this.fileList.length;
 
-      if (file) {
-              console.log(this.endPoint.get_upload_link + file.name);
+      if(fileCount > 0) {
+          var fd;
+          for(let i = 0; i < fileCount; i++) {
+                  fd = new FormData();
+                  fd.append("file[]", this.fileList[i], this.fileList[i].name)
 
-              this.filename = file.name; // set the filename for link_media.
 
-              this._http.get(this.endPoint.get_upload_link + file.name)
-              .map((res: Response) => res.json())
-              .catch((error : any) => Observable.throw(error.json.error))
-              .subscribe(
-                  // data is the link returned from get_upload_link, will use this link to submit the formData.
-                  data => {
-                      console.log("response from s3upload", data);
-                              this._http.put(data, this.formData, options)
-                              .map((res: Response) => res.json())
-                              .subscribe(
-                                  data => { console.log('response', data); },
-                                  (err: any) => {
-                                          console.log(err);
-                                          if (err.error instanceof Error) {
-                                            // A client-side or network error occurred. Handle it accordingly.
-                                            console.log('An error occurred:', err.error.message);
-                                          } else {
-                                            // The backend returned an unsuccessful response code.
-                                            // The response body may contain clues as to what went wrong,
-                                            console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-                                          }
-                                  })
-                  });
-          } else {
-          console.log("The fileList is empty");
+                console.log("hitting get link endpoint:", this.endPoint.get_upload_link + this.fileList[i].name);
+
+                this._http.get(this.endPoint.get_upload_link + this.fileList[i].name)
+                    .map((res: Response) => res.json())
+                    .catch((error : any) => Observable.throw(error.json.error))
+                    .subscribe((data) => {
+                        // data is the presigned s3 url sent by the api.
+                        console.log("api link", data);
+
+                        this._http.put(data, fd, options)
+                            .map((res: Response) => res.json())
+                            .catch((error : any) => Observable.throw(error.json.error))
+                            .subscribe(
+                                (res) => { console.log("result from put", res); },
+                                (err) => { console.log("error from put", err); }
+                            );
+                    });
+
+          }
+
+      } else {
+          console.log("fileList is empty.");
       }
 
-    //   console.log("Uploading Files...");
-    //   console.log(this.endPoint.get_upload_l
-    //       ink + this.filename);
-
-    //   // Testing mock http service
-    //   this._http.put('https://httpbin.org/put', this.formData)
-    //   .map((res: Response) => res.json())
-    //   .catch((error: any) => Observable.throw(error.json().error))
-    //   .subscribe(
-    //       data => { console.log('response', data); },
-    //       error => { console.log(error); }
-    //   );
   }
 
   returnPost() {
