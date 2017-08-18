@@ -60,9 +60,35 @@ export class PostService {
 
       }
 
-
-
   }
+
+  unapprovePost(postId: string){
+      var tableName = this.endPoint.ddb_table_name;
+      var data;
+
+      data = {
+          postId: postId,
+          tableName: tableName
+      };
+
+      var datastr = JSON.stringify(data);
+
+      console.log(data);
+
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      let options = new RequestOptions({ headers: headers, method: "post"});
+
+      console.log(this.endPoint.unapprove_post);
+      this._http.post(this.endPoint.unapprove_post, datastr, options)
+          .map((res: Response) => res.json())
+          .subscribe(
+              data => { console.log(data);},
+              err => { console.log(err); }
+          );
+
+    }
+
 
   getAllPosts(): Observable<Post[]> {
 

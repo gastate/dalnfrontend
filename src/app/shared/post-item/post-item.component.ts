@@ -42,6 +42,11 @@ export class PostItemComponent implements OnInit {
       }
   }
 
+  unapprovePost() {
+    this._postService.unapprovePost(this.postItem.postId);
+
+  }
+
 
 
 

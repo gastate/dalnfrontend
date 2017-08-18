@@ -35,6 +35,8 @@ export class PostDetailComponent implements OnInit {
       route: string;
       text: string;
 
+      onDev: boolean;
+
       private endPoint = environment.API_ENDPOINTS;
 
 
@@ -101,6 +103,7 @@ export class PostDetailComponent implements OnInit {
         .subscribe(
             (details) => {
                   this.postDetail = details;
+                  this.onDev = true;
                   console.log(this.postDetail);
 
                   this.assets = this.postDetail.assetList;
@@ -131,6 +134,10 @@ export class PostDetailComponent implements OnInit {
   onSelectedAsset(asset: Asset): void {
     this.selectedAsset = asset;
 
+  }
+
+  unapprovePost() {
+      this._postService.unapprovePost(this.postDetail.postId);
   }
 
   ngOnDestroy() {
