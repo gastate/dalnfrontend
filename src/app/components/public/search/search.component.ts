@@ -93,7 +93,7 @@ export class SearchComponent implements OnInit {
             this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
                 this.query = params['query'];
                 this.searchService.searchQuery = this.query;
-                this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
+                // this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
                 });
             this.subQuery.unsubscribe();
             this.showPagination = true;
