@@ -21,6 +21,8 @@ const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 // Amazon Variables  //
 ///////////////////////
 
+const bucket_region = 'us-east-1';
+
 const admin_ddb_table_name = "DALN-Admin-Posts";
 const ddb_table_name = "DALN-Posts-Dev";
 const stagingAreaBucketName = "daln-file-staging-area";
@@ -88,6 +90,7 @@ export const environment = {
     stagingAreaBucketName: stagingAreaBucketName,
     unapprove_post : unapprove_post
 }, COGNITO_INFO : {
+    bucket_region: bucket_region,
     region: region,
     userPoolId: userPoolId,
     identityPoolId: identityPoolId,
