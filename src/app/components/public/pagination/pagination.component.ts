@@ -85,9 +85,9 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.showNextButton = false;
     this.showPrevButton = false;
 
-    console.log("pagination resultList: ", this.resultList);
-    console.log("Parent startOffset", this.startOffset);
-    console.log("Parent endOffset", this.endOffset);
+    // console.log("pagination resultList: ", this.resultList);
+    // console.log("Parent startOffset", this.startOffset);
+    // console.log("Parent endOffset", this.endOffset);
     //  console.log("start vars for pagination", this.resultsPerPage, this.startOffset, this.pageHead);
 
   }
@@ -166,28 +166,27 @@ export class PaginationComponent implements OnInit, OnChanges {
 
       if(this.currentPage !== this.buttonArray[this.buttonArray.length - 1]) {
           this.showNextButton = true;
-          console.log("Next Button is true.");
       } else {
           this.showNextButton = false;
       }
       if(this.currentPage !== this.buttonArray[0]) {
           console.log(this.buttonArray[0]);
           this.showPrevButton = true;
-          console.log("Prev Button is true.");
       } else {
           this.showPrevButton = false;
       }
   }
 
   sliceButtonRange(){
+      this.checkButtons();
+    //   let startButton, endButton;
+
+
       let startButton;
       this.checkButtons();
 
       let buttonSlice = 6;
       let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
-
-
-
 
       if(firstIndex == 0) {
           startButton = 0;
@@ -236,7 +235,6 @@ export class PaginationComponent implements OnInit, OnChanges {
               console.log("pagination in HOME");
               this.buttonArray = [];
               this.pagedPost = [];
-              this.searchService.searchQuery = null;
           }
       }
 

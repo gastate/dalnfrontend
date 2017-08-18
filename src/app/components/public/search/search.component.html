@@ -10,7 +10,7 @@
                 <!-- <span class="input-group-btn">
                   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
                 </span> -->
-                <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery" (input)="searchService.searchQuery = $event.target.value"/>
+                <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery"/>
                <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsSize, searchService.pageNumber)" >Search</button>
           </div>
 
