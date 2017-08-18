@@ -182,7 +182,6 @@ export class SearchComponent implements OnInit {
   }
 
   calculateOffset() {
-      console.log("calculateOffset called");
       this.startOffset = this.searchService.pageNumber;
       this.endOffset = Math.floor(Math.max(this.searchService.results.length / this.searchService.resultsSize, 1));
       console.log("startOffset, endOffset", this.startOffset, this.endOffset);

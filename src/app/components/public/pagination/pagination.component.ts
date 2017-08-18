@@ -217,16 +217,18 @@ export class PaginationComponent implements OnInit, OnChanges {
         let leftOverItems = this.all_results.length % this.searchService.resultsSize;
         this.fetchIndex = this.all_results.length - this.searchService.resultsSize;
         console.log("all_results", this.all_results);
-        this.calculateIndicies();
         this.calculateButtonRange();
         this.sliceButtonRange();
+        this.calculateIndicies();
+
       }
       if (changes['endOffset']) {
           console.log("endOffset change", this.endOffset);
           this.buttonArray = [];
-          this.calculateIndicies();
           this.calculateButtonRange();
           this.checkButtons();
+          this.calculateIndicies();
+
       }
       if (changes['showPagination']) {
           if(this.showPagination === false) {
