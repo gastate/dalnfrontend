@@ -26,11 +26,11 @@ export class MediaComponent implements OnInit {
 
   setMedia (event) {
     this.fileList = event.target.files;
-    this.submitService.getMedia(this.fileList);
+    this.submitService.setMedia(this.fileList);
   }
 
   uploadFiles() {
-      Array.from(this.fileList).forEach((file) => this.submitService.uploadMedia(file));
+     this.submitService.uploadMedia();
   }
 
 

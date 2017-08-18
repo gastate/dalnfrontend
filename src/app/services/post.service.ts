@@ -32,7 +32,7 @@ export class PostService {
   private endPoint = environment.API_ENDPOINTS;
 
   approvePosts(postId: string[]) {
-      var tableName = this.endPoint.prod_ddb_table_name;
+      var tableName = this.endPoint.ddb_table_name;
       var data;
 
       if(postId.length !== 0) {
@@ -60,9 +60,35 @@ export class PostService {
 
       }
 
-
-
   }
+
+  unapprovePost(postId: string){
+      var tableName = this.endPoint.ddb_table_name;
+      var data;
+
+      data = {
+          postId: postId,
+          tableName: tableName
+      };
+
+      var datastr = JSON.stringify(data);
+
+      console.log(data);
+
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      let options = new RequestOptions({ headers: headers, method: "post"});
+
+      console.log(this.endPoint.unapprove_post);
+      this._http.post(this.endPoint.unapprove_post, datastr, options)
+          .map((res: Response) => res.json())
+          .subscribe(
+              data => { console.log(data);},
+              err => { console.log(err); }
+          );
+
+    }
+
 
   getAllPosts(): Observable<Post[]> {
 
@@ -113,7 +139,7 @@ export class PostService {
   getUnapprovedPosts(): Observable<Post[]> {
 
       var data = {
-          tableName: this.endPoint.prod_ddb_table_name
+          tableName: this.endPoint.ddb_table_name
       };
 
       let str = JSON.stringify(data);

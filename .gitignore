@@ -17,3 +17,5 @@ yarn.lock
 # WebStorm
 .idea/
 
+# API keys
+key.ts
