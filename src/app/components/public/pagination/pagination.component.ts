@@ -192,7 +192,7 @@ export class PaginationComponent implements OnInit, OnChanges {
       if(firstIndex == 0) {
           startButton = 0;
       } else {
-          startButton = this.currentPage - 3;
+          startButton = this.currentPage - 2;
       }
       if (this.endOffset < this.searchService.total_offset) {
           this.displayButton =  this.buttonArray.slice(startButton, this.endOffset + buttonSlice);

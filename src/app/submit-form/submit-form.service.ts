@@ -21,10 +21,9 @@ export class SubmitFormService {
     description: string;
     email: string;
     license: string;
-    // // dateAccessioned: string;
-    // // dateAvailable: string;
-    dateCreated: string;
-    // // dateIssued: string;
+    // // dateSubmitted: string; // submitted post on this day. with z
+    // dateIssued: string; // admin specified. with z.
+    dateCreated: string; // user specified.
     rightsConsent: string;
     rightsRelease: string;
     contributorAuthor: string[];

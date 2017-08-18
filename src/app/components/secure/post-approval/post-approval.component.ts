@@ -9,7 +9,6 @@ import {LoggedInCallback} from '../../../services/cognito.service';
 
 import { Post } from '../../../model/post-model';
 
-
 @Component({
   selector: 'app-post-approval',
   templateUrl: './post-approval.component.html',
@@ -38,7 +37,7 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
 
   ngOnInit() {
       this.getUnapproved();
-      this.getdev = true;
+
       this.errorMessage = null;
       this.noAdminPostsMessage = null;
   }
