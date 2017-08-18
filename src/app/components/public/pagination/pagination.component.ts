@@ -55,6 +55,8 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   getdev: boolean; //for postlist
   displayPagination: boolean; // to show pagination.
+  showNextButton: boolean;
+  showPrevButton: boolean;
 
 
   constructor( _searchService: SearchService, private router: Router) {
@@ -80,7 +82,8 @@ export class PaginationComponent implements OnInit, OnChanges {
      this.startOffset = this.searchService.pageNumber;
      this.pageHead = this.searchService.pageHead;
 
-    //  this.all_results = this.resultList;
+    this.showNextButton = false;
+    this.showPrevButton = false;
 
     console.log("pagination resultList: ", this.resultList);
     console.log("Parent startOffset", this.startOffset);
@@ -96,14 +99,16 @@ export class PaginationComponent implements OnInit, OnChanges {
    */
   getPagedPost(event) {
       if(event && event.target) {
-          this.currentPage = event.target.innerText; // button is just the event's innerText.
+          this.currentPage = +event.target.innerText; // button is just the event's innerText.
 
             // this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
             if((this.currentPage * this.searchService.resultsSize) >= this.fetchIndex) {
                 this.fetchIndex = this.fetchIndex + this.searchService.resultsSize;
                 this.currentPageEmitter.emit(this.fetchIndex);
+                this.checkButtons();
             } else {
                 this.calculateIndicies(); // calculateIndicies to split the pagedPost from resultList.
+                this.checkButtons();
             }
 
 
@@ -120,7 +125,6 @@ export class PaginationComponent implements OnInit, OnChanges {
           this.currentPage = this.startOffset;
           this.resultsPerPage = this.searchService.resultsSize;
       }
-
     //   console.log("currentPage", this.currentPage);
     //   console.log("resultsPerPage", this.resultsPerPage);
       let firstPagedPostsIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
@@ -142,26 +146,46 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   }
 
+  checkButtons() {
+      console.log("the current page is", this.currentPage);
+
+      if(this.currentPage !== this.buttonArray[this.buttonArray.length - 1]) {
+          this.showNextButton = true;
+          console.log("Next Button is true.");
+      } else {
+          this.showNextButton = false;
+      }
+      if(this.currentPage !== this.buttonArray[0]) {
+          console.log(this.buttonArray[0]);
+          this.showPrevButton = true;
+          console.log("Prev Button is true.");
+      } else {
+          this.showPrevButton = false;
+      }
+  }
+
   sliceButtonRange(){
 
-      console.log("endoffset sliceButtonRange() ", this.endOffset);
-      console.log("currentPage sliceButtonRange() ", this.currentPage);
+      // if the displayed button is not the last button in the array, display the next button pageHead
+      // if the startbutton is not the first index of the button array, display the previous button
+      // if the button is clicked, calculate indicies
+
+      let startButton;
+
+
+      this.checkButtons();
 
       let buttonSlice = 6;
       let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
 
 
-      // if the displayed button is not the last button in the array, display the next button pageHead
-      // if the startbutton is not the first index of the button array, display the previous button
-      // if the button is clicked, calculate indicies
-      let startButton;
+
 
       if(firstIndex == 0) {
           startButton = 0;
       } else {
           startButton = this.currentPage - 3;
       }
-
       if (this.endOffset < this.searchService.total_offset) {
           this.displayButton =  this.buttonArray.slice(startButton, this.endOffset + buttonSlice);
       } else {
@@ -195,6 +219,7 @@ export class PaginationComponent implements OnInit, OnChanges {
           this.buttonArray = [];
           this.calculateIndicies();
           this.calculateButtonRange();
+          this.checkButtons();
       }
       if (changes['showPagination']) {
           if(this.showPagination === false) {
