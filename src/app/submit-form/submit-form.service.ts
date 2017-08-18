@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import {Observable} from 'rxjs/Rx';
@@ -9,15 +10,20 @@ import 'rxjs/add/operator/catch';
 import { environment } from '../../environments/environment';
 
 
+
 @Injectable()
 export class SubmitFormService {
+
+    today: number = Date.now();
+
+
     title: string;
     description: string;
     email: string;
     license: string;
     // // dateAccessioned: string;
     // // dateAvailable: string;
-    // // dateCreated: string;
+    dateCreated: string;
     // // dateIssued: string;
     rightsConsent: string;
     rightsRelease: string;
@@ -130,6 +136,7 @@ export class SubmitFormService {
   returnPost() {
       let postData = {
           title: this.title,
+          dateCreated: String(this.today),
           description: this.description,
           rightsConsent: this.rightsConsent,
           rightsRelease: this.rightsRelease,
@@ -151,7 +158,7 @@ export class SubmitFormService {
 
 
   postCreate() {
-     var tableName = this.endPoint.dev_ddb_table_name;
+     var tableName = this.endPoint.ddb_table_name;
      var data = {
          title: this.title,
          description: this.description,
@@ -197,7 +204,7 @@ export class SubmitFormService {
                  finalBucketName: this.endPoint.finalBucketName,
                  PostId: this.postResult,
                  key: this.filename,
-                 tableName: this.endPoint.dev_ddb_table_name
+                 tableName: this.endPoint.ddb_table_name
              }
 
              console.log("data to link", jsonLink);
