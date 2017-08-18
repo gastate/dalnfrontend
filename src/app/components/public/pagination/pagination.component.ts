@@ -31,10 +31,12 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Output()
   currentPageEmitter: EventEmitter<number>;
 
+
+
   // @Output()
   // skipToResultList: EventEmitter<any>;
 
-
+  sub: any;
   searchService : SearchService;
 
   // posts to pass off to post-list.
@@ -44,6 +46,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   currentPage: number;
   fetchIndex: number;
 
+
   resultsPerPage: number;
   buttonArray: number[] = []; // holds all possible buttons
   displayButton: number[] = []; // for displaying buttons
@@ -51,14 +54,23 @@ export class PaginationComponent implements OnInit, OnChanges {
   pageHead: number;
 
   getdev: boolean; //for postlist
+  displayPagination: boolean; // to show pagination.
 
 
   constructor( _searchService: SearchService, private router: Router) {
     this.searchService = _searchService;
     this.currentPageEmitter = new EventEmitter<number>();
-    // router.events.subscribe((val) => {
-    //     this.buttonArray = [];
-    // });
+    this.router = router;
+
+    // so unnecessary, plz fix
+    this.sub = router.events.subscribe((val) => {
+        let route = val.url;
+            if(route.startsWith("/search")) {
+                this.displayPagination = true;
+            } else {
+                this.displayPagination = false;
+            }
+    });
   }
 
   ngOnInit() {
@@ -193,6 +205,10 @@ export class PaginationComponent implements OnInit, OnChanges {
           }
       }
 
+  }
+
+  ngOnDestroy() {
+      this.sub.unsubscribe();
   }
 
 

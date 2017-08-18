@@ -95,10 +95,9 @@ export class SearchComponent implements OnInit {
                 this.searchService.searchQuery = this.query;
                 this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
                 });
+            this.subQuery.unsubscribe();
             this.showPagination = true;
             this.showHomePage.emit(false);
-        } else {
-            // console.log("in somewhere else");
         }
     });
 

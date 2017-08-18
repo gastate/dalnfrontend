@@ -1,4 +1,4 @@
-<div class="pagination-div" *ngIf="buttonArray.length > 0">
+<div class="pagination-div" *ngIf="displayPagination === true">
 
     <post-list [getdev]="getdev" [postList]="pagedPost"></post-list>
     <nav>
