@@ -26,7 +26,7 @@ export class MediaComponent implements OnInit {
 
   setMedia (event) {
     this.fileList = event.target.files;
-    this.submitService.getMedia(this.fileList);
+    this.submitService.setMedia(this.fileList);
   }
 
   uploadFiles() {

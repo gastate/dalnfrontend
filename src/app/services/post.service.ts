@@ -113,7 +113,7 @@ export class PostService {
   getUnapprovedPosts(): Observable<Post[]> {
 
       var data = {
-          tableName: this.endPoint.prod_ddb_table_name
+          tableName: this.endPoint.dev_ddb_table_name
       };
 
       let str = JSON.stringify(data);

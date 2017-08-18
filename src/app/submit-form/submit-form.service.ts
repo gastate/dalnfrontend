@@ -36,6 +36,7 @@ export class SubmitFormService {
     postResult : string;
     formData : FormData = new FormData(); // only data that needs to be sent to upload files.
     filename : string;
+    fileList: FileList;
 
 
   constructor(private _http: Http) {
@@ -64,16 +65,20 @@ export class SubmitFormService {
 
   private endPoint = environment.API_ENDPOINTS;
 
-  getMedia (fileList : FileList) {
+  setMedia (fileList : FileList) {
 
     let file : File;
-
+    this.fileList = fileList;
     console.log(fileList);
 
     for (var i = 0; i < fileList.length; i++) {
         file = fileList[i];
         this.formData.append("userFile", file, file.name);
     }
+  }
+
+  getMedia() {
+    return this.fileList;
   }
 
   uploadMedia(file: File) {
