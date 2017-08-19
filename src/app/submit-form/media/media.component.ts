@@ -5,6 +5,8 @@ import { SubmitFormService } from '../submit-form.service';
 import { environment } from '../../../environments/environment';
 import {Observable} from 'rxjs/Rx';
 
+import {S3Service} from '../../services/s3.service';
+
 
 
 
@@ -17,14 +19,17 @@ export class MediaComponent implements OnInit {
 
 
   submitService : SubmitFormService;
+  s3Service: S3Service;
   fileList: FileList;
 
   constructor(
     private _router : Router,
     private _http: Http,
+    _s3Service: S3Service,
     _submitService : SubmitFormService
   ){
     this.submitService = _submitService;
+    this.s3Service = _s3Service;
 
   }
 
@@ -39,52 +44,9 @@ export class MediaComponent implements OnInit {
   }
 
   uploadFiles() {
-    //  this.submitService.uploadMedia();
-        // TODO: Workaround for video uploads, just use amazon. https://stackoverflow.com/questions/36010348/angular2-file-upload-for-amazon-s3-bucket
-
-        console.log("fileList", this.fileList);
-        let headers = new Headers();
-        headers.append('Content-Type', ' ');
-        let options = new RequestOptions({
-                  headers: headers,
-                  method: "put"
-              });
-
-        let fileCount = this.fileList.length;
-
-        if(fileCount > 0) {
-            var fd;
-            for(let i = 0; i < fileCount; i++) {
-                    fd = new FormData();
-                    fd.append("file[]", this.fileList[i], this.fileList[i].name)
-
-
-                  console.log("hitting get link endpoint:", this.endPoint.get_upload_link + this.fileList[i].name);
-
-                  this._http.get(this.endPoint.get_upload_link + this.fileList[i].name)
-                      .map((res: Response) => res.json())
-                      .catch((error : any) => Observable.throw(error.json.error))
-                      .subscribe((data) => {
-                          // data is the presigned s3 url sent by the api.
-                          console.log("api link", data);
-
-                          this._http.put(data, fd, options)
-                              .map((res: Response) => res.json())
-                              .catch((error : any) => Observable.throw(error.json.error))
-                              .subscribe(
-                                  (res) => { console.log("result from put", res); },
-                                  (err) => { console.log("error from put", err); }
-                              );
-                      });
-
-            }
-
-        } else {
-            console.log("fileList is empty.");
-        }
-
-
+    
   }
+
 
 
 
