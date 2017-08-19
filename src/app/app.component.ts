@@ -30,9 +30,9 @@ export class AppComponent implements LoggedInCallback {
     }
 
     ngOnInit() {
-        if(environment.production === false) {
-            console.warn("In development mode");
-        }
+        // if(environment.production === false) {
+        //     console.warn("In development mode");
+        // }
     }
 
 

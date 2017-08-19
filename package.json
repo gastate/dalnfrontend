@@ -12,6 +12,7 @@
     "e2e": "protractor",
     "buildDev": "ng build",
     "buildProd": "ng build --environment=prod",
+    "static-serve": "cd dist && lite-server --port=4200 --host=localhost --entry-file=/index.html",
     "s3Synch": "npm run buildDev && aws s3 sync ./dist s3://daln-development/web-deploy",
     "s3Prod": "npm run buildProd && aws s3 sync ./dist s3://daln-prod/web-deploy"
   },

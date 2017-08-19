@@ -104,27 +104,45 @@ export class SubmitFormService {
       if(fileCount > 0) {
           var fd;
           for(let i = 0; i < fileCount; i++) {
-                  fd = new FormData();
-                  fd.append("file[]", this.fileList[i], this.fileList[i].name)
+                //   fd = new FormData();
+                //   fd.append("file[]", this.fileList[i], this.fileList[i].name);
+                var file = this.fileList[i];
+
+                fd = new XMLHttpRequest();
+                fd.open("GET", this.endPoint.get_upload_link + this.fileList[i].name, true);
+                fd.onload = function (oEvent) {
+                    console.log("uploaded", fd.responseText);
+
+                    var u = fd.responseText.replace(/['"]+/g, '');
+                    console.log(u);
+                    var k = new XMLHttpRequest();
+                    k.open("PUT", u, true);
+                    k.onload = function (event) {
+                        console.log("response from put", event);
+                    };
+                    k.send(file);
+                };
+                // console.log(this.fileList[i]);
+                fd.send(file);
 
 
-                console.log("hitting get link endpoint:", this.endPoint.get_upload_link + this.fileList[i].name);
+                // console.log("hitting get link endpoint:", this.endPoint.get_upload_link + this.fileList[i].name);
 
-                this._http.get(this.endPoint.get_upload_link + this.fileList[i].name)
-                    .map((res: Response) => res.json())
-                    .catch((error : any) => Observable.throw(error.json.error))
-                    .subscribe((data) => {
-                        // data is the presigned s3 url sent by the api.
-                        console.log("api link", data);
-
-                        this._http.put(data, fd, options)
-                            .map((res: Response) => res.json())
-                            .catch((error : any) => Observable.throw(error.json.error))
-                            .subscribe(
-                                (res) => { console.log("result from put", res); },
-                                (err) => { console.log("error from put", err); }
-                            );
-                    });
+                // this._http.get(this.endPoint.get_upload_link + this.fileList[i].name)
+                //     .map((res: Response) => res.json())
+                //     .catch((error : any) => Observable.throw(error.json.error))
+                //     .subscribe((data) => {
+                //         // data is the presigned s3 url sent by the api.
+                //         console.log("api link", data);
+                //
+                //         this._http.put(data, fd, options)
+                //             .map((res: Response) => res)
+                //             .catch((error : any) => Observable.throw(error.json.error))
+                //             .subscribe(
+                //                 (res) => { console.log("result from put", res); },
+                //                 (err) => { console.log("error from put", status); }
+                //             );
+                //     });
 
           }
 
