@@ -42,9 +42,11 @@ export class PostItemComponent implements OnInit {
       }
   }
 
+  approvePost() {
+    this._postService.adminApprovePost(this.postItem.postId);
+  }
   unapprovePost() {
     this._postService.unapprovePost(this.postItem.postId);
-
   }
 
 

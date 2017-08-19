@@ -1,6 +1,12 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { SubmitFormService } from '../submit-form.service';
+import { environment } from '../../../environments/environment';
+import {Observable} from 'rxjs/Rx';
+
+
+
 
 
 @Component({
@@ -16,10 +22,14 @@ export class MediaComponent implements OnInit {
 
   constructor(
     private _router : Router,
+    private _http: Http,
     _submitService : SubmitFormService
   ){
     this.submitService = _submitService;
+
   }
+
+  private endPoint = environment.API_ENDPOINTS;
 
   ngOnInit() {
   }
@@ -30,8 +40,9 @@ export class MediaComponent implements OnInit {
   }
 
   uploadFiles() {
-     this.submitService.uploadMedia();
+    this.submitService.uploadMedia();
   }
+
 
 
 

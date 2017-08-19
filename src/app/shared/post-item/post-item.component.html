@@ -20,6 +20,7 @@
                 <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" [getdev]="getdev"></app-player>
                 <div class="post-desc">
                     <div class="hover-post">
+                        <button *ngIf="getdev === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
                         <button *ngIf="getdev === true" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
 
                         <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">

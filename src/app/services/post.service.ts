@@ -31,6 +31,33 @@ export class PostService {
 
   private endPoint = environment.API_ENDPOINTS;
 
+  adminApprovePost(postId: string) {
+        var tableName = this.endPoint.ddb_table_name;
+
+        var data = {
+            postId: postId,
+            tableName: tableName
+        };
+
+        var datastr = JSON.stringify(data);
+        console.log(data);
+
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        let options = new RequestOptions({  headers: headers, method: "post"});
+
+        console.log(this.endPoint.approve_post);
+        this._http.post(this.endPoint.approve_post, datastr, options)
+            .map((res: Response) => res.json())
+            .catch((error : any) => Observable.throw(error.json().error))
+            .subscribe(
+                data => { console.log(data);},
+                err => { console.log(err); }
+            );
+
+  }
+
+
   approvePosts(postId: string[]) {
       var tableName = this.endPoint.ddb_table_name;
       var data;

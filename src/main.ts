@@ -5,8 +5,12 @@ import {enableProdMode} from '@angular/core';
 import {environment} from './environments/environment';
 import {AppModule} from './app/';
 
-if (environment.production) {
+if (environment.production === true) {
+  console.warn("IN PROD");
   enableProdMode();
+} else {
+    console.warn("IN DEV");
+    console.log(environment.production);
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);

@@ -21,6 +21,7 @@ const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 // Amazon Variables  //
 ///////////////////////
 
+
 const admin_ddb_table_name = "DALN-Admin-Posts";
 const ddb_table_name = "DALN-Posts-Dev";
 const stagingAreaBucketName = "daln-file-staging-area";
@@ -30,7 +31,7 @@ const finalBucketName = "daln-development";
 // Miscellanious Functions  //
 /////////////////////////////
 
-const share_link = "http%3A%2F%2Fdaln.gsu.edu%2F%23%2Fdetail%2F";
+const share_link = "http%3A%2F%2Fdaln.gsu.edu%2F%2Fdetail%2F";
 
 //////////////////////
 // Lambda Functions //

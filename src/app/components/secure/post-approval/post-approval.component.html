@@ -34,9 +34,9 @@
 </div>
 <hr />
 
-<div class="controls" *ngIf="postPoolTitle === 'Admins Post Pool' ">
+<!-- <div class="controls" *ngIf="postPoolTitle === 'Admins Post Pool' ">
     <button type="button" class="btn btn-danger" (click)="approveSelected()">Approve Posts</button>
-</div>
+</div> -->
 
 <post-list [getdev]="getdev" [postList]="approval_list"></post-list>
 <!-- <app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="postService.unapproved_posts"></app-pagination> -->
