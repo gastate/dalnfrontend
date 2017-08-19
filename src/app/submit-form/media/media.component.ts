@@ -5,7 +5,6 @@ import { SubmitFormService } from '../submit-form.service';
 import { environment } from '../../../environments/environment';
 import {Observable} from 'rxjs/Rx';
 
-import {S3Service} from '../../services/s3.service';
 
 
 
@@ -19,17 +18,14 @@ export class MediaComponent implements OnInit {
 
 
   submitService : SubmitFormService;
-  s3Service: S3Service;
   fileList: FileList;
 
   constructor(
     private _router : Router,
     private _http: Http,
-    _s3Service: S3Service,
     _submitService : SubmitFormService
   ){
     this.submitService = _submitService;
-    this.s3Service = _s3Service;
 
   }
 

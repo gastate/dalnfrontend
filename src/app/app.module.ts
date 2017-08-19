@@ -57,7 +57,6 @@ import { CognitoUtil } from './services/cognito.service';
 import { DynamoDBService } from './services/ddb.service';
 import { PostService } from './services/post.service';
 import { SearchService } from './services/search.service';
-import { S3Service } from './services/s3.service';
 import { UserLoginService } from './services/user-login.service';
 
 // Other
@@ -111,7 +110,7 @@ import { SafePipe } from './safe.pipe';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, S3Service],
+  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
