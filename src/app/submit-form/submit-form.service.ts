@@ -134,6 +134,12 @@ export class SubmitFormService {
 
   }
 
+  updatePost() {
+      // tableName
+      // whatever data
+      // postId
+  }
+
   returnPost() {
       let postData = {
           title: this.title,

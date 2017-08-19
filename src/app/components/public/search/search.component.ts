@@ -87,15 +87,18 @@ export class SearchComponent implements OnInit {
               this.showPagination = false;
           } else if (route.startsWith("/search")) {
               // console.log("in search");
-              this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
-                  this.query = params['query'];
-                  });
-              this.subQuery.unsubscribe();
-              this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
+
+            //   this.subQuery.unsubscribe();
+            //   this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
               this.showPagination = true;
               this.showHomePage.emit(false);
           }
       });
+
+      this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
+          this.query = params['query'];
+          this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
+        });
 
     this.showPagination = true;
     this.posts = [];
@@ -133,6 +136,8 @@ export class SearchComponent implements OnInit {
     if(term !== this.query) {
         this.query = term;
     }
+
+    this.searchService.searchQuery = this.query;
 
     var displayPage; // to use for url parameter
 
@@ -217,6 +222,7 @@ export class SearchComponent implements OnInit {
 
   ngOnDestroy() {
       this.sub.unsubscribe();
+      this.subQuery.unsubscribe();
   }
 
 

@@ -44,7 +44,7 @@ export class MediaComponent implements OnInit {
   }
 
   uploadFiles() {
-    
+    this.submitService.uploadMedia();
   }
 
 
