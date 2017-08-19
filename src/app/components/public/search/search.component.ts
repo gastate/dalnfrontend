@@ -85,6 +85,7 @@ export class SearchComponent implements OnInit {
               // console.log("in home");
               this.showHomePage.emit(true);
               this.showPagination = false;
+              this.searchService.searchQuery = "";
           } else if (route.startsWith("/search")) {
               this.showPagination = true;
               this.showHomePage.emit(false);
