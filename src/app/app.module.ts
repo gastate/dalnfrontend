@@ -110,7 +110,7 @@ import { SafePipe } from './safe.pipe';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService],
+  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
