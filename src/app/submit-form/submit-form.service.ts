@@ -243,7 +243,7 @@ export class SubmitFormService {
 
                       var input = JSON.stringify(jsonLink);
 
-
+                      // returns 504, make admin to check if went through.
                       this._http.post(this.endPoint.link_media, input, options)
                       .map((res: Response) => res.json())
                       .catch((error : any) => Observable.throw(error.json().error))
