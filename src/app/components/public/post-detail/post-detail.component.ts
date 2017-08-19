@@ -37,7 +37,7 @@ export class PostDetailComponent implements OnInit {
 
       onDev: boolean;
 
-      private endPoint = environment.API_ENDPOINTS;
+      private endPoint = environment;
 
 
   constructor(private _postService: PostService,
@@ -52,11 +52,12 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.sub = this.router.events.subscribe((val) => {
-        if(val.url.startsWith('/getdev')) {
-            this.onDevDetail();
-        } else {
+    // if in production, get from the relevant production table, else use the dev table.
+        if (this.endPoint.production === true) {
             this.onDetail();
-            this.route = this.endPoint.share_link  + val.url.substring(8);
+            this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+        } else {
+            this.onDevDetail();
         }
     });
 

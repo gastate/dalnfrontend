@@ -9,6 +9,8 @@ import {LoggedInCallback} from '../../../services/cognito.service';
 
 import { Post } from '../../../model/post-model';
 
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-post-approval',
   templateUrl: './post-approval.component.html',
@@ -25,6 +27,8 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
   loading: boolean = false;
   failed: boolean = false;
 
+  private endPoint = environment;
+
   constructor(
       public authService: AuthService,
       public cognitoService: CognitoUtil,
@@ -36,8 +40,15 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
    }
 
   ngOnInit() {
-      this.getUnapproved();
 
+      // change boolean of getdev if in production or not, will affect the display of posts showing.
+      if (this.endPoint.production === true) {
+          this.getdev = false;
+      } else {
+          this.getdev = true;
+      }
+
+      this.getUnapproved();
       this.errorMessage = null;
       this.noAdminPostsMessage = null;
   }
