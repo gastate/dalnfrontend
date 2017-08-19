@@ -27,6 +27,10 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Input()
   showPagination: boolean;
 
+  // used to purge all_results on new search term.
+  @Input()
+  query: string;
+
   // output to the parent component to see what to do next.
   @Output()
   currentPageEmitter: EventEmitter<number>;
@@ -236,6 +240,10 @@ export class PaginationComponent implements OnInit, OnChanges {
               this.buttonArray = [];
               this.pagedPost = [];
           }
+      }
+      if (changes['query']) {
+          console.log("new search, purging all_results");
+          this.all_results = [];
       }
 
   }
