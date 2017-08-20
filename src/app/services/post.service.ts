@@ -158,7 +158,7 @@ export class PostService {
 
   getDevPostById(id: string): Observable<Post> {
 
-    return this._http.get(this.endPoint.get_dev_post + id).map((res: Response) => res.json())
+    return this._http.get(this.endPoint.get_dev_post + id).map((res: Response) => {res.json(); console.log(res);})
     //...errors if any
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   }

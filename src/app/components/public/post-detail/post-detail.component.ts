@@ -53,12 +53,14 @@ export class PostDetailComponent implements OnInit {
     this.loading = true;
     this.sub = this.router.events.subscribe((val) => {
     // if in production, get from the relevant production table, else use the dev table.
-        if (this.endPoint.production === true) {
-            this.onDetail();
-            this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
-        } else {
-            this.onDevDetail();
-        }
+        // if (this.endPoint.production === true) {
+        //     this.onDetail();
+        //     this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+        // } else {
+        //     this.onDevDetail();
+        // }
+        this.onDetail();
+        this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
     });
 
   }

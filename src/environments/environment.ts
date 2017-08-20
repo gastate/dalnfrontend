@@ -31,7 +31,7 @@ const finalBucketName = "daln-development";
 // Miscellanious Functions  //
 /////////////////////////////
 
-const share_link = "http%3A%2F%2Fdaln.gsu.edu%2F%2Fdetail%2F";
+const share_link = "http%3A%2F%2Fdaln.gsu.edu%2F%23%2Fdetail%2F";
 
 //////////////////////
 // Lambda Functions //

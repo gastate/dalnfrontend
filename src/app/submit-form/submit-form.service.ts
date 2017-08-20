@@ -102,28 +102,28 @@ export class SubmitFormService {
       let fileCount = this.fileList.length;
 
       if(fileCount > 0) {
-          var fd;
+          var request;
           for(let i = 0; i < fileCount; i++) {
-                //   fd = new FormData();
-                //   fd.append("file[]", this.fileList[i], this.fileList[i].name);
+                //   request = new FormData();
+                //   request.append("file[]", this.fileList[i], this.fileList[i].name);
                 var file = this.fileList[i];
 
-                fd = new XMLHttpRequest();
-                fd.open("GET", this.endPoint.get_upload_link + this.fileList[i].name, true);
-                fd.onload = function (oEvent) {
-                    console.log("uploaded", fd.responseText);
+                request = new XMLHttpRequest();
+                request.open("GET", this.endPoint.get_upload_link + this.fileList[i].name, true);
+                request.onload = function (oEvent) {
+                    console.log("uploaded", request.responseText);
 
-                    var u = fd.responseText.replace(/['"]+/g, '');
-                    console.log(u);
-                    var k = new XMLHttpRequest();
-                    k.open("PUT", u, true);
-                    k.onload = function (event) {
+                    var url = request.responseText.replace(/['"]+/g, '');
+                    console.log(url);
+                    var presigned_link = new XMLHttpRequest();
+                    presigned_link.open("PUT", url, true);
+                    presigned_link.onload = function (event) {
                         console.log("response from put", event);
                     };
-                    k.send(file);
+                    presigned_link.send(file);
                 };
                 // console.log(this.fileList[i]);
-                fd.send(file);
+                request.send(file);
 
 
                 // console.log("hitting get link endpoint:", this.endPoint.get_upload_link + this.fileList[i].name);
