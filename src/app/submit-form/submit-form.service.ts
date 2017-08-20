@@ -72,17 +72,7 @@ export class SubmitFormService {
 
   private endPoint = environment.API_ENDPOINTS;
 
-  setMedia (fileList : FileList) {
 
-    let file : File;
-    this.fileList = fileList;
-    console.log(fileList);
-
-    for (var i = 0; i < fileList.length; i++) {
-        file = fileList[i];
-        this.formData.append("userFile", file, file.name);
-    }
-  }
 
   getMedia() {
     return this.fileList;
