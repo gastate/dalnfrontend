@@ -10,7 +10,7 @@
                 <!-- <span class="input-group-btn">
                   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
                 </span> -->
-                <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery" (input)="searchService.searchQuery = $event.target.value"/>
+                <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery"/>
                <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsSize, searchService.pageNumber)" >Search</button>
           </div>
 
@@ -54,7 +54,7 @@
 
 </div>
 
-<app-pagination [showPagination]="showPagination" (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination>
+<app-pagination [showPagination]="showPagination" (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results" [query]="query"></app-pagination>
 <!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination> -->
 
 <router-outlet></router-outlet>

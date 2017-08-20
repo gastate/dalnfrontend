@@ -27,6 +27,10 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Input()
   showPagination: boolean;
 
+  // used to purge all_results on new search term.
+  @Input()
+  query: string;
+
   // output to the parent component to see what to do next.
   @Output()
   currentPageEmitter: EventEmitter<number>;
@@ -85,9 +89,9 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.showNextButton = false;
     this.showPrevButton = false;
 
-    console.log("pagination resultList: ", this.resultList);
-    console.log("Parent startOffset", this.startOffset);
-    console.log("Parent endOffset", this.endOffset);
+    // console.log("pagination resultList: ", this.resultList);
+    // console.log("Parent startOffset", this.startOffset);
+    // console.log("Parent endOffset", this.endOffset);
     //  console.log("start vars for pagination", this.resultsPerPage, this.startOffset, this.pageHead);
 
   }
@@ -103,6 +107,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
             // this.currentPageEmitter.emit(this.currentPage); // emit to parent the currentPage.
             if((this.currentPage * this.searchService.resultsSize) >= this.fetchIndex) {
+                console.log("currentPage * resultsSize >= fetchIndex", (this.currentPage * this.searchService.resultsSize), this.fetchIndex );
                 this.fetchIndex = this.fetchIndex + this.searchService.resultsSize;
                 this.currentPageEmitter.emit(this.fetchIndex);
                 this.checkButtons();
@@ -165,33 +170,32 @@ export class PaginationComponent implements OnInit, OnChanges {
 
       if(this.currentPage !== this.buttonArray[this.buttonArray.length - 1]) {
           this.showNextButton = true;
-          console.log("Next Button is true.");
       } else {
           this.showNextButton = false;
       }
       if(this.currentPage !== this.buttonArray[0]) {
           console.log(this.buttonArray[0]);
           this.showPrevButton = true;
-          console.log("Prev Button is true.");
       } else {
           this.showPrevButton = false;
       }
   }
 
   sliceButtonRange(){
+      this.checkButtons();
+    //   let startButton, endButton;
+
+
       let startButton;
       this.checkButtons();
 
       let buttonSlice = 6;
       let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage);
 
-
-
-
       if(firstIndex == 0) {
           startButton = 0;
       } else {
-          startButton = this.currentPage - 3;
+          startButton = this.currentPage - 2;
       }
       if (this.endOffset < this.searchService.total_offset) {
           this.displayButton =  this.buttonArray.slice(startButton, this.endOffset + buttonSlice);
@@ -235,8 +239,11 @@ export class PaginationComponent implements OnInit, OnChanges {
               console.log("pagination in HOME");
               this.buttonArray = [];
               this.pagedPost = [];
-              this.searchService.searchQuery = null;
           }
+      }
+      if (changes['query']) {
+          console.log("new search, purging all_results");
+          this.all_results = [];
       }
 
   }

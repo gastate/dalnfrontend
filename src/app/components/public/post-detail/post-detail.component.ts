@@ -35,7 +35,9 @@ export class PostDetailComponent implements OnInit {
       route: string;
       text: string;
 
-      private endPoint = environment.API_ENDPOINTS;
+      onDev: boolean;
+
+      private endPoint = environment;
 
 
   constructor(private _postService: PostService,
@@ -50,12 +52,15 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.sub = this.router.events.subscribe((val) => {
-        if(val.url.startsWith('/getdev')) {
-            this.onDevDetail();
-        } else {
-            this.onDetail();
-            this.route = this.endPoint.share_link  + val.url.substring(8);
-        }
+    // if in production, get from the relevant production table, else use the dev table.
+        // if (this.endPoint.production === true) {
+        //     this.onDetail();
+        //     this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+        // } else {
+        //     this.onDevDetail();
+        // }
+        this.onDetail();
+        this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
     });
 
   }
@@ -101,6 +106,7 @@ export class PostDetailComponent implements OnInit {
         .subscribe(
             (details) => {
                   this.postDetail = details;
+                  this.onDev = true;
                   console.log(this.postDetail);
 
                   this.assets = this.postDetail.assetList;
@@ -131,6 +137,10 @@ export class PostDetailComponent implements OnInit {
   onSelectedAsset(asset: Asset): void {
     this.selectedAsset = asset;
 
+  }
+
+  unapprovePost() {
+      this._postService.unapprovePost(this.postDetail.postId);
   }
 
   ngOnDestroy() {

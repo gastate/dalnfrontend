@@ -21,9 +21,9 @@ const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 // Amazon Variables  //
 ///////////////////////
 
+
 const admin_ddb_table_name = "DALN-Admin-Posts";
-const dev_ddb_table_name = "DALN-Posts-Dev";
-const prod_ddb_table_name = "DALN-Posts";
+const ddb_table_name = "DALN-Posts-Dev";
 const stagingAreaBucketName = "daln-file-staging-area";
 const finalBucketName = "daln-development";
 
@@ -60,7 +60,7 @@ const search_posts = search_api_url  + "/posts/search/";
 const search_size = search_api_url + "";
 
 const approve_post = api_url + "/admin/approve/"; // to approve posts into search engine.
-const unapprove_post = api_url + "/admin/remove";
+const unapprove_post = api_url + "/admin/remove/";
 const get_upload_link = api_url + "/asset/s3upload/"; // to get the link for file uploading.
 const link_media = api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
 
@@ -75,14 +75,13 @@ export const environment = {
     approve_post: approve_post,
     api_url: api_url,
     create_post: create_post,
-    dev_ddb_table_name: dev_ddb_table_name,
+    ddb_table_name: ddb_table_name,
     finalBucketName: finalBucketName,
     get_dev_post: get_dev_post,
     get_upload_link: get_upload_link,
     get_unapproved_posts: get_unapproved_posts,
     link_media : link_media,
     page_posts: page_posts,
-    prod_ddb_table_name: prod_ddb_table_name,
     post: post,
     search_posts : search_posts,
     search_size : search_size,

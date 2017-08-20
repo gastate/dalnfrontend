@@ -192,6 +192,9 @@
                 </ul>
             </div>
 
+            <div *ngIf="onDev === true" class="col-md-4">
+                <button type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
+            </div>
 
 
         </div>

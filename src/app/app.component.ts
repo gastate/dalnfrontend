@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserLoginService} from "./services/user-login.service";
 import {LoggedInCallback} from "./services/cognito.service";
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'daln-app',
@@ -27,6 +28,13 @@ export class AppComponent implements LoggedInCallback {
             this.showAdminButton = false;
         }
     }
+
+    ngOnInit() {
+        // if(environment.production === false) {
+        //     console.warn("In development mode");
+        // }
+    }
+
 
 
 

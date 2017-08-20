@@ -23,7 +23,7 @@
     <div class="col-md-2">
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-primary" (click)="getUnapproved()">Admin Post Pool</button>
-          <button type="button" class="btn btn-secondary" (click)="getUserPostPool()">Your Post Pool</button>
+          <!-- <button type="button" class="btn btn-secondary" (click)="getUserPostPool()">Your Post Pool</button> -->
         </div>
     </div>
 
@@ -34,9 +34,9 @@
 </div>
 <hr />
 
-<div class="controls" *ngIf="postPoolTitle === 'Admins Post Pool' ">
+<!-- <div class="controls" *ngIf="postPoolTitle === 'Admins Post Pool' ">
     <button type="button" class="btn btn-danger" (click)="approveSelected()">Approve Posts</button>
-</div>
+</div> -->
 
 <post-list [getdev]="getdev" [postList]="approval_list"></post-list>
 <!-- <app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="postService.unapproved_posts"></app-pagination> -->

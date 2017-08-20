@@ -7,12 +7,11 @@
         <div class="hover-post">
             <!-- remove title and use button or description
             make checkbox bigger -->
-            <input class="form-check-input" type="checkbox" value="" *ngIf="getdev === true" [(ngModel)]="isChecked" (change)="sendPostId()">
 
             <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
                 <h3>{{postItem?.title}}</h3>
             </a>
-            <a *ngIf="getdev === true" class="thumbnail" [routerLink]="['/getdev/detail', postItem.postId]">
+            <a *ngIf="getdev === true" target="_blank" class="thumbnail" [routerLink]="['/getdev/detail', postItem.postId]">
                 <h3>{{postItem?.title}}</h3>
             </a>
         </div>
@@ -21,12 +20,17 @@
                 <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" [getdev]="getdev"></app-player>
                 <div class="post-desc">
                     <div class="hover-post">
+                        <button *ngIf="getdev === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
+                        <button *ngIf="getdev === true" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
+
                         <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
                             <p>{{postItem?.description}}</p>
                         </a>
-                        <a *ngIf="getdev === true" class="thumbnail" [routerLink]="['/getdev/detail', postItem.postId]">
+                        <a *ngIf="getdev === true" target="_blank" class="thumbnail" [routerLink]="['/getdev/detail', postItem.postId]">
                             <p>{{postItem?.description}}</p>
                         </a>
+
+
                     </div>
                 </div>
         </div>

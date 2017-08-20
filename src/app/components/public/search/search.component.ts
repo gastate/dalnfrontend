@@ -72,43 +72,39 @@ export class SearchComponent implements OnInit {
     this.showHomePage = new EventEmitter<boolean>();
     // this.searchResults = new EventEmitter<Post[]>();
 
+  }
+
+  ngOnInit() {
+
+      this.sub = this.router.events.subscribe((val) => {
+          // console.log(val instanceof NavigationEnd);
+          // console.log(val.url);
+          let route = val.url;
+
+          if(route == "/home") {
+              // console.log("in home");
+              this.showHomePage.emit(true);
+              this.showPagination = false;
+              this.searchService.searchQuery = "";
+          } else if (route.startsWith("/search")) {
+              this.showPagination = true;
+              this.showHomePage.emit(false);
+          }
+      });
+
+      this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
+          this.query = params['query'];
+          this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
+        });
+
     this.showPagination = true;
     this.posts = [];
     this.results = [];
     this.resultList = this.searchService.results;
 
-
-
-    this.sub = router.events.subscribe((val) => {
-        // console.log(val instanceof NavigationEnd);
-        // console.log(val.url);
-        let route = val.url;
-
-        if(route == "/home") {
-            // console.log("in home");
-            this.showHomePage.emit(true);
-            this.showPagination = false;
-        } else if (route.startsWith("/search")) {
-            // console.log("in search");
-            this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
-                this.query = params['query'];
-                this.searchService.searchQuery = this.query;
-                // this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
-                });
-            this.subQuery.unsubscribe();
-            this.showPagination = true;
-            this.showHomePage.emit(false);
-        }
-    });
-
-
-  }
-
-  ngOnInit() {
     this.startOffset = this.searchService.pageNumber;
     this.endOffset = Math.floor(Math.max(this.searchService.results.length / this.searchService.resultsSize, 1));
     this.errorMessage = null;
-
 
     this.resultsPerPage = this.searchService.resultsSize;
     this.pageNumber = this.searchService.pageNumber;
@@ -117,6 +113,8 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch(term: string, results: number, index: number): void {
+      console.log("Before", this.query, term);
+
      //
     //  if(this.resultsPerPage != results) {
     //      this.resultsPerPage = results;
@@ -132,6 +130,12 @@ export class SearchComponent implements OnInit {
       return null;
     }
 
+    if(term !== this.query) {
+        this.query = term;
+    }
+
+    this.searchService.searchQuery = this.query;
+
     var displayPage; // to use for url parameter
 
     // index controls the pagination, but it needs to start from 0 if the user puts in 1
@@ -142,6 +146,9 @@ export class SearchComponent implements OnInit {
     } else {
         displayPage = index;
     }
+
+    console.log("Before", this.query, term);
+
 
     // console.log(displayPage);
     // console.log(index);
@@ -169,11 +176,9 @@ export class SearchComponent implements OnInit {
             console.log("new resultList", this.resultList);
             this.calculateOffset();
             this.showHomePage.emit(false);
-            this.query = term;
 
-            this.router.navigate(['/search'], { queryParams: { query: term, page: this.currentPage } });
-            // console.log("Search resultList", this.resultList);
-            // this.searchResults.emit(this.resultList);
+            this.router.navigate(['/search'], { queryParams: { query: term } });
+            console.log("Search resultList", this.resultList);
 
     }, err => {
         console.log(err);
@@ -197,7 +202,7 @@ export class SearchComponent implements OnInit {
 
     //   console.
     //   log("leftover", leftOverItems);
-     this.onSearch(this.searchService.searchQuery, this.searchService.resultsSize, this.resultList.length);
+     this.onSearch(this.query, this.searchService.resultsSize, this.resultList.length);
 
 
     //   if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
@@ -214,6 +219,7 @@ export class SearchComponent implements OnInit {
 
   ngOnDestroy() {
       this.sub.unsubscribe();
+      this.subQuery.unsubscribe();
   }
 
 
