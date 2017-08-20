@@ -88,69 +88,7 @@ export class SubmitFormService {
     return this.fileList;
   }
 
-  uploadMedia() {
-      // TODO: Workaround for video uploads, just use amazon. https://stackoverflow.com/questions/36010348/angular2-file-upload-for-amazon-s3-bucket
 
-      console.log("fileList", this.fileList);
-      let headers = new Headers();
-      headers.append('Content-Type', ' ');
-      let options = new RequestOptions({
-                headers: headers,
-                method: "put"
-            });
-
-      let fileCount = this.fileList.length;
-
-      if(fileCount > 0) {
-          var request;
-          for(let i = 0; i < fileCount; i++) {
-                //   request = new FormData();
-                //   request.append("file[]", this.fileList[i], this.fileList[i].name);
-                var file = this.fileList[i];
-
-                request = new XMLHttpRequest();
-                request.open("GET", this.endPoint.get_upload_link + this.fileList[i].name, true);
-                request.onload = function (oEvent) {
-                    console.log("uploaded", request.responseText);
-
-                    var url = request.responseText.replace(/['"]+/g, '');
-                    console.log(url);
-                    var presigned_link = new XMLHttpRequest();
-                    presigned_link.open("PUT", url, true);
-                    presigned_link.onload = function (event) {
-                        console.log("response from put", event);
-                    };
-                    presigned_link.send(file);
-                };
-                // console.log(this.fileList[i]);
-                request.send(file);
-
-
-                // console.log("hitting get link endpoint:", this.endPoint.get_upload_link + this.fileList[i].name);
-
-                // this._http.get(this.endPoint.get_upload_link + this.fileList[i].name)
-                //     .map((res: Response) => res.json())
-                //     .catch((error : any) => Observable.throw(error.json.error))
-                //     .subscribe((data) => {
-                //         // data is the presigned s3 url sent by the api.
-                //         console.log("api link", data);
-                //
-                //         this._http.put(data, fd, options)
-                //             .map((res: Response) => res)
-                //             .catch((error : any) => Observable.throw(error.json.error))
-                //             .subscribe(
-                //                 (res) => { console.log("result from put", res); },
-                //                 (err) => { console.log("error from put", status); }
-                //             );
-                //     });
-
-          }
-
-      } else {
-          console.log("fileList is empty.");
-      }
-
-  }
 
   updatePost() {
       // tableName
