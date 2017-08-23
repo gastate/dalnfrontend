@@ -12,41 +12,36 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 
 export class PlayerComponent implements OnInit {
+
+
+    @Input()
+    postAsset: Asset;
+
+    @Input()
+    thumb: boolean;
+
+    @Input()
+    getdev: boolean;
+
     url : string;
     route: string;
     matchRoute: string;
-  constructor(private sanitizer: DomSanitizer, private _location: Location, private _router: Router) {
-  }
+
+    isPDF: boolean;
+    isWeb : boolean;
 
 
-
-  @Input()
-  postAsset: Asset;
-  postCheck: Post;
-
-  @Input()
-  thumb: boolean;
-  noAsset: boolean;
-  isPDF: boolean;
-  isWeb : boolean;
-
+  constructor(private sanitizer: DomSanitizer, private _location: Location, private _router: Router) {}
 
   ngOnInit(): void {
-  this._router.events.subscribe((val) => {
-     // see also
-     this.route = this._location.path();
-     this.matchRoute = "/detail";
-         if (this.route.indexOf(this.matchRoute) !== -1) {
-             this.thumb = false;
-         }
-    });
-
     this.getUrl(this.postAsset);
+    // console.log(this.getdev);
   }
 
   getUrl(asset: Asset): void {
-
-    if (this.postAsset.assetType === "Audio/Video") {
+    if (!asset) {
+        this.url = null;
+    } else if (this.postAsset.assetType === "Audio/Video") {
 
         this.url = this.postAsset.assetEmbedLink;
 

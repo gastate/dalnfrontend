@@ -1,0 +1,25 @@
+<div class="pagination-div" *ngIf="displayPagination === true">
+
+    <post-list [getdev]="getdev" [postList]="pagedPost"></post-list>
+        <nav>
+          <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" *ngIf="showPrevButton === true" (click)="getPageButtonClick(-1)">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li *ngFor="let button of displayButton" class="page-item" [class.active]="button == currentPage">
+                <a class="page-link" (click)="getPagedPost($event)">{{button}}</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" *ngIf="showNextButton === true" (click)="getPageButtonClick(1)">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+          </ul>
+        </nav>
+
+</div>
+<router-outlet></router-outlet>

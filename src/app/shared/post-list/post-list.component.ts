@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { SearchService } from '../../services/search.service';
-import {Post} from '../../model/post-model'
+import {Post} from '../../model/post-model';
 
 @Component({
   selector: 'post-list',
@@ -13,33 +13,20 @@ export class PostListComponent implements OnInit {
   }
 
   @Input()
+  getdev: boolean;
+
+  @Input()
   postList: Post[];
-  selectedPost: Post;
+
+  @Input() totalNumberOfPosts: number;
 
 
   ngOnInit() {
+    //   console.log(this.getdev);
   }
 
   setPage(){
 
-  }
-
-  hoverLink() {
-      var elms = document.getElementsByClassName("hover-post");
-        // var n = elms.length;
-        // function changeColor(color) {
-        //     for(var i = 0; i < n; i ++) {
-        //         elms[i].style.backgroundColor = color;
-        //     }
-        // }
-        // for(var i = 0; i < n; i ++) {
-        //     elms[i].onmouseover = function() {
-        //         changeColor("yellow");
-        //     };
-        //     elms[i].onmouseout = function() {
-        //         changeColor("white");
-        //     };
-        // }
   }
 
 

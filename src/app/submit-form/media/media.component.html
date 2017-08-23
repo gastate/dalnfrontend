@@ -1,8 +1,26 @@
-<div class="container">
+<div class="container add-top-margin">
+
+    <div class="row justify-content-center">
+      <div class="add-top-margin col-md-6 alert alert-warning" *ngIf="suggestMessage != null">
+          <p>
+              {{suggestMessage}}
+          </p>
+      </div>
+     </div>
+
+     <div class="row justify-content-center">
+       <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
+           <p>
+               {{errorMessage}}
+           </p>
+       </div>
+      </div>
 
 
   <!-- <p><input class="btn btn-primary" type="file" name="file1"></p> -->
   <p><input type="file" (change)="setMedia($event)" placeholder="Upload file" name="file" multiple></p>
+
+
 
     <button class="btn btn-secondary" type="button" (click)="uploadFiles()">Upload Files</button>
 
@@ -22,6 +40,21 @@
        If your file (particularly audio or video) is larger than 35 MB, we recommend that you split it into two or more files, with no single file larger than about 35 MB so that visitors to the site will be able to download your file(s) more conveniently.
 
     </p>
+
+    <div *ngIf="fileList && fileList.length != 0 && fileName != null">
+        <div class="file-list" *ngFor="let file of fileList">
+            <div class="progress">
+                 <div class="progress-bar progress-bar-animated" role="progressbar" [attr.aria-valuenow]="percentUploaded"
+                 aria-valuemin="0" aria-valuemax="100">{{percentUploaded}}</div>
+             </div>
+             <p>
+                 {{file?.name}}
+             </p>
+        </div>
+
+    </div>
+
+
 <!--
     <li>
       <span>File Description</span>
@@ -31,7 +64,23 @@
       </p>
     </li> -->
 
-    <button class="btn btn-primary" type="submit" (click)="next()">Next Step</button>
+    <div class="add-top-margin" *ngIf="succeedMessage == null">
+        <button class="btn btn-primary" type="submit" disabled (click)="next()">Next Step</button>
+    </div>
+    <div class="add-top-margin" *ngIf="succeedMessage != null">
+        <button class="btn btn-primary" type="submit" (click)="next()">Next Step</button>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="add-top-margin col-md-6 alert alert-success" *ngIf="succeedMessage != null">
+          <p>
+              {{succeedMessage}}
+          </p>
+      </div>
+     </div>
+
+
+
 
 
 </div>

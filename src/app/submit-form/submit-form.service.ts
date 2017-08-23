@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import {Observable} from 'rxjs/Rx';
@@ -9,14 +10,22 @@ import 'rxjs/add/operator/catch';
 import { environment } from '../../environments/environment';
 
 
+
 @Injectable()
 export class SubmitFormService {
+
+    today: number = Date.now();
+
+
     title: string;
     description: string;
-    // // dateAccessioned: string;
-    // // dateAvailable: string;
-    // // dateCreated: string;
-    // // dateIssued: string;
+    email: string;
+    license: string;
+
+    // dates are YYYY-MM-DD hh:mm:ss Z
+    // // dateSubmitted: string; // submitted post on this day.
+    // dateIssued: string; // admin specified.
+    dateCreated: string; // user specified.
     rightsConsent: string;
     rightsRelease: string;
     contributorAuthor: string[];
@@ -33,13 +42,16 @@ export class SubmitFormService {
 
     postResult : string;
     formData : FormData = new FormData(); // only data that needs to be sent to upload files.
-    filename : string = null;
+    filename : string;
+    fileList: FileList;
 
 
   constructor(private _http: Http) {
       this.title = null;
       this.postResult = null;
       this.description = null;
+      this.email = null;
+      this.license = null;
       this.rightsConsent = null;
       this.rightsRelease = null;
       this.contributorAuthor = [];
@@ -60,69 +72,46 @@ export class SubmitFormService {
 
   private endPoint = environment.API_ENDPOINTS;
 
-  getMedia (fileList : FileList) {
 
-    let file : File;
 
-    console.log(fileList);
-
-    for (var i = 0; i < fileList.length; i++) {
-        file = fileList[i];
-        this.formData.append("userFile", file, file.name);
-    }
+  getMedia() {
+    return this.fileList;
   }
 
-  uploadMedia(fileList: FileList) {
-      // TODO: loop through every file in the fileList
-      let headers = new Headers();
-      headers.append('Content-Type', ' ');
-      let options = new RequestOptions({headers: headers, method: "put"});
 
 
-      let file: File; // file to handle during the upload process.
+  updatePost() {
+      // tableName
+      // whatever data
+      // postId
+  }
 
-      if (fileList) {
-          for (var i = 0; i < fileList.length; i++) {
-              file = fileList[i];
-              console.log(this.endPoint.get_upload_link + file.name);
-              this._http.get(this.endPoint.get_upload_link + file.name)
-              .map((res: Response) => res.json())
-              .catch((error : any) => Observable.throw(error.json().error))
-              .subscribe(
-                  // data is the link returned from get_upload_link, will use this link to submit the formData.
-                  data => {
-                      this._http.put(data, this.formData, options)
-                      .map((res: Response) => res.json())
-                      .catch((error: any) => Observable.throw(error.json().error))
-                      .subscribe(
-                          data => { console.log('response', data); },
-                          error => { console.log(error); }
-                      );
-                  }
+  returnPost() {
+      let postData = {
+          title: this.title,
+          dateCreated: String(this.today),
+          description: this.description,
+          rightsConsent: this.rightsConsent,
+          rightsRelease: this.rightsRelease,
+          creatorGender : this.creatorGender,
+          creatorYearOfBirth : this.creatorYearOfBirth,
+          contributorAuthor: this.contributorAuthor,
+          contributorInterviewer: this.contributorInterviewer,
+          coveragePeriod: this.coveragePeriod,
+          coverageRegion: this.coverageRegion,
+          coverageNationality: this.coverageNationality,
+          coverageSpatial: this.coverageSpatial,
+          coverageStateProvince: this.coverageStateProvince,
+          subject: this.subject,
+          language: this.language,
+     };
 
-              );
-          }
-      } else {
-          console.log("The fileList is empty");
-      }
-
-    //   console.log("Uploading Files...");
-    //   console.log(this.endPoint.get_upload_l
-    //       ink + this.filename);
-
-    //   // Testing mock http service
-    //   this._http.put('https://httpbin.org/put', this.formData)
-    //   .map((res: Response) => res.json())
-    //   .catch((error: any) => Observable.throw(error.json().error))
-    //   .subscribe(
-    //       data => { console.log('response', data); },
-    //       error => { console.log(error); }
-    //   );
+     return postData;
   }
 
 
   postCreate() {
-     var tableName = "DALN-Posts-Dev";
+     var tableName = this.endPoint.ddb_table_name;
      var data = {
          title: this.title,
          description: this.description,
@@ -139,7 +128,9 @@ export class SubmitFormService {
          coverageStateProvince: this.coverageStateProvince,
          subject: this.subject,
          language: this.language,
-         tableName : tableName
+         tableName : tableName,
+         email: this.email,
+         license: this.license
     }
 
      var str = JSON.stringify(data);
@@ -159,33 +150,38 @@ export class SubmitFormService {
              this.postResult = data;
              console.log(data);
 
-             var jsonLink = {
-                 stagingAreaBucketName : "daln-file-staging-area",
-                 assetDescription: "Asset",
-                 finalBucketName: "daln-development",
-                 PostId: this.postResult,
-                 key: this.filename
+             var jsonLink;
+
+             if(this.fileList.length > 0) {
+                  for(let i = 0; i < this.fileList.length; i++) {
+
+                      jsonLink = {
+                          stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
+                          assetDescription: "Asset",
+                          finalBucketName: this.endPoint.finalBucketName,
+                          PostId: this.postResult,
+                          key: this.fileList[i].name,
+                          tableName: this.endPoint.ddb_table_name
+                      };
+
+                      console.log("data to link", jsonLink);
+                      let headers = new Headers();
+                      headers.append('Content-Type', 'application/json');
+                      let options = new RequestOptions({headers: headers, method: "post"});
+
+                      var input = JSON.stringify(jsonLink);
+
+                      // returns 504, make admin to check if went through.
+                      this._http.post(this.endPoint.link_media, input, options)
+                      .map((res: Response) => res.json())
+                      .catch((error : any) => Observable.throw(error.json().error))
+                      .subscribe(
+                          data => { console.log ('Link response: ', data);},
+                          error => { console.log(error); }
+                      );
+                  }
              }
-             let headers = new Headers();
-             headers.append('Content-Type', 'application/json');
-             let options = new RequestOptions({headers: headers, method: "post"});
-
-             var input = JSON.stringify(jsonLink);
-
-
-             this._http.post(this.endPoint.link_media, input, options)
-             .map((res: Response) => res.json())
-             .catch((error : any) => Observable.throw(error.json().error))
-             .subscribe(
-                 data => { console.log ('Link response: ', data);},
-                 error => { console.log(error); }
-             );
-         },
-         err => {
-            console.log(err);
-        }
-     );
-
+         });
   }
 
 }

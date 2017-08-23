@@ -300,15 +300,6 @@ nav ul li a {
 }
 
 
-
-
-.post-title {
-  margin: 10px 0;
-  font-size: 36px
-}
-
-
-
 /***** Footer *****/
 
 footer {
@@ -585,233 +576,6 @@ ul.arrow li {
 .message-box.error .closemsg {
 }
 
-/***** Accordion / Toggle *****/
-
-.open-block-acc {
-  float: left;
-  width: 100%;
-  padding: 10px 0 10px 0;
-  margin: 0 0 5px 0;
-  cursor: pointer;
-}
-
-.open-block-acc span {
-  padding-left: 15px;
-}
-
-.open-block-acc.active {
-  color: #fff;
-}
-
-.accordion-box {
-  float: left;
-  padding: 10px;
-}
-
-.toggle-block {
-  float: left;
-  width: 100%;
-  margin: 0 0 5px 0;
-}
-
-.open-block a {
-  display: block;
-  padding: 10px 10px 10px 15px;
-  text-decoration: none;
-}
-
-.open-block.active a {
-  color: #fff;
-}
-
-.toggle-box {
-  float: left;
-  padding: 10px;
-}
-
-.open-block-acc,
-.open-block {
-  font-family: 'PT Sans', sans-serif, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
-}
-
-.open-block-acc:hover,
-.open-block a:hover {
-  background-color: #ddd
-}
-
-/**** Isotope Filtering ****/
-
-.isotope-item {
-  z-index: 2;
-}
-
-.isotope-hidden.isotope-item {
-  pointer-events: none;
-  z-index: 1;
-}
-
-/**** Isotope CSS3 transitions ****/
-
-.isotope,
-.isotope .isotope-item {
-  -webkit-transition-duration: 0.8s;
-  -moz-transition-duration: 0.8s;
-  -ms-transition-duration: 0.8s;
-  -o-transition-duration: 0.8s;
-  transition-duration: 0.8s;
-}
-
-.isotope {
-  -webkit-transition-property: height, width;
-  -moz-transition-property: height, width;
-  -ms-transition-property: height, width;
-  -o-transition-property: height, width;
-  transition-property: height, width;
-}
-
-.isotope .isotope-item {
-  -webkit-transition-property: -webkit-transform, opacity;
-  -moz-transition-property: -moz-transform, opacity;
-  -ms-transition-property: -ms-transform, opacity;
-  -o-transition-property: top, left, opacity;
-  transition-property: transform, opacity;
-}
-
-/**** disabling Isotope CSS3 transitions ****/
-
-.isotope.no-transition,
-.isotope.no-transition .isotope-item,
-.isotope .isotope-item.no-transition {
-  -webkit-transition-duration: 0s;
-  -moz-transition-duration: 0s;
-  -ms-transition-duration: 0s;
-  -o-transition-duration: 0s;
-  transition-duration: 0s;
-}
-
-/* End: Recommended Isotope styles */
-/* disable CSS transitions for containers with infinite scrolling*/
-
-.isotope.infinite-scrolling {
-  -webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-
-.item-block-isotope .number {
-  display: none;
-}
-
-.item-block-isotope * {
-  position: absolute;
-  margin: 0;
-  z-index: 1;
-}
-
-#container {
-  max-width: 1170px;
-  margin: 0 auto;
-  padding: 0;
-  border: none;
-}
-
-.item-block-isotope {
-  width: 288px;
-  height: 150px;
-  margin: 2px;
-  padding: 0;
-  border-radius: 0px;
-  border: none;
-  overflow: hidden;
-  position: relative;
-}
-
-.change-size .item-block-isotope.width2 {
-  width: 580px;
-}
-
-.change-size .item-block-isotope.height2 {
-  height: 300px;
-}
-
-.change-size .item-block-isotope.width3 {
-  width: 872px;
-}
-
-.change-size .item-block-isotope.height3 {
-  height: 300px;
-}
-
-.item-block-isotope img {
-  z-index: -1;
-  width: 100%;
-}
-
-.item-block-isotope .symbol {
-  font-weight: 700;
-  font-size: 28px;
-  left: 20px;
-  top: 20%;
-  width: 90%;
-  font-family: 'PT Sans', sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
-  color: #577088;
-  z-index: 2;
-  text-align: center;
-  padding-bottom: 10px;
-}
-
-.item-block-isotope .name {
-  width: 90%;
-  font-family: 'PT Sans', sans-serif;
-  font-size: 14px;
-  left: 20px;
-  top: 40%;
-  font-weight: 400;
-  text-transform: capitalize;
-  color: #577088;
-  z-index: 990;
-}
-
-.hover-desc {
-  width: 100%;
-  height: 100%;
-  background: #f8f8f8;
-  opacity: 0;
-  bottom: 350px;
-  z-index: 990;
-  text-align: center;
-}
-
-.item-block-isotope.width3 .symbol,
-.item-block-isotope.width2 .symbol {
-  font-size: 72px;
-  top: 20%;
-  padding-bottom: 30px;
-}
-
-.item-block-isotope.width3.item-block-small .symbol,
-.item-block-isotope.width2.item-block-small .symbol {
-  font-size: 28px;
-  left: 20px;
-  top: 20%;
-}
-
-.item-block-isotope .info {
-  width: 40px;
-  height: 40px;
-  display: block;
-  position: absolute;
-  bottom: 10%;
-  right: 5%;
-  z-index: 9999;
-  -webkit-border-radius: 125px;
-  -moz-border-radius: 125px;
-  border-radius: 125px;
-}
 
 /* Responsive
 -------------------------------------------------- */
@@ -861,7 +625,7 @@ ul.arrow li {
     display: inline;
     /*margin-left: 64px;*/
     font-size: 31px;
-    color: #213f71;
+    color: white;
 
 }
 
@@ -870,7 +634,7 @@ ul.arrow li {
 }
 
 .bg-inverse {
-    background-color: #8A8A8A !important;
+    background-color: #333333 !important; /* gray color */
 }
 
 .desc {
@@ -895,7 +659,39 @@ ul.arrow li {
     margin-top: 2%;
 }
 
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+                    /**** Admin View ****/
+.admin-sidebar {
+    margin-top: 45%;
+}
+
+.admin-link {
+    color: #213f71;
+}
+
+.logout-link {
+    color: #CC0000;
+}
+                    /**** Post Detail ****/
+ul.socicon li a.twitter {
+    background: url(../img/social/twitter_dark.png) 0 0 no-repeat;
+}
+
+ul.socicon li a.facebook {
+    background: url(../img/social/facebook_dark.png) 0 0 no-repeat;
+}
+                    /**** Post Item ****/
+.postItem {
+    width: 100%;
+}
                     /**** Post List ****/
+
+.featured-post-list h3 {
+    margin-top: 7%;
+}
 
 #list-container {
     margin-top: 50px;
@@ -972,6 +768,11 @@ iframe {
     margin-bottom: 10%;
 }
 
+/* For submit form only */
+.card-submit {
+    height: 100%;
+}
+
 .card-block {
     overflow: hidden;
 }
@@ -981,6 +782,13 @@ iframe {
     position: relative;
     overflow: hidden;
 }
+
+.post-title {
+  margin: 10px 0;
+  font-size: 36px
+}
+
+
 
 
 #collapseContent { padding-bottom: 30px;}
@@ -1000,10 +808,14 @@ iframe {
         display: inline;
     }
 
+    .responsive_divider {
+        display: none;
+    }
 
     .responsive_home {
         max-width: 100vw;
     }
+
 
     #logo {
         float: none;

@@ -1,9 +1,6 @@
 <div class="postAsset" *ngIf="postAsset">
 
-  <!-- Null post - No Assets -->
-  <div class="postitem_null" *ngIf="noAsset === true">
-     <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item">
-  </div>
+
 
   <!-- Not recorded asset type -->
   <div class="postitem_unknown" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'">
@@ -37,9 +34,16 @@
       <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item">
   </div>
 
+
+
   <!-- Web Asset -->
   <!-- <div class="postitem_web" *ngIf="postAsset.assetType === 'Web'">
       <iframe [src]="url | safe" type="text/html"></iframe>
   </div> -->
 
+</div>
+
+<!-- Null post - No Assets -->
+<div class="postAsset_null" *ngIf="!postAsset">
+   <p *ngIf="getdev === true">No asset provided.</p>
 </div>
