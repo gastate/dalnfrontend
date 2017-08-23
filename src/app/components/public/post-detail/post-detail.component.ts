@@ -53,14 +53,14 @@ export class PostDetailComponent implements OnInit {
     this.loading = true;
     this.sub = this.router.events.subscribe((val) => {
     // if in production, get from the relevant production table, else use the dev table.
-        // if (this.endPoint.production === true) {
-        //     this.onDetail();
-        //     this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
-        // } else {
-        //     this.onDevDetail();
-        // }
-        this.onDetail();
-        this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+        if (this.endPoint.production === true) {
+            this.onDetail();
+            this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+        } else {
+            this.onDevDetail();
+        }
+        // this.onDetail();
+        // this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
     });
 
   }
@@ -109,17 +109,17 @@ export class PostDetailComponent implements OnInit {
                   this.onDev = true;
                   console.log(this.postDetail);
 
-                  this.assets = this.postDetail.assetList;
-                  if(this.assets && this.assets.length) {
-                      for(var i = 0; i <= this.assets.length - 1; i++) {
-                          if(this.assets[i].assetType === "Text") {
-                              this.isText = true;
-                          }
-                      }
-                  }
+                  // this.assets = this.postDetail.assetList;
+                  // if(this.assets && this.assets.length) {
+                  //     for(var i = 0; i <= this.assets.length - 1; i++) {
+                  //         if(this.assets[i].assetType === "Text") {
+                  //             this.isText = true;
+                  //         }
+                  //     }
+                  // }
 
 
-                  this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
+                  // this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
                   this.loading = false;
 
               },
