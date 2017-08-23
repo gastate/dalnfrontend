@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DatepickerComponent } from '../datepicker/datepicker.component';
+// import { DatepickerComponent } from '../datepicker/datepicker.component';
 import { Router } from '@angular/router';
 
 import {Post} from '../../model/post-model';
@@ -27,6 +27,7 @@ export class DescriptionComponent implements OnInit {
     geos : string [] = [];
     languages : string [] = [];
     period :  string [] = [];
+    // dateCreated:string = "";
 
   constructor(
     private _router: Router,
@@ -44,9 +45,8 @@ export class DescriptionComponent implements OnInit {
     this.descForm = this.fb.group({
         title: ['', Validators.required],
         description : [''],
-        coveragePeriod : ['']
-        // dateCreated : [''],
-
+        coveragePeriod : [''],
+        dateCreated : [''],
     });
 
 
@@ -115,7 +115,7 @@ export class DescriptionComponent implements OnInit {
     this.period = this.descForm.value.coveragePeriod;
     this.description = this.descForm.value.description;
     this.title = this.descForm.value.title;
-
+    this.submitService.dateCreated = this.descForm.value.dateCreated;
 
     this.submitService.description = this.description;
     this.submitService.title = this.title;
@@ -128,6 +128,8 @@ export class DescriptionComponent implements OnInit {
     this.submitService.coverageRegion = this.regions;
     this.submitService.coverageStateProvince = this.states;
     this.submitService.coverageSpatial = this.geos;
+
+    // console.log( this.submitService.returnPost() );
 
     this._router.navigateByUrl('/create/media');
   }
