@@ -88,8 +88,8 @@ export class MediaComponent implements OnInit {
                     // this.fileName = this.fileList[i].name;
 
                     request = new XMLHttpRequest();
-                    
-                    request.open( "POST", this.endPoint.get_upload_link + this.fileList[i].name, true );
+
+                    request.open( "GET", this.endPoint.get_upload_link + this.fileList[i].name, false );
                     console.log( fn+": getting presigned link from " , this.endPoint.get_upload_link + this.fileList[i].name );
                     request.onload = function (oEvent) {
                         console.log( fn+": quoted presigned link = ", request.responseText );
@@ -115,9 +115,9 @@ export class MediaComponent implements OnInit {
                                 success = "Files uploaded successfully! Please proceed to next step";
                             }
                         };
-                        presigned_link.open("PUT", url, true);
+                        presigned_link.open("PUT", url, false);
                         console.log( fn+": presigned url opened" );
-                        presigned_link.setRequestHeader( "Content-Type", file.type );
+                        presigned_link.setRequestHeader( "Content-Type", ' ' );
                         presigned_link.send(file);
                         console.log( fn+": send has begun" );
 
