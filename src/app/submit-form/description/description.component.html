@@ -25,7 +25,7 @@
 
                 <li>
                   <span>Date Created</span>
-                  <!-- <app-datepicker></app-datepicker> -->
+                  <input type="date" formControlName="dateCreated" [value]="submitService.dateCreated" (input)="$event.target.value">
                   <p>
                     Please provide the date on which you created your literacy narrative -- not necessarily the date on which you are filling out this form. (Optional)
                   </p>

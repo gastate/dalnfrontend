@@ -14,7 +14,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class SubmitFormService {
 
-    today: number = Date.now();
+    // today: number = Date.now();
 
 
     title: string;
@@ -89,7 +89,7 @@ export class SubmitFormService {
   returnPost() {
       let postData = {
           title: this.title,
-          dateCreated: String(this.today),
+          dateCreated: this.dateCreated,
           description: this.description,
           rightsConsent: this.rightsConsent,
           rightsRelease: this.rightsRelease,
@@ -130,7 +130,8 @@ export class SubmitFormService {
          language: this.language,
          tableName : tableName,
          email: this.email,
-         license: this.license
+         license: this.license,
+         dateCreated: this.dateCreated,
     }
 
      var str = JSON.stringify(data);
@@ -152,7 +153,7 @@ export class SubmitFormService {
 
              var jsonLink;
 
-             if(this.fileList.length > 0) {
+             if( this.fileList && this.fileList.length > 0 ) {
                   for(let i = 0; i < this.fileList.length; i++) {
 
                       jsonLink = {
