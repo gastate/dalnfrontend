@@ -41,15 +41,16 @@
 
     </p>
 
-    <div *ngIf="fileList && fileList.length != 0 && fileName != null">
+    <div *ngIf="fileList && fileList.length != 0">
         <div class="file-list" *ngFor="let file of fileList">
-            <!-- <div class="progress">
-                 <div class="progress-bar progress-bar-animated" role="progressbar" [attr.aria-valuenow]="percentUploaded" aria-valuemin="0" aria-valuemax="100">{{percentUploaded}}</div>
+            <div class="progress">
+                 <!-- <div class="progress-bar progress-bar-animated" role="progressbar" style="width: barWidth" [attr.aria-valuenow]="percentUploaded" aria-valuemin="0" aria-valuemax="100">{{percentUploaded}}</div> -->
              </div>
              <p>
+                {{everything}}
                  {{file?.name}}
-             </p> -->
-             <progress value="{{percentUploaded}}" max="100"></progress><p>{{file?.name}}</p>
+             </p>
+             <!-- <progress [attr.value]="percentUploaded" max="100"></progress><p>{{file?.name}}</p> -->
         </div>
 
     </div>

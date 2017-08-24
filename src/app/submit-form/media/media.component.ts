@@ -25,6 +25,7 @@ export class MediaComponent implements OnInit {
   succeedMessage: string;
   suggestMessage: string;
   percentUploaded: number;
+  barWidth: string;
 
   constructor(
     private _router : Router,
@@ -62,79 +63,85 @@ export class MediaComponent implements OnInit {
     let fn:string = this.constructor.name+"#uploadFiles()";  // tslint:disable-line:no-unused-variable
     console.log( fn+": invoked" );
 
-
-          // TODO: Workaround for video uploads, just use amazon. https://stackoverflow.com/questions/36010348/angular2-file-upload-for-amazon-s3-bucket
-          //
-
+          // TODO: https://stackoverflow.com/questions/30008114/how-do-i-promisify-native-xhr Make everything into a promise.
           console.log( fn+": fileList", this.fileList );
-          // let headers = new Headers();
-          // headers.append('Content-Type', ' ');
-          // let options = new RequestOptions({
-          //   headers: headers,
-          //   method: "put"
-          // });
+
 
 
           if(this.fileList && this.fileList.length > 0) {
               this.submitService.fileList = this.fileList;
               this.errorMessage = null;
-              var request;
+              let request;
               let fileCount = this.fileList.length;
               for(let i = 0; i < fileCount; i++) {
 
-                    // var success;
-                    // var percentComplete;
-                    var file = this.fileList[i];
-                    this.fileName = this.fileList[i].name;
+                    let file = this.fileList[i];
+                    let fileName = this.fileList[i].name;
+                    console.log("Filename", fileName);
 
-                    request = new XMLHttpRequest();
+                    this.uploadFileHandler(file);
 
-                    request.open( "GET", this.endPoint.get_upload_link + this.fileList[i].name, true);
-                    console.log( fn+": getting presigned link from " , this.endPoint.get_upload_link + this.fileList[i].name );
-                    request.onload = ((oEvent) => {
-                        console.log( fn+": quoted presigned link = ", request.responseText );
-
-                      // this will replace all quotes, you only want to remove delimiting quotes
-                        let url = request.responseText;
-                        if( request.responseText[0] == "\"" && request.responseText[request.responseText.length-1] == "\"" ) {
-                          url = request.responseText.slice(1,-1);
-                         };
-
-                        console.log( fn+": presigned link = ", url );
-                        var presigned_link = new XMLHttpRequest();
-
-                        presigned_link.onload = ((event) => {
-                          console.log( fn+": response from put", event );
-                          if(presigned_link.status === 200 ) {
-                              this.succeedMessage = "Files uploaded successfully! Please proceed to next step";
-                          }
-                      });
-
-                        presigned_link.open("PUT", url, true);
-                        console.log( fn+": presigned url opened" );
-
-
-                        presigned_link.upload.onprogress = ((event) => {
-                          console.log( fn+":/onprogress: invoked with evt = ", event );
-                          if (event.lengthComputable) {
-                              this.percentUploaded = (event.loaded / event.total) * 100;
-                              console.log("Percent Uploaded", this.percentUploaded);
-                          }
-                        });
-
-                        presigned_link.setRequestHeader( "Content-Type", ' ' );
-                        presigned_link.send(file);
-                        console.log( fn+": send has begun" );
-
-                    });
-                    console.log( fn+": ", this.fileList[i] );
-                    request.send(file);
               }
 
           } else {
               this.errorMessage = "Please select a couple of files to upload to the DALN.";
           }
 
+  }
+
+  uploadFileHandler(file: File) {
+
+    let fn:string = this.constructor.name+"#uploadFileHandler()";  // tslint:disable-line:no-unused-variable
+    console.log( fn+": invoked" );
+
+          let request = new XMLHttpRequest();
+
+                        request.open( "GET", this.endPoint.get_upload_link + file.name, true);
+                        console.log( fn+": getting presigned link from " , this.endPoint.get_upload_link + file.name );
+                        request.onload = ((oEvent) => {
+                            console.log( fn+": quoted presigned link = ", request.responseText );
+
+                          // this will replace all quotes, you only want to remove delimiting quotes
+                            let url = request.responseText;
+                            if( request.responseText[0] == "\"" && request.responseText[request.responseText.length-1] == "\"" ) {
+                              url = request.responseText.slice(1,-1);
+                             };
+
+                            console.log( fn+": presigned link = ", url );
+                            let presigned_link = new XMLHttpRequest();
+
+
+                            presigned_link.upload.onprogress = ((event) => {
+                              // console.log( fn+":/onprogress: invoked with evt = ", event );
+                              if (event.lengthComputable) {
+                                  this.percentUploaded = (event.loaded / event.total) * 100;
+                                  var everything = this.percentUploaded;
+                                  this.barWidth = `${this.percentUploaded}%`;
+                                   console.log("Percent Uploaded", this.percentUploaded, this.barWidth);
+                              }
+                            });
+
+                            presigned_link.onload = ((event) => {
+                              console.log( fn+": response from put", event );
+                              if(presigned_link.status === 200 ) {
+                                  this.succeedMessage = "Files uploaded successfully! Please proceed to next step";
+                              }
+                            });
+
+
+                            presigned_link.open("PUT", url, true);
+                            console.log( fn+": presigned url opened" );
+
+
+
+
+                            presigned_link.setRequestHeader( "Content-Type", ' ' );
+                            presigned_link.send(file);
+                            console.log( fn+": send has begun" );
+
+                        });
+                        console.log( fn+": ", this.fileList);
+                        request.send(file);
   }
 
 
