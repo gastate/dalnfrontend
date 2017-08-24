@@ -60,7 +60,7 @@ export class PostDetailComponent implements OnInit {
             this.onDevDetail();
         }
         // this.onDetail();
-        this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+        // this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
     });
 
   }
@@ -101,34 +101,34 @@ export class PostDetailComponent implements OnInit {
   }
 
   onDevDetail() {
-      this._route.params.switchMap(
-        (params: Params) => this._postService.getDevPostById(params['id']))
-        .subscribe(
-            (details) => {
-                  this.postDetail = details;
-                  this.onDev = true;
-                  console.log( "DEV POST DETAIL RECEIVED", this.postDetail );
+    this._route.params.switchMap(
+      (params: Params) => this._postService.getDevPostById(params['id']))
+      .subscribe(
+          (details) => {
+                this.postDetail = details;
+                this.onDev = true;
+                console.log( "DEV POST DETAIL RECEIVED", this.postDetail );
 
-                  this.assets = this.postDetail.assetList;
-                  if(this.assets && this.assets.length) {
-                      for(var i = 0; i <= this.assets.length - 1; i++) {
-                          if(this.assets[i].assetType === "Text") {
-                              this.isText = true;
-                          }
-                      }
-                  }
+                this.assets = this.postDetail.assetList;
+                if(this.assets && this.assets.length) {
+                    for(var i = 0; i <= this.assets.length - 1; i++) {
+                        if(this.assets[i].assetType === "Text") {
+                            this.isText = true;
+                        }
+                    }
+                }
 
 
-                  this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
-                  this.loading = false;
-
-              },
-            err => {
+                this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
                 this.loading = false;
-                this.failed = true;
-                console.log( "DEV POST DETAIL FAILED", err );
-            });
-  }
+
+            },
+          err => {
+              this.loading = false;
+              this.failed = true;
+              console.log( "DEV POST DETAIL FAILED", err );
+          });
+}
 
   goBack(): void {
     this._location.back();

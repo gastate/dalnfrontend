@@ -25,7 +25,7 @@ const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 const admin_ddb_table_name = "DALN-Admin-Posts";
 const ddb_table_name = "DALN-Posts";
 const stagingAreaBucketName = "daln-file-staging-area";
-const finalBucketName = "daln-development";
+const finalBucketName = "daln-prod";
 
 
 //////////////////////
