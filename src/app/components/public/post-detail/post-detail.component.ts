@@ -53,13 +53,13 @@ export class PostDetailComponent implements OnInit {
     this.loading = true;
     this.sub = this.router.events.subscribe((val) => {
     // if in production, get from the relevant production table, else use the dev table.
-        // if (this.endPoint.production === true) {
-        //     this.onDetail();
-        //     this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
-        // } else {
-        //     this.onDevDetail();
-        // }
-        this.onDetail();
+        if (this.endPoint.production === true) {
+            this.onDetail();
+            this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+        } else {
+            this.onDevDetail();
+        }
+        // this.onDetail();
         this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
     });
 
@@ -72,7 +72,7 @@ export class PostDetailComponent implements OnInit {
             (details) => {
                   this.loading = false;
                   this.postDetail = details;
-                  console.log(this.postDetail);
+                  console.log( "POST DETAIL RECEIVED", JSON.stringify(this.postDetail) );
 
                   this.assets = this.postDetail.assetList;
                   if(this.assets && this.assets.length) {
@@ -96,7 +96,7 @@ export class PostDetailComponent implements OnInit {
             err => {
                 this.loading = false;
                 this.failed = true;
-                console.log(err);
+                console.log( "POST DETAIL FAILED", err );
             });
   }
 
@@ -107,7 +107,7 @@ export class PostDetailComponent implements OnInit {
             (details) => {
                   this.postDetail = details;
                   this.onDev = true;
-                  console.log(this.postDetail);
+                  console.log( "DEV POST DETAIL RECEIVED", this.postDetail );
 
                   this.assets = this.postDetail.assetList;
                   if(this.assets && this.assets.length) {
@@ -126,7 +126,7 @@ export class PostDetailComponent implements OnInit {
             err => {
                 this.loading = false;
                 this.failed = true;
-                console.log(err);
+                console.log( "DEV POST DETAIL FAILED", err );
             });
   }
 
