@@ -107,7 +107,7 @@ export class PostDetailComponent implements OnInit {
           (details) => {
                 this.postDetail = details;
                 this.onDev = true;
-                console.log( "DEV POST DETAIL RECEIVED", this.postDetail );
+                console.log("DEV POST DETAIL RECEIVED", this.postDetail);
 
                 this.assets = this.postDetail.assetList;
                 if(this.assets && this.assets.length) {

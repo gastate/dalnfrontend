@@ -20,7 +20,7 @@ export class MediaComponent implements OnInit {
   submitService : SubmitFormService;
   fileList: FileList;
 
-  // fileName: string;
+  fileName: string;
   errorMessage: string;
   succeedMessage: string;
   suggestMessage: string;
@@ -85,7 +85,7 @@ export class MediaComponent implements OnInit {
                     var success;
                     var percentComplete;
                     var file = this.fileList[i];
-                    // this.fileName = this.fileList[i].name;
+                    this.fileName = this.fileList[i].name;
 
                     request = new XMLHttpRequest();
 
@@ -102,13 +102,23 @@ export class MediaComponent implements OnInit {
 
                         console.log( fn+": presigned link = ", url );
                         var presigned_link = new XMLHttpRequest();
+
                         presigned_link.onprogress = function updateProgress(evt) {
-                            console.log( fn+":/onprogress: invoked with evt = ", evt );
-                            if (evt.lengthComputable) {
-                                percentComplete = (evt.loaded / evt.total) * 100;
-                                console.log(percentComplete);
-                            }
+                          console.log( fn+":/onprogress: invoked with evt = ", evt );
+                          if (evt.lengthComputable) {
+                              percentComplete = (evt.loaded / evt.total) * 100;
+                              console.log(percentComplete);
+                          }
                         };
+
+                        // presigned_link.onprogress = ((event) => {
+                        //   console.log( fn+":/onprogress: invoked with evt = ", event );
+                        //   if (event.lengthComputable) {
+                        //       this.percentUploaded = (event.loaded / event.total) * 100;
+                        //       console.log(this.percentUploaded);
+                        //   }
+                        // });
+
                         presigned_link.onload = function (event) {
                             console.log( fn+": response from put", event );
                             if( presigned_link.response.status === 200 ) {
