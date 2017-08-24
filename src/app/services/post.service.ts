@@ -131,8 +131,10 @@ export class PostService {
 
   getPostById(id: string): Observable<Post> {
 
-    return this._http.get(this.endPoint.post + id).map((res: Response) => res.json())
-    //...errors if any
+    return this._http
+      .get(this.endPoint.post + id)
+      .map( (res: Response) => res.json() )
+      //...errors if any
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   }
 
@@ -158,8 +160,14 @@ export class PostService {
 
   getDevPostById(id: string): Observable<Post> {
 
-    return this._http.get(this.endPoint.get_dev_post + id).map((res: Response) => {res.json(); console.log(res);})
-    //...errors if any
+    return this._http
+      .get(this.endPoint.get_dev_post + id)
+      .map( (res: Response) => {
+        console.log(res);
+        console.log(res.json());
+        return res.json();
+      } )
+      //...errors if any
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   }
 
