@@ -13,10 +13,16 @@ const userPoolId = 'us-east-1_0lPzLvk1m';
 const clientId = '5jor2041aact5jm0ka79c67dr4';
 const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 
+
+///////////////////////
+// Amazon Variables  //
+///////////////////////
+
+
 const admin_ddb_table_name = "DALN-Admin-Posts";
 const ddb_table_name = "DALN-Posts";
 const stagingAreaBucketName = "daln-file-staging-area";
-const finalBucketName = "daln-development";
+const finalBucketName = "daln-prod";
 
 
 //////////////////////

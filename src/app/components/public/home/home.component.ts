@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
         this.getPagePosts();
+        console.log("HELLO WELCOME TO THE DALN");
   }
 
   getPagePosts() : void {
