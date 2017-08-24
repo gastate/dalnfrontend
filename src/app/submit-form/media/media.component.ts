@@ -23,7 +23,6 @@ export class MediaComponent implements OnInit {
   fileName: string;
   errorMessage: string;
   succeedMessage: string;
-  suggestMessage: string;
   percentUploaded: number;
   barWidth: string;
 
@@ -50,11 +49,6 @@ export class MediaComponent implements OnInit {
         let file = this.fileList[i];
         let file_size = this.fileList[i].size;
 
-        // if(file_size > 350000000) {
-        //     this.suggestMessage = "One of your files was larger than 35 MB. We recommend that you split it into two or more files, with no single file larger than about 35 MB so that visitors to the site will be able to download your file(s) more conveniently";
-        // } else {
-        //     this.suggestMessage = null;
-        // }
     }
 
   }
@@ -125,6 +119,7 @@ export class MediaComponent implements OnInit {
                               console.log( fn+": response from put", event );
                               if(presigned_link.status === 200 ) {
                                   this.succeedMessage = "Files uploaded successfully! Please proceed to next step";
+                                  this.percentUploaded = 0;
                               }
                             });
 
