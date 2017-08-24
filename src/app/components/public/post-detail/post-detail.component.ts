@@ -72,7 +72,7 @@ export class PostDetailComponent implements OnInit {
             (details) => {
                   this.loading = false;
                   this.postDetail = details;
-                  console.log(this.postDetail);
+                  console.log( "POST DETAIL RECEIVED", JSON.stringify(this.postDetail) );
 
                   this.assets = this.postDetail.assetList;
                   if(this.assets && this.assets.length) {
@@ -96,39 +96,39 @@ export class PostDetailComponent implements OnInit {
             err => {
                 this.loading = false;
                 this.failed = true;
-                console.log(err);
+                console.log( "POST DETAIL FAILED", err );
             });
   }
 
   onDevDetail() {
-      this._route.params.switchMap(
-        (params: Params) => this._postService.getDevPostById(params['id']))
-        .subscribe(
-            (details) => {
-                  this.postDetail = details;
-                  this.onDev = true;
-                  console.log(this.postDetail);
+    this._route.params.switchMap(
+      (params: Params) => this._postService.getDevPostById(params['id']))
+      .subscribe(
+          (details) => {
+                this.postDetail = details;
+                this.onDev = true;
+                console.log( "DEV POST DETAIL RECEIVED", this.postDetail );
 
-                  // this.assets = this.postDetail.assetList;
-                  // if(this.assets && this.assets.length) {
-                  //     for(var i = 0; i <= this.assets.length - 1; i++) {
-                  //         if(this.assets[i].assetType === "Text") {
-                  //             this.isText = true;
-                  //         }
-                  //     }
-                  // }
+                this.assets = this.postDetail.assetList;
+                if(this.assets && this.assets.length) {
+                    for(var i = 0; i <= this.assets.length - 1; i++) {
+                        if(this.assets[i].assetType === "Text") {
+                            this.isText = true;
+                        }
+                    }
+                }
 
 
-                  // this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
-                  this.loading = false;
-
-              },
-            err => {
+                this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
                 this.loading = false;
-                this.failed = true;
-                console.log(err);
-            });
-  }
+
+            },
+          err => {
+              this.loading = false;
+              this.failed = true;
+              console.log( "DEV POST DETAIL FAILED", err );
+          });
+}
 
   goBack(): void {
     this._location.back();
