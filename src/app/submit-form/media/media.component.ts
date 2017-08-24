@@ -82,8 +82,8 @@ export class MediaComponent implements OnInit {
               let fileCount = this.fileList.length;
               for(let i = 0; i < fileCount; i++) {
 
-                    var success;
-                    var percentComplete;
+                    // var success;
+                    // var percentComplete;
                     var file = this.fileList[i];
                     this.fileName = this.fileList[i].name;
 
@@ -91,47 +91,55 @@ export class MediaComponent implements OnInit {
 
                     request.open( "GET", this.endPoint.get_upload_link + this.fileList[i].name, true);
                     console.log( fn+": getting presigned link from " , this.endPoint.get_upload_link + this.fileList[i].name );
-                    request.onload = function (oEvent) {
+                    request.onload = ((oEvent) => {
                         console.log( fn+": quoted presigned link = ", request.responseText );
 
                         //var url = request.responseText.replace(/['"]+/g, ''); // this will replace all quotes, you only want to remove delimiting quotes
                         let url = request.responseText;
                         if( request.responseText[0] == "\"" && request.responseText[request.responseText.length-1] == "\"" ) {
                           url = request.responseText.slice(1,-1);
-                        }
+                         };
 
                         console.log( fn+": presigned link = ", url );
                         var presigned_link = new XMLHttpRequest();
 
-                        presigned_link.onprogress = function updateProgress(evt) {
-                          console.log( fn+":/onprogress: invoked with evt = ", evt );
-                          if (evt.lengthComputable) {
-                              percentComplete = (evt.loaded / evt.total) * 100;
-                              console.log(percentComplete);
-                          }
-                        };
-
-                        // presigned_link.onprogress = ((event) => {
-                        //   console.log( fn+":/onprogress: invoked with evt = ", event );
-                        //   if (event.lengthComputable) {
-                        //       this.percentUploaded = (event.loaded / event.total) * 100;
-                        //       console.log(this.percentUploaded);
+                        // presigned_link.onprogress = function updateProgress(evt) {
+                        //   console.log( fn+":/onprogress: invoked with evt = ", evt );
+                        //   if (evt.lengthComputable) {
+                        //       percentComplete = (evt.loaded / evt.total) * 100;
+                        //       console.log(percentComplete);
                         //   }
-                        // });
+                        // };
 
-                        presigned_link.onload = function (event) {
-                            console.log( fn+": response from put", event );
-                            if( presigned_link.response.status === 200 ) {
-                                success = "Files uploaded successfully! Please proceed to next step";
-                            }
-                        };
+                        presigned_link.onprogress = ((event) => {
+                          console.log( fn+":/onprogress: invoked with evt = ", event );
+                          if (event.lengthComputable) {
+                              this.percentUploaded = (event.loaded / event.total) * 100;
+                              console.log(this.percentUploaded);
+                          }
+                        });
+
+                        // presigned_link.onload = function (event) {
+                        //     console.log( fn+": response from put", event );
+                        //     if( presigned_link.response.status === 200 ) {
+                        //         success = "Files uploaded successfully! Please proceed to next step";
+                        //     }
+                        // };
+
+                        presigned_link.onload = ((event) => {
+                          console.log( fn+": response from put", event );
+                          if(presigned_link.status === 200 ) {
+                              this.succeedMessage = "Files uploaded successfully! Please proceed to next step";
+                          }
+                      });
+
                         presigned_link.open("PUT", url, true);
                         console.log( fn+": presigned url opened" );
                         presigned_link.setRequestHeader( "Content-Type", ' ' );
                         presigned_link.send(file);
                         console.log( fn+": send has begun" );
 
-                    };
+                    });
                     // console.log( fn+": ", this.fileList[i] );
                     request.send(file);
 
