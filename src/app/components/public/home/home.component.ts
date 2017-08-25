@@ -3,6 +3,7 @@ import { PostService } from '../../../services/post.service';
 import { SearchService } from '../../../services/search.service';
 import { UserLoginService } from '../../../services/user-login.service';
 import { LoggedInCallback } from '../../../services/cognito.service';
+import { Ng2DeviceService } from 'ng2-device-detector';
 
 import { Post } from '../../../model/post-model';
 // import { routerTransition } from '../router.animations';
@@ -27,11 +28,13 @@ export class HomeComponent implements OnInit {
     failed: boolean = false;
 
     getdev: boolean; //for postlist.
+    deviceInfo: any = null;
 
 
     constructor(private _postService: PostService,
         private _searchService: SearchService,
-        public userService: UserLoginService) {
+        public userService: UserLoginService,
+        private deviceService: Ng2DeviceService) {
 
         this.userService.isAuthenticated(this);
     }
@@ -41,14 +44,24 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.getPagePosts();
         console.log("HELLO WELCOME TO THE DALN");
+        this.deviceInfo = this.deviceService.getDeviceInfo();
+        console.log("***********", this.deviceInfo);
     }
 
     getPagePosts(): void {
         this.loading = true;
-
+        if (!this.deviceInfo) {
+            this.deviceInfo = this.deviceService.getDeviceInfo();
+            console.log("***********", this.deviceInfo);
+        }
         if (this._searchService.cache_posts.length === 0) {
+            let postNumber = 8;
+
+            if (this.deviceInfo.os === "ios" || this.deviceInfo.os === "android" || this.deviceInfo.device === "iphone") {
+                postNumber = 4
+            }
             // TODO Change search param to env variable
-            this._searchService.search_page("games", 4, 0).subscribe(
+            this._searchService.search_page("games", postNumber, 0).subscribe(
                 (data) => {
                     this.posts = this._searchService.translatePosts(data.hit);
                     this._searchService.cache_posts = this.posts;
