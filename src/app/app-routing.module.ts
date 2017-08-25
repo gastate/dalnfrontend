@@ -88,7 +88,7 @@ const routes: Routes = [
     component: PostDetailComponent
   },
   {
-    path: 'getdev/detail/:id',
+    path: 'approval/detail/:id',   // look into post-detail component before changing.
     component: PostDetailComponent
   },
   {
@@ -104,7 +104,7 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-      path: 'search',
+      path: 'search',           // look into pagination component before changing
       component: HomeComponent
   },
   {

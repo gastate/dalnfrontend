@@ -1,12 +1,5 @@
 <div class="container add-top-margin">
 
-    <div class="row justify-content-center">
-      <div class="add-top-margin col-md-6 alert alert-warning" *ngIf="suggestMessage != null">
-          <p>
-              {{suggestMessage}}
-          </p>
-      </div>
-     </div>
 
      <div class="row justify-content-center">
        <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
@@ -33,17 +26,14 @@
         <dt>WEB:</dt><dd>HTML (.htm or .html)</dd>
     </dl>
 
-    <div *ngIf="fileList && fileList.length != 0 && fileName != null">
+    <!-- <div *ngIf="fileList && fileList.length != 0">
         <div class="file-list" *ngFor="let file of fileList">
-            <div class="progress">
-                 <div class="progress-bar progress-bar-animated" role="progressbar" [attr.aria-valuenow]="percentUploaded" aria-valuemin="0" aria-valuemax="100">{{percentUploaded}}</div>
-             </div>
-             <p>
+              <p>
+                {{percentUploaded}}
                  {{file?.name}}
              </p>
         </div>
-
-    </div>
+    </div> -->
 
 
 <!--
