@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { SubmitFormService } from '../submit-form.service';
@@ -34,7 +34,8 @@ export class MediaComponent implements OnInit {
     constructor(
         private _router: Router,
         private _http: Http,
-        _submitService: SubmitFormService
+        _submitService: SubmitFormService,
+        private ref: ChangeDetectorRef,
     ) {
         this.submitService = _submitService;
 
@@ -146,14 +147,17 @@ export class MediaComponent implements OnInit {
                         };
                         let timeOut = 60000; //ms; 1 minute
                         let timeoutHandle = setTimeout( timeoutHandler, timeOut );
-                        presigned_link.onprogress = (evt) => {
-                            console.log(fn + ":/onprogress: invoked with evt = ", evt);
+                        presigned_link.upload.onprogress = (evt) => {
+                            // console.log(fn + ":/onprogress: invoked with evt = ", evt);
                             clearTimeout( timeoutHandle );
                             timeoutHandle = setTimeout( timeoutHandler, timeOut );
-                            if (evt.lengthComputable) {
-                                fileinfo.progress = (evt.loaded / evt.total) * 100;
-                                console.log(fn + ":/onprogress: ", fileinfo.progress );
-                            }
+                            // if (evt.lengthComputable) {
+                            //     fileinfo.progress = evt.loaded / evt.total;
+                            //     console.log(fn + ":/onprogress: ", fileinfo.progress );
+                            // }
+                            fileinfo.progress = evt.loaded / fileinfo.file.size;
+                            this.ref.detectChanges();
+                            console.log(fn + ":/onprogress: ", fileinfo.progress );
                         };
                         presigned_link.onload = (event) => {
                             console.log( fn+"/onload: ", presigned_link.statusText );
@@ -163,7 +167,7 @@ export class MediaComponent implements OnInit {
                             if( presigned_link.status === 200 ) {
                                 fileinfo.message = "Uploaded successfully!";
                                 fileinfo.status = "DONE";
-                                fileinfo.progress = 100.0;
+                                fileinfo.progress = 1.0;
                                 this.fileDone += 1;
                             } else {
                                 fileinfo.message = "Error: status = "+presigned_link.status+" "+presigned_link.statusText;
@@ -180,10 +184,11 @@ export class MediaComponent implements OnInit {
                             let errmsg = ( presigned_link.statusText !== "" ) ? presigned_link.statusText : "unspecified error"
                             fileinfo.message = "Error: "+errmsg;
                             fileinfo.status = "FAILED";
+                            fileinfo.progress = 0.0;
                             this.uploadFile(i+1);
                         }
                         presigned_link.open("PUT", url, true);
-                        console.log(fn + ": presigned url opened");
+                        // console.log(fn + ": presigned url opened");
                         presigned_link.setRequestHeader("Content-Type", fileinfo.file.type);
                         presigned_link.send(fileinfo.file);
                         console.log(fn + ": send has begun");
