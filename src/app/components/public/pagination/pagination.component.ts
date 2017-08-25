@@ -68,6 +68,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.currentPageEmitter = new EventEmitter<number>();
     this.router = router;
 
+  // will break view if routes are changed.
     // so unnecessary, plz fix
     this.sub = router.events.subscribe((val) => {
         let route = val.url;
