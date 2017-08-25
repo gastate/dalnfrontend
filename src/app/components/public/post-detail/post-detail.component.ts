@@ -1,10 +1,12 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Router, Params, NavigationEnd}   from '@angular/router';
-import {Location}                 from '@angular/common';
+import {Location} from '@angular/common';
 import {PostService} from '../../../services/post.service';
 import {Post} from '../../../model/post-model';
-
 import {Asset} from '../../../model/asset-model';
+
+import {environment} from '../../../../environments/environment';
+
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -14,6 +16,30 @@ import 'rxjs/add/operator/switchMap';
 })
 export class PostDetailComponent implements OnInit {
 
+
+      @Input()
+      postDetail: Post;
+
+      selectedAsset: Asset;
+      shareUrl : string;
+
+      loading: boolean = false;
+      failed: boolean = false;
+
+      assets: Asset[];
+      isPDF : boolean = false;
+      isText: boolean;
+
+      //for social
+      sub: any;
+      route: string;
+      text: string;
+
+      onDev: boolean;
+
+      private endPoint = environment;
+
+
   constructor(private _postService: PostService,
               private _route: ActivatedRoute,
               private _location: Location,
@@ -22,32 +48,19 @@ export class PostDetailComponent implements OnInit {
           ) {
   }
 
-  @Input()
-  postDetail: Post;
-  selectedAsset: Asset;
-  shareUrl : string;
-
-  loading: boolean = false;
-  failed: boolean = false;
-
-  isPDF : boolean = false;
-
-  //for social
-  private sub: any;
-  route: string;
-  text: string;
 
   ngOnInit(): void {
     this.loading = true;
-    this.router.events.subscribe((val) => {
-        if(val.url.startsWith('/getdev')) {
-            this.onDevDetail();
-        } else {
+    this.sub = this.router.events.subscribe((val) => {
+    // if in production, get from the relevant production table, else use the dev table.
+        if (this.endPoint.production === true) {
             this.onDetail();
-            this.route = "http%3A%2F%2Fdaln.gsu.edu%2F%23%2Fdetail%2F" + val.url.substring(8);
-            console.log(this.route);
-
+            this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+        } else {
+            this.onDevDetail();
         }
+        // this.onDetail();
+        // this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
     });
 
   }
@@ -59,37 +72,63 @@ export class PostDetailComponent implements OnInit {
             (details) => {
                   this.loading = false;
                   this.postDetail = details;
-                  // console.log(details);
+                  console.log( "POST DETAIL RECEIVED", JSON.stringify(this.postDetail) );
+
+                  this.assets = this.postDetail.assetList;
+                  if(this.assets && this.assets.length) {
+                      for(var i = 0; i <= this.assets.length - 1; i++) {
+                          if(this.assets[i].assetType === "Text") {
+                              this.isText = true;
+                          }
+                      }
+                  }
 
                   // twitter doesn't take over 140 characters in the title
                   // slice it down to 50
-                  this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
+                  if(this.postDetail.title && this.postDetail.title.length) {
+                      this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
+                  }
+
 
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
+
               },
             err => {
                 this.loading = false;
                 this.failed = true;
-                console.log(err);
+                console.log( "POST DETAIL FAILED", err );
             });
   }
 
   onDevDetail() {
-      this._route.params.switchMap(
-        (params: Params) => this._postService.getDevPostById(params['id']))
-        .subscribe(
-            (details) => {
-                  this.loading = false;
-                  this.postDetail = details;
-                  // console.log(details);
-                  this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
-              },
-            err => {
+    this._route.params.switchMap(
+      (params: Params) => this._postService.getDevPostById(params['id']))
+      .subscribe(
+          (details) => {
+                this.postDetail = details;
+                this.onDev = true;
+                console.log( "DEV POST DETAIL RECEIVED", this.postDetail );
+
+                this.assets = this.postDetail.assetList;
+                if(this.assets && this.assets.length) {
+                    for(var i = 0; i <= this.assets.length - 1; i++) {
+                        if(this.assets[i].assetType === "Text") {
+                            this.isText = true;
+                        }
+                    }
+                }
+
+
+                this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
                 this.loading = false;
-                this.failed = true;
-                console.log(err);
-            });
-  }
+
+            },
+          err => {
+              this.loading = false;
+              this.failed = true;
+              console.log( "DEV POST DETAIL FAILED", err );
+          });
+}
 
   goBack(): void {
     this._location.back();
@@ -100,32 +139,14 @@ export class PostDetailComponent implements OnInit {
 
   }
 
-  ngAfterViewInit(){
-      this.sub = this.router.events.subscribe(val => {
-            if (val instanceof NavigationEnd) {
-              (<any>window).twttr = (function (d, s, id) {
-                let js: any, fjs = d.getElementsByTagName(s)[0],
-                    t = (<any>window).twttr || {};
-                if (d.getElementById(id)) return t;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "https://platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js, fjs);
-
-                t._e = [];
-                t.ready = function (f: any) {
-                    t._e.push(f);
-                };
-
-                return t;
-              }(document, "script", "twitter-wjs"));
-
-              if ((<any>window).twttr.ready())
-                (<any>window).twttr.widgets.load();
-
-            }
-          });
+  unapprovePost() {
+      this._postService.unapprovePost(this.postDetail.postId);
   }
+
+  ngOnDestroy() {
+      this.sub.unsubscribe();
+  }
+
 
 
 }

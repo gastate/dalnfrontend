@@ -13,7 +13,11 @@ jspm_packages
 bower_components
 aot/*
 yarn.lock
+dist/*
+
 
 # WebStorm
 .idea/
 
+# API keys
+key.ts

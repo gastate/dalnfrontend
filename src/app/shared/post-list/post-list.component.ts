@@ -22,6 +22,7 @@ export class PostListComponent implements OnInit {
 
 
   ngOnInit() {
+    //   console.log(this.getdev);
   }
 
   setPage(){

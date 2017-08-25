@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>DALNWEBCLI</title>
-  <base href=".">
+  <base href="/">
   <meta name="description" content="Digital Archive of Literacy Narratives">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
@@ -26,6 +26,19 @@
     <script src="assets/js/amazon-cognito-identity.min.js"></script>
     <script src="assets/js/aws-sdk-2.7.13.min.js"></script>
     <!-- /Cognito -->
+
+    <!-- Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+          // Registration was successful
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function(err) {
+          // registration failed :(
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      }
+    </script>
 
     <!-- <script src="assets/js/auto-fit.js" ></script> -->
 

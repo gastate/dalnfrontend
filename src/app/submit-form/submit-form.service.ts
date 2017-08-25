@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import {Observable} from 'rxjs/Rx';
@@ -9,16 +10,22 @@ import 'rxjs/add/operator/catch';
 import { environment } from '../../environments/environment';
 
 
+
 @Injectable()
 export class SubmitFormService {
+
+    // today: number = Date.now();
+
+
     title: string;
     description: string;
     email: string;
     license: string;
-    // // dateAccessioned: string;
-    // // dateAvailable: string;
-    // // dateCreated: string;
-    // // dateIssued: string;
+
+    // dates are YYYY-MM-DD hh:mm:ss Z
+    // // dateSubmitted: string; // submitted post on this day.
+    // dateIssued: string; // admin specified.
+    dateCreated: string; // user specified.
     rightsConsent: string;
     rightsRelease: string;
     contributorAuthor: string[];
@@ -35,7 +42,8 @@ export class SubmitFormService {
 
     postResult : string;
     formData : FormData = new FormData(); // only data that needs to be sent to upload files.
-    filename : string = null;
+    filename : string;
+    fileList: FileList;
 
 
   constructor(private _http: Http) {
@@ -64,63 +72,24 @@ export class SubmitFormService {
 
   private endPoint = environment.API_ENDPOINTS;
 
-  getMedia (fileList : FileList) {
 
-    let file : File;
 
-    console.log(fileList);
-
-    for (var i = 0; i < fileList.length; i++) {
-        file = fileList[i];
-        this.formData.append("userFile", file, file.name);
-    }
+  getMedia() {
+    return this.fileList;
   }
 
-  uploadMedia(file: File) {
-      // TODO: loop through every file in the fileList
-      let headers = new Headers();
-      headers.append('Content-Type', ' ');
-      let options = new RequestOptions({headers: headers, method: "put"});
 
 
-      if (file) {
-              console.log(this.endPoint.get_upload_link + file.name);
-
-              this._http.get(this.endPoint.get_upload_link + file.name)
-              .map((res: Response) => res.json())
-              .catch((error : any) => Observable.throw(error.json().error))
-              .subscribe(
-                  // data is the link returned from get_upload_link, will use this link to submit the formData.
-                  data => {
-                      this._http.put(data, this.formData, options)
-                      .map((res: Response) => res.json())
-                      .catch((error: any) => Observable.throw(error.json().error))
-                      .subscribe(
-                          data => { console.log('response', data); },
-                          error => { console.log(error); }
-                      );
-                  });
-          } else {
-          console.log("The fileList is empty");
-      }
-
-    //   console.log("Uploading Files...");
-    //   console.log(this.endPoint.get_upload_l
-    //       ink + this.filename);
-
-    //   // Testing mock http service
-    //   this._http.put('https://httpbin.org/put', this.formData)
-    //   .map((res: Response) => res.json())
-    //   .catch((error: any) => Observable.throw(error.json().error))
-    //   .subscribe(
-    //       data => { console.log('response', data); },
-    //       error => { console.log(error); }
-    //   );
+  updatePost() {
+      // tableName
+      // whatever data
+      // postId
   }
 
   returnPost() {
       let postData = {
           title: this.title,
+          dateCreated: this.dateCreated,
           description: this.description,
           rightsConsent: this.rightsConsent,
           rightsRelease: this.rightsRelease,
@@ -142,7 +111,7 @@ export class SubmitFormService {
 
 
   postCreate() {
-     var tableName = "DALN-Posts-Dev";
+     var tableName = this.endPoint.ddb_table_name;
      var data = {
          title: this.title,
          description: this.description,
@@ -161,7 +130,8 @@ export class SubmitFormService {
          language: this.language,
          tableName : tableName,
          email: this.email,
-         license: this.license
+         license: this.license,
+         dateCreated: this.dateCreated,
     }
 
      var str = JSON.stringify(data);
@@ -181,33 +151,38 @@ export class SubmitFormService {
              this.postResult = data;
              console.log(data);
 
-             var jsonLink = {
-                 stagingAreaBucketName : "daln-file-staging-area",
-                 assetDescription: "Asset",
-                 finalBucketName: "daln-development",
-                 PostId: this.postResult,
-                 key: this.filename
+             var jsonLink;
+
+             if( this.fileList && this.fileList.length > 0 ) {
+                  for(let i = 0; i < this.fileList.length; i++) {
+
+                      jsonLink = {
+                          stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
+                          assetDescription: "Asset",
+                          finalBucketName: this.endPoint.finalBucketName,
+                          PostId: this.postResult,
+                          key: this.fileList[i].name,
+                          tableName: this.endPoint.ddb_table_name
+                      };
+
+                      console.log("data to link", jsonLink);
+                      let headers = new Headers();
+                      headers.append('Content-Type', 'application/json');
+                      let options = new RequestOptions({headers: headers, method: "post"});
+
+                      var input = JSON.stringify(jsonLink);
+
+                      // returns 504, make admin to check if went through.
+                      this._http.post(this.endPoint.link_media, input, options)
+                      .map((res: Response) => res.json())
+                      .catch((error : any) => Observable.throw(error.json().error))
+                      .subscribe(
+                          data => { console.log ('Link response: ', data);},
+                          error => { console.log(error); }
+                      );
+                  }
              }
-             let headers = new Headers();
-             headers.append('Content-Type', 'application/json');
-             let options = new RequestOptions({headers: headers, method: "post"});
-
-             var input = JSON.stringify(jsonLink);
-
-
-             this._http.post(this.endPoint.link_media, input, options)
-             .map((res: Response) => res.json())
-             .catch((error : any) => Observable.throw(error.json().error))
-             .subscribe(
-                 data => { console.log ('Link response: ', data);},
-                 error => { console.log(error); }
-             );
-         },
-         err => {
-            console.log(err);
-        }
-     );
-
+         });
   }
 
 }

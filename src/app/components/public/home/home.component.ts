@@ -1,7 +1,9 @@
 import { ElementRef, Component, OnInit, animate } from '@angular/core';
-import { PlatformLocation } from '@angular/common';
 import { PostService } from '../../../services/post.service';
 import { SearchService } from '../../../services/search.service';
+import {UserLoginService} from '../../../services/user-login.service';
+import {LoggedInCallback} from '../../../services/cognito.service';
+
 import { Post } from '../../../model/post-model';
 // import { routerTransition } from '../router.animations';
 import 'rxjs/add/observable/fromPromise';
@@ -15,10 +17,10 @@ import 'rxjs/add/observable/fromPromise';
 export class HomeComponent implements OnInit {
 
 
-    otherloc: PlatformLocation;
     title = 'DALN Frontend';
     searchPosts: Post[] = [];
     posts: Post[] = [];
+
     showPage: boolean = true;
 
     loading: boolean = false;
@@ -27,33 +29,41 @@ export class HomeComponent implements OnInit {
     getdev: boolean; //for postlist.
 
 
-  constructor(otherloc: PlatformLocation,  private _postService: PostService, private _searchService: SearchService) {
+  constructor(private _postService: PostService,
+              private _searchService: SearchService,
+              public userService: UserLoginService) {
 
-      otherloc.onPopState(() => {
-        console.log('pressed back!');
-    });
+        this.userService.isAuthenticated(this);
   }
 
 
 
-  ngOnInit(): void {
-        this.getdev = false;
+  ngOnInit() {
         this.getPagePosts();
+        console.log("HELLO WELCOME TO THE DALN");
   }
 
   getPagePosts() : void {
       this.loading = true;
-      this._searchService.search_page("games", 8, 0).subscribe(
-          (data) => {
-              this.posts = this._searchService.translatePosts(data.hit);
+
+      if (this._searchService.cache_posts.length === 0) {
+          this._searchService.search_page("games", 8, 0).subscribe(
+              (data) => {
+                  this.posts = this._searchService.translatePosts(data.hit);
+                  this._searchService.cache_posts = this.posts;
+                  this.loading = false;
+            }, //Bind to view
+            err => {
               this.loading = false;
-        }, //Bind to view
-        err => {
+              this.failed = true;
+              // Log errors if any
+              console.log(err);
+            });
+      } else {
+          this.posts = this._searchService.cache_posts;
           this.loading = false;
-          this.failed = true;
-          // Log errors if any
-          console.log(err);
-        });
+      }
+
 
         // Use for development if search is down.
     // this._postService.getMockPosts().then(
@@ -78,10 +88,13 @@ export class HomeComponent implements OnInit {
       this.searchPosts = event;
   }
 
-  clearSearch() {
-      this.searchPosts = [];
-      this._searchService.searchQuery = "";
-      // add to search history of browser
+  isLoggedIn(message: string, isLoggedIn: boolean) {
+      if(!isLoggedIn) {
+          this.getdev = false;
+          console.log("get dev false");
+      } else {
+          this.getdev = true;
+      }
   }
 
 

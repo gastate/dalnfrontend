@@ -56,15 +56,13 @@
         <br/>
 
         <h3>Media List</h3>
-        <ul class="media" *ngFor="let asset of postDetail.assetList">
+        <ul class="media" >
 
-            <li (click)="onSelectedAsset(asset)">
+            <li *ngFor="let asset of postDetail.assetList" (click)="onSelectedAsset(asset)">
 
               <!-- Change event to be click event that changes player embed link -->
-              <h3>{{asset.assettitle}}</h3>
-              <p>{{asset.assetType}}: {{asset.assetDescription}}</p>
-              <p *ngIf="">{{asset.assetType}}: {{asset.assetDescription}}</p>
-
+              <h3>{{asset?.assettitle}}</h3>
+              <p>{{asset?.assetType}}: {{asset?.assetDescription}}</p>
 
               <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
             </li>
@@ -82,6 +80,10 @@
                         </tr>
                       </thead>
                       <tbody>
+                          <tr>
+                               <td>postId</td>
+                               <td>{{postDetail?.postId}}</td>
+                          </tr>
                           <tr>
                                <td>identifierUri</td>
                                <td>{{postDetail?.identifierUri}}</td>
@@ -103,10 +105,18 @@
                                <td>{{postDetail?.dateIssued}}</td>
                           </tr>
                           <tr>
+                               <td>rightsConsent</td>
+                               <td>{{postDetail?.rightsConsent}}</td>
+                          </tr>
+                          <tr>
+                               <td>rightsRelease</td>
+                               <td>{{postDetail?.rightsRelease}}</td>
+                          </tr>
+                          <tr>
                                <td>contributorAuthor</td>
                                <td>
                                   <ul>
-                                   <li *ngFor="let author of postDetail.contributorAuthor">{{postDetail?.contributorAuthor}}</li>
+                                   <li *ngFor="let author of postDetail.contributorAuthor">{{author}}</li>
                                   </ul>
                                </td>
                           </tr>
@@ -114,7 +124,31 @@
                                <td>contributorInterviewer</td>
                                <td>
                                   <ul>
-                                   <li *ngFor="let author of postDetail.contributorInterviewer">{{postDetail?.contributorInterviewer}}</li>
+                                   <li *ngFor="let author of postDetail.contributorInterviewer">{{author}}</li>
+                                  </ul>
+                               </td>
+                          </tr>
+                          <tr>
+                               <td>coveragePeriod</td>
+                               <td>
+                                  <ul>
+                                   <li *ngFor="let period of postDetail.coveragePeriod">{{period}}</li>
+                                  </ul>
+                               </td>
+                          </tr>
+                          <tr>
+                               <td>coverageStateProvince</td>
+                               <td>
+                                  <ul>
+                                   <li *ngFor="let state of postDetail.coverageStateProvince">{{state}}</li>
+                                  </ul>
+                               </td>
+                          </tr>
+                          <tr>
+                               <td>creatorGender</td>
+                               <td>
+                                  <ul>
+                                   <li *ngFor="let gender of postDetail.creatorGender">{{creatorGender}}</li>
                                   </ul>
                                </td>
                           </tr>
@@ -132,42 +166,35 @@
       <!-- Video
       ================================================== -->
 
-          <div class="col-md-8">
-              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
-              <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
-        <!-- TODO: Remove style tag -->
-        <!-- social begin here -->
-        <ul class="socicon right" style="margin-bottom:10px;">
-          <!-- <li>
-            <a href="#" class="share-icon">
-            </a>
-          </li>
-          <li>
-            <a href="#" class="google">
-            </a>
-          </li>-->
-          <li>
-            <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
-            </a>
-          </li>
-          <li>
-              <a class="twitter twitter-share-button"
-                href="https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}" target="_blank"  ></a>
-          </li>
-          <!-- <li>
-            <a href="#" class="flickr">
-            </a>
-          </li>
-          <li>
-            <a href="#" class="linkedin">
-            </a>
-          </li>
-          <li class="last">
-            <a href="#" class="vimeo">
-            </a>
-          </li> -->
+      <div class="col-md-8">
 
-        </ul>
+          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
+          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
+
+            <ul class="socicon right" style="margin-bottom:10px; margin-top:10px;">
+              <li>
+                <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
+                </a>
+              </li>
+              <li>
+                  <a class="twitter twitter-share-button"
+                    href="https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}" target="_blank"  ></a>
+              </li>
+
+            </ul>
+
+            <div *ngIf="isText === true" class="col-md-4" style="margin-top:10%;">
+                <h3>Download List</h3>
+                <ul>
+                    <li *ngFor="let asset of postDetail.assetList; let i = index">
+                        <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngIf="onDev === true" class="col-md-4">
+                <button type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
+            </div>
 
 
         </div>

@@ -17,8 +17,7 @@ import { POSTS } from './mock-postlist';
 @Injectable()
 export class SearchService {
 
-
-  searchQuery : string; // term to call the search engine with.
+  searchQuery: string; // holds the term for search.
   resultsSize : number; // user specified number of results to display. (limit)
   pageNumber: number; // user specified page number to start from. (offset)
 
@@ -27,17 +26,20 @@ export class SearchService {
   // pagination
   pageHead: number; // admin specified number of results to stay ahead of user.
   total_offset: number; // total offsets for pagination.
-  total_results: number; // total results from search api.
+  total_results: number; // total number of results from search api.
+  results: Post[]; // holds the results for the pagination component.
 
+  cache_posts: Post[];
 
   private endPoint = environment.API_ENDPOINTS;
 
   constructor(private _http: Http, private _jsonp : Jsonp) {
-      this.searchQuery = null;
+      this.searchQuery = "";
       this.resultsSize = 12;
       this.pageNumber = 1;
       this.pageHead = 50;
-
+      this.results = [];
+      this.cache_posts = [];
       this.total_results = 0;
       this.total_offset = 0;
 
@@ -49,6 +51,7 @@ export class SearchService {
 
   changeResultsDisplayed(results: number) {
     this.resultsSize = results;
+    console.log("resultSize change", this.resultsSize);
   }
 
   changePageStart(page: number) {
@@ -73,7 +76,6 @@ export class SearchService {
 
   search_page(term: string, results: number, page_size: number) : Observable<any> {
 
-    //   console.log("Query:" + this.searchQuery);
       console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
 
     return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {

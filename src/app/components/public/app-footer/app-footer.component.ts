@@ -9,12 +9,14 @@ import {Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 export class AppFooterComponent implements OnInit {
 
   private sub: any;
+  private sub1: any;
 
   constructor(private _router: Router,
               private _activatedRoute : ActivatedRoute
     ) {}
 
     ngOnInit() {
+
     }
 
 
@@ -39,12 +41,33 @@ export class AppFooterComponent implements OnInit {
                 return t;
               }(document, "script", "twitter-wjs"));
 
-              if ((<any>window).twttr.ready())
-                (<any>window).twttr.widgets.load();
+              if ((<any>window).twttr.ready()) {
+                  (<any>window).twttr.widgets.load();
+              }
 
             }
           });
 
+
+        this.sub1 = this._router.events.subscribe(val => {
+            if (val instanceof NavigationEnd) {
+                (function(d, s, id) {
+                    if (d.getElementById(id)) return;
+                    var js: any, fjs = d.getElementsByTagName(s)[0];
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+
+
+                // Issues of undefined.
+                // if ((<any>window).FB) {
+                //     (<any>window).FB.XFMBL.parse();
+                // }
+
+            }
+        });
    }
 
 
@@ -58,6 +81,11 @@ export class AppFooterComponent implements OnInit {
         //   fjs.parentNode.insertBefore(js, fjs);
         // }(document, 'script', 'facebook-jssdk'));
 
+   }
+
+   ngOnDestroy() {
+       this.sub.unsubscribe();
+       this.sub1.unsubscribe();
    }
 
 }

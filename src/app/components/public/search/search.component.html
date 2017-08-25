@@ -7,11 +7,11 @@
       <div class="row justify-content-center">
         <div class="col-md-6">
          <div class="input-group">
-                <span class="input-group-btn">
+                <!-- <span class="input-group-btn">
                   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
-                </span>
-                <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery" (input)="searchService.searchQuery = $event.target.value"/>
-               <button class="btn btn-primary" type="submit" (keydown.enter)="onSearch(searchBox.value, results.value, pageNum.value)" (click)="onSearch(searchBox.value, results.value, pageNum.value)" >Search</button>
+                </span> -->
+                <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery"/>
+               <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsSize, searchService.pageNumber)" >Search</button>
           </div>
 
         </div>
@@ -19,27 +19,27 @@
       </div>
 
       <!-- Search Options -->
-      <div class="collapse" id="options">
+      <!-- <div class="collapse" id="options">
       <div class="card card-block" [class.col-md-6]="showFull" [class.offset-md-3]="showFull">
           <div class="card-header" id="option-card">
               Options
           </div>
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row"> -->
+            <!-- <div class="col-md-4">
                 <div class="input-group ">
                     <span class="input-group-addon">Results per page</span>
                     <input #results class="form-control" id="results-size" type="number" min="1" max="50" [value]="searchService.resultsSize"/>
                 </div>
-            </div>
-            <div class="col-md-4 offset-md-4">
+            </div> -->
+            <!-- <div class="col-md-4 offset-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">Page Number</span>
                     <input #pageNum class="form-control" id="pageNumber" type="number" min="1" max="50" [value]="searchService.pageNumber"/>
                 </div>
-            </div>
-        </div>
+            </div> -->
+        <!-- </div>
       </div>
-      </div>
+      </div> -->
 
     <div class="row justify-content-center">
       <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
@@ -52,12 +52,9 @@
     </div>
 
 
-
-
-    <!-- <daln-footer *ngIf="showUtil"></daln-footer> -->
-
 </div>
 
-<app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="resultList"></app-pagination>
+<app-pagination [showPagination]="showPagination" (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results" [query]="query"></app-pagination>
+<!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination> -->
 
 <router-outlet></router-outlet>
