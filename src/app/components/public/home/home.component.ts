@@ -55,10 +55,10 @@ export class HomeComponent implements OnInit {
             console.log("***********", this.deviceInfo);
         }
         if (this._searchService.cache_posts.length === 0) {
-            let postNumber = 8;
+            let postNumber = 4;
 
             if (this.deviceInfo.os === "ios" || this.deviceInfo.os === "android" || this.deviceInfo.device === "iphone") {
-                postNumber = 4
+                postNumber = 3
             }
             // TODO Change search param to env variable
             this._searchService.search_page("games", postNumber, 0).subscribe(
