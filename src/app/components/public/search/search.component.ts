@@ -188,9 +188,11 @@ export class SearchComponent implements OnInit {
 
   calculateOffset() {
       this.startOffset = this.searchService.pageNumber;
-      this.endOffset = Math.floor(Math.max(this.searchService.results.length / this.searchService.resultsSize, 1));
-      console.log("startOffset, endOffset", this.startOffset, this.endOffset);
+      // console.log("Parent Offset", this.startOffset);
+      this.endOffset = Math.floor(Math.max(this.resultList.length / this.searchService.resultsSize, 1));
+    //   console.log("startOffset, endOffset", this.startOffset, this.endOffset);
   }
+
 
   getResultHandler(event) {
       console.log(this.resultList);
@@ -215,7 +217,8 @@ export class SearchComponent implements OnInit {
 
       this.router.navigate(['/search'], { queryParams: { query: this.query, page: this.currentPage } });
 
-  }
+}
+
 
   ngOnDestroy() {
       this.sub.unsubscribe();
