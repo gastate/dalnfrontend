@@ -109,7 +109,7 @@ export class MediaComponent implements OnInit {
                     };
                     presigned_link.open("PUT", url, true);
                     console.log(fn + ": presigned url opened");
-                    presigned_link.setRequestHeader("Content-Type", file.type);
+                    presigned_link.setRequestHeader("Content-Type", " ");
                     presigned_link.send(file);
                     console.log(fn + ": send has begun");
 
