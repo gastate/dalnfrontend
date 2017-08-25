@@ -80,8 +80,8 @@ export class MediaComponent implements OnInit {
                     var file = this.fileList[i];
 
                     request = new XMLHttpRequest();
-                    
-                    request.open( "POST", this.endPoint.get_upload_link + this.fileList[i].name, true );
+
+                    request.open( "GET", this.endPoint.get_upload_link + this.fileList[i].name, true );
                     console.log( fn+": getting presigned link from " , this.endPoint.get_upload_link + this.fileList[i].name );
                     request.onload = function (oEvent) {
                         console.log( fn+": quoted presigned link = ", request.responseText );
