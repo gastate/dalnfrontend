@@ -30,6 +30,10 @@ export class PaginationComponent implements OnInit, OnChanges {
 
     // @Output()
     // skipToResultList: EventEmitter<any>;
+    //
+
+    sub: any;
+    searchService: SearchService;
 
     // posts to pass off to post-list.
     pagedPost: Post[];
@@ -42,14 +46,25 @@ export class PaginationComponent implements OnInit, OnChanges {
     pageHead: number;
 
     getdev: boolean; //for postlist
+    displayPagination: boolean; // to show pagination.
+    showNextButton: boolean;
+    showPrevButton: boolean;
 
 
-    constructor(private searchService: SearchService, private router: Router) {
-        //   this.searchService = _searchService;
-        this.currentPageEmitter = new EventEmitter<number>();
-        router.events.subscribe((val) => {
-            this.buttonArray = [];
-        });
+    constructor( _searchService: SearchService, private router: Router) {
+      this.searchService = _searchService;
+      this.currentPageEmitter = new EventEmitter<number>();
+      this.router = router;
+
+      // so unnecessary, plz fix
+      this.sub = router.events.subscribe((val) => {
+          let route = val.url;
+              if(route.startsWith("/search")) {
+                  this.displayPagination = true;
+              } else {
+                  this.displayPagination = false;
+              }
+      });
     }
 
     ngOnInit() {

@@ -62,9 +62,9 @@ export class MediaComponent implements OnInit {
         let fn: string = this.constructor.name + "#uploadFiles()";  // tslint:disable-line:no-unused-variable
         console.log(fn + ": invoked");
 
-
-        // TODO: Workaround for video uploads, just use amazon. https://stackoverflow.com/questions/36010348/angular2-file-upload-for-amazon-s3-bucket
-        //
+        // set an error message when a file fails, notify the user about what file failed with which succeeded
+        // and which failed,
+        // create a new filelist of the failed files, change the upload button to try again.
 
         console.log(fn + ": fileList", this.fileList);
         if (this.fileList && this.fileList.length > 0) {
@@ -82,7 +82,7 @@ export class MediaComponent implements OnInit {
 
                 request.open("GET", this.endPoint.get_upload_link + this.fileList[ i ].name, true);
                 console.log(fn + ": getting presigned link from ", this.endPoint.get_upload_link + this.fileList[ i ].name);
-                request.onload = function (oEvent) {
+                request.onload = ((oEvent) => {
                     console.log(fn + ": quoted presigned link = ", request.responseText);
 
                     let url = request.responseText;
@@ -92,28 +92,35 @@ export class MediaComponent implements OnInit {
 
                     console.log(fn + ": presigned link = ", url);
                     var presigned_link = new XMLHttpRequest();
-                    presigned_link.onprogress = function updateProgress(evt) {
-                        console.log(fn + ":/onprogress: invoked with evt = ", evt);
-                        if (evt.lengthComputable) {
-                            percentComplete = (evt.loaded / evt.total) * 100;
-                            console.log(percentComplete);
-                        }
-                    };
-                    presigned_link.onload = function (event) {
-                        console.log(fn + ": response from put", event);
-                        if (presigned_link.response.status === 200) {
-                            success = "Files uploaded successfully! Please proceed to next step";
-                        } else {
 
+                    presigned_link.upload.onprogress = ((event) => {
+                        console.log(fn + ":/onprogress: invoked with event = ", event);
+                        if (event.lengthComputable) {
+                            this.percentUploaded = (event.loaded / event.total) * 100;
+                            console.log(this.percentUploaded);
                         }
-                    };
+                    });
+
+                    presigned_link.onload = ((event) => {
+                        console.log(fn + ": response from put", event);
+                        if (presigned_link.status >= 200 && presigned_link.status < 300) {
+                            console.log("File successfully uploaded.");
+                            this.succeedMessage = "Files uploaded successfully! Please proceed to next step";
+                        }
+                    });
+
+                    presigned_link.onerror = ((event) => {
+                        console.log(fn + ": error from put", event);
+                        this.errorMessage = "Something went wrong, please try again.";
+                    });
+
                     presigned_link.open("PUT", url, true);
                     console.log(fn + ": presigned url opened");
                     presigned_link.setRequestHeader("Content-Type", " ");
                     presigned_link.send(file);
                     console.log(fn + ": send has begun");
 
-                };
+                });
                 // console.log( fn+": ", this.fileList[i] );
                 request.send(file);
 
