@@ -1,4 +1,3 @@
-
 <div class="container responsive_home">
 
     <!-- Search Component -->
@@ -13,21 +12,19 @@
 
 <div class="container responsive_home">
 
-        <div class="featured-post-list" *ngIf="showPage === true">
-            <h3>Featured Posts</h3>
-            <hr />
-            <post-list [getdev]="getdev" [postList]="posts"></post-list>
-        </div>
-
+    <div class="featured-post-list" *ngIf="showPage === true">
+        <h3>Featured Posts</h3>
+        <hr />
+        <post-list [getdev]="getdev" [postList]="posts"></post-list>
+    </div>
 
 </div>
 
 <div class="container responsive_home">
     <div class="center add-top-margin">
-      <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
+        <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
     </div>
 </div>
-
 
 
 
