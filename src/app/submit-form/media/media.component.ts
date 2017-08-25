@@ -49,11 +49,11 @@ export class MediaComponent implements OnInit {
         let file = this.fileList[i];
         let file_size = this.fileList[i].size;
 
-        // if(file_size > 350000000) {
-        //     this.suggestMessage = "One of your files was larger than 35 MB. We recommend that you split it into two or more files, with no single file larger than about 35 MB so that visitors to the site will be able to download your file(s) more conveniently";
-        // } else {
-        //     this.suggestMessage = null;
-        // }
+        if( file_size >= 50000000000 ) {
+            this.suggestMessage = "One of your files is larger than the size limit of 5 GB.";
+        } else {
+            this.suggestMessage = null;
+        }
     }
 
   }
@@ -67,13 +67,6 @@ export class MediaComponent implements OnInit {
           //
 
           console.log( fn+": fileList", this.fileList );
-          // let headers = new Headers();
-          // headers.append('Content-Type', ' ');
-          // let options = new RequestOptions({
-          //   headers: headers,
-          //   method: "put"
-          // });
-
 
           if(this.fileList && this.fileList.length > 0) {
               this.submitService.fileList = this.fileList;
@@ -85,7 +78,6 @@ export class MediaComponent implements OnInit {
                     var success;
                     var percentComplete;
                     var file = this.fileList[i];
-                    // this.fileName = this.fileList[i].name;
 
                     request = new XMLHttpRequest();
                     
@@ -94,7 +86,6 @@ export class MediaComponent implements OnInit {
                     request.onload = function (oEvent) {
                         console.log( fn+": quoted presigned link = ", request.responseText );
 
-                        //var url = request.responseText.replace(/['"]+/g, ''); // this will replace all quotes, you only want to remove delimiting quotes
                         let url = request.responseText;
                         if( request.responseText[0] == "\"" && request.responseText[request.responseText.length-1] == "\"" ) {
                           url = request.responseText.slice(1,-1);
@@ -125,7 +116,6 @@ export class MediaComponent implements OnInit {
                     // console.log( fn+": ", this.fileList[i] );
                     request.send(file);
 
-                    // this.succeedMessage = success;  // WTF?
               }
 
           } else {
