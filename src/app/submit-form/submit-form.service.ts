@@ -43,8 +43,8 @@ export class SubmitFormService {
     postResult : string;
     formData : FormData = new FormData(); // only data that needs to be sent to upload files.
     filename : string;
-    fileList: FileList;
-
+    // fileList: FileList;
+    fileInfos: any[] = [];
 
   constructor(private _http: Http) {
       this.title = null;
@@ -72,13 +72,7 @@ export class SubmitFormService {
 
   private endPoint = environment.API_ENDPOINTS;
 
-
-
-  getMedia() {
-    return this.fileList;
-  }
-
-
+  // getMedia() { return this.fileInfos.map( fi => fi.file ); }
 
   updatePost() {
       // tableName
@@ -153,15 +147,16 @@ export class SubmitFormService {
 
              var jsonLink;
 
-             if( this.fileList && this.fileList.length > 0 ) {
-                  for(let i = 0; i < this.fileList.length; i++) {
+            //  if( this.fileList && this.fileList.length > 0 ) {
+            //       for(let i = 0; i < this.fileList.length; i++) {
+                for( let fileinfo of this.fileInfos ) {
 
                       jsonLink = {
                           stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
                           assetDescription: "Asset",
                           finalBucketName: this.endPoint.finalBucketName,
                           PostId: this.postResult,
-                          key: this.fileList[i].name,
+                          key: fileinfo.file.name,
                           tableName: this.endPoint.ddb_table_name
                       };
 
@@ -180,8 +175,9 @@ export class SubmitFormService {
                           data => { console.log ('Link response: ', data);},
                           error => { console.log(error); }
                       );
-                  }
-             }
+                }
+            //       }
+            //  }
          });
   }
 

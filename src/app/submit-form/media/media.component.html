@@ -1,4 +1,4 @@
-<div class="container add-top-margin">
+<div class="container add-top-margin" style = "margin-bottom: 2em;">
 
 
      <div class="row justify-content-center">
@@ -8,12 +8,6 @@
            </p>
        </div>
       </div>
-
-
-  <!-- <p><input class="btn btn-primary" type="file" name="file1"></p> -->
-  <p><input type="file" (change)="setMedia($event)" placeholder="Upload file" name="file" multiple></p>
-
-    <button class="btn btn-secondary" type="button" (click)="uploadFiles()">Upload Files</button>
 
     <p style="margin-top: 1.5em; margin-bottom: 0.5em;">
         We recommend that you use the following file formats for compatibility with our system and broader accessiblity by end users, who typically must open the files on their own computers:
@@ -26,14 +20,20 @@
         <dt>WEB:</dt><dd>HTML (.htm or .html)</dd>
     </dl>
 
-    <!-- <div *ngIf="fileList && fileList.length != 0">
-        <div class="file-list" *ngFor="let file of fileList">
-              <p>
-                {{percentUploaded}}
-                 {{file?.name}}
-             </p>
-        </div>
-    </div> -->
+    <p><input type="file" (change)="setMedia($event)" placeholder="Upload file" name="file" multiple></p>
+
+    <button class="btn btn-secondary" type="button" (click)="uploadFiles()">Upload Files</button>
+
+    <div *ngIf="fileInfos.length > 0">
+        <table style="border-collapse: separate; border-spacing: 1.5em 0.25em;">
+            <tr *ngFor="let fileinfo of fileInfos">
+                <td>{{fileinfo.message}}</td>
+                <td>{{fileinfo.status}}</td>
+                <td>{{ fileinfo.progress | percent }}</td>
+                <td>{{fileinfo.file.name}}</td>
+            </tr>
+        </table>
+    </div>
 
 
 <!--
@@ -45,11 +45,8 @@
       </p>
     </li> -->
 
-    <div class="add-top-margin" *ngIf="succeedMessage == null">
-        <button class="btn btn-primary" type="submit" disabled (click)="next()">Next Step</button>
-    </div>
-    <div class="add-top-margin" *ngIf="succeedMessage != null">
-        <button class="btn btn-primary" type="submit" (click)="next()">Next Step</button>
+    <div class="add-top-margin">
+        <button class="btn btn-primary" type="submit" [disabled]="!nextEnabled" (click)="next()">Next Step</button>
     </div>
 
     <div class="row justify-content-center">
