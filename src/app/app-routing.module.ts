@@ -88,7 +88,7 @@ const routes: Routes = [
     component: PostDetailComponent
   },
   {
-    path: 'getdev/detail/:id',
+    path: 'approval/detail/:id',
     component: PostDetailComponent
   },
   {

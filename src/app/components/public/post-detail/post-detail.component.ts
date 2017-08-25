@@ -52,16 +52,20 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.sub = this.router.events.subscribe((val) => {
-    // if in production, get from the relevant production table, else use the dev table.
-        if (this.endPoint.production === true) {
-            this.onDetail();
-            this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+
+
+        // if environment.prod = false and coming in from admin view, then you should get by dev detail.
+        if(environment.production === false && val.url.startsWith("/approval")) {
+          this.onDevDetail();
         } else {
-            this.onDevDetail();
+        // get the postId value and use it for the url in the social media buttons.
+           this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+           this.onDetail();
         }
-        // this.onDetail();
-        // this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+
+
     });
+
 
   }
 
