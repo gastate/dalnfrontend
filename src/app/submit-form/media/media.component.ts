@@ -92,19 +92,26 @@ export class MediaComponent implements OnInit {
 
                     console.log(fn + ": presigned link = ", url);
                     var presigned_link = new XMLHttpRequest();
-                    presigned_link.onprogress = ((evt) => {
-                        console.log(fn + ":/onprogress: invoked with evt = ", evt);
-                        if (evt.lengthComputable) {
-                            this.percentUploaded = (evt.loaded / evt.total) * 100;
+
+                    presigned_link.upload.onprogress = ((event) => {
+                        console.log(fn + ":/onprogress: invoked with event = ", event);
+                        if (event.lengthComputable) {
+                            this.percentUploaded = (event.loaded / event.total) * 100;
                             console.log(this.percentUploaded);
                         }
                     });
 
                     presigned_link.onload = ((event) => {
                         console.log(fn + ": response from put", event);
-                        if (presigned_link.response.status === 200) {
+                        if (presigned_link.status >= 200 && presigned_link.status < 300) {
+                            console.log("File successfully uploaded.");
                             this.succeedMessage = "Files uploaded successfully! Please proceed to next step";
                         }
+                    });
+
+                    presigned_link.onerror = ((event) => {
+                        console.log(fn + ": error from put", event);
+                        this.errorMessage = "Something went wrong, please try again.";
                     });
 
                     presigned_link.open("PUT", url, true);
