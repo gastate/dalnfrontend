@@ -1,20 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {SearchService} from '../../../services/search.service';
+import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../../../services/search.service';
+import { Ng2DeviceService } from 'ng2-device-detector';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  styleUrls: [ './about.component.css' ]
 })
 export class AboutComponent implements OnInit {
 
   searchService: SearchService;
-  numberOfPosts : number;
+  numberOfPosts: number;
+  deviceInfo: any = null;
+  mobile: boolean;
 
   constructor(
-      _searchService : SearchService
+    _searchService: SearchService,
+    private deviceService: Ng2DeviceService
   ) {
-      this.searchService = _searchService;
+    this.searchService = _searchService;
   }
 
   title = 'About';
@@ -24,8 +28,10 @@ export class AboutComponent implements OnInit {
     //      console.log("Number of Posts: " + data);
     //      this.numberOfPosts = data;
     //   });
+    this.deviceInfo = this.deviceService.getDeviceInfo();
+    if (this.deviceInfo.os === "ios" || this.deviceInfo.os === "android" || this.deviceInfo.device === "iphone") {
+      this.mobile = true;
+
+    }
   }
-
-
-
 }
