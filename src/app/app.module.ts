@@ -58,6 +58,7 @@ import { DynamoDBService } from './services/ddb.service';
 import { PostService } from './services/post.service';
 import { SearchService } from './services/search.service';
 import { UserLoginService } from './services/user-login.service';
+import { UploadService } from './submit-form/media/upload-service';
 
 // Other
 import { SafePipe } from './safe.pipe';
@@ -112,7 +113,7 @@ import { Ng2DeviceDetectorModule } from 'ng2-device-detector';
     NgbModule.forRoot(),
     Ng2DeviceDetectorModule.forRoot()
   ],
-  providers: [ AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [ AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, UploadService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

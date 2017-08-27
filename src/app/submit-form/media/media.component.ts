@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { SubmitFormService } from '../submit-form.service';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Rx';
+import { UploadService } from "./upload-service";
 
 
 
@@ -20,7 +21,7 @@ export class MediaComponent implements OnInit {
     submitService: SubmitFormService;
     fileList: FileList;
 
-    // fileName: string;
+    fileName: string;
     errorMessage: string;
     succeedMessage: string;
     suggestMessage: string;
@@ -29,7 +30,8 @@ export class MediaComponent implements OnInit {
     constructor(
         private _router: Router,
         private _http: Http,
-        _submitService: SubmitFormService
+        _submitService: SubmitFormService,
+        private uploadService: UploadService
     ) {
         this.submitService = _submitService;
 
@@ -70,65 +72,70 @@ export class MediaComponent implements OnInit {
         if (this.fileList && this.fileList.length > 0) {
             this.submitService.fileList = this.fileList;
             this.errorMessage = null;
-            var request;
+            // var request;
             let fileCount = this.fileList.length;
             for (let i = 0; i < fileCount; i++) {
+                let success;
+                let percentComplete;
 
-                var success;
-                var percentComplete;
-                var file = this.fileList[ i ];
-
-                request = new XMLHttpRequest();
-
-                request.open("GET", this.endPoint.get_upload_link + this.fileList[ i ].name, true);
-                console.log(fn + ": getting presigned link from ", this.endPoint.get_upload_link + this.fileList[ i ].name);
-                request.onload = function (oEvent) {
-                    console.log(fn + ": quoted presigned link = ", request.responseText);
-
-                    let url = request.responseText;
-                    if (request.responseText[ 0 ] == "\"" && request.responseText[ request.responseText.length - 1 ] == "\"") {
-                        url = request.responseText.slice(1, -1);
-                    }
-
-                    console.log(fn + ": presigned link = ", url);
-                    var presigned_link = new XMLHttpRequest();
-                    presigned_link.onprogress = function updateProgress(evt) {
-                        console.log(fn + ":/onprogress: invoked with evt = ", evt);
-                        if (evt.lengthComputable) {
-                            percentComplete = (evt.loaded / evt.total) * 100;
-                            console.log(percentComplete);
-                        }
-                    };
-                    presigned_link.onload = function (event) {
-                        console.log(fn + ": response from put", event);
-                        if (presigned_link.response.status === 200) {
-                            success = "Files uploaded successfully! Please proceed to next step";
-                        } else {
-
-                        }
-                    };
-                    presigned_link.open("PUT", url, true);
-                    console.log(fn + ": presigned url opened");
-                    presigned_link.setRequestHeader("Content-Type", " ");
-                    presigned_link.send(file);
-                    console.log(fn + ": send has begun");
-
-                };
-                // console.log( fn+": ", this.fileList[i] );
-                request.send(file);
+                let file = this.uploadService.replaceFileName(this.fileList[ i ]);
+                return this.uploadService.getUploadUrl(file.name, file.type, this.endPoint.get_upload_link)
+                    .then((url) => {
+                        return this.uploadService.upload(url, file);
+                    }).then((resp) => {
+                        this.succeedMessage = resp;
+                    }).catch((err) => {
+                        this.errorMessage = err.message;
+                    })
 
             }
+            // var file = this.fileList[ i ];
+            //                 request = new XMLHttpRequest();
+
+            //                 request.open("GET", this.endPoint.get_upload_link + this.fileList[ i ].name, true);
+            //                 console.log(fn + ": getting presigned link from ", this.endPoint.get_upload_link + this.fileList[ i ].name);
+            //                 request.onload = function (oEvent) {
+            //                     console.log(fn + ": quoted presigned link = ", request.responseText);
+
+            //                     let url = request.responseText;
+            //                     if (request.responseText[ 0 ] == "\"" && request.responseText[ request.responseText.length - 1 ] == "\"") {
+            //                         url = request.responseText.slice(1, -1);
+            //                     }
+
+            //                     console.log(fn + ": presigned link = ", url);
+            //                     var presigned_link = new XMLHttpRequest();
+            //                     presigned_link.onprogress = function updateProgress(evt) {
+            //                         console.log(fn + ":/onprogress: invoked with evt = ", evt);
+            //                         if (evt.lengthComputable) {
+            //                             percentComplete = (evt.loaded / evt.total) * 100;
+            //                             console.log(percentComplete);
+            //                         }
+            //                     };
+            //                     presigned_link.onload = function (event) {
+            //                         console.log(fn + ": response from put", event);
+            //                         if (presigned_link.response.status === 200) {
+            //                             success = "Files uploaded successfully! Please proceed to next step";
+            //                         } else {
+
+            //                         }
+            //                     };
+            //                     presigned_link.open("PUT", url, true);
+            //                     console.log(fn + ": presigned url opened");
+            //                     presigned_link.setRequestHeader("Content-Type", " ");
+            //                     presigned_link.send(file);
+            //                     console.log(fn + ": send has begun");
+
+            //                 };
+            //                 // console.log( fn+": ", this.fileList[i] );
+            //                 request.send(file);
+
+            //             }
 
         } else {
             this.errorMessage = "Please select a couple of files to upload to the DALN.";
         }
 
     }
-
-
-
-
-
 
     next() {
         this._router.navigateByUrl('/create/license');
