@@ -17,15 +17,14 @@ export class UploadService {
     console.log('Hello UploadService Provider');
   }
 
-  getUploadUrl(fileName: string, url: string): Promise<any> {
-    let uri = `${ url }${ fileName }`;
-
-    return this.http.get(uri)
+  getUploadUrl(fileName: string, fileType: string, url: string): Promise<any> {
+    let headers = new Headers({ 'Content-Type': "application/json" });
+    return this.http.post(url, { objectKey: fileName, contentType: fileType }, { headers: headers })
       .toPromise().then((res: Response) => {
         console.log("#getUploadUrl Res: ", res);
         console.log("#getUploadUrl  Res JSON: ", res.json());
         debugger;
-        return res.json();
+        return Promise.resolve(res.json());
       })
       .catch((err: any) => {
         return Promise.reject(err);
@@ -36,11 +35,8 @@ export class UploadService {
 
   upload(url: string, file: any): Promise<any> {
     debugger;
-    console.log("File for upload: ", file);
-    let headers = new Headers();
-    // headers.append('Content-Type', file.type);
-    headers.append('Accept', 'application/json');
-    let options = new RequestOptions({ headers: headers });
+    let headers = { 'Content-Type': file.type, 'Accept': 'application/json' };
+
     return fetch(url, {
       method: 'PUT',
       body: file,
@@ -48,7 +44,7 @@ export class UploadService {
     }).then(
       (data) => {
         console.log('success', data);
-        if (data[ "_body" ]) {
+        if (data.status == 200) {
           return Promise.resolve("Files uploaded successfully! Please proceed to next step");
         }
         else {

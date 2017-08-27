@@ -10,14 +10,12 @@ import { UploadService } from "./upload-service";
 
 
 
-
 @Component({
     selector: 'app-media',
     templateUrl: './media.component.html',
     styleUrls: [ './media.component.css' ]
 })
 export class MediaComponent implements OnInit {
-
 
 
     submitService: SubmitFormService;
@@ -33,7 +31,7 @@ export class MediaComponent implements OnInit {
         private _router: Router,
         private _http: Http,
         _submitService: SubmitFormService,
-        private uploadService: UploadService,
+        private uploadService: UploadService
     ) {
         this.submitService = _submitService;
 
@@ -53,8 +51,8 @@ export class MediaComponent implements OnInit {
             let file = this.fileList[ i ];
             let file_size = this.fileList[ i ].size;
 
-            if (file_size > 350000000) {
-                this.suggestMessage = "One of your files was larger than 35 MB. We recommend that you split it into two or more files, with no single file larger than about 35 MB so that visitors to the site will be able to download your file(s) more conveniently";
+            if (file_size >= 50000000000) {
+                this.suggestMessage = "One of your files is larger than the size limit of 5 GB.";
             } else {
                 this.suggestMessage = null;
             }
@@ -63,20 +61,25 @@ export class MediaComponent implements OnInit {
     }
 
     uploadFiles() {
+        let fn: string = this.constructor.name + "#uploadFiles()";  // tslint:disable-line:no-unused-variable
+        console.log(fn + ": invoked");
+
+
         // TODO: Workaround for video uploads, just use amazon. https://stackoverflow.com/questions/36010348/angular2-file-upload-for-amazon-s3-bucket
         //
 
-        console.log("fileList", this.fileList);
-
-
+        console.log(fn + ": fileList", this.fileList);
         if (this.fileList && this.fileList.length > 0) {
             this.submitService.fileList = this.fileList;
             this.errorMessage = null;
-            var request;
+            // var request;
             let fileCount = this.fileList.length;
             for (let i = 0; i < fileCount; i++) {
+                let success;
+                let percentComplete;
+
                 let file = this.uploadService.replaceFileName(this.fileList[ i ]);
-                return this.uploadService.getUploadUrl(file.name, this.endPoint.get_upload_link)
+                return this.uploadService.getUploadUrl(file.name, file.type, this.endPoint.get_upload_link)
                     .then((url) => {
                         return this.uploadService.upload(url, file);
                     }).then((resp) => {
@@ -85,36 +88,48 @@ export class MediaComponent implements OnInit {
                         this.errorMessage = err.message;
                     })
 
-                // request = new XMLHttpRequest();
-                // request.open("GET", this.endPoint.get_upload_link + this.fileList[ i ].name, true);
-                // console.log("sending url", this.endPoint.get_upload_link + this.fileList[ i ].name);
-                // request.onload = function (oEvent) {
-                //     console.log("response from get", request.responseText);
-
-                //     var url = request.responseText.replace(/['"]+/g, '');
-                //     console.log("presigned_link", url);
-                //     var presigned_link = new XMLHttpRequest();
-                //     presigned_link.onprogress = function updateProgress(evt) {
-                //         if (evt.lengthComputable) {
-                //             percentComplete = (evt.loaded / evt.total) * 100;
-                //             console.log(percentComplete);
-                //         }
-                //     };
-                //     presigned_link.open("PUT", url, true);
-                //     presigned_link.onload = function (event) {
-                //         console.log("response from put", event);
-                //         if (presigned_link.response.status === 400) {
-                //             success = "Files uploaded successfully! Please proceed to next step";
-                //         }
-                //     };
-                //     presigned_link.send(file);
-
-                // };
-                // // console.log(this.fileList[i]);
-                // request.send(file);
-
-                // this.succeedMessage = success;
             }
+            // var file = this.fileList[ i ];
+            //                 request = new XMLHttpRequest();
+
+            //                 request.open("GET", this.endPoint.get_upload_link + this.fileList[ i ].name, true);
+            //                 console.log(fn + ": getting presigned link from ", this.endPoint.get_upload_link + this.fileList[ i ].name);
+            //                 request.onload = function (oEvent) {
+            //                     console.log(fn + ": quoted presigned link = ", request.responseText);
+
+            //                     let url = request.responseText;
+            //                     if (request.responseText[ 0 ] == "\"" && request.responseText[ request.responseText.length - 1 ] == "\"") {
+            //                         url = request.responseText.slice(1, -1);
+            //                     }
+
+            //                     console.log(fn + ": presigned link = ", url);
+            //                     var presigned_link = new XMLHttpRequest();
+            //                     presigned_link.onprogress = function updateProgress(evt) {
+            //                         console.log(fn + ":/onprogress: invoked with evt = ", evt);
+            //                         if (evt.lengthComputable) {
+            //                             percentComplete = (evt.loaded / evt.total) * 100;
+            //                             console.log(percentComplete);
+            //                         }
+            //                     };
+            //                     presigned_link.onload = function (event) {
+            //                         console.log(fn + ": response from put", event);
+            //                         if (presigned_link.response.status === 200) {
+            //                             success = "Files uploaded successfully! Please proceed to next step";
+            //                         } else {
+
+            //                         }
+            //                     };
+            //                     presigned_link.open("PUT", url, true);
+            //                     console.log(fn + ": presigned url opened");
+            //                     presigned_link.setRequestHeader("Content-Type", " ");
+            //                     presigned_link.send(file);
+            //                     console.log(fn + ": send has begun");
+
+            //                 };
+            //                 // console.log( fn+": ", this.fileList[i] );
+            //                 request.send(file);
+
+            //             }
 
         } else {
             this.errorMessage = "Please select a couple of files to upload to the DALN.";
