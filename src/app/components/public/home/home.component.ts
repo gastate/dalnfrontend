@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
 
     loading: boolean = false;
     failed: boolean = false;
+    mobile: boolean;
 
     getdev: boolean; //for postlist.
     deviceInfo: any = null;
@@ -58,6 +59,7 @@ export class HomeComponent implements OnInit {
             let postNumber = 4;
 
             if (this.deviceInfo.os === "ios" || this.deviceInfo.os === "android" || this.deviceInfo.device === "iphone") {
+                this.mobile = true;
                 postNumber = 3
             }
             // TODO Change search param to env variable
