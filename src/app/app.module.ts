@@ -62,6 +62,7 @@ import { UploadService } from './submit-form/media/upload-service';
 
 // Other
 import { SafePipe } from './safe.pipe';
+import { Ng2DeviceDetectorModule } from 'ng2-device-detector';
 
 
 @NgModule({
@@ -109,9 +110,14 @@ import { SafePipe } from './safe.pipe';
     HttpModule,
     JsonpModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    Ng2DeviceDetectorModule.forRoot()
   ],
+<<<<<<< HEAD
   providers: [ AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, UploadService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+=======
+  providers: [ AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+>>>>>>> master
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

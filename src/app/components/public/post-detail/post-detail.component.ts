@@ -52,16 +52,21 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.sub = this.router.events.subscribe((val) => {
-    // if in production, get from the relevant production table, else use the dev table.
-        // if (this.endPoint.production === true) {
-        //     this.onDetail();
-        //     this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
-        // } else {
-        //     this.onDevDetail();
-        // }
-        this.onDetail();
-        this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+
+    // will break view if routes are changed.
+
+        // if environment.prod = false and coming in from admin view, then you should get by dev detail.
+        if(environment.production === false && val.url.startsWith("/approval")) {
+          this.onDevDetail();
+        } else {
+        // get the postId value and use it for the url in the social media buttons.
+           this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+           this.onDetail();
+        }
+
+
     });
+
 
   }
 
@@ -72,7 +77,7 @@ export class PostDetailComponent implements OnInit {
             (details) => {
                   this.loading = false;
                   this.postDetail = details;
-                  console.log(this.postDetail);
+                  console.log( "POST DETAIL RECEIVED", JSON.stringify(this.postDetail) );
 
                   this.assets = this.postDetail.assetList;
                   if(this.assets && this.assets.length) {
@@ -96,39 +101,39 @@ export class PostDetailComponent implements OnInit {
             err => {
                 this.loading = false;
                 this.failed = true;
-                console.log(err);
+                console.log( "POST DETAIL FAILED", err );
             });
   }
 
   onDevDetail() {
-      this._route.params.switchMap(
-        (params: Params) => this._postService.getDevPostById(params['id']))
-        .subscribe(
-            (details) => {
-                  this.postDetail = details;
-                  this.onDev = true;
-                  console.log(this.postDetail);
+    this._route.params.switchMap(
+      (params: Params) => this._postService.getDevPostById(params['id']))
+      .subscribe(
+          (details) => {
+                this.postDetail = details;
+                this.onDev = true;
+                console.log("DEV POST DETAIL RECEIVED", this.postDetail);
 
-                  this.assets = this.postDetail.assetList;
-                  if(this.assets && this.assets.length) {
-                      for(var i = 0; i <= this.assets.length - 1; i++) {
-                          if(this.assets[i].assetType === "Text") {
-                              this.isText = true;
-                          }
-                      }
-                  }
+                this.assets = this.postDetail.assetList;
+                if(this.assets && this.assets.length) {
+                    for(var i = 0; i <= this.assets.length - 1; i++) {
+                        if(this.assets[i].assetType === "Text") {
+                            this.isText = true;
+                        }
+                    }
+                }
 
 
-                  this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
-                  this.loading = false;
-
-              },
-            err => {
+                this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
                 this.loading = false;
-                this.failed = true;
-                console.log(err);
-            });
-  }
+
+            },
+          err => {
+              this.loading = false;
+              this.failed = true;
+              console.log( "DEV POST DETAIL FAILED", err );
+          });
+}
 
   goBack(): void {
     this._location.back();

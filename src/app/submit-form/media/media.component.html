@@ -1,12 +1,5 @@
 <div class="container add-top-margin">
 
-    <div class="row justify-content-center">
-      <div class="add-top-margin col-md-6 alert alert-warning" *ngIf="suggestMessage != null">
-          <p>
-              {{suggestMessage}}
-          </p>
-      </div>
-     </div>
 
      <div class="row justify-content-center">
        <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
@@ -20,39 +13,27 @@
   <!-- <p><input class="btn btn-primary" type="file" name="file1"></p> -->
   <p><input type="file" (change)="setMedia($event)" placeholder="Upload file" name="file" multiple></p>
 
-
-
     <button class="btn btn-secondary" type="button" (click)="uploadFiles()">Upload Files</button>
 
-
-
-    <p>
-        Please enter the full path of the file on your computer corresponding to your item. If you click "Browse...", a new window will allow you to select the file from your computer.
-
-       We recommend that you use the following file formats for compatibility with our system and broader accessiblity by end users, who typically must open the files on their own computers --
-
-       TEXT: Microsoft Word (.doc or .rtf); plain text (.txt); or Adobe Acrobat (.pdf)
-       IMAGES: JPEG (.jpg or .jpeg), GIF (.gif), or PNG (.png)
-       AUDIO: MP3 or QuickTime (.mov)
-       VIDEO: QuickTime (.mov)
-       WEB: HTML (.htm or .html)
-
-       If your file (particularly audio or video) is larger than 35 MB, we recommend that you split it into two or more files, with no single file larger than about 35 MB so that visitors to the site will be able to download your file(s) more conveniently.
-
+    <p style="margin-top: 1.5em; margin-bottom: 0.5em;">
+        We recommend that you use the following file formats for compatibility with our system and broader accessiblity by end users, who typically must open the files on their own computers:
     </p>
+    <dl>
+        <dt>TEXT:</dt><dd>Adobe Acrobat (.pdf), Rich Text (.rtf), Open Document Text (.odt), Microsoft Word (.doc or .docx), plain text (.txt or .text)</dd>
+        <dt>IMAGES:</dt><dd>JPEG (.jpg or .jpeg), PNG (.png), GIF (.gif), TIFF (.tif or .tiff)</dd>
+        <dt>AUDIO:</dt><dd>MP3 (.mp3), MPEG4 Audio (.m4a), WAV (.wav)</dd>
+        <dt>VIDEO:</dt><dd>MPEG4 Video (.m4v or .mp4), QuickTime (.mov), Audio/Video Interleave (.avi), Windows Media Video (.wmv)</dd>
+        <dt>WEB:</dt><dd>HTML (.htm or .html)</dd>
+    </dl>
 
-    <div *ngIf="fileList && fileList.length != 0 && fileName != null">
+    <!-- <div *ngIf="fileList && fileList.length != 0">
         <div class="file-list" *ngFor="let file of fileList">
-            <div class="progress">
-                 <div class="progress-bar progress-bar-animated" role="progressbar" [attr.aria-valuenow]="percentUploaded"
-                 aria-valuemin="0" aria-valuemax="100">{{percentUploaded}}</div>
-             </div>
-             <p>
+              <p>
+                {{percentUploaded}}
                  {{file?.name}}
              </p>
         </div>
-
-    </div>
+    </div> -->
 
 
 <!--
