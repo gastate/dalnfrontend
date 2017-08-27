@@ -33,22 +33,20 @@ export class UploadService {
   }
 
 
+
   upload(url: string, file: any): Promise<any> {
-    let formData: FormData = new FormData();
-    formData.append('file', file);
-    formData.append('signature', url);
-    // formData.append('Content-Type', undefined);
-    // let headers = new Headers();
-    // headers.append('X-Requested-With', 'XMLHttpRequest');
-    // // /** No need to include Content-Type in Angular 4 */
-    // // headers.append('Content-Type', 'multipart/form-data');
-    // // headers.append('Accept', 'application/json');
-    // let options = new RequestOptions({ headers: headers });
-    console.log("#upload getUploadUrl", url);
-    return this.http.put(url, formData)
-      .toPromise().then(
+    debugger;
+    console.log("File for upload: ", file);
+    let headers = new Headers();
+    // headers.append('Content-Type', file.type);
+    headers.append('Accept', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    return fetch(url, {
+      method: 'PUT',
+      body: file,
+      headers: headers
+    }).then(
       (data) => {
-        debugger;
         console.log('success', data);
         if (data[ "_body" ]) {
           return Promise.resolve("Files uploaded successfully! Please proceed to next step");
@@ -65,8 +63,8 @@ export class UploadService {
   }
 
   replaceFileName(file: File) {
-    // Object.assign because file.name is constant
-    let fileCopy = Object.assign(new File([ "" ], this.cleanFileName(file.name), file));
+    // Create new File because file.name is constant
+    let fileCopy = new File([ file ], this.cleanFileName(file.name), { type: file.type });
     console.log("File Name: ", fileCopy);
     return fileCopy;
   }
