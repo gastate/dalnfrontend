@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.getPagePosts();
-        console.log("HELLO WELCOME TO THE DALN");
         this.deviceInfo = this.deviceService.getDeviceInfo();
         console.log("***********", this.deviceInfo);
     }
