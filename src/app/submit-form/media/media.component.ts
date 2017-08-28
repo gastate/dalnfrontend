@@ -95,7 +95,7 @@ export class MediaComponent implements OnInit {
     }
 
     uploadFile(file: File) {
-        this.loadingMessage = `Uploading ${ file.name } ...`
+        this.loadingMessage = `Uploading File(s) ...`
         this.loading = true;
         return this.uploadService.getUploadUrl(file.name, file.type, this.endPoint.get_upload_link)
             .then((url) => {
