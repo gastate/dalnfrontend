@@ -1,19 +1,21 @@
-import { NgModule }       from '@angular/core';
-import { FormsModule, ReactiveFormsModule}    from '@angular/forms';
-import { CommonModule }   from '@angular/common';
 
-import {SubmitFormComponent} from './submit-form.component';
-import {SubmitFormService} from './submit-form.service';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
-import {RightsComponent} from './rights/rights.component';
-import {MetadataComponent} from './metadata/metadata.component';
-import {DescriptionComponent} from './description/description.component';
-import {MediaComponent} from './media/media.component';
-import {LicenseComponent} from './license/license.component';
-import {SummaryComponent} from './summary/summary.component';
-import {CompleteComponent} from './complete/complete.component';
-import {SubmitFormRoutingModule} from './submit-form-routing.module';
-import {DatepickerComponent} from './datepicker/datepicker.component';
+import { SubmitFormComponent } from './submit-form.component';
+import { SubmitFormService } from './submit-form.service';
+
+import { RightsComponent } from './rights/rights.component';
+import { MetadataComponent } from './metadata/metadata.component';
+import { DescriptionComponent } from './description/description.component';
+import { MediaComponent } from './media/media.component';
+import { LicenseComponent } from './license/license.component';
+import { SummaryComponent } from './summary/summary.component';
+import { CompleteComponent } from './complete/complete.component';
+import { SubmitFormRoutingModule } from './submit-form-routing.module';
+import { DatepickerComponent } from './datepicker/datepicker.component';
+import { UploadMessageComponent } from './media/upload-message/upload-message.component';
 
 
 
@@ -33,10 +35,11 @@ import {DatepickerComponent} from './datepicker/datepicker.component';
     SummaryComponent,
     CompleteComponent,
     SubmitFormComponent,
-    DatepickerComponent
-],
-providers : [
+    DatepickerComponent,
+    UploadMessageComponent
+  ],
+  providers: [
     SubmitFormService
-]
+  ]
 })
-export class SubmitFormModule {}
+export class SubmitFormModule { }
