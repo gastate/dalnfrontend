@@ -54,7 +54,7 @@
 
 </div>
 
-<app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination>
+<app-pagination (currentPageEmitter)="getResultHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination>
 <!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination> -->
 
 <router-outlet></router-outlet>

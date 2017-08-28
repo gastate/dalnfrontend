@@ -24,6 +24,9 @@ export class PaginationComponent implements OnInit, OnChanges {
     @Input()
     endOffset: number;
 
+    @Input()
+    showPagination: boolean;
+
     // output to the parent component to see what to do next.
     @Output()
     currentPageEmitter: EventEmitter<number>;
@@ -31,10 +34,16 @@ export class PaginationComponent implements OnInit, OnChanges {
     // @Output()
     // skipToResultList: EventEmitter<any>;
 
+    sub: any;
+
     // posts to pass off to post-list.
-    pagedPost: Post[];
+    pagedPost: Post [];
+    all_results: Post [] = [];
 
     currentPage: number;
+    fetchIndex: number;
+
+
     resultsPerPage: number;
     buttonArray: number[] = []; // holds all possible buttons
     displayButton: number[] = []; // for displaying buttons
@@ -42,6 +51,8 @@ export class PaginationComponent implements OnInit, OnChanges {
     pageHead: number;
 
     getdev: boolean; //for postlist
+    showNextButton: boolean;
+    showPrevButton: boolean;
 
 
     constructor(private searchService: SearchService, private router: Router) {
