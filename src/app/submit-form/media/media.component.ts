@@ -23,8 +23,8 @@ export class MediaComponent implements OnInit {
 
     fileName: string;
     errorMessage: string;
-    succeedMessage: string;
     suggestMessage: string;
+    succeedMessage: string;
     percentUploaded: number;
     loading: boolean;
     failed: boolean;
@@ -83,14 +83,25 @@ export class MediaComponent implements OnInit {
                 let percentComplete;
 
                 let file = this.uploadService.replaceFileName(this.fileList[ i ]);
-                this.loadingMessage = `Uploading ${ file.name } ...`
+                // this.loadingMessage = `Uploading ${ file.name } ...`
+                this.loadingMessage = "Uploading Files..."; // for loop doesn't wait for the promise complete and goes on to next file. Files currently aren't uploaded concurrently, so no way to know which file is being uploaded.
                 this.loading = true;
-                return this.uploadService.getUploadUrl(file.name, file.type, this.endPoint.get_upload_link)
+                this.uploadService.getUploadUrl(file.name, file.type, this.endPoint.get_upload_link)
                     .then((url) => {
-                        return this.uploadService.upload(url, file);
-                    }).then((resp) => {
-                        this.loading = false;
-                        this.succeedMessage = resp;
+                        this.uploadService.upload(url, file).then(
+                            (data) => {
+
+                                // if the latest file uploaded is the last file
+                                // in the fileList, then stop spinner and
+                                // set the success message.
+                                let last_file_index = this.fileList.length - 1;
+                                let last_file = this.fileList[last_file_index];
+                                last_file = this.uploadService.replaceFileName(last_file);
+                                if (file.name === last_file.name) {
+                                    this.loading = false;
+                                    this.succeedMessage = data;
+                                }
+                            })
                     }).catch((err) => {
                         this.failed = true;
                         this.loadingMessage = null;
