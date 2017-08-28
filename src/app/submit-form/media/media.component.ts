@@ -80,8 +80,6 @@ export class MediaComponent implements OnInit {
             let fileCount = this.fileList.length;
             for (let i = 0; i < fileCount; i++) {
                 let success;
-                let percentComplete;
-
                 let file = this.uploadService.replaceFileName(this.fileList[ i ]);
                 this.uploadFile(file);
             }
