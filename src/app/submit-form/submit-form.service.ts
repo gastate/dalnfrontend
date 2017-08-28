@@ -7,7 +7,9 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { UploadService } from './media/upload-service';
 import { environment } from '../../environments/environment';
+
 
 
 
@@ -46,7 +48,7 @@ export class SubmitFormService {
     fileList: FileList;
 
 
-  constructor(private _http: Http) {
+  constructor(private _http: Http, private _uploadService: UploadService) {
       this.title = null;
       this.postResult = null;
       this.description = null;
@@ -156,12 +158,18 @@ export class SubmitFormService {
              if( this.fileList && this.fileList.length > 0 ) {
                   for(let i = 0; i < this.fileList.length; i++) {
 
+                      // replace the file name and pass the string to apiupload.
+
+                      let file = this._uploadService.replaceFileName(this.fileList[ i ]);
+                      let string_to_pass = file.name;
+
+                      console.log("file key", file);
                       jsonLink = {
                           stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
                           assetDescription: "Asset",
                           finalBucketName: this.endPoint.finalBucketName,
                           PostId: this.postResult,
-                          key: this.fileList[i].name,
+                          key: string_to_pass,
                           tableName: this.endPoint.ddb_table_name
                       };
 
