@@ -28,7 +28,7 @@ export class MediaComponent implements OnInit {
     percentUploaded: number;
     loading: boolean;
     failed: boolean;
-    loadingMessage: string;
+    loadingMessage: Array<string>;
 
     constructor(
         private _router: Router,
@@ -73,6 +73,7 @@ export class MediaComponent implements OnInit {
 
         console.log(fn + ": fileList", this.fileList);
         if (this.fileList && this.fileList.length > 0) {
+            this.loadingMessage = [];
             this.submitService.fileList = this.fileList;
             this.errorMessage = null;
 
@@ -95,16 +96,20 @@ export class MediaComponent implements OnInit {
     }
 
     uploadFile(file: File) {
-        this.loadingMessage = `Uploading File(s) ...`
+        let message = `Uploading ${ file.name } ...`;
+        let index = this.loadingMessage.length;
+        this.loadingMessage.push(message);
         this.loading = true;
         return this.uploadService.getUploadUrl(file.name, file.type, this.endPoint.get_upload_link)
             .then((url) => {
                 return this.uploadService.upload(url, file);
             }).then((resp) => {
+                this.loadingMessage[ index ] = null;
                 this.loading = false;
                 this.succeedMessage = resp;
             }).catch((err) => {
                 this.failed = true;
+                this.loading = false;
                 this.loadingMessage = null;
                 this.errorMessage = err.message;
             })
