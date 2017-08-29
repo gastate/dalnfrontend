@@ -1,29 +1,34 @@
 <div class="container add-top-margin">
 
 
-     <div class="row justify-content-center">
-       <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
-           <p>
-               {{errorMessage}}
-           </p>
-       </div>
-      </div>
+    <div class="row justify-content-center">
+        <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
+            <p>
+                {{errorMessage}}
+            </p>
+        </div>
+    </div>
 
 
-  <!-- <p><input class="btn btn-primary" type="file" name="file1"></p> -->
-  <p><input type="file" (change)="setMedia($event)" placeholder="Upload file" name="file" multiple></p>
+    <!-- <p><input class="btn btn-primary" type="file" name="file1"></p> -->
+    <p><input type="file" (change)="setMedia($event)" placeholder="Upload file" name="file" multiple></p>
 
     <button class="btn btn-secondary" type="button" (click)="uploadFiles()">Upload Files</button>
-
+    <upload-message [loadingMessage]="loadingMessage" [loading]="loading" [failed]="failed"></upload-message>
     <p style="margin-top: 1.5em; margin-bottom: 0.5em;">
         We recommend that you use the following file formats for compatibility with our system and broader accessiblity by end users, who typically must open the files on their own computers:
     </p>
     <dl>
-        <dt>TEXT:</dt><dd>Adobe Acrobat (.pdf), Rich Text (.rtf), Open Document Text (.odt), Microsoft Word (.doc or .docx), plain text (.txt or .text)</dd>
-        <dt>IMAGES:</dt><dd>JPEG (.jpg or .jpeg), PNG (.png), GIF (.gif), TIFF (.tif or .tiff)</dd>
-        <dt>AUDIO:</dt><dd>MP3 (.mp3), MPEG4 Audio (.m4a), WAV (.wav)</dd>
-        <dt>VIDEO:</dt><dd>MPEG4 Video (.m4v or .mp4), QuickTime (.mov), Audio/Video Interleave (.avi), Windows Media Video (.wmv)</dd>
-        <dt>WEB:</dt><dd>HTML (.htm or .html)</dd>
+        <dt>TEXT:</dt>
+        <dd>Adobe Acrobat (.pdf), Rich Text (.rtf), Open Document Text (.odt), Microsoft Word (.doc or .docx), plain text (.txt or .text)</dd>
+        <dt>IMAGES:</dt>
+        <dd>JPEG (.jpg or .jpeg), PNG (.png), GIF (.gif), TIFF (.tif or .tiff)</dd>
+        <dt>AUDIO:</dt>
+        <dd>MP3 (.mp3), MPEG4 Audio (.m4a), WAV (.wav)</dd>
+        <dt>VIDEO:</dt>
+        <dd>MPEG4 Video (.m4v or .mp4), QuickTime (.mov), Audio/Video Interleave (.avi), Windows Media Video (.wmv)</dd>
+        <dt>WEB:</dt>
+        <dd>HTML (.htm or .html)</dd>
     </dl>
 
     <!-- <div *ngIf="fileList && fileList.length != 0">
@@ -36,7 +41,7 @@
     </div> -->
 
 
-<!--
+    <!--
     <li>
       <span>File Description</span>
       <input class="meta-info" type="text" name="file"> <br />
@@ -53,12 +58,12 @@
     </div>
 
     <div class="row justify-content-center">
-      <div class="add-top-margin col-md-6 alert alert-success" *ngIf="succeedMessage != null">
-          <p>
-              {{succeedMessage}}
-          </p>
-      </div>
-     </div>
+        <div class="add-top-margin col-md-6 alert alert-success" *ngIf="succeedMessage != null">
+            <p>
+                {{succeedMessage}}
+            </p>
+        </div>
+    </div>
 
 
 

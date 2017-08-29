@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
 
     loading: boolean = false;
     failed: boolean = false;
+    mobile: boolean;
 
     getdev: boolean; //for postlist.
     deviceInfo: any = null;
@@ -43,7 +44,6 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.getPagePosts();
-        console.log("HELLO WELCOME TO THE DALN");
         this.deviceInfo = this.deviceService.getDeviceInfo();
         console.log("***********", this.deviceInfo);
     }
@@ -55,10 +55,11 @@ export class HomeComponent implements OnInit {
             console.log("***********", this.deviceInfo);
         }
         if (this._searchService.cache_posts.length === 0) {
-            let postNumber = 8;
+            let postNumber = 4;
 
             if (this.deviceInfo.os === "ios" || this.deviceInfo.os === "android" || this.deviceInfo.device === "iphone") {
-                postNumber = 4
+                this.mobile = true;
+                postNumber = 3
             }
             // TODO Change search param to env variable
             this._searchService.search_page("games", postNumber, 0).subscribe(

@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { SubmitFormService } from '../submit-form.service';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Rx';
+import { UploadService } from "./upload-service";
 
 
 
@@ -20,16 +21,20 @@ export class MediaComponent implements OnInit {
     submitService: SubmitFormService;
     fileList: FileList;
 
-    // fileName: string;
+    fileName: string;
     errorMessage: string;
     succeedMessage: string;
     suggestMessage: string;
     percentUploaded: number;
+    loading: boolean;
+    failed: boolean;
+    loadingMessage: string;
 
     constructor(
         private _router: Router,
         private _http: Http,
-        _submitService: SubmitFormService
+        _submitService: SubmitFormService,
+        private uploadService: UploadService
     ) {
         this.submitService = _submitService;
 
@@ -70,60 +75,13 @@ export class MediaComponent implements OnInit {
         if (this.fileList && this.fileList.length > 0) {
             this.submitService.fileList = this.fileList;
             this.errorMessage = null;
-            var request;
+
+            // var request;
             let fileCount = this.fileList.length;
             for (let i = 0; i < fileCount; i++) {
-
-                var success;
-                var percentComplete;
-                var file = this.fileList[ i ];
-
-                request = new XMLHttpRequest();
-
-                request.open("GET", this.endPoint.get_upload_link + this.fileList[ i ].name, true);
-                console.log(fn + ": getting presigned link from ", this.endPoint.get_upload_link + this.fileList[ i ].name);
-                request.onload = ((oEvent) => {
-                    console.log(fn + ": quoted presigned link = ", request.responseText);
-
-                    let url = request.responseText;
-                    if (request.responseText[ 0 ] == "\"" && request.responseText[ request.responseText.length - 1 ] == "\"") {
-                        url = request.responseText.slice(1, -1);
-                    }
-
-                    console.log(fn + ": presigned link = ", url);
-                    var presigned_link = new XMLHttpRequest();
-
-                    presigned_link.upload.onprogress = ((event) => {
-                        console.log(fn + ":/onprogress: invoked with event = ", event);
-                        if (event.lengthComputable) {
-                            this.percentUploaded = (event.loaded / event.total) * 100;
-                            console.log(this.percentUploaded);
-                        }
-                    });
-
-                    presigned_link.onload = ((event) => {
-                        console.log(fn + ": response from put", event);
-                        if (presigned_link.status >= 200 && presigned_link.status < 300) {
-                            console.log("File successfully uploaded.");
-                            this.succeedMessage = "Files uploaded successfully! Please proceed to next step";
-                        }
-                    });
-
-                    presigned_link.onerror = ((event) => {
-                        console.log(fn + ": error from put", event);
-                        this.errorMessage = "Something went wrong, please try again.";
-                    });
-
-                    presigned_link.open("PUT", url, true);
-                    console.log(fn + ": presigned url opened");
-                    presigned_link.setRequestHeader("Content-Type", " ");
-                    presigned_link.send(file);
-                    console.log(fn + ": send has begun");
-
-                });
-                // console.log( fn+": ", this.fileList[i] );
-                request.send(file);
-
+                let success;
+                let file = this.uploadService.replaceFileName(this.fileList[ i ]);
+                this.uploadFile(file);
             }
 
         } else {
@@ -132,13 +90,24 @@ export class MediaComponent implements OnInit {
 
     }
 
-
-
-
-
-
     next() {
         this._router.navigateByUrl('/create/license');
+    }
+
+    uploadFile(file: File) {
+        this.loadingMessage = `Uploading File(s) ...`
+        this.loading = true;
+        return this.uploadService.getUploadUrl(file.name, file.type, this.endPoint.get_upload_link)
+            .then((url) => {
+                return this.uploadService.upload(url, file);
+            }).then((resp) => {
+                this.loading = false;
+                this.succeedMessage = resp;
+            }).catch((err) => {
+                this.failed = true;
+                this.loadingMessage = null;
+                this.errorMessage = err.message;
+            })
     }
 
 }
