@@ -1,10 +1,16 @@
-<div class="row justify-content-center">
+<div class="row row justify-content-start">
 
     <div class="add-top-margin col-md-12" *ngIf="loading && loadingMessage">
-        <i class="fa fa-spinner fa-spin" style="font-size:48px;color:Grey"></i>&nbsp;&nbsp;&nbsp; {{loadingMessage}}
-    </div>
+        <div class="row align-items-center">
+            <div class="justify-content-center col-md-2">
+                <i class="fa fa-spinner fa-spin" style="font-size:90px;color:Grey"></i>
+            </div>
+            <div class="justify-content-start col-md-10">
+                <p *ngFor="let m of loadingMessage"> {{m}}</p>
+            </div>
+        </div>
 
-    <div class="col-md-12 failed-grid" *ngIf="failed">
-        Failed
+        <div class="col-md-12 failed-grid" *ngIf="failed">
+            Failed
+        </div>
     </div>
-</div>

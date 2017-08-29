@@ -10,7 +10,7 @@ export class UploadMessageComponent implements OnInit {
 
   @Input() loading: boolean;
   @Input() failed: boolean;
-  @Input() loadingMessage: string;
+  @Input() loadingMessage: Array<string>;
 
 
   constructor() { }
