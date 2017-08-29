@@ -23,7 +23,7 @@ export class UploadService {
       .toPromise().then((res: Response) => {
         console.log("#getUploadUrl Res: ", res);
         console.log("#getUploadUrl  Res JSON: ", res.json());
-        debugger;
+        // debugger;;
         return Promise.resolve(res.json());
       })
       .catch((err: any) => {
@@ -34,7 +34,7 @@ export class UploadService {
 
 
   upload(url: string, file: any): Promise<any> {
-    debugger;
+    // debugger;
     let headers = { 'Content-Type': file.type, 'Accept': 'application/json' };
 
     return fetch(url, {
@@ -52,7 +52,7 @@ export class UploadService {
         }
       }).catch(
       (error) => {
-        debugger;
+        // debugger;
         console.log(error);
         console.error("Error: ", error);
       });
