@@ -21,26 +21,41 @@ export class PostItemComponent implements OnInit {
   @Input()
   postItem: Post;
 
-  isChecked: boolean;
+  // isChecked: boolean;
+
+  sub: any;
+  showUnapproveButton: boolean;
+
 
   ngOnInit() {
     //   console.log(this.getdev);
+
+    this.sub = this._router.events.subscribe((val) => {
+
+    // will break view if routes are changed.
+        if(val.url.startsWith("/admin")) {
+          this.showUnapproveButton = false;
+      } else {
+          this.showUnapproveButton = true;
+      }
+    });
   }
 
   getPreview(postAssets: Asset[]): Asset {
     return this._postService.getPreview(postAssets);
   }
 
-  sendPostId() {
-      if(this.isChecked === true) {
-        this._postService.selected_posts.push(this.postItem.postId);
-        // console.log(this._postService.selected_posts);
-      } else {
-        var position = this._postService.selected_posts.indexOf(this.postItem.postId);
-        var remove_post = this._postService.selected_posts.splice(position, 1);
-        // console.log(this._postService.selected_posts);
-      }
-  }
+  // For mass approval.
+  // sendPostId() {
+  //     if(this.isChecked === true) {
+  //       this._postService.selected_posts.push(this.postItem.postId);
+  //       // console.log(this._postService.selected_posts);
+  //     } else {
+  //       var position = this._postService.selected_posts.indexOf(this.postItem.postId);
+  //       var remove_post = this._postService.selected_posts.splice(position, 1);
+  //       // console.log(this._postService.selected_posts);
+  //     }
+  // }
 
   approvePost() {
     this._postService.adminApprovePost(this.postItem.postId);

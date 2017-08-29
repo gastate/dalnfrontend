@@ -7,6 +7,7 @@
         <div class="hover-post">
             <!-- remove title and use button or description
             make checkbox bigger -->
+            <!-- <input type="checkbox" [checked]="isChecked"> -->
 
             <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
                 <h3>{{postItem?.title}}</h3>
@@ -21,7 +22,7 @@
                 <div class="post-desc">
                     <div class="hover-post">
                         <button *ngIf="getdev === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
-                        <button *ngIf="getdev === true" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
+                        <button *ngIf="getdev === true && showUnapproveButton === true" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
 
                         <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
                             <p>{{postItem?.description}}</p>
