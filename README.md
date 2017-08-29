@@ -1,7 +1,14 @@
 # DALN Project Frontend
 
-Dev Site: https://daln.s3.amazonaws.com/frontend/detail-page.html
+## Live Sites
 
-Master is used for testing before pushing to the [deployment](https://github.com/gastate/dalnfrontend/tree/deploy) branch.
+- [Dev site](http://dalndev.gsu.edu)
+- [Prod site](http://daln.gsu.edu)
 
-Check out the [dev branch](https://github.com/gastate/dalnfrontend/tree/dev-currently-working) for more information on the project.
+- [Docs site](https://gastate.github.io/dalnfrontend/)
+
+## Branches
+- [master](https://github.com/gastate/dalnfrontend/tree/master)
+- [dev-currently-working](https://github.com/gastate/dalnfrontend/tree/dev-currently-working) (dev branch)
+- [gh-pages](https://github.com/gastate/dalnfrontend/tree/gh-pages) (host documentation site)
+- [documentation](https://github.com/gastate/dalnfrontend/tree/documentation) (where documentation is generated)
