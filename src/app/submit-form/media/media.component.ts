@@ -67,9 +67,9 @@ export class MediaComponent implements OnInit {
         let fn: string = this.constructor.name + "#uploadFiles()";  // tslint:disable-line:no-unused-variable
         console.log(fn + ": invoked");
 
-
-        // TODO: Workaround for video uploads, just use amazon. https://stackoverflow.com/questions/36010348/angular2-file-upload-for-amazon-s3-bucket
-        //
+        // set an error message when a file fails, notify the user about what file failed with which succeeded
+        // and which failed,
+        // create a new filelist of the failed files, change the upload button to try again.
 
         console.log(fn + ": fileList", this.fileList);
         if (this.fileList && this.fileList.length > 0) {
