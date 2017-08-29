@@ -38,8 +38,6 @@ export class PaginationComponent implements OnInit, OnChanges {
     sub: any;
     searchService: SearchService;
 
-    sub: any;
-
     // posts to pass off to post-list.
     pagedPost: Post [];
     all_results: Post [] = [];
