@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -15,7 +14,6 @@ import { SummaryComponent } from './summary/summary.component';
 import { CompleteComponent } from './complete/complete.component';
 import { SubmitFormRoutingModule } from './submit-form-routing.module';
 import { DatepickerComponent } from './datepicker/datepicker.component';
-import { UploadMessageComponent } from './media/upload-message/upload-message.component';
 
 
 
@@ -36,7 +34,6 @@ import { UploadMessageComponent } from './media/upload-message/upload-message.co
     CompleteComponent,
     SubmitFormComponent,
     DatepickerComponent,
-    UploadMessageComponent
   ],
   providers: [
     SubmitFormService

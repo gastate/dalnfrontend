@@ -11,13 +11,8 @@ import { UploadService } from './media/upload-service';
 import { environment } from '../../environments/environment';
 
 
-
-
 @Injectable()
 export class SubmitFormService {
-
-    // today: number = Date.now();
-
 
     title: string;
     description: string;
@@ -45,8 +40,7 @@ export class SubmitFormService {
     postResult : string;
     formData : FormData = new FormData(); // only data that needs to be sent to upload files.
     filename : string;
-    fileList: FileList;
-
+    fileInfos: any[] = [];
 
   constructor(private _http: Http, private _uploadService: UploadService) {
       this.title = null;
@@ -67,26 +61,12 @@ export class SubmitFormService {
       this.coverageSpatial = [];
       this.language = [];
       this.subject = [];
-
-
    }
 
 
   private endPoint = environment.API_ENDPOINTS;
 
-
-
-  getMedia() {
-    return this.fileList;
-  }
-
-
-
-  updatePost() {
-      // tableName
-      // whatever data
-      // postId
-  }
+//   updatePost() {}
 
   returnPost() {
       let postData = {
@@ -110,7 +90,6 @@ export class SubmitFormService {
 
      return postData;
   }
-
 
   postCreate() {
      var tableName = this.endPoint.ddb_table_name;
@@ -144,52 +123,48 @@ export class SubmitFormService {
      headers.append('Content-Type', 'application/json');
      let options = new RequestOptions({ headers: headers, method: "post"});
 
-
      this._http.post(this.endPoint.create_post, str, options)
      .map((res: Response) => res.json())
      .subscribe(
          // data here is the postId. Using it for link_media.
          data => {
-             this.postResult = data;
-             console.log(data);
+            this.postResult = data;
+            console.log(data);
 
-             var jsonLink;
+            var jsonLink;
+            for( let fileinfo of this.fileInfos ) {
 
-             if( this.fileList && this.fileList.length > 0 ) {
-                  for(let i = 0; i < this.fileList.length; i++) {
+                // replace the file name and pass the string to apiupload.
 
-                      // replace the file name and pass the string to apiupload.
+                fileinfo.file = this._uploadService.replaceFileName( fileinfo );
+                let string_to_pass = fileinfo.file.name;
 
-                      let file = this._uploadService.replaceFileName(this.fileList[ i ]);
-                      let string_to_pass = file.name;
+                console.log( "file key", string_to_pass );
+                jsonLink = {
+                    stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
+                    assetDescription: "Asset",
+                    finalBucketName: this.endPoint.finalBucketName,
+                    PostId: this.postResult,
+                    key: string_to_pass,
+                    tableName: this.endPoint.ddb_table_name
+                };
 
-                      console.log("file key", file);
-                      jsonLink = {
-                          stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
-                          assetDescription: "Asset",
-                          finalBucketName: this.endPoint.finalBucketName,
-                          PostId: this.postResult,
-                          key: string_to_pass,
-                          tableName: this.endPoint.ddb_table_name
-                      };
+                console.log("data to link", jsonLink);
+                let headers = new Headers();
+                headers.append('Content-Type', 'application/json');
+                let options = new RequestOptions({headers: headers, method: "post"});
 
-                      console.log("data to link", jsonLink);
-                      let headers = new Headers();
-                      headers.append('Content-Type', 'application/json');
-                      let options = new RequestOptions({headers: headers, method: "post"});
+                var input = JSON.stringify(jsonLink);
 
-                      var input = JSON.stringify(jsonLink);
-
-                      // returns 504, make admin to check if went through.
-                      this._http.post(this.endPoint.link_media, input, options)
-                      .map((res: Response) => res.json())
-                      .catch((error : any) => Observable.throw(error.json().error))
-                      .subscribe(
-                          data => { console.log ('Link response: ', data);},
-                          error => { console.log(error); }
-                      );
-                  }
-             }
+                // returns 504, make admin to check if went through.
+                this._http.post(this.endPoint.link_media, input, options)
+                .map((res: Response) => res.json())
+                .catch((error : any) => Observable.throw(error.json().error))
+                .subscribe(
+                    data => { console.log ('Link response: ', data);},
+                    error => { console.log(error); }
+                );
+            }
          });
   }
 
