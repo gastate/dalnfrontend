@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { SubmitFormService } from '../submit-form.service';
@@ -11,7 +11,7 @@ import { UploadService } from "./upload-service";
     templateUrl: './media.component.html',
     styleUrls: [ './media.component.css' ]
 })
-export class MediaComponent implements OnInit {
+export class MediaComponent {
     fileInfos: any[] = [];
     fileBad:number = 0;
     fileDone:number = 0;
