@@ -15,12 +15,9 @@ export class MediaComponent implements OnInit {
     fileInfos: any[] = [];
     fileBad:number = 0;
     fileDone:number = 0;
-
     errorMessage: string;
     succeedMessage: string;
-
     nextEnabled:boolean = true;
-
     private endPoint = environment.API_ENDPOINTS;
 
     constructor(
@@ -30,9 +27,6 @@ export class MediaComponent implements OnInit {
         private ref: ChangeDetectorRef,
         private uploadService: UploadService,
     ) {
-    }
-
-    ngOnInit() {
     }
 
     setMedia(event) {
@@ -63,7 +57,7 @@ export class MediaComponent implements OnInit {
         let fn: string = this.constructor.name + "#uploadFiles";  // tslint:disable-line:no-unused-variable
         console.log(fn + ": invoked");
 
-        console.log(fn + ": fileInfos = ", this.fileInfos );
+        // console.log(fn + ": fileInfos = ", this.fileInfos );
         if( this.fileInfos.length > this.fileBad ) {
             this.submitService.fileInfos = this.fileInfos;
             this.errorMessage = null;
