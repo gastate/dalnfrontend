@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
         return this.sub = this.router.events.subscribe((val) => {
             console.log("Home Component Route: ", val.url);
             this.route = val.url;
-            // If not search results to be displays then get Posts
+            // If not search paginatorResults to be displays then get Posts
             if (!this.route.startsWith("/search?")) {
                 this.getPagePosts();
             }

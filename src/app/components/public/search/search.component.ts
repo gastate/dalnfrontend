@@ -1,16 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-
-import { SearchService } from '../../../services/search.service';
-import { PostService } from '../../../services/post.service';
-import { Post } from '../../../model/post-model';
-
-
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Location} from '@angular/common';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SearchService} from '../../../services/search.service';
+import {PostService} from '../../../services/post.service';
+import {Post} from '../../../model/post-model';
 
 
 @Component({
@@ -29,7 +22,8 @@ export class SearchComponent implements OnInit {
   location: Location;
   router: Router;
   activatedRoute: ActivatedRoute;
-  searchService : SearchService;
+  searchService: SearchService;
+  lastSearch: any;
 
   showPagination: boolean;
 
@@ -37,7 +31,7 @@ export class SearchComponent implements OnInit {
   resultList: Post[];
   results: Post[];
   errorMessage: string;
-  sub:any;
+  sub: any;
   subQuery: any;
 
   // pagination
@@ -47,7 +41,7 @@ export class SearchComponent implements OnInit {
   total_results: number;
 
   pageNumber: number; // user specified page number to start from.
-  resultsPerPage : number; // number of results to display in search component.
+  resultsPerPage: number; // number of paginatorResults to display in search component.
   pageParameter: number = 0;
 
   currentOffset: number; // received by pagination component.
@@ -55,15 +49,13 @@ export class SearchComponent implements OnInit {
   query: string;
 
 
-
   private noResults: boolean = false;
 
-  constructor(
-    location: Location,
-    router: Router,
-    activatedRoute: ActivatedRoute,
-    private _postService: PostService,
-    _searchService: SearchService) {
+  constructor(location: Location,
+              router: Router,
+              activatedRoute: ActivatedRoute,
+              private _postService: PostService,
+              _searchService: SearchService) {
 
     this.location = location;
     this.router = router;
@@ -76,126 +68,173 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
 
-      this.sub = this.router.events.subscribe((val) => {
-          // console.log(val instanceof NavigationEnd);
-          // console.log(val.url);
-          let route = val.url;
 
-          if(route == "/home") {
-              // console.log("in home");
-              this.showHomePage.emit(true);
-              this.showPagination = false;
-              this.searchService.searchQuery = "";
-          } else if (route.startsWith("/search")) {
-              this.showPagination = true;
-              this.showHomePage.emit(false);
-          }
-      });
+    // this.sub = this.router.events.subscribe((val) => {
+    //     // console.log(val instanceof NavigationEnd);
+    //     // console.log(val.url);
+    //     let route = val.url;
+    //
+    //     if(route == "/home") {
+    //         // console.log("in home");
+    //         this.showHomePage.emit(true);
+    //         this.showPagination = false;
+    //         this.searchService.searchQuery = "";
+    //     } else if (route.startsWith("/search")) {
+    //         this.showPagination = true;
+    //         this.showHomePage.emit(false);
+    //     }
+    // });
 
-      this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
-          this.query = params['query'];
-          this.onSearch(this.query, this.searchService.resultsSize, this.searchService.pageNumber);
-        });
+    this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
+      this.query = params['query'];
+      this.showPagination = true;
+      this.posts = [];
+      this.results = [];
+      if (this.query) {
+        this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
+        console.log("Last Search: ", this.lastSearch.queryParams);
+        console.log("\nterm", this.query, "\nthis.searchService.pageHead",
+          this.searchService.pageHead, "\nthis.searchService.pageNumber",
+          this.searchService.pageNumber);
 
-    this.showPagination = true;
-    this.posts = [];
-    this.results = [];
-    this.resultList = this.searchService.results;
+        if (this.lastSearch.queryParams[0] == this.query
+          && this.lastSearch.queryParams[1] == this.searchService.pageHead
+          && this.lastSearch.queryParams[2] ==
+          (this.searchService.pageNumber == 1 ? 0 : this.searchService.pageNumber)) {
+          console.log("Same Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
+          this.resultList = this.lastSearch.resultList;
+          console.log("new resultList", this.resultList);
 
-    this.startOffset = this.searchService.pageNumber;
-    this.endOffset = Math.floor(Math.max(this.searchService.results.length / this.searchService.resultsSize, 1));
-    this.errorMessage = null;
+          // Not sure what this is for
+          this.searchService.paginatorResults = this.resultList;
+          this.startOffset = this.searchService.pageNumber;
+          this.endOffset = Math.floor(Math.max(this.resultList.length / this.resultsPerPage, 1));
+          this.total_offset = this.lastSearch.totalApiSearchPages;
+          this.total_results = this.lastSearch.totalSearchResultSize;
 
-    this.resultsPerPage = this.searchService.resultsSize;
-    this.pageNumber = this.searchService.pageNumber;
-    this.total_offset = this.searchService.total_offset;
-    this.total_results = this.searchService.total_results;
+
+          this.calculateOffset();
+          this.showHomePage.emit(false);
+
+
+          this.router.navigate(['/search'], {queryParams: {query: this.query}});
+          return;
+        }
+        this.onSearch(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);
+      }
+    });
+
+    // this.showPagination = true;
+    // this.posts = [];
+    // this.results = [];
+    // this.resultList = this.searchService.paginatorResults;
+    //
+    // this.startOffset = this.searchService.pageNumber;
+    // this.endOffset = Math.floor(Math.max(this.searchService.paginatorResults.length / this.searchService.resultsDisplaySize, 1));
+    // this.errorMessage = null;
+    //
+    // this.resultsPerPage = this.searchService.resultsDisplaySize;
+    // this.pageNumber = this.searchService.pageNumber;
+    // this.total_offset = this.searchService.totalApiSearchPages;
+    // this.total_results = this.searchService.totalApiSearchResults;
   }
 
   onSearch(term: string, results: number, index: number): void {
-      console.log("Before", this.query, term);
+    this.resultsPerPage = results;
+    this.pageNumber = index;
+    console.log("Before", this.query, term);
+    this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
+    // console.log("Last Search: ", this.lastSearch.queryParams, "term", term, "this.searchService.pageHead", this.searchService.pageNumber, "index", index);
+    if (this.lastSearch.queryParams[0] == term
+      && this.lastSearch.queryParams[1] == this.searchService.pageNumber
+      && this.lastSearch.queryParams[2] == index) {
+      console.log("Same Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, index]);
+      this.resultList = this.lastSearch.resultList;
+      console.log("Search resultList", this.resultList);
 
-     //
-    //  if(this.resultsPerPage != results) {
-    //      this.resultsPerPage = results;
-    //      this.searchService.changeResultsDisplayed(this.resultsPerPage);
-    //  }
-     //
-    //  if(this.pageNumber != pageNumber) {
-    //      this.pageNumber = pageNumber;
-    //      this.searchService.changePageStart(this.pageNumber);
-    //  }
+      // TODO find out what these are used for
+      this.startOffset = this.pageNumber;
+      this.endOffset = Math.floor(Math.max(this.resultList.length / this.resultsPerPage, 1));
+      this.total_offset = this.lastSearch.totalApiSearchPages;
+      this.total_results = this.lastSearch.totalSearchResultSize;
+      this.searchService.paginatorResults = this.resultList;
+      this.router.navigate(['/search'], {queryParams: {query: term}});
+      return;
+    }
 
-    if(term === '' || term === undefined){
+    if (term === '' || term === undefined) {
       return null;
     }
 
-    if(term !== this.query) {
-        this.query = term;
+    if (term !== this.query) {
+      this.query = term;
     }
 
     this.searchService.searchQuery = this.query;
 
-    var displayPage; // to use for url parameter
+    let displayPage; // to use for url parameter
 
     // index controls the pagination, but it needs to start from 0 if the user puts in 1
     // since the first page in the api starts from page 0.
-    if(index == 1) {
-        displayPage = index;
-        index = 0;
+    if (index == 1) {
+      displayPage = index;
+      index = 0;
     } else {
-        displayPage = index;
+      displayPage = index;
     }
 
     console.log("Before", this.query, term);
 
 
-    // console.log(displayPage);
-    // console.log(index);
-
-
-    this.searchService.results = [];
-    // TODO: uses input for all_results (this.results should be all_results)
+    this.searchService.paginatorResults = [];
+    // TODO: uses input for all_results (this.paginatorResults should be all_results)
     this.results = [];
+    this.errorMessage = null;
 
 
     this.searchService.search_page(term, this.searchService.pageHead, index)
       .subscribe(
         (results) => {
-            if ( (results.found <= 0) || (results.found === null)  ) {
-                this.errorMessage = "No results found";
-            }
+          if ((results.found <= 0) || (results.found === null)) {
+            this.errorMessage = "No paginatorResults found";
+          }
 
-            this.posts = this.searchService.translatePosts(results.hit);
-            this.posts.forEach((i) => {
-                this.results.push(i);
-            });
+          this.posts = this.searchService.translatePosts(results.hit);
+          this.posts.forEach((i) => {
+            this.results.push(i);
+          });
 
-            this.resultList = this.results;
-            this.searchService.results = this.results;
-            console.log("new resultList", this.resultList);
-            this.calculateOffset();
-            this.showHomePage.emit(false);
+          this.resultList = this.results;
+          this.searchService.paginatorResults = this.results;
+          console.log("new resultList", this.resultList);
+          // save to local storage
+          localStorage.setItem("lastSearch", JSON.stringify({
+            queryParams: [term, this.searchService.pageHead, index],
+            resultList: this.posts, totalOffset: this.searchService.totalApiSearchPages,
+            totalSearchResultSize: this.searchService.totalApiSearchResults
+          }));
+          this.calculateOffset();
+          this.showHomePage.emit(false);
 
-            this.router.navigate(['/search'], { queryParams: { query: term } });
-            console.log("Search resultList", this.resultList);
+          this.router.navigate(['/search'], {queryParams: {query: term}});
+          console.log("Search resultList", this.resultList);
 
-    }, err => {
-        console.log(err);
-    });
+        }, err => {
+          console.log(err);
+        });
 
   }
 
   calculateOffset() {
-      this.startOffset = this.searchService.pageNumber;
-      // console.log("Parent Offset", this.startOffset);
-      this.endOffset = Math.floor(Math.max(this.resultList.length / this.searchService.resultsSize, 1));
+    this.startOffset = this.searchService.pageNumber;
+    // console.log("Parent Offset", this.startOffset);
+    this.endOffset = Math.floor(Math.max(this.resultList.length / this.searchService.resultsDisplaySize, 1));
     //   console.log("startOffset, endOffset", this.startOffset, this.endOffset);
   }
 
 
   getResultHandler(event) {
-      console.log(this.resultList);
+    console.log(this.resultList);
     //   this.currentOffset = event;
     // //   this.currentPage = event;
     //   console.log("currentOffset", this.currentOffset);
@@ -204,7 +243,7 @@ export class SearchComponent implements OnInit {
 
     //   console.
     //   log("leftover", leftOverItems);
-     this.onSearch(this.query, this.searchService.resultsSize, this.resultList.length);
+    this.onSearch(this.query, this.searchService.resultsDisplaySize, this.resultList.length);
 
 
     //   if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
@@ -215,18 +254,17 @@ export class SearchComponent implements OnInit {
     //
     //   }
 
-      this.router.navigate(['/search'], { queryParams: { query: this.query, page: this.currentPage } });
+    this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.currentPage}});
 
-}
-
-
-  ngOnDestroy() {
-      this.sub.unsubscribe();
-      this.subQuery.unsubscribe();
   }
 
 
-
+  ngOnDestroy() {
+    if (this.sub)
+      this.sub.unsubscribe();
+    if (this.subQuery)
+      this.subQuery.unsubscribe();
+  }
 
 
 }

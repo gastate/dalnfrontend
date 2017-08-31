@@ -11,7 +11,7 @@
                   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
                 </span> -->
                 <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery"/>
-               <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsSize, searchService.pageNumber)" >Search</button>
+               <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)" >Search</button>
           </div>
 
         </div>
@@ -28,7 +28,7 @@
             <!-- <div class="col-md-4">
                 <div class="input-group ">
                     <span class="input-group-addon">Results per page</span>
-                    <input #results class="form-control" id="results-size" type="number" min="1" max="50" [value]="searchService.resultsSize"/>
+                    <input #paginatorResults class="form-control" id="paginatorResults-size" type="number" min="1" max="50" [value]="searchService.resultsDisplaySize"/>
                 </div>
             </div> -->
             <!-- <div class="col-md-4 offset-md-4">
@@ -54,7 +54,7 @@
 
 </div>
 
-<app-pagination (currentPageEmitter)="getResultHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination>
-<!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.results"></app-pagination> -->
+<app-pagination (currentPageEmitter)="getResultHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination>
+<!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination> -->
 
 <router-outlet></router-outlet>
