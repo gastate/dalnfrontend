@@ -28,32 +28,32 @@ export class UploadService {
       });
   }
 
-  upload(url: string, file: any): Promise<any> {
-    // debugger;
-    let headers = { 'Content-Type': file.type, 'Accept': 'application/json' };
+  // upload(url: string, file: any): Promise<any> {
+  //   // debugger;
+  //   let headers = { 'Content-Type': file.type, 'Accept': 'application/json' };
 
-    return window.fetch(url, {
-      method: 'PUT',
-      body: file,
-      headers: headers
-    }).then(
-      (data) => {
-        console.log('success', data);
-        if (data.status == 200) {
-          return Promise.resolve("Files uploaded successfully! Please proceed to next step");
-        }
-        else {
-          return Promise.reject(new Error("Upload Failed."));
-        }
-      }
-    ).catch(
-      (error) => {
-        // debugger;
-        console.log(error);
-        console.error("Error: ", error);
-      }
-    );
-  }
+  //   return window.fetch(url, {
+  //     method: 'PUT',
+  //     body: file,
+  //     headers: headers
+  //   }).then(
+  //     (data) => {
+  //       console.log('success', data);
+  //       if (data.status == 200) {
+  //         return Promise.resolve("Files uploaded successfully! Please proceed to next step");
+  //       }
+  //       else {
+  //         return Promise.reject(new Error("Upload Failed."));
+  //       }
+  //     }
+  //   ).catch(
+  //     (error) => {
+  //       // debugger;
+  //       console.log(error);
+  //       console.error("Error: ", error);
+  //     }
+  //   );
+  // }
 
   replaceFileName( fileinfo:any ) {
     // Create new File because file.name is constant

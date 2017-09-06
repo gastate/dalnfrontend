@@ -16,6 +16,7 @@ export class SummaryComponent implements OnInit {
   post: Post;
   data: any;
   email: string;
+  errorMessage: string;
 
   emailForm: FormGroup;
 
@@ -44,8 +45,14 @@ export class SummaryComponent implements OnInit {
   next() {
     this.email = this.emailForm.value.email;
     this._submitService.email = this.email;
-    this._submitService.postCreate();
-    this._router.navigateByUrl('/create/complete');
+    this._submitService.postCreate().subscribe(
+      res => {
+        console.log(res);
+        this._router.navigateByUrl('/create/complete');        
+      },
+      err => {
+        this.errorMessage = "Post not created. Please try again.";
+      });
   }
 
 }
