@@ -32,9 +32,9 @@ const finalBucketName = "daln-prod";
 // Lambda Functions //
 //////////////////////
 
-const api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development";
+const api_url = "https://svua18z1gd.execute-api.us-east-1.amazonaws.com/production";
 
-const search_api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development"; // using prod endpoint on both dev and prod.
+const search_api_url = "https://svua18z1gd.execute-api.us-east-1.amazonaws.com/production"; // using prod endpoint on both dev and prod.
 
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
@@ -53,7 +53,7 @@ const search_size = search_api_url + "";
 
 const approve_post = api_url + "/admin/approve/"; // to approve posts into search engine.
 const unapprove_post = api_url + "/admin/remove";
-const get_upload_link = api_url + "/asset/s3upload/"; // to get the link for file uploading.
+const get_upload_link = api_url + "/asset/s3uploader/"; // to get the link for file uploading.
 const link_media = api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
 
 const get_unapproved_posts = api_url + "/admin/unapproved";

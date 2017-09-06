@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { SubmitFormService } from '../submit-form.service';
@@ -6,108 +6,75 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Rx';
 import { UploadService } from "./upload-service";
 
-
-
-
-
 @Component({
     selector: 'app-media',
     templateUrl: './media.component.html',
     styleUrls: [ './media.component.css' ]
 })
-export class MediaComponent implements OnInit {
-
-
-    submitService: SubmitFormService;
-    fileList: FileList;
-
-    fileName: string;
+export class MediaComponent {
+    fileInfos: any[] = [];
+    fileBad:number = 0;
+    fileDone:number = 0;
     errorMessage: string;
     succeedMessage: string;
-    suggestMessage: string;
-    percentUploaded: number;
-    loading: boolean;
-    failed: boolean;
-    loadingMessage: string;
+    nextEnabled:boolean = true;
+    private endPoint = environment.API_ENDPOINTS;
 
     constructor(
         private _router: Router,
         private _http: Http,
-        _submitService: SubmitFormService,
-        private uploadService: UploadService
+        private submitService: SubmitFormService,
+        private ref: ChangeDetectorRef,
+        private uploadService: UploadService,
     ) {
-        this.submitService = _submitService;
-
-    }
-
-    private endPoint = environment.API_ENDPOINTS;
-
-    ngOnInit() {
     }
 
     setMedia(event) {
-        this.fileList = event.target.files;
-        console.log(this.fileList);
+        let fn: string = this.constructor.name + "#uploadFiles";  // tslint:disable-line:no-unused-variable
+        console.log( fn + ": invoked" );
 
-
-        for (var i = 0; i < this.fileList.length; i++) {
-            let file = this.fileList[ i ];
-            let file_size = this.fileList[ i ].size;
-
-            if (file_size >= 50000000000) {
-                this.suggestMessage = "One of your files is larger than the size limit of 5 GB.";
-            } else {
-                this.suggestMessage = null;
+        if( event.target.files.length > 0 ) {
+            for( let file of event.target.files ) {
+                console.log( fn+": file ", file );
+                let fileinfo:any = { file:file, progress:0.0, message:"Queued", status:"QUEUED" }; // TODO: make a proper class for these
+                let maxGB = 5;
+                let fail:boolean = false;
+                if( file.size >= maxGB*1000000000 ) {
+                    fileinfo.message = "Exceeds size limit of "+maxGB+" GB";
+                    fileinfo.status = "REJECTED";
+                    fail = true;
+                }
+                this.fileInfos.push( fileinfo );
+                if( fail ) { this.fileBad += 1; }
             }
+            if( this.fileBad < this.fileInfos.length ) { this.errorMessage = undefined; }
+            this.setNext();
         }
 
     }
 
     uploadFiles() {
-        let fn: string = this.constructor.name + "#uploadFiles()";  // tslint:disable-line:no-unused-variable
+        let fn: string = this.constructor.name + "#uploadFiles";  // tslint:disable-line:no-unused-variable
         console.log(fn + ": invoked");
 
-
-        // TODO: Workaround for video uploads, just use amazon. https://stackoverflow.com/questions/36010348/angular2-file-upload-for-amazon-s3-bucket
-        //
-
-        console.log(fn + ": fileList", this.fileList);
-        if (this.fileList && this.fileList.length > 0) {
-            this.submitService.fileList = this.fileList;
+        // console.log(fn + ": fileInfos = ", this.fileInfos );
+        if( this.fileInfos.length > this.fileBad ) {
+            this.submitService.fileInfos = this.fileInfos;
             this.errorMessage = null;
-
-            // var request;
-            let fileCount = this.fileList.length;
-            for (let i = 0; i < fileCount; i++) {
-                let success;
-                let file = this.uploadService.replaceFileName(this.fileList[ i ]);
-                this.uploadFile(file);
-            }
-
+            this.succeedMessage = null;
+            // this.uploadFile(0);
+            this.uploadService.uploadFiles(
+                this.fileInfos,
+                ()=>{ if( this.setNext() ) { this.succeedMessage = "All eligable files uploaded!"; } }, //onalldone
+                ()=>{ this.fileDone += 1; }, //onsuccess
+                ()=>{ this.ref.detectChanges(); }, //onprogress
+            );
         } else {
-            this.errorMessage = "Please select a couple of files to upload to the DALN.";
+            this.errorMessage = "Please select files to upload";
         }
-
     }
 
-    next() {
-        this._router.navigateByUrl('/create/license');
-    }
-
-    uploadFile(file: File) {
-        this.loadingMessage = `Uploading File(s) ...`
-        this.loading = true;
-        return this.uploadService.getUploadUrl(file.name, file.type, this.endPoint.get_upload_link)
-            .then((url) => {
-                return this.uploadService.upload(url, file);
-            }).then((resp) => {
-                this.loading = false;
-                this.succeedMessage = resp;
-            }).catch((err) => {
-                this.failed = true;
-                this.loadingMessage = null;
-                this.errorMessage = err.message;
-            })
-    }
+    private setNext() { return this.nextEnabled = this.fileBad + this.fileDone >= this.fileInfos.length }
+    next() { this._router.navigateByUrl('/create/license'); }
 
 }

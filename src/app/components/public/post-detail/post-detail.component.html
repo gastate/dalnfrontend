@@ -1,5 +1,5 @@
 <div class="container add-top-margin" *ngIf="postDetail">
-  <button *ngIf="onDev !== true" class="btn btn-primary" type="submit" (click)="goBack()">Back</button>
+  <!-- <button *ngIf="onDev !== true" class="btn btn-primary" type="submit" (click)="goBack()">Back</button> -->
 
   <section>
 
@@ -205,12 +205,16 @@
 
   </section>
 
-
-
-
-
-
 </div><!-- /container -->
+
+
+<div class="container add-top-margin" *ngIf="!postDetail">
+
+    <h3>Post does not exist</h3>
+
+</div>
+
+
 <div class="center">
     <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
 </div>

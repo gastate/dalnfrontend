@@ -1,8 +1,8 @@
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { NgForm } from '@angular/forms';
-import {Observable} from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -12,12 +12,8 @@ import { environment } from '../../environments/environment';
 
 
 
-
 @Injectable()
 export class SubmitFormService {
-
-    // today: number = Date.now();
-
 
     title: string;
     description: string;
@@ -42,15 +38,12 @@ export class SubmitFormService {
     language: string [];
     subject: string[];
 
-    postResult : string;
     formData : FormData = new FormData(); // only data that needs to be sent to upload files.
     filename : string;
-    fileList: FileList;
-
+    fileInfos: any[] = [];
 
   constructor(private _http: Http, private _uploadService: UploadService) {
       this.title = null;
-      this.postResult = null;
       this.description = null;
       this.email = null;
       this.license = null;
@@ -67,26 +60,12 @@ export class SubmitFormService {
       this.coverageSpatial = [];
       this.language = [];
       this.subject = [];
-
-
    }
 
 
   private endPoint = environment.API_ENDPOINTS;
 
-
-
-  getMedia() {
-    return this.fileList;
-  }
-
-
-
-  updatePost() {
-      // tableName
-      // whatever data
-      // postId
-  }
+//   updatePost() {}
 
   returnPost() {
       let postData = {
@@ -111,8 +90,10 @@ export class SubmitFormService {
      return postData;
   }
 
+  postCreate(): Observable<Response> {
 
-  postCreate() {
+     let fn: string = this.constructor.name + "#postCreate"; 
+
      var tableName = this.endPoint.ddb_table_name;
      var data = {
          title: this.title,
@@ -144,53 +125,59 @@ export class SubmitFormService {
      headers.append('Content-Type', 'application/json');
      let options = new RequestOptions({ headers: headers, method: "post"});
 
+     return this._http.post(this.endPoint.create_post, str, options)
+     .map((res: Response) => {
+        let postId = res.json();
+        console.log(fn + "postId received: " + postId);
+        this.linkFiles(postId);
+        return res;
+    })
+    .catch((error: any)=> {
+        return Observable.throw(new Error(error.status));
+    });
 
-     this._http.post(this.endPoint.create_post, str, options)
-     .map((res: Response) => res.json())
-     .subscribe(
-         // data here is the postId. Using it for link_media.
-         data => {
-             this.postResult = data;
-             console.log(data);
-
-             var jsonLink;
-
-             if( this.fileList && this.fileList.length > 0 ) {
-                  for(let i = 0; i < this.fileList.length; i++) {
-
-                      // replace the file name and pass the string to apiupload.
-
-                      let file = this._uploadService.replaceFileName(this.fileList[ i ]);
-                      let string_to_pass = file.name;
-
-                      console.log("file key", file);
-                      jsonLink = {
-                          stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
-                          assetDescription: "Asset",
-                          finalBucketName: this.endPoint.finalBucketName,
-                          PostId: this.postResult,
-                          key: string_to_pass,
-                          tableName: this.endPoint.ddb_table_name
-                      };
-
-                      console.log("data to link", jsonLink);
-                      let headers = new Headers();
-                      headers.append('Content-Type', 'application/json');
-                      let options = new RequestOptions({headers: headers, method: "post"});
-
-                      var input = JSON.stringify(jsonLink);
-
-                      // returns 504, make admin to check if went through.
-                      this._http.post(this.endPoint.link_media, input, options)
-                      .map((res: Response) => res.json())
-                      .catch((error : any) => Observable.throw(error.json().error))
-                      .subscribe(
-                          data => { console.log ('Link response: ', data);},
-                          error => { console.log(error); }
-                      );
-                  }
-             }
-         });
   }
 
+
+linkFiles(postId: string) {
+    let fn: string = this.constructor.name + "#linkFiles"; 
+    console.log(fn + "invoked with postId: " + postId);
+
+    let jsonLink;
+    for( let fileinfo of this.fileInfos ) {
+
+        // replace the file name and pass the string to apiupload.
+        fileinfo.file = this._uploadService.replaceFileName( fileinfo );
+        let string_to_pass = fileinfo.file.name;
+
+        console.log(fn + "file key", string_to_pass );
+        jsonLink = {
+            stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
+            assetDescription: "Asset",
+            finalBucketName: this.endPoint.finalBucketName,
+            PostId: postId,
+            key: string_to_pass,
+            tableName: this.endPoint.ddb_table_name
+        };
+
+        console.log(fn + "data to link", jsonLink);
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        let options = new RequestOptions({headers: headers, method: "post"});
+
+        var input = JSON.stringify(jsonLink);
+
+        // returns 504, make admin to check if went through.
+        this._http.post(this.endPoint.link_media, input, options)
+        .map((res: Response) => res.json())
+        .catch((error : any) => Observable.throw(error.json().error))
+        .subscribe(
+            data => { console.log ('Link response: ', data);},
+            error => { console.log(error); }
+        );
+    }
+
 }
+
+}
+

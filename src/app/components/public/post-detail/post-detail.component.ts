@@ -50,12 +50,16 @@ export class PostDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
+    let fn:String = this.constructor.name+"#ngOnInit"; // tslint:disable-line:no-unused-variable
     this.loading = true;
     this.sub = this.router.events.subscribe((val) => {
 
     // will break view if routes are changed.
 
         // if environment.prod = false and coming in from admin view, then you should get by dev detail.
+        // console.log( fn+": production = ", environment.production );
+        // console.log( fn+": url = ", val.url );
+        // console.log( fn+": approval = ", val.url.startsWith("/approval") );
         if(environment.production === false && val.url.startsWith("/approval")) {
           this.onDevDetail();
         } else {
@@ -69,13 +73,16 @@ export class PostDetailComponent implements OnInit {
   }
 
   onDetail() {
-      this._route.params.switchMap(
+    let fn:String = this.constructor.name+"#onDevDetail"; // tslint:disable-line:no-unused-variable
+    this._route.params.switchMap(
         (params: Params) => this._postService.getPostById(params['id']))
         .subscribe(
-            (details) => {
+            (details:Post) => {
+                // console.log( fn+": POST DETAIL RECEIVED", typeof(details), details );
+                let detailStr = JSON.stringify(details);
+                // console.log( fn+": POST DETAIL RECEIVED", typeof(detailStr), detailStr );
                   this.loading = false;
                   this.postDetail = details;
-                  console.log( "POST DETAIL RECEIVED", JSON.stringify(this.postDetail) );
 
                   this.assets = this.postDetail.assetList;
                   if(this.assets && this.assets.length) {
@@ -92,9 +99,7 @@ export class PostDetailComponent implements OnInit {
                       this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
                   }
 
-
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
-
               },
             err => {
                 this.loading = false;
@@ -104,27 +109,34 @@ export class PostDetailComponent implements OnInit {
   }
 
   onDevDetail() {
+    let fn:String = this.constructor.name+"#onDevDetail"; // tslint:disable-line:no-unused-variable
     this._route.params.switchMap(
       (params: Params) => this._postService.getDevPostById(params['id']))
       .subscribe(
-          (details) => {
-                this.postDetail = details;
-                this.onDev = true;
-                console.log("DEV POST DETAIL RECEIVED", this.postDetail);
+          (details:Post) => {
+                // console.log( fn+": DEV POST DETAIL RECEIVED", typeof(details), details );
+                let detailStr = JSON.stringify(details);
+                // console.log( fn+": DEV POST DETAIL RECEIVED", typeof(detailStr), detailStr );
+                // console.log( fn+": DEV POST DETAIL RECEIVED length = ", detailStr.length );
+                
+                if( undefined === details || "\"\"" === detailStr ) {
+                    console.log( fn+": DEV POST DETAIL EMPTY; trying non-dev" );
+                    this.onDetail();
+                } else {
+                    this.postDetail = details;
+                    this.onDev = true;
 
-                this.assets = this.postDetail.assetList;
-                if(this.assets && this.assets.length) {
-                    for(var i = 0; i <= this.assets.length - 1; i++) {
-                        if(this.assets[i].assetType === "Text") {
-                            this.isText = true;
+                    this.assets = this.postDetail.assetList;
+                    if(this.assets && this.assets.length) {
+                        for(var i = 0; i <= this.assets.length - 1; i++) {
+                            if(this.assets[i].assetType === "Text") {
+                                this.isText = true;
+                            }
                         }
                     }
+                    this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
+                    this.loading = false;
                 }
-
-
-                this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
-                this.loading = false;
-
             },
           err => {
               this.loading = false;
