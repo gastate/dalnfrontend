@@ -47,47 +47,47 @@ export class PostService {
     let options = new RequestOptions({ headers: headers, method: "post" });
 
     console.log(this.endPoint.approve_post);
-    this._http.post(this.endPoint.approve_post, datastr, options)
-      .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error))
-      .subscribe(
-      data => { console.log(data); },
-      err => { console.log(err); }
-      );
-
-  }
-
-
-  approvePosts(postId: string[]) {
-    var tableName = this.endPoint.ddb_table_name;
-    var data;
-
-    if (postId.length !== 0) {
-      postId.forEach((i) => {
-        data = {
-          postId: i,
-          tableName: tableName
-        }
-        var datastr = JSON.stringify(data);
-        console.log(data);
-
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        let options = new RequestOptions({ headers: headers, method: "post" });
-
-        console.log(this.endPoint.approve_post);
-        this._http.post(this.endPoint.approve_post, datastr, options)
-          .map((res: Response) => res.json())
-          .subscribe(
-          data => { console.log(data); },
-          err => { console.log(err); }
-          );
-
+    return this._http.post(this.endPoint.approve_post, datastr, options)
+      .map((res: Response) => {
+        return res;
+      })
+      .catch((error: any) => { 
+        return Observable.throw(error)
       });
 
-    }
-
   }
+
+
+  // approvePosts(postId: string[]) {
+  //   var tableName = this.endPoint.ddb_table_name;
+  //   var data;
+
+  //   if (postId.length !== 0) {
+  //     postId.forEach((i) => {
+  //       data = {
+  //         postId: i,
+  //         tableName: tableName
+  //       }
+  //       var datastr = JSON.stringify(data);
+  //       console.log(data);
+
+  //       let headers = new Headers();
+  //       headers.append('Content-Type', 'application/json');
+  //       let options = new RequestOptions({ headers: headers, method: "post" });
+
+  //       console.log(this.endPoint.approve_post);
+  //       this._http.post(this.endPoint.approve_post, datastr, options)
+  //         .map((res: Response) => res.json())
+  //         .subscribe(
+  //         data => { console.log(data); },
+  //         err => { console.log(err); }
+  //         );
+
+  //     });
+
+  //   }
+
+  // }
 
   unapprovePost(postId: string) {
     var tableName = this.endPoint.ddb_table_name;

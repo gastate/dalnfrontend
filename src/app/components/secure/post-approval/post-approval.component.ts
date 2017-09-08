@@ -53,9 +53,9 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
       this.noAdminPostsMessage = null;
   }
 
-  approveSelected(){
-      this.postService.approvePosts(this.postService.selected_posts);
-  }
+//   approveSelected(){
+//       this.postService.approvePosts(this.postService.selected_posts);
+//   }
 
   getUnapproved() {
       this.loading = true;
@@ -82,19 +82,19 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
 
   }
 
-  getUserPostPool() {
-      this.approval_list = [];
-      this.errorMessage = null;
-      this.noAdminPostsMessage = null;
-      this.postPoolTitle = "Your Post Pool";
-      this.loading = true;
-    //   console.log(this.cognitoService.getCurrentUser());
-  }
+//   getUserPostPool() {
+//       this.approval_list = [];
+//       this.errorMessage = null;
+//       this.noAdminPostsMessage = null;
+//       this.postPoolTitle = "Your Post Pool";
+//       this.loading = true;
+//     //   console.log(this.cognitoService.getCurrentUser());
+//   }
 
-  approvePost(postId : string) {
-      this.authService.adminApprovePost(postId);
-      console.log("Approve post fired");
-  }
+//   approvePost(postId : string) {
+//       this.authService.adminApprovePost(postId);
+//       console.log("Approve post fired");
+//   }
 
   isLoggedIn(message: string, isLoggedIn: boolean) {
       if(!isLoggedIn) {
