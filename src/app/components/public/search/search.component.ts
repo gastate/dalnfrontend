@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
   searchService: SearchService;
   lastSearch: any;
 
+  @Input()
   showPagination: boolean;
 
   posts: Post[];
@@ -68,23 +69,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
 
-
-    // this.sub = this.router.events.subscribe((val) => {
-    //     // console.log(val instanceof NavigationEnd);
-    //     // console.log(val.url);
-    //     let route = val.url;
-    //
-    //     if(route == "/home") {
-    //         // console.log("in home");
-    //         this.showHomePage.emit(true);
-    //         this.showPagination = false;
-    //         this.searchService.searchQuery = "";
-    //     } else if (route.startsWith("/search")) {
-    //         this.showPagination = true;
-    //         this.showHomePage.emit(false);
-    //     }
-    // });
-
     this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
       this.query = params['query'];
       this.showPagination = true;
@@ -120,7 +104,7 @@ export class SearchComponent implements OnInit {
           this.router.navigate(['/search'], {queryParams: {query: this.query}});
           return;
         }
-        this.onSearch(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);
+        this.search(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);
       }
     });
 
@@ -140,6 +124,24 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch(term: string, results: number, index: number): void {
+    this.resultsPerPage = results;
+    this.pageNumber = index;
+
+    if (term === '' || term === undefined) {
+      this.router.navigate(['/home']);
+    }
+
+    if (term !== this.query) {
+      this.query = term;
+    }
+
+    this.searchService.searchQuery = this.query;
+    this.router.navigate(['/search'], {queryParams: {query: term}});
+    console.log("Search resultList", this.resultList);
+
+  }
+
+  search(term: string, results: number, index: number): void {
     this.resultsPerPage = results;
     this.pageNumber = index;
     console.log("Before", this.query, term);
@@ -196,7 +198,7 @@ export class SearchComponent implements OnInit {
       .subscribe(
         (results) => {
           if ((results.found <= 0) || (results.found === null)) {
-            this.errorMessage = "No paginatorResults found";
+            this.errorMessage = "No Results found";
           }
 
           this.posts = this.searchService.translatePosts(results.hit);
@@ -264,6 +266,7 @@ export class SearchComponent implements OnInit {
       this.sub.unsubscribe();
     if (this.subQuery)
       this.subQuery.unsubscribe();
+    this.showPagination = false;
   }
 
 

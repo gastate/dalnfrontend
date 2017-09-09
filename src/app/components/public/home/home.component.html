@@ -2,7 +2,7 @@
 
     <!-- Search Component -->
     <!-- <app-search2 (searchResults)="displayResults($event)"></app-search2> -->
-    <app-search2 (showHomePage)="showHomePage($event)"></app-search2>
+  <app-search2 [showPagination]="!showPage" (showHomePage)="showHomePage($event)"></app-search2>
 
     <app-slider *ngIf="showPage === true"></app-slider>
 
