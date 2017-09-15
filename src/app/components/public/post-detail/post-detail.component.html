@@ -139,12 +139,12 @@
                   <td>{{postDetail?.identifierUri}}</td>
              </tr>
              <tr>
-                  <td>dateAvailable</td>
-                  <td>{{postDetail?.dateAvailable}}</td>
+                <td>dateAccessioned</td>
+                <td>{{postDetail?.dateAccessioned}}</td>
              </tr>
              <tr>
-                  <td>dateAccessioned</td>
-                  <td>{{postDetail?.dateAccessioned}}</td>
+                  <td>dateAvailable</td>
+                  <td>{{postDetail?.dateAvailable}}</td>
              </tr>
              <tr>
                   <td>dateCreated</td>
@@ -153,6 +153,10 @@
              <tr>
                   <td>dateIssued</td>
                   <td>{{postDetail?.dateIssued}}</td>
+             </tr>
+             <tr>
+                <td>dateSubmitted</td>
+                <td>{{postDetail?.dateSubmitted}}</td>
              </tr>
              <tr>
                   <td>rightsConsent</td>
@@ -187,6 +191,22 @@
                   </td>
              </tr>
              <tr>
+                <td>coverageRegion</td>
+                <td>
+                   <ul>
+                    <li *ngFor="let region of postDetail.coverageRegion">{{region}}</li>
+                   </ul>
+                </td>
+             </tr>
+             <tr>
+                <td>coverageSpatial</td>
+                <td>
+                   <ul>
+                    <li *ngFor="let spatial of postDetail.coverageSpatial">{{spatial}}</li>
+                   </ul>
+                </td>
+             </tr>
+             <tr>
                   <td>coverageStateProvince</td>
                   <td>
                      <ul>
@@ -201,6 +221,14 @@
                       <li *ngFor="let gender of postDetail.creatorGender">{{creatorGender}}</li>
                      </ul>
                   </td>
+             </tr>
+             <tr>
+                <td>creatorYearOfBirth</td>
+                <td>
+                   <ul>
+                    <li *ngFor="let year of postDetail.creatorYearOfBirth">{{year}}</li>
+                   </ul>
+                </td>
              </tr>
 
          </tbody>
