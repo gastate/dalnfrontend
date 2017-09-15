@@ -676,6 +676,10 @@ ul.arrow li {
     color: #CC0000;
 }
                     /**** Post Detail ****/
+#metadata-table {
+  padding-top: 10px;
+}
+
 ul.socicon li a.twitter {
     background: url(../img/social/twitter_dark.png) 0 0 no-repeat;
 }
