@@ -37,9 +37,9 @@ const share_link = "http%3A%2F%2Fdaln.gsu.edu%2F%23%2Fdetail%2F";
 // Lambda Functions //
 //////////////////////
 
-const api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development";
+const api_url = "https://4uvrb1g2y4.execute-api.us-east-1.amazonaws.com/development";
 
-const search_api_url = "https://q160u4mkhi.execute-api.us-east-1.amazonaws.com/development"; // using prod endpoint on both dev and prod.
+const search_api_url = "https://4uvrb1g2y4.execute-api.us-east-1.amazonaws.com/development"; // using prod endpoint on both dev and prod.
 
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
