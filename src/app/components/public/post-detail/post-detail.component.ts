@@ -67,8 +67,6 @@ export class PostDetailComponent implements OnInit {
            this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
            this.onDetail();
         }
-
-
     });
 
 

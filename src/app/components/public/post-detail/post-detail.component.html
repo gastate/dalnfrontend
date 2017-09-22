@@ -69,98 +69,6 @@
 
           </ul>
 
-
-
-              <div id="metadata-table">
-                   <table class="table table-sm table-bordered">
-                       <thead >
-                         <tr>
-                          <th>Metadata Tag</th>
-                          <th>Content</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                               <td>postId</td>
-                               <td>{{postDetail?.postId}}</td>
-                          </tr>
-                          <tr>
-                               <td>identifierUri</td>
-                               <td>{{postDetail?.identifierUri}}</td>
-                          </tr>
-                          <tr>
-                               <td>dateAvailable</td>
-                               <td>{{postDetail?.dateAvailable}}</td>
-                          </tr>
-                          <tr>
-                               <td>dateAccessioned</td>
-                               <td>{{postDetail?.dateAccessioned}}</td>
-                          </tr>
-                          <tr>
-                               <td>dateCreated</td>
-                               <td>{{postDetail?.dateCreated}}</td>
-                          </tr>
-                          <tr>
-                               <td>dateIssued</td>
-                               <td>{{postDetail?.dateIssued}}</td>
-                          </tr>
-                          <tr>
-                               <td>rightsConsent</td>
-                               <td>{{postDetail?.rightsConsent}}</td>
-                          </tr>
-                          <tr>
-                               <td>rightsRelease</td>
-                               <td>{{postDetail?.rightsRelease}}</td>
-                          </tr>
-                          <tr>
-                               <td>contributorAuthor</td>
-                               <td>
-                                  <ul>
-                                   <li *ngFor="let author of postDetail.contributorAuthor">{{author}}</li>
-                                  </ul>
-                               </td>
-                          </tr>
-                          <tr>
-                               <td>contributorInterviewer</td>
-                               <td>
-                                  <ul>
-                                   <li *ngFor="let author of postDetail.contributorInterviewer">{{author}}</li>
-                                  </ul>
-                               </td>
-                          </tr>
-                          <tr>
-                               <td>coveragePeriod</td>
-                               <td>
-                                  <ul>
-                                   <li *ngFor="let period of postDetail.coveragePeriod">{{period}}</li>
-                                  </ul>
-                               </td>
-                          </tr>
-                          <tr>
-                               <td>coverageStateProvince</td>
-                               <td>
-                                  <ul>
-                                   <li *ngFor="let state of postDetail.coverageStateProvince">{{state}}</li>
-                                  </ul>
-                               </td>
-                          </tr>
-                          <tr>
-                               <td>creatorGender</td>
-                               <td>
-                                  <ul>
-                                   <li *ngFor="let gender of postDetail.creatorGender">{{creatorGender}}</li>
-                                  </ul>
-                               </td>
-                          </tr>
-
-                      </tbody>
-                   </table>
-              </div>
-
-
-
-
-
       </div>
 
       <!-- Video
@@ -205,10 +113,139 @@
 
   </section>
 
+<p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample">
+        Show Full Item Record
+      </button>
+</p>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-block">
+     <div id="metadata-table">
+      <table class="table table-sm table-bordered">
+          <thead >
+            <tr>
+             <th>Metadata Tag</th>
+             <th>Content</th>
+           </tr>
+         </thead>
+         <tbody>
+             <tr>
+                  <td>postId</td>
+                  <td>{{postDetail?.postId}}</td>
+             </tr>
+             <tr>
+                  <td>identifierUri</td>
+                  <td>{{postDetail?.identifierUri}}</td>
+             </tr>
+             <tr>
+                <td>dateAccessioned</td>
+                <td>{{postDetail?.dateAccessioned}}</td>
+             </tr>
+             <tr>
+                  <td>dateAvailable</td>
+                  <td>{{postDetail?.dateAvailable}}</td>
+             </tr>
+             <tr>
+                  <td>dateCreated</td>
+                  <td>{{postDetail?.dateCreated}}</td>
+             </tr>
+             <tr>
+                  <td>dateIssued</td>
+                  <td>{{postDetail?.dateIssued}}</td>
+             </tr>
+             <tr>
+                <td>dateSubmitted</td>
+                <td>{{postDetail?.dateSubmitted}}</td>
+             </tr>
+             <tr>
+                  <td>rightsConsent</td>
+                  <td>{{postDetail?.rightsConsent}}</td>
+             </tr>
+             <tr>
+                  <td>rightsRelease</td>
+                  <td>{{postDetail?.rightsRelease}}</td>
+             </tr>
+             <tr>
+                  <td>contributorAuthor</td>
+                  <td>
+                     <ul>
+                      <li *ngFor="let author of postDetail.contributorAuthor">{{author}}</li>
+                     </ul>
+                  </td>
+             </tr>
+             <tr>
+                  <td>contributorInterviewer</td>
+                  <td>
+                     <ul>
+                      <li *ngFor="let author of postDetail.contributorInterviewer">{{author}}</li>
+                     </ul>
+                  </td>
+             </tr>
+             <tr>
+                  <td>coveragePeriod</td>
+                  <td>
+                     <ul>
+                      <li *ngFor="let period of postDetail.coveragePeriod">{{period}}</li>
+                     </ul>
+                  </td>
+             </tr>
+             <tr>
+                <td>coverageRegion</td>
+                <td>
+                   <ul>
+                    <li *ngFor="let region of postDetail.coverageRegion">{{region}}</li>
+                   </ul>
+                </td>
+             </tr>
+             <tr>
+                <td>coverageSpatial</td>
+                <td>
+                   <ul>
+                    <li *ngFor="let spatial of postDetail.coverageSpatial">{{spatial}}</li>
+                   </ul>
+                </td>
+             </tr>
+             <tr>
+                  <td>coverageStateProvince</td>
+                  <td>
+                     <ul>
+                      <li *ngFor="let state of postDetail.coverageStateProvince">{{state}}</li>
+                     </ul>
+                  </td>
+             </tr>
+             <tr>
+                  <td>creatorGender</td>
+                  <td>
+                     <ul>
+                      <li *ngFor="let gender of postDetail.creatorGender">{{creatorGender}}</li>
+                     </ul>
+                  </td>
+             </tr>
+             <tr>
+                <td>creatorYearOfBirth</td>
+                <td>
+                   <ul>
+                    <li *ngFor="let year of postDetail.creatorYearOfBirth">{{year}}</li>
+                   </ul>
+                </td>
+             </tr>
+
+         </tbody>
+      </table>
+ </div>
+
+  </div>
+</div>
+
+ 
+
+
+
 </div><!-- /container -->
 
 
-<div class="container add-top-margin" *ngIf="!postDetail">
+<div class="container add-top-margin" *ngIf="!postDetail && loading === false">
 
     <h3>Post does not exist</h3>
 

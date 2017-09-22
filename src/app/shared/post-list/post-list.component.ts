@@ -18,17 +18,39 @@ export class PostListComponent implements OnInit {
   @Input()
   postList: Post[];
 
-  @Input() totalNumberOfPosts: number;
+  @Input() 
+  totalNumberOfPosts: number;
+
+  approvalMessage: string[] = [];
+  errorMessage: string [] = [];
+
 
 
   ngOnInit() {
     //   console.log(this.getdev);
   }
 
-  setPage(){
+  successHandler(event) {
+    console.log(event);
+    this.approvalMessage.push(event);
+
+    if(this.approvalMessage.length >= 3) {
+      this.approvalMessage.splice(0, 2);
+    }
 
   }
 
+  errorHandler(event) {
+    console.log(event);
+    this.errorMessage.push(event);
+
+    if(this.errorMessage.length >= 3) {
+      this.errorMessage.splice(0, 2);
+    }
+
+  }
+
+  
 
 
 }
