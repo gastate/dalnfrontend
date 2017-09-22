@@ -79,7 +79,7 @@ export class SearchComponent implements OnInit {
     this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
       this.query = params['query'];
       this.pageNumber = params['page'];
-      this.showPagination = true;
+    //   this.showPagination = true;    
       this.posts = [];
       this.results = [];      
       if (this.query) {
@@ -111,7 +111,7 @@ export class SearchComponent implements OnInit {
           this.showHomePage.emit(false);
 
             
-          this.router.navigate(['/search'], {queryParams: {query: this.query}});
+          this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.pageNumber}});
           return;
         }
         
@@ -135,9 +135,15 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch(term: string, results: number, index: number): void {
-
+    
     this.resultsPerPage = results;
-    this.pageNumber = index;
+
+    if (index == 1) {
+        this.pageNumber = index;
+        index = 0;
+      } else {
+        this.pageNumber = index;        
+      }
     
     if (term === '' || term === undefined) {
       this.router.navigate(['/home']);
@@ -147,14 +153,11 @@ export class SearchComponent implements OnInit {
     }
 
     this.searchService.searchQuery = this.query;
-    this.router.navigate(['/search'], {queryParams: {query: term, page: this.searchService.pageNumber}});
-    console.log("Search resultList", this.resultList);
-
+    this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
   }
 
   search(term: string, results: number, index: number): void {
     this.resultsPerPage = results;
-    this.pageNumber = index;
     console.log("Before", this.query, term);
     this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
     // console.log("Last Search: ", this.lastSearch.queryParams, "term", term, "this.searchService.pageHead", this.searchService.pageNumber, "index", index);
@@ -229,7 +232,7 @@ export class SearchComponent implements OnInit {
           this.calculateOffset();
           this.showHomePage.emit(false);
 
-          this.router.navigate(['/search'], {queryParams: {query: term, page: this}});
+          this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
           console.log("Search resultList", this.resultList);
 
         }, err => {
@@ -239,7 +242,7 @@ export class SearchComponent implements OnInit {
   }
 
   calculateOffset() {
-    this.startOffset = this.searchService.pageNumber;
+    this.startOffset = this.pageNumber;
     // console.log("Parent Offset", this.startOffset);
     this.endOffset = Math.floor(Math.max(this.resultList.length / this.searchService.resultsDisplaySize, 1));
     //   console.log("startOffset, endOffset", this.startOffset, this.endOffset);
@@ -256,6 +259,8 @@ export class SearchComponent implements OnInit {
 
     //   console.
     //   log("leftover", leftOverItems);
+    this.pageNumber = event;
+    console.log("WEWAEAE", event);
     this.onSearch(this.query, this.searchService.resultsDisplaySize, this.resultList.length);
 
 
