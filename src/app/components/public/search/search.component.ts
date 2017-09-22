@@ -73,15 +73,16 @@ export class SearchComponent implements OnInit {
       this.query = params['query'];
       this.showPagination = true;
       this.posts = [];
-      this.results = [];
+      this.results = [];      
       if (this.query) {
         this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
         console.log("Last Search: ", this.lastSearch.queryParams);
         console.log("\nterm", this.query, "\nthis.searchService.pageHead",
           this.searchService.pageHead, "\nthis.searchService.pageNumber",
           this.searchService.pageNumber);
-
-        if (this.lastSearch.queryParams[0] == this.query
+        
+        // need to check if lastSearch is null else won't work.
+        if (this.lastSearch !== null && this.lastSearch.queryParams[0] == this.query
           && this.lastSearch.queryParams[1] == this.searchService.pageHead
           && this.lastSearch.queryParams[2] ==
           (this.searchService.pageNumber == 1 ? 0 : this.searchService.pageNumber)) {
@@ -100,10 +101,11 @@ export class SearchComponent implements OnInit {
           this.calculateOffset();
           this.showHomePage.emit(false);
 
-
+            
           this.router.navigate(['/search'], {queryParams: {query: this.query}});
           return;
         }
+        
         this.search(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);
       }
     });
@@ -112,11 +114,11 @@ export class SearchComponent implements OnInit {
     // this.posts = [];
     // this.results = [];
     // this.resultList = this.searchService.paginatorResults;
-    //
+    
     // this.startOffset = this.searchService.pageNumber;
     // this.endOffset = Math.floor(Math.max(this.searchService.paginatorResults.length / this.searchService.resultsDisplaySize, 1));
     // this.errorMessage = null;
-    //
+    
     // this.resultsPerPage = this.searchService.resultsDisplaySize;
     // this.pageNumber = this.searchService.pageNumber;
     // this.total_offset = this.searchService.totalApiSearchPages;
@@ -124,13 +126,13 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch(term: string, results: number, index: number): void {
+
     this.resultsPerPage = results;
     this.pageNumber = index;
-
+    
     if (term === '' || term === undefined) {
       this.router.navigate(['/home']);
     }
-
     if (term !== this.query) {
       this.query = term;
     }
@@ -147,7 +149,7 @@ export class SearchComponent implements OnInit {
     console.log("Before", this.query, term);
     this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
     // console.log("Last Search: ", this.lastSearch.queryParams, "term", term, "this.searchService.pageHead", this.searchService.pageNumber, "index", index);
-    if (this.lastSearch.queryParams[0] == term
+    if (this.lastSearch !== null && this.lastSearch.queryParams[0] == term
       && this.lastSearch.queryParams[1] == this.searchService.pageNumber
       && this.lastSearch.queryParams[2] == index) {
       console.log("Same Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, index]);

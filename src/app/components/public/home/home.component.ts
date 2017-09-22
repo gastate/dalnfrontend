@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         return this.sub = this.router.events.subscribe((val) => {
-            console.log("Home Component Route: ", val.url);
+            // console.log("Home Component Route: ", val.url);
             this.route = val.url;
             // If not search paginatorResults to be displays then get Posts
             if (!this.route.startsWith("/search?")) {
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
 
     getDeviceInfo() {
         this.deviceInfo = this.deviceService.getDeviceInfo();
-        console.log("***********", this.deviceInfo);
+        // console.log("***********", this.deviceInfo);
         if (this.deviceInfo.os === "ios" || this.deviceInfo.os === "android" || this.deviceInfo.device === "iphone") {
             this.mobile = true;
         }
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
 
         this.showPage = true;
         this.posts = JSON.parse(localStorage.getItem("featuredPosts"));
-        console.log("HomeComponent #getPagePosts Posts: ", this.posts);
+        // console.log("HomeComponent #getPagePosts Posts: ", this.posts);
 
         if (!this.posts) {
             if (!this.deviceInfo) {
@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
                     this.loading = false;
                     this.failed = true;
                     // Log errors if any
-                    console.log(err);
+                    // console.log(err);
                 });
         }
     }
@@ -105,14 +105,14 @@ export class HomeComponent implements OnInit {
 
 
     displayResults(event) {
-        //   console.log("Search hit.", event);
+        //   // console.log("Search hit.", event);
         this.searchPosts = event;
     }
 
     isLoggedIn(message: string, isLoggedIn: boolean) {
         if (!isLoggedIn) {
             this.getdev = false;
-            console.log("get dev false");
+            // console.log("get dev false");
         } else {
             this.getdev = true;
         }

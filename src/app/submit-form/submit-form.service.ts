@@ -136,7 +136,7 @@ export class SubmitFormService {
 
                 // replace the file name and pass the string to apiupload.
 
-                fileinfo.file = this._uploadService.replaceFileName( fileinfo );
+                // fileinfo.file = this._uploadService.replaceFileName( fileinfo );
                 let string_to_pass = fileinfo.file.name;
 
                 console.log( "file key", string_to_pass );
