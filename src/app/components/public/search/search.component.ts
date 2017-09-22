@@ -13,6 +13,13 @@ import {Post} from '../../../model/post-model';
 })
 export class SearchComponent implements OnInit {
 
+
+  // TODO:
+  //   - Add query parameters for page.
+  //   - make buttons work, refresh
+  //   - populate buttons on visiting the link, refresh, other cases
+   
+
   // @Output()
   // searchResults: EventEmitter<Post[]>;
 
@@ -71,10 +78,12 @@ export class SearchComponent implements OnInit {
 
     this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
       this.query = params['query'];
+      this.pageNumber = params['page'];
       this.showPagination = true;
       this.posts = [];
       this.results = [];      
       if (this.query) {
+        this.searchService.searchQuery = this.query;
         this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
         console.log("Last Search: ", this.lastSearch.queryParams);
         console.log("\nterm", this.query, "\nthis.searchService.pageHead",
@@ -138,7 +147,7 @@ export class SearchComponent implements OnInit {
     }
 
     this.searchService.searchQuery = this.query;
-    this.router.navigate(['/search'], {queryParams: {query: term}});
+    this.router.navigate(['/search'], {queryParams: {query: term, page: this.searchService.pageNumber}});
     console.log("Search resultList", this.resultList);
 
   }
@@ -162,7 +171,7 @@ export class SearchComponent implements OnInit {
       this.total_offset = this.lastSearch.totalApiSearchPages;
       this.total_results = this.lastSearch.totalSearchResultSize;
       this.searchService.paginatorResults = this.resultList;
-      this.router.navigate(['/search'], {queryParams: {query: term}});
+      this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
       return;
     }
 
@@ -220,7 +229,7 @@ export class SearchComponent implements OnInit {
           this.calculateOffset();
           this.showHomePage.emit(false);
 
-          this.router.navigate(['/search'], {queryParams: {query: term}});
+          this.router.navigate(['/search'], {queryParams: {query: term, page: this}});
           console.log("Search resultList", this.resultList);
 
         }, err => {
