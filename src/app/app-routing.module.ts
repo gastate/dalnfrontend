@@ -104,7 +104,7 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-      path: 'search',           // look into pagination component before changing
+      path: 'search',          
       component: SearchComponent
   },
   {

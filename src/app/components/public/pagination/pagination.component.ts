@@ -61,16 +61,6 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.searchService = _searchService;
     this.currentPageEmitter = new EventEmitter<number>();
     this.router = router;
-
-    // // so unnecessary, plz fix
-    // this.sub = router.events.subscribe((val) => {
-    //   let route = val.url;
-    //   if (route.startsWith("/search")) {
-    //     this.displayPagination = true;
-    //   } else {
-    //     this.displayPagination = false;
-    //   }
-    // });
   }
 
   ngOnInit() {
