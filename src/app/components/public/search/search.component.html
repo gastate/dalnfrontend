@@ -1,8 +1,9 @@
+
+
 <div class="child-container">
-
-
+ 
     <div id="search-component">
-
+          
       <!-- Main Search Box -->
       <div class="row justify-content-center">
         <div class="col-md-6">
@@ -13,9 +14,7 @@
                 <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery" (keydown.enter)="keyPressHandler(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)"/>                
                 <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)" >Search</button>
           </div>
-
         </div>
-
       </div>
 
       <!-- Search Options -->
@@ -40,6 +39,7 @@
         <!-- </div>
       </div>
       </div> -->
+      
 
     <div class="row justify-content-center">
       <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
@@ -51,10 +51,17 @@
 
     </div>
 
+    <div class="container center ">
+            <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
+    </div>
 
 </div>
 
-<app-pagination (currentPageEmitter)="getResultHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination>
-<!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination> -->
+<div class="container responsive_home">
+    <app-pagination (currentPageEmitter)="getResultHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination>
+    <!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination> --> 
+</div>
+
+
 
 <router-outlet></router-outlet>

@@ -49,6 +49,11 @@ export class SearchComponent implements OnInit {
   total_offset: number;
   total_results: number;
 
+  
+  // loading
+  loading: boolean = false;
+  failed: boolean = false;
+
   pageNumber: number; // user specified page number to start from.
   resultsPerPage: number; // number of paginatorResults to display in search component.
   pageParameter: number = 0;
@@ -76,11 +81,11 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
       this.query = params['query'];
       this.pageNumber = params['page'];
-    //   this.showPagination = true;    
+      this.loading = true;      
+      this.showPagination = true;    
       this.posts = [];
       this.results = [];      
       if (this.query) {
@@ -98,6 +103,7 @@ export class SearchComponent implements OnInit {
           (this.searchService.pageNumber == 1 ? 0 : this.searchService.pageNumber)) {
           console.log("Same Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
           this.resultList = this.lastSearch.resultList;
+          this.loading = false;
           console.log("new resultList", this.resultList);
 
           // Not sure what this is for
@@ -236,12 +242,14 @@ export class SearchComponent implements OnInit {
           }));
           this.calculateOffset();
           this.showHomePage.emit(false);
-
+          this.loading = false;
           this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
           console.log("Search resultList", this.resultList);
 
         }, err => {
-          console.log(err);
+            this.loading = false
+            this.failed = true;
+            this.errorMessage = "An error occured: \n" + err;
         });
 
   }

@@ -105,7 +105,7 @@ const routes: Routes = [
   },
   {
       path: 'search',           // look into pagination component before changing
-      component: HomeComponent
+      component: SearchComponent
   },
   {
       path:'**',

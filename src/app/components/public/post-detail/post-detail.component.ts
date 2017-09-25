@@ -23,6 +23,7 @@ export class PostDetailComponent implements OnInit {
       selectedAsset: Asset;
       shareUrl : string;
 
+      // loading
       loading: boolean = false;
       failed: boolean = false;
 
