@@ -71,11 +71,11 @@ export class SearchService {
   // https://tg1vruzadg.execute-api.us-west-1.amazonaws.com/production/posts/search/literacy/10/1
   // format is the search endpoint + the term for search + the number of paginatorResults per page + the page number (page number == return 50 posts of 2 paginatorResults then the next two if incremented.)
 
-  search_page(term: string, results: number, page_size: number): Observable<any> {
+  search_page(term: string, results: number, offset: number): Observable<any> {
 
-    console.log(this.endPoint.search_posts + term + "/" + results + "/" + page_size);
+    console.log(this.endPoint.search_posts + term + "/" + results + "/" + offset);
 
-    return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + page_size).map((res: Response) => {
+    return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + offset).map((res: Response) => {
 
       this.totalApiSearchResults = res.json().found;
       this.totalApiSearchPages = Math.ceil(this.totalApiSearchResults / this.resultsDisplaySize);

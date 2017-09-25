@@ -1,9 +1,10 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit,  HostListener,  Input, Output, EventEmitter} from '@angular/core';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SearchService} from '../../../services/search.service';
 import {PostService} from '../../../services/post.service';
 import {Post} from '../../../model/post-model';
+
 
 
 @Component({
@@ -134,6 +135,10 @@ export class SearchComponent implements OnInit {
     // this.total_results = this.searchService.totalApiSearchResults;
   }
 
+  keyPressHandler(term: string, results: number, index: number): void {
+    this.onSearch(term, results, index);
+  }
+
   onSearch(term: string, results: number, index: number): void {
     
     this.resultsPerPage = results;
@@ -260,7 +265,7 @@ export class SearchComponent implements OnInit {
     //   console.
     //   log("leftover", leftOverItems);
     this.pageNumber = event;
-    console.log("WEWAEAE", event);
+    console.log("getResultHandler() pageNumber received: ", this.pageNumber);
     this.onSearch(this.query, this.searchService.resultsDisplaySize, this.resultList.length);
 
 

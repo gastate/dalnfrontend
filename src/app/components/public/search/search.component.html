@@ -10,8 +10,8 @@
                 <!-- <span class="input-group-btn">
                   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
                 </span> -->
-                <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery"/>
-               <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)" >Search</button>
+                <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery" (keydown.enter)="keyPressHandler(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)"/>                
+                <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)" >Search</button>
           </div>
 
         </div>
