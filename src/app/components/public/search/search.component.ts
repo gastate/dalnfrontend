@@ -277,8 +277,7 @@ export class SearchComponent implements OnInit {
     //   log("leftover", leftOverItems);
     this.pageNumber = event;
     console.log("getResultHandler() pageNumber received: ", this.pageNumber);
-    this.onSearch(this.query, this.searchService.resultsDisplaySize, this.resultList.length);
-
+    console.log(this.endOffset);
 
     //   if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
     // if (this.currentOffset === this.endOffset - 1) {
