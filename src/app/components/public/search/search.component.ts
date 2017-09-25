@@ -84,11 +84,12 @@ export class SearchComponent implements OnInit {
     this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
       this.query = params['query'];
       this.pageNumber = params['page'];
-      this.loading = true;      
       this.showPagination = true;    
       this.posts = [];
       this.results = [];      
       if (this.query) {
+        this.loading = true;          
+        
         this.searchService.searchQuery = this.query;
         this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
         console.log("Last Search: ", this.lastSearch.queryParams);
@@ -146,7 +147,6 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch(term: string, results: number, index: number): void {
-    
     this.resultsPerPage = results;
 
     if (index == 1) {
