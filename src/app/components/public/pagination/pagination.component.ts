@@ -125,7 +125,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   calculateButtonRange() {
 
-    //   console.log("totalApiSearchPages", this.searchService.totalApiSearchPages);
+      console.log("totalApiSearchPages", this.searchService.totalApiSearchPages);
     for (let i = 0; i < this.searchService.totalApiSearchPages; i++) {
       this.buttonArray.push(i + 1);
     }
@@ -147,7 +147,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['startOffset'] && (changes['startOffset'].currentValue !== changes['startOffset'].previousValue)) {
-      //   console.log("startOffset change", this.startOffset);
+        console.log("startOffset change", this.startOffset);
       this.buttonArray = [];
       this.calculateIndicies();
       this.calculateButtonRange();

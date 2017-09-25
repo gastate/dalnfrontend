@@ -109,9 +109,11 @@ export class SearchComponent implements OnInit {
 
           // Not sure what this is for
           this.searchService.paginatorResults = this.resultList;
+          this.searchService.totalApiSearchPages = this.lastSearch.totalOffset;
+          
           this.startOffset = this.searchService.pageNumber;
           this.endOffset = Math.floor(Math.max(this.resultList.length / this.resultsPerPage, 1));
-          this.total_offset = this.lastSearch.totalApiSearchPages;
+          this.total_offset = Math.floor(this.lastSearch.totalSearchResultSize / this.resultsPerPage);
           this.total_results = this.lastSearch.totalSearchResultSize;
 
 
@@ -156,7 +158,8 @@ export class SearchComponent implements OnInit {
         this.pageNumber = index;        
       }
     
-    if (term === '' || term === undefined) {
+    if (term.length == 0 || term === undefined) {
+      console.log("TERM IS 0");
       this.router.navigate(['/home']);
     }
     if (term !== this.query) {
