@@ -268,7 +268,7 @@ export class SearchComponent implements OnInit {
   getResultHandler(event) {
     console.log(this.resultList);
     //   this.currentOffset = event;
-    // //   this.currentPage = event;
+    //   this.currentPage = event;
     //   console.log("currentOffset", this.currentOffset);
     //   console.log("startOffset", this.startOffset);
     //   console.log("endOffset", this.endOffset);
@@ -286,8 +286,8 @@ export class SearchComponent implements OnInit {
     //   } else if(this.currentOffset < this.startOffset) {
     //
     //   }
-
-    this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.currentPage}});
+    console.log(this.pageNumber)
+    this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.pageNumber}});
 
   }
 

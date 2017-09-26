@@ -98,35 +98,38 @@ export class PaginationComponent implements OnInit, OnChanges {
       this.currentPage = this.startOffset;
     }
 
-    let firstIndex = ((this.currentPage * this.resultsPerPage) - this.resultsPerPage + 1);
+    let firstIndex = ( ((this.currentPage - 1) * this.resultsPerPage));
     let lastIndex = (firstIndex + this.resultsPerPage - 1);
 
-    // since the index of the array starts at 0, just make the firstIndex = 0 whenever the value is 1.
-    if (firstIndex === 1) {
-      firstIndex = 0;
-    } else {
-      // else make the lastIndex + 1.
-      lastIndex = lastIndex + 1;
-    }
-    //   console.log("lastIndex, firstIndex", lastIndex, firstIndex);
+    console.log("lastIndex, firstIndex", lastIndex, firstIndex);
     // populate pagedPost and push to the view.
     this.populatePosts(firstIndex, lastIndex);
   }
 
   calculateButtonRange() {
-
-      console.log("totalApiSearchPages", this.searchService.totalApiSearchPages);
-    for (let i = 0; i < this.searchService.totalApiSearchPages; i++) {
-      this.buttonArray.push(i + 1);
-    }
-    let buttonSlice = 6;
-    if (buttonSlice < this.searchService.totalApiSearchPages) {
-      this.displayButton = this.buttonArray.slice(this.startOffset - 1, this.endOffset + buttonSlice);
+    console.log("totalApiSearchPages", this.searchService.totalApiSearchPages);
+    console.log("currentPage = ", this.currentPage );
+    let side = 3;
+    let maxButtons = 1+2*side;
+    if( this.searchService.totalApiSearchPages <= maxButtons ) {
+      console.log( "Showing buttons for all pages" );
+      this.displayButton = new Array(this.searchService.totalApiSearchPages).fill(null).map((x,i)=>i+1);
+    } else if( this.currentPage <= side ) {
+      console.log( "Showing buttons for first pages" );
+      this.displayButton = new Array(maxButtons).fill(null).map( (x,i) => {
+        console.log( x, i, i+1 );
+        return i+1;
+      } );
+    } else if( this.currentPage >= this.searchService.totalApiSearchPages - side ) {
+      console.log( "Showing buttons for last pages" );
+      let first = this.searchService.totalApiSearchPages - maxButtons;
+      this.displayButton = new Array(maxButtons).fill(null).map((x,i)=>i+first);
     } else {
-      this.displayButton = this.buttonArray;
+      console.log( "Showing buttons for middle pages" );
+      let first = this.currentPage - side;
+      this.displayButton = new Array(maxButtons).fill(null).map((x,i)=>i+first);
     }
-    console.log("Button Array", this.buttonArray);
-    console.log("Display Button", this.displayButton);
+    console.log("Button Array", this.displayButton);
   }
 
   populatePosts(firstIndex, lastIndex) {
