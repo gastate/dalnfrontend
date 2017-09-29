@@ -45,7 +45,6 @@
         "@types/core-js": "^0.9.43",
         "@types/jasmine": "2.5.38",
         "@types/node": "^6.0.87",
-        "@types/whatwg-fetch": "0.0.33",
         "jasmine-core": "2.5.2",
         "jasmine-spec-reporter": "2.5.0",
         "karma": "1.2.0",
