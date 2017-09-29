@@ -92,20 +92,20 @@ export class SearchComponent implements OnInit {
         
         this.searchService.searchQuery = this.query;
         this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
-        console.log("Last Search: ", this.lastSearch.queryParams);
-        console.log("\nterm", this.query, "\nthis.searchService.pageHead",
-          this.searchService.pageHead, "\nthis.searchService.pageNumber",
-          this.searchService.pageNumber);
+        // console.log("Last Search: ", this.lastSearch.queryParams);
+        // console.log("\nterm", this.query, "\nthis.searchService.pageHead",
+        //   this.searchService.pageHead, "\nthis.searchService.pageNumber",
+        //   this.searchService.pageNumber);
         
         // need to check if lastSearch is null else won't work.
         if (this.lastSearch !== null && this.lastSearch.queryParams[0] == this.query
           && this.lastSearch.queryParams[1] == this.searchService.pageHead
           && this.lastSearch.queryParams[2] ==
           (this.searchService.pageNumber == 1 ? 0 : this.searchService.pageNumber)) {
-          console.log("Same Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
+          // console.log("Same Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
           this.resultList = this.lastSearch.resultList;
           this.loading = false;
-          console.log("new resultList", this.resultList);
+          // console.log("new resultList", this.resultList);
 
           // Not sure what this is for
           this.searchService.paginatorResults = this.resultList;
@@ -159,7 +159,7 @@ export class SearchComponent implements OnInit {
       }
     
     if (term.length == 0 || term === undefined) {
-      console.log("TERM IS 0");
+      // console.log("TERM IS 0");
       this.router.navigate(['/home']);
     }
     if (term !== this.query) {
@@ -172,15 +172,15 @@ export class SearchComponent implements OnInit {
 
   search(term: string, results: number, index: number): void {
     this.resultsPerPage = results;
-    console.log("Before", this.query, term);
+    // console.log("Before", this.query, term);
     this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
     // console.log("Last Search: ", this.lastSearch.queryParams, "term", term, "this.searchService.pageHead", this.searchService.pageNumber, "index", index);
     if (this.lastSearch !== null && this.lastSearch.queryParams[0] == term
       && this.lastSearch.queryParams[1] == this.searchService.pageNumber
       && this.lastSearch.queryParams[2] == index) {
-      console.log("Same Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, index]);
+      // console.log("Same Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, index]);
       this.resultList = this.lastSearch.resultList;
-      console.log("Search resultList", this.resultList);
+      // console.log("Search resultList", this.resultList);
 
       // TODO find out what these are used for
       this.startOffset = this.pageNumber;
@@ -213,7 +213,7 @@ export class SearchComponent implements OnInit {
       displayPage = index;
     }
 
-    console.log("Before", this.query, term);
+    // console.log("Before", this.query, term);
 
 
     this.searchService.paginatorResults = [];
@@ -236,7 +236,7 @@ export class SearchComponent implements OnInit {
 
           this.resultList = this.results;
           this.searchService.paginatorResults = this.results;
-          console.log("new resultList", this.resultList);
+          // console.log("new resultList", this.resultList);
           // save to local storage
           localStorage.setItem("lastSearch", JSON.stringify({
             queryParams: [term, this.searchService.pageHead, index],
@@ -247,7 +247,7 @@ export class SearchComponent implements OnInit {
           this.showHomePage.emit(false);
           this.loading = false;
           this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
-          console.log("Search resultList", this.resultList);
+          // console.log("Search resultList", this.resultList);
 
         }, err => {
             this.loading = false

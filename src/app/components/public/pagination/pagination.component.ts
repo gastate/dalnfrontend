@@ -94,12 +94,17 @@ export class PaginationComponent implements OnInit, OnChanges {
 
 
     if (!this.currentPage) {
-      console.log("starting offset", this.startOffset);
+      // console.log("starting offset", this.startOffset);
       this.currentPage = this.startOffset;
     }
 
+    // if you subtract 1 from the current page and multiply it by the number of results per page, 
+    // then you get the index of array of posts to start displaying the next page at. 
     let firstIndex = ( ((this.currentPage - 1) * this.resultsPerPage));
-    let lastIndex = (firstIndex + this.resultsPerPage - 1);
+
+    // this will pass the lastIndex + 1 since we use slice() in populatePosts() ]
+    // (slice slices arrays from start to end, but does not include the end element. See Javascript MDN docs for more info.)
+    let lastIndex = (firstIndex + this.resultsPerPage);
 
     console.log("lastIndex, firstIndex", lastIndex, firstIndex);
     // populate pagedPost and push to the view.
@@ -107,8 +112,8 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   calculateButtonRange() {
-    console.log("totalApiSearchPages", this.searchService.totalApiSearchPages);
-    console.log("currentPage = ", this.currentPage );
+    // console.log("totalApiSearchPages", this.searchService.totalApiSearchPages);
+    // console.log("currentPage = ", this.currentPage );
     let side = 3;
     let maxButtons = 1+2*side;
     if( this.searchService.totalApiSearchPages <= maxButtons ) {
@@ -117,7 +122,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     } else if( this.currentPage <= side ) {
       console.log( "Showing buttons for first pages" );
       this.displayButton = new Array(maxButtons).fill(null).map( (x,i) => {
-        console.log( x, i, i+1 );
+        // console.log( x, i, i+1 );
         return i+1;
       } );
     } else if( this.currentPage >= this.searchService.totalApiSearchPages - side ) {
@@ -129,18 +134,19 @@ export class PaginationComponent implements OnInit, OnChanges {
       let first = this.currentPage - side;
       this.displayButton = new Array(maxButtons).fill(null).map((x,i)=>i+first);
     }
-    console.log("Button Array", this.displayButton);
+    // console.log("Button Array", this.displayButton);
   }
 
   populatePosts(firstIndex, lastIndex) {
-
+    // Note that slice's last element is non-inclusive for the end item. 
+    // Pass in the end + 1 if you wish to include the correct amount of posts.
     this.pagedPost = this.resultList.slice(firstIndex, lastIndex);
     //   console.log("PagedPost:", this.pagedPost);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['startOffset'] && (changes['startOffset'].currentValue !== changes['startOffset'].previousValue)) {
-        console.log("startOffset change", this.startOffset);
+        // console.log("startOffset change", this.startOffset);
       this.buttonArray = [];
       this.calculateIndicies();
       this.calculateButtonRange();
