@@ -276,12 +276,13 @@ export class SearchComponent implements OnInit {
 
     if(this.pageNumber != this.lastMiddleButton && (this.pageNumber == (this.endOffset - 2))) {
 
-      this.lastMiddleButton = this.pageNumber;
       let indexToStart = ((this.pageNumber - 1) * this.searchService.resultsDisplaySize);
+      this.lastMiddleButton = this.pageNumber;
+
       console.log("INDEX TO START PULLING", indexToStart);
       this.searchService.search_page(this.query, this.searchService.pageHead, indexToStart).subscribe(
         (results) => {
-
+     
             this.posts = this.searchService.translatePosts(results.hit);
             this.posts.forEach((i) => {
               this.results.push(i);
@@ -290,6 +291,8 @@ export class SearchComponent implements OnInit {
             this.results.forEach((i)=> {
               this.resultList.push(i);
             });
+
+            this.calculateOffset();
         },
         (err) => {
           this.errorMessage = "An error occured retrieving the next set of posts: \n" + err + "\nPlease try again at a later time.";

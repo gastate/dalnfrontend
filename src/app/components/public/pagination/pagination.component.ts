@@ -146,18 +146,19 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log("IN CHANGES", this.resultList);
     if (changes['startOffset'] && (changes['startOffset'].currentValue !== changes['startOffset'].previousValue)) {
-        // console.log("startOffset change", this.startOffset);
+        console.log("startOffset change", this.startOffset, this.resultList);
       this.buttonArray = [];
-      this.calculateIndicies();
+      this.calculateIndicies(); 
       this.calculateButtonRange();
     }
-    if (changes['resultList'] && (changes['resultList'].currentValue !== changes['resultList'].previousValue)) {
-      //   console.log("pagination change", this.resultList);
-      this.buttonArray = [];
-      this.calculateIndicies();
-      this.calculateButtonRange();
-    }
+    // if (changes['resultList'] && (changes['resultList'].currentValue !== changes['resultList'].previousValue)) {
+    //     console.log("pagination change", this.resultList);
+    //   this.buttonArray = [];
+    //   this.calculateIndicies();
+    //   this.calculateButtonRange();
+    // }
 
 
     //   if (changes['endOffset']) {
