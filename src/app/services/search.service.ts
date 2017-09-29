@@ -36,7 +36,7 @@ export class SearchService {
     this.searchQuery = "";
     this.resultsDisplaySize = 12;
     this.pageNumber = 1;
-    this.pageHead = this.resultsDisplaySize * 5;
+    this.pageHead = this.resultsDisplaySize * 7;
     this.paginatorResults = [];
     this.totalApiSearchResults = 0;
     this.totalApiSearchPages = 0;

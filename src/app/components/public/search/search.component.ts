@@ -56,7 +56,7 @@ export class SearchComponent implements OnInit {
 
   pageNumber: number; // user specified page number to start from.
   resultsPerPage: number; // number of paginatorResults to display in search component.
-  pageParameter: number = 0;
+  lastMiddleButton: number; // number of last middle button pressed in the pagination component to append results to the resultList.
 
   currentOffset: number; // received by pagination component.
   currentPage: number;
@@ -267,26 +267,35 @@ export class SearchComponent implements OnInit {
 
   getResultHandler(event) {
     console.log(this.resultList);
-    //   this.currentOffset = event;
-    //   this.currentPage = event;
-    //   console.log("currentOffset", this.currentOffset);
-    //   console.log("startOffset", this.startOffset);
-    //   console.log("endOffset", this.endOffset);
 
-    //   console.
-    //   log("leftover", leftOverItems);
     this.pageNumber = event;
+
     console.log("getResultHandler() pageNumber received: ", this.pageNumber);
     console.log(this.endOffset);
 
-    //   if((this.currentOffset < this.startOffset) || (this.currentOffset > this.endOffset)) {
-    // if (this.currentOffset === this.endOffset - 1) {
-    //
-    //       console.log("index outside offset, new index is: ", index);
-    //   } else if(this.currentOffset < this.startOffset) {
-    //
-    //   }
-    console.log(this.pageNumber)
+
+    if(this.pageNumber != this.lastMiddleButton && (this.pageNumber == (this.endOffset - 2))) {
+
+      this.lastMiddleButton = this.pageNumber;
+      let indexToStart = ((this.pageNumber - 1) * this.searchService.resultsDisplaySize);
+      console.log("INDEX TO START PULLING", indexToStart);
+      this.searchService.search_page(this.query, this.searchService.pageHead, indexToStart).subscribe(
+        (results) => {
+
+            this.posts = this.searchService.translatePosts(results.hit);
+            this.posts.forEach((i) => {
+              this.results.push(i);
+            });
+
+            this.results.forEach((i)=> {
+              this.resultList.push(i);
+            });
+        },
+        (err) => {
+          this.errorMessage = "An error occured retrieving the next set of posts: \n" + err + "\nPlease try again at a later time.";
+        });
+    }
+
     this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.pageNumber}});
 
   }
