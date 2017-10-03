@@ -58,7 +58,7 @@
 </div>
 
 <div class="container responsive_home">
-    <app-pagination (currentPageEmitter)="getResultHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination>
+    <app-pagination (currentPageEmitter)="getButtonClickHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination>
     <!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination> --> 
 </div>
 

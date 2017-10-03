@@ -141,14 +141,14 @@ export class PaginationComponent implements OnInit, OnChanges {
     // Note that slice's last element is non-inclusive for the end item. 
     // Pass in the end + 1 if you wish to include the correct amount of posts.
     this.pagedPost = this.resultList.slice(firstIndex, lastIndex);
-    console.log("PAGED POST", this.resultList)
+    console.log("PAGED POST", this.resultList);
     //   console.log("PagedPost:", this.pagedPost);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("IN CHANGES", this.resultList);
     if (changes['startOffset'] && (changes['startOffset'].currentValue !== changes['startOffset'].previousValue)) {
-        console.log("startOffset change", this.startOffset, this.resultList);
+        console.log("button change", this.startOffset, this.resultList);
       this.buttonArray = [];
       this.calculateIndicies(); 
       this.calculateButtonRange();

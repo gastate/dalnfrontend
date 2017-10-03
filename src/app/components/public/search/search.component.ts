@@ -265,21 +265,20 @@ export class SearchComponent implements OnInit {
   }
 
 
-  getResultHandler(event) {
-    console.log(this.resultList);
+  getButtonClickHandler(event) {
+    this.pageNumber = event;  
 
-    this.pageNumber = event;
-
-    console.log("getResultHandler() pageNumber received: ", this.pageNumber);
-    console.log(this.endOffset);
-
+    console.log("function getButtonClickHandler()")
+    console.log("getButtonClickHandler() pageNumber received: ", this.pageNumber);
+    console.log("last button that should have data", this.endOffset);
+    console.log("resultList from search component", this.resultList);
 
     if(this.pageNumber != this.lastMiddleButton && (this.pageNumber == (this.endOffset - 2))) {
 
       let indexToStart = ((this.pageNumber - 1) * this.searchService.resultsDisplaySize);
       this.lastMiddleButton = this.pageNumber;
 
-      console.log("INDEX TO START PULLING", indexToStart);
+      console.log("INDEX TO START PULLING NEW POSTS", indexToStart);
       this.searchService.search_page(this.query, this.searchService.pageHead, indexToStart).subscribe(
         (results) => {
      
@@ -293,6 +292,9 @@ export class SearchComponent implements OnInit {
             });
 
             this.calculateOffset();
+            console.log("new resultList with more posts", this.resultList);
+            console.log("new last button we should have data for", this.endOffset);
+            
         },
         (err) => {
           this.errorMessage = "An error occured retrieving the next set of posts: \n" + err + "\nPlease try again at a later time.";
