@@ -14,16 +14,6 @@ import {Post} from '../../../model/post-model';
 })
 export class SearchComponent implements OnInit {
 
-
-  // TODO:
-  //   - Add query parameters for page.
-  //   - make buttons work, refresh
-  //   - populate buttons on visiting the link, refresh, other cases
-   
-
-  // @Output()
-  // searchResults: EventEmitter<Post[]>;
-
   @Output()
   showHomePage: EventEmitter<boolean>;
 
@@ -37,8 +27,7 @@ export class SearchComponent implements OnInit {
   showPagination: boolean;
 
   posts: Post[];
-  resultList: Post[];
-  results: Post[];
+  resultList: Post[] = [];
   errorMessage: string;
   sub: any;
   subQuery: any;
@@ -86,7 +75,6 @@ export class SearchComponent implements OnInit {
       this.pageNumber = params['page'];
       this.showPagination = true;    
       this.posts = [];
-      this.results = [];      
       if (this.query) {
         this.loading = true;          
         
@@ -102,7 +90,7 @@ export class SearchComponent implements OnInit {
           && this.lastSearch.queryParams[1] == this.searchService.pageHead
           && this.lastSearch.queryParams[2] ==
           (this.searchService.pageNumber == 1 ? 0 : this.searchService.pageNumber)) {
-          // console.log("Same Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
+          console.log("Found Local Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
           this.resultList = this.lastSearch.resultList;
           this.loading = false;
           // console.log("new resultList", this.resultList);
@@ -129,19 +117,6 @@ export class SearchComponent implements OnInit {
       }
     });
 
-    // this.showPagination = true;
-    // this.posts = [];
-    // this.results = [];
-    // this.resultList = this.searchService.paginatorResults;
-    
-    // this.startOffset = this.searchService.pageNumber;
-    // this.endOffset = Math.floor(Math.max(this.searchService.paginatorResults.length / this.searchService.resultsDisplaySize, 1));
-    // this.errorMessage = null;
-    
-    // this.resultsPerPage = this.searchService.resultsDisplaySize;
-    // this.pageNumber = this.searchService.pageNumber;
-    // this.total_offset = this.searchService.totalApiSearchPages;
-    // this.total_results = this.searchService.totalApiSearchResults;
   }
 
   keyPressHandler(term: string, results: number, index: number): void {
@@ -178,7 +153,7 @@ export class SearchComponent implements OnInit {
     if (this.lastSearch !== null && this.lastSearch.queryParams[0] == term
       && this.lastSearch.queryParams[1] == this.searchService.pageNumber
       && this.lastSearch.queryParams[2] == index) {
-      // console.log("Same Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, index]);
+      console.log("Found Local Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, index]);
       this.resultList = this.lastSearch.resultList;
       // console.log("Search resultList", this.resultList);
 
@@ -216,33 +191,36 @@ export class SearchComponent implements OnInit {
     // console.log("Before", this.query, term);
 
 
-    this.searchService.paginatorResults = [];
+    // this.searchService.paginatorResults = [];
     // TODO: uses input for all_results (this.paginatorResults should be all_results)
-    this.results = [];
+    // this.results = [];
     this.errorMessage = null;
 
 
     this.searchService.search_page(term, this.searchService.pageHead, index)
       .subscribe(
         (results) => {
+
+          console.log("SEARCH FUCKING RUNNING");
           if ((results.found <= 0) || (results.found === null)) {
             this.errorMessage = "No Results found";
           }
 
           this.posts = this.searchService.translatePosts(results.hit);
           this.posts.forEach((i) => {
-            this.results.push(i);
+            this.resultList.push(i);
           });
 
-          this.resultList = this.results;
-          this.searchService.paginatorResults = this.results;
+          this.searchService.paginatorResults = this.resultList;
           // console.log("new resultList", this.resultList);
+
           // save to local storage
           localStorage.setItem("lastSearch", JSON.stringify({
             queryParams: [term, this.searchService.pageHead, index],
-            resultList: this.posts, totalOffset: this.searchService.totalApiSearchPages,
+            resultList: this.resultList, totalOffset: this.searchService.totalApiSearchPages,
             totalSearchResultSize: this.searchService.totalApiSearchResults
           }));
+
           this.calculateOffset();
           this.showHomePage.emit(false);
           this.loading = false;
@@ -269,9 +247,9 @@ export class SearchComponent implements OnInit {
     this.pageNumber = event;  
 
     console.log("function getButtonClickHandler()")
-    console.log("getButtonClickHandler() pageNumber received: ", this.pageNumber);
-    console.log("last button that should have data", this.endOffset);
-    console.log("resultList from search component", this.resultList);
+    console.log("\tgetButtonClickHandler() pageNumber received: ", this.pageNumber);
+    console.log("\tlast button that should have data", this.endOffset);
+    console.log("\tresultList from search component", this.resultList);
 
     if(this.pageNumber != this.lastMiddleButton && (this.pageNumber == (this.endOffset - 2))) {
 
@@ -281,16 +259,20 @@ export class SearchComponent implements OnInit {
       console.log("INDEX TO START PULLING NEW POSTS", indexToStart);
       this.searchService.search_page(this.query, this.searchService.pageHead, indexToStart).subscribe(
         (results) => {
-     
+            alert("WTF");
             this.posts = this.searchService.translatePosts(results.hit);
             this.posts.forEach((i) => {
-              this.results.push(i);
-            });
-
-            this.results.forEach((i)=> {
               this.resultList.push(i);
             });
 
+            this.searchService.paginatorResults = this.resultList;
+
+            localStorage.setItem("lastSearch", JSON.stringify({
+              queryParams: [this.query, this.searchService.pageHead, this.pageNumber],
+              resultList: this.resultList, totalOffset: this.searchService.totalApiSearchPages,
+              totalSearchResultSize: this.searchService.totalApiSearchResults
+            }));
+            
             this.calculateOffset();
             console.log("new resultList with more posts", this.resultList);
             console.log("new last button we should have data for", this.endOffset);
@@ -299,6 +281,10 @@ export class SearchComponent implements OnInit {
         (err) => {
           this.errorMessage = "An error occured retrieving the next set of posts: \n" + err + "\nPlease try again at a later time.";
         });
+    }
+
+    if(this.pageNumber > this.endOffset){
+      
     }
 
     this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.pageNumber}});
