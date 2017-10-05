@@ -147,11 +147,6 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("IN CHANGES", this.resultList);
-
-    if(changes['resultList']) {
-      console.log(changes['resultList'].currentValue);      
-    }
-
     if (changes['startOffset'] && (changes['startOffset'].currentValue !== changes['startOffset'].previousValue)) {
         console.log("button change", this.startOffset, this.resultList);
 

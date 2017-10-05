@@ -102,7 +102,7 @@ export class SearchComponent implements OnInit {
           this.startOffset = this.searchService.pageNumber;
           this.endOffset = Math.floor(Math.max(this.resultList.length / this.resultsPerPage, 1));
           this.total_offset = Math.floor(this.lastSearch.totalSearchResultSize / this.resultsPerPage);
-          this.total_results = this.lastSearch.totalSearchResultSize;
+          this.total_results = this.lastSearch.totalSearchResultSize ;
 
 
           this.calculateOffset();
@@ -111,26 +111,27 @@ export class SearchComponent implements OnInit {
             
           this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.pageNumber}});
           return;
+        } else {
+          this.search(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);          
         }
         
-        this.search(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);
       }
     });
 
   }
 
-  keyPressHandler(term: string, results: number, index: number): void {
-    this.onSearch(term, results, index);
+  keyPressHandler(term: string, results: number, pageNumber: number): void {
+    this.onSearch(term, results, pageNumber);
   }
 
-  onSearch(term: string, results: number, index: number): void {
+  onSearch(term: string, results: number, pageNumber: number): void {
     this.resultsPerPage = results;
 
-    if (index == 1) {
-        this.pageNumber = index;
-        index = 0;
+    if (pageNumber == 1) {
+        this.pageNumber = pageNumber;
+        pageNumber = 0;
       } else {
-        this.pageNumber = index;        
+        this.pageNumber = pageNumber;        
       }
     
     if (term.length == 0 || term === undefined) {
@@ -145,15 +146,15 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
   }
 
-  search(term: string, results: number, index: number): void {
+  search(term: string, results: number, pageNumber: number): void {
     this.resultsPerPage = results;
     // console.log("Before", this.query, term);
     this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
-    // console.log("Last Search: ", this.lastSearch.queryParams, "term", term, "this.searchService.pageHead", this.searchService.pageNumber, "index", index);
+    // console.log("Last Search: ", this.lastSearch.queryParams, "term", term, "this.searchService.pageHead", this.searchService.pageNumber, "pageNumber", pageNumber);
     if (this.lastSearch !== null && this.lastSearch.queryParams[0] == term
       && this.lastSearch.queryParams[1] == this.searchService.pageNumber
-      && this.lastSearch.queryParams[2] == index) {
-      console.log("Found Local Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, index]);
+      && this.lastSearch.queryParams[2] == pageNumber) {
+      console.log("Found Local Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, pageNumber]);
       this.resultList = this.lastSearch.resultList;
       // console.log("Search resultList", this.resultList);
 
@@ -165,6 +166,10 @@ export class SearchComponent implements OnInit {
       this.searchService.paginatorResults = this.resultList;
       this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
       return;
+    } else {
+      // this search is not lastSearch, so empty resultList
+      this.resultList = [];
+      this.startOffset = pageNumber;
     }
 
     if (term === '' || term === undefined) {
@@ -179,13 +184,13 @@ export class SearchComponent implements OnInit {
 
     let displayPage; // to use for url parameter
 
-    // index controls the pagination, but it needs to start from 0 if the user puts in 1
+    // pageNumber controls the pagination, but it needs to start from 0 if the user puts in 1
     // since the first page in the api starts from page 0.
-    if (index == 1) {
-      displayPage = index;
-      index = 0;
+    if (pageNumber == 1) {
+      displayPage = pageNumber;
+      pageNumber = 0;
     } else {
-      displayPage = index;
+      displayPage = pageNumber;
     }
 
     // console.log("Before", this.query, term);
@@ -197,7 +202,7 @@ export class SearchComponent implements OnInit {
     this.errorMessage = null;
 
 
-    this.searchService.search_page(term, this.searchService.pageHead, index)
+    this.searchService.search_page(term, this.searchService.pageHead, pageNumber)
       .subscribe(
         (results) => {
 
@@ -216,7 +221,7 @@ export class SearchComponent implements OnInit {
 
           // save to local storage
           localStorage.setItem("lastSearch", JSON.stringify({
-            queryParams: [term, this.searchService.pageHead, index],
+            queryParams: [term, this.searchService.pageHead, pageNumber],
             resultList: this.resultList, totalOffset: this.searchService.totalApiSearchPages,
             totalSearchResultSize: this.searchService.totalApiSearchResults
           }));
@@ -253,11 +258,11 @@ export class SearchComponent implements OnInit {
 
     if(this.pageNumber != this.lastMiddleButton && (this.pageNumber == (this.endOffset - 2))) {
 
-      let indexToStart = ((this.pageNumber - 1) * this.searchService.resultsDisplaySize);
+      let pageNumberToStart = ((this.pageNumber - 1) * this.searchService.resultsDisplaySize);
       this.lastMiddleButton = this.pageNumber;
 
-      console.log("INDEX TO START PULLING NEW POSTS", indexToStart);
-      this.searchService.search_page(this.query, this.searchService.pageHead, indexToStart).subscribe(
+      console.log("pageNumber TO START PULLING NEW POSTS", pageNumberToStart);
+      this.searchService.search_page(this.query, this.searchService.pageHead, pageNumberToStart).subscribe(
         (results) => {
             alert("WTF");
             this.posts = this.searchService.translatePosts(results.hit);
