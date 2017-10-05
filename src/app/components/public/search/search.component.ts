@@ -45,7 +45,7 @@ export class SearchComponent implements OnInit {
 
   pageNumber: number; // user specified page number to start from.
   resultsPerPage: number; // number of paginatorResults to display in search component.
-  lastMiddleButton: number; // number of last middle button pressed in the pagination component to append results to the resultList.
+  lastClickedButton: number; // number of last middle button pressed in the pagination component to append results to the resultList.
 
   currentOffset: number; // received by pagination component.
   currentPage: number;
@@ -90,7 +90,7 @@ export class SearchComponent implements OnInit {
           && this.lastSearch.queryParams[1] == this.searchService.pageHead
           && this.lastSearch.queryParams[2] ==
           (this.searchService.pageNumber == 1 ? 0 : this.searchService.pageNumber)) {
-          console.log("Found Local Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
+        // console.log("Found Local Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
           this.resultList = this.lastSearch.resultList;
           this.loading = false;
           // console.log("new resultList", this.resultList);
@@ -111,10 +111,11 @@ export class SearchComponent implements OnInit {
             
           this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.pageNumber}});
           return;
-        } else {
-          this.search(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);          
-        }
+        } 
+
+        this.search(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);          
         
+
       }
     });
 
@@ -139,7 +140,9 @@ export class SearchComponent implements OnInit {
       this.router.navigate(['/home']);
     }
     if (term !== this.query) {
+      // new query, empty the currently shown postList.
       this.query = term;
+      this.searchService.paginatorResults = [];
     }
 
     this.searchService.searchQuery = this.query;
@@ -154,7 +157,7 @@ export class SearchComponent implements OnInit {
     if (this.lastSearch !== null && this.lastSearch.queryParams[0] == term
       && this.lastSearch.queryParams[1] == this.searchService.pageNumber
       && this.lastSearch.queryParams[2] == pageNumber) {
-      console.log("Found Local Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, pageNumber]);
+    // console.log("Found Local Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, pageNumber]);
       this.resultList = this.lastSearch.resultList;
       // console.log("Search resultList", this.resultList);
 
@@ -206,7 +209,6 @@ export class SearchComponent implements OnInit {
       .subscribe(
         (results) => {
 
-          console.log("SEARCH FUCKING RUNNING");
           if ((results.found <= 0) || (results.found === null)) {
             this.errorMessage = "No Results found";
           }
@@ -244,33 +246,40 @@ export class SearchComponent implements OnInit {
     this.startOffset = this.pageNumber;
     // console.log("Parent Offset", this.startOffset);
     this.endOffset = Math.floor(Math.max(this.resultList.length / this.searchService.resultsDisplaySize, 1));
-    //   console.log("startOffset, endOffset", this.startOffset, this.endOffset);
+    // // console.log("startOffset, endOffset", this.startOffset, this.endOffset);
   }
 
 
   getButtonClickHandler(event) {
     this.pageNumber = event;  
 
-    console.log("function getButtonClickHandler()")
-    console.log("\tgetButtonClickHandler() pageNumber received: ", this.pageNumber);
-    console.log("\tlast button that should have data", this.endOffset);
-    console.log("\tresultList from search component", this.resultList);
+  // console.log("function getButtonClickHandler()")
+  // console.log("\tgetButtonClickHandler() pageNumber received: ", this.pageNumber);
+  // console.log("\tlast button that should have data", this.endOffset);
+  // console.log("\tresultList from search component", this.resultList);
 
-    if(this.pageNumber != this.lastMiddleButton && (this.pageNumber == (this.endOffset - 2))) {
+    // if there is only one page of results for a search result, 
+    // do not try to pull the next page of results.
+    if(this.searchService.totalApiSearchPages == 1) {
+      this.lastClickedButton = this.pageNumber;
+    }
+    
+    if(this.pageNumber != this.lastClickedButton && (this.pageNumber >= (this.endOffset - 2)) ) {
 
       let pageNumberToStart = ((this.pageNumber - 1) * this.searchService.resultsDisplaySize);
-      this.lastMiddleButton = this.pageNumber;
+      this.lastClickedButton = this.pageNumber;
+    // console.log("lastClickedButton", this.lastClickedButton);
 
-      console.log("pageNumber TO START PULLING NEW POSTS", pageNumberToStart);
+    // console.log("pageNumber TO START PULLING NEW POSTS", pageNumberToStart);
       this.searchService.search_page(this.query, this.searchService.pageHead, pageNumberToStart).subscribe(
         (results) => {
-            alert("WTF");
             this.posts = this.searchService.translatePosts(results.hit);
             this.posts.forEach((i) => {
               this.resultList.push(i);
             });
 
             this.searchService.paginatorResults = this.resultList;
+            this.searchService.pageNumber = this.pageNumber;
 
             localStorage.setItem("lastSearch", JSON.stringify({
               queryParams: [this.query, this.searchService.pageHead, this.pageNumber],
@@ -279,8 +288,8 @@ export class SearchComponent implements OnInit {
             }));
             
             this.calculateOffset();
-            console.log("new resultList with more posts", this.resultList);
-            console.log("new last button we should have data for", this.endOffset);
+          // console.log("new resultList with more posts", this.resultList);
+          // console.log("new last button we should have data for", this.endOffset);
             
         },
         (err) => {
@@ -288,9 +297,6 @@ export class SearchComponent implements OnInit {
         });
     }
 
-    if(this.pageNumber > this.endOffset){
-      
-    }
 
     this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.pageNumber}});
 
