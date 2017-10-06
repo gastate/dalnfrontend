@@ -71,6 +71,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.subQuery = this.activatedRoute.queryParams.subscribe((params) => {
+
       this.query = params['query'];
       this.pageNumber = params['page'];
       this.showPagination = true;    
