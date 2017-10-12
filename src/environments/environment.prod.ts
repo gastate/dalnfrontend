@@ -32,9 +32,9 @@ const finalBucketName = "daln-prod";
 // Lambda Functions //
 //////////////////////
 
-const api_url = "https://svua18z1gd.execute-api.us-east-1.amazonaws.com/production";
+const api_url = "https://5odt95uhfg.execute-api.us-east-1.amazonaws.com/development";
 
-const search_api_url = "https://svua18z1gd.execute-api.us-east-1.amazonaws.com/production"; // using prod endpoint on both dev and prod.
+const search_api_url = "https://5odt95uhfg.execute-api.us-east-1.amazonaws.com/development"; // using prod endpoint on both dev and prod.
 
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
