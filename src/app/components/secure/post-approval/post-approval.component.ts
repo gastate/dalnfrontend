@@ -60,23 +60,10 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
   getUnapproved() {
       this.loading = true;
       this.postPoolTitle = "Admins Post Pool";
-      
-      // temp change to illustrate resolve post example.
-      let test: Post [];
-      this.postService.getMockPosts().then(
-        (value) => {
-            test = value;
-        },
-        (error) => {
-            console.log(error);
-        });
-
 
       this.postService.getUnapprovedPosts().subscribe(
           (data) => {
-              let actual_approval_list: Post[];
-              actual_approval_list = data;
-              this.approval_list = actual_approval_list.concat(test);
+              this.approval_list = data;
               if(this.approval_list.length == 0) {
                   this.noAdminPostsMessage = "No posts to be reviewed!";
               }
