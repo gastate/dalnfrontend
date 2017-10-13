@@ -37,6 +37,7 @@ export class PostDetailComponent implements OnInit {
       text: string;
 
       onDev: boolean;
+      assetNeedsReupload: boolean = true;
 
       private endPoint = environment;
 
@@ -152,7 +153,21 @@ export class PostDetailComponent implements OnInit {
 
   onSelectedAsset(asset: Asset): void {
     this.selectedAsset = asset;
+  }
 
+  checkAssets() {
+    for(var i=0; i< this.postDetail.assetList.length; i++) {
+        if (this.postDetail.assetList[i].assetLocation == "null") {
+            this.assetNeedsReupload = true;
+        }
+    }
+  }
+
+  reuploadAssets() {
+    for(var i=0; i< this.postDetail.assetList.length; i++) {
+        let filename = this.postDetail.assetList[i].assetName;
+        
+    }
   }
 
   unapprovePost() {
@@ -161,6 +176,10 @@ export class PostDetailComponent implements OnInit {
 
   ngOnDestroy() {
       this.sub.unsubscribe();
+  }
+
+  ngAfterViewInit(){
+      setTimeout(_=> this.checkAssets());
   }
 
 

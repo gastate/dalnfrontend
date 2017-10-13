@@ -16,15 +16,13 @@
   <!-- Video Post -->
   <div class="postitem_video" *ngIf="postAsset.assetType === 'Audio/Video'">
     <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
-            [src]="url | safe" width="100%" height="436px" allowfullscreen ></iframe>
+            [src]="url | safe" width="100%" height="436px" allowfullscreen></iframe>
     <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
-            [src]="url | safe" ></iframe>
+            [src]="url | safe" autostart="0" ></iframe>
   </div>
 
   <!-- Text post - only counts pdfs for now -->
   <div class="postitem_text" *ngIf="postAsset.assetType === 'Text' && url !== null">
-      <!-- <embed *ngIf="!thumb" [src]="url | safe" width="800px" height="800px" type="application/pdf" />
-      <embed *ngIf="thumb" [src]="url | safe" type="application/pdf" /> -->
       <object *ngIf="!thumb" [data]="url | safe" width="800px" height="800px" type="application/pdf"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>.</p></object>
       <object *ngIf="thumb" [data]="url | safe" type="application/pdf"><p><b>This browser does not support PDFs. </b> Please click on the post to download the PDF to view.</p></object>
   </div>

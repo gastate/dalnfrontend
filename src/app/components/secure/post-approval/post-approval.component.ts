@@ -60,11 +60,10 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
   getUnapproved() {
       this.loading = true;
       this.postPoolTitle = "Admins Post Pool";
-      if (this.postService.cache_admin_posts.length === 0) {
-          this.postService.getUnapprovedPosts().subscribe(
+
+      this.postService.getUnapprovedPosts().subscribe(
           (data) => {
               this.approval_list = data;
-              this.postService.cache_admin_posts = data;
               if(this.approval_list.length == 0) {
                   this.noAdminPostsMessage = "No posts to be reviewed!";
               }
@@ -75,11 +74,6 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
               this.loading = false;
               this.failed = true;
           });
-      } else {
-          this.approval_list = this.postService.cache_admin_posts;
-          this.loading = false;
-      }
-
   }
 
 //   getUserPostPool() {

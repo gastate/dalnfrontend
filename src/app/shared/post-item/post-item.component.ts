@@ -30,7 +30,7 @@ export class PostItemComponent implements OnInit {
   errorMessageEmitter: EventEmitter<string>;
 
   // isChecked: boolean;
-
+  assetFailureWarning: string = null;
   sub: any;
   showUnapproveButton: boolean;
 
@@ -51,6 +51,12 @@ export class PostItemComponent implements OnInit {
 
   getPreview(postAssets: Asset[]): Asset {
     return this._postService.getPreview(postAssets);
+  }
+
+  issueAssetWarning(event: any) {
+    if (event == true) {
+      this.assetFailureWarning = "Asset(s) failed to upload, check detail page for more info.";
+    }
   }
 
   // For mass approval.
@@ -78,6 +84,7 @@ export class PostItemComponent implements OnInit {
         + " failed. Reason: \n" + err); 
       });
   }
+
   unapprovePost() {
     this._postService.unapprovePost(this.postItem.postId);
   }
