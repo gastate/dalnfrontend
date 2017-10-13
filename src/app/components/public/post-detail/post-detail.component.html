@@ -76,8 +76,8 @@
 
       <div class="col-md-8">
 
-          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"></app-player>
-          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset"></app-player>
+          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset" (assetFailure)="checkAssets()"></app-player>
+          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset" (assetFailure)="checkAssets()"></app-player>
 
             <ul class="socicon right" style="margin-bottom:10px; margin-top:10px;">
               <li>
@@ -102,6 +102,14 @@
 
             <div *ngIf="onDev === true" class="col-md-4">
                 <button type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
+            </div>
+
+
+            <div *ngIf="assetNeedsReupload" class="col-md-4"> 
+                <hr/>
+                
+                <strong>Asset(s) Failed to Upload</strong>
+                <button type="button" class="btn btn-danger" (click)="reuploadAssets()">Click to Reupload</button>
             </div>
 
 

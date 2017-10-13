@@ -3,7 +3,7 @@
  */
 
 export class Asset {
-  assettitle: string;
+  assetName: string;
   assetType: string;
   assetID: string;
   assetDescription: string;
