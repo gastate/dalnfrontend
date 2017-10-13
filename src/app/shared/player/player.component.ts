@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Pipe, PipeTransform} from '@angular/core';
+import {Component, EventEmitter, Output, OnInit, Input, Pipe, PipeTransform} from '@angular/core';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Asset} from '../../model/asset-model';
 import {Post} from '../../model/post-model';
@@ -23,6 +23,10 @@ export class PlayerComponent implements OnInit {
     @Input()
     getdev: boolean;
 
+    @Output()
+    assetFailure: EventEmitter<boolean> = new EventEmitter<boolean>();
+    
+
     url : string;
     route: string;
     matchRoute: string;
@@ -38,12 +42,27 @@ export class PlayerComponent implements OnInit {
     // console.log(this.getdev);
   }
 
+  checkNullAssetLocation(asset: Asset) {
+    if (asset.assetLocation != "null"){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   getUrl(asset: Asset): void {
+
     if (!asset) {
         this.url = null;
     } else if (this.postAsset.assetType === "Audio/Video") {
 
-        this.url = this.postAsset.assetEmbedLink;
+        if (this.checkNullAssetLocation(this.postAsset) == false) {
+          this.url = this.postAsset.assetS3Link;
+          this.assetFailure.emit(true);
+        } else {
+          this.url = this.postAsset.assetEmbedLink;                    
+        }
+  
 
     } else if (this.postAsset.assetType === "Audio") {
 
@@ -53,7 +72,7 @@ export class PlayerComponent implements OnInit {
 
       audioID = pattern.exec(audioID).toString();
 
-    this.url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID;
+      this.url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + audioID;
     //   console.log( "Sanitzer:" + this.url);
 
 

@@ -9,4 +9,5 @@ export class Asset {
   assetDescription: string;
   assetEmbedLink: string;
   assetLocation: string;
+  assetS3Link: string;
 }

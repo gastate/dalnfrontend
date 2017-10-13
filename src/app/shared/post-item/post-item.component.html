@@ -14,11 +14,12 @@
             </a>
             <a *ngIf="getdev === true" target="_blank" class="thumbnail" [routerLink]="['/approval/detail', postItem.postId]">
                 <h3>{{postItem?.title}}</h3>
+                <p *ngIf="assetFailureWarning != null">{{assetFailureWarning}}</p>
             </a>
         </div>
         </header>
         <div class="card-block">
-                <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" [getdev]="getdev"></app-player>
+                <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" [getdev]="getdev" (assetFailure)="issueAssetWarning($event)"></app-player>
                 <div class="post-desc">
                     <div class="hover-post">
                         <button *ngIf="getdev === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
