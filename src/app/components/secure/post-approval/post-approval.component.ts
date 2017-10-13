@@ -66,7 +66,6 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
       this.postService.getMockPosts().then(
         (value) => {
             test = value;
-            console.log(test);
         },
         (error) => {
             console.log(error);
