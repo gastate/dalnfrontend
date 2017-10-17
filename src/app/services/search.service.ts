@@ -125,12 +125,12 @@ export class SearchService {
 
     for (let i = 0; i < fields.assetembedlink.length; i++) {
       assetList[ i ] = new Asset();
-      assetList[ i ].assettitle = (fields.assetname && fields.assetname[ i ] ? fields.assetname[ i ] : "No asset provided");
-      assetList[ i ].assetType = (fields.assettype && fields.assettype[ i ] ? fields.assettype[ i ] : "No asset provided.");
-      assetList[ i ].assetID = (fields.assetid && fields.assetid[ i ] ? fields.assetid[ i ] : "No asset provided");
-      assetList[ i ].assetEmbedLink = (fields.assetembedlink && fields.assetembedlink[ i ] ? fields.assetembedlink[ i ] : "No asset provided");
-      assetList[ i ].assetLocation = (fields.assetlocation && fields.assetlocation[ i ] ? fields.assetlocation[ i ] : "No asset provided.");
-      assetList[ i ].assetDescription = (fields.assetdescription && fields.assetdescription[ i ] ? fields.assetdescription[ i ] : "No asset provided.");
+      assetList[ i ].assetName = (fields.assetname && fields.assetname[ i ] ? fields.assetname[ i ] : "No asset name provided");
+      assetList[ i ].assetType = (fields.assettype && fields.assettype[ i ] ? fields.assettype[ i ] : "No asset type provided.");
+      assetList[ i ].assetID = (fields.assetid && fields.assetid[ i ] ? fields.assetid[ i ] : "No asset id provided");
+      assetList[ i ].assetEmbedLink = (fields.assetembedlink && fields.assetembedlink[ i ] ? fields.assetembedlink[ i ] : "No asset embed link provided");
+      assetList[ i ].assetLocation = (fields.assetlocation && fields.assetlocation[ i ] ? fields.assetlocation[ i ] : "No asset location provided.");
+      assetList[ i ].assetDescription = (fields.assetdescription && fields.assetdescription[ i ] ? fields.assetdescription[ i ] : "No asset description provided.");
     }
     //   console.log(assetList);
     return assetList;
