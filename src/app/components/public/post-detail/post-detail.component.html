@@ -105,7 +105,7 @@
             </div>
 
 
-            <div *ngIf="assetNeedsReupload" class="col-md-4"> 
+            <div *ngIf="_postService.assetNeedsReupload == true" class="col-md-4"> 
                 <hr/>
                 
                 <strong>Asset(s) Failed to Upload</strong>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import {ActivatedRoute, Router, Params, NavigationEnd}   from '@angular/router';
 import {Location} from '@angular/common';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -39,12 +39,12 @@ export class PostDetailComponent implements OnInit {
       text: string;
 
       onDev: boolean;
-      assetNeedsReupload: boolean;
 
       private endPoint = environment.API_ENDPOINTS;
 
 
-  constructor(private _http: Http,
+  constructor(
+              private _http: Http,
               private _postService: PostService,
               private _route: ActivatedRoute,
               private _location: Location,
@@ -57,6 +57,7 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     let fn:String = this.constructor.name+"#ngOnInit"; // tslint:disable-line:no-unused-variable
     this.loading = true;
+    this._postService.assetNeedsReupload = false;
     this.sub = this.router.events.subscribe((val) => {
 
     // will break view if routes are changed.
@@ -103,7 +104,7 @@ export class PostDetailComponent implements OnInit {
                   if(this.postDetail.title && this.postDetail.title.length) {
                       this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
                   }
-
+                  this.checkAssets();
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
               },
             err => {
@@ -139,6 +140,8 @@ export class PostDetailComponent implements OnInit {
                             }
                         }
                     }
+
+                    this.checkAssets();
                     this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
                     this.loading = false;
                 }
@@ -159,9 +162,11 @@ export class PostDetailComponent implements OnInit {
   }
 
   checkAssets() {
-    for(var i=0; i< this.postDetail.assetList.length; i++) {
-        if (this.postDetail.assetList[i].assetLocation == "null") {
-            this.assetNeedsReupload = true;
+    if (this.postDetail.assetList) {
+        for(var i=0; i< this.postDetail.assetList.length; i++) {
+            if (this.postDetail.assetList[i].assetLocation == "null") {
+                this._postService.assetNeedsReupload = true;
+            }
         }
     }
   }
@@ -187,7 +192,7 @@ export class PostDetailComponent implements OnInit {
         key: filename,
         tableName: this.endPoint.ddb_table_name
     };
-
+    console.log(jsonData);
     let input = JSON.stringify(jsonData);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -211,11 +216,12 @@ export class PostDetailComponent implements OnInit {
       this.sub.unsubscribe();
   }
 
-  // cuasesissues look into in le morn by delete.
-  ngAfterViewInit(){
-      setTimeout(_=> this.checkAssets());
-  }
+//   ngAfterViewInit(){
+//       setTimeout(_=> this.checkAssets());
+//   }
 
-
-
+//   ngAfterViewChecked() {
+//     setTimeout(_=> this.checkAssets());
+//   }
 }
+
