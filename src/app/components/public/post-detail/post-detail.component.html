@@ -105,11 +105,11 @@
             </div>
 
 
-            <div *ngIf="assetNeedsReupload" class="col-md-4"> 
+            <div *ngIf="_postService.assetNeedsReupload == true" class="col-md-4"> 
                 <hr/>
                 
                 <strong>Asset(s) Failed to Upload</strong>
-                <button type="button" class="btn btn-danger" (click)="reuploadAssets()">Click to Reupload</button>
+                <button type="button" class="btn btn-danger" (click)="handleReupload()">Click to Reupload</button>
             </div>
 
 

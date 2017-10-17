@@ -21,12 +21,13 @@ export class PostService {
   unapproved_posts: Post[];
   selected_posts: string[];
 
+  assetNeedsReupload: boolean;
+
 
   constructor(private _http: Http) {
     this.cache_admin_posts = [];
     this.unapproved_posts = [];
     this.selected_posts = [];
-
   }
 
   private endPoint = environment.API_ENDPOINTS;

@@ -1,6 +1,7 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import {ActivatedRoute, Router, Params, NavigationEnd}   from '@angular/router';
 import {Location} from '@angular/common';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {PostService} from '../../../services/post.service';
 import {Post} from '../../../model/post-model';
 import {Asset} from '../../../model/asset-model';
@@ -8,6 +9,7 @@ import {Asset} from '../../../model/asset-model';
 import {environment} from '../../../../environments/environment';
 
 import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'post-detail',
@@ -37,12 +39,13 @@ export class PostDetailComponent implements OnInit {
       text: string;
 
       onDev: boolean;
-      assetNeedsReupload: boolean = true;
 
-      private endPoint = environment;
+      private endPoint = environment.API_ENDPOINTS;
 
 
-  constructor(private _postService: PostService,
+  constructor(
+              private _http: Http,
+              private _postService: PostService,
               private _route: ActivatedRoute,
               private _location: Location,
               private router: Router
@@ -54,6 +57,7 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     let fn:String = this.constructor.name+"#ngOnInit"; // tslint:disable-line:no-unused-variable
     this.loading = true;
+    this._postService.assetNeedsReupload = false;
     this.sub = this.router.events.subscribe((val) => {
 
     // will break view if routes are changed.
@@ -66,7 +70,7 @@ export class PostDetailComponent implements OnInit {
           this.onDevDetail();
         } else {
         // get the postId value and use it for the url in the social media buttons.
-           this.route = this.endPoint.API_ENDPOINTS.share_link  + val.url.substring(8);
+           this.route = this.endPoint.share_link  + val.url.substring(8);
            this.onDetail();
         }
     });
@@ -100,7 +104,7 @@ export class PostDetailComponent implements OnInit {
                   if(this.postDetail.title && this.postDetail.title.length) {
                       this.text = this.postDetail.title.length > 140 ? this.postDetail.title.substring(0, 50) + '...' : this.postDetail.title;
                   }
-
+                  this.checkAssets();
                   this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
               },
             err => {
@@ -136,6 +140,8 @@ export class PostDetailComponent implements OnInit {
                             }
                         }
                     }
+
+                    this.checkAssets();
                     this.selectedAsset = this._postService.getPreview(this.postDetail.assetList);
                     this.loading = false;
                 }
@@ -156,19 +162,51 @@ export class PostDetailComponent implements OnInit {
   }
 
   checkAssets() {
-    for(var i=0; i< this.postDetail.assetList.length; i++) {
-        if (this.postDetail.assetList[i].assetLocation == "null") {
-            this.assetNeedsReupload = true;
+    if (this.postDetail.assetList) {
+        for(var i=0; i< this.postDetail.assetList.length; i++) {
+            if (this.postDetail.assetList[i].assetLocation == "null") {
+                this._postService.assetNeedsReupload = true;
+            }
         }
     }
   }
 
-  reuploadAssets() {
+  handleReupload() {
     for(var i=0; i< this.postDetail.assetList.length; i++) {
-        let filename = this.postDetail.assetList[i].assetName;
-        
+        let filename = this.postDetail.assetList[i].assetName; // check to make sure the filename upload is the same as the assetName   
+        let description = this.postDetail.assetList[i].assetDescription;
+        let postid = this.postDetail.postId;
+        this.reuploadAssets(postid, filename, description);
     }
   }
+
+  // literally a copy of linkFiles() in submit-form service,
+  // TODO: consolidate these functions into the service.
+  reuploadAssets(postid: string, filename: string, description: string) {
+    let jsonData;
+    jsonData = {
+        stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
+        assetDescription: description,
+        finalBucketName: this.endPoint.finalBucketName,
+        PostId: postid,
+        key: filename,
+        tableName: this.endPoint.ddb_table_name
+    };
+    console.log(jsonData);
+    let input = JSON.stringify(jsonData);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({headers: headers, method: "post"});
+
+    this._http.post(this.endPoint.link_media, input, options)
+    .map((res: Response) => res.json())
+    .catch((error : any) => Observable.throw(error.json().error))
+    .subscribe(
+        data => { console.log ('Reupload Link response: ', data);},
+        error => { console.log(error); }
+    );
+  }
+  
 
   unapprovePost() {
       this._postService.unapprovePost(this.postDetail.postId);
@@ -178,10 +216,12 @@ export class PostDetailComponent implements OnInit {
       this.sub.unsubscribe();
   }
 
-  ngAfterViewInit(){
-      setTimeout(_=> this.checkAssets());
-  }
+//   ngAfterViewInit(){
+//       setTimeout(_=> this.checkAssets());
+//   }
 
-
-
+//   ngAfterViewChecked() {
+//     setTimeout(_=> this.checkAssets());
+//   }
 }
+
