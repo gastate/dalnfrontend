@@ -42,6 +42,7 @@ export class SubmitFormService {
     filename : string;
     fileInfos: any[] = [];
 
+
   constructor(private _http: Http, private _uploadService: UploadService) {
       this.title = null;
       this.description = null;
@@ -138,16 +139,16 @@ export class SubmitFormService {
 
   }
 
-
+// TODO: replace assetDescription with form field input from the user.
 linkFiles(postId: string) {
     let fn: string = this.constructor.name + "#linkFiles"; 
     console.log(fn + "invoked with postId: " + postId);
 
+    // console.log("fileinfos" + this.fileInfos);
+
     let jsonLink;
     for( let fileinfo of this.fileInfos ) {
 
-        // replace the file name and pass the string to apiupload.
-        fileinfo.file = this._uploadService.replaceFileName( fileinfo );
         let string_to_pass = fileinfo.file.name;
 
         console.log(fn + "file key", string_to_pass );
