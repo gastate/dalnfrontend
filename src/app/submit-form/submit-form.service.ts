@@ -144,9 +144,10 @@ linkFiles(postId: string) {
     let fn: string = this.constructor.name + "#linkFiles"; 
     console.log(fn + "invoked with postId: " + postId);
 
+    // console.log("fileinfos" + this.fileInfos);
+
     let jsonLink;
     for( let fileinfo of this.fileInfos ) {
-
         // replace the file name and pass the string to apiupload.
         fileinfo.file = this._uploadService.replaceFileName( fileinfo );
         let string_to_pass = fileinfo.file.name;
