@@ -220,7 +220,9 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   }
 
   convertToAdminModel() {
-      
+      // create new object for admin model that includes isPostNotApproved and areFilesUploaded
+      // cast to postDetail.
+      // run this function if loggedIn and on approval.
   }
 
   ngOnDestroy() {

@@ -1,6 +1,9 @@
 <div class="container add-top-margin" *ngIf="postDetail">
   <!-- <button *ngIf="onDev !== true" class="btn btn-primary" type="submit" (click)="goBack()">Back</button> -->
-
+  <div *ngIf="showAdminUI == true && _postService.assetNeedsReupload == true" class="alert alert-danger" role="alert">
+    <strong>Failed asset upload.</strong> Asset(s) failed to upload to relevant services, please resolve by clicking the reupload button below.
+  </div>
+  
   <section>
 
 
