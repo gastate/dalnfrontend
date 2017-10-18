@@ -1,10 +1,14 @@
 import { Component, Input, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import {ActivatedRoute, Router, Params, NavigationEnd}   from '@angular/router';
 import {Location} from '@angular/common';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Http, Response, Headers, RequestOptions } from '@angular/http';
 import {PostService} from '../../../services/post.service';
 import {Post} from '../../../model/post-model';
 import {Asset} from '../../../model/asset-model';
+
+import {UserLoginService} from '../../../services/user-login.service';
+import {CognitoUtil} from '../../../services/cognito.service';
+import {LoggedInCallback} from '../../../services/cognito.service';
 
 import {environment} from '../../../../environments/environment';
 
@@ -16,7 +20,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.css']
 })
-export class PostDetailComponent implements OnInit {
+export class PostDetailComponent implements OnInit, LoggedInCallback {
 
 
       @Input()
@@ -38,12 +42,14 @@ export class PostDetailComponent implements OnInit {
       route: string;
       text: string;
 
-      onDev: boolean;
+      showAdminUI: boolean;
 
       private endPoint = environment.API_ENDPOINTS;
 
 
   constructor(
+              public cognitoService: CognitoUtil,
+              public userService: UserLoginService,              
               private _http: Http,
               private _postService: PostService,
               private _route: ActivatedRoute,
@@ -51,7 +57,8 @@ export class PostDetailComponent implements OnInit {
               private router: Router
 
           ) {
-  }
+            this.userService.isAuthenticated(this);            
+        }
 
 
   ngOnInit(): void {
@@ -66,7 +73,7 @@ export class PostDetailComponent implements OnInit {
         // console.log( fn+": production = ", environment.production );
         // console.log( fn+": url = ", val.url );
         // console.log( fn+": approval = ", val.url.startsWith("/approval") );
-        if(environment.production === false && val.url.startsWith("/approval")) {
+        if(environment.production === false) {
           this.onDevDetail();
         } else {
         // get the postId value and use it for the url in the social media buttons.
@@ -130,7 +137,6 @@ export class PostDetailComponent implements OnInit {
                     this.onDetail();
                 } else {
                     this.postDetail = details;
-                    this.onDev = true;
 
                     this.assets = this.postDetail.assetList;
                     if(this.assets && this.assets.length) {
@@ -216,12 +222,13 @@ export class PostDetailComponent implements OnInit {
       this.sub.unsubscribe();
   }
 
-//   ngAfterViewInit(){
-//       setTimeout(_=> this.checkAssets());
-//   }
+  isLoggedIn(message: string, isLoggedIn: boolean) {
+      if(!isLoggedIn) {
+          console.log("Not logged in");
+      } else {
+          this.showAdminUI = true;
+      }
+  }
 
-//   ngAfterViewChecked() {
-//     setTimeout(_=> this.checkAssets());
-//   }
 }
 

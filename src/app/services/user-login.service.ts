@@ -123,7 +123,7 @@ export class UserLoginService {
                     callback.isLoggedIn(err, false);
                 }
                 else {
-                    console.log("UserLoginService: Session is " + session.isValid());
+                    // console.log("UserLoginService: Session is " + session.isValid());
                     callback.isLoggedIn(err, session.isValid());
                 }
             });
