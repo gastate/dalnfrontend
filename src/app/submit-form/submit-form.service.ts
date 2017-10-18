@@ -148,8 +148,7 @@ linkFiles(postId: string) {
 
     let jsonLink;
     for( let fileinfo of this.fileInfos ) {
-        // replace the file name and pass the string to apiupload.
-        fileinfo.file = this._uploadService.replaceFileName( fileinfo );
+
         let string_to_pass = fileinfo.file.name;
 
         console.log(fn + "file key", string_to_pass );

@@ -185,6 +185,12 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
         this.reuploadAssets(postid, filename, description);
     }
   }
+  
+  unapprovePost() {
+      this._postService.unapprovePost(this.postDetail.postId);
+  }
+
+  // BELOW ARE HELPER FUNCTIONS FOR ABOVE.
 
   // literally a copy of linkFiles() in submit-form service,
   // TODO: consolidate these functions into the service.
@@ -212,10 +218,9 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
         error => { console.log(error); }
     );
   }
-  
 
-  unapprovePost() {
-      this._postService.unapprovePost(this.postDetail.postId);
+  convertToAdminModel() {
+      
   }
 
   ngOnDestroy() {

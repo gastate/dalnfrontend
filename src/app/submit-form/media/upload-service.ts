@@ -55,18 +55,18 @@ export class UploadService {
   //   );
   // }
 
-  replaceFileName( fileinfo:any ) {
-    // Create new File because file.name is constant
-    let file = fileinfo.file;
-    let fileCopy = new File([ file ], this.cleanFileName(file.name), { type: file.type });
-    console.log("File Name: ", fileCopy);
-    return fileCopy;
-  }
+  // replaceFileName( fileinfo:any ) {
+  //   // Create new File because file.name is constant
+  //   let file = fileinfo.file;
+  //   let fileCopy = new File([ file ], this.cleanFileName(file.name), { type: file.type });
+  //   console.log("File Name: ", fileCopy);
+  //   return fileCopy;
+  // }
 
-  cleanFileName(name: String) {
-    // Object.assign because file.name is constant
-    return name.replace(/ /g, "_");
-  }
+  // cleanFileName(name: String) {
+  //   // Object.assign because file.name is constant
+  //   return name.replace(/ /g, "_");
+  // }
 
   public uploadFiles( fileInfos: any[], onalldone: Function, onsuccess: Function = undefined, onprogress: Function = undefined, onfail: Function = undefined, i:number = 0 ) {
     let fn: string = this.constructor.name + "#uploadFiles";  // tslint:disable-line:no-unused-variable
