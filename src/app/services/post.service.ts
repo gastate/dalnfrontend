@@ -21,8 +21,6 @@ export class PostService {
   unapproved_posts: Post[];
   selected_posts: string[];
   
-  // work-around to track admin UI functions on post detail
-  assetNeedsReupload: boolean; 
 
 
   constructor(private _http: Http) {

@@ -43,6 +43,8 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
       text: string;
 
       showAdminUI: boolean;
+      assetFailedButtonText: string;
+      assetNeedsReupload: boolean;
 
       private endPoint = environment.API_ENDPOINTS;
 
@@ -64,7 +66,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   ngOnInit(): void {
     let fn:String = this.constructor.name+"#ngOnInit"; // tslint:disable-line:no-unused-variable
     this.loading = true;
-    this._postService.assetNeedsReupload = false;
+    this.assetNeedsReupload = false;
     this.sub = this.router.events.subscribe((val) => {
 
     // will break view if routes are changed.
@@ -171,18 +173,43 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     if (this.postDetail.assetList) {
         for(var i=0; i< this.postDetail.assetList.length; i++) {
             if (this.postDetail.assetList[i].assetLocation == "null") {
-                this._postService.assetNeedsReupload = true;
+                this.assetNeedsReupload = true;
+                this.assetFailedButtonText = "Asset(s) Failed to Upload";                
             }
         }
     }
   }
 
   handleReupload() {
+    this.assetFailedButtonText = "Reuploading Asset(s)...";
+    let successCount = 0;
+    let indexOfFailedReuploadAssets = [];
     for(var i=0; i< this.postDetail.assetList.length; i++) {
-        let filename = this.postDetail.assetList[i].assetName; // check to make sure the filename upload is the same as the assetName   
+        let filename = this.postDetail.assetList[i].assetName;   
         let description = this.postDetail.assetList[i].assetDescription;
         let postid = this.postDetail.postId;
-        this.reuploadAssets(postid, filename, description);
+        
+        this.reuploadAssets(postid, filename, description)
+            .subscribe( 
+                (data) => {
+                    if (data._body === '"File uploaded successfully"') {
+                       successCount++; 
+                    } else {
+                        successCount--;
+                    }
+        });
+
+        // once all the files have been tried to be reuploaded,
+        // we'll see if all of them were sucessful,
+        // if not then ask to retry.
+        if(i === this.postDetail.assetList.length - 1) {
+            console.log("sucess count", successCount, this.postDetail.assetList.length - 1);
+            if(successCount === this.postDetail.assetList.length - 1 ) {
+                this.assetFailedButtonText = "Reuploaded all assets";            
+            } else {
+                this.assetFailedButtonText = "Reuploading for asset(s) failed. Please retry.";
+            }
+        }
     }
   }
   
@@ -193,8 +220,10 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   // BELOW ARE HELPER FUNCTIONS FOR ABOVE.
 
   // literally a copy of linkFiles() in submit-form service,
-  // TODO: consolidate these functions into the service.
-  reuploadAssets(postid: string, filename: string, description: string) {
+  // TODO: consolidate these functions into the service,
+  // right now you need to pass more parameters that the service function does
+  // not have.
+  reuploadAssets(postid: string, filename: string, description: string) : Observable<any> {
     let jsonData;
     jsonData = {
         stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
@@ -210,20 +239,21 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: headers, method: "post"});
 
-    this._http.post(this.endPoint.link_media, input, options)
-    .map((res: Response) => res.json())
+    return this._http.post(this.endPoint.link_media, input, options)
     .catch((error : any) => Observable.throw(error.json().error))
-    .subscribe(
-        data => { console.log ('Reupload Link response: ', data);},
-        error => { console.log(error); }
-    );
+    .map((res: Response) => {
+        console.log("Reupload Link Text", res);
+        return res;
+    });
+    
+  
   }
 
-  convertToAdminModel() {
-      // create new object for admin model that includes isPostNotApproved and areFilesUploaded
-      // cast to postDetail.
-      // run this function if loggedIn and on approval.
-  }
+//   convertToAdminModel() {
+//       // create new object for admin model that includes isPostNotApproved and areFilesUploaded
+//       // cast to postDetail.
+//       // run this function if loggedIn and on approval.
+//   }
 
   ngOnDestroy() {
       this.sub.unsubscribe();
