@@ -148,7 +148,6 @@ linkFiles(postId: string) {
 
     let jsonLink;
     for( let fileinfo of this.fileInfos ) {
-
         let string_to_pass = fileinfo.file.name;
 
         console.log(fn + "file key", string_to_pass );
