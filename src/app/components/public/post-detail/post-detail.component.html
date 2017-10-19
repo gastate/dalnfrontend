@@ -1,6 +1,9 @@
 <div class="container add-top-margin" *ngIf="postDetail">
   <!-- <button *ngIf="onDev !== true" class="btn btn-primary" type="submit" (click)="goBack()">Back</button> -->
-
+  <div *ngIf="showAdminUI == true && assetNeedsReupload == true && assetFailedButtonText !== 'Reuploaded all assets'" class="alert alert-danger" role="alert">
+    <strong>Failed asset upload.</strong> Asset(s) failed to upload to relevant services, please resolve by clicking the reupload button below.
+  </div>
+  
   <section>
 
 
@@ -105,11 +108,11 @@
             </div>
 
 
-            <div *ngIf="showAdminUI === true && _postService.assetNeedsReupload == true" class="col-md-4"> 
+            <div *ngIf="showAdminUI === true && assetNeedsReupload == true" class="col-md-4"> 
                 <hr/>
                 
-                <strong>Asset(s) Failed to Upload</strong>
-                <button type="button" class="btn btn-danger" (click)="handleReupload()">Click to Reupload</button>
+                <strong>{{assetFailedButtonText}}</strong>
+                <button [hidden]="assetFailedButtonText === 'Reuploaded all assets'" [disabled]="assetFailedButtonText === 'Reuploading Asset(s)...'" type="button" class="btn btn-danger" (click)="handleReupload()">Click to Reupload</button>
             </div>
 
 

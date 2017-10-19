@@ -89,7 +89,9 @@ export class PostItemComponent implements OnInit {
     this._postService.unapprovePost(this.postItem.postId);
   }
 
-
+  // add convertToAdminModel function to include unapproved list's
+  // isPostNotApproved and areFilesUploaded variables.
+  // set relevant messages in the UI.
 
 
 }

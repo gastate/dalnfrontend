@@ -20,8 +20,7 @@ export class PostService {
   cache_admin_posts: Post[];
   unapproved_posts: Post[];
   selected_posts: string[];
-
-  assetNeedsReupload: boolean;
+  
 
 
   constructor(private _http: Http) {
