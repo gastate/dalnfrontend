@@ -1,6 +1,6 @@
 <div class="postItem" *ngIf="postItem">
 
-    <article class="card">
+    <article class="card" [ngClass]="{'card-outline-danger': assetFailureWarning != null }">
 
         <header class="post-header">
 
