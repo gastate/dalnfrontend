@@ -94,12 +94,21 @@
 
             </ul>
 
-            <div *ngIf="isText === true" class="col-md-4" style="margin-top:10%;">
+            <div *ngIf="isText === true && showAdminUI === false" class="col-md-4" style="margin-top:10%;">
                 <h3>Download List</h3>
                 <ul>
                     <li *ngFor="let asset of postDetail.assetList; let i = index">
                         <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
                     </li>
+                </ul>
+            </div>
+
+            <div *ngIf="showAdminUI === true" class="col-md-4">
+              <h3>Admin Download List</h3>
+                <ul>
+                  <li *ngFor="let asset of postDetail.assetList; let i = index">
+                     <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
+                  </li>
                 </ul>
             </div>
 
