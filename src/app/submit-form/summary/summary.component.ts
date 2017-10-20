@@ -40,6 +40,7 @@ export class SummaryComponent implements OnInit {
 
   displayPost(){
       this.data = this._submitService.returnPost();
+      console.log(this.data);
   }
 
   next() {
