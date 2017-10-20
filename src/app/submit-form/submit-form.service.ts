@@ -115,7 +115,7 @@ export class SubmitFormService {
          tableName : tableName,
          email: this.email,
          license: this.license,
-         dateCreated: this.dateCreated,
+         dateCreated: this.dateCreated
     }
 
      var str = JSON.stringify(data);
