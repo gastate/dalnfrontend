@@ -21,7 +21,7 @@ export class SubmitFormService {
     license: string;
 
     // dates are YYYY-MM-DD hh:mm:ss Z
-    dateSubmitted: string; // submitted post on this day.
+    // // dateSubmitted: string; // submitted post on this day.
     // dateIssued: string; // admin specified.
     dateCreated: string; // user specified.
     rightsConsent: string;
@@ -93,7 +93,7 @@ export class SubmitFormService {
 
   postCreate(): Observable<Response> {
 
-     let fn: string = this.constructor.name + "#postCreate";
+     let fn: string = this.constructor.name + "#postCreate"; 
 
      var tableName = this.endPoint.ddb_table_name;
      var data = {
@@ -116,7 +116,6 @@ export class SubmitFormService {
          email: this.email,
          license: this.license,
          dateCreated: this.dateCreated,
-         dateSubmitted: Date.now()
     }
 
      var str = JSON.stringify(data);

@@ -139,7 +139,6 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
                     this.onDetail();
                 } else {
                     this.postDetail = details;
-                    console.log(this.postDetail);
 
                     this.assets = this.postDetail.assetList;
                     if(this.assets && this.assets.length) {
