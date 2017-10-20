@@ -47,11 +47,15 @@ export class SummaryComponent implements OnInit {
     this.email = this.emailForm.value.email;
     this._submitService.email = this.email;
     this._submitService.postCreate().subscribe(
-      res => {
-        console.log(res);
-        this._router.navigateByUrl('/create/complete');        
+      (data) => {
+        console.log(data);
+        if(data["_body"] === '"Values for tableName, title, email, and license are required"') {
+          this.errorMessage = "Post Submisison failed, please make sure you have filled out the necessary information for your post."
+        } else {
+          this._router.navigateByUrl('/create/complete');                  
+        }
       },
-      err => {
+      (err) => {
         this.errorMessage = "Post not created. Please try again.";
       });
   }

@@ -192,7 +192,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
         this.reuploadAssets(postid, filename, description)
             .subscribe( 
                 (data) => {
-                    if (data._body === '"File uploaded successfully"') {
+                    if (data["_body"] === '"File uploaded successfully"') {
                        successCount++; 
                     } else {
                         successCount--;
@@ -240,7 +240,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     let options = new RequestOptions({headers: headers, method: "post"});
 
     return this._http.post(this.endPoint.link_media, input, options)
-    .catch((error : any) => Observable.throw(error.json().error))
+    .catch((error : any) => { return Observable.throw(error.json().error);})
     .map((res: Response) => {
         console.log("Reupload Link Text", res);
         return res;
