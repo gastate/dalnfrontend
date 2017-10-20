@@ -42,11 +42,11 @@ export class PlayerComponent implements OnInit {
     // console.log(this.getdev);
   }
 
-  checkNullAssetLocation(asset: Asset) {
+  hasNullAssetLocation(asset: Asset) {
     if (asset.assetLocation != "null"){
-      return true;
-    } else {
       return false;
+    } else {
+      return true;
     }
   }
 
@@ -56,7 +56,7 @@ export class PlayerComponent implements OnInit {
         this.url = null;
     } else if (this.postAsset.assetType === "Audio/Video") {
 
-        if (this.checkNullAssetLocation(this.postAsset) == false) {
+        if (this.hasNullAssetLocation(this.postAsset) == true) {
           this.url = this.postAsset.assetS3Link;
           this.assetFailure.emit(true);
         } else {
