@@ -98,7 +98,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
                 // console.log( fn+": POST DETAIL RECEIVED", typeof(detailStr), detailStr );
                   this.loading = false;
                   this.postDetail = details;
-
+                  console.log(this.postDetail);
                   this.assets = this.postDetail.assetList;
                   if(this.assets && this.assets.length) {
                       for(var i = 0; i <= this.assets.length - 1; i++) {
@@ -139,7 +139,6 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
                     this.onDetail();
                 } else {
                     this.postDetail = details;
-                    console.log(this.postDetail);
 
                     this.assets = this.postDetail.assetList;
                     if(this.assets && this.assets.length) {
@@ -193,7 +192,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
         this.reuploadAssets(postid, filename, description)
             .subscribe( 
                 (data) => {
-                    if (data._body === '"File uploaded successfully"') {
+                    if (data["_body"] === '"File uploaded successfully"') {
                        successCount++; 
                     } else {
                         successCount--;
@@ -241,7 +240,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     let options = new RequestOptions({headers: headers, method: "post"});
 
     return this._http.post(this.endPoint.link_media, input, options)
-    .catch((error : any) => Observable.throw(error.json().error))
+    .catch((error : any) => { return Observable.throw(error.json().error);})
     .map((res: Response) => {
         console.log("Reupload Link Text", res);
         return res;

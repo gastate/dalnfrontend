@@ -20,7 +20,7 @@
             <h3>{{postDetail?.title}}</h3>
             <p>{{postDetail?.description}}</p>
           <li>
-            <h3>Date Created</h3>
+            <h3>Date Submitted</h3>
             <p>{{postDetail?.dateCreated}}</p>
           </li>
           <li>
@@ -94,12 +94,21 @@
 
             </ul>
 
-            <div *ngIf="isText === true" class="col-md-4" style="margin-top:10%;">
+            <div *ngIf="isText === true && showAdminUI === false" class="col-md-4" style="margin-top:10%;">
                 <h3>Download List</h3>
                 <ul>
                     <li *ngFor="let asset of postDetail.assetList; let i = index">
                         <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
                     </li>
+                </ul>
+            </div>
+
+            <div *ngIf="showAdminUI === true" class="col-md-4">
+              <h3>Admin Download List</h3>
+                <ul>
+                  <li *ngFor="let asset of postDetail.assetList; let i = index">
+                     <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
+                  </li>
                 </ul>
             </div>
 
@@ -131,7 +140,7 @@
 </p>
 
 <div class="collapse" id="collapseExample">
-  <div class="card card-block">
+  <div class="card card-block detail-card">
      <div id="metadata-table">
       <table class="table table-sm table-bordered">
           <thead >
@@ -144,6 +153,14 @@
              <tr>
                   <td>postId</td>
                   <td>{{postDetail?.postId}}</td>
+             </tr>
+             <tr>
+               <td>title</td>
+               <td>{{postDetail?.title}}</td>
+             </tr>
+             <tr>
+               <td>description</td>
+               <td>{{postDetail?.description}}</td>
              </tr>
              <tr>
                   <td>identifierUri</td>
@@ -229,7 +246,7 @@
                   <td>creatorGender</td>
                   <td>
                      <ul>
-                      <li *ngFor="let gender of postDetail.creatorGender">{{creatorGender}}</li>
+                      <li *ngFor="let gender of postDetail.creatorGender">{{gender}}</li>
                      </ul>
                   </td>
              </tr>
@@ -241,7 +258,23 @@
                    </ul>
                 </td>
              </tr>
-
+             <tr>
+               <td>language</td>
+               <td>
+                 <ul>
+                   <li *ngFor="let language of postDetail.language">{{language}}</li>
+                 </ul>
+               </td>
+             </tr>
+             <tr>
+              <td>subject</td>
+              <td>
+                <ul>
+                  <li *ngFor="let subject of postDetail.subject">{{subject}}</li>
+                </ul>
+              </td>
+            </tr>
+            
          </tbody>
       </table>
  </div>

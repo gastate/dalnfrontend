@@ -15,15 +15,23 @@
 
   <!-- Video Post -->
   <div class="postitem_video" *ngIf="postAsset.assetType === 'Audio/Video'">
-    <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
-            [src]="url | safe" width="100%" height="436px" allowfullscreen></iframe>
-    <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
-            [src]="url | safe" autostart="0" ></iframe>
+
+    <div class="video_asset_iframe" *ngIf="postAsset.assetLocation != 'null' && postAsset.assetLocation != postAsset.assetS3Link">
+      <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
+      [src]="url | safe" width="100%" height="436px" allowfullscreen></iframe>
+      <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
+      [src]="url | safe" autostart="0" ></iframe>
+    </div>
+    
+    <div class="postitem_video_audio_asset_failure" *ngIf="postAsset.assetLocation != 'null' && postAsset.assetLocation == postAsset.assetS3Link">
+      <p>Asset uploaded in s3: (<a [href]="postAsset.assetS3Link" download>{{postAsset.assetS3Link}}</a>) Awaiting upload to services...Please check back at a later time.</p>
+    </div>
+
   </div>
 
   <!-- Text post - only counts pdfs for now -->
   <div class="postitem_text" *ngIf="postAsset.assetType === 'Text' && url !== null">
-      <object *ngIf="!thumb" [data]="url | safe" width="800px" height="800px" type="application/pdf"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>.</p></object>
+      <object *ngIf="!thumb" [data]="url | safe" width="800px" height="800px" type="application/pdf"><p><b>This browser does not support PDFs.</b> Please download the PDF to view it: <a href="url">Download PDF</a>.</p></object>
       <object *ngIf="thumb" [data]="url | safe" type="application/pdf"><p><b>This browser does not support PDFs. </b> Please click on the post to download the PDF to view.</p></object>
   </div>
 
@@ -31,6 +39,8 @@
   <div class="postitem_text" *ngIf="postAsset.assetType === 'Text' && url === null">
       <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item">
   </div>
+
+
 
 
 
