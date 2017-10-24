@@ -15,10 +15,18 @@
 
   <!-- Video Post -->
   <div class="postitem_video" *ngIf="postAsset.assetType === 'Audio/Video'">
-    <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
-            [src]="url | safe" width="100%" height="436px" allowfullscreen></iframe>
-    <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
-            [src]="url | safe" autostart="0" ></iframe>
+
+    <div class="video_asset_iframe" *ngIf="postAsset.assetLocation != 'null' && postAsset.assetLocation != postAsset.assetS3Link">
+      <iframe *ngIf="!thumb" class='sproutvideo-player' type='text/html'
+      [src]="url | safe" width="100%" height="436px" allowfullscreen></iframe>
+      <iframe *ngIf="thumb" class='sproutvideo-player' type='text/html' width="100%" height="166px"
+      [src]="url | safe" autostart="0" ></iframe>
+    </div>
+    
+    <div class="postitem_video_audio_asset_failure" *ngIf="postAsset.assetLocation != 'null' && postAsset.assetLocation == postAsset.assetS3Link">
+      <p>Asset uploaded in s3: (<a [href]="postAsset.assetS3Link" download>{{postAsset.assetS3Link}}</a>) Awaiting upload to services...Please check back at a later time.</p>
+    </div>
+
   </div>
 
   <!-- Text post - only counts pdfs for now -->
@@ -32,9 +40,7 @@
       <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item">
   </div>
 
-  <div class="postitem_asset_failure" *ngIf="postAsset.assetLocation == 'null'">
-    <p>Asset uploaded in s3: <a [href]="postAsset.assetS3Link" download>here.</a> Please resolve asset warnings.</p>
-  </div>
+
 
 
 

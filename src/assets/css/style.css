@@ -772,6 +772,10 @@ iframe {
     margin-bottom: 10%;
 }
 
+.detail-card {
+  height: 100%;
+}
+
 /* For submit form only */
 .card-submit {
     height: 100%;

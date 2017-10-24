@@ -98,7 +98,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
                 // console.log( fn+": POST DETAIL RECEIVED", typeof(detailStr), detailStr );
                   this.loading = false;
                   this.postDetail = details;
-
+                  console.log(this.postDetail);
                   this.assets = this.postDetail.assetList;
                   if(this.assets && this.assets.length) {
                       for(var i = 0; i <= this.assets.length - 1; i++) {
