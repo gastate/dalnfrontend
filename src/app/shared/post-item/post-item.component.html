@@ -22,8 +22,8 @@
                 <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" (assetFailure)="issueAssetWarning($event)"></app-player>
                 <div class="post-desc">
                     <div class="hover-post">
-                        <button *ngIf="showAdminUI === true && postItem.isPostNotApproved === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
-                        <button *ngIf="showAdminUI === true && postItem.isPostNotApproved === false" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
+                        <button *ngIf="getdev=== true && postItem.isPostNotApproved === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
+                        <button *ngIf="getdev === true && postItem.isPostNotApproved === false" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
                     </div>
                 </div>
         </div>
