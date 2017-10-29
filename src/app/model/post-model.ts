@@ -1,6 +1,8 @@
 import {Asset} from './asset-model';
 
 export class Post {
+  isPostNotApproved: boolean; 
+  areAllFilesUploaded: boolean;
   postId: string;
   title: string;
   description: string;

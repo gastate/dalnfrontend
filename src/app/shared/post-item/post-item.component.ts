@@ -11,11 +11,13 @@ import {Asset} from '../../model/asset-model';
 })
 export class PostItemComponent implements OnInit {
 
-  constructor(private _router: Router,
-              private _postService: PostService) {
-    this.approvedPostMessageEmitter = new EventEmitter<string>();
-    this.errorMessageEmitter = new EventEmitter<string>();
-  }
+  constructor(
+              private _router: Router,
+              private _postService: PostService
+            ) {
+              this.approvedPostMessageEmitter = new EventEmitter<string>();
+              this.errorMessageEmitter = new EventEmitter<string>();
+          }
 
   @Input()
   getdev: boolean;
@@ -32,19 +34,17 @@ export class PostItemComponent implements OnInit {
   // isChecked: boolean;
   assetFailureWarning: string = null;
   sub: any;
-  showUnapproveButton: boolean;
+  showAdminUI: boolean;
 
 
-  ngOnInit() {
-    //   console.log(this.getdev);
-    
-    this.sub = this._router.events.subscribe((val) => {
-
-    // will break view if routes are changed.
-        if(val.url.startsWith("/admin")) {
-          this.showUnapproveButton = false;
+  ngOnInit() : void {
+    this.sub = this._router.events.subscribe((url) => {
+      // will break view if routes are changed.
+      console.log("WTF");
+      if(this._router.url.startsWith("/admin")){
+        this.showAdminUI = true;
       } else {
-          this.showUnapproveButton = true;
+        this.showAdminUI = false;
       }
     });
   }
@@ -89,9 +89,8 @@ export class PostItemComponent implements OnInit {
     this._postService.unapprovePost(this.postItem.postId);
   }
 
-  // add convertToAdminModel function to include unapproved list's
-  // isPostNotApproved and areFilesUploaded variables.
-  // set relevant messages in the UI.
-
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 
 }

@@ -1,6 +1,6 @@
 <div class="postItem" *ngIf="postItem">
 
-    <article class="card" [ngClass]="{'card-outline-danger': assetFailureWarning != null }">
+    <article class="card" [ngClass]="{'card-outline-danger': assetFailureWarning != null && showAdminUI == true }">
 
         <header class="post-header">
 
@@ -14,25 +14,16 @@
             </a>
             <a *ngIf="getdev === true" target="_blank" class="thumbnail" [routerLink]="['/approval/detail', postItem.postId]">
                 <h3>{{postItem?.title}}</h3>
-                <p *ngIf="assetFailureWarning != null">{{assetFailureWarning}}</p>
+                <p *ngIf="assetFailureWarning != null && showAdminUI == true">{{assetFailureWarning}}</p>
             </a>
         </div>
         </header>
         <div class="card-block">
-                <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" [getdev]="getdev" (assetFailure)="issueAssetWarning($event)"></app-player>
+                <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" (assetFailure)="issueAssetWarning($event)"></app-player>
                 <div class="post-desc">
                     <div class="hover-post">
-                        <button *ngIf="getdev === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
-                        <button *ngIf="getdev === true && showUnapproveButton === true" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
-
-                        <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
-                            <p>{{postItem?.description}}</p>
-                        </a>
-                        <a *ngIf="getdev === true" target="_blank" class="thumbnail" [routerLink]="['/approval/detail', postItem.postId]">
-                            <p>{{postItem?.description}}</p>
-                        </a>
-
-
+                        <button *ngIf="showAdminUI === true && postItem.isPostNotApproved === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
+                        <button *ngIf="showAdminUI === true && postItem.isPostNotApproved === false" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
                     </div>
                 </div>
         </div>
