@@ -4,7 +4,7 @@
     <strong>Failed asset upload.</strong> Asset(s) failed to upload to relevant services, please resolve by clicking the reupload button below.
   </div>
 
-  ABOVE DOESNT WORK ANYMORE SINCE I PLANNED FOR ASSET TO BE NULL. NEED TO REFACTOR.
+  <!-- ABOVE DOESNT WORK ANYMORE SINCE I PLANNED FOR ASSET TO BE NULL. NEED TO REFACTOR. -->
   
   <section>
 
@@ -115,7 +115,8 @@
             </div>
 
             <div *ngIf="showAdminUI === true" class="col-md-4">
-                <button type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
+                <button *ngIf="postDetail.isPostNotApproved === true" type="button" class="btn btn-primary" (click)="unapprovePost()">Approve</button>
+                <button *ngIf="postDetail.isPostNotApproved === false" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>                
             </div>
 
 

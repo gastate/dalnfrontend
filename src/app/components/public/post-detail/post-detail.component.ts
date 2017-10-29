@@ -68,9 +68,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     this.loading = true;
     this.assetNeedsReupload = false;
     this.sub = this.router.events.subscribe((val) => {
-
     // will break view if routes are changed.
-
         // if environment.prod = false and coming in from admin view, then you should get by dev detail.
         // console.log( fn+": production = ", environment.production );
         // console.log( fn+": url = ", val.url );

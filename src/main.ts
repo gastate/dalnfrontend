@@ -10,7 +10,6 @@ if (environment.production === true) {
   enableProdMode();
 } else {
     console.warn("IN DEV");
-    console.log(environment.production);
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);
