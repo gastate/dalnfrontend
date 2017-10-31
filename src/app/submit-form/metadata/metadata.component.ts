@@ -78,7 +78,7 @@ export class MetadataComponent implements OnInit {
         this.submitService.creatorGender.push(this.gender);
     }
     
-    if (this.birthYear !== null) {
+    if (this.birthYear !== null || this.birthYear !== "") {
         this.submitService.creatorYearOfBirth.push(this.birthYear);        
     }
     
