@@ -10,14 +10,18 @@ import { SubmitFormService } from '../submit-form.service';
   templateUrl: './metadata.component.html',
   styleUrls: ['./metadata.component.css']
 })
+
+
 export class MetadataComponent implements OnInit {
-  metaForm: FormGroup;
+  
   submitService: SubmitFormService;
   names : string [] = [];
   interviewers: string [] = [];
-  gender: string [] = [];
-  birth_year: string [] = [];
 
+  creatorGender: string;
+  gender: string;
+  
+  birthYear: string;
 
   constructor(
       private _router: Router,
@@ -25,17 +29,10 @@ export class MetadataComponent implements OnInit {
       _submitService: SubmitFormService
   ) {
       this.submitService = _submitService;
-      this.initForm();
-   }
+
+}
 
   ngOnInit() {
-  }
-
-  initForm() {
-      this.metaForm = this.fb.group({
-          creatorGender : [''],
-          creatorYearOfBirth: ['']
-      });
 
   }
 
@@ -65,15 +62,28 @@ export class MetadataComponent implements OnInit {
 
 
   next() {
-    this.gender = this.metaForm.value.creatorGender;
-    this.birth_year = this.metaForm.value.creatorYearOfBirth;
 
+    this.submitService.creatorGender = [];
+    this.submitService.creatorYearOfBirth = [];
+
+    if (this.creatorGender === "Other") {
+        if (this.gender !== null) {
+            this.submitService.creatorGender.push(this.gender);            
+        }
+    } else if (this.creatorGender === "Male") {
+        this.gender = "Male";
+        this.submitService.creatorGender.push(this.gender);
+    } else if (this.creatorGender === "Female") {
+        this.gender = "Female";
+        this.submitService.creatorGender.push(this.gender);
+    }
+    
+    if (this.birthYear !== null) {
+        this.submitService.creatorYearOfBirth.push(this.birthYear);        
+    }
+    
     this.submitService.contributorAuthor = this.names;
     this.submitService.contributorInterviewer = this.interviewers;
-    this.submitService.creatorGender = this.gender;
-    this.submitService.creatorYearOfBirth = this.birth_year;
-
-
 
     this._router.navigateByUrl('/create/description');
   }
