@@ -22,6 +22,7 @@ export class MetadataComponent implements OnInit {
   gender: string;
   
   birthYear: string;
+  errorMessage: string; 
 
   constructor(
       private _router: Router,
@@ -77,13 +78,19 @@ export class MetadataComponent implements OnInit {
         this.gender = "Female";
         this.submitService.creatorGender.push(this.gender);
     }
+
+    this.submitService.contributorAuthor = this.names;
+    this.submitService.contributorInterviewer = this.interviewers;
     
     if (this.birthYear !== null || this.birthYear !== "") {
         this.submitService.creatorYearOfBirth.push(this.birthYear);        
     }
+
+    if (this.names.length === 0 || this.interviewers.length === 0) {
+        this.errorMessage = "Please add an author and interviewer. Click 'Add More' to add them to your post.";
+    }
     
-    this.submitService.contributorAuthor = this.names;
-    this.submitService.contributorInterviewer = this.interviewers;
+
 
     this._router.navigateByUrl('/create/description');
   }
