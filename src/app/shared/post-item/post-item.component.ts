@@ -76,7 +76,7 @@ export class PostItemComponent implements OnInit {
       res => {
         // give a message to say approval was successful.
         this.approvedPostMessageEmitter.emit("Post with ID " + this.postItem.postId
-          + " was approved.");
+          + " was approved. Please wait up to 60 seconds for post to appear in search results.");
       },
       err => {
         // give an error message.

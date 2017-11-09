@@ -224,7 +224,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             res => {
                 // give a message to say approval was successful.
                 this.approvalMessage = ("Post with ID " + this.postDetail.postId
-                    + " was approved.");
+                    + " was approved. Please wait up to 60 seconds for post to appear in search results.");
             },
             err => {
                 // give an error message.
@@ -241,7 +241,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             res => {
                 // give a message to say approval was successful.
                 this.unapprovalMessage = ("Post with ID " + this.postDetail.postId
-                    + " was unapproved.");
+                    + " was unapproved. Please wait up to 60 seconds for post to disappear from search results.");
             },
             err => {
                 // give an error message.
