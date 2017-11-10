@@ -50,7 +50,7 @@ export class SummaryComponent implements OnInit {
       (data) => {
         console.log(data);
         if(data["_body"] === '"Values for tableName, title, email, and license are required"') {
-          this.errorMessage = "Post Submisison failed, please make sure you have filled out the necessary information for your post."
+          this.errorMessage = "Post submission failed, please make sure you have filled out the necessary information for your post."
         } else {
           this._router.navigateByUrl('/create/complete');                  
         }

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {Router} from '@angular/router';
-import {PostService} from '../../services/post.service';
-import {Post} from '../../model/post-model';
-import {Asset} from '../../model/asset-model';
+import { Router } from '@angular/router';
+import { PostService } from '../../services/post.service';
+import { Post } from '../../model/post-model';
+import { Asset } from '../../model/asset-model';
 
 @Component({
   selector: 'post-item',
@@ -12,12 +12,12 @@ import {Asset} from '../../model/asset-model';
 export class PostItemComponent implements OnInit {
 
   constructor(
-              private _router: Router,
-              private _postService: PostService
-            ) {
-              this.approvedPostMessageEmitter = new EventEmitter<string>();
-              this.errorMessageEmitter = new EventEmitter<string>();
-          }
+    private _router: Router,
+    private _postService: PostService
+  ) {
+    this.approvedPostMessageEmitter = new EventEmitter<string>();
+    this.errorMessageEmitter = new EventEmitter<string>();
+  }
 
   @Input()
   getdev: boolean;
@@ -37,11 +37,11 @@ export class PostItemComponent implements OnInit {
   showAdminUI: boolean;
 
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.sub = this._router.events.subscribe((url) => {
       // will break view if routes are changed.
       console.log("WTF");
-      if(this._router.url.startsWith("/admin")){
+      if (this._router.url.startsWith("/admin")) {
         this.showAdminUI = true;
       } else {
         this.showAdminUI = false;
@@ -72,16 +72,16 @@ export class PostItemComponent implements OnInit {
   // }
 
   approvePost() {
-    this._postService.adminApprovePost(this.postItem.postId).subscribe(
+    this._postService.approvePost(this.postItem.postId).subscribe(
       res => {
         // give a message to say approval was successful.
-        this.approvedPostMessageEmitter.emit("Post with ID " + this.postItem.postId 
-        + " was approved.");
+        this.approvedPostMessageEmitter.emit("Post with ID " + this.postItem.postId
+          + " was approved. Please wait up to 60 seconds for post to appear in search results.");
       },
       err => {
         // give an error message.
-        this.errorMessageEmitter.emit("Post approval of " + this.postItem.postId 
-        + " failed. Reason: \n" + err); 
+        this.errorMessageEmitter.emit("Post approval of " + this.postItem.postId
+          + " failed. Reason: \n" + err);
       });
   }
 

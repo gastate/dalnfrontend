@@ -1,85 +1,101 @@
-
 <div class="container add-top-margin">
 
     <form novalidate submit=next()>
-    <ul>
+        <ul>
 
-        <li>
-            <span>Author</span>
-            <input class="meta-info" type="text" name="contributorAuthorLastName" #lastName >
-            <input class="meta-info" type="text" name="contributorAuthorFirstName" #firstName >
-            <button class="btn btn-secondary" type="button" (click)="addName(lastName.value, firstName.value)">Add More</button>
-            <p>Authors: </p>
-            <ul class="list-group">
-                <li *ngFor="let name of names" >{{name}}
+            <li>
+                <span>Author</span>
+                <div class="input-group">
+                    <input class="meta-info col-md-4" type="text" placeholder="Last Name, First Name" name="name" #nameInput>
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button" (click)="addName(nameInput)">+</button>
+                    </span>
+                </div>
+                <p *ngIf="names.length > 0"> Authors(s) specified: </p>
+                <p *ngIf="names.length === 0"> No Authors specified </p>
+                <span *ngFor="let name of names" class="badge badge-primary">{{name}}
                     <button (click)="removeName(this.name)" type="button" class="close">
-                        <span>&times;</span>
+                        <span> &nbsp; &times;</span>
                     </button>
-                </li>
-            </ul>
+                </span>
 
-            <br />
-            <p>
-            If you wish, enter the name of the author of this literacy narrative (you can click "Add More" to enter multiple names for a collaborative narrative). (Optional)
-            </p>
+                <p>
+                    If you wish, enter the name of the author of this literacy narrative (you can click "Add More" to enter multiple names for
+                    a collaborative narrative). (Optional)
+                </p>
 
-        </li>
+            </li>
 
-        <li>
-            <span>Interviewers</span>
-            <input class="meta-info" type="text" name="contributorInterviewerLastName" #lastNameInterviewer >
-            <input class="meta-info" type="text" name="contributorInterviewerFirstName" #firstNameInterviewer >
-            <button class="btn btn-secondary" type="button" (click)="addInterviewer(lastNameInterviewer.value, firstNameInterviewer.value)">Add More</button>
-            <p>Interviewers: </p>
-            <ul class="list-group">
-                <li *ngFor="let interview of interviewers" >{{interview}}
-                    <button (click)="removeInterviewer(this.interview)" type="button" class="close">
-                        <span>&times;</span>
+            <li>
+                <span>Interviewers</span>
+                <div class="input-group">
+                    <input class="meta-info col-md-4" type="text" placeholder="Last Name, First Name" name="name" #interviewerInput>
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button" (click)="addInterviewer(interviewerInput)">+</button>
+                    </span>
+                </div>
+                <p *ngIf="interviewers.length > 0"> Interviewers(s) specified: </p>
+                <p *ngIf="interviewers.length === 0"> No Interviewers specified </p>
+
+                <span *ngFor="let interviewer of interviewers" class="badge badge-primary">{{interviewer}}
+                    <button (click)="removeInterviewer(this.interviewer)" type="button" class="close">
+                        <span> &nbsp; &times;</span>
                     </button>
-                </li>
-            </ul>
-            <br />
-            <p>
-            If you wish, enter the name of the interviewers of this literacy narrative (you can click "Add More" to enter multiple interviewers for a collaborative narrative). (Optional)
-            </p>
+                </span>
 
-        </li>
+                <p>
+                    If you wish, enter the name of the interviewers of this literacy narrative (you can click "Add More" to enter multiple interviewers
+                    for a collaborative narrative). (Optional)
+                </p>
 
-        <li>
-          <span>Year-of-Birth</span>
-          <input class="meta-info" type="text" name="creatorYearOfBirth" [(ngModel)]="birthYear"> <br />
-          <p>
-              To help other DALN users find narratives by people of a particular age group, please provide your year of birth (or years of birth for collaborative entries), using four digits. (Optional)
-          </p>
-        </li>
+            </li>
 
-        <li>
-          <span>Gender</span>
-          <div class="form-group">
-              <input type="radio" name="creatorGender" value="Male" [(ngModel)]="creatorGender" /><p>
-                  Male
-              </p>
-              <input type="radio" name="creatorGender" value="Female" [(ngModel)]="creatorGender" /><p>
-                  Female
-              </p>
-              <input type="radio" name="creatorGender" value="Other" [(ngModel)]="creatorGender" /><p>
-                  Other (please specify) 
-                <input type="text" name="gender" [(ngModel)]="gender"/>
-              </p>
+            <li>
+                <span>Year-of-Birth</span>
+                <input class="meta-info col-md-1" maxlength="4" type="text" name="creatorYearOfBirth" placeholder="YYYY" [(ngModel)]="birthYear">
+                <br />
+                <p>
+                    To help other DALN users find narratives by people of a particular age group, please provide your year of birth (or years
+                    of birth for collaborative entries), using four digits. (Optional)
+                </p>
+            </li>
 
-              
-          </div>
-          <br />
-          <p>
-             To help other DALN users find narratives by people of a particular gender or sexual orientation, please describe your gender (for example, male, female, transgender) and/or sexual orientation (for example: gay, bisexual, heterosexual). (Optional)
-          </p>
-        </li>
+            <li>
+                <span>Gender</span>
+                <div class="form-group">
+                    <input type="radio" name="creatorGender" value="Male" [(ngModel)]="creatorGender" />
+                    <p>
+                        Male
+                    </p>
+                    <input type="radio" name="creatorGender" value="Female" [(ngModel)]="creatorGender" />
+                    <p>
+                        Female
+                    </p>
+                    <input type="radio" name="creatorGender" value="Other" [(ngModel)]="creatorGender" />
+                    <p>
+                        Other (please specify)
+                        <input type="text" name="gender" [(ngModel)]="gender" />
+                    </p>
 
-    </ul>
+
+                </div>
+                <br />
+                <p>
+                    To help other DALN users find narratives by people of a particular gender or sexual orientation, please describe your gender
+                    (for example, male, female, transgender) and/or sexual orientation (for example: gay, bisexual, heterosexual).
+                    (Optional)
+                </p>
+            </li>
+
+        </ul>
 
     </form>
 
     <button type="submit" class="btn btn-primary" (click)="next()">Next Step</button>
+
+    <div class="alert alert-danger add-top-margin" role="alert" *ngIf="errorMessage != null">
+        <strong> {{errorMessage}} </strong>
+    </div>
 
 
 </div>

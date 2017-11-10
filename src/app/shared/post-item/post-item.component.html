@@ -4,28 +4,29 @@
 
         <header class="post-header">
 
-        <div class="hover-post">
-            <!-- remove title and use button or description
+            <div class="hover-post">
+                <!-- remove title and use button or description
             make checkbox bigger -->
-            <!-- <input type="checkbox" [checked]="isChecked"> -->
+                <!-- <input type="checkbox" [checked]="isChecked"> -->
 
-            <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
-                <h3>{{postItem?.title}}</h3>
-            </a>
-            <a *ngIf="getdev === true" target="_blank" class="thumbnail" [routerLink]="['/approval/detail', postItem.postId]">
-                <h3>{{postItem?.title}}</h3>
-                <p *ngIf="assetFailureWarning != null && showAdminUI == true">{{assetFailureWarning}}</p>
-            </a>
-        </div>
+                <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
+                    <h3>{{postItem?.title}}</h3>
+                </a>
+                <a *ngIf="getdev === true" target="_blank" class="thumbnail" [routerLink]="['/approval/detail', postItem.postId]">
+                    <h3>{{postItem?.title}}</h3>
+                    <p *ngIf="assetFailureWarning != null && showAdminUI == true">{{assetFailureWarning}}</p>
+                </a>
+            </div>
         </header>
         <div class="card-block">
-                <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" (assetFailure)="issueAssetWarning($event)"></app-player>
-                <div class="post-desc">
-                    <div class="hover-post">
-                        <button *ngIf="getdev=== true && postItem.isPostNotApproved === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
-                        <button *ngIf="getdev === true && postItem.isPostNotApproved === false" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
-                    </div>
-                </div>
+            <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" (assetFailure)="issueAssetWarning($event)"></app-player>
+            <div class="post-desc">
+                <p>{{postItem?.description}}</p>
+                <!-- <div class="hover-post">
+                    <button *ngIf="getdev=== true && postItem.isPostNotApproved === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
+                    <button *ngIf="getdev === true && postItem.isPostNotApproved === false" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
+                </div> -->
+            </div>
         </div>
     </article>
 </div>

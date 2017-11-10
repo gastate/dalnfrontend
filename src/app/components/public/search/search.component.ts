@@ -1,10 +1,13 @@
-import {Component, OnInit,  HostListener,  Input, Output, EventEmitter} from '@angular/core';
-import {Location} from '@angular/common';
-import {ActivatedRoute, Router} from '@angular/router';
-import {SearchService} from '../../../services/search.service';
-import {PostService} from '../../../services/post.service';
-import {Post} from '../../../model/post-model';
+import { Component, OnInit, HostListener, Input, Output, EventEmitter } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SearchService } from '../../../services/search.service';
+import { PostService } from '../../../services/post.service';
+import { Post } from '../../../model/post-model';
 
+import { LoggedInCallback } from '../../../services/cognito.service';
+import { CognitoUtil } from '../../../services/cognito.service';
+import { UserLoginService } from '../../../services/user-login.service';
 
 
 @Component({
@@ -12,7 +15,7 @@ import {Post} from '../../../model/post-model';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, LoggedInCallback {
 
   @Output()
   showHomePage: EventEmitter<boolean>;
@@ -21,7 +24,10 @@ export class SearchComponent implements OnInit {
   router: Router;
   activatedRoute: ActivatedRoute;
   searchService: SearchService;
+
+
   lastSearch: any;
+  isAdmin: boolean; // turns off local storage
 
   @Input()
   showPagination: boolean;
@@ -38,7 +44,7 @@ export class SearchComponent implements OnInit {
   total_offset: number;
   total_results: number;
 
-  
+
   // loading
   loading: boolean = false;
   failed: boolean = false;
@@ -54,17 +60,22 @@ export class SearchComponent implements OnInit {
 
   private noResults: boolean = false;
 
-  constructor(location: Location,
-              router: Router,
-              activatedRoute: ActivatedRoute,
-              private _postService: PostService,
-              _searchService: SearchService) {
+  constructor(
+    location: Location,
+    router: Router,
+    activatedRoute: ActivatedRoute,
+    private _postService: PostService,
+    public cognitoService: CognitoUtil,
+    public userService: UserLoginService,
+    _searchService: SearchService) {
 
     this.location = location;
     this.router = router;
     this.activatedRoute = activatedRoute;
     this.searchService = _searchService;
     this.showHomePage = new EventEmitter<boolean>();
+
+    this.userService.isAuthenticated(this);
     // this.searchResults = new EventEmitter<Post[]>();
 
   }
@@ -74,24 +85,24 @@ export class SearchComponent implements OnInit {
 
       this.query = params['query'];
       this.pageNumber = params['page'];
-      this.showPagination = true;    
+      this.showPagination = true;
       this.posts = [];
       if (this.query) {
-        this.loading = true;          
-        
+        this.loading = true;
+
         this.searchService.searchQuery = this.query;
         this.lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
         // console.log("Last Search: ", this.lastSearch.queryParams);
         // console.log("\nterm", this.query, "\nthis.searchService.pageHead",
         //   this.searchService.pageHead, "\nthis.searchService.pageNumber",
         //   this.searchService.pageNumber);
-        
+
         // need to check if lastSearch is null else won't work.
         if (this.lastSearch !== null && this.lastSearch.queryParams[0] == this.query
           && this.lastSearch.queryParams[1] == this.searchService.pageHead
           && this.lastSearch.queryParams[2] ==
-          (this.searchService.pageNumber == 1 ? 0 : this.searchService.pageNumber)) {
-        // console.log("Found Local Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
+          (this.searchService.pageNumber == 1 ? 0 : this.searchService.pageNumber) && this.isAdmin === false) {
+          // console.log("Found Local Search: ", this.lastSearch.queryParams, [this.query, this.searchService.pageHead, this.searchService.pageNumber]);
           this.resultList = this.lastSearch.resultList;
           this.loading = false;
           // console.log("new resultList", this.resultList);
@@ -99,23 +110,23 @@ export class SearchComponent implements OnInit {
           // Not sure what this is for
           this.searchService.paginatorResults = this.resultList;
           this.searchService.totalApiSearchPages = this.lastSearch.totalOffset;
-          
+
           this.startOffset = this.searchService.pageNumber;
           this.endOffset = Math.floor(Math.max(this.resultList.length / this.resultsPerPage, 1));
           this.total_offset = Math.floor(this.lastSearch.totalSearchResultSize / this.resultsPerPage);
-          this.total_results = this.lastSearch.totalSearchResultSize ;
+          this.total_results = this.lastSearch.totalSearchResultSize;
 
 
           this.calculateOffset();
           this.showHomePage.emit(false);
 
-            
-          this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.pageNumber}});
-          return;
-        } 
 
-        this.search(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);          
-        
+          this.router.navigate(['/search'], { queryParams: { query: this.query, page: this.pageNumber } });
+          return;
+        }
+
+        this.search(this.query, this.searchService.resultsDisplaySize, this.searchService.pageNumber);
+
 
       }
     });
@@ -130,12 +141,12 @@ export class SearchComponent implements OnInit {
     this.resultsPerPage = results;
 
     if (pageNumber == 1) {
-        this.pageNumber = pageNumber;
-        pageNumber = 0;
-      } else {
-        this.pageNumber = pageNumber;        
-      }
-    
+      this.pageNumber = pageNumber;
+      pageNumber = 0;
+    } else {
+      this.pageNumber = pageNumber;
+    }
+
     if (term.length == 0 || term === undefined) {
       // console.log("TERM IS 0");
       this.router.navigate(['/home']);
@@ -147,7 +158,7 @@ export class SearchComponent implements OnInit {
     }
 
     this.searchService.searchQuery = this.query;
-    this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
+    this.router.navigate(['/search'], { queryParams: { query: term, page: this.pageNumber } });
   }
 
   search(term: string, results: number, pageNumber: number): void {
@@ -157,8 +168,8 @@ export class SearchComponent implements OnInit {
     // console.log("Last Search: ", this.lastSearch.queryParams, "term", term, "this.searchService.pageHead", this.searchService.pageNumber, "pageNumber", pageNumber);
     if (this.lastSearch !== null && this.lastSearch.queryParams[0] == term
       && this.lastSearch.queryParams[1] == this.searchService.pageNumber
-      && this.lastSearch.queryParams[2] == pageNumber) {
-    // console.log("Found Local Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, pageNumber]);
+      && this.lastSearch.queryParams[2] == pageNumber && this.isAdmin === false) {
+      // console.log("Found Local Search: ", this.lastSearch.queryParams, [term, this.searchService.pageHead, pageNumber]);
       this.resultList = this.lastSearch.resultList;
       // console.log("Search resultList", this.resultList);
 
@@ -168,7 +179,7 @@ export class SearchComponent implements OnInit {
       this.total_offset = this.lastSearch.totalApiSearchPages;
       this.total_results = this.lastSearch.totalSearchResultSize;
       this.searchService.paginatorResults = this.resultList;
-      this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
+      this.router.navigate(['/search'], { queryParams: { query: term, page: this.pageNumber } });
       return;
     } else {
       // this search is not lastSearch, so empty resultList
@@ -208,38 +219,41 @@ export class SearchComponent implements OnInit {
 
     this.searchService.search_page(term, this.searchService.pageHead, pageNumber)
       .subscribe(
-        (results) => {
+      (results) => {
 
-          if ((results.found <= 0) || (results.found === null)) {
-            this.errorMessage = "No Results found";
-          }
+        if ((results.found <= 0) || (results.found === null)) {
+          this.errorMessage = "No Results found";
+        }
 
-          this.posts = this.searchService.translatePosts(results.hit);
-          this.posts.forEach((i) => {
-            this.resultList.push(i);
-          });
+        this.posts = this.searchService.translatePosts(results.hit);
+        this.posts.forEach((i) => {
+          this.resultList.push(i);
+        });
 
-          this.searchService.paginatorResults = this.resultList;
-          // console.log("new resultList", this.resultList);
+        this.searchService.paginatorResults = this.resultList;
+        // console.log("new resultList", this.resultList);
 
-          // save to local storage
+        // save to local storage if not admin
+        if (this.isAdmin === false) {
           localStorage.setItem("lastSearch", JSON.stringify({
             queryParams: [term, this.searchService.pageHead, pageNumber],
             resultList: this.resultList, totalOffset: this.searchService.totalApiSearchPages,
             totalSearchResultSize: this.searchService.totalApiSearchResults
           }));
+        }
 
-          this.calculateOffset();
-          this.showHomePage.emit(false);
-          this.loading = false;
-          this.router.navigate(['/search'], {queryParams: {query: term, page: this.pageNumber}});
-          // console.log("Search resultList", this.resultList);
 
-        }, err => {
-            this.loading = false
-            this.failed = true;
-            this.errorMessage = "An error occured: \n" + err;
-        });
+        this.calculateOffset();
+        this.showHomePage.emit(false);
+        this.loading = false;
+        this.router.navigate(['/search'], { queryParams: { query: term, page: this.pageNumber } });
+        // console.log("Search resultList", this.resultList);
+
+      }, err => {
+        this.loading = false
+        this.failed = true;
+        this.errorMessage = "An error occured: \n" + err;
+      });
 
   }
 
@@ -252,46 +266,46 @@ export class SearchComponent implements OnInit {
 
 
   getButtonClickHandler(event) {
-    this.pageNumber = event;  
+    this.pageNumber = event;
 
-  // console.log("function getButtonClickHandler()")
-  // console.log("\tgetButtonClickHandler() pageNumber received: ", this.pageNumber);
-  // console.log("\tlast button that should have data", this.endOffset);
-  // console.log("\tresultList from search component", this.resultList);
+    // console.log("function getButtonClickHandler()")
+    // console.log("\tgetButtonClickHandler() pageNumber received: ", this.pageNumber);
+    // console.log("\tlast button that should have data", this.endOffset);
+    // console.log("\tresultList from search component", this.resultList);
 
     // if there is only one page of results for a search result, 
     // do not try to pull the next page of results.
-    if(this.searchService.totalApiSearchPages == 1) {
+    if (this.searchService.totalApiSearchPages == 1) {
       this.lastClickedButton = this.pageNumber;
     }
-    
-    if(this.pageNumber != this.lastClickedButton && (this.pageNumber >= (this.endOffset - 2)) ) {
+
+    if (this.pageNumber != this.lastClickedButton && (this.pageNumber >= (this.endOffset - 2))) {
 
       let pageNumberToStart = ((this.pageNumber - 1) * this.searchService.resultsDisplaySize);
       this.lastClickedButton = this.pageNumber;
-    // console.log("lastClickedButton", this.lastClickedButton);
+      // console.log("lastClickedButton", this.lastClickedButton);
 
-    // console.log("pageNumber TO START PULLING NEW POSTS", pageNumberToStart);
+      // console.log("pageNumber TO START PULLING NEW POSTS", pageNumberToStart);
       this.searchService.search_page(this.query, this.searchService.pageHead, pageNumberToStart).subscribe(
         (results) => {
-            this.posts = this.searchService.translatePosts(results.hit);
-            this.posts.forEach((i) => {
-              this.resultList.push(i);
-            });
+          this.posts = this.searchService.translatePosts(results.hit);
+          this.posts.forEach((i) => {
+            this.resultList.push(i);
+          });
 
-            this.searchService.paginatorResults = this.resultList;
-            this.searchService.pageNumber = this.pageNumber;
+          this.searchService.paginatorResults = this.resultList;
+          this.searchService.pageNumber = this.pageNumber;
 
-            localStorage.setItem("lastSearch", JSON.stringify({
-              queryParams: [this.query, this.searchService.pageHead, this.pageNumber],
-              resultList: this.resultList, totalOffset: this.searchService.totalApiSearchPages,
-              totalSearchResultSize: this.searchService.totalApiSearchResults
-            }));
-            
-            this.calculateOffset();
+          localStorage.setItem("lastSearch", JSON.stringify({
+            queryParams: [this.query, this.searchService.pageHead, this.pageNumber],
+            resultList: this.resultList, totalOffset: this.searchService.totalApiSearchPages,
+            totalSearchResultSize: this.searchService.totalApiSearchResults
+          }));
+
+          this.calculateOffset();
           // console.log("new resultList with more posts", this.resultList);
           // console.log("new last button we should have data for", this.endOffset);
-            
+
         },
         (err) => {
           this.errorMessage = "An error occured retrieving the next set of posts: \n" + err + "\nPlease try again at a later time.";
@@ -299,7 +313,7 @@ export class SearchComponent implements OnInit {
     }
 
 
-    this.router.navigate(['/search'], {queryParams: {query: this.query, page: this.pageNumber}});
+    this.router.navigate(['/search'], { queryParams: { query: this.query, page: this.pageNumber } });
 
   }
 
@@ -310,6 +324,14 @@ export class SearchComponent implements OnInit {
     if (this.subQuery)
       this.subQuery.unsubscribe();
     this.showPagination = false;
+  }
+
+  isLoggedIn(message: string, isLoggedIn: boolean) {
+    if (!isLoggedIn) {
+      this.isAdmin = false;
+    } else {
+      this.isAdmin = true;
+    }
   }
 
 

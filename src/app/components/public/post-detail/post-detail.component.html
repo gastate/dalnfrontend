@@ -1,11 +1,33 @@
 <div class="container add-top-margin" *ngIf="postDetail">
-  <!-- <button *ngIf="onDev !== true" class="btn btn-primary" type="submit" (click)="goBack()">Back</button> -->
-  <div *ngIf="showAdminUI == true && assetNeedsReupload == true && assetFailedButtonText !== 'Reuploaded all assets'" class="alert alert-danger" role="alert">
-    <strong>Failed asset upload.</strong> Asset(s) failed to upload to relevant services, please resolve by clicking the reupload button below.
+
+  <div *ngIf="showAdminUI == true && assetNeedsReupload == true && assetFailedButtonText !== 'Reuploaded all assets'" class="alert alert-danger"
+    role="alert">
+    <strong>Failed asset upload.</strong> Asset(s) failed to upload to relevant services, please resolve by clicking the reupload
+    button below.
   </div>
 
+  <div class="post-approval-message" *ngIf="approvalMessage.length !== 0">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>{{approvalMessage}}</strong>
+    </div>
+  </div>
+
+  <div class="post-approval-message" *ngIf="unapprovalMessage.length !== 0">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>{{unapprovalMessage}}</strong>
+    </div>
+  </div>
+
+
+
   <!-- ABOVE DOESNT WORK ANYMORE SINCE I PLANNED FOR ASSET TO BE NULL. NEED TO REFACTOR. -->
-  
+
   <section>
 
 
@@ -21,14 +43,14 @@
           <li>
             <h3>{{postDetail?.title}}</h3>
             <p>{{postDetail?.description}}</p>
-          <li>
-            <h3>Date Submitted</h3>
-            <p>{{postDetail?.dateCreated}}</p>
-          </li>
-          <li>
-            <h3>Author</h3>
-            <p *ngFor="let author of postDetail.contributorAuthor">{{author}}</p>
-          </li>
+            <li>
+              <h3>Date Submitted</h3>
+              <p>{{postDetail?.dateCreated}}</p>
+            </li>
+            <li>
+              <h3>Author</h3>
+              <p *ngFor="let author of postDetail.contributorAuthor">{{author}}</p>
+            </li>
 
         </ul>
 
@@ -43,8 +65,9 @@
             <h3>Tags/Subjects</h3>
             <ul class="tags-list">
               <!-- Track elements and limit tags with NgFor and TrackBy -->
-              <li class="tag" *ngFor="let subject of postDetail.subject"><span
-                class="label label-info">{{subject}}</span></li>
+              <li class="tag" *ngFor="let subject of postDetail.subject">
+                <span class="label label-info">{{subject}}</span>
+              </li>
             </ul>
 
         </ul>
@@ -61,18 +84,18 @@
         <br/>
 
         <h3>Media List</h3>
-        <ul class="media" >
+        <ul class="media">
 
-            <li *ngFor="let asset of postDetail.assetList" (click)="onSelectedAsset(asset)">
+          <li *ngFor="let asset of postDetail.assetList" (click)="onSelectedAsset(asset)">
 
-              <!-- Change event to be click event that changes player embed link -->
-              <h3>{{asset?.assettitle}}</h3>
-              <p>{{asset?.assetType}}: {{asset?.assetDescription}}</p>
+            <!-- Change event to be click event that changes player embed link -->
+            <h3>{{asset?.assettitle}}</h3>
+            <p>{{asset?.assetType}}: {{asset?.assetDescription}}</p>
 
-              <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
-            </li>
+            <!--<div *ngIf="selectedAsset">{{selectedAsset.assetID}}</div>-->
+          </li>
 
-          </ul>
+        </ul>
 
       </div>
 
@@ -81,54 +104,56 @@
 
       <div class="col-md-8">
 
-          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset" (assetFailure)="checkAssets()"></app-player>
-          <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset" (assetFailure)="checkAssets()"></app-player>
+        <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Audio/Video' || selectedAsset.assetType==='Audio')" [postAsset]="selectedAsset"
+          (assetFailure)="checkAssets()"></app-player>
+        <app-player *ngIf="selectedAsset && (selectedAsset.assetType==='Text')" [postAsset]="selectedAsset" (assetFailure)="checkAssets()"></app-player>
 
-            <ul class="socicon right" style="margin-bottom:10px; margin-top:10px;">
-              <li>
-                <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
-                </a>
-              </li>
-              <li>
-                  <a class="twitter twitter-share-button"
-                    href="https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}" target="_blank"  ></a>
-              </li>
+        <ul class="socicon right" style="margin-bottom:10px; margin-top:10px;">
+          <li>
+            <a href="https://www.facebook.com/dalnarchive/" class="facebook" target="_blank">
+            </a>
+          </li>
+          <li>
+            <a class="twitter twitter-share-button" href="https://twitter.com/intent/tweet?&text={{text}}&via=dalnarchive&url={{route}}"
+              target="_blank"></a>
+          </li>
 
-            </ul>
+        </ul>
 
-            <div *ngIf="isText === true && showAdminUI === false" class="col-md-4" style="margin-top:10%;">
-                <h3>Download List</h3>
-                <ul>
-                    <li *ngFor="let asset of postDetail.assetList; let i = index">
-                        <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div *ngIf="showAdminUI === true" class="col-md-4">
-              <h3>Admin Download List</h3>
-                <ul>
-                  <li *ngFor="let asset of postDetail.assetList; let i = index">
-                     <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
-                  </li>
-                </ul>
-            </div>
-
-            <div *ngIf="showAdminUI === true" class="col-md-4">
-                <button *ngIf="postDetail.isPostNotApproved === true" type="button" class="btn btn-primary" (click)="unapprovePost()">Approve</button>
-                <button *ngIf="postDetail.isPostNotApproved === false" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>                
-            </div>
-
-
-            <div *ngIf="showAdminUI === true && assetNeedsReupload == true" class="col-md-4"> 
-                <hr/>
-                
-                <strong>{{assetFailedButtonText}}</strong>
-                <button [hidden]="assetFailedButtonText === 'Reuploaded all assets'" [disabled]="assetFailedButtonText === 'Reuploading Asset(s)...'" type="button" class="btn btn-danger" (click)="handleReupload()">Click to Reupload</button>
-            </div>
-
-
+        <div *ngIf="isText === true && showAdminUI === false" class="col-md-4" style="margin-top:10%;">
+          <h3>Download List</h3>
+          <ul>
+            <li *ngFor="let asset of postDetail.assetList; let i = index">
+              <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
+            </li>
+          </ul>
         </div>
+
+        <div *ngIf="showAdminUI === true" class="col-md-4">
+          <h3>Admin Download List</h3>
+          <ul>
+            <li *ngFor="let asset of postDetail.assetList; let i = index">
+              <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div *ngIf="showAdminUI === true" class="col-md-4">
+          <button *ngIf="postDetail.isPostNotApproved == 0" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
+          <button *ngIf="postDetail.isPostNotApproved == 1" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
+        </div>
+
+
+        <div *ngIf="showAdminUI === true && assetNeedsReupload == true" class="col-md-4">
+          <hr/>
+
+          <strong>{{assetFailedButtonText}}</strong>
+          <button [hidden]="assetFailedButtonText === 'Reuploaded all assets'" [disabled]="assetFailedButtonText === 'Reuploading Asset(s)...'"
+            type="button" class="btn btn-danger" (click)="handleReupload()">Click to Reupload</button>
+        </div>
+
+
+      </div>
 
 
     </div>
@@ -136,140 +161,140 @@
 
   </section>
 
-<p>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample">
-        Show Full Item Record
-      </button>
-</p>
+  <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample">
+      Show Full Item Record
+    </button>
+  </p>
 
-<div class="collapse" id="collapseExample">
-  <div class="card card-block detail-card">
-     <div id="metadata-table">
-      <table class="table table-sm table-bordered">
-          <thead >
+  <div class="collapse" id="collapseExample">
+    <div class="card card-block detail-card">
+      <div id="metadata-table">
+        <table class="table table-sm table-bordered">
+          <thead>
             <tr>
-             <th>Metadata Tag</th>
-             <th>Content</th>
-           </tr>
-         </thead>
-         <tbody>
-             <tr>
-                  <td>postId</td>
-                  <td>{{postDetail?.postId}}</td>
-             </tr>
-             <tr>
-               <td>title</td>
-               <td>{{postDetail?.title}}</td>
-             </tr>
-             <tr>
-               <td>description</td>
-               <td>{{postDetail?.description}}</td>
-             </tr>
-             <tr>
-                  <td>identifierUri</td>
-                  <td>{{postDetail?.identifierUri}}</td>
-             </tr>
-             <tr>
-                <td>dateAccessioned</td>
-                <td>{{postDetail?.dateAccessioned}}</td>
-             </tr>
-             <tr>
-                  <td>dateAvailable</td>
-                  <td>{{postDetail?.dateAvailable}}</td>
-             </tr>
-             <tr>
-                  <td>dateCreated</td>
-                  <td>{{postDetail?.dateCreated}}</td>
-             </tr>
-             <tr>
-                  <td>dateIssued</td>
-                  <td>{{postDetail?.dateIssued}}</td>
-             </tr>
-             <tr>
-                <td>dateSubmitted</td>
-                <td>{{postDetail?.dateSubmitted}}</td>
-             </tr>
-             <tr>
-                  <td>rightsConsent</td>
-                  <td>{{postDetail?.rightsConsent}}</td>
-             </tr>
-             <tr>
-                  <td>rightsRelease</td>
-                  <td>{{postDetail?.rightsRelease}}</td>
-             </tr>
-             <tr>
-                  <td>contributorAuthor</td>
-                  <td>
-                     <ul>
-                      <li *ngFor="let author of postDetail.contributorAuthor">{{author}}</li>
-                     </ul>
-                  </td>
-             </tr>
-             <tr>
-                  <td>contributorInterviewer</td>
-                  <td>
-                     <ul>
-                      <li *ngFor="let author of postDetail.contributorInterviewer">{{author}}</li>
-                     </ul>
-                  </td>
-             </tr>
-             <tr>
-                  <td>coveragePeriod</td>
-                  <td>
-                     <ul>
-                      <li *ngFor="let period of postDetail.coveragePeriod">{{period}}</li>
-                     </ul>
-                  </td>
-             </tr>
-             <tr>
-                <td>coverageRegion</td>
-                <td>
-                   <ul>
-                    <li *ngFor="let region of postDetail.coverageRegion">{{region}}</li>
-                   </ul>
-                </td>
-             </tr>
-             <tr>
-                <td>coverageSpatial</td>
-                <td>
-                   <ul>
-                    <li *ngFor="let spatial of postDetail.coverageSpatial">{{spatial}}</li>
-                   </ul>
-                </td>
-             </tr>
-             <tr>
-                  <td>coverageStateProvince</td>
-                  <td>
-                     <ul>
-                      <li *ngFor="let state of postDetail.coverageStateProvince">{{state}}</li>
-                     </ul>
-                  </td>
-             </tr>
-             <tr>
-                  <td>creatorGender</td>
-                  <td>
-                     <ul>
-                      <li *ngFor="let gender of postDetail.creatorGender">{{gender}}</li>
-                     </ul>
-                  </td>
-             </tr>
-             <tr>
-                <td>creatorYearOfBirth</td>
-                <td>
-                   <ul>
-                    <li *ngFor="let year of postDetail.creatorYearOfBirth">{{year}}</li>
-                   </ul>
-                </td>
-             </tr>
-             <tr>
-               <td>language</td>
-               <td>
-                 <ul>
-                   <li *ngFor="let language of postDetail.language">{{language}}</li>
-                 </ul>
-               </td>
-             </tr>
-             <tr>
+              <th>Metadata Tag</th>
+              <th>Content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>postId</td>
+              <td>{{postDetail?.postId}}</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>{{postDetail?.title}}</td>
+            </tr>
+            <tr>
+              <td>description</td>
+              <td>{{postDetail?.description}}</td>
+            </tr>
+            <tr>
+              <td>identifierUri</td>
+              <td>{{postDetail?.identifierUri}}</td>
+            </tr>
+            <tr>
+              <td>dateAccessioned</td>
+              <td>{{postDetail?.dateAccessioned}}</td>
+            </tr>
+            <tr>
+              <td>dateAvailable</td>
+              <td>{{postDetail?.dateAvailable}}</td>
+            </tr>
+            <tr>
+              <td>dateCreated</td>
+              <td>{{postDetail?.dateCreated}}</td>
+            </tr>
+            <tr>
+              <td>dateIssued</td>
+              <td>{{postDetail?.dateIssued}}</td>
+            </tr>
+            <tr>
+              <td>dateSubmitted</td>
+              <td>{{postDetail?.dateSubmitted}}</td>
+            </tr>
+            <tr>
+              <td>rightsConsent</td>
+              <td>{{postDetail?.rightsConsent}}</td>
+            </tr>
+            <tr>
+              <td>rightsRelease</td>
+              <td>{{postDetail?.rightsRelease}}</td>
+            </tr>
+            <tr>
+              <td>contributorAuthor</td>
+              <td>
+                <ul>
+                  <li *ngFor="let author of postDetail.contributorAuthor">{{author}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>contributorInterviewer</td>
+              <td>
+                <ul>
+                  <li *ngFor="let author of postDetail.contributorInterviewer">{{author}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>coveragePeriod</td>
+              <td>
+                <ul>
+                  <li *ngFor="let period of postDetail.coveragePeriod">{{period}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>coverageRegion</td>
+              <td>
+                <ul>
+                  <li *ngFor="let region of postDetail.coverageRegion">{{region}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>coverageSpatial</td>
+              <td>
+                <ul>
+                  <li *ngFor="let spatial of postDetail.coverageSpatial">{{spatial}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>coverageStateProvince</td>
+              <td>
+                <ul>
+                  <li *ngFor="let state of postDetail.coverageStateProvince">{{state}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>creatorGender</td>
+              <td>
+                <ul>
+                  <li *ngFor="let gender of postDetail.creatorGender">{{gender}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>creatorYearOfBirth</td>
+              <td>
+                <ul>
+                  <li *ngFor="let year of postDetail.creatorYearOfBirth">{{year}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>language</td>
+              <td>
+                <ul>
+                  <li *ngFor="let language of postDetail.language">{{language}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
               <td>subject</td>
               <td>
                 <ul>
@@ -277,29 +302,30 @@
                 </ul>
               </td>
             </tr>
-            
-         </tbody>
-      </table>
- </div>
 
+          </tbody>
+        </table>
+      </div>
+
+    </div>
   </div>
+
+
+
+
+
 </div>
-
- 
-
-
-
-</div><!-- /container -->
+<!-- /container -->
 
 
 <div class="container add-top-margin" *ngIf="!postDetail && loading === false">
 
-    <h3>Post does not exist</h3>
+  <h3>Post does not exist</h3>
 
 </div>
 
 
 <div class="center">
-    <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
+  <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
 </div>
 <daln-footer></daln-footer>
