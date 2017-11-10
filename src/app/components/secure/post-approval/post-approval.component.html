@@ -22,8 +22,8 @@
 <div class="row justify-content-center">
     <div class="col-md-2">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-primary" (click)="getUnapproved()">Admin Post Pool</button>
-          <!-- <button type="button" class="btn btn-secondary" (click)="getUserPostPool()">Your Post Pool</button> -->
+            <button type="button" class="btn btn-primary" (click)="getUnapproved()">Admin Post Pool</button>
+            <!-- <button type="button" class="btn btn-secondary" (click)="getUserPostPool()">Your Post Pool</button> -->
         </div>
     </div>
 
@@ -33,7 +33,6 @@
     <h3>{{postPoolTitle}}</h3>
 </div>
 <hr />
-
 <!-- <div class="controls" *ngIf="postPoolTitle === 'Admins Post Pool' ">
     <button type="button" class="btn btn-danger" (click)="approveSelected()">Approve Posts</button>
 </div> -->
@@ -43,14 +42,14 @@
 
 <!-- Error message and loading components -->
 <div class="row justify-content-center">
-  <div class="col-md-6 alert alert-danger" *ngIf="errorMessage !== null">
-      <p>
-          {{errorMessage}}
-      </p>
-  </div>
- </div>
+    <div class="col-md-6 alert alert-danger" *ngIf="errorMessage !== null">
+        <p>
+            {{errorMessage}}
+        </p>
+    </div>
+</div>
 
- <!-- <div class="row justify-content-center">
+<!-- <div class="row justify-content-center">
    <div class="col-md-6 alert alert-success" *ngIf="noAdminPostsMessage !== null">
        <p>
            {{noAdminPostsMessage}}
@@ -58,8 +57,8 @@
    </div>
   </div> -->
 
- <div class="row add-top-margin justify-content-center">
-     <div class="col-md-12">
-         <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
-     </div>
- </div>
+<div class="row add-top-margin justify-content-center">
+    <div class="col-md-12">
+        <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
+    </div>
+</div>
