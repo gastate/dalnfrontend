@@ -40,7 +40,6 @@ export class PostItemComponent implements OnInit {
   ngOnInit(): void {
     this.sub = this._router.events.subscribe((url) => {
       // will break view if routes are changed.
-      console.log("WTF");
       if (this._router.url.startsWith("/admin")) {
         this.showAdminUI = true;
       } else {
