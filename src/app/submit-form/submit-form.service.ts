@@ -140,44 +140,23 @@ export class SubmitFormService {
   }
 
 // TODO: replace assetDescription with form field input from the user.
+
 linkFiles(postId: string) {
-    let fn: string = this.constructor.name + "#linkFiles"; 
-    console.log(fn + "invoked with postId: " + postId);
+    
+    @Component({
+      selector: "template-driven-form",
+      templateUrl: 'submit-form.component.html' // would this be the right url to use?
+    })
 
-    // console.log("fileinfos" + this.fileInfos);
+    export class TemplateDrivenForm {
 
-    let jsonLink;
-    for( let fileinfo of this.fileInfos ) {
-        let string_to_pass = fileinfo.file.name;
+      user: Object = {};
 
-        console.log(fn + "file key", string_to_pass );
-        jsonLink = {
-            stagingAreaBucketName : this.endPoint.stagingAreaBucketName,
-            assetDescription: "Asset",
-            finalBucketName: this.endPoint.finalBucketName,
-            PostId: postId,
-            key: string_to_pass,
-            tableName: this.endPoint.ddb_table_name
-        };
+      onSubmitTemplateBased() {
+        console.log(this.vm); // not sure if ".vm" applies here.
+      }
 
-        console.log(fn + "data to link", jsonLink);
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        let options = new RequestOptions({headers: headers, method: "post"});
-
-        var input = JSON.stringify(jsonLink);
-
-        // returns 504, make admin to check if went through.
-        this._http.post(this.endPoint.link_media, input, options)
-        .map((res: Response) => res.json())
-        .catch((error : any) => Observable.throw(error.json().error))
-        .subscribe(
-            data => { console.log ('Link response: ', data);},
-            error => { console.log(error); }
-        );
     }
 
-}
-
-}
+  }
 
