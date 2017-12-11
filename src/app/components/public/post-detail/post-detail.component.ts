@@ -296,7 +296,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
 
     isLoggedIn(message: string, isLoggedIn: boolean) {
         if (!isLoggedIn) {
-            console.log("Not logged in");
+            this.showAdminUI = false;
         } else {
             this.showAdminUI = true;
         }
