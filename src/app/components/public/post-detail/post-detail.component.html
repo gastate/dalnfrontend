@@ -124,7 +124,7 @@
           <h3>Download List</h3>
           <ul>
             <li *ngFor="let asset of postDetail.assetList; let i = index">
-              <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
+              <a href="{{postDetail.assetList[i].assetS3Link}}" download>{{postDetail.assetList[i].assetName}}</a>
             </li>
           </ul>
         </div>
@@ -133,7 +133,7 @@
           <h3>Admin Download List</h3>
           <ul>
             <li *ngFor="let asset of postDetail.assetList; let i = index">
-              <a href="{{postDetail.assetList[i].assetLocation}}" download>{{postDetail.assetList[i].assetName}}</a>
+              <a href="{{postDetail.assetList[i].assetS3Link}}" download>{{postDetail.assetList[i].assetName}}</a>
             </li>
           </ul>
         </div>
