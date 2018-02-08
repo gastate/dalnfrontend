@@ -26,6 +26,7 @@ const admin_ddb_table_name = "DALN-Admin-Posts";
 const ddb_table_name = "DALN-Posts-Dev";
 const stagingAreaBucketName = "daln-file-staging-area";
 const finalBucketName = "daln-development";
+const queueName = "DALNFileUploadQueueDev";
 
 ///////////////////////////////
 // Miscellanious Functions  //
@@ -83,6 +84,7 @@ export const environment = {
         link_media: link_media,
         page_posts: page_posts,
         post: post,
+        queueName: queueName,
         search_posts: search_posts,
         search_size: search_size,
         share_link: share_link,

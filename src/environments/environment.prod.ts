@@ -26,6 +26,8 @@ const admin_ddb_table_name = "DALN-Admin-Posts";
 const ddb_table_name = "DALN-Posts";
 const stagingAreaBucketName = "daln-file-staging-area";
 const finalBucketName = "daln-prod";
+const queueName = "DALNFileUploadQueueProd";
+
 
 
 //////////////////////
@@ -43,7 +45,7 @@ const post = search_api_url + "/posts/get/";
 const get_dev_post = api_url + "/posts/getdev/"; // to get a post from the dev table (used for viewing purposes)
 
 const rand_post = api_url + "/posts/random/"; // to get a list of random posts
-const search_posts = search_api_url  + "/posts/search/";
+const search_posts = search_api_url + "/posts/search/";
 // Posts/search/(query)/(pageSize)/(start)/(field)/(order)
 // start = index of first post
 // field = assetlocation of whatever
@@ -60,30 +62,31 @@ const get_unapproved_posts = api_url + "/admin/unapproved";
 
 
 export const environment = {
-  production: true,
-  API_ENDPOINTS: {
-    admin_ddb_table_name: admin_ddb_table_name,
-    all_posts: all_posts,
-    approve_post: approve_post,
-    api_url: api_url,
-    create_post: create_post,
-    ddb_table_name: ddb_table_name,
-    finalBucketName: finalBucketName,
-    get_dev_post: get_dev_post,
-    get_upload_link: get_upload_link,
-    get_unapproved_posts: get_unapproved_posts,
-    link_media : link_media,
-    page_posts: page_posts,
-    post: post,
-    search_posts : search_posts,
-    search_size : search_size,
-    stagingAreaBucketName: stagingAreaBucketName,
-    unapprove_post : unapprove_post
-}, COGNITO_INFO : {
-    region: region,
-    userPoolId: userPoolId,
-    identityPoolId: identityPoolId,
-    clientId: clientId
-}
+    production: true,
+    API_ENDPOINTS: {
+        admin_ddb_table_name: admin_ddb_table_name,
+        all_posts: all_posts,
+        approve_post: approve_post,
+        api_url: api_url,
+        create_post: create_post,
+        ddb_table_name: ddb_table_name,
+        finalBucketName: finalBucketName,
+        get_dev_post: get_dev_post,
+        get_upload_link: get_upload_link,
+        get_unapproved_posts: get_unapproved_posts,
+        link_media: link_media,
+        page_posts: page_posts,
+        post: post,
+        queueName: queueName,
+        search_posts: search_posts,
+        search_size: search_size,
+        stagingAreaBucketName: stagingAreaBucketName,
+        unapprove_post: unapprove_post
+    }, COGNITO_INFO: {
+        region: region,
+        userPoolId: userPoolId,
+        identityPoolId: identityPoolId,
+        clientId: clientId
+    }
 
 };
