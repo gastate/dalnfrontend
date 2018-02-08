@@ -50,6 +50,7 @@ export class SubmitFormService {
         this.license = null;
         this.rightsConsent = null;
         this.rightsRelease = null;
+        this.dateCreated = null;
         this.contributorAuthor = [];
         this.contributorInterviewer = [];
         this.creatorGender = [];

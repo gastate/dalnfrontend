@@ -169,17 +169,19 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
 
     onSelectedAsset(asset: Asset): void {
         this.selectedAsset = asset;
+        console.log("selected asset", asset);
     }
 
     checkAssets() {
-        if (this.postDetail.assetList) {
-            for (var i = 0; i < this.postDetail.assetList.length; i++) {
-                if (this.postDetail.assetList[i].assetS3Link === this.postDetail.assetList[i].assetEmbedLink && this.postDetail.assetList[i].assetType.indexOf("Audio") > -1) {
-                    this.assetNeedsReupload = true;
-                    this.assetFailedButtonText = "Asset(s) Failed to Upload";
-                }
-            }
-        }
+
+        // if (this.postDetail.assetList) {
+        //     for (var i = 0; i < this.postDetail.assetList.length; i++) {
+        //         if (this.postDetail.assetList[i].assetS3Link === this.postDetail.assetList[i].assetEmbedLink && this.postDetail.assetList[i].assetType.indexOf("Audio") > -1) {
+        //             this.assetNeedsReupload = true;
+        //             this.assetFailedButtonText = "Asset(s) Failed to Upload";
+        //         }
+        //     }
+        // }
     }
 
     handleReupload() {
