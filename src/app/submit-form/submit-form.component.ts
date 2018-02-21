@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
+import { ActivatedRouteSnapshot } from '@angular/router';
+import { CanComponentDeactivate } from './submit-can-deactivate-guardservice';
 
 
 @Component({
@@ -11,6 +11,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SubmitFormComponent {
 
+
+  canDeactivate(route: ActivatedRouteSnapshot) {
+    console.log('i am navigating away');
+
+    // if the editName !== this.user.name
+    if (route.url.toString().includes("create") !== true) {
+      return window.confirm('Are you sure? Leaving will discard any changes.');
+    }
+
+    return true;
+  }
 
 
 
