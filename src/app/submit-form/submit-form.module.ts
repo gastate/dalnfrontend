@@ -14,6 +14,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { CompleteComponent } from './complete/complete.component';
 import { SubmitFormRoutingModule } from './submit-form-routing.module';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import { CanDeactivateGuard } from './submit-can-deactivate-guardservice';
 
 
 
@@ -36,6 +37,7 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
     DatepickerComponent,
   ],
   providers: [
+    CanDeactivateGuard,
     SubmitFormService
   ]
 })

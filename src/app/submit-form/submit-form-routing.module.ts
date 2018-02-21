@@ -9,11 +9,13 @@ import { MediaComponent } from './media/media.component';
 import { LicenseComponent } from './license/license.component';
 import { SummaryComponent } from './summary/summary.component';
 import { CompleteComponent } from './complete/complete.component';
+import { CanDeactivateGuard } from './submit-can-deactivate-guardservice';
 
 const submitFormRoutes: Routes = [
   {
     path: '',
     component: SubmitFormComponent,
+    canDeactivate: [CanDeactivateGuard],
     children: [
       // {path: '', redirectTo: 'create', pathMatch: 'full'},
       { path: '', redirectTo: 'rights', pathMatch: 'full' },
