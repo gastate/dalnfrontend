@@ -1,50 +1,47 @@
 <div class="container add-top-margin">
 
-    <p>
-        Summary of Post Submission
-    </p>
+  <p>
+    Summary of Post Submission
+  </p>
 
-    <div class="card detail-card">
-        <div class="card-block">
-            <h3>Information provided: </h3>
-            
-            <p>Post Title: {{data?.title}}</p>
-            <p>Post description: {{data?.description}}</p>
-            <p>Rights Consent: {{data?.rightsConsent}}</p>
-            <p>Rights Relase: {{data?.rightsRelease}}</p>
-            <p>Creator Gender: {{data?.creatorGender}}</p>
-            <p>Creator Year of Birth: {{data?.creatorYearOfBirth}}</p>
-            <p>Author(s): {{data?.contributorAuthor}}</p>
-            <p>Interviewer(s): {{data?.contributorInterviewer}}</p>
-            <p>Coverage Period: {{data?.coveragePeriod}}</p>
-            <p>Nationality: {{data?.coverageNationality}}</p>
-            <p>Spatial: {{data?.coverageSpatial}}</p>
-            <p>State: {{data?.coverageStateProvince}}</p>
-            <p>Subject: {{data?.subject}}</p>
-            <p>language: {{data?.language}}</p>
-        </div>
+  <div class="card detail-card">
+    <div class="card-block">
+      <h3>Information provided: </h3>
+
+      <p>Post Title: {{data?.title}}</p>
+      <p>Post description: {{data?.description}}</p>
+      <p>Rights Consent: {{data?.rightsConsent}}</p>
+      <p>Rights Relase: {{data?.rightsRelease}}</p>
+      <p>Creator Gender: {{data?.creatorGender}}</p>
+      <p>Creator Year of Birth: {{data?.creatorYearOfBirth}}</p>
+      <p>Author(s): {{data?.contributorAuthor}}</p>
+      <p>Interviewer(s): {{data?.contributorInterviewer}}</p>
+      <p>Coverage Period: {{data?.coveragePeriod}}</p>
+      <p>Nationality: {{data?.coverageNationality}}</p>
+      <p>Spatial: {{data?.coverageSpatial}}</p>
+      <p>State: {{data?.coverageStateProvince}}</p>
+      <p>Subject: {{data?.subject}}</p>
+      <p>language: {{data?.language}}</p>
     </div>
+  </div>
 
-    <div class="form-group">
-        <form [formGroup]="emailForm" novalidate submt="next()">
-        <label class="control-label" for="signupEmail">Email</label>
-            <input id="signupEmail" required type="email" maxlength="100" class="form-control"
-            [(ngModel)]="email"
-            formControlName="email"
-            [value]="_submitService.email">
+  <div class="form-group">
+    <form [formGroup]="emailForm" novalidate submt="next()">
+      <label class="control-label" for="signupEmail">Email</label>
+      <input id="signupEmail" required type="email" maxlength="100" class="form-control" [(ngModel)]="email" formControlName="email"
+        [value]="_submitService.email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
 
-        </form>
-    </div>
+    </form>
+  </div>
 
-    <button class="btn btn-primary" type="submit" [disabled]="!emailForm.valid" (click)="next()">Next Step</button>
+  <button class="btn btn-primary" type="submit" [disabled]="!emailForm.valid" (click)="next()">Next Step</button>
 
-    <div class="alert alert-info" role="alert" *ngIf="!emailForm.controls.email.valid">
-        <strong> An email is required to make a post.</strong>
-    </div>
-    
-    <div class="alert alert-danger add-top-margin" role="alert" *ngIf="errorMessage != null">
-        <strong> {{errorMessage}} </strong>
-    </div>
+  <div class="alert alert-info" role="alert" *ngIf="!emailForm.controls.email.valid">
+    <strong> An email is required to make a post.</strong>
+  </div>
+
+  <div class="alert alert-danger add-top-margin" role="alert" *ngIf="errorMessage != null">
+    <strong> {{errorMessage}} </strong>
+  </div>
 
 </div>
-
