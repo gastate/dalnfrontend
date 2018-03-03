@@ -73,6 +73,8 @@ export class SearchService {
 
   search_page(term: string, results: number, offset: number): Observable<any> {
 
+    term = term.replace(/(['"])/g, ""); 
+    
     console.log(this.endPoint.search_posts + term + "/" + results + "/" + offset);
 
     return this._http.get(this.endPoint.search_posts + term + "/" + results + "/" + offset).map((res: Response) => {
