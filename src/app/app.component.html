@@ -1,43 +1,48 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#collapseContent" aria-controls="collapseContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" ></span>
-      </button>
-
-      <a routerLink="/home"><img src="assets/img/Logo_transparent.png" id="logo" /></a>
-
-
-      <div class="header2 col-5 brandContainer">
-          <a class="brand" routerLink="/home">Digital Archive of Literacy Narratives</a>
-      </div>
-
-      <div class="navbar-collapse collapse" id="collapseContent" aria-expanded="true">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item"> <a class="nav-link" routerLink="/home" routerLinkActive="active"> home </a> </li>
-              <li class="nav-item"> <a class="nav-link" routerLink="/about" routerLinkActive="active"> about </a> </li>
-              <li class="nav-item"> <a class="nav-link" href="https://thedaln.wordpress.com/" target="_blank"> DALN Blog </a> </li>
-              <li class="nav-item"> <a class="nav-link" routerLink="/contact" routerLinkActive="active"> contact </a> </li>
-              <li class="nav-item"> <a class="nav-link" routerLink="/create" routerLinkActive="active"> submit a literacy narrative </a> </li>
-              <li class="nav-item dropdown" *ngIf="showAdminButton == true">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-                       Admin Functions<i class="fa fa-caret-down"></i>
-                  </a>
-                  <ul class="dropdown-menu dropdown-user">
-                      <li>
-                          <a [routerLink]="['/admin']"  class="admin-link">Admin Panel</a>
-                      </li>
-                      <li class="divider responsive_divider"></li>
-                      <li>
-                          <a [routerLink]="['/logout']"  class="logout-link">Logout</a>
-                      </li>
-                  </ul>
-                  <!-- /.dropdown-user -->
-              </li>
-
-          </ul>
-       </div>
-
-
-
-
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand navbarBrandTitle" routerLink="/home">
+                DALN | Digital Archive of Literacy Narratives
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li routerLink="/home" routerLinkActive="active">
+                    <a>HOME</a>
+                </li>
+                <li routerLink="/about" routerLinkActive="active">
+                    <a>ABOUT DALN</a>
+                </li>
+                <li routerLink="/create/rights" routerLinkActive="active">
+                    <a>SUBMIT A LITERACY NARRATIVE</a>
+                </li>
+                <li routerLink="/contact" routerLinkActive="active">
+                    <a>CONTACT US</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+                        ADMIN LOGIN
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a [routerLink]="['/admin']" class="admin-link">Admin Panel</a>
+                        </li>
+                        <li class="divider responsive_divider"></li>
+                        <li>
+                            <a [routerLink]="['/logout']" class="logout-link">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
 <router-outlet></router-outlet>

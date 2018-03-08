@@ -1,45 +1,66 @@
-@charset "utf-8";
-
-
 @font-face {
-  font-family: 'FontAwesome';
-  src: url('../font/fontawesome-webfont.eot');
-  src: url('../font/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), url('../font/fontawesome-webfont.woff') format('woff'), url('../font/fontawesome-webfont.ttf') format('truetype'), url('../font/fontawesome-webfont.svg#FontAwesome') format('svg');
-  font-weight: normal;
-  font-style: normal;
+  font-family: "FontAwesome";
+  src: url("../font/fontawesome-webfont.eot");
+  src: url("../font/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),
+    url("../font/fontawesome-webfont.woff") format("woff"),
+    url("../font/fontawesome-webfont.ttf") format("truetype"),
+    url("../font/fontawesome-webfont.svg#FontAwesome") format("svg");
 }
 
-/***** General *****/
-html, body
-{
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
-}
-html,
 body {
-  font-family: 'Open Sans Condensed', sans-serif, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
-  color: #60666c;
-  margin: 0;
-  padding: 0;
-  background: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  color: #333;
+  padding-top: 70px;
+  background-color: #FCFCFC; 
 }
 
-#container {
-  display: none;
+.brandIcon {
+  height: 6em;
+  margin-top: -0.7em;
 }
 
-.left {
-  float: left;
+.navbar {
+  padding: 0.6em;
 }
 
-.right {
-  float: right;
+.navbar-default {
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border: 0px;
 }
 
-.center {
+.navbar-default .navbar-nav > li > a {
+  color: #314052;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 1em 1.5em;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  cursor: pointer;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+  color: #fff;
+  background-color: #307672;
+  font-size: 1.1em;
+  border-radius: 2px;
+  padding: 1em 1.5em;
+}
+
+.navbar-default .navbar-brand {
+  color: #314052;
+}
+
+.navbarBrandTitle {
+  font-size: 2em;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* .center {
   text-align: center;
 }
 
@@ -62,7 +83,7 @@ body {
 
 .divider-strip h1,
 .divider-strip h4 {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
   font-weight: 400;
   margin-bottom: 10px;
   text-transform: capitalize;
@@ -73,7 +94,7 @@ body {
 }
 
 .divider-strip.block-title h4 {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 24px;
   margin-top: 10px;
@@ -105,7 +126,7 @@ body {
 }
 
 .margin-right {
-  margin-right: 19px
+  margin-right: 19px;
 }
 
 a,
@@ -113,7 +134,6 @@ button {
   outline: none;
 }
 
-/* http://sonspring.com/journal/clearing-floats */
 
 .clear {
   clear: both;
@@ -124,11 +144,10 @@ button {
   height: 0;
 }
 
-/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
 
 .clearfix:after {
   clear: both;
-  content: ' ';
+  content: " ";
   display: block;
   font-size: 0;
   line-height: 0;
@@ -167,7 +186,6 @@ section {
   padding-top: 30px;
 }
 
-/***** Typography & Element *****/
 
 .imageLeft {
   float: left;
@@ -195,7 +213,8 @@ h5,
 h6,
 p,
 a {
-  font-family: 'PT Sans', sans-serif, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+  font-family: "PT Sans", sans-serif, "Lucida Sans", "Lucida Grande",
+    "Lucida Sans Unicode", sans-serif;
 }
 
 h1,
@@ -207,9 +226,6 @@ h6 {
   font-weight: 400;
 }
 
-
-
-/***** Social link*****/
 
 ul.socicon {
   margin: 0;
@@ -268,7 +284,6 @@ ul.socicon li.last {
   margin-right: 0;
 }
 
-/***** Main Nav *****/
 
 nav select {
   display: none;
@@ -293,14 +308,12 @@ nav ul li a {
   padding: 11px 16px;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
   text-transform: uppercase;
   line-height: 15px;
   color: #7493b2;
 }
 
-
-/***** Footer *****/
 
 footer {
   margin: 0;
@@ -357,7 +370,6 @@ footer h3 {
   color: #7d7d7d;
 }
 
-/***** Flickr *****/
 
 .flickr_badge_image {
   float: left;
@@ -366,7 +378,6 @@ footer h3 {
   background: #262626;
 }
 
-/***** Back to Top *****/
 
 #toTop {
   display: none;
@@ -397,7 +408,6 @@ footer h3 {
   outline: none;
 }
 
-/***** Button *****/
 
 .button {
   margin: 0 0 10px;
@@ -458,13 +468,18 @@ footer h3 {
   background: #577088;
 }
 
-/***** Button Bootstrap *****/
 
 .btn-success {
   background-color: #577088;
   *background-color: #63829f;
   background-image: -ms-linear-gradient(top, #7f9fbd, #63829f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#7f9fbd), to(#63829f));
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    from(#7f9fbd),
+    to(#63829f)
+  );
   background-image: -webkit-linear-gradient(top, #7f9fbd, #63829f);
   background-image: -o-linear-gradient(top, #7f9fbd, #63829f);
   background-image: -moz-linear-gradient(top, #7f9fbd, #63829f);
@@ -490,7 +505,6 @@ footer h3 {
   background-color: #408140 \9;
 }
 
-/***** List style *****/
 
 ul.circle li {
   padding: 0 0 1px 14px;
@@ -516,7 +530,6 @@ ul.arrow li {
   font-size: 13px;
 }
 
-/***** Message Boxes *****/
 
 .message-box {
   position: relative;
@@ -573,356 +586,346 @@ ul.arrow li {
   border-color: #d97676;
 }
 
-.message-box.error .closemsg {
+.right li a:hover {
+  color: #fefefe;
+  background-color: #262626;
+}
+#header-wrap {
+  position: relative;
 }
 
-
-/* Responsive
--------------------------------------------------- */
-
-
-.right li a:hover {color: #fefefe; background-color: #262626;}
-#header-wrap { position: relative;}
-
-#header-wrap img {width: 40%; height: auto; margin: 3px; }
+#header-wrap img {
+  width: 40%;
+  height: auto;
+  margin: 3px;
+}
 
 .span8 .sproutvideo-player {
-    width: 100%;
-    height: 432px;
+  width: 100%;
+  height: 432px;
 }
 
 #about-image img {
-    padding: 10px 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-
+  padding: 10px 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about-info p {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .footer-heading {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
-
 #logo {
-    float: left;
-    width: 12%;
-    top: 4px;
-    z-index: 1000;
-    position: absolute;
+  float: left;
+  width: 12%;
+  top: 4px;
+  z-index: 1000;
+  position: absolute;
 }
 
 .header2 {
-    width: 108%
+  width: 108%;
 }
 
-
 .navbar .brand {
-    display: inline;
-    /*margin-left: 64px;*/
-    font-size: 31px;
-    color: white;
-
+  display: inline;
+  font-size: 31px;
+  color: white;
 }
 
 .carousel-caption a {
-    color: #fff;
+  color: #fff;
 }
 
 .bg-inverse {
-    background-color: #333333 !important; /* gray color */
+  background-color: #333333 !important;
 }
 
 .desc {
-    text-align: center;
-    padding-top: 2%;
-    padding-bottom: 2%;
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .desc button {
-    float: left;
+  float: left;
 }
 
 .slider-img {
-    width: 1170px;
-    height: 350px;
+  width: 1170px;
+  height: 350px;
 }
 
-                    /****  Miscellaneous ****/
 
-/*For other non-home components that need spacing at the top.*/
 .add-top-margin {
-    margin-top: 2%;
+  margin-top: 2%;
 }
 
 .col-centered {
-    float: none;
-    margin: 0 auto;
+  float: none;
+  margin: 0 auto;
 }
-                    /**** Admin View ****/
 .admin-sidebar {
-    margin-top: 45%;
+  margin-top: 45%;
 }
 
 .admin-link {
-    color: #213f71;
+  color: #213f71;
 }
 
 .logout-link {
-    color: #CC0000;
+  color: #cc0000;
 }
-                    /**** Post Detail ****/
 #metadata-table {
   padding-top: 10px;
 }
 
 ul.socicon li a.twitter {
-    background: url(../img/social/twitter_dark.png) 0 0 no-repeat;
+  background: url(../img/social/twitter_dark.png) 0 0 no-repeat;
 }
 
 ul.socicon li a.facebook {
-    background: url(../img/social/facebook_dark.png) 0 0 no-repeat;
+  background: url(../img/social/facebook_dark.png) 0 0 no-repeat;
 }
-                    /**** Post Item ****/
 .postItem {
-    width: 100%;
+  width: 100%;
 }
-                    /**** Post List ****/
 
 .featured-post-list h3 {
-    margin-top: 7%;
+  margin-top: 7%;
 }
 
 #list-container {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .postAsset {
-    width: 100%;
+  width: 100%;
 }
 
 .post-header {
-    padding: 5% 8%;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid transparent;
+  padding: 5% 8%;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid transparent;
 }
 
 .post-header h3 {
-    font-size: 133%;
+  font-size: 133%;
 }
 
 .post-desc {
-    padding-top: 4%;
+  padding-top: 4%;
 }
 
 .child-container {
-    margin-top: 2%;
+  margin-top: 2%;
 }
 
 .postitem_image img {
-   width: 100%;
-   border-width: 2px;
-   border-color: rgb(1, 76, 140);
+  width: 100%;
+  border-width: 2px;
+  border-color: rgb(1, 76, 140);
 }
 
 .post_list {
-    width: 100%;
-    height: auto;
-    margin-bottom: 2%;
-    padding: 2% 2%;
+  width: 100%;
+  height: auto;
+  margin-bottom: 2%;
+  padding: 2% 2%;
 }
 
 .post_title {
-    color: #0275d8;
+  color: #0275d8;
 }
 
 #search-component {
-    margin: 20px;
+  margin: 20px;
 }
-.paginator, .page-item {
-    margin: 0px;
+.paginator,
+.page-item {
+  margin: 0px;
 }
 #option-card {
-     margin-bottom: 5px;
- }
+  margin-bottom: 5px;
+}
 
 iframe {
-    border: none;
+  border: none;
 }
 
 .details {
-    margin-bottom: 35px;
+  margin-bottom: 35px;
 }
 .empty_post {
-    width: 100%;
+  width: 100%;
 }
 
 .postitem_text {
-	width: 100%;
+  width: 100%;
 }
 
-/* Fixes for spacing on post_list*/
 
 .card {
-    height: 375px;
-    margin-bottom: 10%;
+  height: 375px;
+  margin-bottom: 10%;
 }
 
 .detail-card {
   height: 100%;
 }
 
-/* For submit form only */
+
 .card-submit {
-    height: 100%;
+  height: 100%;
 }
 
 .card-block {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .post-desc {
-    max-height: 150px;
-    position: relative;
-    overflow: hidden;
+  max-height: 150px;
+  position: relative;
+  overflow: hidden;
 }
 
 .post-title {
   margin: 10px 0;
-  font-size: 36px
+  font-size: 36px;
 }
 
-
-
-
-#collapseContent { padding-bottom: 30px;}
+#collapseContent {
+  padding-bottom: 30px;
+}
 
 @media (max-width: 576px) {
-    .right {float: none;}
-    .span8 {float:none;}
-    /* need to ngIf current */
-    /*.row {margin-bottom: 20%; }*/
-    .right li:not(:first-child) {}
-    .right li.icon {
-        float: right;
-        display: block;
-    }
-    .right li {
-        float: none;
-        display: inline;
-    }
+  .right {
+    float: none;
+  }
+  .span8 {
+    float: none;
+  }
 
-    .responsive_divider {
-        display: none;
-    }
+  .right li:not(:first-child) {
+  }
+  .right li.icon {
+    float: right;
+    display: block;
+  }
+  .right li {
+    float: none;
+    display: inline;
+  }
 
-    .responsive_home {
-        max-width: 100vw;
-    }
+  .responsive_divider {
+    display: none;
+  }
 
+  .responsive_home {
+    max-width: 100vw;
+  }
 
-    #logo {
-        float: none;
-        display: block;
-        width: 50%;
-        position: relative;
-        margin: auto;
-        margin-bottom: 10px;
-    }
-    .navbar .brand {
-        display: none;
-    }
-
-
+  #logo {
+    float: none;
+    display: block;
+    width: 50%;
+    position: relative;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+  .navbar .brand {
+    display: none;
+  }
 }
 
 .contact-info {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
-
 
 h4 {
-    text-align: center;
+  text-align: center;
 }
-
-
 
 span.italic {
-    font-style: italic;
+  font-style: italic;
 }
 
-
-
 .brandContainer {
-	margin-left: 12%;
+  margin-left: 12%;
 }
 
 @media (max-width: 576px) and (max-width: 768px) {
-    .right {float: none;}
-    .span8 {float:none;}
-    /* need to ngIf current */
-    /*.row {margin-bottom: 20%; }*/
-    .right li:not(:first-child) {}
-    .right li.icon {
-        float: right;
-        display: block;
-    }
-    .right li {
-        float: none;
-        display: inline;
-    }
-    li.span3.item-block.web.all {
+  .right {
+    float: none;
+  }
+  .span8 {
+    float: none;
+  }
 
-    }
-    #header-wrap img {display: block; margin: 0 auto;}
-
+  .right li:not(:first-child) {
+  }
+  .right li.icon {
+    float: right;
+    display: block;
+  }
+  .right li {
+    float: none;
+    display: inline;
+  }
+  li.span3.item-block.web.all {
+  }
+  #header-wrap img {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 980px) {
-    .icon {display: none;}
+  .icon {
+    display: none;
+  }
 }
 
 @media (max-width: 980px) {
-    .icon {display: none;}
-
+  .icon {
+    display: none;
+  }
 }
 
 @media (max-width: 1024px) {
-    #collapseContent {width: 300%}
+  #collapseContent {
+    width: 300%;
+  }
 }
 
-/* LARGE DESKTOP SCREENS */
 @media (min-width: 1210px) {
-
 }
 
-/* Loading Icon */
 .loader {
-    height: 100%;
-    width: 100%;
-    background-color: rgb(33, 63, 113);
+  height: 100%;
+  width: 100%;
+  background-color: rgb(33, 63, 113);
 }
 
 .loader h1 {
-    text-align: center;
-    color: rgb(247,249,253);
+  text-align: center;
+  color: rgb(247, 249, 253);
 }
 
 
-/* Loading Component */
-
 .loading-grid {
-    height: 300px;
-    background-color: rgb(211, 211, 211);
-    margin-bottom: 2%;
+  height: 300px;
+  background-color: rgb(211, 211, 211);
+  margin-bottom: 2%;
 }
 
 .failed-grid {
-    height: 300px;
-    background-color: rgb(242, 87, 90);
-    margin-bottom: 2%;
-}
+  height: 300px;
+  background-color: rgb(242, 87, 90);
+  margin-bottom: 2%;
+} */
