@@ -1,23 +1,19 @@
-<div class="postItem" *ngIf="postItem">
-
+<div *ngIf="postItem">
     <article class="card" [ngClass]="{'card-outline-danger': assetFailureWarning != null && showAdminUI == true }">
-
-        <header class="post-header">
-
+        <div class="post-header">
             <div class="hover-post">
                 <!-- remove title and use button or description
             make checkbox bigger -->
                 <!-- <input type="checkbox" [checked]="isChecked"> -->
-
-                <a *ngIf="getdev === false" class="thumbnail" [routerLink]="['/detail', postItem.postId]">
-                    <h3>{{postItem?.title}}</h3>
+                <a *ngIf="getdev === false"[routerLink]="['/detail', postItem.postId]">
+                    <div>{{postItem?.title}}</div>
                 </a>
-                <a *ngIf="getdev === true" target="_blank" class="thumbnail" [routerLink]="['/approval/detail', postItem.postId]">
-                    <h3>{{postItem?.title}}</h3>
+                <a *ngIf="getdev === true" target="_blank" [routerLink]="['/approval/detail', postItem.postId]">
+                    <div>{{postItem?.title}}</div>
                     <p *ngIf="assetFailureWarning != null && showAdminUI == true">{{assetFailureWarning}}</p>
                 </a>
             </div>
-        </header>
+        </div>
         <div class="card-block">
             <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" (assetFailure)="issueAssetWarning($event)"></app-player>
             <div class="post-desc">
@@ -30,7 +26,6 @@
         </div>
     </article>
 </div>
-
 <!-- <div class="postItem" *ngIf="postItem">
       <div class="card">
         <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
@@ -42,5 +37,3 @@
         </div>
       </div>
 </div> -->
-
-<router-outlet></router-outlet>
