@@ -28,21 +28,24 @@
                 <li routerLink="/contact" routerLinkActive="active">
                     <a>CONTACT US</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li routerLink="/admin" routerLinkActive="active">
+                    <a>ADMIN</a>
+                </li>
+                <!-- <li class="nav-item dropdown" routerLink="/admin/overview" routerLinkActive="active">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
                         ADMIN LOGIN
                         <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li>
-                            <a [routerLink]="['/admin']" class="admin-link">Admin Panel</a>
+                        <li routerLinkActive="active">
+                            <a [routerLink]="['/admin', 1, 'overview']">Admin Panel</a>
                         </li>
                         <li class="divider responsive_divider"></li>
-                        <li>
-                            <a [routerLink]="['/logout']" class="logout-link">Logout</a>
+                        <li routerLinkActive="active">
+                            <a [routerLink]="['/logout']">Logout</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

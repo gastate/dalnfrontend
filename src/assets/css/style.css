@@ -334,6 +334,23 @@ fieldset[disabled] .btn-secondary:hover {
   border-top: none;
   padding: 0.7em 1em;
 }
+/* LOGIN */
+
+.loginBox {
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 4em;
+}
+
+.forgotPasswordText {
+  margin-top: 1em;
+}
+
+.forgotPasswordText > a {
+  font-family: "Roboto Condensed", sans-serif;
+  font-style: italic;
+  color: #307571;
+}
 
 /* 
 .divider {

@@ -10,7 +10,7 @@
                 <label for="name" class="col-sm-2 control-label">Author(s)</label>
                 <div class="col-sm-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="name" placeholder="Last Name, First Name" #nameInput>
+                        <input type="text" class="form-control" id="name" (keyup.enter)="addName(nameInput)" placeholder="Last Name, First Name" #nameInput>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" (click)="addName(nameInput)">
                                 <span class="glyphicon glyphicon-plus"></span>
@@ -31,7 +31,7 @@
                 <label for="name" class="col-sm-2 control-label">Interviewer(s)</label>
                 <div class="col-sm-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="name" placeholder="Last Name, First Name" #interviewerInput>
+                        <input type="text" class="form-control" id="name" (keyup.enter)="addInterviewer(interviewerInput)" placeholder="Last Name, First Name" #interviewerInput>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" (click)="addInterviewer(interviewerInput)">
                                 <span class="glyphicon glyphicon-plus"></span>

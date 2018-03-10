@@ -36,11 +36,11 @@ export class MediaComponent {
 
   setMedia(event) {
     let fn: string = this.constructor.name + "#uploadFiles"; // tslint:disable-line:no-unused-variable
-    console.log(fn + ": invoked");
+    //console.log(fn + ": invoked");
 
     if (event.target.files.length > 0) {
       for (let file of event.target.files) {
-        console.log(fn + ": file ", file);
+        //console.log(fn + ": file ", file);
         let fileinfo: any = {
           file: file,
           progress: 0.0,
@@ -60,7 +60,7 @@ export class MediaComponent {
         }
       }
       if (this.fileBad < this.fileInfos.length) {
-        this.errorMessage = undefined;
+        this.errorMessage = null;
       }
       this.setNext();
     }
@@ -68,8 +68,7 @@ export class MediaComponent {
 
   uploadFiles() {
     let fn: string = this.constructor.name + "#uploadFiles"; // tslint:disable-line:no-unused-variable
-    console.log(fn + ": invoked");
-
+    //console.log(fn + ": invoked");
     // console.log(fn + ": fileInfos = ", this.fileInfos );
     if (this.fileInfos.length > this.fileBad) {
       this.submitService.fileInfos = this.fileInfos;

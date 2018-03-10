@@ -3,11 +3,29 @@
         PRE-SUBMISSION SUMMARY
     </div>
 </div>
+<div class="row center" *ngIf="errorMessage != null" style="margin-top:2em;">
+    <div class="col-md-8 col-md-offset-2 basicText">
+        <div class="alert alert-danger" role="alert">
+            <strong>ERROR:</strong> {{errorMessage}}
+        </div>
+    </div>
+</div>
 <div class="row" style="margin-top:3em;">
-    <div class="col-md-8 col-md-offset-2 basicText" style="margin-bottom: 1em;">
-        <p>
-            Below is the information you provided
-        </p>
+    <div class="col-md-8 col-md-offset-2 basicText">
+        <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Email Address
+                <span class="glyphicon glyphicon-asterisk"></span>
+            </label>
+            <div class="col-sm-8">
+                <input type="email" class="form-control" name="email" id="email" [(ngModel)]="email">
+                <div class="specialText">An email address is required to submit a literacy narrative</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 basicText center">
+        <button class="btn btn-primary" [disabled]="!isValidForm()" type="button" (click)="next()">SUBMIT LITERACY NARRATIVE</button>
     </div>
 </div>
 <div class="row">
@@ -26,11 +44,17 @@
         </p>
         <p>
             <span class="subTitle">AUTHOR(S) | </span>
-            {{data?.contributorAuthor}}
+            <span *ngFor="let author of data?.contributorAuthor; let last = last">
+                <span>{{author}}</span>
+                <span *ngIf="!last">,</span>
+            </span>
         </p>
         <p>
             <span class="subTitle">INTERVIEWER(S) | </span>
-            {{data?.contributorInterviewer}}
+            <span *ngFor="let interviewer of data?.contributorInterviewer; let last = last">
+                <span>{{interviewer}}</span>
+                <span *ngIf="!last">,</span>
+            </span>
         </p>
         <p>
             <span class="subTitle">AUTHOR BIRTH YEAR | </span>
@@ -42,79 +66,49 @@
         </p>
         <p>
             <span class="subTitle">DATE OF CREATION | </span>
-            {{data?.rightsConsent}}
+            {{data?.dateCreated | date: 'MMMM d, y'}}
         </p>
         <p>
             <span class="subTitle">SUBJECT KEYWORDS | </span>
-            {{data?.subject}}
+            <span *ngFor="let subj of data?.subject; let last = last">
+                <span>{{subj}}</span>
+                <span *ngIf="!last">,</span>
+            </span>
         </p>
         <p>
             <span class="subTitle">DECADES COVERED | </span>
-            {{data?.coveragePeriod}}
+            <span *ngFor="let period of data?.coveragePeriod; let last = last">
+                <span>{{period}}</span>
+                <span *ngIf="!last">,</span>
+            </span>
         </p>
         <p>
             <span class="subTitle">NATIONALITIES | </span>
-            {{data?.coverageNationality}}
+            <span *ngFor="let nationality of data?.coverageNationality; let last = last">
+                <span>{{nationality}}</span>
+                <span *ngIf="!last">,</span>
+            </span>
         </p>
         <p>
             <span class="subTitle">REGIONS | </span>
-            {{data?.coverageRegions}}
+            <span *ngFor="let region of data?.coverageRegions; let last = last">
+                <span>{{region}}</span>
+                <span *ngIf="!last">,</span>
+            </span>
         </p>
         <p>
             <span class="subTitle">STATE OR PROVINCES | </span>
-            {{data?.coverageStateProvince}}
+            <span *ngFor="let state of data?.coverageStateProvince; let last = last">
+                <span>{{state}}</span>
+                <span *ngIf="!last">,</span>
+            </span>
         </p>
         <p>
             <span class="subTitle">LANGUAGES | </span>
-            {{data?.language}}
+            <span *ngFor="let lang of data?.language; let last = last">
+                <span>{{lang}}</span>
+                <span *ngIf="!last">,</span>
+            </span>
         </p>
     </div>
 </div>
-
-<!-- <div class="container add-top-margin">
-
-  <p>
-    Summary of Post Submission
-  </p>
-
-  <div class="card detail-card">
-    <div class="card-block">
-      <h3>Information provided: </h3>
-
-      <p>Post Title: {{data?.title}}</p>
-      <p>Post description: {{data?.description}}</p>
-      <p>Rights Consent: {{data?.rightsConsent}}</p>
-      <p>Rights Relase: {{data?.rightsRelease}}</p>
-      <p>Creator Gender: {{data?.creatorGender}}</p>
-      <p>Creator Year of Birth: {{data?.creatorYearOfBirth}}</p>
-      <p>Author(s): {{data?.contributorAuthor}}</p>
-      <p>Interviewer(s): {{data?.contributorInterviewer}}</p>
-      <p>Coverage Period: {{data?.coveragePeriod}}</p>
-      <p>Nationality: {{data?.coverageNationality}}</p>
-      <p>Spatial: {{data?.coverageSpatial}}</p>
-      <p>State: {{data?.coverageStateProvince}}</p>
-      <p>Subject: {{data?.subject}}</p>
-      <p>language: {{data?.language}}</p>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <form [formGroup]="emailForm" novalidate submt="next()">
-      <label class="control-label" for="signupEmail">Email</label>
-      <input id="signupEmail" required type="email" maxlength="100" class="form-control" [(ngModel)]="email" formControlName="email"
-        [value]="_submitService.email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
-
-    </form>
-  </div>
-
-  <button class="btn btn-primary" type="submit" [disabled]="!emailForm.valid" (click)="next()">Next Step</button>
-
-  <div class="alert alert-info" role="alert" *ngIf="!emailForm.controls.email.valid">
-    <strong> An email is required to make a post.</strong>
-  </div>
-
-  <div class="alert alert-danger add-top-margin" role="alert" *ngIf="errorMessage != null">
-    <strong> {{errorMessage}} </strong>
-  </div>
-
-</div> -->

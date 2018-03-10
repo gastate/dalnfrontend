@@ -1,67 +1,74 @@
-<div id="wrapper">
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 pageTitle">
+        ADMINISTRATOR VIEW
+    </div>
+</div>
+<div class="row" style="margin-top:3em;">
+    <div class="col-md-3 basicText" style="margin-bottom: 1em;">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a [routerLink]="['/admin/overview']" class="nav-link">OVERVIEW</a>
+                <a [routerLink]="['/admin/post-approval']" class="nav-link">Post Approval</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-9 basicText">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+
+<!-- <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
             <nav class="col-sm-2 col-md-2 bg-faded sidebar">
                 <div class="admin-menu admin-sidebar">
 
 
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a [routerLink]="['/admin/overview']" class="nav-link">Overview</a>
-                        <a [routerLink]="['/admin/statistics']" class="nav-link">Statistics</a>
-                        <a [routerLink]="['/admin/testing']"
-                        class="nav-link">Testing &amp; Service Status</a>
-                    </li>
-                </ul>
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a [routerLink]="['/admin/post-approval']"
-                        class="nav-link">Post Approval</a>
-                        <a [routerLink]="['/admin/post-editing']" class="nav-link">Post Editing</a>
-                        <a [routerLink]="['/admin/import-export']"
-                        class="nav-link">Import/Export Posts</a>
-                        <a [routerLink]="['/admin/withdrawn']"
-                        class="nav-link">Withdrawn Posts</a>
-                    </li>
-                </ul>
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a [routerLink]="['/admin/config']"
-                        class="nav-link">Other Settings</a>
-                    </li>
-                </ul>
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a [routerLink]="['/admin/admin-list']"
-                        class="nav-link">Admin List</a>
-                        <a [routerLink]="['/admin/metadata-list']"
-                        class="nav-link">Metadata Lists</a>
-                        <a [routerLink]="['/admin/log']"
-                        class="nav-link">Logs</a>
-                    </li>
-                </ul>
-            </div>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a [routerLink]="['/admin/overview']" class="nav-link">Overview</a>
+                            <a [routerLink]="['/admin/statistics']" class="nav-link">Statistics</a>
+                            <a [routerLink]="['/admin/testing']" class="nav-link">Testing &amp; Service Status</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a [routerLink]="['/admin/post-approval']" class="nav-link">Post Approval</a>
+                            <a [routerLink]="['/admin/post-editing']" class="nav-link">Post Editing</a>
+                            <a [routerLink]="['/admin/import-export']" class="nav-link">Import/Export Posts</a>
+                            <a [routerLink]="['/admin/withdrawn']" class="nav-link">Withdrawn Posts</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a [routerLink]="['/admin/config']" class="nav-link">Other Settings</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a [routerLink]="['/admin/admin-list']" class="nav-link">Admin List</a>
+                            <a [routerLink]="['/admin/metadata-list']" class="nav-link">Metadata Lists</a>
+                            <a [routerLink]="['/admin/log']" class="nav-link">Logs</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
             <main class="col-sm-9  col-md-10  pt-3">
 
-                <!-- Page Content -->
-                    <div id="page-wrapper">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
+                <div id="page-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
 
-                                    <router-outlet></router-outlet>
-                                </div>
-                                <!-- /.col-lg-12 -->
+                                <router-outlet></router-outlet>
                             </div>
-                            <!-- /.row -->
                         </div>
-                        <!-- /.container-fluid -->
                     </div>
-                    <!-- /#page-wrapper -->
+                </div>
             </main>
 
-            </div>
+        </div>
 
 
 
@@ -70,5 +77,4 @@
 
 
 
-</div>
-<!-- /#wrapper -->
+</div> -->

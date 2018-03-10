@@ -1,5 +1,11 @@
 import { Component, Input } from "@angular/core";
-import { Router } from "@angular/router";
+import {
+  Router,
+  RouterOutlet,
+  RouterLink,
+  RouterLinkWithHref,
+  RouterLinkActive
+} from "@angular/router";
 import { UserLoginService } from "./services/user-login.service";
 import { LoggedInCallback } from "./services/cognito.service";
 import { environment } from "../environments/environment";
@@ -20,8 +26,10 @@ export class AppComponent implements LoggedInCallback {
   isLoggedIn(message: string, isLoggedIn: boolean) {
     if (isLoggedIn) {
       this.showAdminButton = true;
+      console.log('logged in' + isLoggedIn);
     } else {
       this.showAdminButton = false;
+      console.log('logged in' + isLoggedIn);
     }
   }
 }
