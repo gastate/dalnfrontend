@@ -1,67 +1,87 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 pageTitle">
+    SEARCH LITERACY NARRATIVES
+  </div>
+</div>
+<div class="row" style="margin-top: 2.5em;">
+  <div class="col-md-8 col-md-offset-2 basicText">
+    <div class="input-group">
+      <input type="text" class="form-control" id="name" (keyup.enter)="keyPressHandler(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)" placeholder="Search the DALN..." [value]="searchService.searchQuery"
+        #searchBox>
+      <span class="input-group-btn">
+        <button class="btn btn-primary" style="padding: 6px 4em;" type="button" (click)="onSearch(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 basicText">
+        <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 basicText">
+    <app-pagination (currentPageEmitter)="getButtonClickHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset"
+      [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination>
+    <!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination> -->
+    </div>
+</div>
 
 
-<div class="child-container">
+
  
-    <div id="search-component">
-          
-      <!-- Main Search Box -->
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-         <div class="input-group">
-                <!-- <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#options">&#9660;</button>
-                </span> -->
-                <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery" (keydown.enter)="keyPressHandler(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)"/>                
-                <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)" >Search</button>
-          </div>
+
+    <!-- <div class="row justify-content-center">
+      <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
+        <p>
+          {{errorMessage}}
+        </p>
+      </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+    <!-- Main Search Box -->
+    <!-- <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="input-group">
+          <input #searchBox class="form-control" id="search-box" placeholder="Search the DALN..." [value]="searchService.searchQuery"
+            (keydown.enter)="keyPressHandler(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)"
+          />
+          <button class="btn btn-primary" type="submit" (click)="onSearch(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)">Search</button>
         </div>
       </div>
+    </div> -->
 
-      <!-- Search Options -->
-      <!-- <div class="collapse" id="options">
+    <!-- Search Options -->
+    <!-- <div class="collapse" id="options">
       <div class="card card-block" [class.col-md-6]="showFull" [class.offset-md-3]="showFull">
           <div class="card-header" id="option-card">
               Options
           </div>
         <div class="row"> -->
-            <!-- <div class="col-md-4">
+    <!-- <div class="col-md-4">
                 <div class="input-group ">
                     <span class="input-group-addon">Results per page</span>
                     <input #paginatorResults class="form-control" id="paginatorResults-size" type="number" min="1" max="50" [value]="searchService.resultsDisplaySize"/>
                 </div>
             </div> -->
-            <!-- <div class="col-md-4 offset-md-4">
+    <!-- <div class="col-md-4 offset-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">Page Number</span>
                     <input #pageNum class="form-control" id="pageNumber" type="number" min="1" max="50" [value]="searchService.pageNumber"/>
                 </div>
             </div> -->
-        <!-- </div>
+    <!-- </div>
       </div>
       </div> -->
-      
-
-    <div class="row justify-content-center">
-      <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
-          <p>
-              {{errorMessage}}
-          </p>
-      </div>
-     </div>
-
-    </div>
-
-    <div class="container center ">
-            <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
-    </div>
-
-</div>
-
-<div class="container responsive_home">
-    <app-pagination (currentPageEmitter)="getButtonClickHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination>
-    <!-- <app-pagination  (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination> --> 
-</div>
 
 
-
-<router-outlet></router-outlet>
