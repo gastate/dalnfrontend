@@ -32,7 +32,7 @@ export class DescriptionComponent implements OnInit {
   languages: string[] = [];
   period: string[] = [];
   decadeOptions: string[] = [];
-  // dateCreated:string = "";
+  dateCreated: string = "";
 
   constructor(
     private _router: Router,
@@ -47,7 +47,7 @@ export class DescriptionComponent implements OnInit {
 
   initForm() {
     this.descForm = this.fb.group({
-      title: ["", Validators.required],
+      title: [""],
       description: [""]
     });
     //init decade options with the last 100 years
@@ -58,35 +58,59 @@ export class DescriptionComponent implements OnInit {
   }
 
   isValidForm() {
-    return false;
+    return (
+      this.title &&
+      this.title.trim().length > 1 &&
+      this.description &&
+      this.description.trim().length > 1 &&
+      this.dateCreated &&
+      this.period &&
+      this.period.length > 0 &&
+      this.subjects &&
+      this.subjects.length > 0 &&
+      this.languages &&
+      this.languages.length > 0
+    );
   }
 
-  addSubject(subjectInput: string) {
-    this.subjects.push(subjectInput);
+  addSubject(subjectInput: any) {
+    if (subjectInput.value.trim()) {
+      this.subjects.push(subjectInput.value.trim());
+    }
+    subjectInput.value = "";
   }
 
   removeSubject(subjectValue: string) {
     this.subjects.splice(this.subjects.indexOf(subjectValue), 1);
   }
 
-  addNation(nation: string) {
-    this.nations.push(nation);
+  addNation(nation: any) {
+    if (nation.value.trim()) {
+      this.nations.push(nation.value.trim());
+    }
+    nation.value = "";
   }
 
   removeNation(nation: string) {
     this.nations.splice(this.nations.indexOf(nation), 1);
   }
 
-  addRegion(region: string) {
-    this.regions.push(region);
+  addRegion(region: any) {
+    if (region.value.trim()) {
+      this.regions.push(region.value.trim());
+    }
+    region.value = "";
   }
 
   removeRegion(region: string) {
     this.regions.splice(this.regions.indexOf(region), 1);
   }
 
-  addState(state: string) {
-    this.states.push(state);
+  addState(state: any) {
+    if (state.value.trim()) {
+      this.states.push(state.value.trim());
+    }
+    state.value = "";
   }
 
   removeState(state: string) {
@@ -101,8 +125,11 @@ export class DescriptionComponent implements OnInit {
     this.geos.splice(this.geos.indexOf(geo), 1);
   }
 
-  addLanguage(language: string) {
-    this.languages.push(language);
+  addLanguage(language: any) {
+    if (language.value.trim()) {
+      this.languages.push(language.value.trim());
+    }
+    language.value = "";
   }
 
   removeLanguage(language: string) {
@@ -110,24 +137,21 @@ export class DescriptionComponent implements OnInit {
   }
 
   next() {
-    this.period = this.descForm.value.coveragePeriod;
-    this.description = this.descForm.value.description;
-    this.title = this.descForm.value.title;
-    this.submitService.dateCreated = this.descForm.value.dateCreated;
-
-    this.submitService.description = this.description;
-    this.submitService.title = this.title;
-
-    // singular service arrays are set to the plural local arrays.
+    this.submitService.title = this.title.trim();
+    this.submitService.description = this.description.trim();
+    this.submitService.dateCreated = this.dateCreated;
     this.submitService.subject = this.subjects;
     this.submitService.language = this.languages;
     this.submitService.coveragePeriod = this.period;
-    this.submitService.coverageNationality = this.nations;
-    this.submitService.coverageRegion = this.regions;
-    this.submitService.coverageStateProvince = this.states;
-    this.submitService.coverageSpatial = this.geos;
-
-    // console.log( this.submitService.returnPost() );
+    if (this.nations && this.nations.length > 0) {
+      this.submitService.coverageNationality = this.nations;
+    }
+    if (this.regions && this.regions.length > 0) {
+      this.submitService.coverageRegion = this.regions;
+    }
+    if (this.states && this.states.length > 0) {
+      this.submitService.coverageStateProvince = this.states;
+    }
 
     this._router.navigateByUrl("/create/media");
   }

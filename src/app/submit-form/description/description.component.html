@@ -50,14 +50,14 @@
                 </label>
                 <div class="col-sm-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="subject" #subjectInput>
+                        <input type="text" class="form-control" id="subject" #subjectInput (keyup.enter)="addSubject(subjectInput)">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" (click)="addSubject(subjectInput.value)">
+                            <button class="btn btn-default" type="button" (click)="addSubject(subjectInput)">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </span>
                     </div>
-                    <div class="specialText">Please enter appropriate subject keywords or phrases related to your narrative Eg. Poetry, Traveling
+                    <div class="specialText">Please enter appropriate subject keywords or phrases related to your narrative E.g. Poetry, Traveling
                         Abroad, Women's Rights </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                     <span class="glyphicon glyphicon-asterisk"></span>
                 </label>
                 <div class="col-sm-8">
-                    <select multiple class="form-control" name="decades" id="decades" [(ngModel)]="coveragePeriod">
+                    <select multiple class="form-control" name="decades" id="decades" [(ngModel)]="period">
                         <option *ngFor="let decade of decadeOptions" [ngValue]="decade">
                             {{decade}}
                         </option>
@@ -90,9 +90,9 @@
                 </label>
                 <div class="col-sm-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="subject" #nationInput>
+                        <input type="text" class="form-control" id="subject" #nationInput (keyup.enter)="addNation(nationInput)">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" (click)="addNation(nationInput.value)">
+                            <button class="btn btn-default" type="button" (click)="addNation(nationInput)">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </span>
@@ -107,225 +107,79 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Regions
+                </label>
+                <div class="col-sm-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="region" #regionInput (keyup.enter)="addRegion(regionInput)">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" (click)="addRegion(regionInput)">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="specialText">Please list the regions in which the events described in your narrative took place. E.g. New England,
+                        Rocky Mountains, Great Plains</div>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let region of regions" class="badge" style="margin-bottom: .2em;">
+            <span>{{region}}</span>
+            <span class="glyphicon glyphicon-remove" (click)="removeRegion(this.region)"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">State or Province
+                </label>
+                <div class="col-sm-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="state" #stateInput (keyup.enter)="addState(stateInput)">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" (click)="addState(stateInput)">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="specialText">Please list the states or provinces in which the events described in your narrative took place. E.g.
+                        New York, Georgia, Nova Scotia</div>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let state of states" class="badge" style="margin-bottom: .2em;">
+            <span>{{state}}</span>
+            <span class="glyphicon glyphicon-remove" (click)="removeState(this.state)"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Language(s)
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                </label>
+                <div class="col-sm-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="language" #languageInput (keyup.enter)="addLanguage(languageInput)">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" (click)="addLanguage(languageInput)">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let language of languages" class="badge" style="margin-bottom: .2em;">
+            <span>{{language}}</span>
+            <span class="glyphicon glyphicon-remove" (click)="removeLanguage(this.language)"></span>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-8 col-md-offset-2 basicText center">
             <button class="btn btn-primary" [disabled]="!isValidForm()" type="button" (click)="next()">NEXT</button>
         </div>
     </div>
 </form>
-
-
-<!-- 
-<div class="add-top-margin container">
-
-    <form [formGroup]="descForm" novalidate (submit)="next()">
-       <div class="non-optional">
-            <ul>
-                <li>
-                    <span>Title</span>
-
-                    <input class="meta-info" type="text" name="title" formControlName="title" [value]='submitService.title' (input)="submitService.title = $event.target.value"> <br />
-
-                    <p>
-                    To help other DALN users find your literacy narrative, please provide a brief title for your literacy narrative. (Required)
-                    </p>
-
-                </li>
-
-                <li>
-                  <span>Description</span>
-                  <input class="meta-info" type="text" name="description" formControlName="description" [value]="submitService.description" (input)="$event.target.value"> <br />
-                  <p>
-                    To help other DALN users find your literacy narrative, please describe your literacy narrative briefly in this box (Optional).
-                  </p>
-                </li>
-
-                <li>
-                  <span>Date Created</span>
-                  <input type="date" formControlName="dateCreated" [value]="submitService.dateCreated" (input)="$event.target.value">
-                  <p>
-                    Please provide the date on which you created your literacy narrative -- not necessarily the date on which you are filling out this form. (Optional)
-                  </p>
-                </li>
-
-            </ul>
-         </div>
-
-    <div class="card-submit card-outline-primary">
-        <div class="card-header">
-            <p>
-                The following form fields are optional, but recommended:
-            </p>
-        </div>
-
-            <ul>
-                <li>
-                  <span>Subject Keyword</span>
-                      <div class="input-group">
-                          <input class="meta-info" type="text" name="subject" #subjectInput>
-                          <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button" (click)="addSubject(subjectInput.value)">+</button>
-                          </span>
-                      </div>
-                  <p> Current Subject(s): </p>
-                    <span *ngFor="let subject of subjects" class="badge badge-primary">{{subject}}
-                      <button (click)="removeSubject(this.subject)" type="button" class="close">
-                      <span>&times;</span>
-                    </button>
-                    </span>
-                  <p>
-                    To help other DALN users find your literacy narrative, please enter appropriate subject keywords or phrases. You may enter as many as you like, but you should enter only one keyword or phrase at a time, then click "Add More" to enter additional keywords. (Optional)
-                  </p>
-                </li>
-
-                <li>
-                  <span>Decades covered</span>
-
-
-                  <div class="form-group">
-                      <label for="decades">Mutiple select list (hold shift to select more than one):</label>
-                            <select multiple class="form-control" id="decades" [(ngModel)]="coveragePeriod" formControlName="coveragePeriod">
-                              <option>1900-1909</option>
-                              <option>1910-1919</option>
-                              <option>1920-1929</option>
-                              <option>1930-1939</option>
-                              <option>1940-1949</option>
-                              <option>1950-1959</option>
-                              <option>1960-1969</option>
-                              <option>1970-1979</option>
-                              <option>1980-1989</option>
-                              <option>1990-1999</option>
-                              <option>2000-2009</option>
-                              <option>2010-2019</option>
-                            </select>
-                  </div>
-                    <p>
-                      Please indicate the decades referred to in your literacy narrative. You can choose as many as necessary, but you may need to hold down the Shift or CTRL key to select multiple choices. (Optional)
-                  </p>
-                </li>
-
-                <li>
-                  <span>Nationality</span>
-                      <div class="input-group">
-                          <input class="meta-info" type="text" name="nation" #nationInput>
-                          <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button" (click)="addNation(nationInput.value)">+</button>
-                          </span>
-                      </div>
-                  <p> Nation(s) specified: </p>
-                    <ul class="list-group">
-                        <li *ngFor="let nation of nations" class="list-group-item">{{nation}}
-                            <button (click)="removeNation(this.nation)" type="button" class="close">
-                                <span>&times;</span>
-                            </button>
-                        </li>
-                    </ul>
-                  <p>
-                      To help other DALN users find narratives by people of a particular nationality, please list your nationality/nationalities during the period referred to in your narrative. (Optional)
-                  </p>
-                </li>
-
-                <li>
-                  <span>Region</span>
-                      <div class="input-group">
-                          <input class="meta-info" type="text" name="region" #regionInput>
-                          <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button" (click)="addRegion(regionInput.value)">+</button>
-                          </span>
-                      </div>
-                  <p> Region(s) specified: </p>
-                    <ul class="list-group">
-                        <li *ngFor="let region of regions" class="list-group-item">{{region}}
-                            <button (click)="removeRegion(this.region)" type="button" class="close">
-                                <span>&times;</span>
-                            </button>
-                        </li>
-                    </ul>
-                  <p>
-                    To help other DALN users find narratives from particular regions (e.g., New England, Rocky Mountains, Great Plains) please list the region(s) in which the events described in your narrative took place. (Optional)
-                  </p>
-                </li>
-
-                <li>
-                  <span>State or Province</span>
-                      <div class="input-group">
-                          <input class="meta-info" type="text" name="state" #stateInput>
-                          <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button" (click)="addState(stateInput.value)">+</button>
-                          </span>
-                      </div>
-                  <p> State(s) specified: </p>
-                    <ul class="list-group">
-                        <li *ngFor="let state of states" class="list-group-item">{{state}}
-                            <button (click)="removeState(this.state)" type="button" class="close">
-                                <span>&times;</span>
-                            </button>
-                        </li>
-                    </ul>
-                    <br />
-                  <p>
-                    To help other DALN users find narratives from your state or province, please list the state(s) or province(s) in which the events described in your narrative took place. (Optional)
-                  </p>
-                </li>
-
-                <li>
-                  <span>Other Geographical Information</span>
-                      <div class="input-group">
-                          <input class="meta-info" type="text" name="geo" #geoInput>
-                          <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button" (click)="addGeo(geoInput.value)">+</button>
-                          </span>
-                      </div>
-                  <p> Georgraphical information added: </p>
-                    <ul class="list-group">
-                        <li *ngFor="let geo of geos" class="list-group-item">{{geo}}
-                            <button (click)="removeGeo(this.geo)" type="button" class="close">
-                                <span>&times;</span>
-                            </button>
-                        </li>
-                    </ul>
-                  <br />
-                  <p>
-                    Please provide any further description of the places referred to in your narrative that you consider important (e.g., urban, suburban, rural, inner-city Detroit). (Optional)
-                  </p>
-                </li>
-
-                <li>
-                  <span>Language</span>
-                      <div class="input-group">
-                          <input class="meta-info" type="text" name="language" #languageInput>
-                          <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button" (click)="addLanguage(languageInput.value)">+</button>
-                          </span>
-                      </div>
-                  <p> Languages specified: </p>
-                    <ul class="list-group">
-                        <li *ngFor="let language of languages" class="list-group-item">{{language}}
-                            <button (click)="removeLanguage(this.language)" type="button" class="close">
-                                <span>&times;</span>
-                            </button>
-                        </li>
-                    </ul>
-                  <br />
-                  <p>
-                    Please enter the language(s) used or referred to in your literacy narrative. (Optional)
-                  </p>
-                </li>
-            </ul>
-
-
-        </div>
-
-        <div class="col-lg-6 add-top-margin">
-                <button type="submit" class="btn btn-primary" [disabled]="!descForm.valid" (click)="next()">Next Step</button>
-
-                <div class="alert alert-info add-top-margin" role="alert" *ngIf="!descForm.controls.title.valid">
-                    <strong > A title is required to make a post.</strong>
-                </div>
-        </div>
-
-
-    </form>
-
-
-
-</div> -->
