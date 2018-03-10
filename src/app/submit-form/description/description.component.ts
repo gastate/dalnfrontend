@@ -48,8 +48,10 @@ export class DescriptionComponent implements OnInit {
         coveragePeriod : [''],
         dateCreated : [''],
     });
+  }
 
-
+  isValidForm() {
+    return false;
   }
 
   addSubject(subjectInput : string) {
@@ -99,17 +101,6 @@ export class DescriptionComponent implements OnInit {
   removeLanguage(language : string){
     this.languages.splice(this.languages.indexOf(language), 1);
   }
-
-  // getConsole() {
-  //     console.log(this.subjects);
-  //     console.log(this.nations);
-  //     console.log(this.regions);
-  //     console.log(this.states);
-  //     console.log(this.geos);
-  //     console.log(this.languages);
-  // }
-
-
 
   next() {
     this.period = this.descForm.value.coveragePeriod;

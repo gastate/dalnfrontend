@@ -20,6 +20,11 @@ body {
   margin-top: -0.7em;
 }
 
+.dalnLogo {
+  height: 1.1em;
+  display: inline-block !important;
+}
+
 .navbar {
   padding: 0.6em;
 }
@@ -79,7 +84,7 @@ body {
 
 .dalnTextBox {
   padding: 1em;
-  margin-top: 2em;
+  margin-top: 2.5em;
   font-size: 1em;
   margin-bottom: 1.5em;
 }
@@ -141,25 +146,126 @@ body {
 }
 
 .aboutImg {
-    margin-bottom: 3em;
+  margin-bottom: 3em;
 }
 
 .aboutImg > img {
-    border-radius: 4px;
+  border-radius: 4px;
 }
 
 .basicText {
-    font-size: 1.2em;
-    margin-bottom: 3em;
+  font-size: 1.2em;
+  margin-bottom: 3em;
 }
 
 .basicText > p {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .center {
   text-align: center;
 }
+
+/* CONTACT US */
+
+.headshotImg {
+  height: 16em;
+  border-radius: 4px;
+}
+
+.contactTitle {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 2em;
+  color: #307672;
+  font-weight: bold;
+}
+
+.contactText {
+  font-size: 1.2em;
+}
+
+.contactEmail {
+  margin-top: 1.5em;
+}
+.contactEmail > a {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+/* POST LIST */
+
+.card {
+  background-color: #fff;
+  border: 3px solid #e3e0db;
+  padding: 3em 1em;
+  border-radius: 4px;
+}
+
+.hover-post {
+  margin-bottom: 0.5em;
+}
+
+.hover-post > a {
+  color: #307672;
+  font-family: "Roboto Condensed", sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.post-desc {
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.empty_post {
+  width: 100%;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #307571;
+  border-color: #307571;
+  padding: 0.6em 3em;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary,
+.btn-primary.disabled.focus,
+.btn-primary.disabled:focus,
+.btn-primary.disabled:hover,
+.btn-primary[disabled].focus,
+.btn-primary[disabled]:focus,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary.focus,
+fieldset[disabled] .btn-primary:focus,
+fieldset[disabled] .btn-primary:hover {
+  background-color: #175c58;
+}
+
+.badge {
+    padding: .5em 1em;
+    border-radius: 22px;
+    font-size: 1em;
+    background-color: #ababab;
+    margin-right: .5em;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.2em;
+}
+
+.specialText {
+    font-family: "Roboto Condensed", sans-serif;
+    font-style: italic;
+    margin-top: .3em;
+}
+
+.glyphicon-asterisk {
+    color: red;
+}
+
 /* 
 .divider {
   width: 100%;

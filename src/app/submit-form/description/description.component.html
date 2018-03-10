@@ -1,4 +1,56 @@
+<form [formGroup]="descForm" novalidate class="form-horizontal">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 pageTitle">
+            LITERACY NARRATIVE INFORMATION
+        </div>
+    </div>
+    <div class="row" style="margin-top:3em;">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">Narrative Title
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="title" id="title" [(ngModel)]="title">
+                    <div class="specialText">Please enter a meaningful title for your literacy narrative</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="form-group">
+                <label for="description" class="col-sm-2 control-label">Description
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="description" id="description" [(ngModel)]="description">
+                    <div class="specialText">Please briefly describe your literacy narrative and highlight it's main points</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="form-group">
+                <label for="dateCreated" class="col-sm-2 control-label">Date of Creation
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                </label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" name="dateCreated" id="dateCreated" [(ngModel)]="dateCreated">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText center">
+            <button class="btn btn-primary" [disabled]="!isValidForm()" type="button" (click)="next()">NEXT</button>
+        </div>
+    </div>
+</form>
 
+
+<!-- 
 <div class="add-top-margin container">
 
     <form [formGroup]="descForm" novalidate (submit)="next()">
@@ -212,4 +264,4 @@
 
 
 
-</div>
+</div> -->

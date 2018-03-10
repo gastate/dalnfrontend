@@ -1,43 +1,37 @@
-<div class="container add-top-margin">
-
-
-
-<form [formGroup]="rightsForm" novalidate (submit)="next()">
-
-    <div class="rights-consent">
-        <span>Consent to Participate</span>
-        <div class="well">
+<form [formGroup]="rightsForm" novalidate>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 pageTitle">
+            CONSENT TO PARTICIPATE & RELEASE OF MATERIALS
+        </div>
+    </div>
+    <div class="row" style="margin-top:3em;">
+        <div class="col-md-8 col-md-offset-2 basicText" style="margin-bottom: 1em;">
             <p>
-                Because we value your right to make an informed decision to participate in the DALN, we must have your consent before we accept a submission. Please click one of the following links to read our Adult Consent Form or Under-18 Consent Form before completing this field. Then you must select either "Adult" or "Under-18" below to affirm that you have read and agreed to the terms of the appropriate consent form.
+                Because we value your right to make an informed decision to participate in the DALN and to know how your materials and personal
+                information will be used, we must obtain your consent before we accept a submission. Please select of the
+                following links to read our Adult Consent Form or Under-18 Consent Form before completing this field. Then
+                you must select either "Adult" or "Under-18" below to affirm that you have read and agreed to the terms of
+                the appropriate consent form.
             </p>
         </div>
-
-
-            <input class="rights-option" type="radio" name="rightsConsent" value="Adult" formControlName="rightsConsent"> <p>Adult</p>
-            <input class="rights-option" type="radio" name="rightsConsent" value="Under-18" formControlName="rightsConsent"> <p> Under-18</p>
-
     </div>
-
-      <div class="materials-consent">
-          <span>Release for Materials:</span>
-          <div class="well">
-              <p>
-                Because we want you to know how your materials and personal information will be used in the DALN, we must have your release before we accept a submission. Please click one of the following links to read our Adult Release Form or Under-18 Release Form before completing this field. Then you must select either "Adult" or "Under-18" below to affirm that you have read and agreed to the terms of the appropriate release form.
-              </p>
-          </div>
-
-          <input type="radio" name="rightsRelease" value="Adult" formControlName="rightsRelease"> <p> Adult </p>
-          <input type="radio" name="rightsRelease" value="Under-18" formControlName="rightsRelease"> <p> Under-18 </p>
-
-      </div>
-    </form>
-
-    <button class="btn btn-primary" type="submit" (click)="next()">Next Step</button>
-
-
-</div>
-
-<!-- <p>
-    Form value:
-    {{rightsForm.value | json}}
-</p> -->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="radio" style="margin-bottom: 1em;">
+                <label>
+                    <input type="radio" name="rightsConsent" id="rightsConsent1" value="Adult" [(ngModel)]="rightsConsent" formControlName="rightsConsent"> I give consent as an Adult to release my materials and personal information
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="rightsConsent" id="rightsConsent2" value="Under-18" [(ngModel)]="rightsConsent" formControlName="rightsConsent"> I give consent as Under-18 to release my materials and personal information
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText center">
+            <button class="btn btn-primary" [disabled]="!isValidForm()" type="submit" (click)="next()">NEXT</button>
+        </div>
+    </div>
+</form>
