@@ -1,4 +1,4 @@
-<form [formGroup]="descForm" novalidate class="form-horizontal">
+<form novalidate class="form-horizontal">
     <div class="row">
         <div class="col-md-10 col-md-offset-1 pageTitle">
             LITERACY NARRATIVE INFORMATION
@@ -40,6 +40,70 @@
                     <input type="date" class="form-control" name="dateCreated" id="dateCreated" [(ngModel)]="dateCreated">
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Narrative Subject Keywords
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                </label>
+                <div class="col-sm-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="subject" #subjectInput>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" (click)="addSubject(subjectInput.value)">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="specialText">Please enter appropriate subject keywords or phrases related to your narrative Eg. Poetry, Traveling
+                        Abroad, Women's Rights </div>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let subject of subjects" class="badge" style="margin-bottom: .2em;">
+            <span>{{subject}}</span>
+            <span class="glyphicon glyphicon-remove" (click)="removeSubject(this.subject)"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="form-group">
+                <label for="decades" class="col-sm-2 control-label">Decades Covered
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                </label>
+                <div class="col-sm-8">
+                    <select multiple class="form-control" name="decades" id="decades" [(ngModel)]="coveragePeriod">
+                        <option *ngFor="let decade of decadeOptions" [ngValue]="decade">
+                            {{decade}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Nationalities
+                </label>
+                <div class="col-sm-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="subject" #nationInput>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" (click)="addNation(nationInput.value)">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="specialText">Please list the nationalities covered during the decades selected</div>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let nation of nations" class="badge" style="margin-bottom: .2em;">
+            <span>{{nation}}</span>
+            <span class="glyphicon glyphicon-remove" (click)="removeNation(this.nation)"></span>
         </div>
     </div>
     <div class="row">

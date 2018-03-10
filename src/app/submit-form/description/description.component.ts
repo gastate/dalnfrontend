@@ -1,33 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators
+} from "@angular/forms";
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 // import { DatepickerComponent } from '../datepicker/datepicker.component';
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
-import {Post} from '../../model/post-model';
+import { Post } from "../../model/post-model";
 
-import { SubmitFormService } from '../submit-form.service';
-
+import { SubmitFormService } from "../submit-form.service";
 
 @Component({
-  selector: 'app-description',
-  templateUrl: './description.component.html',
-  styleUrls: ['./description.component.css']
+  selector: "app-description",
+  templateUrl: "./description.component.html",
+  styleUrls: ["./description.component.css"]
 })
 export class DescriptionComponent implements OnInit {
-    descForm: FormGroup;
-    submitService : SubmitFormService;
-    title : string;
-    description: string;
-    subjects : string [] = [];
-    nations : string [] = [];
-    regions : string [] = [];
-    states : string [] = [];
-    geos : string [] = [];
-    languages : string [] = [];
-    period :  string [] = [];
-    // dateCreated:string = "";
+  descForm: FormGroup;
+  submitService: SubmitFormService;
+  title: string;
+  description: string;
+  subjects: string[] = [];
+  nations: string[] = [];
+  regions: string[] = [];
+  states: string[] = [];
+  geos: string[] = [];
+  languages: string[] = [];
+  period: string[] = [];
+  decadeOptions: string[] = [];
+  // dateCreated:string = "";
 
   constructor(
     private _router: Router,
@@ -38,67 +43,69 @@ export class DescriptionComponent implements OnInit {
     this.initForm();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   initForm() {
     this.descForm = this.fb.group({
-        title: ['', Validators.required],
-        description : [''],
-        coveragePeriod : [''],
-        dateCreated : [''],
+      title: ["", Validators.required],
+      description: [""]
     });
+    //init decade options with the last 100 years
+    let today = Math.ceil((new Date().getFullYear() + 1) / 10) * 10;
+    for (let i = 0; i < 100; i += 10) {
+      this.decadeOptions.push(today - i - 10 + " - " + (today - i - 1));
+    }
   }
 
   isValidForm() {
     return false;
   }
 
-  addSubject(subjectInput : string) {
+  addSubject(subjectInput: string) {
     this.subjects.push(subjectInput);
   }
 
-  removeSubject(subjectValue : string) {
+  removeSubject(subjectValue: string) {
     this.subjects.splice(this.subjects.indexOf(subjectValue), 1);
   }
 
-  addNation(nation : string) {
-    this.nations.push (nation);
+  addNation(nation: string) {
+    this.nations.push(nation);
   }
 
-  removeNation(nation : string){
+  removeNation(nation: string) {
     this.nations.splice(this.nations.indexOf(nation), 1);
   }
 
-  addRegion(region : string) {
+  addRegion(region: string) {
     this.regions.push(region);
   }
 
-  removeRegion(region : string){
+  removeRegion(region: string) {
     this.regions.splice(this.regions.indexOf(region), 1);
   }
 
-  addState(state : string) {
+  addState(state: string) {
     this.states.push(state);
   }
 
-  removeState(state : string){
+  removeState(state: string) {
     this.states.splice(this.states.indexOf(state), 1);
   }
 
-  addGeo(geo : string) {
+  addGeo(geo: string) {
     this.geos.push(geo);
   }
 
-  removeGeo(geo : string){
+  removeGeo(geo: string) {
     this.geos.splice(this.geos.indexOf(geo), 1);
   }
 
-  addLanguage(language : string) {
+  addLanguage(language: string) {
     this.languages.push(language);
   }
 
-  removeLanguage(language : string){
+  removeLanguage(language: string) {
     this.languages.splice(this.languages.indexOf(language), 1);
   }
 
@@ -122,9 +129,6 @@ export class DescriptionComponent implements OnInit {
 
     // console.log( this.submitService.returnPost() );
 
-    this._router.navigateByUrl('/create/media');
+    this._router.navigateByUrl("/create/media");
   }
-
-
-
 }
