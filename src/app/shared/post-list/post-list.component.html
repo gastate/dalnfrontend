@@ -1,35 +1,24 @@
 <div class="post-approval-message" *ngIf="approvalMessage.length !== 0">
     <div class="alert alert-success alert-dismissible fade show" role="alert" *ngFor="let message of approvalMessage">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>{{approvalMessage}}</strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{approvalMessage}}</strong>
     </div>
 </div>
 
 <div class="post-approval-errormessage" *ngIf="errorMessage.length !== 0">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngFor="let message of errorMessage">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>{{errorMessage}}</strong> 
-        </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngFor="let message of errorMessage">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{errorMessage}}</strong>
+    </div>
 </div>
 
 <div class="row" id="list-container" *ngIf="postList">
-
-
-
-    <!-- With Card Deck (differing post headers) -->
-    <!-- <div class="card-deck col-lg-3 col-md-4 col-sm-6" *ngFor="let post of postList">
-        <post-item class="media" [postItem]="post"></post-item>
-    </div> -->
-
-
-    <!-- Without Card Deck (same post headers but not on special cases) -->
-    <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let post of postList">
-        <post-item class="media" [getdev]="getdev" [postItem]="post" (approvedPostMessageEmitter)="successHandler($event)" (errorMessageEmitter)="errorHandler($event)"> </post-item>
+    <div class="col-md-3" *ngFor="let post of postList">
+        <post-item class="media" [getdev]="getdev" [postItem]="post" (approvedPostMessageEmitter)="successHandler($event)" (errorMessageEmitter)="errorHandler($event)">
+        </post-item>
     </div>
-
-
 </div>

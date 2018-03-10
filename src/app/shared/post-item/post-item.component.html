@@ -2,10 +2,7 @@
     <article class="card" [ngClass]="{'card-outline-danger': assetFailureWarning != null && showAdminUI == true }">
         <div class="post-header">
             <div class="hover-post">
-                <!-- remove title and use button or description
-            make checkbox bigger -->
-                <!-- <input type="checkbox" [checked]="isChecked"> -->
-                <a *ngIf="getdev === false"[routerLink]="['/detail', postItem.postId]">
+                <a *ngIf="getdev === false" [routerLink]="['/detail', postItem.postId]">
                     <div>{{postItem?.title}}</div>
                 </a>
                 <a *ngIf="getdev === true" target="_blank" [routerLink]="['/approval/detail', postItem.postId]">

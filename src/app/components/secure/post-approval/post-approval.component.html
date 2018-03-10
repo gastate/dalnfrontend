@@ -1,5 +1,35 @@
 <div class="row">
-    <h1>Admin post approval</h1>
+    <div class="col-md-8 basicText">
+        <p>
+            <span class="subTitle">Literacy Narratives Waiting Approval</span>
+        </p>
+    </div>
+    <div class="col-md-4 basicText" style="text-align: right;">
+        <button type="button" class="btn btn-secondary" (click)="getUnapproved()">REFRESH DATA</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 basicText" style="margin-bottom: 1em;">
+        <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
+        <post-list [getdev]="getdev" [postList]="approval_list"></post-list>
+    </div>
+</div>
+
+
+<!-- <div class="controls" *ngIf="postPoolTitle === 'Admins Post Pool' ">
+    <button type="button" class="btn btn-danger" (click)="approveSelected()">Approve Posts</button>
+</div> -->
+
+
+<!-- <app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="postService.unapproved_posts"></app-pagination> -->
+
+<!-- Error message and loading components -->
+<div class="row justify-content-center">
+    <div class="col-md-6 alert alert-danger" *ngIf="errorMessage !== null">
+        <p>
+            {{errorMessage}}
+        </p>
+    </div>
 </div>
 
 <!-- <div class="row">
@@ -18,48 +48,3 @@
     </div>
 
 </div> -->
-
-<div class="row justify-content-center">
-    <div class="col-md-2">
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-primary" (click)="getUnapproved()">Admin Post Pool</button>
-          <!-- <button type="button" class="btn btn-secondary" (click)="getUserPostPool()">Your Post Pool</button> -->
-        </div>
-    </div>
-
-</div>
-
-<div class="row">
-    <h3>{{postPoolTitle}}</h3>
-</div>
-<hr />
-
-<!-- <div class="controls" *ngIf="postPoolTitle === 'Admins Post Pool' ">
-    <button type="button" class="btn btn-danger" (click)="approveSelected()">Approve Posts</button>
-</div> -->
-
-<post-list [getdev]="getdev" [postList]="approval_list"></post-list>
-<!-- <app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="postService.unapproved_posts"></app-pagination> -->
-
-<!-- Error message and loading components -->
-<div class="row justify-content-center">
-  <div class="col-md-6 alert alert-danger" *ngIf="errorMessage !== null">
-      <p>
-          {{errorMessage}}
-      </p>
-  </div>
- </div>
-
- <!-- <div class="row justify-content-center">
-   <div class="col-md-6 alert alert-success" *ngIf="noAdminPostsMessage !== null">
-       <p>
-           {{noAdminPostsMessage}}
-       </p>
-   </div>
-  </div> -->
-
- <div class="row add-top-margin justify-content-center">
-     <div class="col-md-12">
-         <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
-     </div>
- </div>

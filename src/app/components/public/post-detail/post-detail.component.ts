@@ -218,36 +218,36 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     }
 
     approvePost() {
-
-        // flush local storage of the last search
         localStorage.removeItem("lastSearch");
-
+        this.unapprovalMessage = '';
         this._postService.approvePost(this.postDetail.postId).subscribe(
             res => {
                 // give a message to say approval was successful.
-                this.approvalMessage = ("Post with ID " + this.postDetail.postId
-                    + " was approved. Please wait up to 60 seconds for post to appear in search results.");
+                this.postDetail.isPostNotApproved = false;
+                this.approvalMessage = ("Literacy Narrative with ID " + this.postDetail.postId
+                    + " was approved! Please wait up to 1 minute for it to appear in the search results");
             },
             err => {
                 // give an error message.
-                this.approvalMessage = ("Post approval of " + this.postDetail.postId
+                this.approvalMessage = ("Literacy Narrative approval of " + this.postDetail.postId
                     + " failed. Reason: \n" + err);
             });
     }
 
     unapprovePost() {
         // flush local storage of the last search
-        localStorage.removeItem("lastSearch");
-
+        localStorage.removeItem("lastSearch"); 
+        this.approvalMessage = '';  
         this._postService.unapprovePost(this.postDetail.postId).subscribe(
             res => {
                 // give a message to say approval was successful.
-                this.unapprovalMessage = ("Post with ID " + this.postDetail.postId
-                    + " was unapproved. Please wait up to 60 seconds for post to disappear from search results.");
+                this.postDetail.isPostNotApproved = true;
+                this.unapprovalMessage = ("Literacy Narrative with ID " + this.postDetail.postId
+                    + " was unapproved! Please wait up to 1 minute for it to disappear from the search results");
             },
             err => {
                 // give an error message.
-                this.unapprovalMessage = ("Post unapproval of " + this.postDetail.postId
+                this.unapprovalMessage = ("Literacy Narrative unapproval of " + this.postDetail.postId
                     + " failed. Reason: \n" + err);
             });
 

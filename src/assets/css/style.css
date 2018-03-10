@@ -126,7 +126,7 @@ body {
 .post-header {
   font-family: "Roboto Condensed", sans-serif;
   color: #314052;
-  font-size: 1.7em;
+  font-size: 1.2em;
 }
 
 /* FOOTER */
@@ -204,8 +204,12 @@ body {
 .card {
   background-color: #fff;
   border: 3px solid #e3e0db;
-  padding: 3em 1em;
+  padding: 1em;
   border-radius: 4px;
+  min-height: 20em;
+  max-height: 20em;
+  margin-bottom: 1em;
+  overflow-y: auto;
 }
 
 .hover-post {
@@ -220,7 +224,7 @@ body {
 }
 
 .post-desc {
-  font-size: 1.2em;
+  font-size: 0.8em;
   text-align: center;
   margin-top: 0.5em;
 }
@@ -334,6 +338,18 @@ fieldset[disabled] .btn-secondary:hover {
   border-top: none;
   padding: 0.7em 1em;
 }
+
+.audioVideoText {
+    font-family: "Roboto Condensed", sans-serif;
+    font-style: italic;
+    margin-bottom: 0.2em;
+    color: #307470;
+}
+
+.downloadFileList {
+    margin-top:2em;
+}
+
 /* LOGIN */
 
 .loginBox {
@@ -350,6 +366,26 @@ fieldset[disabled] .btn-secondary:hover {
   font-family: "Roboto Condensed", sans-serif;
   font-style: italic;
   color: #307571;
+}
+
+/* ADMIN */
+
+.nav-tabs {
+  border-bottom: 2px solid #307571;
+}
+
+.nav-tabs > li > a {
+  color: #307571;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  color: #fff;
+  cursor: default;
+  background-color: #307571;
+  border: 2px solid #307571;
+  border-bottom-color: transparent;
 }
 
 /* 
