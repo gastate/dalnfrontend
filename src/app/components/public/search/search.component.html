@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="row" style="margin-top: 2.5em;">
-  <div class="col-md-8 col-md-offset-2 basicText">
+  <div class="col-md-6 col-md-offset-3 basicText">
     <div class="input-group">
       <input type="text" class="form-control" id="name" (keyup.enter)="keyPressHandler(searchBox.value, searchService.resultsDisplaySize, searchService.pageNumber)" placeholder="Search the DALN..." [value]="searchService.searchQuery"
         #searchBox>
@@ -21,7 +21,7 @@
         <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
     </div>
 </div>
-<div class="row">
+<div class="row basicText">
     <div class="col-md-10 col-md-offset-1 basicText">
     <app-pagination (currentPageEmitter)="getButtonClickHandler($event)" [showPagination]="showPagination" [startOffset]="startOffset"
       [endOffset]="endOffset" [resultList]="searchService.paginatorResults"></app-pagination>

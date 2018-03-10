@@ -11,7 +11,8 @@
             <div class="boxSpecial">Tell Us Your Story</div>
             <div class="text">The DALN is an open public resource made up of stories from people just like you about their experiences learning to read, write, and generally communicate with the world around them. If you have a compelling story to share (it can be text, video, audio, or a combination of formats), we'd love to hear it.</div>
         </div>
-        <button class="btn btnRounded pushIn" type="button">SUBMIT YOUR LITERACY NARRATIVE</button>
+        <button class="btn btnRounded pushIn" routerLink="/create" type="button">SUBMIT YOUR LITERACY NARRATIVE</button>
+        <a class="btn btnRounded pushIn" href="https://thedaln.wordpress.com/" target="_blank" role="button">CHECK OUT OUR BLOG</a>
     </div>
 </div>
 <div class="row">
@@ -19,7 +20,7 @@
         <div class="headerText">FEATURED LITERACY NARRATIVES</div>
     </div>
 </div>
-<div class="row" style="margin-bottom: 5em;">
+<div class="row basicText" style="margin-bottom: 5em;">
     <div class="col-md-12">
         <post-list [getdev]="getdev" [postList]="posts"></post-list>
     </div>
