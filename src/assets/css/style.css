@@ -180,6 +180,13 @@ body {
   font-weight: bold;
 }
 
+.subTitle {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.4em;
+  color: #307672;
+  font-weight: bold;
+}
+
 .contactText {
   font-size: 1.2em;
 }
@@ -246,24 +253,86 @@ fieldset[disabled] .btn-primary:hover {
   background-color: #175c58;
 }
 
+.btn-secondary {
+  color: #307571;
+  background-color: #fff;
+  padding: 0.6em 3em;
+  border: 2px solid #307571;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active,
+.open > .dropdown-toggle.btn-secondary,
+.btn-secondary.disabled.focus,
+.btn-secondary.disabled:focus,
+.btn-secondary.disabled:hover,
+.btn-secondary[disabled].focus,
+.btn-secondary[disabled]:focus,
+.btn-secondary[disabled]:hover,
+fieldset[disabled] .btn-secondary.focus,
+fieldset[disabled] .btn-secondary:focus,
+fieldset[disabled] .btn-secondary:hover {
+  color: #175c58;
+  border-color: #175c58;
+}
+
 .badge {
-    padding: .5em 1em;
-    border-radius: 22px;
-    font-size: 1em;
-    background-color: #ababab;
-    margin-right: .5em;
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: 1.2em;
+  padding: 0.5em 1em;
+  border-radius: 22px;
+  font-size: 1em;
+  background-color: #ababab;
+  margin-right: 0.5em;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.2em;
 }
 
 .specialText {
-    font-family: "Roboto Condensed", sans-serif;
-    font-style: italic;
-    margin-top: .3em;
+  font-family: "Roboto Condensed", sans-serif;
+  font-style: italic;
+  margin-top: 0.3em;
 }
 
 .glyphicon-asterisk {
-    color: red;
+  color: red;
+}
+
+/* FILES */
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.fileBox {
+  border: 2px solid #d8d8d8;
+  border-radius: 4px;
+  border-collapse: separate !important;
+  vertical-align: middle;
+  background-color: #fff;
+}
+
+.table.fileBox > tbody > tr:not(:first-child) > td {
+  border-top: 2px solid #d8d8d8;
+  padding: 0.7em 1em;
+}
+
+.table.fileBox > tbody > tr:first-child > td {
+  border-top: none;
+  padding: 0.7em 1em;
 }
 
 /* 

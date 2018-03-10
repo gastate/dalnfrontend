@@ -1,64 +1,70 @@
-<div class="container add-top-margin" style = "margin-bottom: 2em;">
-
-
-    <div class="row justify-content-center">
-        <div class="add-top-margin col-md-6 alert alert-danger" *ngIf="errorMessage != null">
-            <p>
-                {{errorMessage}}
-            </p>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 pageTitle">
+        UPLOAD FILES
+    </div>
+</div>
+<div class="row" style="margin-top:3em;">
+    <div class="col-md-8 col-md-offset-2 basicText" style="margin-bottom: 1em;">
+        <p>
+            We recommend that you use the following file formats for compatibility with our system and for accessibility with our end
+            users:
+        </p>
+        <p>
+            <span class="subTitle">TEXT | </span>
+            Adobe Acrobat (.pdf), Rich Text (.rtf), Open Document Text (.odt), Microsoft Word (.doc or .docx), plain text (.txt or .text)
+        </p>
+        <p>
+            <span class="subTitle">IMAGES | </span>
+            JPEG (.jpg or .jpeg), PNG (.png), GIF (.gif), TIFF (.tif or .tiff)
+        </p>
+        <p>
+            <span class="subTitle">AUDIO | </span>
+            MP3 (.mp3), MPEG4 Audio (.m4a), WAV (.wav)
+        </p>
+        <p>
+            <span class="subTitle">VIDEO | </span>
+            MPEG4 Video (.m4v or .mp4), QuickTime (.mov), Audio/Video Interleave (.avi), Windows Media Video (.wmv)
+        </p>
+        <p>
+            <span class="subTitle">WEBPAGES | </span>
+            HTML (.htm or .html)
+        </p>
+    </div>
+</div>
+<div class="row center" *ngIf="errorMessage != null">
+    <div class="col-md-8 col-md-offset-2 basicText">
+        <div class="alert alert-danger" role="alert">
+            <strong>ERROR:</strong> {{errorMessage}}
         </div>
     </div>
-
-    <p style="margin-top: 1.5em; margin-bottom: 0.5em;">
-        We recommend that you use the following file formats for compatibility with our system and broader accessiblity by end users, who typically must open the files on their own computers:
-    </p>
-    <dl>
-        <dt>TEXT:</dt><dd>Adobe Acrobat (.pdf), Rich Text (.rtf), Open Document Text (.odt), Microsoft Word (.doc or .docx), plain text (.txt or .text)</dd>
-        <dt>IMAGES:</dt><dd>JPEG (.jpg or .jpeg), PNG (.png), GIF (.gif), TIFF (.tif or .tiff)</dd>
-        <dt>AUDIO:</dt><dd>MP3 (.mp3), MPEG4 Audio (.m4a), WAV (.wav)</dd>
-        <dt>VIDEO:</dt><dd>MPEG4 Video (.m4v or .mp4), QuickTime (.mov), Audio/Video Interleave (.avi), Windows Media Video (.wmv)</dd>
-        <dt>WEB:</dt><dd>HTML (.htm or .html)</dd>
-    </dl>
-
-    <p><input type="file" (change)="setMedia($event)" placeholder="Upload file" name="file" multiple></p>
-
-    <button class="btn btn-secondary" type="button" (click)="uploadFiles()">Upload Files</button>
-
-    <div *ngIf="fileInfos.length > 0">
-        <table style="border-collapse: separate; border-spacing: 1.5em 0.25em;">
-            <tr *ngFor="let fileinfo of fileInfos">
-                <td>{{fileinfo.message}}</td>
-                <td>{{fileinfo.status}}</td>
-                <td>{{ fileinfo.progress | percent }}</td>
-                <td>{{fileinfo.file.name}}</td>
-            </tr>
+</div>
+<div class="row">
+    <div class="col-md-3 col-md-offset-2 basicText center">
+        <div class="fileUpload btn btn-primary">
+            <span>SELECT FILES</span>
+            <input type="file" class="upload" (change)="setMedia($event)" name="file" multiple>
+        </div>
+    </div>
+    <div class="col-md-5 basicText" style="margin-bottom: 1em;">
+        <div class="subTitle">Files Selected</div>
+        <table *ngIf="fileInfos.length > 0" class="table fileBox">
+            <tbody>
+                <tr *ngFor="let fileinfo of fileInfos">
+                    <td>{{fileinfo.file.name}}</td>
+                    <td style="text-align: right;">{{fileinfo.progress | percent}}</td>
+                    <td style="text-align: right;">
+                        <span (click)="removeMedia(fileinfo)" class="glyphicon glyphicon-remove"></span>
+                    </td>
+                </tr>
+            </tbody>
         </table>
-    </div>
-
-
-    <!--
-    <li>
-      <span>File Description</span>
-      <input class="meta-info" type="text" name="file"> <br />
-      <p>
-        Optionally, provide a brief description of the file, for example "Main article", or "Experiment data readings".
-      </p>
-    </li> -->
-
-    <div class="add-top-margin">
-        <button class="btn btn-primary" type="submit" [disabled]="!nextEnabled" (click)="next()">Next Step</button>
-    </div>
-
-    <div class="row justify-content-center">
-        <div class="add-top-margin col-md-6 alert alert-success" *ngIf="succeedMessage != null">
-            <p>
-                {{succeedMessage}}
-            </p>
+        <div *ngIf="fileInfos.length > 0">
+            <button class="btn btn-secondary pull-right" type="button" (click)="uploadFiles()">UPLOAD FILES</button>
         </div>
     </div>
-
-
-
-
-
+</div>
+<div class="row" style="margin-top: 2em;">
+    <div class="col-md-8 col-md-offset-2 basicText center">
+        <button class="btn btn-primary" [disabled]="!nextEnabled" type="button" (click)="next()">NEXT</button>
+    </div>
 </div>

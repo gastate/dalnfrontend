@@ -13,6 +13,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class SummaryComponent implements OnInit {
 
+    // TODO: put spaces in btween commas on string objects 
+
   post: Post;
   data: any;
   email: string;
