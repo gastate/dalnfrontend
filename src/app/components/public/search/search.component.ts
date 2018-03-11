@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
     this.currentPageResults = [];
     this.isAdmin = false;
     this.errorMessage = null;
-    this.resultsPerPage = 2;
+    this.resultsPerPage = 12;
     this.totalRecords = 0;
     this.loading = false;
   }
