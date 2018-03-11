@@ -1,27 +1,23 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Injectable } from "@angular/core";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 //Use instead of Promise
-import { Observable } from 'rxjs/Rx';
+import { Observable } from "rxjs/Rx";
 // Import RxJs required methods
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import { Post } from '../model/post-model';
-import { Asset } from '../model/asset-model';
-import { environment } from '../../environments/environment'
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/catch";
+import { Post } from "../model/post-model";
+import { Asset } from "../model/asset-model";
+import { environment } from "../../environments/environment";
 
 //Only used in Mock
-import 'rxjs/add/operator/toPromise';
-import { POSTS } from './mock-postlist';
-
+import "rxjs/add/operator/toPromise";
+import { POSTS } from "./mock-postlist";
 
 @Injectable()
 export class PostService {
-
   cache_admin_posts: Post[];
   unapproved_posts: Post[];
   selected_posts: string[];
-
-
 
   constructor(private _http: Http) {
     this.cache_admin_posts = [];
@@ -40,21 +36,19 @@ export class PostService {
     };
 
     var datastr = JSON.stringify(data);
-    console.log(data);
 
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    headers.append("Content-Type", "application/json");
     let options = new RequestOptions({ headers: headers, method: "post" });
 
-    console.log(this.endPoint.approve_post);
-    return this._http.post(this.endPoint.approve_post, datastr, options)
+    return this._http
+      .post(this.endPoint.approve_post, datastr, options)
       .map((res: Response) => {
         return res;
       })
       .catch((error: any) => {
-        return Observable.throw(error)
+        return Observable.throw(error);
       });
-
   }
 
   unapprovePost(postId: string) {
@@ -67,68 +61,73 @@ export class PostService {
     };
 
     var datastr = JSON.stringify(data);
-
-    console.log(data);
-
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    headers.append("Content-Type", "application/json");
     let options = new RequestOptions({ headers: headers, method: "post" });
 
-    console.log(this.endPoint.unapprove_post);
-    return this._http.post(this.endPoint.unapprove_post, datastr, options)
+    return this._http
+      .post(this.endPoint.unapprove_post, datastr, options)
       .map((res: Response) => {
         return res;
       })
       .catch((error: any) => {
-        return Observable.throw(error)
+        return Observable.throw(error);
       });
   }
 
-
   getAllPosts(): Observable<Post[]> {
-
     //api call
-    return this._http.get(this.endPoint.all_posts).map((res: Response) => {
-      let posts = res.json();
-      console.log("Get All Posts ", posts);
-      return posts;
-    })
-      //...errors if any
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    return (
+      this._http
+        .get(this.endPoint.all_posts)
+        .map((res: Response) => {
+          let posts = res.json();
+          return posts;
+        })
+        //...errors if any
+        .catch((error: any) =>
+          Observable.throw(error.json().error || "Server error")
+        )
+    );
   }
 
   getPostById(id: string): Observable<Post> {
-    return this._http
-      .get(this.endPoint.post + id)
-      .map((res: Response) => {
-        return res.json()
-      })
-      //...errors if any
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
+    return (
+      this._http
+        .get(this.endPoint.post + id)
+        .map((res: Response) => {
+          return res.json();
+        })
+        //...errors if any
+        .catch((error: any) =>
+          Observable.throw(error.json().error || "Server error")
+        )
+    );
   }
 
   getDevPostById(id: string): Observable<Post> {
-    return this._http
-      .get(this.endPoint.get_dev_post + id)
-      .map((res: Response) => {
-        console.log(res);
-        console.log(res.json());
-        return res.json();
-      })
-      //...errors if any
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
+    return (
+      this._http
+        .get(this.endPoint.get_dev_post + id)
+        .map((res: Response) => {
+          return res.json();
+        })
+        //...errors if any
+        .catch((error: any) =>
+          Observable.throw(error.json().error || "Server error")
+        )
+    );
   }
 
   getPreview(postAssets: Asset[]): Asset {
-
     if (postAssets) {
       let preview: Asset;
 
-      preview = postAssets.find((asset) => asset.assetType === 'Audio/Video');
+      preview = postAssets.find(asset => asset.assetType === "Audio/Video");
       if (preview) {
         return preview;
       } else {
-        preview = postAssets.find((asset) => asset.assetType === 'Audio');
+        preview = postAssets.find(asset => asset.assetType === "Audio");
         if (preview) {
           return preview;
         } else {
@@ -138,10 +137,7 @@ export class PostService {
     }
   }
 
-
-
   getUnapprovedPosts(): Observable<Post[]> {
-
     var data = {
       tableName: this.endPoint.ddb_table_name
     };
@@ -149,16 +145,23 @@ export class PostService {
     let str = JSON.stringify(data);
 
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    headers.append("Content-Type", "application/json");
     let options = new RequestOptions({ headers: headers, method: "post" });
 
-    return this._http.post(this.endPoint.get_unapproved_posts, str, options).map((res: Response) => {
-      let posts = res.json();
-      console.log("Unapproved Posts ", posts);
-      return posts;
-    })
-      //...errors if any
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error...please check services.'));
+    return (
+      this._http
+        .post(this.endPoint.get_unapproved_posts, str, options)
+        .map((res: Response) => {
+          let posts = res.json();
+          return posts;
+        })
+        //...errors if any
+        .catch((error: any) =>
+          Observable.throw(
+            error.json().error || "Server error...please check services."
+          )
+        )
+    );
   }
 
   //Mock Services
@@ -168,7 +171,7 @@ export class PostService {
   }
 
   filterPostsById(posts: Post[], id: string): Promise<Post> {
-    let filtered = posts.find((post) => post.postId === id);
+    let filtered = posts.find(post => post.postId === id);
     return Promise.resolve(filtered);
   }
 
@@ -176,12 +179,4 @@ export class PostService {
     // replace with api call
     return this.filterPostsById(POSTS, id);
   }
-
-
-
-
-
-
-
-
 }

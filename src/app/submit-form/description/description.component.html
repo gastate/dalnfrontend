@@ -11,7 +11,7 @@
                     <span class="glyphicon glyphicon-asterisk"></span>
                 </label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" [(ngModel)]="title">
+                    <input type="text" class="form-control" name="title" id="title" maxlength="150" [(ngModel)]="title">
                     <div class="specialText">Please enter a meaningful title for your literacy narrative</div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                     <span class="glyphicon glyphicon-asterisk"></span>
                 </label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="description" id="description" [(ngModel)]="description">
+                    <input type="text" class="form-control" name="description" maxlength="300" id="description" [(ngModel)]="description">
                     <div class="specialText">Please briefly describe your literacy narrative and highlight it's main points</div>
                 </div>
             </div>

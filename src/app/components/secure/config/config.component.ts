@@ -25,10 +25,10 @@ export class ConfigComponent implements OnInit, LoggedInCallback {
   ngOnInit() {
   }
 
-  changePageHead(page: number) {
-      this.searchService.pageHead = page;
-      console.log("page head changed to " + this.searchService.pageHead);
-  }
+//   changePageHead(page: number) {
+//       this.searchService.pageHead = page;
+//       console.log("page head changed to " + this.searchService.pageHead);
+//   }
 
   isLoggedIn(message: string, isLoggedIn: boolean) {
       if(!isLoggedIn) {

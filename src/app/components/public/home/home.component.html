@@ -21,29 +21,8 @@
     </div>
 </div>
 <div class="row basicText" style="margin-bottom: 5em;">
-    <div class="col-md-12">
+    <div class="col-md-12 basicText">
         <post-list [getdev]="getdev" [postList]="posts"></post-list>
     </div>
 </div>
 <daln-footer [mobile]="mobile"></daln-footer>
-
-<!-- <div class="container responsive_home">
-    <app-search2 [showPagination]="!showPage" (showHomePage)="showHomePage($event)"></app-search2>
-</div>
-
-<div class="container responsive_home">
-    <div class="featured-post-list" *ngIf="showPage === true">
-        <h3>Featured Posts</h3>
-        <hr />
-        <post-list [getdev]="getdev" [postList]="posts"></post-list>
-    </div>
-</div>
-
-<div class="container responsive_home">
-    <div class="center add-top-margin">
-        <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
-    </div>
-</div>
-
-
-<router-outlet></router-outlet> -->

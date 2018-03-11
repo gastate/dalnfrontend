@@ -1,36 +1,24 @@
 <div *ngIf="postItem">
-    <article class="card" [ngClass]="{'card-outline-danger': assetFailureWarning != null && showAdminUI == true }">
-        <div class="post-header">
-            <div class="hover-post">
-                <a *ngIf="getdev === false" [routerLink]="['/detail', postItem.postId]">
-                    <div>{{postItem?.title}}</div>
-                </a>
-                <a *ngIf="getdev === true" target="_blank" [routerLink]="['/approval/detail', postItem.postId]">
-                    <div>{{postItem?.title}}</div>
-                    <p *ngIf="assetFailureWarning != null && showAdminUI == true">{{assetFailureWarning}}</p>
-                </a>
-            </div>
-        </div>
-        <div class="card-block">
-            <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" (assetFailure)="issueAssetWarning($event)"></app-player>
-            <div class="post-desc">
-                <p>{{postItem?.description}}</p>
-                <!-- <div class="hover-post">
-                    <button *ngIf="getdev=== true && postItem.isPostNotApproved === true" type="button" class="btn btn-primary" (click)="approvePost()">Approve</button>
-                    <button *ngIf="getdev === true && postItem.isPostNotApproved === false" type="button" class="btn btn-danger" (click)="unapprovePost()">Unapprove</button>
-                </div> -->
-            </div>
-        </div>
-    </article>
-</div>
-<!-- <div class="postItem" *ngIf="postItem">
-      <div class="card">
-        <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true"></app-player>
-        <div class="card-block">
-            <a class="thumbnail" [routerLink]="['/detail', postItem.postId]">
-                <h3>{{postItem?.title}}</h3>
-            </a>
-          <p class="card-text">{{postItem?.description}}</p>
-        </div>
+  <article class="card" [ngClass]="{'card-outline-danger': assetFailureWarning != null && showAdminUI == true }">
+    <div class="post-header">
+      <div class="hover-post">
+        <a (click)="goToDetails()">
+          <div>{{postItem?.title}}</div>
+        </a>
       </div>
-</div> -->
+    </div>
+    <div class="card-block">
+      <!-- <app-player [postAsset]="getPreview(postItem.assetList)" [thumb]="true" (assetFailure)="issueAssetWarning($event)"></app-player> -->
+      <div class="post-desc">
+        <p class="postAuthor">
+          <span *ngIf="postItem.contributorAuthor">{{postItem.contributorAuthor}}</span>
+          <span *ngIf="!postItem.contributorAuthor">Anonymous Author</span>
+        </p>
+        <p>
+          <span *ngIf="postItem.description">{{postItem.description}}</span>
+          <span *ngIf="!postItem.description">No description was provided for this literacy narrative</span>
+        </p>
+      </div>
+    </div>
+  </article>
+</div>

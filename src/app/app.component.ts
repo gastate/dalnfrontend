@@ -26,10 +26,8 @@ export class AppComponent implements LoggedInCallback {
   isLoggedIn(message: string, isLoggedIn: boolean) {
     if (isLoggedIn) {
       this.showAdminButton = true;
-      console.log('logged in' + isLoggedIn);
     } else {
       this.showAdminButton = false;
-      console.log('logged in' + isLoggedIn);
     }
   }
 }
