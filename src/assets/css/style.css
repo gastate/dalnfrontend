@@ -149,6 +149,12 @@ body {
   padding: 2em 1em;
 }
 
+.footerHighlight {
+    background-color: #175c58;
+    color: #fff;
+    padding: 1em;
+}
+
 /* ABOUT */
 
 .pageTitle {

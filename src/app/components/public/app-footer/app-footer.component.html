@@ -1,43 +1,20 @@
 <footer>
-    <div class="row footer">
-        <div class="col-md-3 col-sm-3 col-lg-3">
-            <h3 class="footer-heading">Connect With Us</h3>
-            <ul class="socicon">
-                <li>
-                    <a href="https://www.facebook.com/dalnarchive/" target="_blank" class="facebook"> </a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/dalnarchive" target="_blank" class="twitter"> </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-3 col-sm-3 col-lg-3">
-            <h3 class="footer-heading">Who We Are</h3>
-            <p>
-                Since 2007, the Digital Archive of Literacy Narratives has been collecting stories from the public about their experiences
-                learning to read, write, and compose with different media types. Containing over 6000 individual narratives
-                in text, video, audio, and other forms, the DALN is a resource not only for scholars and teachers, but the
-                public at large. Tell us your story.
-                <a routerLink="/create">Submit today!</a>
-            </p>
-
-        </div>
-        <div *ngIf="!mobile" class="col-md-3 col-sm-3 col-lg-3">
-            <!-- tweets begin here -->
-            <h3 class="footer-heading">Latest Tweets</h3>
-            <div class="tweets">
-
-            </div>
-            <a class="twitter-timeline" data-width="300" data-height="330" data-theme="dark" href="https://twitter.com/dalnarchive" target="_blank">Tweets by dalnarchive</a>
-        </div>
-        <div *ngIf="!mobile" class="col-md-3 col-sm-3 col-lg-3">
-            <h3 class="footer-heading">From Facebook</h3>
-            <div class="fb-page" data-href="https://www.facebook.com/dalnarchive/" data-tabs="timeline" data-width="300" data-height="330"
-                data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
-                <blockquote cite="https://www.facebook.com/dalnarchive/" class="fb-xfbml-parse-ignore">
-                    <a href="https://www.facebook.com/dalnarchive/">Digital Archive of Literacy Narratives</a>
-                </blockquote>
-            </div>
-        </div>
+  <div class="row footerHighlight">
+    <div class="col-md-12">
+        DON'T FORGET TO KEEP TO TWEET US OR POST ON OUR FACEBOOK PAGE
     </div>
+  </div>
+  <div class="row footer">
+    <div *ngIf="!mobile" class="col-md-4 col-md-offset-2">
+      <a class="twitter-timeline" data-height="200" data-theme="dark" href="https://twitter.com/dalnarchive" target="_blank">Tweets by dalnarchive</a>
+    </div>
+    <div *ngIf="!mobile" class="col-md-4">
+      <div class="fb-page" data-href="https://www.facebook.com/dalnarchive/" data-tabs="timeline" data-height="200" data-small-header="false"
+        data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+        <div cite="https://www.facebook.com/dalnarchive/" class="fb-xfbml-parse-ignore">
+          <a class="headerText" href="https://www.facebook.com/dalnarchive/">Facebook DALN</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
