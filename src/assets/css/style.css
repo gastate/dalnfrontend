@@ -132,6 +132,15 @@ body {
   cursor: pointer;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
+.uppercase > p > span.subTitle {
+  display: block;
+  font-size: 1.2em;
+}
+
 /* FOOTER */
 
 .footer {
