@@ -82,8 +82,7 @@ export class HomeComponent implements OnInit {
       // TODO Change search param to env variable
       this._searchService.search_page("games", postNumber, 0).subscribe(
         data => {
-          this.posts = this._searchService.translatePosts(data.hit);
-          // this._searchService.cache_posts = this.posts;
+          this.posts = data.hits;
           localStorage.setItem("featuredPosts", JSON.stringify(this.posts));
           this.loading = false;
         }, //Bind to view
