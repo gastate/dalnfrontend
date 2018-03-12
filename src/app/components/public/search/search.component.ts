@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   activatedRoute: ActivatedRoute;
   searchService: SearchService;
   queryParam: string;
+  prevQueryParam: string;
   startParam: number;
   currentPageResults: Post[];
   isAdmin: boolean;
@@ -40,16 +41,18 @@ export class SearchComponent implements OnInit {
     this.resultsPerPage = 12;
     this.totalRecords = 0;
     this.loading = false;
+    this.prevQueryParam = "";
   }
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
+      if (this.queryParam) {
+        this.prevQueryParam = this.queryParam;
+      }
       this.queryParam = this.activatedRoute.snapshot.queryParams["query"];
-      let temp = (this.startParam = this.activatedRoute.snapshot.queryParams[
-        "page"
-      ]
-        ? Number(this.activatedRoute.snapshot.queryParams["page"]) - 1
-        : 0);
+      let temp = (this.activatedRoute.snapshot.queryParams["page"] == 1)
+        ? 0
+        : Number(this.activatedRoute.snapshot.queryParams["page"]) - 1;
       this.startParam = this.resultsPerPage * temp;
       if (this.queryParam) {
         this.search();
@@ -60,6 +63,9 @@ export class SearchComponent implements OnInit {
   search() {
     if (!this.queryParam.trim()) {
       return;
+    }
+    if (this.prevQueryParam && this.prevQueryParam != this.queryParam) {
+      this.startParam = 0;
     }
     this.currentPageResults = [];
     this.loading = true;
