@@ -50,7 +50,7 @@ export class SearchComponent implements OnInit {
         this.prevQueryParam = this.queryParam;
       }
       this.queryParam = this.activatedRoute.snapshot.queryParams["query"];
-      let temp = (this.activatedRoute.snapshot.queryParams["page"] == 1)
+      let temp = (!this.activatedRoute.snapshot.queryParams["page"] || this.activatedRoute.snapshot.queryParams["page"] == 1)
         ? 0
         : Number(this.activatedRoute.snapshot.queryParams["page"]) - 1;
       this.startParam = this.resultsPerPage * temp;
