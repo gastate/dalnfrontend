@@ -90,18 +90,16 @@ export class HomeComponent implements OnInit {
         err => {
           this.loading = false;
           this.failed = true;
-          // Log errors if any
-          // console.log(err);
         }
       );
     }
   }
 
-  showHomePage(event) {
+  showHomePage(event: any) {
     this.showPage = event;
   }
 
-  displayResults(event) {
+  displayResults(event: any) {
     //   // console.log("Search hit.", event);
     this.searchPosts = event;
   }
@@ -109,7 +107,6 @@ export class HomeComponent implements OnInit {
   isLoggedIn(message: string, isLoggedIn: boolean) {
     if (!isLoggedIn) {
       this.getdev = false;
-      // console.log("get dev false");
     } else {
       this.getdev = true;
     }

@@ -34,10 +34,8 @@ export class MediaComponent {
     }
   }
 
-  setMedia(event) {
+  setMedia(event:any) {
     let fn: string = this.constructor.name + "#uploadFiles"; // tslint:disable-line:no-unused-variable
-    //console.log(fn + ": invoked");
-
     if (event.target.files.length > 0) {
       for (let file of event.target.files) {
         //console.log(fn + ": file ", file);

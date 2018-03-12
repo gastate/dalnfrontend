@@ -45,9 +45,12 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.queryParam = this.activatedRoute.snapshot.queryParams["query"];
-      this.startParam = this.activatedRoute.snapshot.queryParams["page"]
+      let temp = (this.startParam = this.activatedRoute.snapshot.queryParams[
+        "page"
+      ]
         ? Number(this.activatedRoute.snapshot.queryParams["page"]) - 1
-        : 0;
+        : 0);
+      this.startParam = this.resultsPerPage * temp;
       if (this.queryParam) {
         this.search();
       }
@@ -61,6 +64,7 @@ export class SearchComponent implements OnInit {
     this.currentPageResults = [];
     this.loading = true;
     this.errorMessage = null;
+
     this.searchService
       .search_page(this.queryParam, this.resultsPerPage, this.startParam)
       .subscribe(results => {

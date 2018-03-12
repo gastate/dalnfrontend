@@ -32,6 +32,8 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+    this.currentPage =
+      this.currentPage == 0 ? 0 : this.currentPage / this.resultsPerPage;
     this.pages = [];
     //calculate pages
     let numPages =

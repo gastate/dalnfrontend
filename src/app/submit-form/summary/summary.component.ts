@@ -54,10 +54,11 @@ export class SummaryComponent implements OnInit {
   next() {
     this.email = this.emailForm.value.email;
     this._submitService.email = this.email;
+
     this._submitService.postCreate().subscribe(
-      data => {
+      results => {
         if (
-          data["_body"] ===
+          results.json() ===
           '"Values for tableName, title, email, and license are required"'
         ) {
           this.errorMessage =

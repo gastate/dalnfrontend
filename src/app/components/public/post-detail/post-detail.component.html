@@ -7,7 +7,7 @@
       (click)="unapprovePost()">UNAPPROVE</button>
   </div>
 </div>
-<div class="row" style="margin-top:1em;" *ngIf="approvalMessage || unapprovalMessage.length > 0">
+<div class="row" style="margin-top:1em;" *ngIf="approvalMessage || unapprovalMessage">
   <div class="col-md-10 col-md-offset-1 center">
     <div class="alert alert-success" role="alert">
       <span>{{approvalMessage}}</span>
@@ -116,7 +116,7 @@
     </div>
     <div class="downloadFileList">
       <div class="subTitle">DOWNLOAD FILE LIST</div>
-      <table *ngIf="postDetail?.assetList.length > 0" class="table fileBox">
+      <table *ngIf="postDetail?.assetList?.length > 0" class="table fileBox">
         <tbody>
           <tr *ngFor="let asset of postDetail?.assetList; let i = index">
             <td>
