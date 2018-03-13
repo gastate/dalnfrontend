@@ -1,11 +1,8 @@
-import { ElementRef, Component, OnInit, animate } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { PostService } from "../../../services/post.service";
 import { SearchService } from "../../../services/search.service";
 import { UserLoginService } from "../../../services/user-login.service";
 import { LoggedInCallback } from "../../../services/cognito.service";
-import { Ng2DeviceService } from "ng2-device-detector";
-
 import { Post } from "../../../model/post-model";
 import "rxjs/add/observable/fromPromise";
 
@@ -15,99 +12,47 @@ import "rxjs/add/observable/fromPromise";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  title = "DALN Frontend";
-  sub: any;
-  searchPosts: Post[] = [];
-  posts: Post[] = [];
-
-  showPage: boolean = false;
-
+  currentPageResults: Post[];
   loading: boolean = false;
-  failed: boolean = false;
-  mobile: boolean;
+  getDev: boolean;
+  queryParam: string;
+  startParam: number;
 
-  getdev: boolean; //for postlist.
-  deviceInfo: any = null;
-  route: string;
 
   constructor(
-    private _postService: PostService,
     private router: Router,
     private _searchService: SearchService,
-    public userService: UserLoginService,
-    private deviceService: Ng2DeviceService
-  ) {
-    this.getDeviceInfo();
-    this.userService.isAuthenticated(this);
-  }
+    public userService: UserLoginService
+  ) {}
 
   ngOnInit() {
-    return (this.sub = this.router.events.subscribe(val => {
-      // console.log("Home Component Route: ", val.url);
-      this.route = val.url;
-      // If not search paginatorResults to be displays then get Posts
-      if (!this.route.startsWith("/search?")) {
-        this.getPagePosts();
-      }
-    }));
+    this.userService.isAuthenticated(this);
+    this.currentPageResults = [];
+    this.queryParam = 'cccc chair';
+    this.startParam = 0;
+    this.search();
   }
 
-  getDeviceInfo() {
-    this.deviceInfo = this.deviceService.getDeviceInfo();
-    // console.log("***********", this.deviceInfo);
-    if (
-      this.deviceInfo.os === "ios" ||
-      this.deviceInfo.os === "android" ||
-      this.deviceInfo.device === "iphone"
-    ) {
-      this.mobile = true;
-    }
-  }
-
-  getPagePosts(): void {
-    this.showPage = true;
-    this.posts = JSON.parse(localStorage.getItem("featuredPosts"));
-    // console.log("HomeComponent #getPagePosts Posts: ", this.posts);
-
-    if (!this.posts) {
-      if (!this.deviceInfo) {
-        this.getDeviceInfo();
-      }
-      this.loading = true;
-      let postNumber = 4;
-
-      if (this.mobile) {
-        postNumber = 3;
-      }
-      // TODO Change search param to env variable
-      this._searchService.search_page("games", postNumber, 0).subscribe(
-        data => {
-          this.posts = data.hits;
-          localStorage.setItem("featuredPosts", JSON.stringify(this.posts));
-          this.loading = false;
-        }, //Bind to view
-        err => {
-          this.loading = false;
-          this.failed = true;
+  search() {
+    let startParam = 0;
+    this.currentPageResults = [];
+    this.loading = true;
+    
+    this._searchService
+      .search_page(this.queryParam, 4, startParam)
+      .subscribe(results => {
+        this.loading = false;
+        if (results && results.found && results.found != 0 && results.hits) {
+          this.currentPageResults = results.hits.splice(0, 4);
         }
-      );
-    }
-  }
-
-  showHomePage(event: any) {
-    this.showPage = event;
-  }
-
-  displayResults(event: any) {
-    //   // console.log("Search hit.", event);
-    this.searchPosts = event;
+      });
   }
 
   isLoggedIn(message: string, isLoggedIn: boolean) {
     if (!isLoggedIn) {
-      this.getdev = false;
+      this.getDev = false;
     } else {
-      this.getdev = true;
+      this.getDev = true;
     }
   }
 }
