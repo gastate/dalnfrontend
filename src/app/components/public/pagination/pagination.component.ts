@@ -19,11 +19,15 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Input() totalRecords: number;
   @Output() pageSelectionEmitter: EventEmitter<number>;
   showPagination: boolean;
-  pages: number[];
+  totalPages: number[];
+  pages: any[];
+  pagesPerDot: number;
 
   constructor() {
     this.pageSelectionEmitter = new EventEmitter<number>();
+    this.totalPages = [];
     this.pages = [];
+    this.pagesPerDot = 5;
   }
 
   ngOnInit() {
@@ -34,23 +38,59 @@ export class PaginationComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.currentPage =
       this.currentPage == 0 ? 0 : this.currentPage / this.resultsPerPage;
-    this.pages = [];
+    this.totalPages = [];
     //calculate pages
     let numPages =
       this.totalRecords < this.resultsPerPage
         ? 1
         : Math.ceil(this.totalRecords / this.resultsPerPage);
     for (let i = 1; i <= numPages; i++) {
-      this.pages.push(i);
+      this.totalPages.push(i);
     }
     this.currentPage++;
+
+    this.pages = [];
+    if (this.totalPages.length <= this.pagesPerDot) {
+      this.pages = this.totalPages;
+    } else {
+      this.pages = this.pagination(this.currentPage, this.totalPages.length);
+    }
   }
 
-  changePage(page: number) {
-    if (this.currentPage == page) {
+  pagination(current: number, last: number) {
+    var delta = 2,
+      left = current - delta,
+      right = current + delta + 1,
+      range = [],
+      rangeWithDots = [],
+      l;
+
+    for (let i = 1; i <= last; i++) {
+      if (i == 1 || i == last || (i >= left && i < right)) {
+        range.push(i);
+      }
+    }
+
+    for (let i of range) {
+      if (l) {
+        if (i - l === 2) {
+          rangeWithDots.push(l + 1);
+        } else if (i - l !== 1) {
+          rangeWithDots.push("...");
+        }
+      }
+      rangeWithDots.push(i);
+      l = i;
+    }
+
+    return rangeWithDots;
+  }
+
+  changePage(page: any) {
+    if (this.currentPage == page || page == '...') {
       return;
     }
-    this.currentPage = page;
+    this.currentPage = Number(page);
     this.pageSelectionEmitter.emit(this.currentPage);
   }
 

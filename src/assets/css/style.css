@@ -67,6 +67,13 @@ body {
   font-family: "Roboto Condensed", sans-serif;
 }
 
+@media screen and (max-width: 768px) {
+  .navbarBrandTitle {
+    font-size: 1.2em;
+    font-family: "Roboto Condensed", sans-serif;
+  }
+}
+
 /* HOMEPAGE */
 
 .highlightBg {
@@ -74,11 +81,15 @@ body {
   min-height: 60vh;
 }
 
+.dalnBox > img {
+  width: 70%;
+}
+
 .dalnBox {
   padding: 1em;
   margin-top: 1em;
   background-color: #fff;
-  font-size: 5em;
+  font-size: 4em;
   text-align: center;
 }
 
@@ -150,9 +161,9 @@ body {
 }
 
 .footerHighlight {
-    background-color: #175c58;
-    color: #fff;
-    padding: 1em;
+  background-color: #175c58;
+  color: #fff;
+  padding: 1em;
 }
 
 /* ABOUT */
