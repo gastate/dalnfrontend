@@ -64,6 +64,7 @@ const approve_post = api_url + "/admin/approve/"; // to approve posts into searc
 const unapprove_post = api_url + "/admin/remove/";
 const get_upload_link = api_url + "/asset/s3uploader/"; // to get the link for file uploading.
 const link_media = api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
+const read_file = api_url + "/asset/read/"; // to scan Text documents for their contents
 
 const get_unapproved_posts = api_url + "/admin/unapproved";
 
@@ -85,6 +86,7 @@ export const environment = {
         page_posts: page_posts,
         post: post,
         queueName: queueName,
+        read_file: read_file,
         search_posts: search_posts,
         search_size: search_size,
         share_link: share_link,

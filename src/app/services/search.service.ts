@@ -30,11 +30,11 @@ export class SearchService {
     return this._http
       .get(
         this.endPoint.search_posts +
-          searchQueryParam +
-          "/" +
-          resultsPerPage +
-          "/" +
-          startPageIndex
+        searchQueryParam +
+        "/" +
+        resultsPerPage +
+        "/" +
+        startPageIndex
       )
       .map((res: Response) => {
         let temp = {
@@ -57,6 +57,7 @@ export class SearchService {
       post.postId = res.fields.postid[0];
       post.title = res.fields.title;
       post.description = res.fields.description;
+      post.hiddenDescription = res.fields.hiddenDescription
       post.areAllFilesUploaded = res.fields.areallfilesuploaded;
       post.contributorAuthor = res.fields.contributorauthor;
       post.coverageNationality = res.fields.coveragenationality;

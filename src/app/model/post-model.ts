@@ -1,11 +1,12 @@
-import {Asset} from './asset-model';
+import { Asset } from './asset-model';
 
 export class Post {
-  isPostNotApproved: boolean; 
+  isPostNotApproved: boolean;
   areAllFilesUploaded: boolean;
   postId: string;
   title: string;
   description: string;
+  hiddenDescription: string;
   identifierUri: string;
   dateAccessioned: string;
   dateAvailable: string;
@@ -20,7 +21,7 @@ export class Post {
   coverageNationality: string[];
   coveragePeriod: string[];
   coverageRegion: string[];
-  coverageSpatial: string[];  
+  coverageSpatial: string[];
   coverageStateProvince: string[];
   creatorYearOfBirth: string[];
   language: string[];
