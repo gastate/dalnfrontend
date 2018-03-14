@@ -9,7 +9,7 @@
       <li *ngFor="let page of pages" [class.active]="page == currentPage">
         <a (click)="changePage(page)">{{page}}</a>
       </li>
-      <li (click)="goNext()" [ngClass]="{disabled : currentPage == pages.length}">
+      <li (click)="goNext()" [ngClass]="{disabled : currentPage == totalPages.length}">
         <a aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
