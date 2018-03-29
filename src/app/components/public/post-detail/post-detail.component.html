@@ -62,7 +62,7 @@
     </p>
     <p *ngIf="postDetail && postDetail.dateSubmitted">
       <span class="subTitle">DATE OF SUBMISSION</span>
-      {{postDetail?.dateSubmitted | date: 'MMMM d, y'}}
+      {{postDetail?.dateSubmitted}}
     </p>
     <p *ngIf="postDetail && postDetail.subject">
       <span class="subTitle">SUBJECT KEYWORDS</span>
