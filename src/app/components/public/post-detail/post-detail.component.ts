@@ -77,7 +77,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
         this.route = this.endPoint.share_link + val.url.substring(8);
       }
     });
-    this.onDetail();
+    this.onDevDetail();
   }
 
   onDetail() {
@@ -126,7 +126,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
           this.loading = false;
           this.failed = true;
           console.log("POST DETAIL FAILED, trying dev posts", err);
-          this.onDevDetail();
+          this.onDevDetail(); // Check Dev table if it exists there
         }
       );
   }
@@ -182,14 +182,14 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   }
 
   checkAssets() {
-    // if (this.postDetail.assetList) {
-    //     for (var i = 0; i < this.postDetail.assetList.length; i++) {
-    //         if (this.postDetail.assetList[i].assetS3Link === this.postDetail.assetList[i].assetEmbedLink && this.postDetail.assetList[i].assetType.indexOf("Audio") > -1) {
-    //             this.assetNeedsReupload = true;
-    //             this.assetFailedButtonText = "Asset(s) Failed to Upload";
-    //         }
-    //     }
-    // }
+    if (this.postDetail.assetList) {
+      for (var i = 0; i < this.postDetail.assetList.length; i++) {
+        if (this.postDetail.assetList[i].assetS3Link === this.postDetail.assetList[i].assetEmbedLink && this.postDetail.assetList[i].assetType.indexOf("Audio") > -1) {
+          this.assetNeedsReupload = true;
+          this.assetFailedButtonText = "Asset(s) Failed to Upload";
+        }
+      }
+    }
   }
 
   handleReupload() {
