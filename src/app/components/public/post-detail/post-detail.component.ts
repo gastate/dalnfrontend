@@ -73,14 +73,11 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     this.loading = true;
     this.assetNeedsReupload = false;
     this.sub = this.router.events.subscribe(val => {
-      if (environment.production === false) {
-        this.onDevDetail();
-      } else {
-        // get the postId value and use it for the url in the social media buttons.
+      if (environment.production === true) {
         this.route = this.endPoint.share_link + val.url.substring(8);
-        this.onDetail();
       }
     });
+    this.onDetail();
   }
 
   onDetail() {
@@ -128,7 +125,8 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
         err => {
           this.loading = false;
           this.failed = true;
-          console.log("POST DETAIL FAILED", err);
+          console.log("POST DETAIL FAILED, trying dev posts", err);
+          this.onDevDetail();
         }
       );
   }
