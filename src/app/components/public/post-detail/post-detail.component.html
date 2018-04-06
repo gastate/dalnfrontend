@@ -7,11 +7,14 @@
       (click)="unapprovePost()">UNAPPROVE</button>
   </div>
 </div>
-<div class="row" style="margin-top:1em;" *ngIf="approvalMessage || unapprovalMessage">
+<div class="row" style="margin-top:1em;" *ngIf="approvalMessage || unapprovalMessage || assetWarning">
   <div class="col-md-10 col-md-offset-1 center">
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success" role="alert" *ngIf="approvalMessage || unapprovalMessage">
       <span>{{approvalMessage}}</span>
       <span>{{unapprovalMessage}}</span>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="assetWarning">
+      <span>{{assetWarning}}</span>
     </div>
   </div>
 </div>
@@ -111,16 +114,19 @@
     <div *ngFor="let asset of postDetail?.assetList">
       <div *ngIf="asset.assetType == 'Audio/Video' || asset.assetType == 'Audio'">
         <div class="audioVideoText">{{asset?.assetType}} File: {{asset?.assetName}}</div>
-        <app-player [postAsset]="asset" (assetFailure)="checkAssets()"></app-player>
+        <app-player [postAsset]="asset"></app-player>
       </div>
     </div>
-    <div class="downloadFileList">
-      <div class="subTitle">DOWNLOAD FILE LIST</div>
+    <div class="downloadFileList" *ngIf="showAdminUI === true">
+      <div class="subTitle">
+        DOWNLOAD FILE LIST
+      </div>
       <table *ngIf="postDetail?.assetList?.length > 0" class="table fileBox">
         <tbody>
-          <tr *ngFor="let asset of postDetail?.assetList; let i = index">
+          <tr *ngFor="let asset of postDetail?.assetList; let i = index;">
             <td>
-              <a href="{{postDetail.assetList[i].assetS3Link}}" download>{{postDetail.assetList[i].assetName}}</a>
+              <a *ngIf="showAsset(postDetail.assetList[i]) === true" href="{{postDetail.assetList[i].assetS3Link}}" download>{{postDetail.assetList[i].assetName}}</a>
+              <a *ngIf="showAsset(postDetail.assetList[i]) === false" class="isDisabled">{{postDetail.assetList[i].assetStatus}}.....{{postDetail.assetList[i].assetName}}</a>
             </td>
           </tr>
         </tbody>

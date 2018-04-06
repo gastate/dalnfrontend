@@ -20,13 +20,6 @@ export class PlayerComponent implements OnInit {
   @Input()
   thumb: boolean;
 
-  @Input()
-  getdev: boolean;
-
-  @Output()
-  assetFailure: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-
   url: string;
   route: string;
   matchRoute: string;
@@ -39,29 +32,19 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUrl(this.postAsset);
-    // console.log(this.getdev);
   }
 
-  hasNullAssetLocation(asset: Asset) {
-    if (asset.assetLocation != "null") {
-      return false;
-    } else {
-      return true;
-    }
-  }
 
   getUrl(asset: Asset): void {
 
     if (!asset) {
       this.url = null;
     } else if (this.postAsset.assetEmbedLink == this.postAsset.assetS3Link && this.postAsset.assetType.indexOf("Audio") > -1) {
-      this.assetFailure.emit(true);
       this.url = this.postAsset.assetEmbedLink;
     } else if (this.postAsset.assetType === "Audio/Video") {
 
       if (this.hasNullAssetLocation(this.postAsset) == true) {
         this.url = this.postAsset.assetS3Link;
-        this.assetFailure.emit(true);
       } else {
         this.url = this.postAsset.assetEmbedLink;
       }
@@ -106,6 +89,16 @@ export class PlayerComponent implements OnInit {
 
       this.url = null;
       //   console.log("Sanitzer:" + this.url);
+    }
+  }
+
+  // Helper Functions
+
+  hasNullAssetLocation(asset: Asset) {
+    if (asset.assetLocation != "null") {
+      return false;
+    } else {
+      return true;
     }
   }
 

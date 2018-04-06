@@ -51,8 +51,8 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   text: string;
 
   showAdminUI: boolean;
-  assetFailedButtonText: string;
-  assetNeedsReupload: boolean;
+  // assetFailedButtonText: string;
+  assetWarning: string = "";
 
   private endPoint = environment.API_ENDPOINTS;
 
@@ -71,13 +71,15 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   ngOnInit(): void {
     let fn: String = this.constructor.name + "#ngOnInit"; // tslint:disable-line:no-unused-variable
     this.loading = true;
-    this.assetNeedsReupload = false;
     this.sub = this.router.events.subscribe(val => {
       if (environment.production === true) {
         this.route = this.endPoint.share_link + val.url.substring(8);
+        this.onDetail();
+      } else {
+        this.onDevDetail();
       }
     });
-    this.onDevDetail();
+
   }
 
   onDetail() {
@@ -89,9 +91,15 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
       .subscribe(
         (details: Post) => {
           let detailStr = JSON.stringify(details);
+
           this.loading = false;
           this.postDetail = details;
-          console.log(this.postDetail);
+          console.log("Post Details", this.postDetail);
+          // Temp fix for issue #109
+          if (this.postDetail.toString() === "") {
+            console.log("Post not found, trying on dev...");
+            this.onDevDetail();
+          }
           this.assets = this.postDetail.assetList
             ? this.postDetail.assetList
             : [];
@@ -116,10 +124,15 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             this.postDetail.assetList &&
             this.postDetail.assetList.length > 0
           ) {
-            this.checkAssets();
             this.selectedAsset = this._postService.getPreview(
               this.postDetail.assetList
             );
+          }
+
+          if (this.checkAssetList() === false) {
+            this.assetWarning =
+              "These post's assets are either uploading or the upload server is down."
+              + "If post's assets do not upload within 10 minutes please check the upload server.";
           }
         },
         err => {
@@ -144,6 +157,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             this.onDetail();
           } else {
             this.postDetail = details;
+            console.log("Post Details", this.postDetail);
             this.assets = this.postDetail.assetList
               ? this.postDetail.assetList
               : [];
@@ -155,12 +169,19 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
               }
             }
 
-            this.checkAssets();
+
             if (this.postDetail && this.postDetail.assetList) {
               this.selectedAsset = this._postService.getPreview(
                 this.postDetail.assetList
               );
             }
+
+            if (this.checkAssetList() === false) {
+              this.assetWarning =
+                "These post's assets are either uploading or the upload server is down."
+                + "If post's assets do not upload within 10 minutes please check the upload server.";
+            }
+
 
             this.loading = false;
           }
@@ -181,60 +202,77 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     console.log("selected asset", asset);
   }
 
-  checkAssets() {
+  checkAssetList() {
     if (this.postDetail.assetList) {
       for (var i = 0; i < this.postDetail.assetList.length; i++) {
-        if (this.postDetail.assetList[i].assetS3Link === this.postDetail.assetList[i].assetEmbedLink && this.postDetail.assetList[i].assetType.indexOf("Audio") > -1) {
-          this.assetNeedsReupload = true;
-          this.assetFailedButtonText = "Asset(s) Failed to Upload";
+        if ("assetEmbedLink" in this.postDetail.assetList[i] &&
+          "assetS3Link" in this.postDetail.assetList[i] &&
+          "assetLocation" in this.postDetail.assetList[i]) {
+          return true;
+        } else {
+          return false;
         }
       }
     }
   }
 
-  handleReupload() {
-    this.assetFailedButtonText = "Reuploading Asset(s)...";
-    let successCount = 0;
-    let indexOfFailedReuploadAssets = [];
-    if (this.postDetail && this.postDetail.assetList) {
-      for (var i = 0; i < this.postDetail.assetList.length; i++) {
-        let filename = this.postDetail.assetList[i].assetName;
-        let description = this.postDetail.assetList[i].assetDescription;
-        let postid = this.postDetail.postId;
-
-        this.reuploadAssets(postid, filename, description).subscribe(data => {
-          if (data["_body"] === '"File uploaded successfully"') {
-            successCount++;
-          } else {
-            successCount--;
-          }
-        });
-
-        // once all the files have been tried to be reuploaded,
-        // we'll see if all of them were sucessful,
-        // if not then ask to retry.
-        if (
-          this.postDetail.assetList &&
-          i === this.postDetail.assetList.length - 1
-        ) {
-          console.log(
-            "sucess count",
-            successCount,
-            this.postDetail.assetList.length - 1
-          );
-          if (
-            this.postDetail.assetList &&
-            successCount === this.postDetail.assetList.length - 1
-          ) {
-            this.assetFailedButtonText = "Reuploaded all assets";
-          } else {
-            this.assetFailedButtonText =
-              "Reuploading for asset(s) failed. Please retry.";
-          }
-        }
-      }
+  showAsset(asset: Asset) {
+    if (asset.assetStatus && asset.assetStatus === "Completed") {
+      return true;
+    } else if (typeof asset.assetStatus === 'undefined') {
+      return true;
+    } else {
+      return false;
     }
   }
+
+
+
+
+
+  // handleReupload() {
+  //   this.assetFailedButtonText = "Reuploading Asset(s)...";
+  //   let successCount = 0;
+  //   let indexOfFailedReuploadAssets = [];
+  //   if (this.postDetail && this.postDetail.assetList) {
+  //     for (var i = 0; i < this.postDetail.assetList.length; i++) {
+  //       let filename = this.postDetail.assetList[i].assetName;
+  //       let description = this.postDetail.assetList[i].assetDescription;
+  //       let postid = this.postDetail.postId;
+
+  //       this.reuploadAssets(postid, filename, description).subscribe(data => {
+  //         if (data["_body"] === '"File uploaded successfully"') {
+  //           successCount++;
+  //         } else {
+  //           successCount--;
+  //         }
+  //       });
+
+  //       // once all the files have been tried to be reuploaded,
+  //       // we'll see if all of them were sucessful,
+  //       // if not then ask to retry.
+  //       if (
+  //         this.postDetail.assetList &&
+  //         i === this.postDetail.assetList.length - 1
+  //       ) {
+  //         console.log(
+  //           "sucess count",
+  //           successCount,
+  //           this.postDetail.assetList.length - 1
+  //         );
+  //         if (
+  //           this.postDetail.assetList &&
+  //           successCount === this.postDetail.assetList.length - 1
+  //         ) {
+  //           this.assetFailedButtonText = "Reuploaded all assets";
+  //         } else {
+  //           this.assetFailedButtonText =
+  //             "Reuploading for asset(s) failed. Please retry.";
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   approvePost() {
     localStorage.removeItem("lastSearch");
@@ -283,42 +321,42 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     );
   }
 
-  // BELOW ARE HELPER FUNCTIONS FOR ABOVE.
+  // BELOW ARE HELPER FUNCTIONS.
 
   // literally a copy of linkFiles() in submit-form service,
   // TODO: consolidate these functions into the service,
   // right now you need to pass more parameters that the service function does
   // not have.
-  reuploadAssets(
-    postid: string,
-    filename: string,
-    description: string
-  ): Observable<any> {
-    let jsonData;
-    jsonData = {
-      stagingAreaBucketName: this.endPoint.stagingAreaBucketName,
-      assetDescription: description,
-      finalBucketName: this.endPoint.finalBucketName,
-      PostId: postid,
-      key: filename,
-      tableName: this.endPoint.ddb_table_name
-    };
-    console.log(jsonData);
-    let input = JSON.stringify(jsonData);
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    let options = new RequestOptions({ headers: headers, method: "post" });
+  // reuploadAssets(
+  //   postid: string,
+  //   filename: string,
+  //   description: string
+  // ): Observable<any> {
+  //   let jsonData;
+  //   jsonData = {
+  //     stagingAreaBucketName: this.endPoint.stagingAreaBucketName,
+  //     assetDescription: description,
+  //     finalBucketName: this.endPoint.finalBucketName,
+  //     PostId: postid,
+  //     key: filename,
+  //     tableName: this.endPoint.ddb_table_name
+  //   };
+  //   console.log(jsonData);
+  //   let input = JSON.stringify(jsonData);
+  //   let headers = new Headers();
+  //   headers.append("Content-Type", "application/json");
+  //   let options = new RequestOptions({ headers: headers, method: "post" });
 
-    return this._http
-      .post(this.endPoint.link_media, input, options)
-      .catch((error: any) => {
-        return Observable.throw(error.json().error);
-      })
-      .map((res: Response) => {
-        console.log("Reupload Link Text", res);
-        return res;
-      });
-  }
+  //   return this._http
+  //     .post(this.endPoint.link_media, input, options)
+  //     .catch((error: any) => {
+  //       return Observable.throw(error.json().error);
+  //     })
+  //     .map((res: Response) => {
+  //       console.log("Reupload Link Text", res);
+  //       return res;
+  //     });
+  // }
 
   ngOnDestroy() {
     this.sub.unsubscribe();

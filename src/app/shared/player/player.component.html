@@ -39,7 +39,7 @@
     <object *ngIf="!thumb" [data]="url | safe" width="800px" height="800px" type="application/pdf">
       <p>
         <b>This browser does not support PDFs.</b> Please download the PDF to view it:
-        <a href="url">Download PDF</a>.</p>
+        <a href="url | safe">Download PDF</a>.</p>
     </object>
     <object *ngIf="thumb" [data]="url | safe" type="application/pdf">
       <p>

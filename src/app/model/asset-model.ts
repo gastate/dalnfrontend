@@ -10,4 +10,5 @@ export class Asset {
   assetEmbedLink: string;
   assetLocation: string;
   assetS3Link: string;
+  assetStatus: string;
 }
