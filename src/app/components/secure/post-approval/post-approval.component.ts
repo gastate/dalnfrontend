@@ -44,7 +44,7 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
     ngOnInit() {
         this.getUnapproved();
         this.errorMessage = null;
-        this.attemptsMessage = "adasda";
+        this.attemptsMessage = null;
     }
 
     //   approveSelected(){
