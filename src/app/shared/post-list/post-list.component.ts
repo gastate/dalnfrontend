@@ -8,8 +8,7 @@ import { Post } from "../../model/post-model";
   styleUrls: ["./post-list.component.css"]
 })
 export class PostListComponent implements OnInit {
-  constructor(public page: SearchService) {}
-  @Input() getdev: boolean;
+  constructor(public page: SearchService) { }
   @Input() postList: Post[];
   @Input() totalNumberOfPosts: number;
   approvalMessage: string[] = [];

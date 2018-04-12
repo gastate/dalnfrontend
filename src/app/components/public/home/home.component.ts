@@ -14,19 +14,15 @@ import "rxjs/add/observable/fromPromise";
 export class HomeComponent implements OnInit {
   currentPageResults: Post[];
   loading: boolean = false;
-  getDev: boolean;
   queryParam: string;
   startParam: number;
 
 
   constructor(
     private router: Router,
-    private _searchService: SearchService,
-    public userService: UserLoginService
-  ) {}
+    private _searchService: SearchService) { }
 
   ngOnInit() {
-    this.userService.isAuthenticated(this);
     this.currentPageResults = [];
     this.queryParam = 'cccc chair';
     this.startParam = 0;
@@ -37,7 +33,7 @@ export class HomeComponent implements OnInit {
     let startParam = 0;
     this.currentPageResults = [];
     this.loading = true;
-    
+
     this._searchService
       .search_page(this.queryParam, 4, startParam)
       .subscribe(results => {
@@ -48,11 +44,4 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  isLoggedIn(message: string, isLoggedIn: boolean) {
-    if (!isLoggedIn) {
-      this.getDev = false;
-    } else {
-      this.getDev = true;
-    }
-  }
 }

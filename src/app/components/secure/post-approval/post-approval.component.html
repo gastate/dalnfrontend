@@ -1,19 +1,33 @@
 <div class="row">
-    <div class="col-md-8 basicText">
-        <p>
-            <span class="subTitle">Literacy Narratives Waiting Approval</span>
-        </p>
-    </div>
-    <div class="col-md-4 basicText" style="text-align: right;">
-        <button type="button" class="btn btn-secondary" (click)="getUnapproved()">REFRESH DATA</button>
-    </div>
+  <div class="col-md-8 basicText">
+    <p>
+      <span class="subTitle">Literacy Narratives Waiting Approval</span>
+    </p>
+  </div>
+  <div class="col-md-4 basicText" style="text-align: right;">
+    <button type="button" class="btn btn-secondary" (click)="getUnapproved()">REFRESH DATA</button>
+  </div>
+  <div class="col-md-4 basicText alert alert-warning" *ngIf="attemptsMessage !== null">
+    {{attemptsMessage}}
+  </div>
 </div>
-<div class="row">
-    <div class="col-md-12 basicText" style="margin-bottom: 1em;">
-        <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
-        <post-list [getdev]="getdev" [postList]="approval_list"></post-list>
-    </div>
+
+<div class="row justify-content-center" *ngIf="loading === true">
+  <div class="col-md-12 basicText" style="margin-bottom: 1em;">
+    <app-fancy-loader [loading]="loading" [failed]="failed"></app-fancy-loader>
+    <post-list [postList]="approval_list"></post-list>
+  </div>
 </div>
+
+<!-- Error message -->
+<div class="row justify-content-center">
+  <div class="col-md-6 alert alert-danger" *ngIf="errorMessage !== null">
+    <p>
+      {{errorMessage}}
+    </p>
+  </div>
+</div>
+
 
 
 <!-- <div class="controls" *ngIf="postPoolTitle === 'Admins Post Pool' ">
@@ -23,14 +37,6 @@
 
 <!-- <app-pagination (currentPageEmitter)="getResultHandler($event)" [startOffset]="startOffset" [endOffset]="endOffset" [resultList]="postService.unapproved_posts"></app-pagination> -->
 
-<!-- Error message and loading components -->
-<div class="row justify-content-center">
-    <div class="col-md-6 alert alert-danger" *ngIf="errorMessage !== null">
-        <p>
-            {{errorMessage}}
-        </p>
-    </div>
-</div>
 
 <!-- <div class="row">
     <div class="col-md-4">

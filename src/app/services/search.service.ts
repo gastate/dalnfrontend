@@ -42,6 +42,8 @@ export class SearchService {
           hits: this.translatePosts(res.json().hit),
           start: res.json().start
         };
+
+        console.log(temp);
         return temp;
       })
       .catch((error: Response) => Observable.throw(error));

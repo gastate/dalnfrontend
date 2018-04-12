@@ -1,29 +1,31 @@
 <div class="row highlightBg">
-    <div class="hidden-xs hidden-sm col-md-4 col-md-offset-1">
-        <div class="dalnBox">
-            <img src="./assets/img/Logo_transparent.png"/>
-            <!-- <div>D&nbsp;A</div>
+  <div class="hidden-xs hidden-sm col-md-4 col-md-offset-1">
+    <div class="dalnBox">
+      <img src="./assets/img/Logo_transparent.png" />
+      <!-- <div>D&nbsp;A</div>
             <div>N&nbsp;L</div> -->
-        </div>
     </div>
-    <div class="col-12-xs col-12-sm col-md-6">
-        <div class="dalnTextBox">
-            <div class="title">WELCOME</div>
-            <div class="boxSpecial">Tell Us Your Story</div>
-            <div class="text">The DALN is an open public resource made up of stories from people just like you about their experiences learning to read, write, and generally communicate with the world around them. If you have a compelling story to share (it can be text, video, audio, or a combination of formats), we'd love to hear it.</div>
-        </div>
-        <button class="btn btnRounded pushIn" routerLink="/create" type="button">SUBMIT YOUR LITERACY NARRATIVE</button>
-        <a class="btn btnRounded pushIn" href="https://thedaln.wordpress.com/" target="_blank" role="button">CHECK OUT OUR BLOG</a>
+  </div>
+  <div class="col-12-xs col-12-sm col-md-6">
+    <div class="dalnTextBox">
+      <div class="title">WELCOME</div>
+      <div class="boxSpecial">Tell Us Your Story</div>
+      <div class="text">The DALN is an open public resource made up of stories from people just like you about their experiences learning to
+        read, write, and generally communicate with the world around them. If you have a compelling story to share (it can
+        be text, video, audio, or a combination of formats), we'd love to hear it.</div>
     </div>
+    <button class="btn btnRounded pushIn" routerLink="/create" type="button">SUBMIT YOUR LITERACY NARRATIVE</button>
+    <a class="btn btnRounded pushIn" href="https://thedaln.wordpress.com/" target="_blank" role="button">CHECK OUT OUR BLOG</a>
+  </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="headerText">FEATURED LITERACY NARRATIVES</div>
-    </div>
+  <div class="col-md-12">
+    <div class="headerText">FEATURED LITERACY NARRATIVES</div>
+  </div>
 </div>
 <div class="row basicText">
-    <div class="col-md-10 col-md-offset-1 basicText">
-        <post-list [getdev]="getdev" [postList]="currentPageResults"></post-list>
-    </div>
+  <div class="col-md-10 col-md-offset-1 basicText">
+    <post-list [postList]="currentPageResults"></post-list>
+  </div>
 </div>
 <daln-footer [mobile]="mobile"></daln-footer>
