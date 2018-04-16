@@ -42,7 +42,6 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   failed: boolean = false;
 
   assets: Asset[];
-  isPDF: boolean = false;
   isText: boolean;
 
   //for social
@@ -105,7 +104,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             : [];
           if (this.assets && this.assets.length > 0) {
             for (var i = 0; i < this.assets.length; i++) {
-              if (this.assets[i].assetType === "Text") {
+              if (this.assets[i].assetType.includes("File") || this.assets[i].assetType === "Text") {
                 this.isText = true;
               }
             }
@@ -163,7 +162,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
               : [];
             if (this.assets && this.assets.length > 0) {
               for (var i = 0; i < this.assets.length; i++) {
-                if (this.assets[i].assetType === "Text") {
+                if (this.assets[i].assetType.includes("File") || this.assets[i].assetType === "Text") {
                   this.isText = true;
                 }
               }

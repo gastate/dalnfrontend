@@ -58,6 +58,7 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
         this.postService.getUnapprovedPosts().subscribe(
             (data) => {
                 this.approval_list = data;
+                this.attemptsMessage = null;
                 if (this.approval_list.length == 0) {
                     this.errorMessage = "No posts to be reviewed!";
                 }

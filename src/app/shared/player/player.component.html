@@ -3,8 +3,9 @@
 
 
   <!-- Not recorded asset type -->
-  <div class="postitem_unknown" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text'">
-    <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item">
+  <div class="postitem_unknown" *ngIf="postAsset.assetType !== 'Audio/Video' && postAsset.assetType !=='Audio' && postAsset.assetType !== 'Text' && !postAsset.assetType.includes('File')">
+    <!-- <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item"> -->
+    <h3>Unknown asset type. Available for download below.</h3>
   </div>
 
   <!-- Audio Post -->
@@ -35,7 +36,7 @@
   </div>
 
   <!-- Text post - only counts pdfs for now -->
-  <div class="postitem_text" *ngIf="postAsset.assetType === 'Text' && url !== null">
+  <div class="postitem_text" *ngIf="(postAsset.assetType === 'Text' || postAsset.assetType.includes('File')) && url !== null ">
     <object *ngIf="!thumb" [data]="url | safe" width="800px" height="800px" type="application/pdf">
       <p>
         <b>This browser does not support PDFs.</b> Please download the PDF to view it:
@@ -48,8 +49,9 @@
   </div>
 
   <!-- All other text posts that aren't pdf -->
-  <div class="postitem_text" *ngIf="postAsset.assetType === 'Text' && url === null">
-    <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item">
+  <div class="postitem_text" *ngIf="(postAsset.assetType === 'Text' || postAsset.assetType.includes('File')) && url === null">
+    <!-- <img class="empty_post" src="assets/img/example-sites/example1.jpg" alt="example-item"> -->
+    <h3>Assets are available for download below.</h3>
   </div>
 
 

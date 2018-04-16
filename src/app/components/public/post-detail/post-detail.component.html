@@ -112,7 +112,8 @@
   </div>
   <div class="col-md-5 basicText" style="margin-bottom: 1em;">
     <div *ngFor="let asset of postDetail?.assetList">
-      <div *ngIf="asset.assetType == 'Audio/Video' || asset.assetType == 'Audio'">
+      <!-- <div *ngIf="asset.assetType == 'Audio/Video' || asset.assetType == 'Audio'"> -->
+      <div>
         <div class="audioVideoText">{{asset?.assetType}} File: {{asset?.assetName}}</div>
         <app-player [postAsset]="asset"></app-player>
       </div>
@@ -132,10 +133,24 @@
         </tbody>
       </table>
     </div>
+    <div class="downloadFileList" *ngIf="showAdminUI === false && isText === true">
+      <div class="subTitle">
+        DOWNLOAD FILE LIST
+      </div>
+      <table *ngIf="postDetail?.assetList?.length > 0" class="table fileBox">
+        <tbody>
+          <tr *ngFor="let asset of postDetail?.assetList; let i = index;">
+            <td>
+              <a *ngIf="showAsset(postDetail.assetList[i]) === true" href="{{postDetail.assetList[i].assetS3Link}}" download>{{postDetail.assetList[i].assetName}}</a>
+              <a *ngIf="showAsset(postDetail.assetList[i]) === false" class="isDisabled">{{postDetail.assetList[i].assetStatus}}.....{{postDetail.assetList[i].assetName}}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1 center">
-    <app-fancy-loader class="basicText" [loading]="loading" [failed]="failed"></app-fancy-loader>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 center">
+      <app-fancy-loader class="basicText" [loading]="loading" [failed]="failed"></app-fancy-loader>
+    </div>
   </div>
-</div>

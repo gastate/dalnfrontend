@@ -68,7 +68,7 @@ export class PlayerComponent implements OnInit {
 
       // sanitizer takes in a string.
       //   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    } else if (this.postAsset.assetType === "Text") {
+    } else if (this.postAsset.assetType.includes("File") || this.postAsset.assetType === "Text") {
       if (/\.(pdf)$/i.test(this.postAsset.assetEmbedLink)) {
         this.isPDF = true;
         this.url = this.postAsset.assetEmbedLink;
@@ -86,7 +86,6 @@ export class PlayerComponent implements OnInit {
     //     }
     // }
     else {
-
       this.url = null;
       //   console.log("Sanitzer:" + this.url);
     }

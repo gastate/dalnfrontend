@@ -32,7 +32,7 @@ export class MetadataComponent implements OnInit {
     this.submitService = _submitService;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addName(author: any) {
     if (author.value.trim() === "") {
@@ -60,6 +60,8 @@ export class MetadataComponent implements OnInit {
 
   isValidForm() {
     //   TODO: in future if you would like add required fields
+
+    // check to see if forms are dirty.
     return true;
   }
 
