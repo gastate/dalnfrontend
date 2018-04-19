@@ -50,7 +50,7 @@
                 </label>
                 <div class="col-sm-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="subject" #subjectInput (keyup.enter)="addSubject(subjectInput)">
+                        <input type="text" class="form-control" id="subject" #subjectInput (blur)="this.changeDetector.detectChanges()" (keyup.enter)="addSubject(subjectInput)">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" (click)="addSubject(subjectInput)">
                                 <span class="glyphicon glyphicon-plus"></span>
@@ -90,7 +90,7 @@
                 </label>
                 <div class="col-sm-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="subject" #nationInput (keyup.enter)="addNation(nationInput)">
+                        <input type="text" class="form-control" id="subject" #nationInput (blur)="this.changeDetector.detectChanges()" (keyup.enter)="addNation(nationInput)">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" (click)="addNation(nationInput)">
                                 <span class="glyphicon glyphicon-plus"></span>
@@ -113,7 +113,7 @@
                 </label>
                 <div class="col-sm-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="region" #regionInput (keyup.enter)="addRegion(regionInput)">
+                        <input type="text" class="form-control" id="region" #regionInput (blur)="this.changeDetector.detectChanges()" (keyup.enter)="addRegion(regionInput)">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" (click)="addRegion(regionInput)">
                                 <span class="glyphicon glyphicon-plus"></span>
@@ -137,7 +137,7 @@
                 </label>
                 <div class="col-sm-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="state" #stateInput (keyup.enter)="addState(stateInput)">
+                        <input type="text" class="form-control" id="state" #stateInput (blur)="this.changeDetector.detectChanges()" (keyup.enter)="addState(stateInput)">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" (click)="addState(stateInput)">
                                 <span class="glyphicon glyphicon-plus"></span>
@@ -162,7 +162,7 @@
                 </label>
                 <div class="col-sm-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="language" #languageInput (keyup.enter)="addLanguage(languageInput)">
+                        <input type="text" class="form-control" id="language" #languageInput (blur)="this.changeDetector.detectChanges()" (keyup.enter)="addLanguage(languageInput)">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" (click)="addLanguage(languageInput)">
                                 <span class="glyphicon glyphicon-plus"></span>

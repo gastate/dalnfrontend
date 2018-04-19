@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from "@angular/core";
 import { Router } from "@angular/router";
 import {
   FormBuilder,
@@ -16,17 +16,20 @@ import { SubmitFormService } from "../submit-form.service";
   styleUrls: ["./metadata.component.css"]
 })
 export class MetadataComponent implements OnInit {
+  @ViewChild('nameInput') nameInput: ElementRef;
+  @ViewChild('interviewerInput') interviewerInput: ElementRef;
+
   submitService: SubmitFormService;
   names: string[] = [];
   interviewers: string[] = [];
   creatorGender: string;
   //gender: string;
   birthYear: string;
-  //errorMessage: string;
 
   constructor(
     private _router: Router,
     private fb: FormBuilder,
+    private changeDetector: ChangeDetectorRef,
     _submitService: SubmitFormService
   ) {
     this.submitService = _submitService;
@@ -59,9 +62,12 @@ export class MetadataComponent implements OnInit {
   }
 
   isValidForm() {
-    //   TODO: in future if you would like add required fields
-
-    // check to see if forms are dirty.
+    if (this.nameInput.nativeElement.value.trim().length > 0) {
+      return false;
+    }
+    if (this.interviewerInput.nativeElement.value.trim().length > 0) {
+      return false;
+    }
     return true;
   }
 
@@ -80,4 +86,5 @@ export class MetadataComponent implements OnInit {
 
     this._router.navigateByUrl("/create/description");
   }
+
 }

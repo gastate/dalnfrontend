@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from "@angular/core";
 import {
   FormBuilder,
   FormGroup,
@@ -20,6 +20,12 @@ import { SubmitFormService } from "../submit-form.service";
   styleUrls: ["./description.component.css"]
 })
 export class DescriptionComponent implements OnInit {
+  @ViewChild('subjectInput') subjectInput: ElementRef;
+  @ViewChild('nationInput') nationInput: ElementRef;
+  @ViewChild('regionInput') regionInput: ElementRef;
+  @ViewChild('stateInput') stateInput: ElementRef;
+  @ViewChild('languageInput') languageInput: ElementRef;
+
   descForm: FormGroup;
   submitService: SubmitFormService;
   title: string;
@@ -37,13 +43,14 @@ export class DescriptionComponent implements OnInit {
   constructor(
     private _router: Router,
     private fb: FormBuilder,
+    private changeDetector: ChangeDetectorRef,
     _submitService: SubmitFormService
   ) {
     this.submitService = _submitService;
     this.initForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   initForm() {
     this.descForm = this.fb.group({
@@ -58,6 +65,26 @@ export class DescriptionComponent implements OnInit {
   }
 
   isValidForm() {
+    if (this.subjectInput.nativeElement.value.trim().length > 0) {
+      return false;
+    }
+
+    if (this.nationInput.nativeElement.value.trim().length > 0) {
+      return false;
+    }
+
+    if (this.regionInput.nativeElement.value.trim().length > 0) {
+      return false;
+    }
+
+    if (this.stateInput.nativeElement.value.trim().length > 0) {
+      return false;
+    }
+
+    if (this.languageInput.nativeElement.value.trim().length > 0) {
+      return false;
+    }
+
     return (
       this.title &&
       this.title.trim().length > 1 &&

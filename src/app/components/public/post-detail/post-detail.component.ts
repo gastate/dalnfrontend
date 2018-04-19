@@ -30,7 +30,6 @@ import { Observable } from "rxjs/Observable";
 export class PostDetailComponent implements OnInit, LoggedInCallback {
   @Input() postDetail: Post;
 
-  localStorage: any;
   approvalMessage: string = "";
   unapprovalMessage: string = "";
 
@@ -42,6 +41,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   failed: boolean = false;
 
   assets: Asset[];
+  isPDF: boolean = false;
   isText: boolean;
 
   //for social
@@ -104,7 +104,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             : [];
           if (this.assets && this.assets.length > 0) {
             for (var i = 0; i < this.assets.length; i++) {
-              if (this.assets[i].assetType.includes("File") || this.assets[i].assetType === "Text") {
+              if (this.assets[i].assetType === "Text") {
                 this.isText = true;
               }
             }
@@ -162,7 +162,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
               : [];
             if (this.assets && this.assets.length > 0) {
               for (var i = 0; i < this.assets.length; i++) {
-                if (this.assets[i].assetType.includes("File") || this.assets[i].assetType === "Text") {
+                if (this.assets[i].assetType === "Text") {
                   this.isText = true;
                 }
               }
@@ -274,7 +274,6 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   // }
 
   approvePost() {
-    localStorage.removeItem("lastSearch");
     this.unapprovalMessage = "";
     this._postService.approvePost(this.postDetail.postId).subscribe(
       res => {
@@ -297,8 +296,6 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   }
 
   unapprovePost() {
-    // flush local storage of the last search
-    localStorage.removeItem("lastSearch");
     this.approvalMessage = "";
     this._postService.unapprovePost(this.postDetail.postId).subscribe(
       res => {
