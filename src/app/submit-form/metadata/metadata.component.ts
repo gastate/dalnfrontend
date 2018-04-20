@@ -83,7 +83,6 @@ export class MetadataComponent implements OnInit {
 
     this.submitService.contributorAuthor = this.names;
     this.submitService.contributorInterviewer = this.interviewers;
-
     this._router.navigateByUrl("/create/description");
   }
 
