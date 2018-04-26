@@ -28,6 +28,12 @@ const stagingAreaBucketName = "daln-file-staging-area";
 const finalBucketName = "daln-prod";
 const queueName = "DALNFileUploadQueueProd";
 
+///////////////////////////////
+// Miscellanious Functions  //
+/////////////////////////////
+
+const share_link = "http%3A%2F%2Fthedaln.org%2F%23%2Fdetail%2F";
+
 
 
 //////////////////////
