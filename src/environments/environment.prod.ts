@@ -87,6 +87,7 @@ export const environment = {
         post: post,
         queueName: queueName,
         read_file: read_file,
+        share_link: share_link,
         search_posts: search_posts,
         search_size: search_size,
         stagingAreaBucketName: stagingAreaBucketName,
