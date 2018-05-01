@@ -5,11 +5,11 @@
     "angular-cli": {},
     "scripts": {
         "deps": "npm install",
+        "redeps": " : Clear everything, then refill to satisfy all dependencies                    ; npm run reset && npm run deps",
         "build": "npm run buildDev",
+        "rebuild": ": Clear everything, then build from scratch                                    ; npm run reset && npm run deps && npm run build",
         "start": "ng serve",
         "test": "ng test",
-        "clean": "rm -rf dist node_modules",
-        "globals": "npm cache verify && npm run clean && npm run deps && npm i -g angular-cli@1.0.0-beta.28.3 aws-sdk;",
         "lint": "tslint \"src/**/*.ts\"",
         "pree2e": "webdriver-manager update",
         "e2e": "protractor",
@@ -17,7 +17,11 @@
         "buildProd": "ng build --environment=prod",
         "static-serve": "cd dist && lite-server --port=4200 --host=localhost --entry-file=/index.html",
         "s3Synch": "npm run buildDev && aws s3 sync ./dist s3://daln-development/web-deploy",
-        "s3Prod": "npm run buildProd && aws s3 sync ./dist s3://daln-prod/web-deploy"
+        "s3Prod": "npm run buildProd && aws s3 sync ./dist s3://daln-prod/web-deploy",
+        "clean": "  : Removes temporary build results, not including dependencies                  ; rm -rf dist",
+        "gut": "    : Removes all temporary files, including dependencies                          ; npm run clean && rm -rf node_modules plugins resources && echo \"***** Dependencies have been removed, they can be restored with: npm run deps\"",
+        "reset": "  : Unlock dependency versions, clear NPM cache, remove temp files               ; npm run gut && rm -f ./package-lock.json >>/dev/null 2>&1 && npm cache clear --force && ./add-nl.sh package.json && echo \"***** Dependencies have been removed and reset, they can be restored with: npm run deps\"",
+        "globals": ": NEVER INSTALL GLOBALS, this script REMOVES ALL GLOBALS then installs deps    ; echo \"NEVER INSTALL GLOBALS!\"; echo \"REMOVING GLOBALS - of the following, only npm will be spared:\"; npm ls -g --depth 0; npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\\/npm$/ {print $NF}' | xargs -r npm -g rm; : \"Stolen from https://stackoverflow.com/a/9283646/776723\"; npm run deps"
     },
     "private": true,
     "dependencies": {
@@ -35,21 +39,22 @@
         "bootstrap": "^3.3.7",
         "core-js": "^2.5.0",
         "increase-memory-limit": "^1.0.6",
-        "ng2-device-detector": "^1.0.0",
+        "ng2-device-detector": "1.0.X",
         "request-promise": "^4.2.1",
         "rxjs": "^5.4.3",
         "ts-helpers": "^1.1.1",
         "zone.js": "0.7.2"
     },
     "devDependencies": {
-        "@angular/cli": "^1.7.4",
-        "@angular/compiler-cli": "^2.3.1",
+        "@angular/cli": "1.7.X",
+        "@angular/compiler-cli": "2.X",
         "@types/core-js": "^0.9.43",
         "@types/jasmine": "2.5.38",
         "@types/node": "^6.0.87",
+        "aws-sdk": "2.230.X",
         "jasmine-core": "2.5.2",
         "jasmine-spec-reporter": "2.5.0",
-        "karma": "1.2.0",
+        "karma": "1.2.X",
         "karma-chrome-launcher": "^2.2.0",
         "karma-cli": "^1.0.1",
         "karma-jasmine": "^1.0.2",
@@ -57,6 +62,6 @@
         "protractor": "~4.0.13",
         "ts-node": "1.2.1",
         "tslint": "^4.3.0",
-        "typescript": "2.5.3"
+        "typescript": "2.2.X"
     }
 }
