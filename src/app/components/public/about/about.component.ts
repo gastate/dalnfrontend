@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../../services/search.service';
 import { Ng2DeviceService } from 'ng2-device-detector';
+// import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-about',
@@ -17,6 +18,7 @@ export class AboutComponent implements OnInit {
   constructor(
     _searchService: SearchService,
     private deviceService: Ng2DeviceService
+    // private deviceService: DeviceDetectorService
   ) {
     this.searchService = _searchService;
   }
