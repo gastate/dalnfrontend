@@ -32,7 +32,7 @@
     "@angular/platform-browser": "^2.4.10",
     "@angular/platform-browser-dynamic": "^2.4.10",
     "@angular/router": "^3.4.10",
-    "amazon-cognito-identity-js": "^2.0.0",
+    "amazon-cognito-identity-js": "^2.X.0",
     "aws-sdk": "2.67.0",
     "bootstrap": "^4.0.X",
     "core-js": "^2.5.0",
