@@ -21,7 +21,7 @@
     "clean": "  : Removes temporary build results, not including dependencies                  ; rm -rf dist",
     "gut": "    : Removes all temporary files, including dependencies                          ; npm run clean && rm -rf node_modules plugins resources && echo \"***** Dependencies have been removed, they can be restored with: npm run deps\"",
     "reset": "  : Unlock dependency versions, clear NPM cache, remove temp files               ; npm run gut && rm -f ./package-lock.json >>/dev/null 2>&1 && npm cache clear --force && ./add-nl.sh package.json && echo \"***** Dependencies have been removed and reset, they can be restored with: npm run deps\"",
-    "globals": ""
+    "globals": ": Do nothing, jenkins runs globals at the start"
   },
   "private": true,
   "dependencies": {
