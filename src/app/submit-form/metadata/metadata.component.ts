@@ -7,7 +7,6 @@ import {
   Validators
 } from "@angular/forms";
 
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { SubmitFormService } from "../submit-form.service";
 
 @Component({

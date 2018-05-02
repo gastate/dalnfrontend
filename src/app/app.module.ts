@@ -16,7 +16,6 @@ import { AppFooterComponent } from './components/public/app-footer/app-footer.co
 import { ContactComponent } from './components/public/contact/contact.component';
 import { FancyLoaderComponent } from './shared/fancy-loader/fancy-loader.component';
 import { HomeComponent } from './components/public/home/home.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { PaginationComponent } from './components/public/pagination/pagination.component';
 import { PlayerComponent } from './shared/player/player.component';
@@ -111,12 +110,11 @@ import { Ng2DeviceDetectorModule } from 'ng2-device-detector';
     HttpModule,
     JsonpModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
     Ng2DeviceDetectorModule.forRoot()
     // DeviceDetectorModule.forRoot()
   ],
-  providers: [ AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, UploadService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
-  bootstrap: [ AppComponent ]
+  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, UploadService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
