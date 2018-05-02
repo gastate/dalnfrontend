@@ -34,7 +34,7 @@
     "@angular/router": "^3.4.10",
     "amazon-cognito-identity-js": "^1.10.0",
     "aws-sdk": "2.67.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.0.0",
     "core-js": "^2.5.0",
     "increase-memory-limit": "^1.0.6",
     "ng2-device-detector": "1.0.X",
