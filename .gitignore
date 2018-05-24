@@ -2,6 +2,7 @@
 # CodeFluent's attributes
 /angular2
 !Notes.md
+!README.md
 
 
 # Angular 2 (from Tour of Heroes)

@@ -1,14 +1,12 @@
-# DALN Project Frontend
+# DALN Metadata export  
 
-## Live Sites
+This branch serves as metadata extraction from the DALN's production Dynamo DB. 
 
-- [Dev site](http://dalndev.gsu.edu)
-- [Prod site](http://daln.gsu.edu)
+First, you'll need to get the entire database as a csv download. You can do this by either a command line tool like aws-cli or just clicking 
+through the DynamoDB interface and exporting every record.
 
-- [Docs site](https://gastate.github.io/dalnfrontend/)
+Here's a blog post on the subject: https://medium.com/@quodlibet_be/an-overview-of-tools-to-export-from-dynamoddb-to-csv-d2707ad992ac
 
-## Branches
-- [master](https://github.com/gastate/dalnfrontend/tree/master)
-- [dev-currently-working](https://github.com/gastate/dalnfrontend/tree/dev-currently-working) (dev branch)
-- [gh-pages](https://github.com/gastate/dalnfrontend/tree/gh-pages) (host documentation site)
-- [documentation](https://github.com/gastate/dalnfrontend/tree/documentation) (where documentation is generated)
+Then, install python 2 (not 3) from https://www.python.org/. Change the environment variables at the top of ```daln-metadata.py``` and run the program with ```python daln-metadata.py```. The program should run and give you the resulting metadata in the console.
+
+As development on the DALN continues, the statistics admin function should replace this branch.
