@@ -11,6 +11,7 @@ num_files = 73  # please change this to the number of files in the directory
 
 # other variables for tracking
 files = []
+processed_files = []
 num_processed_files = 0
 
 
@@ -41,7 +42,6 @@ rows = []
 # reading csv fields
 for f in files:
     try:
-        # with open(f, 'r') as csvfile:
         fo = open(f, 'r')
         csvreader = csv.reader(fo)
         fields = csvreader.next()
@@ -50,17 +50,18 @@ for f in files:
         # print("\n\tField names are: " + ", ".join(field for field in fields))
 
         # for field in fields:
-        # print field
+        #     fields.append(field)
 
         for row in csvreader:
             rows.append(row)
-            # print row
 
         # increment total posts by the number of rows
         # found in the file
         TOTAL_POSTS += csvreader.line_num
+
         fo.close()
         num_processed_files += 1
+        processed_files.append(fo.name)
     except IOError as e:
         print (e)
 
@@ -70,8 +71,12 @@ print("\n--------METADATA INFO--------")
 print("\n\tTotal number of posts: %d" % (TOTAL_POSTS))
 
 # uncomment for file I/O and other information on the program
+# sometimes returns an IO error, don't know why
 print("\n--------DEBUG INFO--------")
 print("\n\tTotal files processed: %d" % (num_processed_files))
+print("\n\t" + str(num_files - num_processed_files) +
+      " files were not processed:\n")
+print(list(set(files) ^ set(processed_files)))
 
 
 # Future Functions
