@@ -1,5 +1,3 @@
-# Made with python 2.7.15
-
 import csv
 import os
 import glob
@@ -9,7 +7,11 @@ import sys
 # ENV Variables
 path = "./Posts"
 num_files = 73  # please change this to the number of files in the directory
+
+
+# other variables for tracking
 files = []
+num_processed_files = 0
 
 
 # get the csv filenames
@@ -39,24 +41,26 @@ rows = []
 # reading csv fields
 for f in files:
     try:
-        with open(f, 'r') as csvfile:
-            csvreader = csv.reader(csvfile)
-            fields = csvreader.next()
+        # with open(f, 'r') as csvfile:
+        fo = open(f, 'r')
+        csvreader = csv.reader(fo)
+        fields = csvreader.next()
 
-            # if you want header row (the json key values) uncomment
-            # print("\n\tField names are: " + ", ".join(field for field in fields))
+        # if you want header row (the json key values) uncomment
+        # print("\n\tField names are: " + ", ".join(field for field in fields))
 
-            for field in fields:
-                print csvfile.name
-                # print field
+        # for field in fields:
+        # print field
 
-            for row in csvreader:
-                rows.append(row)
-            #     print row[]
+        for row in csvreader:
+            rows.append(row)
+            # print row
 
-            # increment total posts by the number of rows
-            # found in the file
-            TOTAL_POSTS += csvreader.line_num
+        # increment total posts by the number of rows
+        # found in the file
+        TOTAL_POSTS += csvreader.line_num
+        fo.close()
+        num_processed_files += 1
     except IOError as e:
         print (e)
 
@@ -65,12 +69,9 @@ for f in files:
 print("\n--------METADATA INFO--------")
 print("\n\tTotal number of posts: %d" % (TOTAL_POSTS))
 
-
-# print('\n\tFirst 5 rows are: \n')
-# for row in rows[:5]:
-#     for col in row:
-#         print("%10s" % col),
-#     print("\n")
+# uncomment for file I/O and other information on the program
+print("\n--------DEBUG INFO--------")
+print("\n\tTotal files processed: %d" % (num_processed_files))
 
 
 # Future Functions
