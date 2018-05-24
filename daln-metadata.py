@@ -1,4 +1,4 @@
-# Made with Python 2.7.15
+# Made with python 2.7.15
 
 import csv
 import os
@@ -9,8 +9,6 @@ import sys
 # ENV Variables
 path = "./Posts"
 num_files = 73  # please change this to the number of files in the directory
-
-
 files = []
 
 
@@ -37,27 +35,36 @@ NUM_TEXT_ASSETS = NUM_AUDIO_ASSETS = NUM_VIDEO_ASSETS = 0
 fields = []
 rows = []
 
+
 # reading csv fields
 for f in files:
-    with open(f, 'r') as csvfile:
-        csvreader = csv.reader(csvfile)
-        fields = csvreader.next()
+    try:
+        with open(f, 'r') as csvfile:
+            csvreader = csv.reader(csvfile)
+            fields = csvreader.next()
 
-        for row in csvreader:
-            rows.append(row)
-            # print row[0]
+            # if you want header row (the json key values) uncomment
+            # print("\n\tField names are: " + ", ".join(field for field in fields))
 
-        # increment total posts by the number of rows
-        # found in the file
-        TOTAL_POSTS += csvreader.line_num
+            for field in fields:
+                print csvfile.name
+                # print field
+
+            for row in csvreader:
+                rows.append(row)
+            #     print row[]
+
+            # increment total posts by the number of rows
+            # found in the file
+            TOTAL_POSTS += csvreader.line_num
+    except IOError as e:
+        print (e)
 
 
 # Print out complete info
 print("\n--------METADATA INFO--------")
 print("\n\tTotal number of posts: %d" % (TOTAL_POSTS))
 
-# if you want header row (the json key values) uncomment
-# print("\n\tField names are: " + ", ".join(field for field in fields))
 
 # print('\n\tFirst 5 rows are: \n')
 # for row in rows[:5]:
