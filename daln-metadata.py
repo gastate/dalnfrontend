@@ -7,6 +7,7 @@ import glob
 import sys
 import pandas as pd
 from collections import Counter
+
 # ENV Variables
 path = "./Posts"  # please change this to the path where the csv files are
 num_files = 73   # please change this to the number of files in the directory
@@ -53,7 +54,9 @@ for f in files:
         asset_dict = {w: w.replace(' ', '_') for w in types}
 
         # from https://stackoverflow.com/questions/30493364/sum-partial-string-key-word-matches-in-a-pandas-dataframe
+        # to avoid string concatanation errors with floats
         corpus = ' '.join(str(v) for v in assetList.str.lower())
+
         for w, w2 in asset_dict.items():
             corpus = corpus.replace(w, w2)
 
