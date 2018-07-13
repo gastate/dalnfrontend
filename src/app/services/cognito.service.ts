@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import {
   AuthenticationDetails,
-  CognitoIdentityServiceProvider,
   CognitoUser,
   CognitoUserAttribute,
   CognitoUserPool
@@ -89,7 +88,7 @@ export class CognitoUtil {
       throw "CognitoUtil: callback in getAccessToken is null...returning";
     }
     if (this.getCurrentUser() != null)
-      this.getCurrentUser().getSession(function(err:any, session:any) {
+      this.getCurrentUser().getSession( function( err: any, session: any ) {
         if (err) {
           console.log("CognitoUtil: Can't set the credentials:" + err);
           callback.callbackWithParam(null);
@@ -98,7 +97,7 @@ export class CognitoUtil {
             callback.callbackWithParam(session.getAccessToken().getJwtToken());
           }
         }
-      });
+      } );
     else callback.callbackWithParam(null);
   }
 
@@ -107,7 +106,7 @@ export class CognitoUtil {
       throw "CognitoUtil: callback in getIdToken is null...returning";
     }
     if (this.getCurrentUser() != null)
-      this.getCurrentUser().getSession(function(err:any, session:any) {
+      this.getCurrentUser().getSession( function( err: any, session: any ) {
         if (err) {
           console.log("CognitoUtil: Can't set the credentials:" + err);
           callback.callbackWithParam(null);
@@ -120,7 +119,7 @@ export class CognitoUtil {
             );
           }
         }
-      });
+      } );
     else callback.callbackWithParam(null);
   }
 
@@ -129,7 +128,7 @@ export class CognitoUtil {
       throw "CognitoUtil: callback in getRefreshToken is null...returning";
     }
     if (this.getCurrentUser() != null)
-      this.getCurrentUser().getSession(function(err:any, session:any) {
+      this.getCurrentUser().getSession( function( err: any, session: any ) {
         if (err) {
           console.log("CognitoUtil: Can't set the credentials:" + err);
           callback.callbackWithParam(null);
@@ -138,12 +137,12 @@ export class CognitoUtil {
             callback.callbackWithParam(session.getRefreshToken());
           }
         }
-      });
+      } );
     else callback.callbackWithParam(null);
   }
 
   refresh(): void {
-    this.getCurrentUser().getSession(function(err:any, session:any) {
+    this.getCurrentUser().getSession( function( err: any, session: any ) {
       if (err) {
         console.log("CognitoUtil: Can't set the credentials:" + err);
       } else {
@@ -153,6 +152,6 @@ export class CognitoUtil {
           console.log("CognitoUtil: refreshed but session is still not valid");
         }
       }
-    });
+    } );
   }
 }
