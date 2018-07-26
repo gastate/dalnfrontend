@@ -23,7 +23,6 @@ import { PostItemComponent } from './shared/post-item/post-item.component';
 import { PostListComponent } from './shared/post-list/post-list.component';
 import { PostDetailComponent } from './components/public/post-detail/post-detail.component';
 import { SearchComponent } from './components/public/search/search.component';
-import { SliderComponent } from './components/public/slider/slider.component';
 
 // Auth Components
 import { ConfirmComponent, LogoutComponent } from './components/public/auth/confirm/confirm.component';
@@ -90,7 +89,6 @@ import { Ng2DeviceDetectorModule } from 'ng2-device-detector';
     RegisterComponent,
     ResendComponent,
     SearchComponent,
-    SliderComponent,
     AdminComponent,
     ImportExportComponent,
     LogComponent,
