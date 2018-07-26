@@ -1,7 +1,5 @@
 // Import Component form the angular core package
 import { Component, NgModule, OnChanges, Input, trigger, state, animate, transition, style } from '@angular/core';
-// Will use Slide model in admin level
-import {Slide} from '../../../model/slide-model';
 
 
 
@@ -12,24 +10,17 @@ import {Slide} from '../../../model/slide-model';
   //Template for the tag
   templateUrl: "slider.component.html",
   //Styles for the tag
-  styles: [`slider.component.css`],
-  animations: [
-      trigger('visibilityChanged', [
-          state('shown' , style({ opacity: 1 })),
-          state('hidden', style({ opacity: 0 , display: 'none' })),
-          transition('* => *', animate('.5s'))
-    ])
-  ]
+  styles: [`slider.component.css`]
 })
 
 
 export class SliderComponent implements OnChanges {
-  @Input() isVisible : boolean = true;
+  @Input() isVisible: boolean = true;
   visibility = 'shown';
 
   constructor() { }
 
   ngOnChanges() {
-      this.visibility = this.isVisible ? 'hidden' : 'shown';
+    this.visibility = this.isVisible ? 'hidden' : 'shown';
   }
 }
