@@ -4,9 +4,15 @@
             CONSENT TO PARTICIPATE & RELEASE OF MATERIALS
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-2 language">
+            <button class="btn" [class.hidden]="!isSpanish" (click)="switchLanguage()">English</button>
+            <button class="btn" [class.hidden]="isSpanish" (click)="switchLanguage()">Español</button>
+        </div>
+    </div>
     <div class="row" style="margin-top:3em;">
         <div class="col-md-8 col-md-offset-2 basicText" style="margin-bottom: 1em;">
-            <div class="termsAndConditions">
+            <div class="termsAndConditions" [class.hidden]="isSpanish">
                 <h4>Informed Consent</h4>
                 <br/>
                 <p>
@@ -162,9 +168,167 @@
                 <br/>
                 <p>The Contributor may make additions to the DALN collection subject to DALN policies. </p>
             </div>
+            <div class="termsAndConditions" [class.hidden]="!isSpanish">
+                <h4>Consentimiento informado</h4>
+                <br/>
+                <p>Este formulario es un consentimiento informado para contribuir con el Archivo Digital de Narrativas de
+                    Literacidad (Digital Archive of Literacy Narratives; DALN por sus siglas en inglés). El documento
+                    contiene información importante sobre el proyecto y sobre qué esperar si decide contribuir. Si usted
+                    es menor de 18 años de edad, su tutor/a legal debe indicar su consentimiento informado sobre este proyecto
+                    luego de leer, comprender y realizar una de las dos opciones que siguen: A) firmar los documentos adjuntos
+                    (si está leyendo una copia impresa de este formulario), o B) seleccionar la opción apropiada en el botón
+                    de consentimiento que se encuentra inmediatamente después de este texto (si está leyendo la versión
+                    digital de este formulario). Su contribución es voluntaria. Por favor lea la información cuidadosamente.
+                    Usted (o su tutor/a legal) puede consultar sin ningún compromiso antes de decidir si desea contribuir o no.
+                    Si usted (o su tutor/a legal) decide contribuir, se le pedirá aceptar los términos de este formulario de
+                    consentimiento y enviarlo al DALN electrónicamente, por correo postal o en persona.
+                </p>
+                <br/>
+                <h5>Objetivos</h5>
+                <br/>
+                <p>El Archivo Digital de Narrativas de Literacidad (DALN) está diseñado para recolectar historias de
+                    literacidad de las personas y artefactos de literacidad relacionados (e.g. fotografías, poemas,
+                    textos, videos caseros), y para almacenarlos en una colección permanente donde los miembros pueden
+                    acceder, estudiar y aprender de ellos públicamente. El objetivo de este proyecto es establecer el primer
+                    archivo nacional estadounidense que rastree el desarrollo a través del tiempo tanto de las prácticas de
+                    literacidad digitales como las no digitales. Dicho archivo posee importante valor para el público como
+                    registro histórico, cultural y educativo. Deseamos hacer posible que todas las personas puedan contribuir
+                    con su historia y que puedan dejarla registrada como parte del archivo. 
+                </p>
+                <br/>
+                <h5>Procedimientos/Tareas</h5>
+                <br/>
+                <p>Si desea convertirse en contribuidor/a del proyecto del DALN, usted puede utilizar las instrucciones
+                    incluidas en este formulario u observar ejemplos en el sitio del DALN, componer su propia historia de
+                    literacidad y enviarla junto con cualquier texto que haya creado (por ejemplo: ensayos, blogs, fotografías,
+                    videos, canciones). Si usted es menor de 18 años de edad, su tutor/a legal debe indicar su consentimiento
+                    informado para este proyecto luego de leer, comprender, y firmar el formulario adjunto del DALN o hacer
+                    clic en el botón apropiado que se encuentra al final del documento. Antes de que usted (o su tutor/a legal)
+                    envíen su narrativa de literacidad, usted debe leer este formulario para comprender la naturaleza de su
+                    contribución al proyecto y afirmar su intención para contribuir al publicar su historia sobre literacidad
+                    y sus materiales en nuestro sitio web, donde estarán disponibles para el público. 
+                </p>
+                <br/>
+                <h5>Duración</h5>
+                <br/>
+                <p>La intención del DALN es hacer que las historias de los contribuidores estén disponibles a perpetuidad. 
+                </p>
+                <br/>
+                <h5>Riesgos y Beneficios</h5>
+                <br/>
+                <p>Cuando usted (o su tutor/a legal) envía una narrativa de literacidad, el director del DALN deberá acceder a cierta
+                    información (como su nombre, su edad, e información de contacto).<strong>Esta información será utilizada solo para
+                    fines de contacto.</strong>. Usted (o su tutor/a legal) puede solicitar que su historia se publique anónimamente.
+                    Usted (o su tutor/a legal) no debe incluir en su historia información que pueda poner a otros/as en riesgo al
+                    momento que sea publicada. A pesar de que el DALN es una escritura de donación (“Deed of Gift”) y se encuentra
+                    bajo licencia de Creative Commons, usted (o su tutor/a legal) está sujeto a sus materiales, que se encontrarán en
+                    el sitio web y serán de acceso público. Por lo tanto, podrán ser utilizados por personas de formas que usted (o su
+                    tutor/a legal) no planean. Cualquier persona interesada en cuestiones de literacidad contemporánea -como
+                    maestros/as, estudiantes, padres, madres, bibliotecarios/as, gestores de políticas públicas, y miembros del
+                    público en general- puede aprender significativamente sobre literacidad al recurrir a este archivo, que contiene
+                    actitudes, percepciones y roles de la literacidad en la vida de las personas.
+                </p>
+                <br/>
+                <h5>Confidencialidad</h5>
+                <br/>
+                <p>A pesar de que el director del DALN tendrá acceso a la información de contacto y demográfica de los contribuidores
+                    (como la edad y la locación geográfica), <strong>esta información será únicamente utilizada para fines de contacto
+                    </strong>. Esta información no será utilizada como objeto de investigación a menos de que usted (o su tutor/a legal)
+                    otorguen permiso para que esta información esté públicamente disponible. Usted puede decidir no responder cualquier
+                    pregunta presente en el sitio web del DALN -incluido nombre, edad, correo electrónico, información de contacto. Una
+                    vez que usted (o su tutor/a legal) envíe sus materiales al DALN (vía el sitio web o el correo postal) y acepte que
+                    puede estar disponible públicamente, la información provista no podrá ser removida del DALN. La narrativa de
+                    literacidad que usted publica en el DALN no es confidencial. Está disponible para cualquier persona que accede al
+                    sitio web y/o que utiliza motores de búsqueda.
+                </p>
+                <br/>
+                <h5>Incentivos</h5>
+                <br/>
+                <p>Al contribuir con sus materiales de literacidad al DALN, usted (o su tutor/a legal) entienden que su historia será
+                    parte de un archivo público que posee gran valor para el público como registro histórico, cultural y educativo. 
+                </p>
+                <br/>
+                <h5>Derechos de los contribuidores</h5>
+                <br/>
+                <p>Todas las contribuciones al DALN son voluntarias. Usted (o su tutor/a legal) pueden negarse a aportar su narrativa
+                    de literacidad a este proyecto sin penalidad o pérdida de beneficios que ya posee. Si usted (o su tutor/a legal)
+                    opta por contribuir en este proyecto y firma este formulario, usted no cede ningún derecho legal personal que pueda
+                    poseer como contribuidor.
+                </p>
+                <br/>
+                <h4>Acta de donación</h4>
+                <br/>
+                <p>La donación descrita a continuación se otorga al Archivo Digital de Narrativas de Literacidad (Digital Archive of
+                    Literacy Narratives, DALN) para formar parte de esta colección en línea de narrativas de literacidad bajo las siguientes
+                    condiciones:
+                </p>
+                <ul>
+                    <li>
+                        El DALN almacenará, preservará y proveerá acceso a la donación de acuerdo con sus prácticas de archivo.
+                    </li>
+                    <li>
+                        El DALN organizará, indexará, y/o creará una guía para la donación de acuerdo con sus prácticas de archivo.
+                    </li>
+                    <li>
+                        El DALN pondrá la donación en un sitio web que es accesible para todos los miembros del público. 
+                    </li>
+                    <li>
+                        El DALN puede eliminar apropiadamente materias que, luego de ser recibidos, sean considerados inadecuados para esta colección sobre literacidad.
+                    </li>
+                </ul>
+                <br/>
+                <h5>Representación y garantía</h5>
+                <br/>
+                <p>El/la donante representa y garantiza que él/ella es el/la única dueño/a de la donación y que tiene pleno derecho, propiedad e
+                    interés de hacer la donación, y que ningún acuerdo, asignatura, venta u obstáculo se ha hecho o se hará o se introducirá que
+                    pueda conflictuar con este acto.
+                </p>
+                <br/>
+                <h5>Asignación de Derechos</h5>
+                <br/>
+                <p>El/la donante indicará el tipo y grado de propiedad intelectual que él/ella desea conservar con respecto a la donación,
+                    lo cual incluye el derecho a archivar, exponer, y proveer acceso público a ella a través del DALN. Los derechos de
+                    autor/a están indicados a partir de la selección de una licencia internacional específica de Creative Commons 4.0,
+                    que varía entre completamente abierto y libre (CC0) a más restricto (Atribución-No Comercial- No Derivativos;
+                    “Attribution-NonCommercial-NoDerivatives”).
+                </p>
+                <br/>
+                <h5>Acceso al archivo</h5>
+                <br/>
+                <p>Es deseo del/la donante que la donación esté disponible para investigación tan pronto como sea posible luego de ser
+                    transferida al DALN. Los materiales en el DALN estarán disponibles para su uso público sujeto a las políticas sobre
+                    licencia y derechos de autor/a que se encuentran publicadas en el sitio web del DALN.
+                </p>
+                <br/>
+                <h5>Procesar la colección</h5>
+                <br/>
+                <p>El DALN creará un motor de búsqueda para los archivos que conforman la colección, que incluirá un listado de todas las narrativas de literacidad.
+                </p>
+                <br/>
+                <h5>Transferencia a Otro Formato</h5>
+                <p>El DALN se reserva el derecho de transformar el material a otros formatos, que según la opinión del director del DALN,
+                    y de acuerdo a los estándares nacionales estadounidenses en relación a archivos, prolongarán la vida de los materiales
+                    y/o facilitarán su acceso y uso. En todas las instancias los ítems originales serán también conservados. Asimismo, el
+                    DALN se reserva el derecho, dentro de los límites de derechos de propiedad intelectual dispuestos, a reproducir
+                    material de la colección para exhibiciones físicas y electrónicas.
+                </p>
+                <br/>
+                <h5>Promoción de la Existencia del Archivo</h5>
+                <br/>
+                <p>El DALN creará un índice/catálogo de acceso público para la colección que será parte del sistema de links de Ohio
+                    (Ohio Link system), que incluirá una entrada para esta donación. La entrada para esta donación será también incluida
+                    dentro de cualquier base de datos bibliográfica o de archivo regional, estatal, nacional o internacional en la que
+                    el sistema de links de Ohio contribuya. Todas las narrativas de literacidad de la colección del DALN y del motor de
+                    búsqueda o índice de DALN estarán disponibles en el sitio web que es accesible por el mundo entero.
+                </p>
+                <br/>
+                <h5>Incorporaciones al Archivo</h5>
+                <br/>
+                <p>El/la contribuidor/a puede realizar incorporaciones a la colección al DALN, que están sujetas a las políticas del DALN.</p>
+            </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" [class.hidden]="isSpanish">
         <div class="col-md-8 col-md-offset-2 basicText">
             <div class="radio" style="margin-bottom: 1em;">
                 <label>
@@ -174,6 +338,20 @@
             <div class="radio">
                 <label>
                     <input type="radio" name="rightsConsent" id="rightsConsent2" value="Under-18" [(ngModel)]="rightsConsent" formControlName="rightsConsent"> I give consent as Under-18 to release my materials and personal information
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row" [class.hidden]="!isSpanish">
+        <div class="col-md-8 col-md-offset-2 basicText">
+            <div class="radio" style="margin-bottom: 1em;">
+                <label>
+                    <input type="radio" name="rightsConsent" id="rightsConsent1" value="Adult" [(ngModel)]="rightsConsent" formControlName="rightsConsent"> Doy consentimiento como adulto a publicar mis materiales e información personal
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="rightsConsent" id="rightsConsent2" value="Under-18" [(ngModel)]="rightsConsent" formControlName="rightsConsent"> Doy consentimiento como menor de 18 años a publicar mis materiales e información personal
                 </label>
             </div>
         </div>

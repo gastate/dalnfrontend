@@ -19,6 +19,7 @@ export class RightsComponent implements OnInit {
   submitService: SubmitFormService;
   rightsConsent: string;
   rightsRelease: string;
+  isSpanish: boolean;
 
   constructor(
     private _router: Router,
@@ -34,6 +35,7 @@ export class RightsComponent implements OnInit {
     //     .subscribe(rights => {
     //         this.initForm(rights);
     //     });
+    this.isSpanish = false;
   }
 
   initForm() {
@@ -55,5 +57,9 @@ export class RightsComponent implements OnInit {
     this.submitService.rightsRelease = this.rightsConsent;
 
     this._router.navigateByUrl("/create/metadata");
+  }
+
+  switchLanguage() {
+    this.isSpanish = !this.isSpanish;
   }
 }
