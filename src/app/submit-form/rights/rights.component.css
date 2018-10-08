@@ -1,13 +1,19 @@
 .termsAndConditions {
 
-    overflow-y: scroll;
+  overflow-y: scroll;
   
-    height: 300px;
+  height: 300px;
   
-    width: 100%;
+  width: 100%;
   
-    border: 1px solid #DDD;
+  border: 1px solid #DDD;
   
-    padding: 10px;
+  padding: 10px;
   
-  }
+}
+
+.language {
+
+  margin-top: 2em;
+  
+}
