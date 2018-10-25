@@ -30,6 +30,11 @@ export class RightsComponent implements OnInit {
     this.initForm();
   }
 
+  engAdult = "I give consent as an Adult to release my materials and personal information";
+  engSub18 = "I give consent as Under-18 to release my materials and personal information";
+  espAdult = "Doy consentimiento como adulto a publicar mis materiales e información personal";
+  espSub18 = "Doy consentimiento como menor de 18 años a publicar mis materiales e información personal";
+
   ngOnInit() {
     //   this.rightsService.rights$
     //     .subscribe(rights => {
