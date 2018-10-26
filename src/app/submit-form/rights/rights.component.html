@@ -464,24 +464,24 @@
         <div class="col-md-8 col-md-offset-2 basicText">
             <div class="radio" style="margin-bottom: 1em;">
                 <label *ngIf="!isSpanish">
-                    <input type="radio" name="rightsConsent" id="rightsConsent1" value="Adult" [(ngModel)]="rightsConsent"
-                        formControlName="rightsConsent"> I give consent as an Adult to release my materials and
+                    <input type="radio" name="rightsConsent" value="Adult" [(ngModel)]="rightsConsent" formControlName="rightsConsent">
+                    I give consent as an Adult to release my materials and
                     personal information
                 </label>
                 <label *ngIf="isSpanish">
-                    <input type="radio" name="rightsConsent" id="rightsConsent1" value="Adult" [(ngModel)]="rightsConsent"
-                        formControlName="rightsConsent"> Doy consentimiento como adulto a publicar mis materiales e
+                    <input type="radio" name="rightsConsent" value="Adult" [(ngModel)]="rightsConsent" formControlName="rightsConsent">
+                    Doy consentimiento como adulto a publicar mis materiales e
                     información personal
                 </label>
             </div>
             <div class="radio">
                 <label *ngIf="!isSpanish">
-                    <input type="radio" name="rightsConsent" id="rightsConsent2" value="Under-18" [(ngModel)]="rightsConsent"
+                    <input type="radio" name="rightsConsent" value="Under-18" [(ngModel)]="rightsConsent"
                         formControlName="rightsConsent"> I give consent as Under-18 to release my materials and
                     personal information
                 </label>
                 <label *ngIf="isSpanish">
-                    <input type="radio" name="rightsConsent" id="rightsConsent2" value="Under-18" [(ngModel)]="rightsConsent"
+                    <input type="radio" name="rightsConsent" value="Under-18" [(ngModel)]="rightsConsent"
                         formControlName="rightsConsent"> Doy consentimiento como menor de 18 años a publicar mis
                     materiales e información personal
                 </label>

@@ -29,20 +29,16 @@ export class RightsComponent implements OnInit {
   ) {
     this.submitService = _submitService;
     this.initForm();
+    this.rightsConsent = "Adult";
   }
 
   ngOnInit() {
-    //   this.rightsService.rights$
-    //     .subscribe(rights => {
-    //         this.initForm(rights);
-    //     });
     this.isSpanish = false;
   }
 
   initForm() {
     this.rightsForm = this.fb.group({
       rightsConsent: ["", Validators.required]
-      //rightsRelease: ["", Validators.required]
     });
   }
 
@@ -51,6 +47,7 @@ export class RightsComponent implements OnInit {
   }
 
   next() {
+    this.ref.detectChanges();
     this.rightsConsent = this.rightsForm.value.rightsConsent;
     this.rightsRelease = this.rightsForm.value.rightsConsent;
 
