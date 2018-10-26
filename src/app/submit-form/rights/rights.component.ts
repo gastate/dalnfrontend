@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import {
   FormBuilder,
   FormGroup,
@@ -24,6 +24,7 @@ export class RightsComponent implements OnInit {
   constructor(
     private _router: Router,
     private fb: FormBuilder,
+    private ref: ChangeDetectorRef,
     _submitService: SubmitFormService
   ) {
     this.submitService = _submitService;
@@ -46,7 +47,7 @@ export class RightsComponent implements OnInit {
   }
 
   isValidForm() {
-      return this.rightsConsent && this.rightsConsent.length > 1;
+    return this.rightsConsent && this.rightsConsent.length > 1;
   }
 
   next() {
@@ -61,5 +62,6 @@ export class RightsComponent implements OnInit {
 
   switchLanguage() {
     this.isSpanish = !this.isSpanish;
+    this.ref.detectChanges();
   }
 }
