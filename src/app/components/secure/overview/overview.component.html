@@ -5,4 +5,16 @@
 
         </p>
     </div>
+    <button type="button" class="btn btn-secondary" (click)="restartWorker()" [disabled]="sending_command">RESTART SERVICE</button>
+    <button type="button" class="btn btn-secondary" (click)="log()" [disabled]="sending_command">SERVICE LOG</button>
+    <article class="card">
+        <div class="post-header">
+            <div class="hover-post">
+                Operation log
+            </div>
+          </div>
+          <div class="card-block" style="white-space: pre-wrap;">
+            {{operation_log}}
+          </div>
+    </article>
 </div>

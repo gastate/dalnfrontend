@@ -67,7 +67,7 @@ const read_file = api_url + "/asset/read/"; // to scan Text documents for their 
 
 
 const get_unapproved_posts = api_url + "/admin/unapproved";
-
+const execute_ec2 = api_url + "/admin/executeec2/"
 
 export const environment = {
     production: true,
@@ -91,7 +91,8 @@ export const environment = {
         search_posts: search_posts,
         search_size: search_size,
         stagingAreaBucketName: stagingAreaBucketName,
-        unapprove_post: unapprove_post
+        unapprove_post: unapprove_post,
+        execute_ec2: execute_ec2
     }, COGNITO_INFO: {
         region: region,
         userPoolId: userPoolId,
