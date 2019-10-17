@@ -50,6 +50,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   text: string;
 
   showAdminUI: boolean;
+  inEditMode: boolean = false;
   // assetFailedButtonText: string;
   assetWarning: string = "";
 
@@ -293,6 +294,25 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
           err;
       }
     );
+  }
+
+  handleEditButtonClicked(){
+      if (this.inEditMode){ 
+        // in edit mode, and button is clicked. Edit is done
+        this.editPostDone();
+      } else {
+        // start editing now
+        this.editPost();
+      }
+    this.inEditMode = !this.inEditMode;
+  }
+
+  editPost(){
+    console.log("edit post now");
+  }
+
+  editPostDone(){
+    console.log("edit post done!");
   }
 
   unapprovePost() {

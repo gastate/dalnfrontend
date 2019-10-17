@@ -1,8 +1,17 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1 pageTitle">
     <span>LITERACY NARRATIVE DETAILS</span>
-    <button type="button" *ngIf="showAdminUI && postDetail?.isPostNotApproved && loading == false" class="btn btn-primary pull-right"
-      (click)="approvePost()">APPROVE</button>
+    <div *ngIf="showAdminUI && postDetail?.isPostNotApproved && loading == false">
+        <button type="button" class="btn btn-primary pull-right "
+        (click)="approvePost()">APPROVE</button> 
+        <button type="button" class="btn btn-primary pull-right right-button-margin"
+        (click)="handleEditButtonClicked()">{{ inEditMode == true ? 'Done' : 'Edit' }}</button>
+    </div>
+
+    <div *ngIf="inEditMode">in edit</div>
+    <div *ngIf="inEditMode==false">not in edit</div>
+
+
     <button type="button" *ngIf="showAdminUI && !postDetail?.isPostNotApproved && loading === false" class="btn btn-primary pull-right"
       (click)="unapprovePost()">UNAPPROVE</button>
   </div>
@@ -25,10 +34,12 @@
       <span class="subTitle">LITERACY NARRATIVE TITLE</span>
       {{postDetail?.title}}
     </p>
+
     <p *ngIf="postDetail && postDetail.description">
       <span class="subTitle">DESCRIPTION</span>
       {{postDetail?.description}}
     </p>
+
     <p *ngIf="postDetail && postDetail.rightsConsent">
       <span class="subTitle">RIGHTS CONSENT</span>
       {{postDetail?.rightsConsent}}
@@ -37,6 +48,8 @@
       <span class="subTitle">LICENSE TYPE</span>
       {{postDetail?.license}}
     </p>
+    
+    
     <p *ngIf="postDetail && postDetail.email && showAdminUI">
       <span class="subTitle">EMAIL ADDRESS</span>
       {{postDetail?.email}}
