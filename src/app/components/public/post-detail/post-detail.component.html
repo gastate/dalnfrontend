@@ -5,13 +5,8 @@
         <button type="button" class="btn btn-primary pull-right "
         (click)="approvePost()">APPROVE</button> 
         <button type="button" class="btn btn-primary pull-right right-button-margin"
-        (click)="handleEditButtonClicked()">{{ inEditMode == true ? 'Done' : 'Edit' }}</button>
+        (click)="handleEditButtonClicked()">{{ inEditMode == true ? 'Save' : 'Edit' }}</button>
     </div>
-
-    <div *ngIf="inEditMode">in edit</div>
-    <div *ngIf="inEditMode==false">not in edit</div>
-
-
     <button type="button" *ngIf="showAdminUI && !postDetail?.isPostNotApproved && loading === false" class="btn btn-primary pull-right"
       (click)="unapprovePost()">UNAPPROVE</button>
   </div>
@@ -27,99 +22,166 @@
     </div>
   </div>
 </div>
+
 <div class="row" style="margin-top:2em;">
   <div class="col-md-5 col-md-offset-1 basicText uppercase" style="margin-bottom: 1em;">
     <p *ngIf="!postDetail && loading === false">OH SNAP! This literacy narrative does not exist</p>
     <p>
       <span class="subTitle">LITERACY NARRATIVE TITLE</span>
-      {{postDetail?.title}}
+      <input [(ngModel)]="postDetail.title" class="detail-input-width" *ngIf="inEditMode" type="text" value="postDetail?.title" />
+      <span *ngIf="!inEditMode">{{postDetail?.title}}</span>
     </p>
+
 
     <p *ngIf="postDetail && postDetail.description">
       <span class="subTitle">DESCRIPTION</span>
-      {{postDetail?.description}}
+      <input [(ngModel)]="postDetail.description" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.description}}" />
+      <span *ngIf="!inEditMode">{{postDetail?.description}}</span>
     </p>
+
 
     <p *ngIf="postDetail && postDetail.rightsConsent">
       <span class="subTitle">RIGHTS CONSENT</span>
-      {{postDetail?.rightsConsent}}
+      <input [(ngModel)]="postDetail.rightsConsent" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.rightsConsent}}" />
+      <span *ngIf="!inEditMode">{{postDetail?.rightsConsent}}</span>
     </p>
     <p *ngIf="postDetail && postDetail.license">
       <span class="subTitle">LICENSE TYPE</span>
-      {{postDetail?.license}}
+      <input [(ngModel)]="postDetail.license" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.license}}" />
+      <span *ngIf="!inEditMode">{{postDetail?.license}}</span>
     </p>
-    
-    
     <p *ngIf="postDetail && postDetail.email && showAdminUI">
       <span class="subTitle">EMAIL ADDRESS</span>
-      {{postDetail?.email}}
+      <input [(ngModel)]="postDetail.email" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.email}}" />
+      <span *ngIf="!inEditMode">{{postDetail?.email}}</span>
     </p>
     <p *ngIf="postDetail && postDetail.contributorAuthor">
       <span class="subTitle">AUTHOR(S)</span>
-      <span *ngFor="let author of postDetail?.contributorAuthor; let last = last">
-        <span>{{author}}</span>
-        <span *ngIf="!last">,</span>
-      </span>
+      <span *ngFor="let author of postDetail?.contributorAuthor; let in = index; let last = last; trackBy:trackByFn; ">
+          <span *ngIf="inEditMode"> 
+            <input name="author-{{in}}" [(ngModel)]="postDetail.contributorAuthor[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{author}}" />
+            <br *ngIf="!last">
+          </span>
+          <span *ngIf="!inEditMode">
+            <span>{{author}}</span>
+            <span *ngIf="!last">,</span>
+          </span>
+     </span>
     </p>
     <p *ngIf="postDetail && postDetail.contributorInterviewer">
       <span class="subTitle">INTERVIEWER(S)</span>
-      <span *ngFor="let interviewer of postDetail?.contributorInterviewer; let last = last">
-        <span>{{interviewer}}</span>
-        <span *ngIf="!last">,</span>
-      </span>
+      <span *ngFor="let interviewer of postDetail?.contributorInterviewer; let in = index; let last = last; trackBy:trackByFn; ">
+            <span *ngIf="inEditMode"> 
+              <input name="interviewer-{{in}}" [(ngModel)]="postDetail.contributorInterviewer[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{interviewer}}" />
+              <br *ngIf="!last">
+            </span>
+            <span *ngIf="!inEditMode">
+              <span>{{interviewer}}</span>
+              <span *ngIf="!last">,</span>
+            </span>
+       </span>
     </p>
     <p *ngIf="postDetail && postDetail.creatorYearOfBirth">
       <span class="subTitle">AUTHOR BIRTH YEAR</span>
-      {{postDetail?.creatorYearOfBirth}}
+      <input maxlength="4" [(ngModel)]="postDetail.creatorYearOfBirth" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.creatorYearOfBirth}}" />
+      <span *ngIf="!inEditMode">{{postDetail?.creatorYearOfBirth}}</span>
     </p>
     <p *ngIf="postDetail && postDetail.creatorGender">
       <span class="subTitle">AUTHOR GENDER</span>
-      {{postDetail?.creatorGender}}
+      <input [(ngModel)]="postDetail.creatorGender" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.creatorGender}}" />
+      <span *ngIf="!inEditMode">{{postDetail?.creatorGender}}</span>
     </p>
     <p *ngIf="postDetail && postDetail.dateSubmitted">
       <span class="subTitle">DATE OF SUBMISSION</span>
-      {{postDetail?.dateSubmitted}}
+      <input [(ngModel)]="postDetail.dateSubmitted" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.dateSubmitted}}" />
+      <span *ngIf="!inEditMode">{{postDetail?.dateSubmitted}}</span>
     </p>
     <p *ngIf="postDetail && postDetail.subject">
       <span class="subTitle">SUBJECT KEYWORDS</span>
-      <span *ngFor="let subj of postDetail?.subject; let last = last">
-        <span>{{subj}}</span>
-        <span *ngIf="!last">,</span>
+      <span *ngFor="let subj of postDetail?.subject; let in = index; let last = last; trackBy:trackByFn; ">
+        <span *ngIf="inEditMode"> 
+          <input name="subject-{{in}}" [(ngModel)]="postDetail.subject[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{subj}}" />
+          <br *ngIf="!last">
+        </span>
+        <span *ngIf="!inEditMode">
+          <span>{{subj}}</span>
+          <span *ngIf="!last">,</span>
+        </span>
       </span>
     </p>
     <p *ngIf="postDetail && postDetail.coveragePeriod">
       <span class="subTitle">DECADES COVERED</span>
-      <span *ngFor="let period of postDetail?.coveragePeriod; let last = last">
-        <span>{{period}}</span>
-        <span *ngIf="!last">,</span>
+
+      <span *ngFor="let period of postDetail?.coveragePeriod; let in = index; let last = last; trackBy:trackByFn; ">
+        <span *ngIf="inEditMode"> 
+          <input name="period-{{in}}" [(ngModel)]="postDetail.coveragePeriod[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{period}}" />
+          <br *ngIf="!last">
+        </span>
+        <span *ngIf="!inEditMode">
+          <span>{{period}}</span>
+          <span *ngIf="!last">,</span>
+        </span>
       </span>
     </p>
     <p *ngIf="postDetail && postDetail.coverageNationality">
       <span class="subTitle">NATIONALITIES</span>
-      <span *ngFor="let nationality of postDetail?.coverageNationality; let last = last">
-        <span>{{nationality}}</span>
-        <span *ngIf="!last">,</span>
+      <span *ngFor="let nationality of postDetail?.coverageNationality; let in = index; let last = last; trackBy:trackByFn; ">
+        <span *ngIf="inEditMode"> 
+          <input name="nationality-{{in}}" [(ngModel)]="postDetail.coverageNationality[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{nationality}}" />
+          <br *ngIf="!last">
+        </span>
+        <span *ngIf="!inEditMode">
+          <span>{{nationality}}</span>
+          <span *ngIf="!last">,</span>
+        </span>
       </span>
     </p>
     <p *ngIf="postDetail && postDetail.coverageRegions">
       <span class="subTitle">REGIONS</span>
-      <span *ngFor="let region of postDetail?.coverageRegions; let last = last">
-        <span>{{region}}</span>
-        <span *ngIf="!last">,</span>
+
+      <span *ngFor="let region of postDetail?.coverageRegions; let in = index; let last = last; trackBy:trackByFn; ">
+        <span *ngIf="inEditMode"> 
+          <input name="region-{{in}}" [(ngModel)]="postDetail.coverageRegions[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{region}}" />
+          <br *ngIf="!last">
+        </span>
+        <span *ngIf="!inEditMode">
+          <span>{{region}}</span>
+          <span *ngIf="!last">,</span>
+        </span>
       </span>
+
+      <!-- <span *ngFor="let region of postDetail?.coverageRegions; let last = last">
+        <span>
+            <input class="detail-input-width" *ngIf="inEditMode" type="text" value="{{region}}" />
+            <span *ngIf="!inEditMode">{{region}}</span>
+        </span>
+        <span *ngIf="!last">,</span>
+      </span> -->
     </p>
     <p *ngIf="postDetail && postDetail.coverageStateProvince">
       <span class="subTitle">STATE OR PROVINCES</span>
-      <span *ngFor="let state of postDetail?.coverageStateProvince; let last = last">
-        <span>{{state}}</span>
-        <span *ngIf="!last">,</span>
+      <span *ngFor="let state of postDetail?.coverageStateProvince; let in = index; let last = last; trackBy:trackByFn; ">
+        <span *ngIf="inEditMode"> 
+          <input name="state-{{in}}" [(ngModel)]="postDetail.coverageStateProvince[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{state}}" />
+          <br *ngIf="!last">
+        </span>
+        <span *ngIf="!inEditMode">
+          <span>{{state}}</span>
+          <span *ngIf="!last">,</span>
+        </span>
       </span>
     </p>
     <p *ngIf="postDetail && postDetail.language">
       <span class="subTitle">LANGUAGES</span>
-      <span *ngFor="let lang of postDetail?.language; let last = last">
-        <span>{{lang}}</span>
-        <span *ngIf="!last">,</span>
+      <span *ngFor="let lang of postDetail?.language; let in = index; let last = last; trackBy:trackByFn; ">
+        <span *ngIf="inEditMode"> 
+          <input name="lang-{{in}}" [(ngModel)]="postDetail.language[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{lang}}" />
+          <br *ngIf="!last">
+        </span>
+        <span *ngIf="!inEditMode">
+          <span>{{lang}}</span>
+          <span *ngIf="!last">,</span>
+        </span>
       </span>
     </p>
   </div>

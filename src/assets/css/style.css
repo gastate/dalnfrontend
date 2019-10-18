@@ -227,6 +227,10 @@ body {
   font-size: 1.3em;
 }
 
+input.detail-input-width {
+    width: 400px;
+}
+
 /* POST LIST */
 
 .card {

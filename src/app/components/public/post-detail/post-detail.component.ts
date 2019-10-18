@@ -226,6 +226,10 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     }
   }
 
+  // Ref: https://stackoverflow.com/questions/42322968/angular2-dynamic-input-field-lose-focus-when-input-changes
+  trackByFn(index: any, item: any) {
+    return index;
+ }
 
 
 
