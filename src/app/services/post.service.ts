@@ -119,6 +119,49 @@ export class PostService {
     );
   }
 
+  editPost(post: Post) {
+    var tableName = this.endPoint.ddb_table_name;
+
+    var data = {
+      postId: post.postId,
+      tableName: tableName,
+      title: post.title,
+      description: post.description,
+      hiddenDescription: post.hiddenDescription,
+      rightsConsent: post.rightsConsent,
+      rightsRelease: post.rightsRelease,
+      creatorGender: post.creatorGender,
+      creatorYearOfBirth: post.creatorYearOfBirth,
+      contributorAuthor: post.contributorAuthor,
+      contributorInterviewer: post.contributorInterviewer,
+      coveragePeriod: post.coveragePeriod,
+      coverageRegion: post.coverageRegion,
+      coverageNationality: post.coverageNationality,
+      coverageSpatial: post.coverageSpatial,
+      coverageStateProvince: post.coverageStateProvince,
+      subject: post.subject,
+      language: post.language,
+      email: post.email,
+      license: post.license,
+      dateCreated: post.dateCreated
+    };
+
+    var datastr = JSON.stringify(data);
+
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    let options = new RequestOptions({ headers: headers, method: "post" });
+
+    return this._http
+      .post(this.endPoint.update_post, datastr, options)
+      .map((res: Response) => {
+        return res;
+      })
+      .catch((error: any) => {
+        return Observable.throw(error);
+      });
+  }
+
   getPreview(postAssets: Asset[]): Asset {
     if (postAssets) {
       let preview: Asset;

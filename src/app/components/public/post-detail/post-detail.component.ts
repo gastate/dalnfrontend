@@ -94,6 +94,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
 
           this.loading = false;
           this.postDetail = details;
+        
           console.log("Post Details", this.postDetail);
           // Temp fix for issue #109
           if (this.postDetail.toString() === "") {
@@ -302,21 +303,29 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
 
   handleEditButtonClicked(){
       if (this.inEditMode){ 
-        // in edit mode, and button is clicked. Edit is done
-        this.editPostDone();
+        this.editPostDone();    // in edit mode, and button is clicked. Edit is done
       } else {
-        // start editing now
-        this.editPost();
+        this.editPost();    // start editing now
       }
     this.inEditMode = !this.inEditMode;
   }
 
   editPost(){
     console.log("edit post now");
+
   }
 
   editPostDone(){
     console.log("edit post done!");
+
+    this._postService.editPost(this.postDetail).subscribe(
+        res => {
+            console.log(`res: ${res}`);
+        },
+        err => {
+            console.log(`error: ${err}`);
+        }
+    );
   }
 
   unapprovePost() {
