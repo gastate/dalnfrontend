@@ -5,7 +5,7 @@
         <button type="button" class="btn btn-primary pull-right "
         (click)="approvePost()">APPROVE</button> 
         <button type="button" class="btn btn-primary pull-right right-button-margin"
-        (click)="handleEditButtonClicked()">{{ inEditMode == true ? 'Save' : 'Edit' }}</button>
+        (click)="handleEditButtonClicked()">{{ inEditMode == true ? 'SAVE' : 'EDIT' }}</button>
     </div>
     <button type="button" *ngIf="showAdminUI && !postDetail?.isPostNotApproved && loading === false" class="btn btn-primary pull-right"
       (click)="unapprovePost()">UNAPPROVE</button>
