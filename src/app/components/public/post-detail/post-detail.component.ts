@@ -354,6 +354,10 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   //     });
   // }
 
+  handleRejectButtonClicked(){
+    console.log("rejected!");
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

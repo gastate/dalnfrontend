@@ -276,10 +276,6 @@ body {
     margin-right: 10px;
 }
 
-.dangerous_button {
-    background-color: #c43333;
-    border-color: #c43333;
-}
 
 .btn-primary:hover,
 .btn-primary:focus,
@@ -296,6 +292,20 @@ fieldset[disabled] .btn-primary.focus,
 fieldset[disabled] .btn-primary:focus,
 fieldset[disabled] .btn-primary:hover {
   background-color: #175c58;
+}
+
+.btn-dangerous {
+    color: #fff;
+    background-color: #c43333;
+    border-color: #c43333;
+    padding: 0.6em 3em;
+}
+
+
+.btn-dangerous:hover, .btn-dangerous:active {
+    background-color: #992323;
+    border-color: #992323;
+    color: #fff;
 }
 
 .btn-secondary {
