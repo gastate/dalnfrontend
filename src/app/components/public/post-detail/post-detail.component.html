@@ -1,8 +1,12 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1 pageTitle">
     <span>LITERACY NARRATIVE DETAILS</span>
-    <button type="button" *ngIf="showAdminUI && postDetail?.isPostNotApproved && loading == false" class="btn btn-primary pull-right"
-      (click)="approvePost()">APPROVE</button>
+    <div *ngIf="showAdminUI && postDetail?.isPostNotApproved && loading == false">
+        <button type="button" class="btn btn-primary pull-right dangerous_button"
+        (click)="handleEditButtonClicked()">REJECT</button>
+        <button type="button" class="btn btn-primary pull-right right-button-margin"
+        (click)="approvePost()">APPROVE</button> 
+    </div>
     <button type="button" *ngIf="showAdminUI && !postDetail?.isPostNotApproved && loading === false" class="btn btn-primary pull-right"
       (click)="unapprovePost()">UNAPPROVE</button>
   </div>

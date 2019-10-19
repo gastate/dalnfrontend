@@ -272,6 +272,15 @@ body {
   padding: 0.6em 3em;
 }
 
+.right-button-margin {
+    margin-right: 10px;
+}
+
+.dangerous_button {
+    background-color: #c43333;
+    border-color: #c43333;
+}
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
