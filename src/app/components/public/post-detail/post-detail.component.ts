@@ -94,10 +94,15 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
           this.loading = false;
           this.postDetail = details;
           console.log("Post Details", this.postDetail);
+
           // Temp fix for issue #109
           if (this.postDetail.toString() === "") {
             console.log("Post not found, trying on dev...");
             this.onDevDetail();
+          }
+          if (!this.postDetail.hasOwnProperty("isPostRejected")) {
+            // old posts have no such a property. Default it to false
+            this.postDetail.isPostRejected = false; 
           }
           this.assets = this.postDetail.assetList
             ? this.postDetail.assetList
@@ -156,6 +161,12 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             this.onDetail();
           } else {
             this.postDetail = details;
+
+            if (!this.postDetail.hasOwnProperty("isPostRejected")) {
+                // old posts have no such a property. Default it to false
+                this.postDetail.isPostRejected = false; 
+            }
+
             console.log("Post Details", this.postDetail);
             this.assets = this.postDetail.assetList
               ? this.postDetail.assetList
@@ -355,7 +366,32 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   // }
 
   handleRejectButtonClicked(){
-    console.log("rejected!");
+    this.postDetail.isPostRejected = !this.postDetail.isPostRejected;
+    this.rejectPost(this.postDetail.postId);
+  }
+
+  handleUndoButtonClicked(){
+    this.postDetail.isPostRejected = !this.postDetail.isPostRejected;
+
+  }
+
+  rejectPost(postId: string){
+    this._postService.rejectPost(postId).subscribe(
+        res => {
+          this.unapprovalMessage =
+            "Literacy Narrative with ID " +
+            this.postDetail.postId +
+            " was rejected!";
+        },
+        err => {
+          // give an error message.
+          this.unapprovalMessage =
+            "Literacy Narrative rejection of " +
+            this.postDetail.postId +
+            " failed. Reason: \n" +
+            err;
+        }
+      );
   }
 
   ngOnDestroy() {

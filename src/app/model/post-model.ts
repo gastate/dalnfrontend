@@ -27,5 +27,6 @@ export class Post {
   creatorYearOfBirth: string[];
   language: string[];
   subject: string[];
+  email: string;
   assetList: Array<Asset>;
 }

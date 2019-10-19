@@ -62,6 +62,7 @@ const search_size = search_api_url + "";
 
 const approve_post = api_url + "/admin/approve/"; // to approve posts into search engine.
 const unapprove_post = api_url + "/admin/remove/";
+const reject_post = api_url + "/admin/reject";
 const get_upload_link = api_url + "/asset/s3uploader/"; // to get the link for file uploading.
 const link_media = api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
 const read_file = api_url + "/asset/read/"; // to scan Text documents for their contents
@@ -76,6 +77,7 @@ export const environment = {
         admin_ddb_table_name: admin_ddb_table_name,
         all_posts: all_posts,
         approve_post: approve_post,
+        reject_post: reject_post,
         api_url: api_url,
         create_post: create_post,
         ddb_table_name: ddb_table_name,
