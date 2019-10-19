@@ -83,17 +83,33 @@
     </p>
     <p *ngIf="postDetail && postDetail.creatorYearOfBirth">
       <span class="subTitle">AUTHOR BIRTH YEAR</span>
-      <input maxlength="4" [(ngModel)]="postDetail.creatorYearOfBirth" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.creatorYearOfBirth}}" />
-      <span *ngIf="!inEditMode">{{postDetail?.creatorYearOfBirth}}</span>
+      <span *ngFor="let bday of postDetail?.creatorYearOfBirth; let in = index; let last = last; trackBy:trackByFn; ">
+        <span *ngIf="inEditMode"> 
+          <input maxlength="4" name="bday-{{in}}" [(ngModel)]="postDetail.creatorYearOfBirth[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{bday}}" />
+          <br *ngIf="!last">
+        </span>
+        <span *ngIf="!inEditMode">
+          <span>{{bday}}</span>
+          <span *ngIf="!last">,</span>
+        </span>
+      </span>
     </p>
     <p *ngIf="postDetail && postDetail.creatorGender">
       <span class="subTitle">AUTHOR GENDER</span>
-      <input [(ngModel)]="postDetail.creatorGender" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.creatorGender}}" />
-      <span *ngIf="!inEditMode">{{postDetail?.creatorGender}}</span>
+      <span *ngFor="let gender of postDetail?.creatorGender; let in = index; let last = last; trackBy:trackByFn; ">
+        <span *ngIf="inEditMode"> 
+          <input name="gender-{{in}}" [(ngModel)]="postDetail.creatorGender[in]" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{gender}}" />
+          <br *ngIf="!last">
+        </span>
+        <span *ngIf="!inEditMode">
+          <span>{{gender}}</span>
+          <span *ngIf="!last">,</span>
+        </span>
+      </span>
     </p>
     <p *ngIf="postDetail && postDetail.dateSubmitted">
       <span class="subTitle">DATE OF SUBMISSION</span>
-      <input [(ngModel)]="postDetail.dateSubmitted" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.dateSubmitted}}" />
+      <input readonly [(ngModel)]="postDetail.dateSubmitted" class="detail-input-width" *ngIf="inEditMode" type="text" value="{{postDetail?.dateSubmitted}}" />
       <span *ngIf="!inEditMode">{{postDetail?.dateSubmitted}}</span>
     </p>
     <p *ngIf="postDetail && postDetail.subject">
