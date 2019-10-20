@@ -100,6 +100,31 @@ export class PostService {
         });
   }
 
+    // "unreject" = turn a rejected narrative back to waiting for approval
+    unrejectPost(postId: string){
+        var tableName = this.endPoint.ddb_table_name;
+        var data;
+
+        data = {
+            postId: postId,
+            tableName: tableName
+        };
+
+        var datastr = JSON.stringify(data);
+        let headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        let options = new RequestOptions({ headers: headers, method: "post" });
+
+        return this._http
+            .post(this.endPoint.unreject_post, datastr, options)
+            .map((res: Response) => {
+                return res;
+            })
+            .catch((error: any) => {
+                return Observable.throw(error);
+            });
+    }
+
   getAllPosts(): Observable<Post[]> {
     //api call
     return (

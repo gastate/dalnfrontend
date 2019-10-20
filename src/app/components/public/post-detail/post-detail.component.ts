@@ -161,8 +161,10 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             this.onDetail();
           } else {
             this.postDetail = details;
+            console.log("before Post Details", this.postDetail);
 
             if (!this.postDetail.hasOwnProperty("isPostRejected")) {
+                console.log("default to false");
                 // old posts have no such a property. Default it to false
                 this.postDetail.isPostRejected = false; 
             }
@@ -372,7 +374,26 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
 
   handleUndoButtonClicked(){
     this.postDetail.isPostRejected = !this.postDetail.isPostRejected;
+    this.unrejectPost(this.postDetail.postId);
+  }
 
+  unrejectPost(postId: string){
+    this._postService.unrejectPost(postId).subscribe(
+        res => {
+          this.unapprovalMessage =
+            "Literacy Narrative with ID " +
+            this.postDetail.postId +
+            " is now waiting for approval";
+        },
+        err => {
+          // give an error message.
+          this.unapprovalMessage =
+            "Undoing Literacy Narrative of " +
+            this.postDetail.postId +
+            " failed. Reason: \n" +
+            err;
+        }
+      );
   }
 
   rejectPost(postId: string){
