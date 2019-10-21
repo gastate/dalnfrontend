@@ -311,19 +311,25 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   }
 
   editPost(){
-    console.log("edit post now");
 
   }
 
   editPostDone(){
-    console.log("edit post done!");
 
     this._postService.editPost(this.postDetail).subscribe(
         res => {
-            console.log(`res: ${res}`);
+            this.unapprovalMessage =
+              "Literacy Narrative with ID " +
+              this.postDetail.postId +
+              " was updated!";
         },
         err => {
-            console.log(`error: ${err}`);
+            // give an error message.
+            this.unapprovalMessage =
+                "Updating Literacy Narrative of " +
+                this.postDetail.postId +
+                " failed. Reason: \n" +
+                err;
         }
     );
   }
