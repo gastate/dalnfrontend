@@ -2,11 +2,8 @@
   <article class="card" [ngClass]="{'card-outline-danger': assetFailureWarning != null && showAdminUI == true }">
     <div class="post-header">
       <div class="hover-post">
-        <a (click)="goToDetails()">
-          <div>
-              {{postItem?.title}}
-              <span *ngIf="postItem?.isPostRejected" class="rejected-label">Rejected</span>
-          </div>
+        <a href="{{this.getNewTabUrl()}}" target="_blank">
+            <div>{{postItem?.title}}</div>
         </a>
       </div>
     </div>

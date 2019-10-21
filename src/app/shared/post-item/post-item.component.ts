@@ -34,8 +34,18 @@ export class PostItemComponent implements OnInit {
 
   goToDetails() {
     if (this.postItem.postId) {
-      this._router.navigateByUrl("/detail/" + this.postItem.postId);
+      let url: string = this.getNewTabUrl();
+       window.open(url, "_blank");
     }
+  }
+
+  getNewTabUrl(): string{
+    let baseUrl: string = window.location.href;
+    let removePart: string = this._router.url;
+
+    baseUrl = baseUrl.replace(removePart, "");
+    baseUrl += "/detail/" + this.postItem.postId
+    return baseUrl;
   }
 
   getPreview(postAssets: Asset[]): Asset {
