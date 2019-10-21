@@ -251,6 +251,10 @@ body {
   text-transform: uppercase;
 }
 
+.hover-post>a:visited {
+    color: #c8cecd;
+}
+
 .post-desc {
   font-size: 0.8em;
   margin-top: 0.5em;
