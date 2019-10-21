@@ -50,6 +50,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   text: string;
 
   showAdminUI: boolean;
+  inEditMode: boolean = false;
   // assetFailedButtonText: string;
   assetWarning: string = "";
 
@@ -93,6 +94,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
 
           this.loading = false;
           this.postDetail = details;
+        
           console.log("Post Details", this.postDetail);
 
           // Temp fix for issue #109
@@ -236,6 +238,10 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     }
   }
 
+  // Ref: https://stackoverflow.com/questions/42322968/angular2-dynamic-input-field-lose-focus-when-input-changes
+  trackByFn(index: any, item: any) {
+    return index;
+ }
 
 
 
@@ -303,6 +309,39 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
           " failed. Reason: \n" +
           err;
       }
+    );
+  }
+
+  handleEditButtonClicked(){
+      if (this.inEditMode){ 
+        this.editPostDone();    // in edit mode, and button is clicked. Edit is done
+      } else {
+        this.editPost();    // start editing now
+      }
+    this.inEditMode = !this.inEditMode;
+  }
+
+  editPost(){
+
+  }
+
+  editPostDone(){
+
+    this._postService.editPost(this.postDetail).subscribe(
+        res => {
+            this.unapprovalMessage =
+              "Literacy Narrative with ID " +
+              this.postDetail.postId +
+              " was updated!";
+        },
+        err => {
+            // give an error message.
+            this.unapprovalMessage =
+                "Updating Literacy Narrative of " +
+                this.postDetail.postId +
+                " failed. Reason: \n" +
+                err;
+        }
     );
   }
 

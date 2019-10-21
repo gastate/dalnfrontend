@@ -29,4 +29,5 @@ export class Post {
   subject: string[];
   email: string;
   assetList: Array<Asset>;
+  license: string;
 }

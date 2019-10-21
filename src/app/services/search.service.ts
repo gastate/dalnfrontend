@@ -27,6 +27,7 @@ export class SearchService {
   ): Observable<any> {
     searchQueryParam = searchQueryParam.replace(/[^a-zA-Z ]/g, "");
     resultsPerPage ? resultsPerPage : this.resultsPerPage;
+
     return this._http
       .get(
         this.endPoint.search_posts +
