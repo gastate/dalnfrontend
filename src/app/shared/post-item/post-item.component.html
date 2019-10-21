@@ -3,7 +3,10 @@
     <div class="post-header">
       <div class="hover-post">
         <a (click)="goToDetails()">
-          <div>{{postItem?.title}}</div>
+          <div>
+              {{postItem?.title}}
+              <span *ngIf="postItem?.isPostRejected" class="rejected-label">Rejected</span>
+          </div>
         </a>
       </div>
     </div>

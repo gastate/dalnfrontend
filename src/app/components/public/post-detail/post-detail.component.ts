@@ -161,10 +161,8 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             this.onDetail();
           } else {
             this.postDetail = details;
-            console.log("before Post Details", this.postDetail);
 
             if (!this.postDetail.hasOwnProperty("isPostRejected")) {
-                console.log("default to false");
                 // old posts have no such a property. Default it to false
                 this.postDetail.isPostRejected = false; 
             }
