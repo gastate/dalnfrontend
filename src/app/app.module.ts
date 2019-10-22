@@ -62,6 +62,7 @@ import { UploadService } from './submit-form/media/upload-service';
 import { SafePipe } from './safe.pipe';
 import { Ng2DeviceDetectorModule } from 'ng2-device-detector';
 import { Ec2Service } from './services/ec2.service';
+import { PostRejectedComponent } from './components/secure/post-rejected/post-rejected.component';
 // import { DeviceDetectorModule } from 'ngx-device-detector';
 
 
@@ -100,7 +101,8 @@ import { Ec2Service } from './services/ec2.service';
     StatisticsComponent,
     TestingComponent,
     WithdrawnComponent,
-    SafePipe
+    SafePipe,
+    PostRejectedComponent
   ],
   imports: [
     BrowserModule,

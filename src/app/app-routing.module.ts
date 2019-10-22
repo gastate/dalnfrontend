@@ -32,6 +32,7 @@ import { LogComponent } from "./components/secure/log/log.component";
 import { MetadataListComponent } from "./components/secure/metadata-list/metadata-list.component";
 import { OverviewComponent } from "./components/secure/overview/overview.component";
 import { PostApprovalComponent } from "./components/secure/post-approval/post-approval.component";
+import { PostRejectedComponent } from "./components/secure/post-rejected/post-rejected.component";
 import { PostEditingComponent } from "./components/secure/post-editing/post-editing.component";
 import { StatisticsComponent } from "./components/secure/statistics/statistics.component";
 import { TestingComponent } from "./components/secure/testing/testing.component";
@@ -59,6 +60,7 @@ const routes: Routes = [
       { path: "metadata-list", component: MetadataListComponent },
       { path: "overview", component: OverviewComponent },
       { path: "post-approval", component: PostApprovalComponent },
+      { path: "post-rejected", component: PostRejectedComponent },
       { path: "post-editing", component: PostEditingComponent },
       { path: "statistics", component: StatisticsComponent },
       { path: "testing", component: TestingComponent },
