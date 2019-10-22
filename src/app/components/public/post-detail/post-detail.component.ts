@@ -50,6 +50,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   text: string;
 
   showAdminUI: boolean;
+  inEditMode: boolean = false;
   // assetFailedButtonText: string;
   assetWarning: string = "";
 
@@ -93,11 +94,17 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
 
           this.loading = false;
           this.postDetail = details;
+        
           console.log("Post Details", this.postDetail);
+
           // Temp fix for issue #109
           if (this.postDetail.toString() === "") {
             console.log("Post not found, trying on dev...");
             this.onDevDetail();
+          }
+          if (!this.postDetail.hasOwnProperty("isPostRejected")) {
+            // old posts have no such a property. Default it to false
+            this.postDetail.isPostRejected = false; 
           }
           this.assets = this.postDetail.assetList
             ? this.postDetail.assetList
@@ -156,6 +163,12 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             this.onDetail();
           } else {
             this.postDetail = details;
+
+            if (!this.postDetail.hasOwnProperty("isPostRejected")) {
+                // old posts have no such a property. Default it to false
+                this.postDetail.isPostRejected = false; 
+            }
+
             console.log("Post Details", this.postDetail);
             this.assets = this.postDetail.assetList
               ? this.postDetail.assetList
@@ -225,6 +238,10 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     }
   }
 
+  // Ref: https://stackoverflow.com/questions/42322968/angular2-dynamic-input-field-lose-focus-when-input-changes
+  trackByFn(index: any, item: any) {
+    return index;
+ }
 
 
 
@@ -295,6 +312,39 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     );
   }
 
+  handleEditButtonClicked(){
+      if (this.inEditMode){ 
+        this.editPostDone();    // in edit mode, and button is clicked. Edit is done
+      } else {
+        this.editPost();    // start editing now
+      }
+    this.inEditMode = !this.inEditMode;
+  }
+
+  editPost(){
+
+  }
+
+  editPostDone(){
+
+    this._postService.editPost(this.postDetail).subscribe(
+        res => {
+            this.unapprovalMessage =
+              "Literacy Narrative with ID " +
+              this.postDetail.postId +
+              " was updated!";
+        },
+        err => {
+            // give an error message.
+            this.unapprovalMessage =
+                "Updating Literacy Narrative of " +
+                this.postDetail.postId +
+                " failed. Reason: \n" +
+                err;
+        }
+    );
+  }
+
   unapprovePost() {
     this.approvalMessage = "";
     this._postService.unapprovePost(this.postDetail.postId).subscribe(
@@ -353,6 +403,54 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   //       return res;
   //     });
   // }
+
+  handleRejectButtonClicked(){
+    this.postDetail.isPostRejected = !this.postDetail.isPostRejected;
+    this.rejectPost(this.postDetail.postId);
+  }
+
+  handleUndoButtonClicked(){
+    this.postDetail.isPostRejected = !this.postDetail.isPostRejected;
+    this.unrejectPost(this.postDetail.postId);
+  }
+
+  unrejectPost(postId: string){
+    this._postService.unrejectPost(postId).subscribe(
+        res => {
+          this.unapprovalMessage =
+            "Literacy Narrative with ID " +
+            this.postDetail.postId +
+            " is now waiting for approval";
+        },
+        err => {
+          // give an error message.
+          this.unapprovalMessage =
+            "Undoing Literacy Narrative of " +
+            this.postDetail.postId +
+            " failed. Reason: \n" +
+            err;
+        }
+      );
+  }
+
+  rejectPost(postId: string){
+    this._postService.rejectPost(postId).subscribe(
+        res => {
+          this.unapprovalMessage =
+            "Literacy Narrative with ID " +
+            this.postDetail.postId +
+            " was rejected!";
+        },
+        err => {
+          // give an error message.
+          this.unapprovalMessage =
+            "Literacy Narrative rejection of " +
+            this.postDetail.postId +
+            " failed. Reason: \n" +
+            err;
+        }
+      );
+  }
 
   ngOnDestroy() {
     this.sub.unsubscribe();

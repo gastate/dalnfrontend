@@ -227,6 +227,10 @@ body {
   font-size: 1.3em;
 }
 
+input.detail-input-width {
+    width: 400px;
+}
+
 /* POST LIST */
 
 .card {
@@ -251,6 +255,10 @@ body {
   text-transform: uppercase;
 }
 
+.hover-post>a:visited {
+    color: #c8cecd;
+}
+
 .post-desc {
   font-size: 0.8em;
   margin-top: 0.5em;
@@ -272,6 +280,10 @@ body {
   padding: 0.6em 3em;
 }
 
+.right-button-margin {
+    margin-right: 10px;
+}
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
@@ -287,6 +299,20 @@ fieldset[disabled] .btn-primary.focus,
 fieldset[disabled] .btn-primary:focus,
 fieldset[disabled] .btn-primary:hover {
   background-color: #175c58;
+}
+
+.btn-dangerous {
+    color: #fff;
+    background-color: #c43333;
+    border-color: #c43333;
+    padding: 0.6em 3em;
+}
+
+
+.btn-dangerous:hover, .btn-dangerous:active {
+    background-color: #992323;
+    border-color: #992323;
+    color: #fff;
 }
 
 .btn-secondary {
@@ -322,6 +348,17 @@ fieldset[disabled] .btn-secondary:hover {
   margin-right: 0.5em;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.2em;
+}
+
+.rejected-label {
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    background-color: #c51d1d;
+    margin-right: 0.5em;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 0.5em;
+    color: white;
+    display: table;
 }
 
 .specialText {

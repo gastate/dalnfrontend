@@ -2,6 +2,7 @@ import { Asset } from './asset-model';
 
 export class Post {
   isPostNotApproved: boolean;
+  isPostRejected: boolean;
   areAllFilesUploaded: boolean;
   postId: string;
   title: string;
@@ -26,5 +27,7 @@ export class Post {
   creatorYearOfBirth: string[];
   language: string[];
   subject: string[];
+  email: string;
   assetList: Array<Asset>;
+  license: string;
 }

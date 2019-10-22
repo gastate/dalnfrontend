@@ -75,6 +75,56 @@ export class PostService {
       });
   }
 
+  // reject = reject narratives in "waiting approval" section in admin page
+  rejectPost(postId: string){
+    var tableName = this.endPoint.ddb_table_name;
+    var data;
+
+    data = {
+        postId: postId,
+        tableName: tableName
+    };
+
+    var datastr = JSON.stringify(data);
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    let options = new RequestOptions({ headers: headers, method: "post" });
+
+    return this._http
+        .post(this.endPoint.reject_post, datastr, options)
+        .map((res: Response) => {
+            return res;
+        })
+        .catch((error: any) => {
+            return Observable.throw(error);
+        });
+  }
+
+    // "unreject" = turn a rejected narrative back to waiting for approval
+    unrejectPost(postId: string){
+        var tableName = this.endPoint.ddb_table_name;
+        var data;
+
+        data = {
+            postId: postId,
+            tableName: tableName
+        };
+
+        var datastr = JSON.stringify(data);
+        let headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        let options = new RequestOptions({ headers: headers, method: "post" });
+
+        return this._http
+            .post(this.endPoint.unreject_post, datastr, options)
+            .map((res: Response) => {
+                return res;
+            })
+            .catch((error: any) => {
+                return Observable.throw(error);
+            });
+    }
+
   getAllPosts(): Observable<Post[]> {
     //api call
     return (
@@ -117,6 +167,49 @@ export class PostService {
           Observable.throw(error.json().error || "Server error")
         )
     );
+  }
+
+  editPost(post: Post) {
+    var tableName = this.endPoint.ddb_table_name;
+
+    var data = {
+      postId: post.postId,
+      tableName: tableName,
+      title: post.title,
+      description: post.description,
+      hiddenDescription: post.hiddenDescription,
+      rightsConsent: post.rightsConsent,
+      rightsRelease: post.rightsRelease,
+      creatorGender: post.creatorGender,
+      creatorYearOfBirth: post.creatorYearOfBirth,
+      contributorAuthor: post.contributorAuthor,
+      contributorInterviewer: post.contributorInterviewer,
+      coveragePeriod: post.coveragePeriod,
+      coverageRegion: post.coverageRegion,
+      coverageNationality: post.coverageNationality,
+      coverageSpatial: post.coverageSpatial,
+      coverageStateProvince: post.coverageStateProvince,
+      subject: post.subject,
+      language: post.language,
+      email: post.email,
+      license: post.license,
+      dateCreated: post.dateCreated
+    };
+
+    var datastr = JSON.stringify(data);
+
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    let options = new RequestOptions({ headers: headers, method: "post" });
+
+    return this._http
+      .post(this.endPoint.update_post, datastr, options)
+      .map((res: Response) => {
+        return res;
+      })
+      .catch((error: any) => {
+        return Observable.throw(error);
+      });
   }
 
   getPreview(postAssets: Asset[]): Asset {

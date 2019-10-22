@@ -81,6 +81,13 @@ export class SearchComponent implements OnInit {
         } else {
           this.totalRecords = results.found;
           this.currentPageResults = results.hits;
+
+          if (this.startParam==0) {
+            // update the URL
+            this.router.navigate(["/search"], {
+                queryParams: { query: this.queryParam, page: 1 }
+            });
+          }
         }
       });
   }
