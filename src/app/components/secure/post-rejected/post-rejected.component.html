@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-8 basicText">
+      <p>
+        <span class="subTitle">Literacy Narratives Rejected</span>
+      </p>
+    </div>
+    <div class="col-md-4 basicText" style="text-align: right;">
+      <button type="button" class="btn btn-secondary" (click)="getRejectedPosts()">REFRESH DATA</button>
+      <div class="alert alert-warning" *ngIf="attemptsMessage !== null">
+        {{attemptsMessage}}
+      </div>
+    </div>
+  </div>
+  
+  <div class="row posts justify-content-center">
+    <div class="col-md-12 basicText" style="margin-bottom: 1em;">
+      <app-fancy-loader [loading]="loading" [failed]="failed" *ngIf="loading === true"></app-fancy-loader>
+      <post-list [postList]="rejected_list"></post-list>
+    </div>
+  </div>
+  
+  <!-- Error message -->
+  <div class="row justify-content-center">
+    <div class="col-md-6 alert alert-danger" *ngIf="errorMessage !== null">
+      <p>
+        {{errorMessage}}
+      </p>
+    </div>
+  </div>

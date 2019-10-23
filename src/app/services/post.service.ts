@@ -257,6 +257,33 @@ export class PostService {
     );
   }
 
+  getRejectedPosts(): Observable<Post[]> {
+    var data = {
+      tableName: this.endPoint.ddb_table_name
+    };
+
+    let str = JSON.stringify(data);
+
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    let options = new RequestOptions({ headers: headers, method: "post" });
+
+    return (
+      this._http
+        .post(this.endPoint.get_rejected_posts, str, options)
+        .map((res: Response) => {
+          let posts = res.json();
+          return posts;
+        })
+        //...errors if any
+        .catch((error: any) =>
+          Observable.throw(
+            error.json().error || "Server error...please check services."
+          )
+        )
+    );
+  }
+
   //Mock Services
   getMockPosts(): Promise<any> {
     //replace with api call

@@ -70,6 +70,7 @@ const link_media = api_url + "/asset/apiupload/"; // to link the post to the fil
 const read_file = api_url + "/asset/read/"; // to scan Text documents for their contents
 
 const get_unapproved_posts = api_url + "/admin/unapproved";
+const get_rejected_posts = api_url + "/admin/rejected";
 
 const execute_ec2 = api_url + "/admin/executeec2/"
 
@@ -89,6 +90,7 @@ export const environment = {
         get_dev_post: get_dev_post,
         get_upload_link: get_upload_link,
         get_unapproved_posts: get_unapproved_posts,
+        get_rejected_posts: get_rejected_posts,
         link_media: link_media,
         page_posts: page_posts,
         post: post,
