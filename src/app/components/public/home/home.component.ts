@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.currentPageResults = [];
-    this.queryParam = 'cccc chair';
+    this.queryParam = "music narrative literacy";
     this.startParam = 0;
     this.search();
   }
