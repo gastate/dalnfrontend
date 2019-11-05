@@ -40,9 +40,9 @@ const share_link = "http%3A%2F%2Fthedaln.org%2F%23%2Fdetail%2F";
 // Lambda Functions //
 //////////////////////
 
-const api_url = "https://iu2lnr6wyc.execute-api.us-east-1.amazonaws.com/production";
+const api_url = "https://w7b01d4a3g.execute-api.us-east-1.amazonaws.com/production";
 
-const search_api_url = "https://iu2lnr6wyc.execute-api.us-east-1.amazonaws.com/production"; // using prod endpoint on both dev and prod.
+const search_api_url = "https://w7b01d4a3g.execute-api.us-east-1.amazonaws.com/production"; // using prod endpoint on both dev and prod.
 
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
