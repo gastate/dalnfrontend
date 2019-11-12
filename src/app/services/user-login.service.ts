@@ -43,10 +43,10 @@ export class UserLoginService {
         // If the first SDK call we make wants to use our IdentityID, we have a
         // chicken and egg problem on our hands. We resolve this problem by "priming" the AWS SDK by calling a
         // very innocuous API call that forces this behavior.
-        let sts = new STS();
-        sts.getCallerIdentity(function (err: any, data: any) {
-          callback.cognitoCallback(null, result);
-        });
+        // let sts = new STS();
+        // sts.getCallerIdentity(function (err: any, data: any) {
+        //   callback.cognitoCallback(null, result);
+        // });
       },
       onFailure: function (err: any) {
         callback.cognitoCallback(err.message, null);
