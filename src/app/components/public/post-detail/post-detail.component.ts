@@ -1,3 +1,4 @@
+
 import {
   Component,
   Input,
@@ -21,6 +22,7 @@ import { environment } from "../../../../environments/environment";
 
 import "rxjs/add/operator/switchMap";
 import { Observable } from "rxjs/Observable";
+
 
 @Component({
   selector: "post-detail",
@@ -463,4 +465,24 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
       this.showAdminUI = true;
     }
   }
+  handleTranscriptButton(event:any){
+    let fn: string = this.constructor.name + "#uploadFiles"; 
+    if (event.target.files.length > 0) {
+      for (let file of event.target.files) {
+        console.log(fn + ": file ", file);
+        let fileinfo: any = {
+          file: file,
+          progress: 0.0,
+        }; 
+    
+        console.log(this.postDetail.postId);
+        console.log(file.name);
+
+      }
+      }
+    
+    
+  }
+
 }
+
