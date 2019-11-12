@@ -1,12 +1,12 @@
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
-import { of } from 'rxjs/observable/of'
+import "rxjs/add/operator/combineLatest";
 
 
 import { Injectable } from "@angular/core";
 import { Headers, Http, RequestOptions, Response } from "@angular/http";
-import { Observable } from "rxjs/Rx";
+import { Observable, Subscriber } from "rxjs/Rx";
 
 import { environment } from "../../environments/environment";
 import { Asset } from "../model/asset-model";
@@ -60,7 +60,7 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-      results.merge(posts);
+
     };
     this.userService.getAccessToken(resultHandler);
 
@@ -291,7 +291,11 @@ export class PostService {
   }
 
   getUnapprovedPosts(): Observable<Post[]> {
-    let results = Observable.never();
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
+
     var resultHandler = (err: any, token: string) => {
 
       if (err || !token) {
@@ -321,7 +325,13 @@ export class PostService {
             error.json().error || "Server error...please check services."
           )
         );
-      results.merge(posts);
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
     this.userService.getAccessToken(resultHandler);
 
