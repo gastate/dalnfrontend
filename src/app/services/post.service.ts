@@ -1,25 +1,29 @@
-import { Injectable } from "@angular/core";
-import { Http, Response, Headers, RequestOptions } from "@angular/http";
-//Use instead of Promise
-import { Observable } from "rxjs/Rx";
-// Import RxJs required methods
-import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import { Post } from "../model/post-model";
-import { Asset } from "../model/asset-model";
-import { environment } from "../../environments/environment";
-
-//Only used in Mock
+import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
-import { POSTS } from "./mock-postlist";
+import "rxjs/add/operator/combineLatest";
 
+
+import { Injectable } from "@angular/core";
+import { Headers, Http, RequestOptions, Response } from "@angular/http";
+import { Observable, Subscriber } from "rxjs/Rx";
+
+import { environment } from "../../environments/environment";
+import { Asset } from "../model/asset-model";
+import { Post } from "../model/post-model";
+import { POSTS } from "./mock-postlist";
+import { UserLoginService } from "./user-login.service";
+
+//Use instead of Promise
+// Import RxJs required methods
+//Only used in Mock
 @Injectable()
 export class PostService {
   cache_admin_posts: Post[];
   unapproved_posts: Post[];
   selected_posts: string[];
 
-  constructor(private _http: Http) {
+  constructor(public userService: UserLoginService, private _http: Http) {
     this.cache_admin_posts = [];
     this.unapproved_posts = [];
     this.selected_posts = [];
@@ -28,102 +32,183 @@ export class PostService {
   private endPoint = environment.API_ENDPOINTS;
 
   approvePost(postId: string) {
-    var tableName = this.endPoint.ddb_table_name;
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
 
-    var data = {
-      postId: postId,
-      tableName: tableName
+    var resultHandler = (err: any, token: string) => {
+      if (err || !token) {
+        return Observable.throw(err);
+      }
+      var tableName = this.endPoint.ddb_table_name;
+
+      var data = {
+        postId: postId,
+        tableName: tableName
+      };
+
+      var datastr = JSON.stringify(data);
+
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", token);
+      let options = new RequestOptions({ headers: headers, method: "post" });
+
+      var posts = this._http
+        .post(this.endPoint.approve_post, datastr, options)
+        .map((res: Response) => {
+          return res;
+        })
+        .catch((error: any) => {
+          return Observable.throw(error);
+        });
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
+    this.userService.getIdToken(resultHandler);
 
-    var datastr = JSON.stringify(data);
-
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    let options = new RequestOptions({ headers: headers, method: "post" });
-
-    return this._http
-      .post(this.endPoint.approve_post, datastr, options)
-      .map((res: Response) => {
-        return res;
-      })
-      .catch((error: any) => {
-        return Observable.throw(error);
-      });
+    return results;
   }
 
   unapprovePost(postId: string) {
-    var tableName = this.endPoint.ddb_table_name;
-    var data;
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
+    var resultHandler = (err: any, token: string) => {
+      if (err || !token) {
+        return Observable.throw(err);
+      }
+      var tableName = this.endPoint.ddb_table_name;
+      var data;
 
-    data = {
-      postId: postId,
-      tableName: tableName
+      data = {
+        postId: postId,
+        tableName: tableName
+      };
+
+      var datastr = JSON.stringify(data);
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", token);
+      let options = new RequestOptions({ headers: headers, method: "post" });
+
+      var posts = this._http
+        .post(this.endPoint.unapprove_post, datastr, options)
+        .map((res: Response) => {
+          return res;
+        })
+        .catch((error: any) => {
+          return Observable.throw(error);
+        });
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
+    this.userService.getIdToken(resultHandler);
 
-    var datastr = JSON.stringify(data);
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    let options = new RequestOptions({ headers: headers, method: "post" });
-
-    return this._http
-      .post(this.endPoint.unapprove_post, datastr, options)
-      .map((res: Response) => {
-        return res;
-      })
-      .catch((error: any) => {
-        return Observable.throw(error);
-      });
+    return results;
   }
 
   // reject = reject narratives in "waiting approval" section in admin page
-  rejectPost(postId: string){
-    var tableName = this.endPoint.ddb_table_name;
-    var data;
+  rejectPost(postId: string) {
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
+    var resultHandler = (err: any, token: string) => {
+      if (err || !token) {
+        return Observable.throw(err);
+      }
+      var tableName = this.endPoint.ddb_table_name;
+      var data;
 
-    data = {
+      data = {
         postId: postId,
         tableName: tableName
-    };
+      };
 
-    var datastr = JSON.stringify(data);
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    let options = new RequestOptions({ headers: headers, method: "post" });
+      var datastr = JSON.stringify(data);
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", token);
+      let options = new RequestOptions({ headers: headers, method: "post" });
 
-    return this._http
+      var posts = this._http
         .post(this.endPoint.reject_post, datastr, options)
         .map((res: Response) => {
-            return res;
+          return res;
         })
         .catch((error: any) => {
-            return Observable.throw(error);
+          return Observable.throw(error);
         });
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
+    };
+    this.userService.getIdToken(resultHandler);
+
+    return results;
   }
 
-    // "unreject" = turn a rejected narrative back to waiting for approval
-    unrejectPost(postId: string){
-        var tableName = this.endPoint.ddb_table_name;
-        var data;
+  // "unreject" = turn a rejected narrative back to waiting for approval
+  unrejectPost(postId: string) {
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
+    var resultHandler = (err: any, token: string) => {
+      if (err || !token) {
+        return Observable.throw(err);
+      }
+      var tableName = this.endPoint.ddb_table_name;
+      var data;
 
-        data = {
-            postId: postId,
-            tableName: tableName
-        };
+      data = {
+        postId: postId,
+        tableName: tableName
+      };
 
-        var datastr = JSON.stringify(data);
-        let headers = new Headers();
-        headers.append("Content-Type", "application/json");
-        let options = new RequestOptions({ headers: headers, method: "post" });
+      var datastr = JSON.stringify(data);
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", token);
+      let options = new RequestOptions({ headers: headers, method: "post" });
 
-        return this._http
-            .post(this.endPoint.unreject_post, datastr, options)
-            .map((res: Response) => {
-                return res;
-            })
-            .catch((error: any) => {
-                return Observable.throw(error);
-            });
-    }
+      var posts = this._http
+        .post(this.endPoint.unreject_post, datastr, options)
+        .map((res: Response) => {
+          return res;
+        })
+        .catch((error: any) => {
+          return Observable.throw(error);
+        });
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
+    };
+    this.userService.getIdToken(resultHandler);
+
+    return results;
+  }
 
   getAllPosts(): Observable<Post[]> {
     //api call
@@ -170,46 +255,66 @@ export class PostService {
   }
 
   editPost(post: Post) {
-    var tableName = this.endPoint.ddb_table_name;
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
+    var resultHandler = (err: any, token: string) => {
+      if (err || !token) {
+        return Observable.throw(err);
+      }
+      var tableName = this.endPoint.ddb_table_name;
 
-    var data = {
-      postId: post.postId,
-      tableName: tableName,
-      title: post.title,
-      description: post.description,
-      hiddenDescription: post.hiddenDescription,
-      rightsConsent: post.rightsConsent,
-      rightsRelease: post.rightsRelease,
-      creatorGender: post.creatorGender,
-      creatorYearOfBirth: post.creatorYearOfBirth,
-      contributorAuthor: post.contributorAuthor,
-      contributorInterviewer: post.contributorInterviewer,
-      coveragePeriod: post.coveragePeriod,
-      coverageRegion: post.coverageRegion,
-      coverageNationality: post.coverageNationality,
-      coverageSpatial: post.coverageSpatial,
-      coverageStateProvince: post.coverageStateProvince,
-      subject: post.subject,
-      language: post.language,
-      email: post.email,
-      license: post.license,
-      dateCreated: post.dateCreated
+      var data = {
+        postId: post.postId,
+        tableName: tableName,
+        title: post.title,
+        description: post.description,
+        hiddenDescription: post.hiddenDescription,
+        rightsConsent: post.rightsConsent,
+        rightsRelease: post.rightsRelease,
+        creatorGender: post.creatorGender,
+        creatorYearOfBirth: post.creatorYearOfBirth,
+        contributorAuthor: post.contributorAuthor,
+        contributorInterviewer: post.contributorInterviewer,
+        coveragePeriod: post.coveragePeriod,
+        coverageRegion: post.coverageRegion,
+        coverageNationality: post.coverageNationality,
+        coverageSpatial: post.coverageSpatial,
+        coverageStateProvince: post.coverageStateProvince,
+        subject: post.subject,
+        language: post.language,
+        email: post.email,
+        license: post.license,
+        dateCreated: post.dateCreated
+      };
+
+      var datastr = JSON.stringify(data);
+
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", token);
+      let options = new RequestOptions({ headers: headers, method: "post" });
+
+      var posts = this._http
+        .post(this.endPoint.update_post, datastr, options)
+        .map((res: Response) => {
+          return res;
+        })
+        .catch((error: any) => {
+          return Observable.throw(error);
+        });
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
+    this.userService.getIdToken(resultHandler);
 
-    var datastr = JSON.stringify(data);
-
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    let options = new RequestOptions({ headers: headers, method: "post" });
-
-    return this._http
-      .post(this.endPoint.update_post, datastr, options)
-      .map((res: Response) => {
-        return res;
-      })
-      .catch((error: any) => {
-        return Observable.throw(error);
-      });
+    return results;
   }
 
   getPreview(postAssets: Asset[]): Asset {
@@ -231,18 +336,29 @@ export class PostService {
   }
 
   getUnapprovedPosts(): Observable<Post[]> {
-    var data = {
-      tableName: this.endPoint.ddb_table_name
-    };
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
 
-    let str = JSON.stringify(data);
+    var resultHandler = (err: any, token: string) => {
 
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    let options = new RequestOptions({ headers: headers, method: "post" });
+      if (err || !token) {
+        return Observable.throw(err);
+      }
 
-    return (
-      this._http
+      var data = {
+        tableName: this.endPoint.ddb_table_name
+      };
+
+      let str = JSON.stringify(data);
+
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", token);
+      let options = new RequestOptions({ headers: headers, method: "post" });
+
+      var posts = this._http
         .post(this.endPoint.get_unapproved_posts, str, options)
         .map((res: Response) => {
           let posts = res.json();
@@ -253,23 +369,40 @@ export class PostService {
           Observable.throw(
             error.json().error || "Server error...please check services."
           )
-        )
-    );
+        );
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
+    };
+    this.userService.getIdToken(resultHandler);
+
+    return results as any;
+
   }
 
   getRejectedPosts(): Observable<Post[]> {
-    var data = {
-      tableName: this.endPoint.ddb_table_name
-    };
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
+    var resultHandler = (err: any, token: string) => {
 
-    let str = JSON.stringify(data);
+      var data = {
+        tableName: this.endPoint.ddb_table_name
+      };
 
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    let options = new RequestOptions({ headers: headers, method: "post" });
+      let str = JSON.stringify(data);
 
-    return (
-      this._http
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", token);
+      let options = new RequestOptions({ headers: headers, method: "post" });
+
+      var posts = this._http
         .post(this.endPoint.get_rejected_posts, str, options)
         .map((res: Response) => {
           let posts = res.json();
@@ -280,8 +413,19 @@ export class PostService {
           Observable.throw(
             error.json().error || "Server error...please check services."
           )
-        )
-    );
+        );
+
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
+    };
+    this.userService.getIdToken(resultHandler);
+
+    return results as any;
   }
 
   //Mock Services

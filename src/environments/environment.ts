@@ -12,9 +12,9 @@
 
 const region = 'us-east-1';
 
-const userPoolId = 'us-east-1_0lPzLvk1m';
-const clientId = '5jor2041aact5jm0ka79c67dr4';
-const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
+const userPoolId = 'us-east-1_QBch6OsYW';
+const clientId = '4m8kt1p08qmqm9v69kuj08ceb5';
+const identityPoolId = "us-east-1:ba6231ad-4a5c-44b6-847b-64d79152818e";
 
 
 ///////////////////////
@@ -24,8 +24,8 @@ const identityPoolId = "us-east-1:258aaf8f-4093-400c-83e8-84981352c82f";
 
 const admin_ddb_table_name = "DALN-Admin-Posts";
 const ddb_table_name = "DALN-Posts-Dev";
-const stagingAreaBucketName = "daln-file-staging-area";
-const finalBucketName = "daln-development";
+const stagingAreaBucketName = "daln-file-staging-area-sb";
+const finalBucketName = "daln-development-sb";
 const queueName = "DALNFileUploadQueueDev";
 
 ///////////////////////////////
@@ -38,9 +38,9 @@ const share_link = "http%3A%2F%2Fthedaln.org%2F%23%2Fdetail%2F";
 // Lambda Functions //
 //////////////////////
 
-const api_url = "https://5odt95uhfg.execute-api.us-east-1.amazonaws.com/development";
+const api_url = "https://h10w14u1wd.execute-api.us-east-1.amazonaws.com/development";
 
-const search_api_url = "https://5odt95uhfg.execute-api.us-east-1.amazonaws.com/development"; // using prod endpoint on both dev and prod.
+const search_api_url = "https://h10w14u1wd.execute-api.us-east-1.amazonaws.com/development"; // using prod endpoint on both dev and prod.
 
 const all_posts = api_url + "/posts/all";
 const create_post = api_url + "/posts/create";
