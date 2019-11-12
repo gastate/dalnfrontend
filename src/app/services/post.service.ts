@@ -307,20 +307,19 @@ export class PostService {
       headers.append("Authorization", token);
       let options = new RequestOptions({ headers: headers, method: "post" });
 
-      var posts = (
-        this._http
-          .post(this.endPoint.get_unapproved_posts, str, options)
-          .map((res: Response) => {
-            let posts = res.json();
-            return posts;
-          })
-          //...errors if any
-          .catch((error: any) =>
-            Observable.throw(
-              error.json().error || "Server error...please check services."
-            )
+      var posts = this._http
+        .post(this.endPoint.get_unapproved_posts, str, options)
+        .map((res: Response) => {
+          let posts = res.json();
+          return posts;
+        })
+        //...errors if any
+        .catch((error: any) =>
+          Observable.throw(
+            error.json().error || "Server error...please check services."
           )
-      );
+
+        );
       results.merge(posts);
     };
     this.userService.getAccessToken(resultHandler);
@@ -344,20 +343,19 @@ export class PostService {
       headers.append("Authorization", token);
       let options = new RequestOptions({ headers: headers, method: "post" });
 
-      var posts = (
-        this._http
-          .post(this.endPoint.get_rejected_posts, str, options)
-          .map((res: Response) => {
-            let posts = res.json();
-            return posts;
-          })
-          //...errors if any
-          .catch((error: any) =>
-            Observable.throw(
-              error.json().error || "Server error...please check services."
-            )
+      var posts = this._http
+        .post(this.endPoint.get_rejected_posts, str, options)
+        .map((res: Response) => {
+          let posts = res.json();
+          return posts;
+        })
+        //...errors if any
+        .catch((error: any) =>
+          Observable.throw(
+            error.json().error || "Server error...please check services."
           )
-      );
+        );
+
       results.merge(posts);
     };
     this.userService.getAccessToken(resultHandler);
