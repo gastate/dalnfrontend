@@ -1,17 +1,14 @@
 import { Injectable } from "@angular/core";
-import {
-  CognitoCallback,
-  CognitoUtil,
-  LoggedInCallback
-} from "./cognito.service";
 import { AuthenticationDetails, CognitoUser } from "amazon-cognito-identity-js";
-import * as AWS from "aws-sdk/global";
 import * as STS from "aws-sdk/clients/sts";
+import * as AWS from "aws-sdk/global";
+
 import { NewPasswordUser } from "../components/public/auth/new-password/new-password.component";
+import { Callback, CognitoCallback, CognitoUtil, LoggedInCallback } from "./cognito.service";
 
 @Injectable()
 export class UserLoginService {
-  constructor(public cognitoUtil: CognitoUtil) {}
+  constructor(public cognitoUtil: CognitoUtil) { }
 
   authenticate(username: string, password: string, callback: CognitoCallback) {
     let authenticationData = {
@@ -29,10 +26,10 @@ export class UserLoginService {
     var self = this;
 
     cognitoUser.authenticateUser(authenticationDetails, {
-      newPasswordRequired: function(userAttributes, requiredAttributes) {
+      newPasswordRequired: function (userAttributes, requiredAttributes) {
         callback.cognitoCallback(`User needs to set password.`, null);
       },
-      onSuccess: function(result) {
+      onSuccess: function (result) {
         let creds = self.cognitoUtil.buildCognitoCreds(
           result.getIdToken().getJwtToken()
         );
@@ -47,11 +44,11 @@ export class UserLoginService {
         // chicken and egg problem on our hands. We resolve this problem by "priming" the AWS SDK by calling a
         // very innocuous API call that forces this behavior.
         let sts = new STS();
-        sts.getCallerIdentity(function(err:any, data:any) {
+        sts.getCallerIdentity(function (err: any, data: any) {
           callback.cognitoCallback(null, result);
         });
       },
-      onFailure: function(err:any) {
+      onFailure: function (err: any) {
         callback.cognitoCallback(err.message, null);
       }
     });
@@ -66,10 +63,10 @@ export class UserLoginService {
     let cognitoUser = new CognitoUser(userData);
     console.log(userData);
     cognitoUser.forgotPassword({
-      onSuccess: function() {
+      onSuccess: function () {
         console.log("forgotPassword in userService succeeded");
       },
-      onFailure: function(err:any) {
+      onFailure: function (err: any) {
         callback.cognitoCallback(err.message, null);
       },
       inputVerificationCode() {
@@ -92,10 +89,10 @@ export class UserLoginService {
     let cognitoUser = new CognitoUser(userData);
 
     cognitoUser.confirmPassword(verificationCode, password, {
-      onSuccess: function() {
+      onSuccess: function () {
         callback.cognitoCallback(null, null);
       },
-      onFailure: function(err:any) {
+      onFailure: function (err: any) {
         callback.cognitoCallback(err.message, null);
       }
     });
@@ -114,7 +111,7 @@ export class UserLoginService {
     let cognitoUser = this.cognitoUtil.getCurrentUser();
 
     if (cognitoUser != null) {
-      cognitoUser.getSession(function(err:any, session:any) {
+      cognitoUser.getSession(function (err: any, session: any) {
         if (err) {
           console.log(
             "UserLoginService: Couldn't get the session: " + err,
@@ -130,6 +127,29 @@ export class UserLoginService {
       // console.log("UserLoginService: can't retrieve the current user");
       callback.isLoggedIn("Can't retrieve the CurrentUser", false);
     }
+  }
+
+  getAccessToken(callback: (err: string, object: any) => void) {
+    var result: Callback = {
+      callback: () => {
+        callback("No token", null);
+      },
+      callbackWithParam: (result) => {
+        if (!result) {
+          callback("No token", null);
+        }
+        callback(null, result);
+      }
+    }
+    this.isAuthenticated({
+      isLoggedIn: (err: string, loggedIn: boolean) => {
+        if (err) {
+          callback(err, "");
+          return;
+        }
+        this.cognitoUtil.getAccessToken(result);
+      }
+    });
   }
 
   newPassword(
@@ -154,7 +174,7 @@ export class UserLoginService {
     let cognitoUser = new CognitoUser(userData);
     console.log("UserLoginService: config is " + AWS.config);
     cognitoUser.authenticateUser(authenticationDetails, {
-      newPasswordRequired: function(userAttributes, requiredAttributes) {
+      newPasswordRequired: function (userAttributes, requiredAttributes) {
         // User was signed up by an admin and must provide new
         // password and required attributes, if any, to complete
         // authentication.
@@ -165,19 +185,19 @@ export class UserLoginService {
           newPasswordUser.password,
           requiredAttributes,
           {
-            onSuccess: function(result:any) {
+            onSuccess: function (result: any) {
               callback.cognitoCallback(null, userAttributes);
             },
-            onFailure: function(err:any) {
+            onFailure: function (err: any) {
               callback.cognitoCallback(err, null);
             }
           }
         );
       },
-      onSuccess: function(result:any) {
+      onSuccess: function (result: any) {
         callback.cognitoCallback(null, result);
       },
-      onFailure: function(err:any) {
+      onFailure: function (err: any) {
         callback.cognitoCallback(err, null);
       }
     });
