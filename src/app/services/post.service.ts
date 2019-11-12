@@ -324,7 +324,7 @@ export class PostService {
     };
     this.userService.getAccessToken(resultHandler);
 
-    return results;
+    return results as any;
 
   }
 
@@ -360,7 +360,7 @@ export class PostService {
     };
     this.userService.getAccessToken(resultHandler);
 
-    return results;
+    return results as any;
   }
 
   //Mock Services
