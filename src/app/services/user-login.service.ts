@@ -129,7 +129,7 @@ export class UserLoginService {
     }
   }
 
-  getAccessToken(callback: (err: string, object: any) => void) {
+  getIdToken(callback: (err: string, object: any) => void) {
     var result: Callback = {
       callback: () => {
         callback("No token", null);
@@ -147,7 +147,7 @@ export class UserLoginService {
           callback(err, "");
           return;
         }
-        this.cognitoUtil.getAccessToken(result);
+        this.cognitoUtil.getIdToken(result);
       }
     });
   }

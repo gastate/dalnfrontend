@@ -71,7 +71,7 @@ export class PostService {
         }, () => subscriber.complete()
       );
     };
-    this.userService.getAccessToken(resultHandler);
+    this.userService.getIdToken(resultHandler);
 
     return results;
   }
@@ -115,7 +115,7 @@ export class PostService {
         }, () => subscriber.complete()
       );
     };
-    this.userService.getAccessToken(resultHandler);
+    this.userService.getIdToken(resultHandler);
 
     return results;
   }
@@ -160,7 +160,7 @@ export class PostService {
         }, () => subscriber.complete()
       );
     };
-    this.userService.getAccessToken(resultHandler);
+    this.userService.getIdToken(resultHandler);
 
     return results;
   }
@@ -205,7 +205,7 @@ export class PostService {
         }, () => subscriber.complete()
       );
     };
-    this.userService.getAccessToken(resultHandler);
+    this.userService.getIdToken(resultHandler);
 
     return results;
   }
@@ -312,7 +312,7 @@ export class PostService {
         }, () => subscriber.complete()
       );
     };
-    this.userService.getAccessToken(resultHandler);
+    this.userService.getIdToken(resultHandler);
 
     return results;
   }
@@ -378,7 +378,7 @@ export class PostService {
         }, () => subscriber.complete()
       );
     };
-    this.userService.getAccessToken(resultHandler);
+    this.userService.getIdToken(resultHandler);
 
     return results as any;
 
@@ -423,7 +423,7 @@ export class PostService {
         }, () => subscriber.complete()
       );
     };
-    this.userService.getAccessToken(resultHandler);
+    this.userService.getIdToken(resultHandler);
 
     return results as any;
   }
