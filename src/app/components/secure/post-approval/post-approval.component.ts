@@ -55,7 +55,8 @@ export class PostApprovalComponent implements OnInit, LoggedInCallback {
         this.loading = true;
         this.postPoolTitle = "Admins Post Pool";
 
-        this.postService.getUnapprovedPosts().subscribe(
+        var obs = this.postService.getUnapprovedPosts();
+        obs.subscribe(
             (data) => {
                 this.approval_list = data;
                 this.attemptsMessage = null;

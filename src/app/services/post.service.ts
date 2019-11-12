@@ -318,7 +318,6 @@ export class PostService {
           Observable.throw(
             error.json().error || "Server error...please check services."
           )
-
         );
       results.merge(posts);
     };
