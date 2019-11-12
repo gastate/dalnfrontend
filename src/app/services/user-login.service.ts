@@ -35,7 +35,7 @@ export class UserLoginService {
         );
 
         AWS.config.credentials = creds;
-
+        callback.cognitoCallback(null, result);
         // So, when CognitoIdentity authenticates a user, it doesn't actually hand us the IdentityID,
         // used by many of our other handlers. This is handled by some sly underhanded calls to AWS Cognito
         // API's by the SDK itself, automatically when the first AWS SDK request is made that requires our
