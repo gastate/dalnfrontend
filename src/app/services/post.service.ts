@@ -1,7 +1,7 @@
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs/observable/of'
 
 
 import { Injectable } from "@angular/core";
@@ -32,7 +32,7 @@ export class PostService {
   private endPoint = environment.API_ENDPOINTS;
 
   approvePost(postId: string) {
-    let results = Observable.of(Observable.never());
+    let results = of([]); //let results = Observable.of(Observable.never());
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
@@ -67,7 +67,7 @@ export class PostService {
   }
 
   unapprovePost(postId: string) {
-    let results = Observable.of(Observable.never());
+    let results = of([]); //let results = Observable.of(Observable.never());
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
@@ -103,7 +103,7 @@ export class PostService {
 
   // reject = reject narratives in "waiting approval" section in admin page
   rejectPost(postId: string) {
-    let results = Observable.of(Observable.never());
+    let results = of([]); //let results = Observable.of(Observable.never());
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
@@ -139,7 +139,7 @@ export class PostService {
 
   // "unreject" = turn a rejected narrative back to waiting for approval
   unrejectPost(postId: string) {
-    let results = Observable.of(Observable.never());
+    let results = of([]); //let results = Observable.of(Observable.never());
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
@@ -218,7 +218,7 @@ export class PostService {
   }
 
   editPost(post: Post) {
-    let results = Observable.of(Observable.never());
+    let results = of([]); //let results = Observable.of(Observable.never());
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
@@ -290,7 +290,7 @@ export class PostService {
   }
 
   getUnapprovedPosts(): Observable<Post[]> {
-    let results = Observable.of(Observable.never());
+    let results = of([]); //let results = Observable.of(Observable.never());
     var resultHandler = (err: any, token: string) => {
 
       if (err || !token) {
@@ -329,7 +329,7 @@ export class PostService {
   }
 
   getRejectedPosts(): Observable<Post[]> {
-    let results = Observable.of(Observable.never());
+    let results = of([]); //let results = Observable.of(Observable.never());
     var resultHandler = (err: any, token: string) => {
 
       var data = {
