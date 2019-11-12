@@ -32,7 +32,10 @@ export class PostService {
   private endPoint = environment.API_ENDPOINTS;
 
   approvePost(postId: string) {
-    let results = Observable.never();
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
 
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
@@ -60,7 +63,13 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
     this.userService.getAccessToken(resultHandler);
 
@@ -68,7 +77,10 @@ export class PostService {
   }
 
   unapprovePost(postId: string) {
-    let results = Observable.never();
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
@@ -95,7 +107,13 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-      results.merge(posts);
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
     this.userService.getAccessToken(resultHandler);
 
@@ -104,7 +122,10 @@ export class PostService {
 
   // reject = reject narratives in "waiting approval" section in admin page
   rejectPost(postId: string) {
-    let results = Observable.never();
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
@@ -131,7 +152,13 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-      results.merge(posts);
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
     this.userService.getAccessToken(resultHandler);
 
@@ -140,7 +167,10 @@ export class PostService {
 
   // "unreject" = turn a rejected narrative back to waiting for approval
   unrejectPost(postId: string) {
-    let results = Observable.never();
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
@@ -167,7 +197,13 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-      results.merge(posts);
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
     this.userService.getAccessToken(resultHandler);
 
@@ -219,7 +255,10 @@ export class PostService {
   }
 
   editPost(post: Post) {
-    let results = Observable.never();
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
     var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
@@ -265,7 +304,13 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-      results.merge(posts);
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
     this.userService.getAccessToken(resultHandler);
 
@@ -340,7 +385,10 @@ export class PostService {
   }
 
   getRejectedPosts(): Observable<Post[]> {
-    let results = Observable.never();
+    let subscriber: Subscriber<Post[]>;
+    let results = new Observable((sub) => {
+      subscriber = sub;
+    });
     var resultHandler = (err: any, token: string) => {
 
       var data = {
@@ -367,7 +415,13 @@ export class PostService {
           )
         );
 
-      results.merge(posts);
+      posts.subscribe(
+        (data) => {
+          subscriber.next(data);
+        }, err => {
+          subscriber.error(err);
+        }, () => subscriber.complete()
+      );
     };
     this.userService.getAccessToken(resultHandler);
 
