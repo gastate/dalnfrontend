@@ -31,7 +31,8 @@ export class PostService {
   private endPoint = environment.API_ENDPOINTS;
 
   approvePost(postId: string) {
-    return this.userService.getAccessToken((err, token) => {
+    let results = new Observable<Post[]>();
+    var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
       }
@@ -49,7 +50,7 @@ export class PostService {
       headers.append("Authorization", token);
       let options = new RequestOptions({ headers: headers, method: "post" });
 
-      return this._http
+      var posts = this._http
         .post(this.endPoint.approve_post, datastr, options)
         .map((res: Response) => {
           return res;
@@ -57,11 +58,16 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-    });
+      results.merge(posts);
+    };
+    this.userService.getAccessToken(resultHandler);
+
+    return results;
   }
 
   unapprovePost(postId: string) {
-    return this.userService.getAccessToken((err, token) => {
+    let results = new Observable<Post[]>();
+    var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
       }
@@ -79,7 +85,7 @@ export class PostService {
       headers.append("Authorization", token);
       let options = new RequestOptions({ headers: headers, method: "post" });
 
-      return this._http
+      var posts = this._http
         .post(this.endPoint.unapprove_post, datastr, options)
         .map((res: Response) => {
           return res;
@@ -87,12 +93,17 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-    });
+      results.merge(posts);
+    };
+    this.userService.getAccessToken(resultHandler);
+
+    return results;
   }
 
   // reject = reject narratives in "waiting approval" section in admin page
   rejectPost(postId: string) {
-    return this.userService.getAccessToken((err, token) => {
+    let results = new Observable<Post[]>();
+    var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
       }
@@ -110,7 +121,7 @@ export class PostService {
       headers.append("Authorization", token);
       let options = new RequestOptions({ headers: headers, method: "post" });
 
-      return this._http
+      var posts = this._http
         .post(this.endPoint.reject_post, datastr, options)
         .map((res: Response) => {
           return res;
@@ -118,12 +129,17 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-    });
+      results.merge(posts);
+    };
+    this.userService.getAccessToken(resultHandler);
+
+    return results;
   }
 
   // "unreject" = turn a rejected narrative back to waiting for approval
   unrejectPost(postId: string) {
-    return this.userService.getAccessToken((err, token) => {
+    let results = new Observable<Post[]>();
+    var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
       }
@@ -141,7 +157,7 @@ export class PostService {
       headers.append("Authorization", token);
       let options = new RequestOptions({ headers: headers, method: "post" });
 
-      return this._http
+      var posts = this._http
         .post(this.endPoint.unreject_post, datastr, options)
         .map((res: Response) => {
           return res;
@@ -149,7 +165,11 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-    });
+      results.merge(posts);
+    };
+    this.userService.getAccessToken(resultHandler);
+
+    return results;
   }
 
   getAllPosts(): Observable<Post[]> {
@@ -197,7 +217,8 @@ export class PostService {
   }
 
   editPost(post: Post) {
-    return this.userService.getAccessToken((err, token) => {
+    let results = new Observable<Post[]>();
+    var resultHandler = (err: any, token: string) => {
       if (err || !token) {
         return Observable.throw(err);
       }
@@ -234,7 +255,7 @@ export class PostService {
       headers.append("Authorization", token);
       let options = new RequestOptions({ headers: headers, method: "post" });
 
-      return this._http
+      var posts = this._http
         .post(this.endPoint.update_post, datastr, options)
         .map((res: Response) => {
           return res;
@@ -242,7 +263,11 @@ export class PostService {
         .catch((error: any) => {
           return Observable.throw(error);
         });
-    });
+      results.merge(posts);
+    };
+    this.userService.getAccessToken(resultHandler);
+
+    return results;
   }
 
   getPreview(postAssets: Asset[]): Asset {
