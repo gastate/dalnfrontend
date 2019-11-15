@@ -56,7 +56,7 @@ import { DynamoDBService } from './services/ddb.service';
 import { PostService } from './services/post.service';
 import { SearchService } from './services/search.service';
 import { UserLoginService } from './services/user-login.service';
-import { UploadService } from './submit-form/media/upload-service';
+import { UploadService } from './services/upload-service';
 
 // Other
 import { SafePipe } from './safe.pipe';

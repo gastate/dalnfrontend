@@ -20,8 +20,11 @@ import { LoggedInCallback } from "../../../services/cognito.service";
 
 import { environment } from "../../../../environments/environment";
 
+
 import "rxjs/add/operator/switchMap";
 import { Observable } from "rxjs/Observable";
+import { UploadService } from "app/services/upload-service";
+import { UploadLinks } from "app/services/upload-link";
 
 
 @Component({
@@ -65,7 +68,9 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     private _postService: PostService,
     private _route: ActivatedRoute,
     private _location: Location,
-    private router: Router
+    private router: Router,
+    private uploadService: UploadService,
+    private uploadLink: UploadLinks
   ) {
     this.userService.isAuthenticated(this);
   }
@@ -96,7 +101,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
 
           this.loading = false;
           this.postDetail = details;
-        
+
           console.log("Post Details", this.postDetail);
 
           // Temp fix for issue #109
@@ -106,7 +111,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
           }
           if (!this.postDetail.hasOwnProperty("isPostRejected")) {
             // old posts have no such a property. Default it to false
-            this.postDetail.isPostRejected = false; 
+            this.postDetail.isPostRejected = false;
           }
           this.assets = this.postDetail.assetList
             ? this.postDetail.assetList
@@ -167,8 +172,8 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
             this.postDetail = details;
 
             if (!this.postDetail.hasOwnProperty("isPostRejected")) {
-                // old posts have no such a property. Default it to false
-                this.postDetail.isPostRejected = false; 
+              // old posts have no such a property. Default it to false
+              this.postDetail.isPostRejected = false;
             }
 
             console.log("Post Details", this.postDetail);
@@ -243,7 +248,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   // Ref: https://stackoverflow.com/questions/42322968/angular2-dynamic-input-field-lose-focus-when-input-changes
   trackByFn(index: any, item: any) {
     return index;
- }
+  }
 
 
 
@@ -314,36 +319,36 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     );
   }
 
-  handleEditButtonClicked(){
-      if (this.inEditMode){ 
-        this.editPostDone();    // in edit mode, and button is clicked. Edit is done
-      } else {
-        this.editPost();    // start editing now
-      }
+  handleEditButtonClicked() {
+    if (this.inEditMode) {
+      this.editPostDone();    // in edit mode, and button is clicked. Edit is done
+    } else {
+      this.editPost();    // start editing now
+    }
     this.inEditMode = !this.inEditMode;
   }
 
-  editPost(){
+  editPost() {
 
   }
 
-  editPostDone(){
+  editPostDone() {
 
     this._postService.editPost(this.postDetail).subscribe(
-        res => {
-            this.unapprovalMessage =
-              "Literacy Narrative with ID " +
-              this.postDetail.postId +
-              " was updated!";
-        },
-        err => {
-            // give an error message.
-            this.unapprovalMessage =
-                "Updating Literacy Narrative of " +
-                this.postDetail.postId +
-                " failed. Reason: \n" +
-                err;
-        }
+      res => {
+        this.unapprovalMessage =
+          "Literacy Narrative with ID " +
+          this.postDetail.postId +
+          " was updated!";
+      },
+      err => {
+        // give an error message.
+        this.unapprovalMessage =
+          "Updating Literacy Narrative of " +
+          this.postDetail.postId +
+          " failed. Reason: \n" +
+          err;
+      }
     );
   }
 
@@ -406,52 +411,52 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   //     });
   // }
 
-  handleRejectButtonClicked(){
+  handleRejectButtonClicked() {
     this.postDetail.isPostRejected = !this.postDetail.isPostRejected;
     this.rejectPost(this.postDetail.postId);
   }
 
-  handleUndoButtonClicked(){
+  handleUndoButtonClicked() {
     this.postDetail.isPostRejected = !this.postDetail.isPostRejected;
     this.unrejectPost(this.postDetail.postId);
   }
 
-  unrejectPost(postId: string){
+  unrejectPost(postId: string) {
     this._postService.unrejectPost(postId).subscribe(
-        res => {
-          this.unapprovalMessage =
-            "Literacy Narrative with ID " +
-            this.postDetail.postId +
-            " is now waiting for approval";
-        },
-        err => {
-          // give an error message.
-          this.unapprovalMessage =
-            "Undoing Literacy Narrative of " +
-            this.postDetail.postId +
-            " failed. Reason: \n" +
-            err;
-        }
-      );
+      res => {
+        this.unapprovalMessage =
+          "Literacy Narrative with ID " +
+          this.postDetail.postId +
+          " is now waiting for approval";
+      },
+      err => {
+        // give an error message.
+        this.unapprovalMessage =
+          "Undoing Literacy Narrative of " +
+          this.postDetail.postId +
+          " failed. Reason: \n" +
+          err;
+      }
+    );
   }
 
-  rejectPost(postId: string){
+  rejectPost(postId: string) {
     this._postService.rejectPost(postId).subscribe(
-        res => {
-          this.unapprovalMessage =
-            "Literacy Narrative with ID " +
-            this.postDetail.postId +
-            " was rejected!";
-        },
-        err => {
-          // give an error message.
-          this.unapprovalMessage =
-            "Literacy Narrative rejection of " +
-            this.postDetail.postId +
-            " failed. Reason: \n" +
-            err;
-        }
-      );
+      res => {
+        this.unapprovalMessage =
+          "Literacy Narrative with ID " +
+          this.postDetail.postId +
+          " was rejected!";
+      },
+      err => {
+        // give an error message.
+        this.unapprovalMessage =
+          "Literacy Narrative rejection of " +
+          this.postDetail.postId +
+          " failed. Reason: \n" +
+          err;
+      }
+    );
   }
 
   ngOnDestroy() {
@@ -465,24 +470,35 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
       this.showAdminUI = true;
     }
   }
-  handleTranscriptButton(event:any){
-    let fn: string = this.constructor.name + "#uploadFiles"; 
-    if (event.target.files.length > 0) {
-      for (let file of event.target.files) {
-        console.log(fn + ": file ", file);
-        let fileinfo: any = {
-          file: file,
-          progress: 0.0,
-        }; 
-    
-        console.log(this.postDetail.postId);
-        console.log(file.name);
+  handleTranscriptButton(event: any) {
+    let fn: string = this.constructor.name + "#uploadFiles";
+    if (!event.target.files) {
+      // TODO: Put error message
+      return;
+    }
+    let fileInfos = event.target.files.map((file: any) => {
+      return {
+        file: file,
+        message: "Queued",
+        status: "QUEUED",
+        progress: 0.0
+      }
+    });
 
-      }
-      }
-    
-    
+    this.uploadService.uploadFiles(fileInfos, () => {
+      // your done
+      // scan fileInfos to see if any failed
+      fileInfos.forEach((file: any) => {
+        if(file.status=="Failed"){
+          //errors 
+          return;
+        }
+        this.uploadLink.linkFiles(this.postDetail.postId, file);
+
+      });
+    });
+  
   }
 
-}
 
+}
