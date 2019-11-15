@@ -494,9 +494,11 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
           //errors 
           return;
         }
-        this.uploadLink.linkFiles(this.postDetail.postId, file);
+ 
 
       });
+      // TODO filter out error files?
+      this.uploadLink.linkFiles(this.postDetail.postId, fileInfos);
     });
   
   }
