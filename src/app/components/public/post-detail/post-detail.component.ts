@@ -472,11 +472,11 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   }
   handleTranscriptButton(event: any) {
     let fn: string = this.constructor.name + "#uploadFiles";
-    if (!event.target.files) {
+    if (!event.target.files.length) {
       // TODO: Put error message
       return;
     }
-    let fileInfos = event.target.files.map((file: any) => {
+    let fileInfos = Object.getOwnPropertyNames(event.target.files).map((file: any) => {
       return {
         file: file,
         message: "Queued",
