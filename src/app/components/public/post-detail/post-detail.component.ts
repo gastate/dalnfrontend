@@ -476,7 +476,8 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
       // TODO: Put error message
       return;
     }
-    let fileInfos = Object.getOwnPropertyNames(event.target.files).map((file: any) => {
+    let fileInfos = Object.getOwnPropertyNames(event.target.files).map((f: any) => {
+      let file = event.target.files[f];
       return {
         file: file,
         message: "Queued",
