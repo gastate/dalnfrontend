@@ -500,6 +500,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
       // TODO filter out error files?
       this.uploadLink.linkFiles(this.postDetail.postId, fileInfos);
     });
+      window.location.reload();
   
   }
 
