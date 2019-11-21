@@ -6,7 +6,10 @@
     <div *ngIf="showAdminUI && postDetail?.isPostNotApproved && loading == false">
         <div *ngIf="postDetail?.isPostRejected == false">
             <!-- when post not rejected -->
-           
+            <div class="fileUpload pull-left btn btn-primary">
+              <span>ADD FILES</span>
+              <input type="file" class="upload" (change)="handleTranscriptButton($event)" name="file" multiple>
+            </div>
             <button type="button" class="btn pull-right btn-dangerous"
             (click)="handleRejectButtonClicked()">REJECT</button>
             <button type="button" class="btn btn-primary pull-right right-button-margin"
@@ -25,11 +28,10 @@
     </div> 
 
 
-
     <button type="button" *ngIf="showAdminUI && !postDetail?.isPostNotApproved && loading === false" class="btn btn-primary pull-right"
       (click)="unapprovePost()">UNAPPROVE</button>
       <div  *ngIf="showAdminUI && !postDetail?.isPostNotApproved && loading === false"  class="fileUpload pull-left btn btn-primary">
-        <span>ADD TRANSCRIPT</span>
+        <span>ADD FILES</span>
         <input type="file" class="upload" (change)="handleTranscriptButton($event)" name="file" multiple>
       </div>
      
