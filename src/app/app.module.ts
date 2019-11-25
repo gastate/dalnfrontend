@@ -56,13 +56,14 @@ import { DynamoDBService } from './services/ddb.service';
 import { PostService } from './services/post.service';
 import { SearchService } from './services/search.service';
 import { UserLoginService } from './services/user-login.service';
-import { UploadService } from './submit-form/media/upload-service';
+import { UploadService } from './services/upload-service';
 
 // Other
 import { SafePipe } from './safe.pipe';
 import { Ng2DeviceDetectorModule } from 'ng2-device-detector';
 import { Ec2Service } from './services/ec2.service';
 import { PostRejectedComponent } from './components/secure/post-rejected/post-rejected.component';
+import { UploadLinks } from './services/upload-link';
 // import { DeviceDetectorModule } from 'ngx-device-detector';
 
 
@@ -114,7 +115,7 @@ import { PostRejectedComponent } from './components/secure/post-rejected/post-re
     Ng2DeviceDetectorModule.forRoot()
     // DeviceDetectorModule.forRoot()
   ],
-  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, UploadService, Ec2Service, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [AuthService, CognitoUtil, PostService, SearchService, UserLoginService, DynamoDBService, UploadLinks, UploadService, Ec2Service, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

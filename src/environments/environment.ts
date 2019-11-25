@@ -68,6 +68,8 @@ const update_post = api_url + "/admin/updatePost";
 const get_upload_link = api_url + "/asset/s3uploader/"; // to get the link for file uploading.
 const link_media = api_url + "/asset/apiupload/"; // to link the post to the files uploaded.
 const read_file = api_url + "/asset/read/"; // to scan Text documents for their contents
+const admin_transcript_post=api_url+"/asset/s3AdminUpload";
+
 
 const get_unapproved_posts = api_url + "/admin/unapproved";
 const get_rejected_posts = api_url + "/admin/rejected";
@@ -77,6 +79,7 @@ const execute_ec2 = api_url + "/admin/executeec2/"
 export const environment = {
     production: false,
     API_ENDPOINTS: {
+        admin_transcript_post: admin_transcript_post,
         admin_ddb_table_name: admin_ddb_table_name,
         all_posts: all_posts,
         update_post: update_post,

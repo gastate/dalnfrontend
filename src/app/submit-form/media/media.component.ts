@@ -4,7 +4,7 @@ import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { SubmitFormService } from "../submit-form.service";
 import { environment } from "../../../environments/environment";
 import { Observable } from "rxjs/Rx";
-import { UploadService } from "./upload-service";
+import { UploadService } from "../../services/upload-service";
 
 @Component({
   selector: "app-media",
