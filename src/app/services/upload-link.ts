@@ -21,6 +21,7 @@ export class UploadLinks {
         // console.log("fileinfos" + this.fileInfos);
     
         let jsonLink: any;
+        const promises = [];
         for (let fileinfo of files) {
           let string_to_pass = fileinfo.file.name;
           //console.log(fn + "file key", string_to_pass);
@@ -33,7 +34,12 @@ export class UploadLinks {
             key: string_to_pass,
             tableName: this.endPoint.ddb_table_name
           };
-    
+
+       const p =   this._http
+          .get(this.endPoint.read_file + string_to_pass)
+          .toPromise()
+          console.log('fire')
+     promises.push(p)
           if (this.isDocument(string_to_pass)) {
             this._http
               .get(this.endPoint.read_file + string_to_pass)
@@ -55,6 +61,7 @@ export class UploadLinks {
             this.linkSingleFile(jsonLink);
           }
         }
+        return Promise.all(promises);
       }
     
       private linkSingleFile(jsonLink: any) {
