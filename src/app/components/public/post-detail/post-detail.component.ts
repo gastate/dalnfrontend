@@ -72,7 +72,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     private router: Router,
     private uploadService: UploadService,
     private uploadLink: UploadLinks,
-    private ref:ChangeDetectorRef
+    private ref: ChangeDetectorRef
   ) {
     this.userService.isAuthenticated(this);
   }
@@ -490,29 +490,25 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     });
 
     this.uploadService.uploadFiles(
-      fileInfos, 
+      fileInfos,
       () => {
-            console.log("success");
-            this.uploadLink.linkFiles(this.postDetail.postId, fileInfos)
-                            .then(res => {
-                              this.loading=true;
-                              this.onDetail();                     
-                            });
-           
-        
-        },
+        console.log("success");
+        this.uploadLink.linkFiles(this.postDetail.postId, fileInfos)
+        this.loading = true;
+        this.onDetail();
+      },
       // your done
       // scan fileInfos to see if any failed
-         //onalldone
-        () => {
-          console.log("FileDone");
-        }, //onsuccess
-        () => {
-          this.ref.detectChanges();
-        } //onprogress
-      );
- 
-    };
-  
-  }
+      //onalldone
+      () => {
+        console.log("FileDone");
+      }, //onsuccess
+      () => {
+        this.ref.detectChanges();
+      } //onprogress
+    );
+
+  };
+
+}
 
