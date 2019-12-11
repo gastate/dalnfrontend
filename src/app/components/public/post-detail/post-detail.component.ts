@@ -5,7 +5,8 @@ import {
   OnInit,
   Output,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
+  ChangeDetectorRef
 } from "@angular/core";
 import { ActivatedRoute, Router, Params, NavigationEnd } from "@angular/router";
 import { Location } from "@angular/common";
@@ -70,7 +71,8 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     private _location: Location,
     private router: Router,
     private uploadService: UploadService,
-    private uploadLink: UploadLinks
+    private uploadLink: UploadLinks,
+    private ref:ChangeDetectorRef
   ) {
     this.userService.isAuthenticated(this);
   }
@@ -471,6 +473,7 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     }
   }
   handleTranscriptButton(event: any) {
+
     let fn: string = this.constructor.name + "#uploadFiles";
     if (!event.target.files.length) {
       // TODO: Put error message
@@ -486,22 +489,30 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
       }
     });
 
-    this.uploadService.uploadFiles(fileInfos, () => {
+    this.uploadService.uploadFiles(
+      fileInfos, 
+      () => {
+            console.log("success");
+            this.uploadLink.linkFiles(this.postDetail.postId, fileInfos)
+                            .then(res => {
+                              this.loading=true;
+                              this.onDetail();                     
+                            });
+           
+        
+        },
       // your done
       // scan fileInfos to see if any failed
-      fileInfos.forEach((file: any) => {
-        if(file.status=="Failed"){
-          //errors 
-          return;
-        }
+         //onalldone
+        () => {
+          console.log("FileDone");
+        }, //onsuccess
+        () => {
+          this.ref.detectChanges();
+        } //onprogress
+      );
  
-
-      });
-      // TODO filter out error files?
-      this.uploadLink.linkFiles(this.postDetail.postId, fileInfos);
-    });
+    };
   
   }
 
-
-}
