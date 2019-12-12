@@ -26,6 +26,7 @@ import "rxjs/add/operator/switchMap";
 import { Observable } from "rxjs/Observable";
 import { UploadService } from "app/services/upload-service";
 import { UploadLinks } from "app/services/upload-link";
+import { promise } from "selenium-webdriver";
 
 
 @Component({
@@ -488,27 +489,42 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
         progress: 0.0
       }
     });
-
-    this.uploadService.uploadFiles(
-      fileInfos,
-      () => {
-        console.log("success");
-        this.uploadLink.linkFiles(this.postDetail.postId, fileInfos)
+    this.uploadFiles(fileInfos)
+      .then(() => {
         this.loading = true;
+        return this.uploadLink.linkFiles(this.postDetail.postId, fileInfos)
+      })
+      .then(() => {
         this.onDetail();
-      },
-      // your done
-      // scan fileInfos to see if any failed
-      //onalldone
-      () => {
-        console.log("FileDone");
-      }, //onsuccess
-      () => {
-        this.ref.detectChanges();
-      } //onprogress
-    );
+      })
+  }
 
-  };
-
+  private uploadFiles(fileInfos: FileInfo[]) {
+    return new Promise((resolve, reject) => {
+      this.uploadService.uploadFiles(
+        fileInfos,
+        () => {
+          resolve();
+        },
+        // your done
+        // scan fileInfos to see if any failed
+        //onalldone
+        () => {
+          console.log("FileDone");
+        }, //onsuccess
+        () => {
+          this.ref.detectChanges();
+        } //onprogress
+      );
+    })
+  }
 }
+
+interface FileInfo {
+  file: File,
+  message: string,
+  status: string,
+  progress: number
+}
+
 
