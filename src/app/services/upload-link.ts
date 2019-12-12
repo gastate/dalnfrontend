@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
-import { resolve } from 'url';
 
 @Injectable()
 export class UploadLinks {

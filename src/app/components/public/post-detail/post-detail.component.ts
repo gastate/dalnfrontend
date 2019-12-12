@@ -474,12 +474,8 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     }
   }
   handleTranscriptButton(event: any) {
-
-    let fn: string = this.constructor.name + "#uploadFiles";
-    if (!event.target.files.length) {
-      // TODO: Put error message
+    if (!event.target.files.length)
       return;
-    }
     const fileInfos: FileInfo[] = [];
     for (const f in event.target.files) {
       fileInfos.push({
