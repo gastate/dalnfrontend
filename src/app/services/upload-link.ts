@@ -56,8 +56,8 @@ export class UploadLinks {
     var input = JSON.stringify(jsonLink);
 
     // returns 504, make admin to check if went through.
-    return this._http.get(this.endPoint.read_file)
-      .toPromise()
+    return   this._http
+      .post(this.endPoint.link_media, input, options) .toPromise()
       .then(() => { })
 
   }
