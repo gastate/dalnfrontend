@@ -68,7 +68,7 @@ export class UploadService {
   //   return name.replace(/ /g, "_");
   // }
 
-  public uploadFiles( fileInfos: any[], onalldone: Function, onsuccess: Function = undefined, onprogress: Function = undefined, onfail: Function = undefined, i:number = 0 ) {
+  public uploadFiles( fileInfos: FileInfo[], onalldone: Function, onsuccess: Function = undefined, onprogress: Function = undefined, onfail: Function = undefined, i:number = 0 ) {
     let fn: string = this.constructor.name + "#uploadFiles";  // tslint:disable-line:no-unused-variable
     console.log(fn + ": invoked with i = ", i );
     let fileinfo:any = fileInfos[i];
@@ -180,4 +180,12 @@ export class UploadService {
     }
   }
 
+}
+
+
+export interface FileInfo {
+  file: File,
+  message: string,
+  status: string,
+  progress: number
 }

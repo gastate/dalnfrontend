@@ -24,7 +24,7 @@ import { environment } from "../../../../environments/environment";
 
 import "rxjs/add/operator/switchMap";
 import { Observable } from "rxjs/Observable";
-import { UploadService } from "app/services/upload-service";
+import { UploadService, FileInfo } from "app/services/upload-service";
 import { UploadLinks } from "app/services/upload-link";
 import { promise } from "selenium-webdriver";
 
@@ -476,15 +476,22 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
   handleTranscriptButton(event: any) {
     if (!event.target.files.length)
       return;
+    console.groupCollapsed('Handle Transcript Button')
+
     const fileInfos: FileInfo[] = [];
-    for (const f in event.target.files) {
+    for (const f of event.target.files) {
+      console.log(f);
       fileInfos.push({
-        file: event.target.files[f],
+        file: f,
         message: "Queued",
         status: "QUEUED",
         progress: 0.0
       })
     }
+    console.log(JSON.parse(JSON.stringify(event.target.files)))
+    console.log(fileInfos.length)
+    console.log(fileInfos)
+    console.groupEnd();
     this.uploadFiles(fileInfos)
       .then(() => {
         this.loading = true;
@@ -514,13 +521,6 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
       );
     })
   }
-}
-
-interface FileInfo {
-  file: File,
-  message: string,
-  status: string,
-  progress: number
 }
 
 

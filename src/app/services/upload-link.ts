@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { environment } from '../../environments/environment';
+import { FileInfo } from './upload-service';
 
 @Injectable()
 export class UploadLinks {
@@ -13,14 +14,18 @@ export class UploadLinks {
   private endPoint = environment.API_ENDPOINTS;
 
 
-  linkFiles(postId: string, files: any) {
+  linkFiles(postId: string, files: FileInfo[]) {
     let FileInfo: Promise<void>[] = [];
+    console.groupCollapsed('Link Files')
+    console.log(JSON.parse(JSON.stringify(files)))
     for (let fileinfo of files) {
+      console.log(fileinfo);
       FileInfo.push(this.linkFile(postId, fileinfo));
     }
+    console.groupEnd();
     return Promise.all(FileInfo);
   }
-  private linkFile(postId: string, FileInfo: any) {
+  private linkFile(postId: string, FileInfo: FileInfo) {
     let string_to_pass = FileInfo.file.name;
     //console.log(fn + "file key", string_to_pass);
     let jsonLink = {
@@ -51,13 +56,16 @@ export class UploadLinks {
     //console.log(fn + "data to link", jsonLink);
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
-    let options = new RequestOptions({ headers: headers, method: "post" });
 
+    let options = new RequestOptions({ headers: headers, method: "post" });
     var input = JSON.stringify(jsonLink);
+    //var input = jsonLink;
+
 
     // returns 504, make admin to check if went through.
     return   this._http
-      .post(this.endPoint.link_media, input, options) .toPromise()
+      .post(this.endPoint.link_media, input, options) 
+      .toPromise()
       .then(() => { })
 
   }
@@ -75,7 +83,4 @@ export class UploadLinks {
         return false;
     }
   }
-
-
-
 }
