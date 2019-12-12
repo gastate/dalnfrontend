@@ -480,15 +480,15 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
       // TODO: Put error message
       return;
     }
-    let fileInfos = Object.getOwnPropertyNames(event.target.files).map((f: any) => {
-      let file = event.target.files[f];
-      return {
-        file: file,
+    const fileInfos: FileInfo[] = [];
+    for (const f in event.target.files) {
+      fileInfos.push({
+        file: event.target.files[f],
         message: "Queued",
         status: "QUEUED",
         progress: 0.0
-      }
-    });
+      })
+    }
     this.uploadFiles(fileInfos)
       .then(() => {
         this.loading = true;
