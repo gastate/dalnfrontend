@@ -5,7 +5,8 @@ import {
   OnInit,
   Output,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
+  ChangeDetectorRef
 } from "@angular/core";
 import { ActivatedRoute, Router, Params, NavigationEnd } from "@angular/router";
 import { Location } from "@angular/common";
@@ -23,8 +24,9 @@ import { environment } from "../../../../environments/environment";
 
 import "rxjs/add/operator/switchMap";
 import { Observable } from "rxjs/Observable";
-import { UploadService } from "app/services/upload-service";
+import { UploadService, FileInfo } from "app/services/upload-service";
 import { UploadLinks } from "app/services/upload-link";
+import { promise } from "selenium-webdriver";
 
 
 @Component({
@@ -70,7 +72,8 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     private _location: Location,
     private router: Router,
     private uploadService: UploadService,
-    private uploadLink: UploadLinks
+    private uploadLink: UploadLinks,
+    private ref: ChangeDetectorRef
   ) {
     this.userService.isAuthenticated(this);
   }
@@ -471,38 +474,53 @@ export class PostDetailComponent implements OnInit, LoggedInCallback {
     }
   }
   handleTranscriptButton(event: any) {
-    let fn: string = this.constructor.name + "#uploadFiles";
-    if (!event.target.files.length) {
-      // TODO: Put error message
+    if (!event.target.files.length)
       return;
-    }
-    let fileInfos = Object.getOwnPropertyNames(event.target.files).map((f: any) => {
-      let file = event.target.files[f];
-      return {
-        file: file,
+    console.groupCollapsed('Handle Transcript Button')
+
+    const fileInfos: FileInfo[] = [];
+    for (const f of event.target.files) {
+      console.log(f);
+      fileInfos.push({
+        file: f,
         message: "Queued",
         status: "QUEUED",
         progress: 0.0
-      }
-    });
-
-    this.uploadService.uploadFiles(fileInfos, () => {
-      // your done
-      // scan fileInfos to see if any failed
-      fileInfos.forEach((file: any) => {
-        if(file.status=="Failed"){
-          //errors 
-          return;
-        }
- 
-
-      });
-      // TODO filter out error files?
-      this.uploadLink.linkFiles(this.postDetail.postId, fileInfos);
-    });
-      window.location.reload();
-  
+      })
+    }
+    console.log(JSON.parse(JSON.stringify(event.target.files)))
+    console.log(fileInfos.length)
+    console.log(fileInfos)
+    console.groupEnd();
+    this.uploadFiles(fileInfos)
+      .then(() => {
+        this.loading = true;
+        return this.uploadLink.linkFiles(this.postDetail.postId, fileInfos)
+      })
+      .then(() => {
+        this.onDetail();
+      })
   }
 
-
+  private uploadFiles(fileInfos: FileInfo[]) {
+    return new Promise((resolve, reject) => {
+      this.uploadService.uploadFiles(
+        fileInfos,
+        () => {
+          resolve();
+        },
+        // your done
+        // scan fileInfos to see if any failed
+        //onalldone
+        () => {
+          console.log("FileDone");
+        }, //onsuccess
+        () => {
+          this.ref.detectChanges();
+        } //onprogress
+      );
+    })
+  }
 }
+
+
